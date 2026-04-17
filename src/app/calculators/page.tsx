@@ -19,12 +19,16 @@ const liveCalculators = [
   { slug: "wire-size-calculator", name: "Wire size calculator", desc: "AWG gauge for any circuit, with voltage drop and distance", category: "Electrical" },
   { slug: "insulation-calculator", name: "Insulation calculator", desc: "R-value and bags for walls, attic, or floors — climate-matched", category: "Insulation" },
   { slug: "fence-calculator", name: "Fence calculator", desc: "Posts, rails, pickets, and concrete for any fence length", category: "Landscaping" },
+  { slug: "grout-calculator", name: "Grout calculator", desc: "Pounds of grout by tile size, joint width, and thickness", category: "Flooring" },
+  { slug: "paver-calculator", name: "Paver calculator", desc: "Pavers, base gravel, bedding sand for any patio or path", category: "Landscaping" },
+  { slug: "deck-calculator", name: "Deck calculator", desc: "Boards, joists, beams, and fasteners for any deck", category: "Landscaping" },
+  { slug: "flooring-calculator", name: "Flooring calculator", desc: "Boxes of hardwood, laminate, or vinyl plank for any room", category: "Flooring" },
 ];
 
 const comingSoon = [
-  "Topsoil", "Flooring", "Grout", "Paver",
-  "Deck", "Lumber", "Stair", "Brick",
-  "Wallpaper", "Sod", "Rebar", "Asphalt",
+  "Topsoil", "Lumber", "Stair",
+  "Brick", "Wallpaper", "Sod",
+  "Rebar", "Asphalt",
 ];
 
 export default function CalculatorsIndexPage() {

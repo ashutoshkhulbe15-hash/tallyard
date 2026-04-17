@@ -2,17 +2,16 @@ import Link from "next/link";
 import { BannerHeadline } from "@/components/BannerHeadline";
 
 export default function HomePage() {
-  // Show the 8 most popular/highest-volume calculators on the homepage.
-  // Full list lives on /calculators.
+  // Top 8 calculators shown on homepage — representative of each vertical
   const previewCalculators = [
     { slug: "paint-calculator", name: "Paint", desc: "Gallons needed by room size", category: "Paint" },
     { slug: "concrete-calculator", name: "Concrete", desc: "Cubic yards for any slab", category: "Masonry" },
-    { slug: "tile-calculator", name: "Tile", desc: "Square footage and box count", category: "Flooring" },
+    { slug: "flooring-calculator", name: "Flooring", desc: "Hardwood, laminate, vinyl", category: "Flooring" },
     { slug: "solar-calculator", name: "Solar", desc: "Panels for your electricity use", category: "Solar" },
-    { slug: "drywall-calculator", name: "Drywall", desc: "Sheets for walls and ceilings", category: "Drywall" },
+    { slug: "deck-calculator", name: "Deck", desc: "Boards, joists, fasteners", category: "Landscaping" },
     { slug: "roofing-calculator", name: "Roofing", desc: "Shingles for any pitch", category: "Roofing" },
-    { slug: "btu-calculator", name: "BTU", desc: "Air conditioner sizing", category: "HVAC" },
     { slug: "insulation-calculator", name: "Insulation", desc: "R-value by climate zone", category: "Insulation" },
+    { slug: "paver-calculator", name: "Paver", desc: "Patio pavers, base, sand", category: "Landscaping" },
   ];
 
   return (
@@ -34,7 +33,7 @@ export default function HomePage() {
               href="/calculators"
               className="inline-flex items-center px-5 py-3 text-sm font-semibold bg-accent hover:bg-accent-hover text-white rounded-md transition-colors"
             >
-              Browse 12 calculators
+              Browse 16 calculators
             </Link>
             <Link
               href="/methodology"
@@ -60,7 +59,7 @@ export default function HomePage() {
             href="/calculators"
             className="text-sm text-ink-muted hover:text-accent transition-colors font-medium hidden sm:inline"
           >
-            View all 12 →
+            View all 16 →
           </Link>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
