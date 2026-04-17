@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { UnitProvider } from "@/lib/units";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://tallyard.com"),
@@ -58,9 +59,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <UnitProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </UnitProvider>
       </body>
     </html>
   );

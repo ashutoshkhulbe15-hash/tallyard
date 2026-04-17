@@ -6,24 +6,69 @@ export const metadata: Metadata = {
   description: "Every Tallyard calculator, organized by project type.",
 };
 
+const liveCalculators = [
+  {
+    slug: "paint-calculator",
+    name: "Paint calculator",
+    desc: "Gallons of paint for any room, with door and window subtraction",
+    category: "Paint",
+  },
+];
+
+const comingSoon = [
+  "Concrete", "Tile", "Mulch", "Drywall", "Roofing", "BTU", "Solar panels",
+  "Gravel", "Topsoil", "Flooring", "Grout", "Paver", "Deck", "Fence",
+  "Lumber", "Wire size", "Stair", "Brick", "Wallpaper", "Sod",
+];
+
 export default function CalculatorsIndexPage() {
   return (
-    <div className="container-content py-16">
-      <p className="text-xs uppercase tracking-wide text-ink-faint mb-3">
-        Index
-      </p>
-      <h1 className="text-3xl font-semibold tracking-tight mb-4">
+    <div className="container-content py-12 md:py-16">
+      <p className="text-xs uppercase tracking-wide text-ink-faint mb-3">Index</p>
+      <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4">
         All calculators
       </h1>
       <p className="text-base text-ink-muted mb-10 max-w-prose">
-        Calculators are rolling out in batches. This page will be the full directory once
-        the initial forty are live.
+        Transparent calculators for home improvement and DIY projects. More are
+        rolling out weekly — the goal is 40 calculators by launch.
       </p>
-      <div className="p-6 border border-line rounded-md bg-surface">
-        <p className="text-sm text-ink-muted">
-          First calculator coming next week: <Link href="/paint-calculator" className="text-accent hover:underline">paint calculator</Link>.
-        </p>
-      </div>
+
+      <section className="mb-12">
+        <h2 className="text-xs uppercase tracking-wide text-ink-faint mb-3">
+          Available now
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {liveCalculators.map((c) => (
+            <Link
+              key={c.slug}
+              href={`/${c.slug}`}
+              className="block p-5 bg-surface border border-line rounded-md hover:border-line-strong hover:-translate-y-0.5 transition-all"
+            >
+              <div className="text-xs text-ink-faint uppercase tracking-wide mb-1">
+                {c.category}
+              </div>
+              <h3 className="text-base font-medium mb-1">{c.name}</h3>
+              <p className="text-xs text-ink-muted">{c.desc}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <h2 className="text-xs uppercase tracking-wide text-ink-faint mb-3">
+          Coming soon
+        </h2>
+        <div className="flex flex-wrap gap-2">
+          {comingSoon.map((name) => (
+            <span
+              key={name}
+              className="inline-flex items-center px-3 py-1.5 text-xs text-ink-muted bg-surface border border-line rounded-full"
+            >
+              {name}
+            </span>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

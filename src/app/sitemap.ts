@@ -18,7 +18,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Calculator pages will be appended here as they're built.
   // Next delivery populates this from a config-driven registry.
-  const calculatorPages: MetadataRoute.Sitemap = [];
+  const calculatorPages: MetadataRoute.Sitemap = [
+    {
+      url: `${SITE_URL}/paint-calculator`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+  ];
 
   return [...staticPages, ...calculatorPages];
 }
