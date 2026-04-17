@@ -8,9 +8,9 @@ export default function HomePage() {
     { slug: "flooring-calculator", name: "Flooring", desc: "Hardwood, laminate, vinyl", category: "Flooring" },
     { slug: "solar-calculator", name: "Solar", desc: "Panels for your electricity use", category: "Solar" },
     { slug: "deck-calculator", name: "Deck", desc: "Boards, joists, fasteners", category: "Landscaping" },
+    { slug: "heat-pump-calculator", name: "Heat pump", desc: "Tons for heating and cooling", category: "HVAC" },
+    { slug: "siding-calculator", name: "Siding", desc: "Squares for any exterior", category: "Roofing" },
     { slug: "backsplash-calculator", name: "Backsplash", desc: "Kitchen tile and boxes", category: "Flooring" },
-    { slug: "countertop-calculator", name: "Countertop", desc: "Square feet with cost estimate", category: "Flooring" },
-    { slug: "stair-calculator", name: "Stair", desc: "Rise, run, stringer length", category: "Lumber" },
   ];
 
   return (
@@ -32,7 +32,7 @@ export default function HomePage() {
               href="/calculators"
               className="inline-flex items-center px-5 py-3 text-sm font-semibold bg-accent hover:bg-accent-hover text-white rounded-md transition-colors"
             >
-              Browse 28 calculators
+              Browse 32 calculators
             </Link>
             <Link
               href="/methodology"
@@ -58,7 +58,7 @@ export default function HomePage() {
             href="/calculators"
             className="text-sm text-ink-muted hover:text-accent transition-colors font-medium hidden sm:inline"
           >
-            View all 28 →
+            View all 32 →
           </Link>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">

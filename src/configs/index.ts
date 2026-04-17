@@ -27,6 +27,10 @@ import { showerTileCalculatorConfig } from "./shower-tile-calculator";
 import { backsplashCalculatorConfig } from "./backsplash-calculator";
 import { vanityCalculatorConfig } from "./vanity-calculator";
 import { countertopCalculatorConfig } from "./countertop-calculator";
+import { sidingCalculatorConfig } from "./siding-calculator";
+import { gutterCalculatorConfig } from "./gutter-calculator";
+import { heatPumpCalculatorConfig } from "./heat-pump-calculator";
+import { waterHeaterCalculatorConfig } from "./water-heater-calculator";
 
 export const configs: Record<string, CalculatorConfig> = {
   "paint-calculator": paintCalculatorConfig,
@@ -57,6 +61,10 @@ export const configs: Record<string, CalculatorConfig> = {
   "backsplash-calculator": backsplashCalculatorConfig,
   "vanity-calculator": vanityCalculatorConfig,
   "countertop-calculator": countertopCalculatorConfig,
+  "siding-calculator": sidingCalculatorConfig,
+  "gutter-calculator": gutterCalculatorConfig,
+  "heat-pump-calculator": heatPumpCalculatorConfig,
+  "water-heater-calculator": waterHeaterCalculatorConfig,
 };
 
 export function getConfig(slug: string): CalculatorConfig | null {

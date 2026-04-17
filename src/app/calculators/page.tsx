@@ -35,12 +35,14 @@ const liveCalculators = [
   { slug: "backsplash-calculator", name: "Backsplash calculator", desc: "Kitchen tile count with outlets and window subtractions", category: "Flooring" },
   { slug: "vanity-calculator", name: "Vanity calculator", desc: "Right size vanity with clearances and single/double sink", category: "Flooring" },
   { slug: "countertop-calculator", name: "Countertop calculator", desc: "Square feet and linear feet with island and cost estimate", category: "Flooring" },
+  { slug: "siding-calculator", name: "Siding calculator", desc: "Squares and linear feet for any house exterior", category: "Roofing" },
+  { slug: "gutter-calculator", name: "Gutter calculator", desc: "Linear feet, downspouts, and hangers sized for your rainfall", category: "Roofing" },
+  { slug: "heat-pump-calculator", name: "Heat pump calculator", desc: "Size in tons for heating and cooling — climate and insulation aware", category: "HVAC" },
+  { slug: "water-heater-calculator", name: "Water heater calculator", desc: "Tank gallons or tankless GPM for any household", category: "HVAC" },
 ];
 
 const comingSoon = [
-  "Siding", "Gutter", "Shed", "Heat pump",
-  "Water heater", "Extension cord", "Pool chlorine",
-  "Attic ventilation",
+  "Extension cord", "Attic ventilation", "Pool chlorine", "Shed",
 ];
 
 export default function CalculatorsIndexPage() {
