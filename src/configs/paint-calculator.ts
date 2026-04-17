@@ -170,10 +170,10 @@ export const paintCalculatorConfig: CalculatorConfig = {
   ],
 
   related: [
-    { name: "Exterior paint calculator", slug: "exterior-paint-calculator", description: "For siding, trim, and outdoor walls" },
-    { name: "Ceiling paint calculator", slug: "ceiling-paint-calculator", description: "Length × width, accounting for ceiling coverage rates" },
-    { name: "Paint cost calculator", slug: "paint-cost-calculator", description: "Includes paint, primer, and supplies" },
-    { name: "Primer calculator", slug: "primer-calculator", description: "How much primer to buy for a room" },
+    { name: "Drywall calculator", slug: "drywall-calculator", description: "Sheets for walls before painting" },
+    { name: "Siding calculator", slug: "siding-calculator", description: "Exterior siding and trim coverage" },
+    { name: "Countertop calculator", slug: "countertop-calculator", description: "Surface area for kitchen refinish" },
+    { name: "Tile calculator", slug: "tile-calculator", description: "Tiles and boxes for floors and walls" },
   ],
 
   faq: [

@@ -155,7 +155,7 @@ export const gravelCalculatorConfig: CalculatorConfig = {
   related: [
     { name: "Mulch calculator", slug: "mulch-calculator", description: "Cubic yards or bags for garden beds" },
     { name: "Concrete calculator", slug: "concrete-calculator", description: "Cubic yards for any slab or footing" },
-    { name: "Sand calculator", slug: "sand-calculator", description: "Cubic yards or bags of sand" },
+    { name: "Topsoil calculator", slug: "topsoil-calculator", description: "Cubic yards or bags of topsoil" },
     { name: "Topsoil calculator", slug: "topsoil-calculator", description: "Volume for garden bed filling" },
   ],
 

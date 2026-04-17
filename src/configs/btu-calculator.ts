@@ -199,7 +199,7 @@ export const btuCalculatorConfig: CalculatorConfig = {
   related: [
     { name: "Insulation calculator", slug: "insulation-calculator", description: "R-value and square footage" },
     { name: "Heat pump calculator", slug: "heat-pump-calculator", description: "Heating BTU for any climate" },
-    { name: "Ductwork calculator", slug: "ductwork-calculator", description: "CFM and duct sizing" },
+    { name: "Heat pump calculator", slug: "heat-pump-calculator", description: "Tonnage for heating and cooling" },
     { name: "Solar calculator", slug: "solar-calculator", description: "System size for your usage" },
   ],
 

@@ -202,7 +202,7 @@ export const wireSizeCalculatorConfig: CalculatorConfig = {
     { name: "Solar panel calculator", slug: "solar-calculator", description: "System sizing for your electricity use" },
     { name: "BTU calculator", slug: "btu-calculator", description: "Air conditioner amps and sizing" },
     { name: "Extension cord calculator", slug: "extension-cord-calculator", description: "Cord gauge for tools and appliances" },
-    { name: "Battery calculator", slug: "battery-calculator", description: "Battery bank sizing" },
+    { name: "Extension cord calculator", slug: "extension-cord-calculator", description: "AWG for any tool or appliance" },
   ],
 
   faq: [

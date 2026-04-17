@@ -184,7 +184,7 @@ export const drywallCalculatorConfig: CalculatorConfig = {
 
   related: [
     { name: "Paint calculator", slug: "paint-calculator", description: "Gallons of paint after drywall is up" },
-    { name: "Joint compound calculator", slug: "joint-compound-calculator", description: "Mud and tape for your sheets" },
+    { name: "Grout calculator", slug: "grout-calculator", description: "Pounds of grout by tile and joint size" },
     { name: "Insulation calculator", slug: "insulation-calculator", description: "R-value and square footage for walls" },
     { name: "Concrete calculator", slug: "concrete-calculator", description: "Cubic yards for foundations and slabs" },
   ],
