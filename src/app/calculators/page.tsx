@@ -13,12 +13,32 @@ const liveCalculators = [
     desc: "Gallons of paint for any room, with door and window subtraction",
     category: "Paint",
   },
+  {
+    slug: "concrete-calculator",
+    name: "Concrete calculator",
+    desc: "Cubic yards for slabs, footings, and round pours — waste included",
+    category: "Masonry",
+  },
+  {
+    slug: "tile-calculator",
+    name: "Tile calculator",
+    desc: "Tiles and boxes needed for any floor, with waste and cuts",
+    category: "Flooring",
+  },
+  {
+    slug: "mulch-calculator",
+    name: "Mulch calculator",
+    desc: "Cubic yards or bag count for any garden bed and depth",
+    category: "Landscaping",
+  },
 ];
 
 const comingSoon = [
-  "Concrete", "Tile", "Mulch", "Drywall", "Roofing", "BTU", "Solar panels",
-  "Gravel", "Topsoil", "Flooring", "Grout", "Paver", "Deck", "Fence",
-  "Lumber", "Wire size", "Stair", "Brick", "Wallpaper", "Sod",
+  "Drywall", "Roofing", "BTU", "Solar panels",
+  "Gravel", "Topsoil", "Flooring", "Grout",
+  "Paver", "Deck", "Fence", "Lumber",
+  "Wire size", "Stair", "Brick", "Wallpaper",
+  "Sod", "Rebar", "Insulation", "Asphalt",
 ];
 
 export default function CalculatorsIndexPage() {

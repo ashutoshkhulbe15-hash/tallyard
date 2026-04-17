@@ -4,9 +4,9 @@ import { BannerHeadline } from "@/components/BannerHeadline";
 export default function HomePage() {
   const previewCalculators = [
     { slug: "paint-calculator", name: "Paint", desc: "Gallons needed by room size", live: true, category: "Paint" },
-    { slug: "calculators", name: "Concrete", desc: "Cubic yards for any slab", live: false, category: "Masonry" },
-    { slug: "calculators", name: "Tile", desc: "Square footage and box count", live: false, category: "Flooring" },
-    { slug: "calculators", name: "Mulch", desc: "Cubic yards by bed dimensions", live: false, category: "Landscaping" },
+    { slug: "concrete-calculator", name: "Concrete", desc: "Cubic yards for any slab", live: true, category: "Masonry" },
+    { slug: "tile-calculator", name: "Tile", desc: "Square footage and box count", live: true, category: "Flooring" },
+    { slug: "mulch-calculator", name: "Mulch", desc: "Cubic yards by bed dimensions", live: true, category: "Landscaping" },
     { slug: "calculators", name: "Drywall", desc: "Sheets for any wall area", live: false, category: "Drywall" },
     { slug: "calculators", name: "Roofing", desc: "Shingles and squares needed", live: false, category: "Roofing" },
     { slug: "calculators", name: "BTU", desc: "Air conditioner sizing", live: false, category: "HVAC" },
@@ -15,7 +15,6 @@ export default function HomePage() {
 
   return (
     <>
-      {/* Homepage banner */}
       <section className="container-wide pt-6 md:pt-8">
         <div className="bg-bg-warm rounded-xl p-8 md:p-14 overflow-hidden">
           <p className="text-[11px] uppercase tracking-[0.08em] text-ink-faint mb-3 font-semibold">
@@ -45,7 +44,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Calculator grid */}
       <section className="container-wide py-16 md:py-20">
         <div className="flex items-end justify-between mb-8">
           <div>
@@ -87,7 +85,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Principles section */}
       <section className="bg-bg-warm border-t border-line">
         <div className="container-content py-16 md:py-20">
           <p className="text-[11px] uppercase tracking-[0.08em] text-ink-faint mb-2 font-semibold">

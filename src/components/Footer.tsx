@@ -46,8 +46,9 @@ export function Footer() {
             <h3 className="text-sm font-semibold text-ink mb-4">Calculators</h3>
             <ul className="space-y-2.5">
               <li><Link href="/paint-calculator" className="text-sm text-ink-muted hover:text-accent transition-colors">Paint</Link></li>
-              <li><Link href="/calculators" className="text-sm text-ink-muted hover:text-accent transition-colors">Concrete</Link></li>
-              <li><Link href="/calculators" className="text-sm text-ink-muted hover:text-accent transition-colors">Tile</Link></li>
+              <li><Link href="/concrete-calculator" className="text-sm text-ink-muted hover:text-accent transition-colors">Concrete</Link></li>
+              <li><Link href="/tile-calculator" className="text-sm text-ink-muted hover:text-accent transition-colors">Tile</Link></li>
+              <li><Link href="/mulch-calculator" className="text-sm text-ink-muted hover:text-accent transition-colors">Mulch</Link></li>
               <li><Link href="/calculators" className="text-sm text-ink-muted hover:text-accent transition-colors">All tools →</Link></li>
             </ul>
           </div>
