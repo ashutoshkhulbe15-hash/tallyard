@@ -77,8 +77,8 @@ export function Calculator({ slug }: CalculatorProps) {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-6 lg:gap-7">
-      {/* Result card — appears first on mobile so answer is visible immediately */}
-      <div className="lg:order-2 bg-walnut walnut-section rounded-lg p-7 md:p-8 text-white flex flex-col">
+      {/* Result card — appears first on mobile, sticky on desktop so it stays visible while scrolling */}
+      <div className="lg:order-2 lg:self-start lg:sticky lg:top-20 bg-walnut walnut-section rounded-lg p-7 md:p-8 text-white flex flex-col">
         {result && (
           <>
             <div
@@ -202,37 +202,32 @@ export function Calculator({ slug }: CalculatorProps) {
                   {input.label}
                 </label>
                 {input.type === "number" ? (
-                  <div className="flex items-center gap-3">
-                    <div className="relative flex-1">
-                      <input
-                        type="number"
-                        id={input.id}
-                        value={values[input.id] as number}
-                        min={input.min}
-                        max={input.max}
-                        step={input.step || "any"}
-                        onChange={(e) => {
-                          const val =
-                            e.target.value === ""
-                              ? ""
-                              : parseFloat(e.target.value);
-                          updateValue(
-                            input.id,
-                            isNaN(val as number) ? "" : val
-                          );
-                        }}
-                        className="w-full bg-bg border border-line rounded-md px-3.5 py-2.5 text-base font-mono font-semibold text-ink focus:border-accent focus:outline-none focus:bg-surface transition-colors"
-                        inputMode="decimal"
-                      />
-                      {unitLabel && (
-                        <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-ink-faint font-mono pointer-events-none">
-                          {unitLabel}
-                        </span>
-                      )}
-                    </div>
-                    <div className="bg-walnut text-white rounded-md px-3.5 py-2 text-sm font-semibold font-mono min-w-[60px] text-center">
-                      {values[input.id] === "" ? "—" : values[input.id]}
-                    </div>
+                  <div className="relative">
+                    <input
+                      type="number"
+                      id={input.id}
+                      value={values[input.id] as number}
+                      min={input.min}
+                      max={input.max}
+                      step={input.step || "any"}
+                      onChange={(e) => {
+                        const val =
+                          e.target.value === ""
+                            ? ""
+                            : parseFloat(e.target.value);
+                        updateValue(
+                          input.id,
+                          isNaN(val as number) ? "" : val
+                        );
+                      }}
+                      className="w-full bg-bg border border-line rounded-md px-3.5 py-2.5 text-base font-mono font-semibold text-ink focus:border-accent focus:outline-none focus:bg-surface transition-colors"
+                      inputMode="decimal"
+                    />
+                    {unitLabel && (
+                      <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-ink-faint font-mono pointer-events-none">
+                        {unitLabel}
+                      </span>
+                    )}
                   </div>
                 ) : (
                   <SegmentedSelect
