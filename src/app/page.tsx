@@ -9,8 +9,8 @@ export default function HomePage() {
     { slug: "solar-calculator", name: "Solar", desc: "Panels for your electricity use", category: "Solar" },
     { slug: "deck-calculator", name: "Deck", desc: "Boards, joists, fasteners", category: "Landscaping" },
     { slug: "heat-pump-calculator", name: "Heat pump", desc: "Tons for heating and cooling", category: "HVAC" },
+    { slug: "kitchen-cabinet-calculator", name: "Kitchen cabinets", desc: "Linear feet by layout", category: "Flooring" },
     { slug: "roofing-calculator", name: "Roofing", desc: "Shingles for any pitch", category: "Roofing" },
-    { slug: "insulation-calculator", name: "Insulation", desc: "R-value by climate zone", category: "Insulation" },
   ];
 
   return (
@@ -32,7 +32,7 @@ export default function HomePage() {
               href="/calculators"
               className="inline-flex items-center px-5 py-3 text-sm font-semibold bg-accent hover:bg-accent-hover text-white rounded-md transition-colors"
             >
-              Browse 36 calculators
+              Browse 44 calculators
             </Link>
             <Link
               href="/methodology"
@@ -58,7 +58,7 @@ export default function HomePage() {
             href="/calculators"
             className="text-sm text-ink-muted hover:text-accent transition-colors font-medium hidden sm:inline"
           >
-            View all 36 →
+            View all 44 →
           </Link>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">

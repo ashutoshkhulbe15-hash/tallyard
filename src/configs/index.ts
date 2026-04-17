@@ -35,6 +35,14 @@ import { extensionCordCalculatorConfig } from "./extension-cord-calculator";
 import { atticVentilationCalculatorConfig } from "./attic-ventilation-calculator";
 import { poolChlorineCalculatorConfig } from "./pool-chlorine-calculator";
 import { shedCalculatorConfig } from "./shed-calculator";
+import { rainwaterCalculatorConfig } from "./rainwater-calculator";
+import { snowLoadCalculatorConfig } from "./snow-load-calculator";
+import { studSpacingCalculatorConfig } from "./stud-spacing-calculator";
+import { drainPipeCalculatorConfig } from "./drain-pipe-calculator";
+import { kitchenCabinetCalculatorConfig } from "./kitchen-cabinet-calculator";
+import { garageDoorCalculatorConfig } from "./garage-door-calculator";
+import { windowSizingCalculatorConfig } from "./window-sizing-calculator";
+import { chimneyCalculatorConfig } from "./chimney-calculator";
 
 export const configs: Record<string, CalculatorConfig> = {
   "paint-calculator": paintCalculatorConfig,
@@ -73,6 +81,14 @@ export const configs: Record<string, CalculatorConfig> = {
   "attic-ventilation-calculator": atticVentilationCalculatorConfig,
   "pool-chlorine-calculator": poolChlorineCalculatorConfig,
   "shed-calculator": shedCalculatorConfig,
+  "rainwater-calculator": rainwaterCalculatorConfig,
+  "snow-load-calculator": snowLoadCalculatorConfig,
+  "stud-spacing-calculator": studSpacingCalculatorConfig,
+  "drain-pipe-calculator": drainPipeCalculatorConfig,
+  "kitchen-cabinet-calculator": kitchenCabinetCalculatorConfig,
+  "garage-door-calculator": garageDoorCalculatorConfig,
+  "window-sizing-calculator": windowSizingCalculatorConfig,
+  "chimney-calculator": chimneyCalculatorConfig,
 };
 
 export function getConfig(slug: string): CalculatorConfig | null {
