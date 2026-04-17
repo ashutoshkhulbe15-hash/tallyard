@@ -24,17 +24,19 @@ const comingSoon = [
 export default function CalculatorsIndexPage() {
   return (
     <div className="container-content py-12 md:py-16">
-      <p className="text-xs uppercase tracking-wide text-ink-faint mb-3">Index</p>
-      <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4">
+      <p className="text-[11px] uppercase tracking-[0.08em] text-ink-faint mb-3 font-semibold">
+        Index
+      </p>
+      <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
         All calculators
       </h1>
-      <p className="text-base text-ink-muted mb-10 max-w-prose">
+      <p className="text-base text-ink-muted mb-10 max-w-prose leading-relaxed">
         Transparent calculators for home improvement and DIY projects. More are
         rolling out weekly — the goal is 40 calculators by launch.
       </p>
 
       <section className="mb-12">
-        <h2 className="text-xs uppercase tracking-wide text-ink-faint mb-3">
+        <h2 className="text-[11px] uppercase tracking-[0.08em] text-ink-faint mb-3 font-semibold">
           Available now
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -42,12 +44,12 @@ export default function CalculatorsIndexPage() {
             <Link
               key={c.slug}
               href={`/${c.slug}`}
-              className="block p-5 bg-surface border border-line rounded-md hover:border-line-strong hover:-translate-y-0.5 transition-all"
+              className="block p-5 bg-surface border border-line rounded-lg hover:border-accent hover:-translate-y-0.5 transition-all"
             >
-              <div className="text-xs text-ink-faint uppercase tracking-wide mb-1">
+              <div className="text-[10px] uppercase tracking-[0.08em] text-ink-faint font-semibold mb-2">
                 {c.category}
               </div>
-              <h3 className="text-base font-medium mb-1">{c.name}</h3>
+              <h3 className="text-base font-semibold mb-1">{c.name}</h3>
               <p className="text-xs text-ink-muted">{c.desc}</p>
             </Link>
           ))}
@@ -55,7 +57,7 @@ export default function CalculatorsIndexPage() {
       </section>
 
       <section>
-        <h2 className="text-xs uppercase tracking-wide text-ink-faint mb-3">
+        <h2 className="text-[11px] uppercase tracking-[0.08em] text-ink-faint mb-3 font-semibold">
           Coming soon
         </h2>
         <div className="flex flex-wrap gap-2">

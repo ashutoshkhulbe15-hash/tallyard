@@ -7,10 +7,9 @@ export function UnitToggle() {
 
   return (
     <div
-      className="inline-flex items-center bg-white/8 rounded-full p-0.5 text-xs"
+      className="inline-flex items-center bg-surface-alt border border-line rounded-full p-0.5 text-xs"
       role="group"
       aria-label="Unit system"
-      style={{ backgroundColor: "rgba(255,255,255,0.08)" }}
     >
       <button
         type="button"
@@ -18,8 +17,8 @@ export function UnitToggle() {
         aria-pressed={units === "imperial"}
         className={`px-2.5 py-1 rounded-full transition-colors font-medium ${
           units === "imperial"
-            ? "bg-white text-dark"
-            : "text-dark-ink-muted hover:text-white"
+            ? "bg-surface text-ink shadow-soft"
+            : "text-ink-faint hover:text-ink"
         }`}
       >
         ft · gal
@@ -30,8 +29,8 @@ export function UnitToggle() {
         aria-pressed={units === "metric"}
         className={`px-2.5 py-1 rounded-full transition-colors font-medium ${
           units === "metric"
-            ? "bg-white text-dark"
-            : "text-dark-ink-muted hover:text-white"
+            ? "bg-surface text-ink shadow-soft"
+            : "text-ink-faint hover:text-ink"
         }`}
       >
         m · L

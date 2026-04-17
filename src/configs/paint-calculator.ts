@@ -5,8 +5,12 @@ export const paintCalculatorConfig: CalculatorConfig = {
   slug: "paint-calculator",
   title: "Paint Calculator",
   description:
-    "Calculate how many gallons of paint you need for any room. Uses standard paint coverage of 350 sq ft per gallon, with optional subtraction for doors and windows.",
-  category: "Paint",
+    "Every formula public. Every source cited. Know exactly what you need before you go to the store.",
+  categoryLabel: "Paint",
+  category: "paint",
+
+  bannerHeadline: "Paint smarter.",
+  bannerTags: ["Accounts for doors", "Accounts for windows", "ft·gal or m·L"],
 
   inputs: [
     {
@@ -49,7 +53,7 @@ export const paintCalculatorConfig: CalculatorConfig = {
       defaultImperial: 2,
       options: [
         { label: "1 coat", value: 1 },
-        { label: "2 coats (standard)", value: 2 },
+        { label: "2 coats", value: 2 },
         { label: "3 coats", value: 3 },
       ],
     },
@@ -60,7 +64,7 @@ export const paintCalculatorConfig: CalculatorConfig = {
       defaultImperial: 1,
       min: 0,
       step: 1,
-      help: "Each door ≈ 21 sq ft",
+      help: "Each door ≈ 21 sq ft / 2 sq m",
     },
     {
       id: "windows",
@@ -69,7 +73,7 @@ export const paintCalculatorConfig: CalculatorConfig = {
       defaultImperial: 2,
       min: 0,
       step: 1,
-      help: "Each window ≈ 15 sq ft",
+      help: "Each window ≈ 15 sq ft / 1.4 sq m",
     },
   ],
 
@@ -81,37 +85,35 @@ export const paintCalculatorConfig: CalculatorConfig = {
     const doors = Number(values.doors) || 0;
     const windows = Number(values.windows) || 0;
 
-    // Coverage rate: paint cans standardly list 350-400 sq ft per gallon.
-    // For metric: approximately 10 sq m per liter (based on 1 gal ≈ 3.785 L,
-    // 350 sq ft ≈ 32.5 sq m → ~8.6 sq m/L, rounded to 9 for clarity).
     const coverageImperial = 350; // sq ft per gallon
     const coverageMetric = 9; // sq m per liter
-
-    // Door and window subtraction areas
-    const doorAreaImperial = 21; // sq ft per door (standard 3×7)
-    const doorAreaMetric = 2; // sq m per door
-    const windowAreaImperial = 15; // sq ft per window (standard 3×5)
-    const windowAreaMetric = 1.4; // sq m per window
+    const doorAreaImperial = 21;
+    const doorAreaMetric = 2;
+    const windowAreaImperial = 15;
+    const windowAreaMetric = 1.4;
 
     const doorArea = units === "metric" ? doorAreaMetric : doorAreaImperial;
     const windowArea = units === "metric" ? windowAreaMetric : windowAreaImperial;
     const coverage = units === "metric" ? coverageMetric : coverageImperial;
 
-    // Wall area = perimeter × height
     const perimeter = 2 * (L + W);
     const grossWallArea = perimeter * H;
-
-    // Subtract doors and windows
-    const subtractions = doors * doorArea + windows * windowArea;
+    const doorSubtract = doors * doorArea;
+    const windowSubtract = windows * windowArea;
+    const subtractions = doorSubtract + windowSubtract;
     const netWallArea = Math.max(0, grossWallArea - subtractions);
 
-    // Paint needed = area × coats ÷ coverage
     const paintNeeded = (netWallArea * coats) / coverage;
 
     const unitLabel = units === "metric" ? "liters" : "gallons";
     const areaUnit = units === "metric" ? "sq m" : "sq ft";
     const coverageLabel =
       units === "metric" ? `${coverage} sq m/L` : `${coverage} sq ft/gal`;
+
+    // Composition: walls (net), doors (subtracted), windows (subtracted)
+    // For the bar we show the components of the gross wall area — what's
+    // being painted (net walls) vs what's deducted (doors + windows).
+    const wallsOnly = netWallArea;
 
     return {
       value: round(paintNeeded, 3),
@@ -132,6 +134,15 @@ export const paintCalculatorConfig: CalculatorConfig = {
         `paint = (${formatNumber(round(netWallArea, 1))} × ${coats}) ÷ ${coverage} = ${formatNumber(round(paintNeeded, 3))} ${unitLabel}`,
         `rounded up to ${formatNumber(roundUp(paintNeeded, 1))} ${unitLabel}`,
       ],
+      composition: {
+        unit: areaUnit,
+        total: round(grossWallArea, 1),
+        segments: [
+          { label: "Walls", amount: round(wallsOnly, 1), shade: "primary" },
+          { label: "Doors", amount: round(doorSubtract, 1), shade: "secondary" },
+          { label: "Windows", amount: round(windowSubtract, 1), shade: "tertiary" },
+        ],
+      },
     };
   },
 
@@ -159,26 +170,10 @@ export const paintCalculatorConfig: CalculatorConfig = {
   ],
 
   related: [
-    {
-      name: "Exterior paint calculator",
-      slug: "exterior-paint-calculator",
-      description: "For siding, trim, and outdoor walls",
-    },
-    {
-      name: "Ceiling paint calculator",
-      slug: "ceiling-paint-calculator",
-      description: "Length × width, accounting for ceiling coverage rates",
-    },
-    {
-      name: "Paint cost calculator",
-      slug: "paint-cost-calculator",
-      description: "Includes paint, primer, and supplies",
-    },
-    {
-      name: "Primer calculator",
-      slug: "primer-calculator",
-      description: "How much primer to buy for a room",
-    },
+    { name: "Exterior paint calculator", slug: "exterior-paint-calculator", description: "For siding, trim, and outdoor walls" },
+    { name: "Ceiling paint calculator", slug: "ceiling-paint-calculator", description: "Length × width, accounting for ceiling coverage rates" },
+    { name: "Paint cost calculator", slug: "paint-cost-calculator", description: "Includes paint, primer, and supplies" },
+    { name: "Primer calculator", slug: "primer-calculator", description: "How much primer to buy for a room" },
   ],
 
   faq: [

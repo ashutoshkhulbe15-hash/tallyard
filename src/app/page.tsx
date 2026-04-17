@@ -1,35 +1,32 @@
 import Link from "next/link";
+import { BannerHeadline } from "@/components/BannerHeadline";
 
 export default function HomePage() {
   const previewCalculators = [
-    { slug: "paint-calculator", name: "Paint", desc: "Gallons needed by room size", live: true },
-    { slug: "calculators", name: "Concrete", desc: "Cubic yards for any slab", live: false },
-    { slug: "calculators", name: "Tile", desc: "Square footage and box count", live: false },
-    { slug: "calculators", name: "Mulch", desc: "Cubic yards by bed dimensions", live: false },
-    { slug: "calculators", name: "Drywall", desc: "Sheets for any wall area", live: false },
-    { slug: "calculators", name: "Roofing", desc: "Shingles and squares needed", live: false },
-    { slug: "calculators", name: "BTU", desc: "Air conditioner sizing", live: false },
-    { slug: "calculators", name: "Solar", desc: "System size for your usage", live: false },
+    { slug: "paint-calculator", name: "Paint", desc: "Gallons needed by room size", live: true, category: "Paint" },
+    { slug: "calculators", name: "Concrete", desc: "Cubic yards for any slab", live: false, category: "Masonry" },
+    { slug: "calculators", name: "Tile", desc: "Square footage and box count", live: false, category: "Flooring" },
+    { slug: "calculators", name: "Mulch", desc: "Cubic yards by bed dimensions", live: false, category: "Landscaping" },
+    { slug: "calculators", name: "Drywall", desc: "Sheets for any wall area", live: false, category: "Drywall" },
+    { slug: "calculators", name: "Roofing", desc: "Shingles and squares needed", live: false, category: "Roofing" },
+    { slug: "calculators", name: "BTU", desc: "Air conditioner sizing", live: false, category: "HVAC" },
+    { slug: "calculators", name: "Solar", desc: "System size for your usage", live: false, category: "Solar" },
   ];
 
   return (
     <>
-      {/* Dark hero section */}
-      <section className="bg-dark dark-section text-white hero-glow">
-        <div className="container-content py-20 md:py-28">
-          <p className="text-xs uppercase tracking-wide text-dark-ink-muted mb-5 font-medium">
+      {/* Homepage banner */}
+      <section className="container-wide pt-6 md:pt-8">
+        <div className="bg-bg-warm rounded-xl p-8 md:p-14 overflow-hidden">
+          <p className="text-[11px] uppercase tracking-[0.08em] text-ink-faint mb-3 font-semibold">
             Home improvement · DIY
           </p>
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tighter leading-none mb-6 max-w-4xl">
-            Calculators that{" "}
-            <span className="font-serif italic font-medium text-accent">
-              actually
-            </span>{" "}
-            show their work.
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tighter leading-[1.02] mb-5 max-w-3xl">
+            <BannerHeadline text="Calculators that show their work." />
           </h1>
-          <p className="text-lg md:text-xl text-dark-ink-muted max-w-2xl leading-relaxed mb-8">
-            Transparent tools for home improvement and DIY. Every formula is
-            public, every number explained, nothing hidden behind a signup.
+          <p className="text-base md:text-lg text-ink-muted max-w-xl leading-relaxed mb-7">
+            Transparent tools for home improvement and DIY. Every formula
+            public, every source cited, no signup.
           </p>
           <div className="flex flex-wrap gap-3">
             <Link
@@ -40,7 +37,7 @@ export default function HomePage() {
             </Link>
             <Link
               href="/methodology"
-              className="inline-flex items-center px-5 py-3 text-sm font-semibold text-white border border-white/15 hover:border-white/40 rounded-md transition-colors"
+              className="inline-flex items-center px-5 py-3 text-sm font-semibold text-ink border border-line-strong hover:border-accent hover:text-accent bg-surface rounded-md transition-colors"
             >
               How they work
             </Link>
@@ -48,11 +45,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Calculator grid on light surface */}
-      <section className="container-wide py-20">
+      {/* Calculator grid */}
+      <section className="container-wide py-16 md:py-20">
         <div className="flex items-end justify-between mb-8">
           <div>
-            <p className="text-xs uppercase tracking-wide text-ink-faint mb-2 font-medium">
+            <p className="text-[11px] uppercase tracking-[0.08em] text-ink-faint mb-2 font-semibold">
               The collection
             </p>
             <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
@@ -61,7 +58,7 @@ export default function HomePage() {
           </div>
           <Link
             href="/calculators"
-            className="text-sm text-ink-muted hover:text-ink transition-colors font-medium hidden sm:inline"
+            className="text-sm text-ink-muted hover:text-accent transition-colors font-medium hidden sm:inline"
           >
             View all →
           </Link>
@@ -71,8 +68,11 @@ export default function HomePage() {
             <Link
               key={`${c.slug}-${c.name}`}
               href={`/${c.slug}`}
-              className="block p-5 bg-surface border border-line rounded-lg hover:border-line-strong hover:-translate-y-0.5 transition-all group"
+              className="block p-5 bg-surface border border-line rounded-lg hover:border-accent hover:-translate-y-0.5 transition-all"
             >
+              <div className="text-[10px] uppercase tracking-[0.08em] text-ink-faint font-semibold mb-2">
+                {c.category}
+              </div>
               <div className="flex items-start justify-between mb-1.5">
                 <h3 className="text-base font-semibold">{c.name}</h3>
                 {c.live && (
@@ -88,13 +88,13 @@ export default function HomePage() {
       </section>
 
       {/* Principles section */}
-      <section className="bg-surface-alt border-t border-line">
-        <div className="container-content py-20">
-          <p className="text-xs uppercase tracking-wide text-ink-faint mb-2 font-medium">
+      <section className="bg-bg-warm border-t border-line">
+        <div className="container-content py-16 md:py-20">
+          <p className="text-[11px] uppercase tracking-[0.08em] text-ink-faint mb-2 font-semibold">
             Principles
           </p>
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-10">
-            What makes Tallyard different
+            What makes Tallyard <span className="accent-italic">different</span>
           </h2>
           <div className="space-y-8">
             <div>

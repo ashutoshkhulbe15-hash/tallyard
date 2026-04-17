@@ -1,13 +1,10 @@
 /**
  * Core type definitions for the calculator engine.
- *
- * Every calculator in Tallyard is defined by a CalculatorConfig object.
- * The engine reads the config and renders the full page: inputs, formula,
- * result, methodology, FAQ, related calculators.
+ * Each calculator is a CalculatorConfig object. The engine reads it
+ * and renders the full page: banner, inputs, result, methodology, FAQ.
  */
 
 export type UnitSystem = "imperial" | "metric";
-
 export type InputType = "number" | "select";
 
 export interface InputOption {
@@ -16,30 +13,26 @@ export interface InputOption {
 }
 
 export interface CalculatorInput {
-  /** Unique identifier used in the formula (e.g. "length", "coats") */
   id: string;
-  /** Label shown to the user */
   label: string;
-  /** Input type — most are numbers, some are selects */
   type: InputType;
-  /** Imperial unit label (e.g. "ft", "gal", "lb") */
   unitImperial?: string;
-  /** Metric unit label (e.g. "m", "L", "kg") */
   unitMetric?: string;
-  /** Default value in imperial units — Option B requires sensible defaults */
   defaultImperial: number | string;
-  /** Default value in metric units */
   defaultMetric?: number | string;
-  /** Minimum allowed value */
   min?: number;
-  /** Maximum allowed value */
   max?: number;
-  /** Step for number inputs */
   step?: number;
-  /** Options for select inputs */
   options?: InputOption[];
-  /** Short help text shown under the input */
   help?: string;
+}
+
+export interface CompositionSegment {
+  label: string;
+  /** The amount for this segment (in the result's unit of area/volume) */
+  amount: number;
+  /** Display color: 'primary' | 'secondary' | 'tertiary' — maps to terracotta shades */
+  shade?: "primary" | "secondary" | "tertiary";
 }
 
 export interface CalculatorResult {
@@ -47,12 +40,21 @@ export interface CalculatorResult {
   value: number;
   /** Unit label for the primary number (e.g. "gallons") */
   unit: string;
-  /** Rounded-up version for practical purchasing */
+  /** Rounded-up for practical purchasing */
   valueRounded: number;
-  /** Supporting breakdown (wall area, coverage, etc.) */
+  /** Supporting stat rows (wall area, coverage, etc.) */
   breakdown: Array<{ label: string; value: string }>;
-  /** The human-readable formula trace — shows the math step by step */
+  /** Human-readable formula trace, step by step */
   formulaSteps: string[];
+  /** Optional compositional breakdown for the bar chart */
+  composition?: {
+    /** The unit label for composition values (e.g. "sq ft") */
+    unit: string;
+    /** Total of all segments for labeling */
+    total: number;
+    /** The actual segments */
+    segments: CompositionSegment[];
+  };
 }
 
 export interface CalculatorFAQ {
@@ -72,33 +74,39 @@ export interface CalculatorSource {
   note?: string;
 }
 
+/** Category identifies which illustration motif to use (one per vertical) */
+export type CalculatorCategory =
+  | "paint"
+  | "concrete"
+  | "flooring"
+  | "landscaping"
+  | "roofing"
+  | "hvac"
+  | "drywall"
+  | "solar";
+
 export interface CalculatorConfig {
-  /** URL slug — becomes the path (e.g. "paint-calculator") */
   slug: string;
-  /** H1 title — e.g. "Paint Calculator" */
   title: string;
-  /** Short description for SEO and subheading */
   description: string;
-  /** The category breadcrumb (e.g. "Paint") */
-  category: string;
-  /** All inputs for this calculator */
+  categoryLabel: string;
+  category: CalculatorCategory;
+
+  /** V3 banner headline — e.g. "Paint smarter." The last word is styled italic. */
+  bannerHeadline: string;
+  /** V3 banner tags — 3 short feature chips */
+  bannerTags: string[];
+
   inputs: CalculatorInput[];
-  /**
-   * The calculation function. Takes input values keyed by input.id
-   * plus the current unit system. Returns a structured result.
-   */
+
   calculate: (
     values: Record<string, number | string>,
     units: UnitSystem
   ) => CalculatorResult;
-  /** Human-readable formula description (e.g. "gallons = area × coats ÷ 350") */
+
   formulaDescription: string;
-  /** Methodology notes — explains the assumptions */
   methodology: string[];
-  /** Sources for coverage rates / factors */
   sources: CalculatorSource[];
-  /** Related calculators to cross-link */
   related: RelatedCalculator[];
-  /** FAQ entries — also used for FAQPage schema */
   faq: CalculatorFAQ[];
 }

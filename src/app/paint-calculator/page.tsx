@@ -26,7 +26,7 @@ export default function PaintCalculatorPage() {
   return (
     <>
       {config && <SchemaScript config={config} />}
-      <CalculatorPage slug={SLUG} />
+      <CalculatorPage slug={SLUG} illustrationValue="2.8 GAL" />
     </>
   );
 }

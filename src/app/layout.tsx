@@ -7,47 +7,18 @@ import { UnitProvider } from "@/lib/units";
 export const metadata: Metadata = {
   metadataBase: new URL("https://tallyard.com"),
   title: {
-    default: "Tallyard — Calculators for home improvement and DIY",
+    default: "Tallyard — Calculators that show their work",
     template: "%s | Tallyard",
   },
   description:
-    "Transparent, well-designed calculators for home improvement and DIY projects. Every formula is public and cited.",
-  applicationName: "Tallyard",
-  keywords: [
-    "diy calculator",
-    "home improvement calculator",
-    "construction calculator",
-    "renovation calculator",
-  ],
-  authors: [{ name: "Tallyard" }],
-  creator: "Tallyard",
+    "Transparent calculators for home improvement and DIY. Every formula public, every source cited, no signup required.",
   openGraph: {
-    type: "website",
-    locale: "en_US",
+    title: "Tallyard — Calculators that show their work",
+    description:
+      "Transparent calculators for home improvement and DIY. Every formula public, every source cited.",
     url: "https://tallyard.com",
     siteName: "Tallyard",
-    title: "Tallyard — Calculators for home improvement and DIY",
-    description:
-      "Transparent, well-designed calculators for home improvement and DIY projects.",
-  },
-  twitter: {
-    card: "summary",
-    title: "Tallyard",
-    description:
-      "Transparent, well-designed calculators for home improvement and DIY projects.",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  alternates: {
-    canonical: "/",
+    type: "website",
   },
 };
 
