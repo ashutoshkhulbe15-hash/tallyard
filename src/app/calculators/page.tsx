@@ -7,61 +7,24 @@ export const metadata: Metadata = {
 };
 
 const liveCalculators = [
-  {
-    slug: "paint-calculator",
-    name: "Paint calculator",
-    desc: "Gallons of paint for any room, with door and window subtraction",
-    category: "Paint",
-  },
-  {
-    slug: "concrete-calculator",
-    name: "Concrete calculator",
-    desc: "Cubic yards for slabs, footings, and round pours — waste included",
-    category: "Masonry",
-  },
-  {
-    slug: "tile-calculator",
-    name: "Tile calculator",
-    desc: "Tiles and boxes needed for any floor, with waste and cuts",
-    category: "Flooring",
-  },
-  {
-    slug: "mulch-calculator",
-    name: "Mulch calculator",
-    desc: "Cubic yards or bag count for any garden bed and depth",
-    category: "Landscaping",
-  },
-  {
-    slug: "drywall-calculator",
-    name: "Drywall calculator",
-    desc: "Sheets of drywall for walls and ceilings, with waste factor",
-    category: "Drywall",
-  },
-  {
-    slug: "roofing-calculator",
-    name: "Roofing calculator",
-    desc: "Shingle bundles and squares for any pitch and footprint",
-    category: "Roofing",
-  },
-  {
-    slug: "btu-calculator",
-    name: "BTU calculator",
-    desc: "Air conditioner size adjusted for climate, sun, and occupancy",
-    category: "HVAC",
-  },
-  {
-    slug: "gravel-calculator",
-    name: "Gravel calculator",
-    desc: "Cubic yards and tons for driveways, paths, and base layers",
-    category: "Landscaping",
-  },
+  { slug: "paint-calculator", name: "Paint calculator", desc: "Gallons of paint for any room, with door and window subtraction", category: "Paint" },
+  { slug: "concrete-calculator", name: "Concrete calculator", desc: "Cubic yards for slabs, footings, and round pours — waste included", category: "Masonry" },
+  { slug: "tile-calculator", name: "Tile calculator", desc: "Tiles and boxes needed for any floor, with waste and cuts", category: "Flooring" },
+  { slug: "mulch-calculator", name: "Mulch calculator", desc: "Cubic yards or bag count for any garden bed and depth", category: "Landscaping" },
+  { slug: "drywall-calculator", name: "Drywall calculator", desc: "Sheets of drywall for walls and ceilings, with waste factor", category: "Drywall" },
+  { slug: "roofing-calculator", name: "Roofing calculator", desc: "Shingle bundles and squares for any pitch and footprint", category: "Roofing" },
+  { slug: "btu-calculator", name: "BTU calculator", desc: "Air conditioner size adjusted for climate, sun, and occupancy", category: "HVAC" },
+  { slug: "gravel-calculator", name: "Gravel calculator", desc: "Cubic yards and tons for driveways, paths, and base layers", category: "Landscaping" },
+  { slug: "solar-calculator", name: "Solar panel calculator", desc: "System size and panel count based on your electricity use", category: "Solar" },
+  { slug: "wire-size-calculator", name: "Wire size calculator", desc: "AWG gauge for any circuit, with voltage drop and distance", category: "Electrical" },
+  { slug: "insulation-calculator", name: "Insulation calculator", desc: "R-value and bags for walls, attic, or floors — climate-matched", category: "Insulation" },
+  { slug: "fence-calculator", name: "Fence calculator", desc: "Posts, rails, pickets, and concrete for any fence length", category: "Landscaping" },
 ];
 
 const comingSoon = [
-  "Solar panels", "Topsoil", "Flooring", "Grout",
-  "Paver", "Deck", "Fence", "Lumber",
-  "Wire size", "Stair", "Brick", "Wallpaper",
-  "Sod", "Rebar", "Insulation", "Asphalt",
+  "Topsoil", "Flooring", "Grout", "Paver",
+  "Deck", "Lumber", "Stair", "Brick",
+  "Wallpaper", "Sod", "Rebar", "Asphalt",
 ];
 
 export default function CalculatorsIndexPage() {

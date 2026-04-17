@@ -2,15 +2,17 @@ import Link from "next/link";
 import { BannerHeadline } from "@/components/BannerHeadline";
 
 export default function HomePage() {
+  // Show the 8 most popular/highest-volume calculators on the homepage.
+  // Full list lives on /calculators.
   const previewCalculators = [
-    { slug: "paint-calculator", name: "Paint", desc: "Gallons needed by room size", live: true, category: "Paint" },
-    { slug: "concrete-calculator", name: "Concrete", desc: "Cubic yards for any slab", live: true, category: "Masonry" },
-    { slug: "tile-calculator", name: "Tile", desc: "Square footage and box count", live: true, category: "Flooring" },
-    { slug: "mulch-calculator", name: "Mulch", desc: "Cubic yards by bed dimensions", live: true, category: "Landscaping" },
-    { slug: "drywall-calculator", name: "Drywall", desc: "Sheets for walls and ceilings", live: true, category: "Drywall" },
-    { slug: "roofing-calculator", name: "Roofing", desc: "Shingles for any pitch", live: true, category: "Roofing" },
-    { slug: "btu-calculator", name: "BTU", desc: "Air conditioner sizing", live: true, category: "HVAC" },
-    { slug: "gravel-calculator", name: "Gravel", desc: "Yards and tons for driveways", live: true, category: "Landscaping" },
+    { slug: "paint-calculator", name: "Paint", desc: "Gallons needed by room size", category: "Paint" },
+    { slug: "concrete-calculator", name: "Concrete", desc: "Cubic yards for any slab", category: "Masonry" },
+    { slug: "tile-calculator", name: "Tile", desc: "Square footage and box count", category: "Flooring" },
+    { slug: "solar-calculator", name: "Solar", desc: "Panels for your electricity use", category: "Solar" },
+    { slug: "drywall-calculator", name: "Drywall", desc: "Sheets for walls and ceilings", category: "Drywall" },
+    { slug: "roofing-calculator", name: "Roofing", desc: "Shingles for any pitch", category: "Roofing" },
+    { slug: "btu-calculator", name: "BTU", desc: "Air conditioner sizing", category: "HVAC" },
+    { slug: "insulation-calculator", name: "Insulation", desc: "R-value by climate zone", category: "Insulation" },
   ];
 
   return (
@@ -32,7 +34,7 @@ export default function HomePage() {
               href="/calculators"
               className="inline-flex items-center px-5 py-3 text-sm font-semibold bg-accent hover:bg-accent-hover text-white rounded-md transition-colors"
             >
-              Browse calculators
+              Browse 12 calculators
             </Link>
             <Link
               href="/methodology"
@@ -58,7 +60,7 @@ export default function HomePage() {
             href="/calculators"
             className="text-sm text-ink-muted hover:text-accent transition-colors font-medium hidden sm:inline"
           >
-            View all →
+            View all 12 →
           </Link>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -73,11 +75,9 @@ export default function HomePage() {
               </div>
               <div className="flex items-start justify-between mb-1.5">
                 <h3 className="text-base font-semibold">{c.name}</h3>
-                {c.live && (
-                  <span className="text-[10px] uppercase tracking-wide text-accent font-semibold px-1.5 py-0.5 bg-accent-soft rounded">
-                    Live
-                  </span>
-                )}
+                <span className="text-[10px] uppercase tracking-wide text-accent font-semibold px-1.5 py-0.5 bg-accent-soft rounded">
+                  Live
+                </span>
               </div>
               <p className="text-xs text-ink-muted leading-relaxed">{c.desc}</p>
             </Link>

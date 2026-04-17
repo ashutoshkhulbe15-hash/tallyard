@@ -16,7 +16,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/terms`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
   ];
 
-  // Calculator pages — add new slugs here as calculators ship.
   const calculatorSlugs = [
     "paint-calculator",
     "concrete-calculator",
@@ -26,6 +25,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "roofing-calculator",
     "btu-calculator",
     "gravel-calculator",
+    "solar-calculator",
+    "wire-size-calculator",
+    "insulation-calculator",
+    "fence-calculator",
   ];
   const calculatorPages: MetadataRoute.Sitemap = calculatorSlugs.map((slug) => ({
     url: `${SITE_URL}/${slug}`,
