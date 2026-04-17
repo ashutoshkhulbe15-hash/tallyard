@@ -23,12 +23,15 @@ const liveCalculators = [
   { slug: "paver-calculator", name: "Paver calculator", desc: "Pavers, base gravel, bedding sand for any patio or path", category: "Landscaping" },
   { slug: "deck-calculator", name: "Deck calculator", desc: "Boards, joists, beams, and fasteners for any deck", category: "Landscaping" },
   { slug: "flooring-calculator", name: "Flooring calculator", desc: "Boxes of hardwood, laminate, or vinyl plank for any room", category: "Flooring" },
+  { slug: "topsoil-calculator", name: "Topsoil calculator", desc: "Cubic yards or bags for garden beds, lawns, or fill projects", category: "Landscaping" },
+  { slug: "sod-calculator", name: "Sod calculator", desc: "Slabs, rolls, and pallets for any lawn installation", category: "Landscaping" },
+  { slug: "asphalt-calculator", name: "Asphalt calculator", desc: "Tons of asphalt for driveways, lots, and paving projects", category: "Masonry" },
+  { slug: "lumber-calculator", name: "Lumber calculator", desc: "Board feet and lineal feet for any framing order", category: "Lumber" },
 ];
 
 const comingSoon = [
-  "Topsoil", "Lumber", "Stair",
-  "Brick", "Wallpaper", "Sod",
-  "Rebar", "Asphalt",
+  "Stair", "Brick", "Wallpaper",
+  "Sod seed", "Rebar",
 ];
 
 export default function CalculatorsIndexPage() {

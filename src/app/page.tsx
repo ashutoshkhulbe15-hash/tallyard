@@ -2,7 +2,6 @@ import Link from "next/link";
 import { BannerHeadline } from "@/components/BannerHeadline";
 
 export default function HomePage() {
-  // Top 8 calculators shown on homepage — representative of each vertical
   const previewCalculators = [
     { slug: "paint-calculator", name: "Paint", desc: "Gallons needed by room size", category: "Paint" },
     { slug: "concrete-calculator", name: "Concrete", desc: "Cubic yards for any slab", category: "Masonry" },
@@ -10,8 +9,8 @@ export default function HomePage() {
     { slug: "solar-calculator", name: "Solar", desc: "Panels for your electricity use", category: "Solar" },
     { slug: "deck-calculator", name: "Deck", desc: "Boards, joists, fasteners", category: "Landscaping" },
     { slug: "roofing-calculator", name: "Roofing", desc: "Shingles for any pitch", category: "Roofing" },
-    { slug: "insulation-calculator", name: "Insulation", desc: "R-value by climate zone", category: "Insulation" },
-    { slug: "paver-calculator", name: "Paver", desc: "Patio pavers, base, sand", category: "Landscaping" },
+    { slug: "lumber-calculator", name: "Lumber", desc: "Board feet for any order", category: "Lumber" },
+    { slug: "asphalt-calculator", name: "Asphalt", desc: "Tons for any driveway", category: "Masonry" },
   ];
 
   return (
@@ -33,7 +32,7 @@ export default function HomePage() {
               href="/calculators"
               className="inline-flex items-center px-5 py-3 text-sm font-semibold bg-accent hover:bg-accent-hover text-white rounded-md transition-colors"
             >
-              Browse 16 calculators
+              Browse 20 calculators
             </Link>
             <Link
               href="/methodology"
@@ -59,7 +58,7 @@ export default function HomePage() {
             href="/calculators"
             className="text-sm text-ink-muted hover:text-accent transition-colors font-medium hidden sm:inline"
           >
-            View all 16 →
+            View all 20 →
           </Link>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">

@@ -15,6 +15,10 @@ import { groutCalculatorConfig } from "./grout-calculator";
 import { paverCalculatorConfig } from "./paver-calculator";
 import { deckCalculatorConfig } from "./deck-calculator";
 import { flooringCalculatorConfig } from "./flooring-calculator";
+import { topsoilCalculatorConfig } from "./topsoil-calculator";
+import { sodCalculatorConfig } from "./sod-calculator";
+import { asphaltCalculatorConfig } from "./asphalt-calculator";
+import { lumberCalculatorConfig } from "./lumber-calculator";
 
 export const configs: Record<string, CalculatorConfig> = {
   "paint-calculator": paintCalculatorConfig,
@@ -33,6 +37,10 @@ export const configs: Record<string, CalculatorConfig> = {
   "paver-calculator": paverCalculatorConfig,
   "deck-calculator": deckCalculatorConfig,
   "flooring-calculator": flooringCalculatorConfig,
+  "topsoil-calculator": topsoilCalculatorConfig,
+  "sod-calculator": sodCalculatorConfig,
+  "asphalt-calculator": asphaltCalculatorConfig,
+  "lumber-calculator": lumberCalculatorConfig,
 };
 
 export function getConfig(slug: string): CalculatorConfig | null {
