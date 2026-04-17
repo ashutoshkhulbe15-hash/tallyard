@@ -65,6 +65,82 @@
     font-weight: 500;
     color: #D4691C;
   }
+
+  /* Long-form article typography. Applies to direct descendants so
+     components explicitly placed inside the article (tables, callouts,
+     CTAs) keep their own styles. */
+  .guide-prose {
+    font-size: 16px;
+    line-height: 1.75;
+    color: #1A1814;
+  }
+  .guide-prose > h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+  }
+  .guide-prose > h2:first-child {
+    margin-top: 0;
+  }
+  .guide-prose > h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  .guide-prose > p {
+    margin-bottom: 1.25rem;
+    color: #3D3D3A;
+  }
+  .guide-prose > p strong {
+    font-weight: 600;
+    color: #1A1814;
+  }
+  .guide-prose > ul,
+  .guide-prose > ol {
+    margin: 1rem 0 1.5rem 0;
+    padding-left: 1.5rem;
+    color: #3D3D3A;
+  }
+  .guide-prose > ul {
+    list-style-type: disc;
+  }
+  .guide-prose > ol {
+    list-style-type: decimal;
+  }
+  .guide-prose > ul > li,
+  .guide-prose > ol > li {
+    margin-bottom: 0.5rem;
+    padding-left: 0.25rem;
+  }
+  .guide-prose > ul > li::marker,
+  .guide-prose > ol > li::marker {
+    color: #D4691C;
+  }
+  .guide-prose a {
+    color: #D4691C;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+  .guide-prose a:hover {
+    color: #B55713;
+  }
+  .guide-prose > blockquote {
+    border-left: 4px solid #D4691C;
+    padding-left: 1.25rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: #3D3D3A;
+    font-family: "Cambria", "Georgia", serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
 }
 
 @media print {
