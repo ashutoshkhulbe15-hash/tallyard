@@ -1,6 +1,9 @@
 import { ImageResponse } from "next/og";
 
-export const size = { width: 32, height: 32 };
+// Google requires minimum 48x48 favicon (multiples of 48 preferred).
+// This generates the primary favicon at 48x48 which also serves as
+// the browser tab icon. Next.js auto-routes this as /icon.
+export const size = { width: 48, height: 48 };
 export const contentType = "image/png";
 
 export default function Icon() {
@@ -8,20 +11,37 @@ export default function Icon() {
     (
       <div
         style={{
-          fontSize: 24,
-          background: "#FAFAF7",
           width: "100%",
           height: "100%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          color: "#0F0F0F",
-          fontWeight: 600,
-          letterSpacing: "-0.04em",
-          fontFamily: "sans-serif",
+          background: "#FAF6EF",
+          borderRadius: "8px",
         }}
       >
-        t
+        <div
+          style={{
+            width: "12px",
+            height: "12px",
+            borderRadius: "50%",
+            background: "#D4691C",
+            marginRight: "2px",
+            flexShrink: 0,
+          }}
+        />
+        <div
+          style={{
+            fontSize: "32px",
+            fontWeight: 700,
+            fontFamily: "system-ui, sans-serif",
+            color: "#1A1814",
+            letterSpacing: "-0.04em",
+            lineHeight: 1,
+          }}
+        >
+          t
+        </div>
       </div>
     ),
     { ...size }
