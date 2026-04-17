@@ -27,11 +27,20 @@ const liveCalculators = [
   { slug: "sod-calculator", name: "Sod calculator", desc: "Slabs, rolls, and pallets for any lawn installation", category: "Landscaping" },
   { slug: "asphalt-calculator", name: "Asphalt calculator", desc: "Tons of asphalt for driveways, lots, and paving projects", category: "Masonry" },
   { slug: "lumber-calculator", name: "Lumber calculator", desc: "Board feet and lineal feet for any framing order", category: "Lumber" },
+  { slug: "stair-calculator", name: "Stair calculator", desc: "Rise, run, and stringer length for IRC-compliant stairs", category: "Lumber" },
+  { slug: "rebar-calculator", name: "Rebar calculator", desc: "Lineal feet and 20-ft sticks for any concrete slab grid", category: "Masonry" },
+  { slug: "brick-calculator", name: "Brick calculator", desc: "Bricks and mortar bags by size, joint width, and wall type", category: "Masonry" },
+  { slug: "wallpaper-calculator", name: "Wallpaper calculator", desc: "Rolls with pattern repeat, door, and window subtractions", category: "Paint" },
+  { slug: "shower-tile-calculator", name: "Shower tile calculator", desc: "Tiles for three walls, floor, and optional niche", category: "Flooring" },
+  { slug: "backsplash-calculator", name: "Backsplash calculator", desc: "Kitchen tile count with outlets and window subtractions", category: "Flooring" },
+  { slug: "vanity-calculator", name: "Vanity calculator", desc: "Right size vanity with clearances and single/double sink", category: "Flooring" },
+  { slug: "countertop-calculator", name: "Countertop calculator", desc: "Square feet and linear feet with island and cost estimate", category: "Flooring" },
 ];
 
 const comingSoon = [
-  "Stair", "Brick", "Wallpaper",
-  "Sod seed", "Rebar",
+  "Siding", "Gutter", "Shed", "Heat pump",
+  "Water heater", "Extension cord", "Pool chlorine",
+  "Attic ventilation",
 ];
 
 export default function CalculatorsIndexPage() {

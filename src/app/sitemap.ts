@@ -37,6 +37,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "sod-calculator",
     "asphalt-calculator",
     "lumber-calculator",
+    "stair-calculator",
+    "rebar-calculator",
+    "brick-calculator",
+    "wallpaper-calculator",
+    "shower-tile-calculator",
+    "backsplash-calculator",
+    "vanity-calculator",
+    "countertop-calculator",
   ];
   const calculatorPages: MetadataRoute.Sitemap = calculatorSlugs.map((slug) => ({
     url: `${SITE_URL}/${slug}`,

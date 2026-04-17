@@ -19,6 +19,14 @@ import { topsoilCalculatorConfig } from "./topsoil-calculator";
 import { sodCalculatorConfig } from "./sod-calculator";
 import { asphaltCalculatorConfig } from "./asphalt-calculator";
 import { lumberCalculatorConfig } from "./lumber-calculator";
+import { stairCalculatorConfig } from "./stair-calculator";
+import { rebarCalculatorConfig } from "./rebar-calculator";
+import { brickCalculatorConfig } from "./brick-calculator";
+import { wallpaperCalculatorConfig } from "./wallpaper-calculator";
+import { showerTileCalculatorConfig } from "./shower-tile-calculator";
+import { backsplashCalculatorConfig } from "./backsplash-calculator";
+import { vanityCalculatorConfig } from "./vanity-calculator";
+import { countertopCalculatorConfig } from "./countertop-calculator";
 
 export const configs: Record<string, CalculatorConfig> = {
   "paint-calculator": paintCalculatorConfig,
@@ -41,6 +49,14 @@ export const configs: Record<string, CalculatorConfig> = {
   "sod-calculator": sodCalculatorConfig,
   "asphalt-calculator": asphaltCalculatorConfig,
   "lumber-calculator": lumberCalculatorConfig,
+  "stair-calculator": stairCalculatorConfig,
+  "rebar-calculator": rebarCalculatorConfig,
+  "brick-calculator": brickCalculatorConfig,
+  "wallpaper-calculator": wallpaperCalculatorConfig,
+  "shower-tile-calculator": showerTileCalculatorConfig,
+  "backsplash-calculator": backsplashCalculatorConfig,
+  "vanity-calculator": vanityCalculatorConfig,
+  "countertop-calculator": countertopCalculatorConfig,
 };
 
 export function getConfig(slug: string): CalculatorConfig | null {
