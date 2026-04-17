@@ -31,6 +31,10 @@ import { sidingCalculatorConfig } from "./siding-calculator";
 import { gutterCalculatorConfig } from "./gutter-calculator";
 import { heatPumpCalculatorConfig } from "./heat-pump-calculator";
 import { waterHeaterCalculatorConfig } from "./water-heater-calculator";
+import { extensionCordCalculatorConfig } from "./extension-cord-calculator";
+import { atticVentilationCalculatorConfig } from "./attic-ventilation-calculator";
+import { poolChlorineCalculatorConfig } from "./pool-chlorine-calculator";
+import { shedCalculatorConfig } from "./shed-calculator";
 
 export const configs: Record<string, CalculatorConfig> = {
   "paint-calculator": paintCalculatorConfig,
@@ -65,6 +69,10 @@ export const configs: Record<string, CalculatorConfig> = {
   "gutter-calculator": gutterCalculatorConfig,
   "heat-pump-calculator": heatPumpCalculatorConfig,
   "water-heater-calculator": waterHeaterCalculatorConfig,
+  "extension-cord-calculator": extensionCordCalculatorConfig,
+  "attic-ventilation-calculator": atticVentilationCalculatorConfig,
+  "pool-chlorine-calculator": poolChlorineCalculatorConfig,
+  "shed-calculator": shedCalculatorConfig,
 };
 
 export function getConfig(slug: string): CalculatorConfig | null {

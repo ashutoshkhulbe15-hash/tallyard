@@ -39,13 +39,33 @@ const liveCalculators = [
   { slug: "gutter-calculator", name: "Gutter calculator", desc: "Linear feet, downspouts, and hangers sized for your rainfall", category: "Roofing" },
   { slug: "heat-pump-calculator", name: "Heat pump calculator", desc: "Size in tons for heating and cooling — climate and insulation aware", category: "HVAC" },
   { slug: "water-heater-calculator", name: "Water heater calculator", desc: "Tank gallons or tankless GPM for any household", category: "HVAC" },
+  { slug: "extension-cord-calculator", name: "Extension cord calculator", desc: "AWG gauge for any tool, appliance, or outdoor device", category: "Electrical" },
+  { slug: "attic-ventilation-calculator", name: "Attic ventilation calculator", desc: "NFVA intake and exhaust with the 1:300 rule", category: "Roofing" },
+  { slug: "pool-chlorine-calculator", name: "Pool chlorine calculator", desc: "Dose for any pool volume — liquid, granular, trichlor, dichlor", category: "Landscaping" },
+  { slug: "shed-calculator", name: "Shed calculator", desc: "Lumber, sheathing, and shingles for any backyard shed", category: "Lumber" },
 ];
 
-const comingSoon = [
-  "Extension cord", "Attic ventilation", "Pool chlorine", "Shed",
+// Group by category for visual organization on the index
+const categoryOrder = [
+  "Paint",
+  "Masonry",
+  "Flooring",
+  "Landscaping",
+  "Drywall",
+  "Roofing",
+  "HVAC",
+  "Solar",
+  "Electrical",
+  "Insulation",
+  "Lumber",
 ];
 
 export default function CalculatorsIndexPage() {
+  const byCategory = categoryOrder.map((cat) => ({
+    category: cat,
+    items: liveCalculators.filter((c) => c.category === cat),
+  }));
+
   return (
     <div className="container-content py-12 md:py-16">
       <p className="text-[11px] uppercase tracking-[0.08em] text-ink-faint mb-3 font-semibold">
@@ -55,46 +75,33 @@ export default function CalculatorsIndexPage() {
         All calculators
       </h1>
       <p className="text-base text-ink-muted mb-10 max-w-prose leading-relaxed">
-        Transparent calculators for home improvement and DIY projects. More are
-        rolling out weekly — the goal is 40 calculators by launch.
+        Every Tallyard calculator, organized by project type.{" "}
+        <span className="accent-italic">
+          {liveCalculators.length} tools, all free, no signup required.
+        </span>
       </p>
 
-      <section className="mb-12">
-        <h2 className="text-[11px] uppercase tracking-[0.08em] text-ink-faint mb-3 font-semibold">
-          Available now · {liveCalculators.length}
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {liveCalculators.map((c) => (
-            <Link
-              key={c.slug}
-              href={`/${c.slug}`}
-              className="block p-5 bg-surface border border-line rounded-lg hover:border-accent hover:-translate-y-0.5 transition-all"
-            >
-              <div className="text-[10px] uppercase tracking-[0.08em] text-ink-faint font-semibold mb-2">
-                {c.category}
-              </div>
-              <h3 className="text-base font-semibold mb-1">{c.name}</h3>
-              <p className="text-xs text-ink-muted">{c.desc}</p>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section>
-        <h2 className="text-[11px] uppercase tracking-[0.08em] text-ink-faint mb-3 font-semibold">
-          Coming soon
-        </h2>
-        <div className="flex flex-wrap gap-2">
-          {comingSoon.map((name) => (
-            <span
-              key={name}
-              className="inline-flex items-center px-3 py-1.5 text-xs text-ink-muted bg-surface border border-line rounded-full"
-            >
-              {name}
-            </span>
-          ))}
-        </div>
-      </section>
+      <div className="space-y-10">
+        {byCategory.map(({ category, items }) => (
+          <section key={category}>
+            <h2 className="text-[11px] uppercase tracking-[0.08em] text-ink-faint mb-3 font-semibold">
+              {category} · {items.length}
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {items.map((c) => (
+                <Link
+                  key={c.slug}
+                  href={`/${c.slug}`}
+                  className="block p-5 bg-surface border border-line rounded-lg hover:border-accent hover:-translate-y-0.5 transition-all"
+                >
+                  <h3 className="text-base font-semibold mb-1">{c.name}</h3>
+                  <p className="text-xs text-ink-muted">{c.desc}</p>
+                </Link>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
     </div>
   );
 }
