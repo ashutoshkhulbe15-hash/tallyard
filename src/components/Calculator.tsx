@@ -1,9 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useUnits } from "@/lib/units";
 import { formatNumber } from "@/lib/format";
-import { getConfig } from "@/configs";
 import type { CalculatorConfig } from "@/lib/types";
 
 interface CalculatorProps {
@@ -14,25 +13,61 @@ interface CalculatorProps {
  * V3 calculator: split two-column layout on desktop, stacked on mobile
  * with result first. Inputs on the left in a cream card. Dark walnut
  * result card on the right with huge number, unit, and composition bar.
+ *
+ * Config is loaded dynamically per slug via webpack code splitting.
+ * Each config becomes its own chunk so each page's client bundle only
+ * pulls in its own calculator's code, not all of them.
  */
 export function Calculator({ slug }: CalculatorProps) {
   const { units } = useUnits();
-  const config = getConfig(slug);
+  const [config, setConfig] = useState<CalculatorConfig | null>(null);
 
-  const [values, setValues] = useState<Record<string, number | string>>(() => {
+  // Dynamic import keyed on slug. Webpack creates a chunk per config file
+  // matching the pattern; only the matching one is fetched at runtime.
+  useEffect(() => {
+    let cancelled = false;
+    import(`../configs/${slug}`)
+      .then((mod) => {
+        if (cancelled) return;
+        // Find the exported config object by its slug property.
+        // Robust to any naming convention (paintCalculatorConfig,
+        // wireSizeCalculatorConfig, etc.).
+        const found = Object.values(mod).find(
+          (v): v is CalculatorConfig =>
+            v !== null &&
+            typeof v === "object" &&
+            "slug" in (v as object) &&
+            (v as CalculatorConfig).slug === slug
+        );
+        if (found) setConfig(found);
+      })
+      .catch(() => {
+        // Fail silently — loading state remains visible
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [slug]);
+
+  const [values, setValues] = useState<Record<string, number | string>>({});
+  const [valuesInit, setValuesInit] = useState(false);
+
+  // Initialize input values from config defaults once the config loads.
+  useEffect(() => {
+    if (!config || valuesInit) return;
     const initial: Record<string, number | string> = {};
-    if (!config) return initial;
     config.inputs.forEach((input) => {
       initial[input.id] =
         units === "metric" && input.defaultMetric !== undefined
           ? input.defaultMetric
           : input.defaultImperial;
     });
-    return initial;
-  });
+    setValues(initial);
+    setValuesInit(true);
+  }, [config, units, valuesInit]);
 
   const [prevUnits, setPrevUnits] = useState(units);
-  if (prevUnits !== units && config) {
+  if (prevUnits !== units && config && valuesInit) {
     const updated: Record<string, number | string> = { ...values };
     config.inputs.forEach((input) => {
       if (input.type === "number" && input.defaultMetric !== undefined) {
@@ -49,18 +84,34 @@ export function Calculator({ slug }: CalculatorProps) {
   }
 
   const result = useMemo(() => {
-    if (!config) return null;
+    if (!config || !valuesInit) return null;
     try {
       return config.calculate(values, units);
     } catch {
       return null;
     }
-  }, [values, units, config]);
+  }, [values, units, config, valuesInit]);
 
+  // Loading skeleton — same dimensions as final layout so page doesn't
+  // jump when the chunk arrives (typically under 100ms).
   if (!config) {
     return (
-      <div className="p-4 bg-surface-alt border border-line rounded-md text-sm text-ink-muted">
-        Calculator configuration missing.
+      <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-6 lg:gap-7">
+        <div className="lg:order-2 bg-walnut rounded-lg p-7 md:p-8 min-h-[280px] flex items-center justify-center">
+          <div className="text-walnut-ink-muted text-sm animate-pulse">
+            Loading…
+          </div>
+        </div>
+        <div className="lg:order-1 bg-surface border border-line rounded-lg p-6 md:p-7 min-h-[280px]">
+          <div className="space-y-4">
+            {[1, 2, 3].map((i) => (
+              <div key={i}>
+                <div className="h-3 w-20 bg-bg-warm rounded mb-2 animate-pulse" />
+                <div className="h-10 bg-bg-warm rounded animate-pulse" />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     );
   }
