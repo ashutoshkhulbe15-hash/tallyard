@@ -31,11 +31,34 @@ const liveCalculators = [
     desc: "Cubic yards or bag count for any garden bed and depth",
     category: "Landscaping",
   },
+  {
+    slug: "drywall-calculator",
+    name: "Drywall calculator",
+    desc: "Sheets of drywall for walls and ceilings, with waste factor",
+    category: "Drywall",
+  },
+  {
+    slug: "roofing-calculator",
+    name: "Roofing calculator",
+    desc: "Shingle bundles and squares for any pitch and footprint",
+    category: "Roofing",
+  },
+  {
+    slug: "btu-calculator",
+    name: "BTU calculator",
+    desc: "Air conditioner size adjusted for climate, sun, and occupancy",
+    category: "HVAC",
+  },
+  {
+    slug: "gravel-calculator",
+    name: "Gravel calculator",
+    desc: "Cubic yards and tons for driveways, paths, and base layers",
+    category: "Landscaping",
+  },
 ];
 
 const comingSoon = [
-  "Drywall", "Roofing", "BTU", "Solar panels",
-  "Gravel", "Topsoil", "Flooring", "Grout",
+  "Solar panels", "Topsoil", "Flooring", "Grout",
   "Paver", "Deck", "Fence", "Lumber",
   "Wire size", "Stair", "Brick", "Wallpaper",
   "Sod", "Rebar", "Insulation", "Asphalt",
@@ -57,7 +80,7 @@ export default function CalculatorsIndexPage() {
 
       <section className="mb-12">
         <h2 className="text-[11px] uppercase tracking-[0.08em] text-ink-faint mb-3 font-semibold">
-          Available now
+          Available now · {liveCalculators.length}
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {liveCalculators.map((c) => (

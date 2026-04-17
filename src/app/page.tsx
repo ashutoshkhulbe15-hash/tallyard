@@ -7,10 +7,10 @@ export default function HomePage() {
     { slug: "concrete-calculator", name: "Concrete", desc: "Cubic yards for any slab", live: true, category: "Masonry" },
     { slug: "tile-calculator", name: "Tile", desc: "Square footage and box count", live: true, category: "Flooring" },
     { slug: "mulch-calculator", name: "Mulch", desc: "Cubic yards by bed dimensions", live: true, category: "Landscaping" },
-    { slug: "calculators", name: "Drywall", desc: "Sheets for any wall area", live: false, category: "Drywall" },
-    { slug: "calculators", name: "Roofing", desc: "Shingles and squares needed", live: false, category: "Roofing" },
-    { slug: "calculators", name: "BTU", desc: "Air conditioner sizing", live: false, category: "HVAC" },
-    { slug: "calculators", name: "Solar", desc: "System size for your usage", live: false, category: "Solar" },
+    { slug: "drywall-calculator", name: "Drywall", desc: "Sheets for walls and ceilings", live: true, category: "Drywall" },
+    { slug: "roofing-calculator", name: "Roofing", desc: "Shingles for any pitch", live: true, category: "Roofing" },
+    { slug: "btu-calculator", name: "BTU", desc: "Air conditioner sizing", live: true, category: "HVAC" },
+    { slug: "gravel-calculator", name: "Gravel", desc: "Yards and tons for driveways", live: true, category: "Landscaping" },
   ];
 
   return (
