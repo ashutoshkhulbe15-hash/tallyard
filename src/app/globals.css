@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -17,7 +17,7 @@
 
   body {
     background-color: #FAFAF7;
-    color: #0F0F0F;
+    color: #0A0A0A;
     font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
     font-size: 15px;
     line-height: 1.6;
@@ -25,22 +25,25 @@
   }
 
   h1, h2, h3, h4 {
-    letter-spacing: -0.02em;
-    font-weight: 600;
+    letter-spacing: -0.025em;
+    font-weight: 700;
   }
 
   ::selection {
-    background-color: rgba(232, 116, 44, 0.2);
+    background-color: rgba(249, 115, 22, 0.25);
   }
 
-  /* Focus ring */
+  .dark-section ::selection {
+    background-color: rgba(249, 115, 22, 0.45);
+    color: #fff;
+  }
+
   *:focus-visible {
-    outline: 2px solid #E8742C;
+    outline: 2px solid #F97316;
     outline-offset: 2px;
     border-radius: 4px;
   }
 
-  /* Number inputs: remove spinners for clean look */
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -53,22 +56,44 @@
 
 @layer components {
   .container-content {
-    max-width: 720px;
+    max-width: 760px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 24px;
+    padding-right: 24px;
   }
   .container-wide {
-    max-width: 1100px;
+    max-width: 1180px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  /* Hero glow decoration */
+  .hero-glow {
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-glow::before {
+    content: "";
+    position: absolute;
+    top: -260px;
+    right: -200px;
+    width: 620px;
+    height: 620px;
+    background: radial-gradient(circle, rgba(249,115,22,0.18) 0%, rgba(249,115,22,0.05) 40%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .hero-glow > * {
+    position: relative;
+    z-index: 1;
   }
 }
 
 @media print {
   nav, footer { display: none !important; }
   body { background: white; }
+  .dark-section { background: white !important; color: black !important; }
 }

@@ -10,20 +10,10 @@ interface CalculatorProps {
   slug: string;
 }
 
-/**
- * The calculator engine (client-side). Looks up its config from the
- * registry by slug so the calculate function stays on the client side
- * and never crosses the Server→Client boundary.
- *
- * Behavior: pre-filled with defaults, result updates live as user edits
- * any input. No button to click.
- */
 export function Calculator({ slug }: CalculatorProps) {
   const { units } = useUnits();
   const config = getConfig(slug);
 
-  // Initial state based on config defaults (hook order stays stable even if
-  // config is missing — we bail out after hooks)
   const [values, setValues] = useState<Record<string, number | string>>(() => {
     const initial: Record<string, number | string> = {};
     if (!config) return initial;
@@ -65,7 +55,7 @@ export function Calculator({ slug }: CalculatorProps) {
 
   if (!config) {
     return (
-      <div className="p-4 bg-surface border border-line rounded-md text-sm text-ink-muted">
+      <div className="p-4 bg-surface-alt border border-line rounded-md text-sm text-ink-muted">
         Calculator configuration missing.
       </div>
     );
@@ -83,18 +73,18 @@ export function Calculator({ slug }: CalculatorProps) {
 
   return (
     <div className="space-y-5">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {config.inputs.map((input) => {
           const unitLabel = getUnitLabel(input);
           return (
             <div key={input.id}>
               <label
                 htmlFor={input.id}
-                className="block text-sm text-ink-muted mb-1.5"
+                className="block text-sm font-semibold text-ink-muted mb-1.5"
               >
                 {input.label}
                 {unitLabel && (
-                  <span className="text-ink-faint ml-1 font-mono text-xs">
+                  <span className="text-ink-faint ml-1 font-mono text-xs font-normal">
                     ({unitLabel})
                   </span>
                 )}
@@ -112,7 +102,7 @@ export function Calculator({ slug }: CalculatorProps) {
                       e.target.value === "" ? "" : parseFloat(e.target.value);
                     updateValue(input.id, isNaN(val as number) ? "" : val);
                   }}
-                  className="w-full bg-surface border border-line-strong rounded-md px-3 py-2.5 text-base font-mono focus:border-accent focus:outline-none transition-colors"
+                  className="w-full bg-surface-alt border border-line-strong rounded-md px-3.5 py-2.5 text-base font-mono font-medium focus:border-accent focus:outline-none focus:bg-surface transition-colors"
                   inputMode="decimal"
                 />
               ) : (
@@ -120,10 +110,10 @@ export function Calculator({ slug }: CalculatorProps) {
                   id={input.id}
                   value={values[input.id] as string | number}
                   onChange={(e) => updateValue(input.id, e.target.value)}
-                  className="w-full bg-surface border border-line-strong rounded-md px-3 py-2.5 text-base focus:border-accent focus:outline-none transition-colors appearance-none cursor-pointer"
+                  className="w-full bg-surface-alt border border-line-strong rounded-md px-3.5 py-2.5 text-base font-medium focus:border-accent focus:outline-none focus:bg-surface transition-colors appearance-none cursor-pointer"
                   style={{
                     backgroundImage:
-                      'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'12\' height=\'8\' viewBox=\'0 0 12 8\'%3E%3Cpath fill=\'none\' stroke=\'%235F5E5A\' stroke-width=\'1.5\' d=\'M1 1.5L6 6.5L11 1.5\'/%3E%3C/svg%3E")',
+                      'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'12\' height=\'8\' viewBox=\'0 0 12 8\'%3E%3Cpath fill=\'none\' stroke=\'%23525252\' stroke-width=\'1.5\' d=\'M1 1.5L6 6.5L11 1.5\'/%3E%3C/svg%3E")',
                     backgroundRepeat: "no-repeat",
                     backgroundPosition: "right 12px center",
                     paddingRight: "32px",
@@ -137,37 +127,45 @@ export function Calculator({ slug }: CalculatorProps) {
                 </select>
               )}
               {input.help && (
-                <p className="text-xs text-ink-faint mt-1">{input.help}</p>
+                <p className="text-xs text-ink-faint mt-1.5">{input.help}</p>
               )}
             </div>
           );
         })}
       </div>
 
+      {/* Orange gradient result card — the D2 signature */}
       {result && (
-        <div className="bg-surface border border-accent-border border-l-[3px] border-l-accent rounded-md p-5">
+        <div
+          className="rounded-lg p-6 text-white"
+          style={{
+            background: "linear-gradient(135deg, #F97316 0%, #EA580C 100%)",
+          }}
+        >
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
             <div>
-              <div className="text-xs uppercase tracking-wide text-ink-faint mb-1.5">
+              <div className="text-xs uppercase tracking-wide text-white/80 mb-1.5 font-semibold">
                 You need
               </div>
-              <div className="text-3xl font-semibold font-mono tracking-tight">
-                {formatNumber(result.valueRounded)}{" "}
-                <span className="text-base text-ink-muted font-sans font-normal">
+              <div className="flex items-baseline gap-2">
+                <span className="text-4xl font-bold font-mono tracking-tighter leading-none">
+                  {formatNumber(result.valueRounded)}
+                </span>
+                <span className="text-base text-white/80 font-sans font-normal">
                   {result.unit}
                 </span>
               </div>
               {result.value !== result.valueRounded && (
-                <div className="text-xs text-ink-faint mt-1 font-mono">
+                <div className="text-xs text-white/70 mt-1.5 font-mono">
                   exact: {formatNumber(result.value, 3)} {result.unit}
                 </div>
               )}
             </div>
             {result.breakdown.length > 0 && (
-              <div className="text-sm text-ink-muted space-y-0.5 sm:text-right font-mono">
+              <div className="text-sm text-white/90 space-y-0.5 sm:text-right font-mono">
                 {result.breakdown.map((b, i) => (
                   <div key={i}>
-                    <span className="text-ink-faint">{b.label}:</span> {b.value}
+                    <span className="text-white/70">{b.label}:</span> {b.value}
                   </div>
                 ))}
               </div>
@@ -178,13 +176,13 @@ export function Calculator({ slug }: CalculatorProps) {
 
       {result && result.formulaSteps.length > 0 && (
         <details className="group">
-          <summary className="cursor-pointer text-sm text-ink-muted hover:text-ink flex items-center gap-1.5 select-none">
+          <summary className="cursor-pointer text-sm text-ink-muted hover:text-ink flex items-center gap-1.5 select-none font-medium">
             <span className="transition-transform group-open:rotate-90 inline-block">
               ›
             </span>
             Show the math
           </summary>
-          <div className="mt-3 p-4 bg-bg border border-line rounded-md font-mono text-xs text-ink-muted space-y-1 overflow-x-auto">
+          <div className="mt-3 p-4 bg-surface-alt border border-line rounded-md font-mono text-xs text-ink-muted space-y-1 overflow-x-auto">
             {result.formulaSteps.map((step, i) => (
               <div key={i}>{step}</div>
             ))}
@@ -192,7 +190,7 @@ export function Calculator({ slug }: CalculatorProps) {
         </details>
       )}
 
-      <div className="text-xs text-ink-faint font-mono pt-2">
+      <div className="text-xs text-ink-faint font-mono pt-1">
         {config.formulaDescription}
       </div>
     </div>
