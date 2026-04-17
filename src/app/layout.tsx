@@ -5,7 +5,7 @@ import { Footer } from "@/components/Footer";
 import { UnitProvider } from "@/lib/units";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://tallyard.com"),
+  metadataBase: new URL("https://www.tallyard.com"),
   title: {
     default: "Tallyard — Calculators that show their work",
     template: "%s | Tallyard",
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     title: "Tallyard — Calculators that show their work",
     description:
       "Transparent calculators for home improvement and DIY. Every formula public, every source cited.",
-    url: "https://tallyard.com",
+    url: "https://www.tallyard.com",
     siteName: "Tallyard",
     type: "website",
   },

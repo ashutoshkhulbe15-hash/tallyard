@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Garage Door Calculator — Size And Opener HP",
     description: "Calculate garage door size, clearances, and opener HP.",
-    url: "https://tallyard.com/garage-door-calculator",
+    url: "https://www.tallyard.com/garage-door-calculator",
     type: "website",
   },
 };

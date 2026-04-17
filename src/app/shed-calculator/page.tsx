@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Shed Calculator — Materials For Any Backyard Shed",
     description: "Calculate materials for any backyard shed.",
-    url: "https://tallyard.com/shed-calculator",
+    url: "https://www.tallyard.com/shed-calculator",
     type: "website",
   },
 };

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Solar Panel Calculator — How Many Panels Do I Need",
     description:
       "Calculate solar panel count and system size for your electricity use.",
-    url: "https://tallyard.com/solar-calculator",
+    url: "https://www.tallyard.com/solar-calculator",
     type: "website",
   },
 };

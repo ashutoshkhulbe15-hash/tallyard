@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Chimney Calculator — Flue Size For Any Fireplace Or Stove",
     description: "Calculate flue size for fireplaces and wood stoves.",
-    url: "https://tallyard.com/chimney-calculator",
+    url: "https://www.tallyard.com/chimney-calculator",
     type: "website",
   },
 };

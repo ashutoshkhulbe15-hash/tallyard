@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Paver Calculator — Pavers, Base, And Sand",
     description:
       "Calculate pavers, base gravel, and sand for any patio or path.",
-    url: "https://tallyard.com/paver-calculator",
+    url: "https://www.tallyard.com/paver-calculator",
     type: "website",
   },
 };

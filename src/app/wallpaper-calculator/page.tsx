@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Wallpaper Calculator — Rolls Needed For Any Room",
     description: "Calculate wallpaper rolls with pattern repeat and opening subtractions.",
-    url: "https://tallyard.com/wallpaper-calculator",
+    url: "https://www.tallyard.com/wallpaper-calculator",
     type: "website",
   },
 };

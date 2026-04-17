@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Water Heater Calculator — Tank Size Or Tankless GPM",
     description: "Calculate water heater size for any household.",
-    url: "https://tallyard.com/water-heater-calculator",
+    url: "https://www.tallyard.com/water-heater-calculator",
     type: "website",
   },
 };

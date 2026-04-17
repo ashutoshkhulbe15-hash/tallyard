@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Drywall Calculator — How Many Sheets Of Drywall",
     description:
       "Calculate sheets of drywall needed for any room. Accounts for waste, cuts, and standard sheet sizes.",
-    url: "https://tallyard.com/drywall-calculator",
+    url: "https://www.tallyard.com/drywall-calculator",
     type: "website",
   },
 };

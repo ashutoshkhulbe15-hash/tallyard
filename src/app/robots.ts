@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
     ],
-    sitemap: "https://tallyard.com/sitemap.xml",
-    host: "https://tallyard.com",
+    sitemap: "https://www.tallyard.com/sitemap.xml",
+    host: "https://www.tallyard.com",
   };
 }

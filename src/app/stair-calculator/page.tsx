@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Stair Calculator — Rise, Run, And Stringer Length",
     description: "Calculate risers, treads, and stringer length for any staircase.",
-    url: "https://tallyard.com/stair-calculator",
+    url: "https://www.tallyard.com/stair-calculator",
     type: "website",
   },
 };

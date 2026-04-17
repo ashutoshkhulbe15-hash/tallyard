@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Drain Pipe Calculator — DFU To Pipe Size",
     description: "Calculate drain pipe size for any bathroom or kitchen.",
-    url: "https://tallyard.com/drain-pipe-calculator",
+    url: "https://www.tallyard.com/drain-pipe-calculator",
     type: "website",
   },
 };

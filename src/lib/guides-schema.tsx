@@ -13,7 +13,7 @@ interface GuideSchemaProps {
  */
 export function getGuideSchema({
   config,
-  baseUrl = "https://tallyard.com",
+  baseUrl = "https://www.tallyard.com",
 }: GuideSchemaProps): object[] {
   const pageUrl = `${baseUrl}/guides/${config.slug}`;
 

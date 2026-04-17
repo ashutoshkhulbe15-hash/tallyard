@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Sod Calculator — Square Feet, Rolls, And Pallets",
     description: "Calculate sod pieces and pallets for any lawn installation.",
-    url: "https://tallyard.com/sod-calculator",
+    url: "https://www.tallyard.com/sod-calculator",
     type: "website",
   },
 };

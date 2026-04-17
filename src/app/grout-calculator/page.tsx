@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Grout Calculator — Pounds Of Grout For Tile",
     description:
       "Calculate pounds of grout for any tile installation.",
-    url: "https://tallyard.com/grout-calculator",
+    url: "https://www.tallyard.com/grout-calculator",
     type: "website",
   },
 };

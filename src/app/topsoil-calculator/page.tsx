@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Topsoil Calculator — Yards, Bags, And Tons",
     description: "Calculate cubic yards of topsoil for any garden or lawn project.",
-    url: "https://tallyard.com/topsoil-calculator",
+    url: "https://www.tallyard.com/topsoil-calculator",
     type: "website",
   },
 };

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Attic Ventilation Calculator — NFVA Intake And Exhaust",
     description: "Calculate attic ventilation with the 1:300 rule.",
-    url: "https://tallyard.com/attic-ventilation-calculator",
+    url: "https://www.tallyard.com/attic-ventilation-calculator",
     type: "website",
   },
 };

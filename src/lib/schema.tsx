@@ -13,7 +13,7 @@ interface SchemaProps {
  */
 export function getCalculatorSchema({
   config,
-  baseUrl = "https://tallyard.com",
+  baseUrl = "https://www.tallyard.com",
 }: SchemaProps): object[] {
   const pageUrl = `${baseUrl}/${config.slug}`;
 

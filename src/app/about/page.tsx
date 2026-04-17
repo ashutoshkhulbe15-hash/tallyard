@@ -13,7 +13,7 @@ function AboutSchema() {
       "@context": "https://schema.org",
       "@type": "Organization",
       name: "Tallyard",
-      url: "https://tallyard.com",
+      url: "https://www.tallyard.com",
       description:
         "Free, transparent home improvement calculators and guides.",
       founder: {
@@ -31,7 +31,7 @@ function AboutSchema() {
       worksFor: {
         "@type": "Organization",
         name: "Tallyard",
-        url: "https://tallyard.com",
+        url: "https://www.tallyard.com",
       },
       knowsAbout: [
         "Home improvement cost estimation",

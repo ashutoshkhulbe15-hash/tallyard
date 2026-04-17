@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Brick Calculator — Bricks And Mortar Bags",
     description: "Calculate bricks and mortar bags for any wall project.",
-    url: "https://tallyard.com/brick-calculator",
+    url: "https://www.tallyard.com/brick-calculator",
     type: "website",
   },
 };

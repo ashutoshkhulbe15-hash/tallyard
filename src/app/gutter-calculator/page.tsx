@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Gutter Calculator — Linear Feet And Downspouts",
     description: "Calculate gutter linear feet and downspouts for any home.",
-    url: "https://tallyard.com/gutter-calculator",
+    url: "https://www.tallyard.com/gutter-calculator",
     type: "website",
   },
 };

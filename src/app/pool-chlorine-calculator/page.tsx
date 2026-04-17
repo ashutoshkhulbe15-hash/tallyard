@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Pool Chlorine Calculator — Dose For Any Pool",
     description: "Calculate chlorine dose for pool maintenance and shock.",
-    url: "https://tallyard.com/pool-chlorine-calculator",
+    url: "https://www.tallyard.com/pool-chlorine-calculator",
     type: "website",
   },
 };

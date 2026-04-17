@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Kitchen Cabinet Calculator — Linear Feet And Budget",
     description: "Calculate kitchen cabinet linear feet for any layout.",
-    url: "https://tallyard.com/kitchen-cabinet-calculator",
+    url: "https://www.tallyard.com/kitchen-cabinet-calculator",
     type: "website",
   },
 };

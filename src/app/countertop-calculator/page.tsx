@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Countertop Calculator — Square Feet For Kitchen Or Bath",
     description: "Calculate countertop square feet with island and cost estimates.",
-    url: "https://tallyard.com/countertop-calculator",
+    url: "https://www.tallyard.com/countertop-calculator",
     type: "website",
   },
 };

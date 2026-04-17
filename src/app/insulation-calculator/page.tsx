@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Insulation Calculator — R-Value And Bags Needed",
     description:
       "Calculate insulation coverage for any wall, attic, or floor with climate-specific R-values.",
-    url: "https://tallyard.com/insulation-calculator",
+    url: "https://www.tallyard.com/insulation-calculator",
     type: "website",
   },
 };

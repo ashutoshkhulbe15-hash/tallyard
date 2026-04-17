@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Snow Load Calculator — Roof Weight In PSF",
     description: "Calculate roof snow load and compare to design capacity.",
-    url: "https://tallyard.com/snow-load-calculator",
+    url: "https://www.tallyard.com/snow-load-calculator",
     type: "website",
   },
 };

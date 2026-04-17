@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Extension Cord Calculator — AWG For Any Load",
     description: "Extension cord gauge sizing for any tool or appliance.",
-    url: "https://tallyard.com/extension-cord-calculator",
+    url: "https://www.tallyard.com/extension-cord-calculator",
     type: "website",
   },
 };

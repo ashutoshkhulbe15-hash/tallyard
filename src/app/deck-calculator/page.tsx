@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Deck Calculator — Boards, Joists, And Fasteners",
     description:
       "Calculate deck boards, joists, and all framing materials for any deck.",
-    url: "https://tallyard.com/deck-calculator",
+    url: "https://www.tallyard.com/deck-calculator",
     type: "website",
   },
 };

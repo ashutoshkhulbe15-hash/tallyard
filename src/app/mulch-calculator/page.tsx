@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Mulch Calculator — How Many Yards Of Mulch",
     description:
       "Calculate cubic yards of mulch for any garden bed. Bulk or bags.",
-    url: "https://tallyard.com/mulch-calculator",
+    url: "https://www.tallyard.com/mulch-calculator",
     type: "website",
   },
 };

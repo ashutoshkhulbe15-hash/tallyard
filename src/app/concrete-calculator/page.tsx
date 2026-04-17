@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Concrete Calculator — How Many Yards Of Concrete",
     description:
       "Calculate cubic yards of concrete for any slab, footing, or round pour.",
-    url: "https://tallyard.com/concrete-calculator",
+    url: "https://www.tallyard.com/concrete-calculator",
     type: "website",
   },
 };

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Wire Size Calculator — AWG For Any Amp Load",
     description:
       "Calculate the right electrical wire gauge for your circuit, with voltage drop included.",
-    url: "https://tallyard.com/wire-size-calculator",
+    url: "https://www.tallyard.com/wire-size-calculator",
     type: "website",
   },
 };

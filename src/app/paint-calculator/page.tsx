@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     title: "Paint Calculator — How Much Paint Do I Need",
     description:
       "Calculate how many gallons of paint you need for any room. Shows the math.",
-    url: "https://tallyard.com/paint-calculator",
+    url: "https://www.tallyard.com/paint-calculator",
     type: "website",
   },
 };

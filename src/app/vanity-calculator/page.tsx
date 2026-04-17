@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Vanity Calculator — Right Size For Your Bathroom",
     description: "Calculate bathroom vanity size with clearances and code checks.",
-    url: "https://tallyard.com/vanity-calculator",
+    url: "https://www.tallyard.com/vanity-calculator",
     type: "website",
   },
 };

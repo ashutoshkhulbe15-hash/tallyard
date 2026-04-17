@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Heat Pump Calculator — Size In Tons",
     description: "Calculate heat pump size for heating and cooling.",
-    url: "https://tallyard.com/heat-pump-calculator",
+    url: "https://www.tallyard.com/heat-pump-calculator",
     type: "website",
   },
 };

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Stud Spacing Calculator — Studs For Any Wall",
     description: "Calculate studs with openings for any framed wall.",
-    url: "https://tallyard.com/stud-spacing-calculator",
+    url: "https://www.tallyard.com/stud-spacing-calculator",
     type: "website",
   },
 };

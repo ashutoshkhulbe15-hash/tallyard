@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Roofing Calculator — How Many Bundles Of Shingles",
     description:
       "Calculate roof area, squares, and shingle bundles for any pitch and footprint.",
-    url: "https://tallyard.com/roofing-calculator",
+    url: "https://www.tallyard.com/roofing-calculator",
     type: "website",
   },
 };

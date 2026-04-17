@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Rainwater Harvesting Calculator — Gallons From Your Roof",
     description: "Calculate rainwater yield and sizes barrels or tanks.",
-    url: "https://tallyard.com/rainwater-calculator",
+    url: "https://www.tallyard.com/rainwater-calculator",
     type: "website",
   },
 };

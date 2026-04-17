@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "BTU Calculator — Air Conditioner Size",
     description:
       "Calculate the right BTU size for your AC. Accounts for climate, sun, and occupancy.",
-    url: "https://tallyard.com/btu-calculator",
+    url: "https://www.tallyard.com/btu-calculator",
     type: "website",
   },
 };

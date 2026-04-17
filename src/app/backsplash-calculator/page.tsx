@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Backsplash Calculator — Kitchen Tile Count",
     description: "Calculate backsplash tile with outlet and window subtractions.",
-    url: "https://tallyard.com/backsplash-calculator",
+    url: "https://www.tallyard.com/backsplash-calculator",
     type: "website",
   },
 };

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Window Sizing Calculator — Egress, Light, And Rough Opening",
     description: "Calculate window size with egress and light checks.",
-    url: "https://tallyard.com/window-sizing-calculator",
+    url: "https://www.tallyard.com/window-sizing-calculator",
     type: "website",
   },
 };

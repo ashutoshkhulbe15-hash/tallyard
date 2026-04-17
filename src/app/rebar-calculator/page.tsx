@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Rebar Calculator — Lineal Feet And Sticks",
     description: "Calculate rebar for any slab with grid layout and perimeter ring.",
-    url: "https://tallyard.com/rebar-calculator",
+    url: "https://www.tallyard.com/rebar-calculator",
     type: "website",
   },
 };

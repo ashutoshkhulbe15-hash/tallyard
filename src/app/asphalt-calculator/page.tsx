@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Asphalt Calculator — Tons For Any Driveway",
     description: "Calculate tons of asphalt for any driveway or parking project.",
-    url: "https://tallyard.com/asphalt-calculator",
+    url: "https://www.tallyard.com/asphalt-calculator",
     type: "website",
   },
 };

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Gravel Calculator — How Many Yards Of Gravel",
     description:
       "Calculate cubic yards and tons of gravel for driveways, paths, or base layers.",
-    url: "https://tallyard.com/gravel-calculator",
+    url: "https://www.tallyard.com/gravel-calculator",
     type: "website",
   },
 };

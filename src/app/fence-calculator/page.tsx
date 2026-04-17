@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Fence Calculator — Posts, Rails, And Pickets",
     description:
       "Calculate posts, rails, pickets, and concrete for any fence length.",
-    url: "https://tallyard.com/fence-calculator",
+    url: "https://www.tallyard.com/fence-calculator",
     type: "website",
   },
 };

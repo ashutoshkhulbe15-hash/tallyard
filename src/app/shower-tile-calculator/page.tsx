@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Shower Tile Calculator — Tub And Walk-In Surrounds",
     description: "Calculate shower tile with niche and floor options.",
-    url: "https://tallyard.com/shower-tile-calculator",
+    url: "https://www.tallyard.com/shower-tile-calculator",
     type: "website",
   },
 };

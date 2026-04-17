@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Lumber Calculator — Board Feet And Lineal Feet",
     description: "Calculate board feet for framing, decks, and any lumber project.",
-    url: "https://tallyard.com/lumber-calculator",
+    url: "https://www.tallyard.com/lumber-calculator",
     type: "website",
   },
 };

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: config.title,
     description: config.description,
-    url: `https://tallyard.com/guides/${SLUG}`,
+    url: `https://www.tallyard.com/guides/${SLUG}`,
     type: "article",
     publishedTime: config.publishedAt,
   },

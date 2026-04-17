@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Siding Calculator — Squares For Your House",
     description: "Calculate siding squares and linear feet for any home.",
-    url: "https://tallyard.com/siding-calculator",
+    url: "https://www.tallyard.com/siding-calculator",
     type: "website",
   },
 };

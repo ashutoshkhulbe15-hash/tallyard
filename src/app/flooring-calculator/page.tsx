@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Flooring Calculator — Hardwood, Laminate, Vinyl",
     description:
       "Calculate boxes of hardwood, laminate, or vinyl plank flooring for any room.",
-    url: "https://tallyard.com/flooring-calculator",
+    url: "https://www.tallyard.com/flooring-calculator",
     type: "website",
   },
 };
