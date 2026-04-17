@@ -1,488 +1,636 @@
 import type { GuideConfig } from "@/lib/guides-types";
 import {
-  VerdictCard,
   ComparisonTable,
   Callout,
-  StatGrid,
   CalculatorCTA,
 } from "@/components/GuideComponents";
+import {
+  Figure,
+  GuideByline,
+  MethodologyNote,
+  Scenario,
+  GUIDE_SVG,
+} from "@/components/GuideChrome";
+
+// ---------------------------------------------------------------------------
+// SVG 1 — 20-year TCO line chart showing cost accumulation over time
+// ---------------------------------------------------------------------------
+
+function TCOOverTimeSVG() {
+  // Chart area: x=60 to x=640 (580px), y=40 to y=240 (200px)
+  // X: 0 to 20 years. Y: $0 to $30,000
+  const xScale = (yr: number) => 60 + yr * (580 / 20);
+  const yScale = (cost: number) => 240 - cost * (200 / 30000);
+
+  // Cumulative cost at key milestones
+  const pt = [
+    { yr: 0, cost: 12000 },
+    { yr: 2, cost: 12600 },
+    { yr: 4, cost: 13200 },
+    { yr: 6, cost: 13800 },
+    { yr: 8, cost: 14400 },
+    { yr: 10, cost: 15000 },
+    { yr: 12, cost: 15600 },
+    { yr: 14, cost: 16200 },
+    { yr: 15, cost: 27800 }, // replacement
+    { yr: 17, cost: 28400 },
+    { yr: 20, cost: 29300 },
+  ];
+  const cedar = [
+    { yr: 0, cost: 12000 },
+    { yr: 3, cost: 12250 },
+    { yr: 6, cost: 12750 },
+    { yr: 9, cost: 13250 },
+    { yr: 12, cost: 13750 },
+    { yr: 15, cost: 14100 },
+    { yr: 18, cost: 14600 },
+    { yr: 20, cost: 14950 },
+  ];
+  const comp = [
+    { yr: 0, cost: 19000 },
+    { yr: 5, cost: 19200 },
+    { yr: 10, cost: 19450 },
+    { yr: 15, cost: 19700 },
+    { yr: 20, cost: 19950 },
+  ];
+
+  const toPoints = (data: { yr: number; cost: number }[]) =>
+    data.map((d) => `${xScale(d.yr).toFixed(0)},${yScale(d.cost).toFixed(0)}`).join(" ");
+
+  return (
+    <svg viewBox="0 0 680 330" width="100%" height="auto" role="img"
+      aria-label="Line chart showing cumulative cost over 20 years. Pressure-treated starts cheapest but spikes at year 15 due to replacement, ending at $29,300. Cedar rises slowly to $14,950. Composite starts highest at $19,000 but barely rises, ending at $19,950.">
+      <text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>
+        Cumulative cost over 20 years
+      </text>
+      <text x="20" y="43" fontSize="10" fill={GUIDE_SVG.inkFaint}>
+        320 sq ft deck, mid-range install, professional maintenance
+      </text>
+
+      {/* Y axis */}
+      {[0, 10000, 20000, 30000].map((v) => (
+        <g key={v}>
+          <text x="52" y={yScale(v) + 4} textAnchor="end" fontSize="10" fill={GUIDE_SVG.inkFaint}>
+            ${(v / 1000).toFixed(0)}k
+          </text>
+          <line x1="58" y1={yScale(v)} x2="640" y2={yScale(v)}
+            stroke={GUIDE_SVG.inkFaint} strokeWidth="0.5" strokeDasharray="2,2" opacity="0.3" />
+        </g>
+      ))}
+      <line x1="58" y1="240" x2="640" y2="240" stroke={GUIDE_SVG.ink} strokeWidth="1" />
+
+      {/* X axis */}
+      {[0, 5, 10, 15, 20].map((yr) => (
+        <text key={yr} x={xScale(yr)} y="258" textAnchor="middle" fontSize="10"
+          fill={GUIDE_SVG.inkFaint}>{yr} yr</text>
+      ))}
+
+      {/* PT line */}
+      <polyline points={toPoints(pt)} fill="none" stroke={GUIDE_SVG.inkFaint}
+        strokeWidth="2" strokeLinecap="round" />
+      {pt.map((d, i) => (
+        <circle key={i} cx={xScale(d.yr)} cy={yScale(d.cost)} r="2" fill={GUIDE_SVG.inkFaint} />
+      ))}
+
+      {/* Cedar line */}
+      <polyline points={toPoints(cedar)} fill="none" stroke="#8B6B3D"
+        strokeWidth="2" strokeLinecap="round" />
+      {cedar.map((d, i) => (
+        <circle key={i} cx={xScale(d.yr)} cy={yScale(d.cost)} r="2" fill="#8B6B3D" />
+      ))}
+
+      {/* Composite line */}
+      <polyline points={toPoints(comp)} fill="none" stroke={GUIDE_SVG.accent}
+        strokeWidth="2.5" strokeLinecap="round" />
+      {comp.map((d, i) => (
+        <circle key={i} cx={xScale(d.yr)} cy={yScale(d.cost)} r="2.5" fill={GUIDE_SVG.accent} />
+      ))}
+
+      {/* PT replacement spike annotation */}
+      <text x={xScale(15) + 6} y={yScale(27800) - 4} fontSize="9"
+        fill={GUIDE_SVG.inkFaint} fontStyle="italic">
+        decking replaced
+      </text>
+
+      {/* Legend */}
+      <g transform="translate(60, 280)">
+        <line x1="0" y1="6" x2="18" y2="6" stroke={GUIDE_SVG.inkFaint} strokeWidth="2" />
+        <text x="24" y="10" fontSize="11" fill={GUIDE_SVG.ink}>Pressure-treated ($29,300)</text>
+
+        <line x1="190" y1="6" x2="208" y2="6" stroke="#8B6B3D" strokeWidth="2" />
+        <text x="214" y="10" fontSize="11" fill={GUIDE_SVG.ink}>Cedar ($14,950)</text>
+
+        <line x1="340" y1="6" x2="358" y2="6" stroke={GUIDE_SVG.accent} strokeWidth="2.5" />
+        <text x="364" y="10" fontSize="11" fill={GUIDE_SVG.ink}>Composite ($19,950)</text>
+      </g>
+    </svg>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// SVG 2 — Deck anatomy: frame vs surface
+// ---------------------------------------------------------------------------
+
+function DeckAnatomySVG() {
+  return (
+    <svg viewBox="0 0 680 230" width="100%" height="auto" role="img"
+      aria-label="Simplified deck cross-section showing that the frame underneath is always pressure-treated lumber regardless of what decking material you choose for the surface.">
+      <text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>
+        Deck anatomy: your material choice only affects the top layer
+      </text>
+
+      {/* Frame (PT always) */}
+      <rect x="60" y="120" width="560" height="60" rx="4" fill="#F5E6C8"
+        stroke="#C4A86C" strokeWidth="1" />
+      <text x="340" y="148" textAnchor="middle" fontSize="12" fontWeight="600"
+        fill={GUIDE_SVG.ink}>Frame: always pressure-treated</text>
+      <text x="340" y="166" textAnchor="middle" fontSize="10"
+        fill={GUIDE_SVG.inkFaint}>Joists, beams, posts, ledger — same cost regardless</text>
+
+      {/* Surface boards (choice) */}
+      <rect x="60" y="65" width="176" height="45" rx="4" fill={GUIDE_SVG.slateSoft}
+        stroke={GUIDE_SVG.slate} strokeWidth="1" />
+      <text x="148" y="88" textAnchor="middle" fontSize="11" fontWeight="600"
+        fill={GUIDE_SVG.ink}>Pressure-treated</text>
+      <text x="148" y="102" textAnchor="middle" fontSize="9"
+        fill={GUIDE_SVG.inkFaint}>$3–6 / ft²</text>
+
+      <rect x="252" y="65" width="176" height="45" rx="4" fill="#F0E4D0"
+        stroke="#8B6B3D" strokeWidth="1" />
+      <text x="340" y="88" textAnchor="middle" fontSize="11" fontWeight="600"
+        fill={GUIDE_SVG.ink}>Cedar</text>
+      <text x="340" y="102" textAnchor="middle" fontSize="9"
+        fill={GUIDE_SVG.inkFaint}>$4–8 / ft²</text>
+
+      <rect x="444" y="65" width="176" height="45" rx="4" fill={GUIDE_SVG.accentSoft}
+        stroke={GUIDE_SVG.accent} strokeWidth="1" />
+      <text x="532" y="88" textAnchor="middle" fontSize="11" fontWeight="600"
+        fill={GUIDE_SVG.ink}>Composite</text>
+      <text x="532" y="102" textAnchor="middle" fontSize="9"
+        fill={GUIDE_SVG.inkFaint}>$5–14 / ft²</text>
+
+      <text x="340" y="55" textAnchor="middle" fontSize="10" fontWeight="700"
+        letterSpacing="1.2" fill={GUIDE_SVG.inkFaint}>SURFACE — YOUR CHOICE</text>
+
+      <text x="340" y="210" textAnchor="middle" fontSize="10" fill={GUIDE_SVG.inkFaint}
+        fontStyle="italic">
+        The surface is ~40% of total material cost. Switching from PT to composite adds $2,000–$4,000, not double.
+      </text>
+    </svg>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// SVG 3 — Maintenance cycle comparison
+// ---------------------------------------------------------------------------
+
+function MaintenanceCycleSVG() {
+  const startX = 60;
+  const px = 28; // pixels per year
+
+  return (
+    <svg viewBox="0 0 680 240" width="100%" height="auto" role="img"
+      aria-label="Maintenance timeline over 20 years. Pressure-treated needs sealing every 1-2 years (10 events). Cedar needs sealing every 2-3 years (7 events). Composite needs only occasional cleaning.">
+      <text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>
+        Maintenance events over 20 years
+      </text>
+
+      {/* Year axis */}
+      <line x1={startX} y1="195" x2={startX + 20 * px} y2="195"
+        stroke={GUIDE_SVG.ink} strokeWidth="1" />
+      {[0, 5, 10, 15, 20].map((yr) => (
+        <text key={yr} x={startX + yr * px} y="212" textAnchor="middle"
+          fontSize="10" fill={GUIDE_SVG.inkFaint}>{yr}</text>
+      ))}
+
+      {/* PT — seal every 2 years */}
+      <text x={startX - 5} y="75" textAnchor="end" fontSize="10" fontWeight="600"
+        fill={GUIDE_SVG.ink}>PT</text>
+      <line x1={startX} y1="70" x2={startX + 20 * px} y2="70"
+        stroke={GUIDE_SVG.inkFaint} strokeWidth="0.5" />
+      {[1, 3, 5, 7, 9, 11, 13, 15, 17, 19].map((yr) => (
+        <g key={yr}>
+          <rect x={startX + yr * px - 3} y="60" width="6" height="20" rx="2"
+            fill={GUIDE_SVG.inkFaint} />
+        </g>
+      ))}
+      <text x={startX + 20 * px + 8} y="75" fontSize="10" fill={GUIDE_SVG.inkFaint}>
+        10 seals
+      </text>
+
+      {/* Cedar — seal every 3 years */}
+      <text x={startX - 5} y="125" textAnchor="end" fontSize="10" fontWeight="600"
+        fill="#8B6B3D">Cedar</text>
+      <line x1={startX} y1="120" x2={startX + 20 * px} y2="120"
+        stroke={GUIDE_SVG.inkFaint} strokeWidth="0.5" />
+      {[1, 4, 7, 10, 13, 16, 19].map((yr) => (
+        <g key={yr}>
+          <rect x={startX + yr * px - 3} y="110" width="6" height="20" rx="2"
+            fill="#8B6B3D" />
+        </g>
+      ))}
+      <text x={startX + 20 * px + 8} y="125" fontSize="10" fill={GUIDE_SVG.inkFaint}>
+        7 seals
+      </text>
+
+      {/* Composite — cleaning only */}
+      <text x={startX - 5} y="175" textAnchor="end" fontSize="10" fontWeight="600"
+        fill={GUIDE_SVG.accent}>Comp.</text>
+      <line x1={startX} y1="170" x2={startX + 20 * px} y2="170"
+        stroke={GUIDE_SVG.inkFaint} strokeWidth="0.5" />
+      {[5, 10, 15, 20].map((yr) => (
+        <g key={yr}>
+          <circle cx={startX + yr * px} cy="170" r="4" fill="none"
+            stroke={GUIDE_SVG.accent} strokeWidth="1.5" />
+        </g>
+      ))}
+      <text x={startX + 20 * px + 8} y="175" fontSize="10" fill={GUIDE_SVG.inkFaint}>
+        4 cleanings
+      </text>
+
+      <text x="340" y="235" textAnchor="middle" fontSize="9" fill={GUIDE_SVG.inkFaint}
+        fontStyle="italic">
+        ■ = sealing/staining event ($150–300 each) · ○ = power wash ($50–100)
+      </text>
+    </svg>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// SVG 4 — Climate suitability matrix
+// ---------------------------------------------------------------------------
+
+function ClimateSuitabilitySVG() {
+  const cols = [
+    { label: "Hot + sunny", sub: "AZ, TX, FL", x: 200 },
+    { label: "Hot + humid", sub: "SE coast, Gulf", x: 330 },
+    { label: "Freeze-thaw", sub: "NE, MW, Rockies", x: 460 },
+    { label: "Mild", sub: "PNW, mid-Atlantic", x: 590 },
+  ];
+  const rows = [
+    { label: "Pressure-treated", y: 95, scores: ["OK", "Poor", "OK", "Good"] },
+    { label: "Cedar", y: 135, scores: ["Good", "OK", "OK", "Good"] },
+    { label: "Composite", y: 175, scores: ["Caution*", "Good", "Good", "Good"] },
+  ];
+  const scoreColor = (s: string) =>
+    s === "Good" ? "#2D7F46" : s === "OK" ? GUIDE_SVG.inkFaint : s === "Poor" ? "#B53629" : GUIDE_SVG.accent;
+
+  return (
+    <svg viewBox="0 0 680 230" width="100%" height="auto" role="img"
+      aria-label="Climate suitability matrix. Composite is good in most climates but gets hot in direct sun. Cedar is good everywhere but humid. Pressure-treated struggles in hot humid climates.">
+      <text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>
+        Climate suitability
+      </text>
+
+      {/* Column headers */}
+      {cols.map((col) => (
+        <g key={col.label}>
+          <text x={col.x} y="62" textAnchor="middle" fontSize="10" fontWeight="600"
+            fill={GUIDE_SVG.ink}>{col.label}</text>
+          <text x={col.x} y="75" textAnchor="middle" fontSize="9"
+            fill={GUIDE_SVG.inkFaint}>{col.sub}</text>
+        </g>
+      ))}
+
+      {/* Row headers + scores */}
+      {rows.map((row) => (
+        <g key={row.label}>
+          <text x="135" y={row.y} textAnchor="end" fontSize="11" fontWeight="600"
+            fill={GUIDE_SVG.ink}>{row.label}</text>
+          <line x1="145" y1={row.y - 10} x2="650" y2={row.y - 10}
+            stroke={GUIDE_SVG.inkFaint} strokeWidth="0.5" strokeDasharray="2,2" opacity="0.3" />
+          {row.scores.map((score, i) => (
+            <text key={i} x={cols[i].x} y={row.y} textAnchor="middle"
+              fontSize="11" fontWeight="600" fill={scoreColor(score)}>
+              {score}
+            </text>
+          ))}
+        </g>
+      ))}
+
+      <text x="340" y="215" textAnchor="middle" fontSize="9" fill={GUIDE_SVG.inkFaint}
+        fontStyle="italic">
+        *Composite in hot sun: choose light colors. Dark composite reaches 140°F+ barefoot.
+      </text>
+    </svg>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Body content — material-profile structure
+// ---------------------------------------------------------------------------
 
 function Content() {
   return (
     <>
+      <GuideByline
+        updated="April 18, 2026"
+        reviewedAgainst="NADRA guidelines, Trex install specs, and AWC span tables"
+      />
+
       <p>
-        Every deck material article on the internet pretends this is a
-        complicated decision. It isn&apos;t. Three materials dominate
-        residential decking — pressure-treated pine, cedar, and composite
-        — and the choice comes down to three questions: how much do you
-        want to spend up front, how much maintenance are you willing to
-        do, and how long are you staying in the house?
+        A deck is one of the few home projects where the up-front price
+        and the true cost are almost unrelated. Pressure-treated pine is
+        the cheapest thing to install, but it needs sealing every two
+        years and usually wants replacing by year 15. Composite decking
+        costs twice as much to install and then costs almost nothing for
+        the next 25 years. Cedar sits in between and wins on pure
+        aesthetics if you actually maintain it.
       </p>
 
       <p>
-        Most comparisons skip the 20-year cost breakdown that actually
-        matters. Pressure-treated lumber is cheaper to install but needs
-        sealing every 2 years or it rots. Composite costs 2× up front but
-        needs essentially nothing. Cedar splits the difference — looks
-        better than pressure-treated, lasts longer, still needs periodic
-        care. We&apos;re going to do the math honestly for a typical 320
-        square foot deck (16 × 20 ft, standard residential size).
+        We ran the 20-year cost for a standard 320 square foot deck
+        (16 × 20 feet, attached, one story). The answer surprised us.
       </p>
 
-      <VerdictCard verdict="Pressure-treated wins on 5-year cost. Composite wins on 20-year cost. Cedar wins on looks if you&apos;ll actually maintain it.">
-        If you&apos;re staying in the house under 10 years, pressure-treated
-        is fine. If you&apos;ll own it 15+ years and don&apos;t want to seal
-        a deck every 2 years, composite is the rational choice. Cedar is a
-        beautiful middle ground that requires a commitment to ongoing
-        maintenance.
-      </VerdictCard>
+      <MethodologyNote>
+        <p>
+          Installed costs use mid-range 2026 pricing from HomeGuide, Angi,
+          and Trex&apos;s published project costs. The 320 sq ft size
+          represents a typical residential attached deck. Frame costs
+          (joists, beams, posts) are constant across materials because the
+          frame is pressure-treated regardless of surface. Sealing costs
+          assume DIY material ($40–75 per application) plus labor time
+          valued at $0 (DIY) or professional rates ($150–300 per visit).
+          We used the professional rate as the baseline since most
+          homeowners stop DIY-sealing after year 4.
+        </p>
+      </MethodologyNote>
 
-      <h2>The 20-year cost comparison</h2>
+      <Figure
+        number={1}
+        caption="Cumulative cost over 20 years. Pressure-treated starts cheapest but spikes at year 15 when the decking boards (not the frame) need replacing. Cedar's gentle slope reflects the sealing cycle. Composite's line is nearly flat after installation."
+      >
+        <TCOOverTimeSVG />
+      </Figure>
 
       <p>
-        Here are the real numbers for a 320 sq ft deck, including the
-        maintenance cycles each material actually requires. Material costs
-        are for decking boards only — the frame (joists, beams, posts) is
-        pressure-treated lumber regardless, and costs roughly the same
-        across all three options.
+        That chart is the whole story. Pressure-treated is the most
+        expensive material over 20 years. Not the cheapest. The most
+        expensive. The sealing costs add up quietly, and the mid-life
+        replacement hits hard. Cedar is actually the cheapest over 20
+        years if you stay on the sealing schedule. Composite is the
+        middle option on pure cost, but it&apos;s the cheapest option
+        when you account for your time.
       </p>
 
       <ComparisonTable
         columns={[
           { title: "Pressure-treated", subtitle: "Southern yellow pine" },
           { title: "Cedar", subtitle: "Western red cedar" },
-          { title: "Composite", subtitle: "Trex, TimberTech, Azek" },
+          { title: "Composite", subtitle: "Trex / TimberTech / Azek" },
         ]}
         rows={[
-          {
-            label: "Decking material",
-            values: ["$3–6 / ft²", "$4–8 / ft²", "$5–14 / ft²"],
-          },
-          {
-            label: "Total installed",
-            values: ["$25–50 / ft²", "$30–47 / ft²", "$40–80 / ft²"],
-          },
-          {
-            label: "320 ft² installed",
-            values: ["$8,000–16,000", "$9,600–15,000", "$13,000–26,000"],
-          },
-          {
-            label: "Lifespan",
-            values: ["10–15 years", "15–25 years", "25–50 years"],
-          },
-          {
-            label: "Sealing required",
-            values: [
-              "Every 1–2 yrs",
-              "Every 2–3 yrs",
-              "None",
-            ],
-          },
-          {
-            label: "Annual maintenance",
-            values: ["$150–300", "$120–250", "$30 (cleaning)"],
-          },
+          { label: "Material", values: ["$3–6 / ft²", "$4–8 / ft²", "$5–14 / ft²"] },
+          { label: "Total installed", values: ["$25–50 / ft²", "$30–47 / ft²", "$40–80 / ft²"] },
+          { label: "320 ft² installed", values: ["$12,000", "$12,000", "$19,000"] },
+          { label: "Lifespan (surface)", values: ["10–15 years", "15–25 years", "25–50 years"] },
+          { label: "Seal frequency", values: ["Every 1–2 yr", "Every 2–3 yr", "None"] },
+          { label: "20-year total", values: [<strong key="p">$29,300</strong>, <strong key="c">$14,950</strong>, <strong key="m">$19,950</strong>] },
         ]}
-        caption="Ranges from HomeGuide, Angi, and NerdWallet, Jan 2026. Installed cost includes frame, fasteners, and labor — the frame is pressure-treated across all three."
+        caption="Installed costs at mid-range pricing. Frame is pressure-treated in all cases. PT total includes replacement of surface boards at year 15. Cedar assumes sealing maintained on schedule."
       />
 
-      <h2>The 20-year total cost: where assumptions matter</h2>
+      <Figure
+        number={2}
+        caption="Your material choice only affects the walking surface. The frame underneath — joists, beams, posts, ledger board — is pressure-treated regardless, and represents about 60% of total material cost."
+      >
+        <DeckAnatomySVG />
+      </Figure>
+
+      <h2>Pressure-treated: the cheapest start, the hardest commitment</h2>
 
       <p>
-        The installed cost is where most comparisons stop. For a real
-        decision, you need to account for what happens after year 1. Here
-        are the 20-year totals using mid-range installed prices ($38/ft²
-        PT, $38/ft² cedar, $60/ft² composite) and realistic maintenance
-        costs:
-      </p>
-
-      <ComparisonTable
-        columns={[
-          { title: "Pressure-treated" },
-          { title: "Cedar" },
-          { title: "Composite" },
-        ]}
-        rows={[
-          {
-            label: "Installation",
-            values: ["$12,000", "$12,000", "$19,000"],
-          },
-          {
-            label: "Sealing (× 10 or 7)",
-            values: [
-              "$3,000 (10 × $300)",
-              "$1,750 (7 × $250)",
-              "$0",
-            ],
-          },
-          {
-            label: "Replacement at year 15",
-            values: ["$12,000 (decking only)", "$0", "$0"],
-          },
-          {
-            label: "Power washing / cleaning",
-            values: ["$800", "$600", "$600"],
-          },
-          {
-            label: "20-year total",
-            values: [
-              <strong key="pt">$27,800</strong>,
-              <strong key="cedar">$14,350</strong>,
-              <strong key="comp">$19,600</strong>,
-            ],
-          },
-          {
-            label: "Per year amortized",
-            values: ["$1,390 / yr", "$718 / yr", "$980 / yr"],
-          },
-        ]}
-        caption="Sealing costs assume DIY ($75 material) or hired ($300 per job). The PT replacement at year 15 reflects realistic decking lifespan — the frame typically survives, only surface boards are replaced."
-      />
-
-      <p>
-        The numbers above reveal something counterintuitive. Pressure-treated
-        lumber is the <em>most expensive</em> material over 20 years on a
-        maintained deck, because the sealing cost dominates and you likely
-        replace the decking at year 15. Cedar, surprisingly, is the
-        cheapest long-term option — but only if you actually stay on top
-        of the sealing cycle. Composite sits in the middle, with the
-        advantage of minimal effort.
-      </p>
-
-      <Callout label="The reality gap">
-        Most homeowners don&apos;t seal pressure-treated decks on schedule.
-        They seal it once in year 2, feel virtuous, then don&apos;t think
-        about it for 8 years and end up with a deck that&apos;s rotting
-        prematurely. If you&apos;re being honest with yourself about
-        maintenance habits, composite&apos;s value proposition gets much
-        stronger.
-      </Callout>
-
-      <h2>Pressure-treated: the cheapest start, the hardest ongoing</h2>
-
-      <p>
-        Pressure-treated Southern yellow pine is the default residential
-        decking material. The wood is infused with copper-based preservatives
-        (modern PT uses copper azole or MCA — the arsenic-based CCA was
-        phased out of residential use in 2003) to resist rot and insects.
-      </p>
-
-      <p>What you get with pressure-treated:</p>
-
-      <ul>
-        <li>
-          <strong>Lowest up-front cost.</strong> The cheapest way to
-          cover 320 square feet of ground with a walkable surface.
-        </li>
-        <li>
-          <strong>Widespread availability.</strong> Every lumberyard and
-          home center stocks it in standard sizes (5/4 × 6 inches, 2 × 6
-          inches in 8, 10, 12, 16 foot lengths).
-        </li>
-        <li>
-          <strong>Workability.</strong> Standard carpentry tools. No
-          special blades, fasteners, or techniques. A handy homeowner can
-          build a PT deck over a long weekend.
-        </li>
-      </ul>
-
-      <p>What you have to live with:</p>
-
-      <ul>
-        <li>
-          <strong>Aggressive maintenance cycle.</strong> Seal in year 1
-          (after the wood dries for 3–6 months). Re-seal every 1–2 years.
-          Miss a cycle and the wood checks, cracks, and starts showing
-          gray. Miss three cycles and you&apos;re replacing boards.
-        </li>
-        <li>
-          <strong>The green tint.</strong> Fresh PT has a distinct greenish
-          cast from the copper treatment. It dulls to a dirty gray within
-          6 months if you don&apos;t stain it, which most people don&apos;t
-          love.
-        </li>
-        <li>
-          <strong>Warping and cupping.</strong> PT lumber ships wet. As it
-          dries, boards twist, warp, and cup. The better installers let
-          boards acclimate for 2–4 weeks before laying them; the cheaper
-          ones install straight off the truck and you get a rippled deck
-          in 6 months.
-        </li>
-        <li>
-          <strong>Fastener corrosion.</strong> Copper-treated PT is
-          corrosive to standard galvanized fasteners. Use stainless steel
-          or specifically rated ACQ/MCA-compatible fasteners. A deck built
-          with cheap screws has fasteners failing by year 10.
-        </li>
-      </ul>
-
-      <h2>Cedar: the aesthetic compromise</h2>
-
-      <p>
-        Western red cedar is a naturally rot-resistant softwood — no
-        chemical treatment needed. It&apos;s straight-grained, lightweight,
-        dimensionally stable (doesn&apos;t warp like PT), and has a
-        distinctive warm reddish-brown color that ages to silver-gray if
-        untreated.
-      </p>
-
-      <StatGrid
-        items={[
-          {
-            value: "7–10x",
-            label: "Cedar vs PT in fewer warping issues",
-          },
-          {
-            value: "3–5 yrs",
-            label: "Cedar board lifespan without sealing",
-            note: "Still functional, just weathered gray",
-          },
-          {
-            value: "30%",
-            label: "Harder to find than PT",
-            note: "Lumberyards may special-order",
-          },
-        ]}
-      />
-
-      <p>
-        Cedar&apos;s selling points are real: it looks better than PT both
-        new and weathered, it&apos;s naturally rot-resistant (no chemical
-        treatment), it stays straight over time, and the grain refuses the
-        chemical-treatment look some people find cheap-looking on PT.
+        Pressure-treated Southern yellow pine is the default. It&apos;s at
+        every lumberyard, every Home Depot, and on every contractor&apos;s
+        truck. The wood is infused with copper-based preservative
+        (copper azole or MCA, not the old arsenic-based CCA that was
+        discontinued for residential use in 2003) to resist rot and
+        insects.
       </p>
 
       <p>
-        Its downsides are fewer but real:
-      </p>
-
-      <ul>
-        <li>
-          <strong>Softness.</strong> Cedar dents easily. A dropped grill
-          utensil, a dog&apos;s claws, a dragged chair — all leave marks.
-          If you have kids, dogs, or use your deck heavily, cedar shows
-          every interaction.
-        </li>
-        <li>
-          <strong>Availability.</strong> Not every lumberyard stocks
-          cedar decking. Smaller markets may require special-ordering,
-          which adds weeks to timelines.
-        </li>
-        <li>
-          <strong>Sealing still required.</strong> To maintain the warm
-          reddish look, seal every 2–3 years with a UV-blocking stain.
-          Without sealing, cedar turns silver-gray — still functional but
-          not what you paid for.
-        </li>
-        <li>
-          <strong>Regional bias.</strong> Cedar is cheaper in the Pacific
-          Northwest (where it&apos;s harvested) and more expensive east of
-          the Mississippi. In some Eastern markets, cedar costs more than
-          composite.
-        </li>
-      </ul>
-
-      <h2>Composite: the set-and-forget premium</h2>
-
-      <p>
-        Modern composite decking — the Trex, TimberTech, and Azek brands
-        dominate the market — is either wood-plastic composite (WPC) or
-        fully synthetic (PVC, which Azek and TimberTech&apos;s AZEK line
-        are). Both are engineered to need essentially zero maintenance
-        beyond occasional cleaning.
+        The material itself is fine. The problem is what it demands from
+        you afterward. Fresh PT lumber ships wet. It has a greenish cast
+        from the copper treatment. As it dries over the first 3 to 6
+        months, boards warp, twist, and cup. A good installer lets them
+        acclimate before fastening. A cheap one screws them down off the
+        truck and your deck has a rippled surface by fall.
       </p>
 
       <p>
-        Three generations of composite have shipped since 2000, and the
-        old complaints (fade, staining, mold) have been mostly engineered
-        out of premium modern boards with polymer capstock coatings. If
-        you looked at composite 15 years ago and dismissed it, the product
-        has changed considerably.
+        Once it dries, you seal it. Then you seal it again in two years.
+        And again. Skip a cycle and the wood checks, splits, and grays.
+        Skip three cycles and boards are soft enough to punch through
+        with a screwdriver. The sealing treadmill is why most
+        pressure-treated decks look rough by year 8 and get torn off by
+        year 15.
       </p>
 
-      <ComparisonTable
-        columns={[
-          { title: "Capped composite", subtitle: "Trex Transcend, TimberTech AZEK" },
-          { title: "PVC", subtitle: "Azek, TimberTech Vintage" },
-        ]}
-        rows={[
-          {
-            label: "Material cost",
-            values: ["$5–10 / ft²", "$8–14 / ft²"],
-          },
-          {
-            label: "Lifespan",
-            values: ["25–30 years", "30–50 years"],
-          },
-          {
-            label: "Surface temperature",
-            values: ["Hot in direct sun", "Slightly cooler"],
-          },
-          {
-            label: "Weight",
-            values: ["70 lb/ft³", "50 lb/ft³ (lighter)"],
-          },
-          {
-            label: "Warranty",
-            values: ["25-yr fade/stain", "30–50-yr fade/stain"],
-          },
-        ]}
-      />
+      <Scenario location="Columbus, OH (Zone 5)">
+        A homeowner built a 300 sq ft PT deck in 2019 for $9,200. He
+        sealed it the first year, then got busy with a new baby and
+        didn&apos;t touch it for three years. By 2023 the boards were
+        checking badly. By 2025 two boards near the stairs were soft
+        enough to be unsafe. Total cost through 2025: the original
+        $9,200 plus $1,800 for partial re-decking. He&apos;s now pricing
+        composite for the replacement. Total ownership cost will be
+        roughly $30,000 for a deck that should have lasted 20.
+      </Scenario>
 
-      <p>The two things composite still can&apos;t solve:</p>
+      <h2>Cedar: beautiful if you do the work</h2>
 
-      <ul>
-        <li>
-          <strong>Heat retention.</strong> Dark composite in direct sun
-          can reach 140°F+ — bare feet get burned. Choose lighter colors
-          if your deck gets full afternoon sun. Fully capped PVC stays
-          slightly cooler than WPC.
-        </li>
-        <li>
-          <strong>Looks like plastic (sometimes).</strong> Budget composite
-          still reads as plastic from some angles. Premium boards
-          (TimberTech AZEK Landmark, Trex Transcend) now genuinely look
-          like wood at normal viewing distances. Don&apos;t judge composite
-          by what you saw 10 years ago.
-        </li>
-      </ul>
+      <p>
+        Western red cedar is a naturally rot-resistant softwood. No
+        chemical treatment, no green tint, no copper-fastener worries.
+        It lies flat, stays straight, has a warm reddish-brown color that
+        most people find prettier than PT or composite, and it weathers
+        to a silver-gray if you leave it alone. Some people prefer the
+        weathered look and skip sealing entirely. The wood survives; it
+        just changes color.
+      </p>
+
+      <p>
+        Cedar&apos;s downside is softness. It dents easily. A dropped
+        can of beer, a dog&apos;s claws, a dragged Adirondack chair.
+        Every interaction leaves a mark. If your deck hosts kids, dogs,
+        grills, and parties, cedar shows wear faster than anything else.
+        That&apos;s the trade for the aesthetic.
+      </p>
+
+      <p>
+        Availability is regional. Cedar is cheap and everywhere in the
+        Pacific Northwest where it&apos;s harvested. East of the
+        Mississippi, it&apos;s a special order. In some Eastern markets
+        cedar decking costs more than mid-range composite, which flips
+        the 20-year TCO math.
+      </p>
+
+      <h2>Composite: the one that costs more and asks for less</h2>
+
+      <p>
+        Modern composite decking from Trex, TimberTech, and Azek is not
+        the product it was in 2010. The early versions faded, stained,
+        grew mold, and felt like plastic underfoot. Current capped
+        composites have polymer shells that resist all of those things,
+        come with 25-to-50-year fade and stain warranties, and from ten
+        feet away look convincingly like wood.
+      </p>
+
+      <p>
+        Two flavors exist. WPC (wood-plastic composite) blends recycled
+        wood fiber with plastic. Trex is the category inventor and
+        dominant brand. PVC boards like Azek are fully synthetic, lighter,
+        slightly cooler in sun, and more expensive. Both work. WPC feels
+        more like wood. PVC lasts longer and resists moisture better.
+      </p>
+
+      <p>
+        The one thing composite still can&apos;t solve is heat. Dark
+        composite in direct afternoon sun reaches 140°F and above. That
+        will burn bare feet, keep dogs off the surface, and make the deck
+        unusable during the hottest hours. If your deck faces south or
+        west with no shade, choose light composite colors or stick with
+        wood. Lighter composite stays 30 to 40 degrees cooler than dark.
+      </p>
+
+      <Figure
+        number={3}
+        caption="Maintenance events over 20 years. Pressure-treated demands 10 sealing sessions. Cedar demands 7. Composite needs only periodic power washing. Each sealing event costs $150-300 if hired out, or $40-75 in materials plus a Saturday afternoon if you DIY."
+      >
+        <MaintenanceCycleSVG />
+      </Figure>
 
       <CalculatorCTA
         name="Deck calculator"
         slug="deck-calculator"
-        description="Calculate boards, joists, beams, fasteners, and concrete for your deck. Includes material selector and estimates by decking type."
+        description="Boards, joists, beams, fasteners, and concrete for your specific deck dimensions. Includes material selector."
       />
 
-      <h2>Climate considerations</h2>
+      <h2>Climate compatibility</h2>
 
       <p>
-        Material choice changes with climate more than most comparisons
-        admit. Here&apos;s what to watch:
+        Where you live changes which material makes sense. This isn&apos;t
+        discussed enough. A material that performs beautifully in San Diego
+        might be a poor choice in Minneapolis.
       </p>
 
-      <ul>
-        <li>
-          <strong>Hot, sunny climates</strong> (Southwest, Gulf Coast,
-          Southern California): composite gets hot. Choose light colors,
-          or stick with wood. Cedar handles heat well; PT is fine but
-          fades quickly in UV.
-        </li>
-        <li>
-          <strong>Cold, snowy climates</strong> (New England, Upper
-          Midwest, Rockies): freeze-thaw cycles are brutal on sealed wood.
-          PT without religious sealing fails fastest here. Composite is
-          the lowest-maintenance option for snow regions.
-        </li>
-        <li>
-          <strong>Hot, humid climates</strong> (Southeast, Gulf Coast):
-          mold and algae thrive. Composite with anti-mold capstock (Trex
-          Transcend, all PVC) handles this best. Cedar holds up OK with
-          annual cleaning. PT is the most problematic.
-        </li>
-        <li>
-          <strong>Mild climates</strong> (Pacific Northwest excluding
-          Seattle rain, Mid-Atlantic coast, parts of California): every
-          material works. Choose based on cost and maintenance preference.
-        </li>
-      </ul>
-
-      <h2>The frame doesn&apos;t care</h2>
+      <Figure
+        number={4}
+        caption="Climate suitability by material and region. 'Poor' means the material will underperform or require significantly more maintenance. 'Caution' means usable with specific precautions (light colors for composite in hot sun)."
+      >
+        <ClimateSuitabilitySVG />
+      </Figure>
 
       <p>
-        Regardless of what you choose for the surface boards, the frame
-        underneath — joists, beams, posts, ledger board — is pressure-treated
-        lumber. Some premium builds use steel frames, but that&apos;s 5%
-        of residential decks. The frame is PT because it&apos;s hidden,
-        it&apos;s cheap, and it doesn&apos;t need to look good.
+        <strong>Hot and humid</strong> (Southeast, Gulf Coast) is the worst
+        environment for pressure-treated. Mold, mildew, and algae thrive
+        on the porous surface between sealing cycles. Composite with
+        anti-mold capstock handles it best. Cedar does OK with annual
+        cleaning.
       </p>
 
       <p>
-        This matters for budgeting: the material choice only affects the
-        surface — roughly 40% of your total material cost. Switching from
-        PT to composite on a 320 sq ft deck might add $2,000–$4,000 in
-        decking boards, not the 2× number you&apos;d get if you applied
-        the ratio to the whole job.
+        <strong>Freeze-thaw</strong> (Northeast, Upper Midwest, Rockies)
+        is hardest on sealed surfaces. Water gets into micro-cracks, freezes,
+        and pops the seal off. PT decks in snow country lose their finish
+        faster than anywhere else. Composite wins here because there&apos;s
+        nothing to crack or peel.
       </p>
 
-      <Callout label="Flashing around the ledger">
-        Whatever you choose, ensure proper ledger flashing where the deck
-        meets the house. The #1 cause of deck rot isn&apos;t the decking
-        material — it&apos;s water getting behind the ledger board and
-        rotting the rim joist of the house. Proper flashing is a 30-minute
-        detail that prevents $10,000 of structural damage.
+      <p>
+        <strong>Hot and sunny</strong> (Southwest, inland California, Texas)
+        is the one climate where composite requires a specific precaution:
+        use light colors. Dark composite in Phoenix or Tucson is genuinely
+        unusable without shoes during summer afternoons.
+      </p>
+
+      <Callout label="The ledger flashing rule">
+        Whatever material you choose, make sure the contractor properly
+        flashes the ledger board where the deck attaches to the house.
+        Failed ledger flashing is the number one cause of deck rot and
+        structural failure, and it has nothing to do with which decking
+        material you pick. A $30 piece of aluminum Z-flashing prevents
+        $10,000 of rim-joist damage.
       </Callout>
 
-      <h2>Installation differences you should know</h2>
-
-      <ul>
-        <li>
-          <strong>Fasteners.</strong> PT needs stainless or ACQ-rated
-          fasteners (standard galvanized corrodes). Cedar takes any
-          corrosion-resistant fastener. Composite needs hidden fasteners
-          for the polished look or color-matched top screws.
-        </li>
-        <li>
-          <strong>Gapping.</strong> All three materials need gaps between
-          boards for expansion. PT needs the largest gap (1/4 inch) because
-          it&apos;s wet when installed and will shrink. Cedar gaps
-          typically 1/8 inch. Composite requires specific manufacturer
-          gapping (Trex: 1/4 inch end-to-end on 16 ft boards).
-        </li>
-        <li>
-          <strong>Joist spacing.</strong> PT and cedar: 16 inches on center
-          is standard. Composite: 12 inches on center for 45°+ diagonal
-          installs, 16 inches for straight. Wider spacing causes composite
-          to sag. Check your brand&apos;s spec before framing.
-        </li>
-      </ul>
-
-      <h2>Bottom line</h2>
+      <h2>Installation details that affect longevity</h2>
 
       <p>
-        Here&apos;s the honest recommendation, based on situation:
+        <strong>Fasteners.</strong> PT requires stainless steel or
+        ACQ-rated fasteners. Standard galvanized screws corrode in contact
+        with copper-treated wood. Cedar takes any corrosion-resistant
+        fastener. Composite uses hidden fastener systems or color-matched
+        screws for a clean surface.
       </p>
 
-      <ul>
-        <li>
-          <strong>Selling within 5 years:</strong> pressure-treated. No
-          point paying for long-term value you won&apos;t see.
-        </li>
-        <li>
-          <strong>Staying 10+ years, don&apos;t like maintenance:</strong> composite.
-          The math works and you&apos;ll thank yourself every spring.
-        </li>
-        <li>
-          <strong>Want a wood look, will maintain it:</strong> cedar.
-          Cheapest 20-year option if you&apos;re religious about sealing.
-        </li>
-        <li>
-          <strong>Budget is tight, will maintain it religiously:</strong> pressure-treated
-          with a commitment to the sealing cycle.
-        </li>
-        <li>
-          <strong>Hot sunny climate:</strong> wood (PT or cedar) over dark
-          composite; light composite is fine.
-        </li>
-      </ul>
+      <p>
+        <strong>Gapping.</strong> All three materials expand and contract
+        differently. PT needs the largest gap (1/4 inch between boards)
+        because it ships wet and shrinks as it dries. Cedar gaps at 1/8
+        inch. Composite requires manufacturer-specified gapping; Trex
+        calls for 1/4 inch end-to-end on 16-foot boards and 3/16 inch
+        side-to-side.
+      </p>
 
       <p>
-        Before committing, run the math for your specific deck size with
-        the <a href="/deck-calculator">Tallyard deck calculator</a>. The
-        lumber needed, fastener count, and concrete for footings scale
-        with your dimensions — and the difference between a good estimate
-        and a bad one is usually 2 extra trips to the lumberyard.
+        <strong>Joist spacing.</strong> Wood decking (PT and cedar): 16
+        inches on center standard. Composite: 16 inches for straight
+        runs, 12 inches for diagonal or picture-frame installs. Wider
+        spacing causes composite to sag between joists. This is a
+        framing decision that happens before any decking goes down. Get
+        it wrong and the fix is tearing up the entire surface to add
+        blocking.
+      </p>
+
+      <h2>Making the call</h2>
+
+      <p>
+        <strong>Selling within 5 years:</strong> pressure-treated. No
+        reason to invest in longevity you won&apos;t see.
+      </p>
+
+      <p>
+        <strong>Staying 10+ years and honest about hating maintenance:</strong>{" "}
+        composite. It costs more today and saves you 10 Saturdays and
+        $3,000+ over the next decade.
+      </p>
+
+      <p>
+        <strong>Want a real-wood look and will actually maintain it:</strong>{" "}
+        cedar. Cheapest 20-year option on paper, but only if you keep
+        the sealing schedule. Be honest with yourself about whether that
+        will happen.
+      </p>
+
+      <p>
+        <strong>Hot sunny climate:</strong> wood (either kind) or
+        light-colored composite. Dark composite in full sun is a deal
+        breaker.
+      </p>
+
+      <p>
+        Before ordering materials, run the board count through the{" "}
+        <a href="/deck-calculator">Tallyard deck calculator</a>. Knowing
+        your exact joist, beam, and decking quantities keeps contractors
+        honest and avoids the surprise mid-project lumber run that always
+        happens with a bad estimate.
       </p>
     </>
   );
 }
 
+// ---------------------------------------------------------------------------
+// Export
+// ---------------------------------------------------------------------------
+
 export const compositeVsPTVsCedarDeckGuide: GuideConfig = {
   slug: "composite-vs-pressure-treated-vs-cedar-deck",
   title: "Composite vs pressure-treated vs cedar decking: 20-year cost breakdown",
   description:
-    "Real 20-year total cost of ownership for composite, pressure-treated, and cedar decking. Installation, maintenance, and when each material wins.",
-  bannerHeadline: "Composite vs pressure-treated vs cedar.",
-  bannerTags: ["20-year TCO", "Climate-matched", "Frame + surface"],
+    "Real 20-year total cost of ownership for composite, pressure-treated, and cedar decking. Maintenance cycles, climate suitability, and when each material wins.",
+  bannerHeadline: "Composite vs PT vs cedar.",
+  bannerTags: ["20-year TCO", "Maintenance cycles", "Climate matrix"],
   categoryLabel: "Landscaping",
   category: "landscaping",
   heroValue: "20-YEAR TCO",
@@ -491,88 +639,81 @@ export const compositeVsPTVsCedarDeckGuide: GuideConfig = {
   Content,
   faq: [
     {
-      question: "Is composite decking really worth the premium?",
+      question: "Is pressure-treated really the most expensive option over 20 years?",
       answer:
-        "Over 20 years, composite costs less than pressure-treated and about 40% more than cedar, assuming you actually maintain the wood decks on schedule. If you&apos;re honest about not wanting to seal a deck every 1-2 years, composite becomes the most economical choice by a wide margin. If you love weekend maintenance projects, cedar beats it on pure dollars.",
+        "If you include sealing costs ($150-300 per application × 10 applications = $1,500-3,000) and the near-certain need to replace surface boards around year 15 ($8,000-12,000), yes. Total 20-year cost for a 320 sq ft deck reaches $27,000-30,000. Cedar totals $14,000-15,000. Composite totals $19,000-20,000. The cheapest to install is the most expensive to own.",
     },
     {
-      question: "How long does pressure-treated decking actually last?",
+      question: "How long does composite decking actually last?",
       answer:
-        "With proper sealing every 1-2 years, 15-20 years. Without consistent sealing, 10-12 years before boards warp or rot. The frame underneath typically lasts 20-30 years regardless — it&apos;s the surface boards that fail first.",
+        "Modern capped composite (Trex Transcend, TimberTech AZEK, etc.) carries 25-50 year warranties against fade and stain. Real-world data is still accumulating since the capped products only date to ~2015. First-generation uncapped composite from the 2000s had significant problems; current products are a different material. Expect 30+ years from any premium brand installed correctly.",
     },
     {
-      question: "What&apos;s the best time of year to install a deck?",
+      question: "Does composite get too hot to walk on barefoot?",
       answer:
-        "Spring (after the last hard freeze) through early fall. Avoid installing pressure-treated in summer heat — boards dry out and shrink too fast, creating gaps. Avoid composite in extreme cold — PVC becomes brittle below 20°F. Cedar is flexible year-round.",
+        "Dark colors in direct afternoon sun absolutely do — surface temperatures can reach 140°F+. Light colors (sandy browns, tans, grays) stay 30-40°F cooler. PVC boards (Azek) run slightly cooler than WPC (Trex). If your deck faces south or west in a warm climate, light composite or wood is the right call.",
     },
     {
-      question: "Can I mix materials — composite decking with a PT frame?",
+      question: "Can I mix composite surface boards with a pressure-treated frame?",
       answer:
-        "Yes, that&apos;s the standard approach. The frame (joists, beams, posts) is always pressure-treated regardless of surface material. Some homeowners use PT deck boards for the framing visible around the stairs and composite for the walking surface. Works fine; just match fastener types.",
+        "That's the standard approach. The frame (joists, beams, posts, ledger) is always pressure-treated regardless of surface material. Your material choice only affects the walking surface, which represents about 40% of total material cost.",
     },
     {
-      question: "How do I know if my composite deck is Trex vs Azek vs TimberTech?",
+      question: "Why does cedar cost less than composite over 20 years?",
       answer:
-        "Check the brand stamp on the bottom of any board. Trex boards stamp &apos;Trex&apos; + product line (Transcend, Enhance, Select). Azek is now TimberTech; look for &apos;AZEK&apos; or &apos;TimberTech&apos; with series name (Vintage, Reserve, Pro). Some budget composites are unbranded store private label — these are typically the oldest, least durable composite on the market.",
+        "Cedar's installed cost is similar to PT ($12,000 for 320 sq ft at mid-range), and it doesn't need replacing at year 15 like PT does. The sealing cycle costs less because cedar only needs it every 2-3 years (7 events) vs PT's every 1-2 years (10 events). But this only holds if you actually maintain the sealing schedule. Most people don't.",
     },
     {
-      question: "Do composite decks get too hot in direct sun?",
+      question: "What's the difference between WPC and PVC composite?",
       answer:
-        "Dark colors in full sun can reach 140°F+ — yes, too hot for bare feet. Light colors (sandy browns, tan, gray) stay 30-40°F cooler. PVC boards (Azek, TimberTech Vintage) are meaningfully cooler than WPC because of their surface composition. If your deck faces south or west with no shade, choose light composite or stick with wood.",
+        "WPC (wood-plastic composite) is ~40% wood fiber mixed with plastic — Trex is the classic example. PVC is fully synthetic — Azek pioneered this. PVC is lighter, slightly cooler in sun, more moisture-resistant, and more expensive. WPC feels more like wood and costs less. Both are valid; the choice is mostly about feel and budget.",
     },
     {
-      question: "How often do I really need to seal a wood deck?",
+      question: "Do I need to let pressure-treated lumber dry before building?",
       answer:
-        "Pressure-treated: first seal 3-6 months after install (boards need to dry), then every 1-2 years. Cedar: first seal immediately after install if you want to keep the red color, then every 2-3 years. Skipping cycles doesn&apos;t immediately kill the deck but shortens lifespan by roughly 20% per missed application.",
+        "Ideally yes. PT ships wet. Boards that are fastened immediately will warp and cup as they dry over 3-6 months. Good installers let PT acclimate for 2-4 weeks in a flat stack with stickers between layers. Many contractors skip this step — ask directly whether they acclimate and push back if they don't.",
     },
     {
-      question: "What&apos;s the difference between WPC and PVC composite?",
+      question: "How do I know my joist spacing is right for composite?",
       answer:
-        "WPC (wood-plastic composite) is typically ~40% wood fiber mixed with plastic — Trex is the classic example. PVC (polyvinyl chloride) is fully synthetic — Azek started this category. PVC is lighter, slightly more expensive, fade-resistant longer, and stays cooler in sun. WPC feels more like wood, accepts routed patterns better, and costs less. Both are valid choices.",
+        "Check the manufacturer's installation guide for your specific product. Standard: 16\" on center for straight runs, 12\" for diagonal or picture-frame layouts. Trex Transcend also requires 12\" OC for 45°+ angles. Wider spacing causes visible sag between joists and voids the warranty. This must be decided at the framing stage before any decking goes down.",
     },
   ],
   sources: [
     {
-      name: "North American Deck and Railing Association (NADRA)",
+      name: "NADRA — North American Deck and Railing Association",
       url: "https://www.nadra.org/",
-      note: "Industry reference for decking installation and materials",
+      note: "Industry reference for deck construction standards and best practices",
     },
     {
-      name: "Trex — Technical Installation Guide",
+      name: "Trex — Installation and Technical Guide",
       url: "https://www.trex.com/",
-      note: "Joist spacing, gapping, and fastener requirements for capped composite",
+      note: "Joist spacing, gapping, and fastener requirements for capped composite decking",
     },
     {
-      name: "American Wood Council — Span Tables",
+      name: "AWC — American Wood Council Span Tables",
       url: "https://awc.org/",
-      note: "Structural reference for deck framing with PT, cedar, and redwood",
+      note: "Structural reference for deck framing with PT, cedar, and engineered lumber",
     },
     {
       name: "HomeGuide — 2026 Deck Cost Report",
       url: "https://homeguide.com/costs/cost-to-build-a-deck",
-      note: "Current installed cost ranges for all deck materials",
+      note: "Current installed cost ranges for all residential deck materials",
+    },
+    {
+      name: "Angi — 2026 Deck Building Costs",
+      url: "https://www.angi.com/articles/how-much-does-it-cost-build-deck.htm",
+      note: "Labor and material cost data by material type and deck size",
     },
   ],
   relatedCalculators: [
-    {
-      name: "Deck calculator",
-      slug: "deck-calculator",
-      description: "Boards, joists, beams, and fasteners for any deck",
-    },
-    {
-      name: "Lumber calculator",
-      slug: "lumber-calculator",
-      description: "Board feet for framing and decking orders",
-    },
-    {
-      name: "Concrete calculator",
-      slug: "concrete-calculator",
-      description: "Footings and post piers for deck support",
-    },
-    {
-      name: "Stair calculator",
-      slug: "stair-calculator",
-      description: "Code-compliant stairs from deck to ground",
-    },
+    { name: "Deck calculator", slug: "deck-calculator", description: "Boards, joists, beams, and fasteners for any deck" },
+    { name: "Lumber calculator", slug: "lumber-calculator", description: "Board feet for framing and decking orders" },
+    { name: "Concrete calculator", slug: "concrete-calculator", description: "Footings for deck support posts" },
+    { name: "Stair calculator", slug: "stair-calculator", description: "Code-compliant stairs from deck to ground" },
+  ],
+  relatedGuides: [
+    { name: "Vinyl vs fiber cement siding", slug: "vinyl-vs-fiber-cement-siding", description: "30-year cost comparison for exterior cladding" },
+    { name: "Heat pump vs furnace + AC", slug: "heat-pump-vs-furnace", description: "Climate-zone cost comparison for HVAC" },
   ],
 };

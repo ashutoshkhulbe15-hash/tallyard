@@ -1302,4 +1302,8 @@ export const heatPumpVsFurnaceGuide: GuideConfig = {
       description: "Consider a heat pump water heater too",
     },
   ],
+  relatedGuides: [
+    { name: "Vinyl vs fiber cement siding", slug: "vinyl-vs-fiber-cement-siding", description: "30-year cost comparison for exterior cladding" },
+    { name: "Composite vs PT vs cedar decking", slug: "composite-vs-pressure-treated-vs-cedar-deck", description: "20-year cost breakdown for decking materials" },
+  ],
 };
