@@ -1,3 +1,4 @@
+import { MulchCalculatorExpansion } from "@/content/mulch-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, roundUp, formatNumber } from "@/lib/format";
 
@@ -133,6 +134,8 @@ export const mulchCalculatorConfig: CalculatorConfig = {
       ],
     };
   },
+
+  ContentExpansion: MulchCalculatorExpansion,
 
   formulaDescription:
     "volume = area × depth, converted to cubic yards or meters (or bags)",

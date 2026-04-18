@@ -1,3 +1,4 @@
+import { FenceCalculatorExpansion } from "@/content/fence-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, roundUp, formatNumber } from "@/lib/format";
 
@@ -148,6 +149,8 @@ export const fenceCalculatorConfig: CalculatorConfig = {
         : undefined,
     };
   },
+
+  ContentExpansion: FenceCalculatorExpansion,
 
   formulaDescription:
     "posts = ⌈length ÷ spacing⌉ + 1 + gates × 2 + corners, pickets = length × 12 ÷ picket width",

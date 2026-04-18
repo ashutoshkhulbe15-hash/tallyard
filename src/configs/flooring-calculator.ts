@@ -1,3 +1,4 @@
+import { FlooringCalculatorExpansion } from "@/content/flooring-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, roundUp, formatNumber } from "@/lib/format";
 
@@ -142,6 +143,8 @@ export const flooringCalculatorConfig: CalculatorConfig = {
       },
     };
   },
+
+  ContentExpansion: FlooringCalculatorExpansion,
 
   formulaDescription:
     "boxes = ⌈(area × (1 + waste)) ÷ sq ft per box⌉",

@@ -1,3 +1,4 @@
+import { TileCalculatorExpansion } from "@/content/tile-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, roundUp, formatNumber } from "@/lib/format";
 
@@ -136,6 +137,8 @@ export const tileCalculatorConfig: CalculatorConfig = {
       },
     };
   },
+
+  ContentExpansion: TileCalculatorExpansion,
 
   formulaDescription:
     "tiles = ⌈(area ÷ tile size) × (1 + waste)⌉, boxes = ⌈tiles ÷ per box⌉",

@@ -1,3 +1,4 @@
+import { BTUCalculatorExpansion } from "@/content/btu-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, roundUp, formatNumber } from "@/lib/format";
 
@@ -170,6 +171,8 @@ export const btuCalculatorConfig: CalculatorConfig = {
       },
     };
   },
+
+  ContentExpansion: BTUCalculatorExpansion,
 
   formulaDescription:
     "BTU = area × 20 × height × climate × sun + occupancy adjustment",

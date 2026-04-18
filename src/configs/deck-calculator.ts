@@ -1,3 +1,4 @@
+import { DeckCalculatorExpansion } from "@/content/deck-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, roundUp, formatNumber } from "@/lib/format";
 
@@ -147,6 +148,8 @@ export const deckCalculatorConfig: CalculatorConfig = {
       ],
     };
   },
+
+  ContentExpansion: DeckCalculatorExpansion,
 
   formulaDescription:
     "boards = ⌈area ÷ board coverage × 1.1 ÷ 16⌉; joists = ⌈length ÷ spacing⌉ + 1",

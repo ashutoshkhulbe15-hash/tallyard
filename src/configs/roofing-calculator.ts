@@ -1,3 +1,4 @@
+import { RoofingCalculatorExpansion } from "@/content/roofing-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, roundUp, formatNumber } from "@/lib/format";
 
@@ -143,6 +144,8 @@ export const roofingCalculatorConfig: CalculatorConfig = {
       },
     };
   },
+
+  ContentExpansion: RoofingCalculatorExpansion,
 
   formulaDescription:
     "bundles = ⌈(footprint × slope × (1 + waste)) ÷ square size × 3⌉ + ridge caps",

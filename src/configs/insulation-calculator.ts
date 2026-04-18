@@ -1,3 +1,4 @@
+import { InsulationCalculatorExpansion } from "@/content/insulation-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, roundUp, formatNumber } from "@/lib/format";
 
@@ -164,6 +165,8 @@ export const insulationCalculatorConfig: CalculatorConfig = {
       ].filter(Boolean) as string[],
     };
   },
+
+  ContentExpansion: InsulationCalculatorExpansion,
 
   formulaDescription:
     "bags = ⌈(area × (1 + waste)) ÷ bag coverage⌉ at R-value for climate zone",

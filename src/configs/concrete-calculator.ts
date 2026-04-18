@@ -1,3 +1,4 @@
+import { ConcreteCalculatorExpansion } from "@/content/concrete-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, roundUp, formatNumber } from "@/lib/format";
 
@@ -134,6 +135,8 @@ export const concreteCalculatorConfig: CalculatorConfig = {
       },
     };
   },
+
+  ContentExpansion: ConcreteCalculatorExpansion,
 
   formulaDescription:
     "volume = area × thickness × (1 + waste), converted to cubic yards or meters",
