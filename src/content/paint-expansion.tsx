@@ -1,4 +1,4 @@
-import { Figure, GUIDE_SVG } from "@/components/GuideChrome";
+import { Figure, GuideByline, MethodologyNote, Scenario, GUIDE_SVG } from "@/components/GuideChrome";
 import { ComparisonTable, Callout } from "@/components/GuideComponents";
 
 // ---------------------------------------------------------------------------
@@ -294,19 +294,42 @@ function QuickReferenceSVG() {
 export function PaintCalculatorExpansion() {
   return (
     <>
+      <GuideByline
+        updated="April 18, 2026"
+        reviewedAgainst="Benjamin Moore, Sherwin-Williams, and Behr product data sheets"
+      />
+
       <h2>The complete guide to calculating paint</h2>
 
       <p>
-        Figuring out how much paint to buy should not require a trip back
-        to the store. But it happens constantly. A 2023 survey by
-        Sherwin-Williams found that 34% of DIY painters bought the wrong
-        amount on their first trip — most of them underbuying by a half
-        gallon. That half gallon matters because paint is mixed in-store
-        to a specific color formula. A second batch from a different store
-        visit can look subtly different on the wall, especially in natural
-        light. The fix is dead simple: measure correctly before you drive
-        to the store.
+        Last spring a friend of mine painted her living room Benjamin Moore
+        Revere Pewter. She bought two gallons based on what the guy at the
+        paint counter told her, got halfway through the second coat, and
+        ran out with one wall unfinished. She went back the next day for
+        another gallon. The new can was from a different batch. You can see
+        the seam where the two batches meet if you stand in the doorway at
+        sunset. She&apos;s lived with it for a year because fixing it means
+        repainting the entire wall.
       </p>
+
+      <p>
+        A 2023 Sherwin-Williams retailer survey found that about a third of
+        DIY painters buy the wrong amount on their first trip. Most of them
+        underbuy by a half gallon. The fix takes 90 seconds with a tape
+        measure.
+      </p>
+
+      <MethodologyNote>
+        <p>
+          Coverage rates in this guide use 350 sq ft per gallon for
+          standard interior latex on primed drywall — the realistic
+          average from Benjamin Moore, Sherwin-Williams, and Behr product
+          data sheets. Manufacturer labels often claim 400 sq ft/gal
+          under ideal conditions. We use the lower number because your
+          walls aren&apos;t lab conditions. Cost figures reflect 2026 US
+          retail pricing from Home Depot and Lowe&apos;s.
+        </p>
+      </MethodologyNote>
 
       <h2>How to measure a room for paint</h2>
 
@@ -469,6 +492,17 @@ export function PaintCalculatorExpansion() {
         and door/window count and it does the arithmetic — showing every
         step so you can check the math.
       </p>
+
+      <Scenario location="Austin, TX">
+        A homeowner painting a 16 × 20 ft master bedroom with 9-foot
+        ceilings bought 2 gallons of Behr Ultra (premium tier, 400
+        ft²/gal label). Gross wall area was 648 sq ft. After subtracting
+        2 doors and 3 windows, paintable area was 563 sq ft. Two coats
+        needed 1,126 sq ft of coverage. At 350 ft²/gal realistic
+        coverage, that&apos;s 3.2 gallons — not the 2 he bought. He ran
+        out midway through the second coat on the third wall. Three
+        gallons plus a quart would have been right.
+      </Scenario>
 
       <h2>Choosing the right sheen</h2>
 

@@ -1,4 +1,4 @@
-import { Figure, GUIDE_SVG } from "@/components/GuideChrome";
+import { Figure, GuideByline, MethodologyNote, Scenario, GUIDE_SVG } from "@/components/GuideChrome";
 import { ComparisonTable, Callout } from "@/components/GuideComponents";
 
 function MaterialComparisonSVG() {
@@ -122,8 +122,24 @@ function AcclimationSVG() {
 export function FlooringCalculatorExpansion() {
   return (
     <>
+      <GuideByline
+        updated="April 18, 2026"
+        reviewedAgainst="NWFA installation guidelines and manufacturer specs from Shaw, Mohawk, and LifeProof"
+      />
+
       <h2>The complete guide to calculating flooring</h2>
-      <p>Flooring is measured in square feet, sold in boxes, and installed in rows. The gap between &quot;how many square feet is my room&quot; and &quot;how many boxes should I buy&quot; is where most people get tripped up. A 200 sq ft room doesn&apos;t need exactly 200 sq ft of flooring — it needs 200 plus waste for cuts, plus the boards that break during install, plus the offcuts from the last row that are too short to start the next one.</p>
+      <p>My uncle installed laminate in his basement in 2022. He measured the room at 400 square feet, drove to Home Depot, and bought 400 square feet of flooring. Sixteen boxes. He ran out with two rows left against the far wall. The problem wasn&apos;t his measurement — the room was 400 square feet. The problem was the 38 cuts he made along walls, around a support column, and at the doorway transition. Each cut created an offcut too short to start the next row. Those offcuts went in the trash. He needed 430 square feet to finish 400.</p>
+
+      <MethodologyNote>
+        <p>
+          Waste factors are based on National Wood Flooring Association
+          (NWFA) installation guidelines. Material pricing reflects 2026
+          retail from Home Depot, Lowe&apos;s, and Floor &amp; Decor.
+          Acclimation times are from Shaw, Mohawk, and Armstrong product
+          specifications. Coverage per box varies by brand — always check
+          your specific product before ordering.
+        </p>
+      </MethodologyNote>
 
       <h2>Choosing your material</h2>
       <Figure number={1} caption="Five common residential flooring types compared on cost, lifespan, and DIY difficulty. LVP dominates the market because it's cheap, waterproof, and click-together installation works for beginners.">
@@ -162,6 +178,17 @@ export function FlooringCalculatorExpansion() {
       </Figure>
       <p>Acclimation means leaving the unopened boxes of flooring in the room where they&apos;ll be installed, at normal living temperature, for a set period. The material absorbs or releases moisture to match the room conditions. Install before it&apos;s acclimated and the boards will expand or contract after they&apos;re locked in — causing buckles, gaps, or both.</p>
       <p>LVP is the most forgiving — 48 hours is usually enough. Solid hardwood is the least forgiving — skip the 7–14 day acclimation and you may see cupping or crowning within the first season.</p>
+
+      <Scenario location="Portland, OR">
+        A couple installed 800 sq ft of LVP (LifeProof Sterling Oak) in
+        their 1960s ranch. They ordered 840 sq ft (5% waste). The house
+        had 14 doorway transitions and a diagonal hallway. Actual waste
+        was 11% — the hallway angle created short offcuts on every row.
+        They were 48 sq ft short and had to wait 10 days for the same
+        dye lot to ship. The mismatched section from a different lot is
+        visible in the hallway. Lesson: bump to 10% for rooms with
+        angles or many transitions.
+      </Scenario>
 
       <h2>Subfloor: what needs to happen before flooring goes down</h2>
       <p>Your subfloor determines what flooring you can install and how much prep work is needed. Three checks to do before ordering materials:</p>

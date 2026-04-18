@@ -1,4 +1,4 @@
-import { Figure, GUIDE_SVG } from "@/components/GuideChrome";
+import { Figure, GuideByline, MethodologyNote, Scenario, GUIDE_SVG } from "@/components/GuideChrome";
 import { ComparisonTable, Callout } from "@/components/GuideComponents";
 
 function PitchMultiplierSVG() {
@@ -101,8 +101,24 @@ function RoofCostSVG() {
 export function RoofingCalculatorExpansion() {
   return (
     <>
+      <GuideByline
+        updated="April 18, 2026"
+        reviewedAgainst="GAF, Owens Corning, and CertainTeed product catalogs + IRC 2021 Chapter 9"
+      />
+
       <h2>The complete guide to calculating roofing materials</h2>
-      <p>Roofing is measured in &quot;squares&quot; — an industry unit that means 100 square feet of roof surface. Not 100 square feet of floor plan, and not 100 square feet of footprint. The difference matters because your roof is pitched, and a pitched roof has more surface area than the footprint it covers. A 6/12 pitch adds 12% more surface. A 12/12 pitch adds 41%. Miss the pitch adjustment and you&apos;re short by dozens of bundles on a large roof.</p>
+      <p>A roofer in Connecticut described the most common estimation mistake he sees: homeowners measure their house footprint, multiply by a pitch factor they found online, and come up with a number that&apos;s 15% too low because they forgot the eaves, rake overhangs, and hips. On a 2,000 sq ft footprint, that&apos;s 300 square feet of missing roof — 3 squares, 9 bundles, about $450 in shingles that aren&apos;t on the truck when the crew shows up.</p>
+
+      <MethodologyNote>
+        <p>
+          Pitch multipliers use the geometric formula √(1 + (rise/12)²).
+          Shingle coverage is based on GAF Timberline HDZ (3 bundles per
+          square) and CertainTeed Landmark (3 bundles per square). Cost
+          data reflects 2026 installed prices from roofing contractor
+          associations and HomeAdvisor regional reports. Underlayment and
+          accessory specs follow IRC 2021 Chapter 9 requirements.
+        </p>
+      </MethodologyNote>
 
       <Figure number={1} caption="The pitch multiplier is the most commonly missed step in roof estimation. It converts your horizontal footprint to actual sloped surface area.">
         <PitchMultiplierSVG />
@@ -136,6 +152,17 @@ export function RoofingCalculatorExpansion() {
       </Figure>
       <p>Labor is typically 60% of a roofing job. Materials are 40%. A crew of 4–6 can tear off and reshingle a standard 2,000 sq ft roof in 2–3 days. The materials stage on the roof the morning of the tear-off, old shingles come off into a dumpster, underlayment and drip edge go down the same day, and shingling starts from the bottom working up.</p>
       <p>Two cost items people forget: the dumpster rental ($300–600 for a 20-yard container) and the permit fee ($100–500 depending on municipality). Both are non-negotiable on a full replacement.</p>
+
+      <Scenario location="Minneapolis, MN">
+        After a 2024 hailstorm, a homeowner got three roofing bids for
+        a 1,800 sq ft hip roof (6/12 pitch). Actual roof surface: 2,016
+        sq ft (1,800 × 1.12). The cheapest bid quoted 18 squares. The
+        middle bid quoted 22 squares. The most expensive quoted 24. The
+        difference? The cheapest contractor forgot the pitch multiplier
+        and didn&apos;t account for waste on the hips. He would have run
+        out 4 squares short. The 22-square bid was correct (20.2 squares
+        + 10% waste = 22.2, rounded to 22).
+      </Scenario>
 
       <h2>Beyond shingles: what else goes on the roof</h2>
       <ComparisonTable

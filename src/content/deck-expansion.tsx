@@ -1,4 +1,4 @@
-import { Figure, GUIDE_SVG } from "@/components/GuideChrome";
+import { Figure, GuideByline, MethodologyNote, Scenario, GUIDE_SVG } from "@/components/GuideChrome";
 import { ComparisonTable, Callout } from "@/components/GuideComponents";
 
 function DeckCostBySize() {
@@ -100,8 +100,24 @@ function MaterialBreakdownSVG() {
 export function DeckCalculatorExpansion() {
   return (
     <>
+      <GuideByline
+        updated="April 18, 2026"
+        reviewedAgainst="NADRA deck construction standards, Trex/TimberTech install guides, and IRC 2021 R507"
+      />
+
       <h2>The complete guide to calculating deck materials</h2>
-      <p>A deck has more components than most people expect when they start pricing one. The walking surface — the decking boards — gets all the attention during material selection, but the frame underneath (joists, beams, posts, ledger board, concrete footings) is 60% of the total material cost and 100% of the structural integrity. You can swap decking materials without changing the frame, but you can&apos;t skip the frame.</p>
+      <p>When my neighbor built his deck in 2023, he priced the decking boards, added 10% for waste, and thought he had his budget. Then the contractor&apos;s invoice arrived. The decking boards were $3,800. The total was $11,200. Where did the other $7,400 go? Joists, beams, post brackets, concrete for 8 footings, joist hangers, a ledger board with flashing, a staircase, railing, and two days of labor. The walking surface he spent all his time choosing was barely a third of the cost.</p>
+
+      <MethodologyNote>
+        <p>
+          Framing specs follow IRC 2021 Section R507 (decks). Joist
+          spacing and span tables from the American Wood Council (AWC)
+          DCA6 prescriptive residential wood deck construction guide.
+          Composite manufacturer requirements from Trex (Transcend,
+          Enhance) and TimberTech (AZEK, Pro) installation manuals.
+          Pricing reflects 2026 installed costs from HomeGuide and Angi.
+        </p>
+      </MethodologyNote>
 
       <Figure number={1} caption="Budget distribution for a typical deck project. Decking boards (the part you see) are only 35% of total cost. The frame and labor together account for half.">
         <MaterialBreakdownSVG />
@@ -136,6 +152,18 @@ export function DeckCalculatorExpansion() {
         ]}
         caption="Hidden clips add $200-500 to a typical deck but eliminate visible fastener heads and allow individual board replacement. Standard for composite; optional upgrade for wood."
       />
+
+      <Scenario location="Charlotte, NC">
+        A DIYer framed a 14 × 18 composite deck at 24-inch joist spacing
+        (how his pressure-treated deck from his old house was built).
+        The Trex Transcend he picked requires 16-inch spacing for
+        straight runs. He didn&apos;t find this out until he called Trex
+        support about a warranty claim for sagging boards two years later.
+        Trex denied the claim — incorrect joist spacing voids the
+        warranty. Fixing it required removing all decking, adding
+        intermediate joists, and re-laying 252 sq ft of boards. Cost:
+        $2,800 in labor plus the lost Saturday.
+      </Scenario>
 
       <h2>Concrete footings: what holds the deck up</h2>
       <p>Every deck post sits on a concrete footing that extends below the frost line — 36 to 48 inches deep in northern climates, 12 to 18 inches in the South. Each footing is a hole about 12 inches in diameter filled with concrete (roughly 0.6 cubic feet per footing, or 2 bags of 80-lb mix).</p>

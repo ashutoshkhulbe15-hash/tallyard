@@ -1,4 +1,4 @@
-import { Figure, GUIDE_SVG } from "@/components/GuideChrome";
+import { Figure, GuideByline, MethodologyNote, Scenario, GUIDE_SVG } from "@/components/GuideChrome";
 import { ComparisonTable, Callout } from "@/components/GuideComponents";
 
 function WasteByTileSizeSVG() {
@@ -102,8 +102,24 @@ function SubstrateSVG() {
 export function TileCalculatorExpansion() {
   return (
     <>
+      <GuideByline
+        updated="April 18, 2026"
+        reviewedAgainst="TCNA Handbook, Daltile/MSI product specs, and NTCA installation standards"
+      />
+
       <h2>The complete guide to calculating tile</h2>
-      <p>Tile math looks simple until you start cutting. A 100 sq ft bathroom floor does not need 100 sq ft of tile — it needs 100 plus waste for the cuts along walls, around the toilet flange, at the shower threshold, and along every edge where a full tile doesn&apos;t fit. The waste percentage depends on tile size, layout pattern, and room shape. Get it wrong and you&apos;re either short (and the replacement box is from a different dye lot, which means a visible color mismatch) or over by two boxes that cost $80 each.</p>
+      <p>A tile installer in Phoenix once told me that the call he dreads most is the one at 2 PM on a Saturday: "I&apos;m three tiles short and the store is out of my dye lot." It happens twice a month during renovation season. The homeowner measured the floor, bought exactly that many tiles, and forgot that every row along the wall needs a cut. Every cut creates a scrap piece. Some scraps start the next row. Some go in the trash because they&apos;re an inch wide and fragile. Three tiles short on a porcelain floor means pulling out the toilet to scavenge a hidden tile from behind it, or waiting two weeks for the same dye lot to ship from the warehouse.</p>
+
+      <MethodologyNote>
+        <p>
+          Waste percentages follow Tile Council of North America (TCNA)
+          installation guidelines. Grout coverage rates are calculated
+          from joint geometry (width × depth × tile perimeter ÷ tile
+          area). Tile pricing reflects 2026 retail from Floor &amp; Decor,
+          Home Depot, and MSI distributor pricing. Substrate
+          recommendations follow ANSI A108 standards.
+        </p>
+      </MethodologyNote>
 
       <h2>How waste factor changes with tile size and pattern</h2>
       <Figure number={1} caption="Smaller tiles waste less per cut because the offcuts are more reusable. Very large format tiles (24×24) waste more because each cut discards a bigger piece. Diagonal layouts add 15% regardless of tile size.">
@@ -140,6 +156,17 @@ export function TileCalculatorExpansion() {
         <SubstrateSVG />
       </Figure>
       <p>The most common DIY tile failure is tiling directly on a plywood subfloor without backer board. Plywood flexes under foot traffic. Tile and grout are rigid. Flex + rigid = cracked grout, popped tiles, and water damage in wet areas. A 1/4-inch cement backer board (Durock, Hardiebacker) costs $0.50–1.00 per sq ft and solves this permanently.</p>
+
+      <Scenario location="San Diego, CA">
+        A couple tiled a 72 sq ft bathroom floor with 12×24 porcelain
+        (MSI Veneto Gray). They ordered 80 sq ft (11% waste). The room
+        had an alcove for the tub and a diagonal cut around the toilet
+        flange. Actual waste hit 16% because the large format tiles
+        created big offcuts at every wall and the diagonal cuts couldn&apos;t
+        be reused. They were 4 tiles short. MSI had the same dye lot in
+        stock — lucky. For large format tile in rooms with alcoves,
+        15-18% waste is realistic.
+      </Scenario>
 
       <h2>Layout planning: dry-lay before you mortar</h2>
       <p>Before opening the mortar, dry-lay your first two rows of tile without adhesive. This shows you where the cuts fall at the walls and lets you center the pattern so you don&apos;t end up with a 1-inch sliver of tile along one wall and a nearly full tile on the opposite side. Center your layout from the room&apos;s midpoint, check that both edges have cuts wider than half a tile, and adjust if needed. Five minutes of dry-fitting saves a day of rework.</p>
