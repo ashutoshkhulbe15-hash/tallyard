@@ -116,4 +116,8 @@ export interface CalculatorConfig {
     slug: string;
     description: string;
   }>;
+
+  /** Optional rich content expansion — rendered as a full article section
+   *  below methodology and above FAQ. Uses guide-prose styling. */
+  ContentExpansion?: React.ComponentType;
 }

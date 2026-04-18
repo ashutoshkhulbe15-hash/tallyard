@@ -1,5 +1,6 @@
 import type { CalculatorConfig } from "@/lib/types";
 import { round, roundUp, formatNumber } from "@/lib/format";
+import { PaintCalculatorExpansion } from "@/content/paint-expansion";
 
 export const paintCalculatorConfig: CalculatorConfig = {
   slug: "paint-calculator",
@@ -148,6 +149,8 @@ export const paintCalculatorConfig: CalculatorConfig = {
 
   formulaDescription:
     "paint = (perimeter × height − doors − windows) × coats ÷ coverage",
+
+  ContentExpansion: PaintCalculatorExpansion,
 
   methodology: [
     "The calculator figures total wall area as perimeter times ceiling height, then subtracts a standard area for each door (21 sq ft / 2 sq m) and window (15 sq ft / 1.4 sq m) you enter. The net area is multiplied by the number of coats and divided by coverage per gallon or liter.",

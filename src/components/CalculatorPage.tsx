@@ -111,6 +111,17 @@ export function CalculatorPage({
         </section>
       )}
 
+      {/* Content expansion (rich article below the calculator) */}
+      {config.ContentExpansion && (
+        <section className="container-content pb-12">
+          <div className="pt-10 border-t border-line">
+            <div className="guide-prose">
+              <config.ContentExpansion />
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Sources */}
       {config.sources.length > 0 && (
         <section className="container-content pb-12">
