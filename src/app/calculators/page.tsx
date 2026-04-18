@@ -2,113 +2,182 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "All calculators",
-  description: "Every Tallyard calculator, organized by project type.",
+  title: "All 44 calculators — free home improvement tools",
+  description:
+    "Browse 44 free calculators for home improvement: paint, concrete, roofing, HVAC, landscaping, electrical, and more. Every formula public, no signup required.",
+  alternates: { canonical: "/calculators" },
 };
 
-const liveCalculators = [
-  { slug: "paint-calculator", name: "Paint calculator", desc: "Gallons of paint for any room, with door and window subtraction", category: "Paint" },
-  { slug: "wallpaper-calculator", name: "Wallpaper calculator", desc: "Rolls with pattern repeat, door, and window subtractions", category: "Paint" },
-  { slug: "concrete-calculator", name: "Concrete calculator", desc: "Cubic yards for slabs, footings, and round pours — waste included", category: "Masonry" },
-  { slug: "asphalt-calculator", name: "Asphalt calculator", desc: "Tons of asphalt for driveways, lots, and paving projects", category: "Masonry" },
-  { slug: "rebar-calculator", name: "Rebar calculator", desc: "Lineal feet and 20-ft sticks for any concrete slab grid", category: "Masonry" },
-  { slug: "brick-calculator", name: "Brick calculator", desc: "Bricks and mortar bags by size, joint width, and wall type", category: "Masonry" },
-  { slug: "chimney-calculator", name: "Chimney calculator", desc: "Flue size for fireplaces and wood stoves (1/10 rule)", category: "Masonry" },
-  { slug: "tile-calculator", name: "Tile calculator", desc: "Tiles and boxes needed for any floor, with waste and cuts", category: "Flooring" },
-  { slug: "grout-calculator", name: "Grout calculator", desc: "Pounds of grout by tile size, joint width, and thickness", category: "Flooring" },
-  { slug: "flooring-calculator", name: "Flooring calculator", desc: "Boxes of hardwood, laminate, or vinyl plank for any room", category: "Flooring" },
-  { slug: "shower-tile-calculator", name: "Shower tile calculator", desc: "Tiles for three walls, floor, and optional niche", category: "Flooring" },
-  { slug: "backsplash-calculator", name: "Backsplash calculator", desc: "Kitchen tile count with outlets and window subtractions", category: "Flooring" },
-  { slug: "vanity-calculator", name: "Vanity calculator", desc: "Right size vanity with clearances and single/double sink", category: "Flooring" },
-  { slug: "countertop-calculator", name: "Countertop calculator", desc: "Square feet and linear feet with island and cost estimate", category: "Flooring" },
-  { slug: "kitchen-cabinet-calculator", name: "Kitchen cabinet calculator", desc: "Linear feet of cabinets by kitchen layout and grade", category: "Flooring" },
-  { slug: "mulch-calculator", name: "Mulch calculator", desc: "Cubic yards or bag count for any garden bed and depth", category: "Landscaping" },
-  { slug: "gravel-calculator", name: "Gravel calculator", desc: "Cubic yards and tons for driveways, paths, and base layers", category: "Landscaping" },
-  { slug: "fence-calculator", name: "Fence calculator", desc: "Posts, rails, pickets, and concrete for any fence length", category: "Landscaping" },
-  { slug: "paver-calculator", name: "Paver calculator", desc: "Pavers, base gravel, bedding sand for any patio or path", category: "Landscaping" },
-  { slug: "deck-calculator", name: "Deck calculator", desc: "Boards, joists, beams, and fasteners for any deck", category: "Landscaping" },
-  { slug: "topsoil-calculator", name: "Topsoil calculator", desc: "Cubic yards or bags for garden beds, lawns, or fill projects", category: "Landscaping" },
-  { slug: "sod-calculator", name: "Sod calculator", desc: "Slabs, rolls, and pallets for any lawn installation", category: "Landscaping" },
-  { slug: "pool-chlorine-calculator", name: "Pool chlorine calculator", desc: "Dose for any pool volume — liquid, granular, trichlor, dichlor", category: "Landscaping" },
-  { slug: "rainwater-calculator", name: "Rainwater calculator", desc: "Gallons collected from your roof, barrels or tanks", category: "Landscaping" },
-  { slug: "drywall-calculator", name: "Drywall calculator", desc: "Sheets of drywall for walls and ceilings, with waste factor", category: "Drywall" },
-  { slug: "roofing-calculator", name: "Roofing calculator", desc: "Shingle bundles and squares for any pitch and footprint", category: "Roofing" },
-  { slug: "siding-calculator", name: "Siding calculator", desc: "Squares and linear feet for any house exterior", category: "Roofing" },
-  { slug: "gutter-calculator", name: "Gutter calculator", desc: "Linear feet, downspouts, and hangers sized for your rainfall", category: "Roofing" },
-  { slug: "attic-ventilation-calculator", name: "Attic ventilation calculator", desc: "NFVA intake and exhaust with the 1:300 rule", category: "Roofing" },
-  { slug: "snow-load-calculator", name: "Snow load calculator", desc: "Roof snow load in psf vs. design capacity", category: "Roofing" },
-  { slug: "garage-door-calculator", name: "Garage door calculator", desc: "Size, headroom, and opener HP for any garage", category: "Roofing" },
-  { slug: "btu-calculator", name: "BTU calculator", desc: "Air conditioner size adjusted for climate, sun, and occupancy", category: "HVAC" },
-  { slug: "heat-pump-calculator", name: "Heat pump calculator", desc: "Size in tons for heating and cooling — climate and insulation aware", category: "HVAC" },
-  { slug: "water-heater-calculator", name: "Water heater calculator", desc: "Tank gallons or tankless GPM for any household", category: "HVAC" },
-  { slug: "drain-pipe-calculator", name: "Drain pipe calculator", desc: "Pipe size by DFU loading per IPC/UPC codes", category: "HVAC" },
-  { slug: "solar-calculator", name: "Solar panel calculator", desc: "System size and panel count based on your electricity use", category: "Solar" },
-  { slug: "wire-size-calculator", name: "Wire size calculator", desc: "AWG gauge for any circuit, with voltage drop and distance", category: "Electrical" },
-  { slug: "extension-cord-calculator", name: "Extension cord calculator", desc: "AWG gauge for any tool, appliance, or outdoor device", category: "Electrical" },
-  { slug: "insulation-calculator", name: "Insulation calculator", desc: "R-value and bags for walls, attic, or floors — climate-matched", category: "Insulation" },
-  { slug: "lumber-calculator", name: "Lumber calculator", desc: "Board feet and lineal feet for any framing order", category: "Lumber" },
-  { slug: "stair-calculator", name: "Stair calculator", desc: "Rise, run, and stringer length for IRC-compliant stairs", category: "Lumber" },
-  { slug: "stud-spacing-calculator", name: "Stud spacing calculator", desc: "Studs with headers, jacks, kings, and cripples for any wall", category: "Lumber" },
-  { slug: "window-sizing-calculator", name: "Window sizing calculator", desc: "Egress, natural light, and rough opening dimensions", category: "Lumber" },
-  { slug: "shed-calculator", name: "Shed calculator", desc: "Lumber, sheathing, and shingles for any backyard shed", category: "Lumber" },
-];
-
-const categoryOrder = [
-  "Paint",
-  "Masonry",
-  "Flooring",
-  "Landscaping",
-  "Drywall",
-  "Roofing",
-  "HVAC",
-  "Solar",
-  "Electrical",
-  "Insulation",
-  "Lumber",
+const sections = [
+  {
+    category: "Paint + walls",
+    desc: "Surface coverage calculators for interior and exterior painting, wallpaper, and drywall.",
+    items: [
+      { slug: "paint-calculator", name: "Paint", desc: "Gallons by room size, door and window subtraction" },
+      { slug: "wallpaper-calculator", name: "Wallpaper", desc: "Rolls with pattern repeat and opening subtractions" },
+      { slug: "drywall-calculator", name: "Drywall", desc: "Sheets for walls and ceilings with waste factor" },
+    ],
+  },
+  {
+    category: "Masonry",
+    desc: "Volume and unit calculators for concrete, brick, rebar, asphalt, and chimney construction.",
+    items: [
+      { slug: "concrete-calculator", name: "Concrete", desc: "Cubic yards for slabs, footings, and round pours" },
+      { slug: "asphalt-calculator", name: "Asphalt", desc: "Tons for driveways, lots, and paving" },
+      { slug: "rebar-calculator", name: "Rebar", desc: "Lineal feet and 20-ft sticks for slab grids" },
+      { slug: "brick-calculator", name: "Brick", desc: "Bricks and mortar bags by size and joint width" },
+      { slug: "chimney-calculator", name: "Chimney", desc: "Flue size for fireplaces and stoves (1/10 rule)" },
+    ],
+  },
+  {
+    category: "Flooring + kitchen",
+    desc: "Material calculators for tile, hardwood, laminate, countertops, cabinets, and bathroom fixtures.",
+    items: [
+      { slug: "tile-calculator", name: "Tile", desc: "Tiles and boxes with waste and cut allowances" },
+      { slug: "grout-calculator", name: "Grout", desc: "Pounds by tile size, joint width, and thickness" },
+      { slug: "flooring-calculator", name: "Flooring", desc: "Boxes of hardwood, laminate, or vinyl plank" },
+      { slug: "shower-tile-calculator", name: "Shower tile", desc: "Three walls, floor, and optional niche" },
+      { slug: "backsplash-calculator", name: "Backsplash", desc: "Kitchen tile with outlet and window subtractions" },
+      { slug: "vanity-calculator", name: "Vanity", desc: "Right size with clearances, single or double sink" },
+      { slug: "countertop-calculator", name: "Countertop", desc: "Square feet with island and cost estimate" },
+      { slug: "kitchen-cabinet-calculator", name: "Kitchen cabinets", desc: "Linear feet by layout and cabinet grade" },
+    ],
+  },
+  {
+    category: "Landscaping",
+    desc: "Outdoor project calculators for decks, fences, patios, gardens, and water features.",
+    items: [
+      { slug: "mulch-calculator", name: "Mulch", desc: "Cubic yards or bag count for any bed depth" },
+      { slug: "gravel-calculator", name: "Gravel", desc: "Cubic yards and tons for driveways and base layers" },
+      { slug: "fence-calculator", name: "Fence", desc: "Posts, rails, pickets, and concrete" },
+      { slug: "paver-calculator", name: "Paver", desc: "Pavers, base gravel, and bedding sand" },
+      { slug: "deck-calculator", name: "Deck", desc: "Boards, joists, beams, and fasteners" },
+      { slug: "topsoil-calculator", name: "Topsoil", desc: "Cubic yards or bags for garden beds and lawns" },
+      { slug: "sod-calculator", name: "Sod", desc: "Slabs, rolls, and pallets for any lawn area" },
+      { slug: "pool-chlorine-calculator", name: "Pool chlorine", desc: "Dose for any pool volume and chemical type" },
+      { slug: "rainwater-calculator", name: "Rainwater", desc: "Gallons collected from your roof area" },
+    ],
+  },
+  {
+    category: "Roofing + exterior",
+    desc: "Calculators for shingles, siding, gutters, ventilation, snow load, and garage doors.",
+    items: [
+      { slug: "roofing-calculator", name: "Roofing", desc: "Bundles and squares for any pitch and footprint" },
+      { slug: "siding-calculator", name: "Siding", desc: "Squares and linear feet for any house exterior" },
+      { slug: "gutter-calculator", name: "Gutter", desc: "Linear feet, downspouts, and hangers" },
+      { slug: "attic-ventilation-calculator", name: "Attic ventilation", desc: "NFVA intake and exhaust (1:300 rule)" },
+      { slug: "snow-load-calculator", name: "Snow load", desc: "Roof load in psf vs design capacity" },
+      { slug: "garage-door-calculator", name: "Garage door", desc: "Size, headroom, and opener HP" },
+    ],
+  },
+  {
+    category: "HVAC + plumbing",
+    desc: "Sizing calculators for heating, cooling, water heating, and drain pipe systems.",
+    items: [
+      { slug: "btu-calculator", name: "BTU", desc: "AC size adjusted for climate, sun, and occupancy" },
+      { slug: "heat-pump-calculator", name: "Heat pump", desc: "Tonnage for heating and cooling by climate zone" },
+      { slug: "water-heater-calculator", name: "Water heater", desc: "Tank gallons or tankless GPM" },
+      { slug: "drain-pipe-calculator", name: "Drain pipe", desc: "Pipe size by DFU loading (IPC/UPC)" },
+    ],
+  },
+  {
+    category: "Electrical + solar",
+    desc: "Wire sizing, panel sizing, and cord selection for residential electrical projects.",
+    items: [
+      { slug: "solar-calculator", name: "Solar", desc: "System size and panel count from electricity use" },
+      { slug: "wire-size-calculator", name: "Wire size", desc: "AWG gauge with voltage drop and distance" },
+      { slug: "extension-cord-calculator", name: "Extension cord", desc: "AWG for any tool, appliance, or outdoor device" },
+    ],
+  },
+  {
+    category: "Lumber + framing",
+    desc: "Structural calculators for framing, stairs, studs, windows, and outbuildings.",
+    items: [
+      { slug: "insulation-calculator", name: "Insulation", desc: "R-value and bags for walls, attic, or floors" },
+      { slug: "lumber-calculator", name: "Lumber", desc: "Board feet and lineal feet for framing orders" },
+      { slug: "stair-calculator", name: "Stair", desc: "Rise, run, and stringer for IRC-compliant stairs" },
+      { slug: "stud-spacing-calculator", name: "Stud spacing", desc: "Studs with headers, jacks, kings, and cripples" },
+      { slug: "window-sizing-calculator", name: "Window sizing", desc: "Egress, natural light, and rough opening" },
+      { slug: "shed-calculator", name: "Shed", desc: "Lumber, sheathing, and shingles for any backyard shed" },
+    ],
+  },
 ];
 
 export default function CalculatorsIndexPage() {
-  const byCategory = categoryOrder.map((cat) => ({
-    category: cat,
-    items: liveCalculators.filter((c) => c.category === cat),
-  }));
+  const totalCount = sections.reduce((sum, s) => sum + s.items.length, 0);
 
   return (
-    <div className="container-content py-12 md:py-16">
-      <p className="text-[11px] uppercase tracking-[0.08em] text-ink-faint mb-3 font-semibold">
-        Index
-      </p>
-      <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-        All calculators
-      </h1>
-      <p className="text-base text-ink-muted mb-10 max-w-prose leading-relaxed">
-        Every Tallyard calculator, organized by project type.{" "}
-        <span className="accent-italic">
-          {liveCalculators.length} tools, all free, no signup required.
-        </span>
-      </p>
+    <>
+      {/* Hero banner */}
+      <section className="container-wide pt-6 md:pt-8">
+        <div className="bg-bg-warm rounded-xl p-8 md:p-12">
+          <p className="text-[11px] uppercase tracking-[0.08em] text-ink-faint mb-3 font-semibold">
+            All tools
+          </p>
+          <h1 className="text-3xl md:text-5xl font-bold tracking-tighter leading-[1.05] mb-3 text-ink">
+            {totalCount} calculators, all{" "}
+            <span className="accent-italic">free</span>
+          </h1>
+          <p className="text-base md:text-lg text-ink-muted max-w-xl leading-relaxed">
+            Every tool shows its formula, cites its sources, and gives you
+            a number you can verify. Organized by project type below.
+          </p>
+        </div>
+      </section>
 
-      <div className="space-y-10">
-        {byCategory.map(({ category, items }) => (
-          <section key={category}>
-            <h2 className="text-[11px] uppercase tracking-[0.08em] text-ink-faint mb-3 font-semibold">
-              {category} · {items.length}
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {items.map((c) => (
-                <Link
-                  key={c.slug}
-                  href={`/${c.slug}`}
-                  className="block p-5 bg-surface border border-line rounded-lg hover:border-accent hover:-translate-y-0.5 transition-all"
-                >
-                  <h3 className="text-base font-semibold mb-1">{c.name}</h3>
-                  <p className="text-xs text-ink-muted">{c.desc}</p>
-                </Link>
-              ))}
-            </div>
-          </section>
-        ))}
-      </div>
-    </div>
+      {/* Quick jump nav */}
+      <section className="container-wide py-6">
+        <div className="flex flex-wrap gap-2">
+          {sections.map((s) => (
+            <a
+              key={s.category}
+              href={`#${s.category.toLowerCase().replace(/[^a-z]+/g, "-")}`}
+              className="text-xs font-semibold px-3 py-1.5 bg-surface border border-line rounded-full text-ink-muted hover:border-accent hover:text-accent transition-colors"
+            >
+              {s.category}
+              <span className="ml-1.5 text-ink-faint">{s.items.length}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      {/* Category sections */}
+      <section className="container-wide pb-16">
+        <div className="space-y-12">
+          {sections.map((section) => {
+            const anchor = section.category
+              .toLowerCase()
+              .replace(/[^a-z]+/g, "-");
+            return (
+              <div key={section.category} id={anchor}>
+                <div className="mb-4">
+                  <h2 className="text-xl font-bold tracking-tight text-ink mb-1">
+                    {section.category}
+                    <span className="text-sm font-normal text-ink-faint ml-2">
+                      {section.items.length}
+                    </span>
+                  </h2>
+                  <p className="text-sm text-ink-muted">{section.desc}</p>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                  {section.items.map((calc) => (
+                    <Link
+                      key={calc.slug}
+                      href={`/${calc.slug}`}
+                      className="block p-5 bg-surface border border-line rounded-lg hover:border-accent hover:-translate-y-0.5 transition-all"
+                    >
+                      <h3 className="text-base font-semibold mb-1">
+                        {calc.name}
+                      </h3>
+                      <p className="text-xs text-ink-muted">{calc.desc}</p>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+    </>
   );
 }
