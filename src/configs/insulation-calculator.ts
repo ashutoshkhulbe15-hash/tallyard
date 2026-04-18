@@ -238,4 +238,8 @@ export const insulationCalculatorConfig: CalculatorConfig = {
         "Batts and rolls are straightforward DIY — fiberglass irritates skin, so wear long sleeves, gloves, goggles, and an N95 mask. Blown insulation requires a blower (rentable from home centers) and a second person. Spray foam should be professionally installed for large areas — the chemistry is hazardous if mishandled.",
     },
   ],
+  relatedGuides: [
+    { name: "Vinyl vs fiber cement siding", slug: "vinyl-vs-fiber-cement-siding", description: "30-year cost comparison — insulation affects whole-wall performance" },
+    { name: "Heat pump vs furnace + AC", slug: "heat-pump-vs-furnace", description: "Climate-zone HVAC comparison — insulation level changes the math" },
+  ],
 };

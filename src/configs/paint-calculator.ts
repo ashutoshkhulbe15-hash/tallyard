@@ -218,4 +218,7 @@ export const paintCalculatorConfig: CalculatorConfig = {
         "The calculator is for paint only, not primer. You need primer if you're painting over bare drywall, dark colors (going lighter), patched repairs, or stained surfaces. Primer typically covers the same area as paint — use the primer calculator for a separate estimate.",
     },
   ],
+  relatedGuides: [
+    { name: "Vinyl vs fiber cement siding", slug: "vinyl-vs-fiber-cement-siding", description: "30-year cost comparison with fire ratings and maintenance math" },
+  ],
 };

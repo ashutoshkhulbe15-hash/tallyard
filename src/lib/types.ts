@@ -109,4 +109,11 @@ export interface CalculatorConfig {
   sources: CalculatorSource[];
   related: RelatedCalculator[];
   faq: CalculatorFAQ[];
+
+  /** Optional links to related guides (rendered as a separate section) */
+  relatedGuides?: Array<{
+    name: string;
+    slug: string;
+    description: string;
+  }>;
 }

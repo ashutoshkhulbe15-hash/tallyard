@@ -267,4 +267,7 @@ export const heatPumpCalculatorConfig: CalculatorConfig = {
         "Depends on your panel capacity. A 3-ton heat pump needs a 30-amp 240V circuit. A 5-ton needs 50 amps. If you have a 100-amp service panel that's already near capacity, adding a heat pump may require a service upgrade to 200 amps ($2,000-4,000). Most homes built after 1970 have sufficient capacity. Have an electrician evaluate before installation.",
     },
   ],
+  relatedGuides: [
+    { name: "Heat pump vs furnace + AC", slug: "heat-pump-vs-furnace", description: "Climate-zone comparison of heat pump vs gas furnace operating costs" },
+  ],
 };

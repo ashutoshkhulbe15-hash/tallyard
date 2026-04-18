@@ -259,4 +259,7 @@ export const waterHeaterCalculatorConfig: CalculatorConfig = {
         "Tank: heater is undersized, OR the dip tube is broken, OR the bottom heating element (electric) is failed. For sizing issues: upgrade tank or switch to tankless. Tankless: flow exceeds capacity, OR incoming water is colder than spec, OR gas line is undersized. Verify specs match usage; larger unit may be needed.",
     },
   ],
+  relatedGuides: [
+    { name: "Heat pump vs furnace + AC", slug: "heat-pump-vs-furnace", description: "Climate-zone comparison of heat pump vs gas furnace operating costs" },
+  ],
 };

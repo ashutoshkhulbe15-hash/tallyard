@@ -219,4 +219,7 @@ export const gutterCalculatorConfig: CalculatorConfig = {
         "Aluminum: 20-30 years. Galvanized steel: 20-30 years but may rust. Copper: 50-100 years (premium, expensive). Vinyl: 10-20 years. Lifespan depends on climate — ice dams, hail, leaves trapped for years, and falling tree limbs all shorten life. Clean gutters twice yearly (spring and fall) to maximize lifespan.",
     },
   ],
+  relatedGuides: [
+    { name: "Vinyl vs fiber cement siding", slug: "vinyl-vs-fiber-cement-siding", description: "30-year cost comparison with fire ratings and maintenance math" },
+  ],
 };

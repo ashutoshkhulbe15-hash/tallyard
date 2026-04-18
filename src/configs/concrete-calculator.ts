@@ -207,4 +207,7 @@ export const concreteCalculatorConfig: CalculatorConfig = {
         "They're the same thing — 'yards' of concrete is shorthand for cubic yards. A 'yard' of concrete means one cubic yard (3 ft × 3 ft × 3 ft = 27 cubic feet).",
     },
   ],
+  relatedGuides: [
+    { name: "Composite vs PT vs cedar decking", slug: "composite-vs-pressure-treated-vs-cedar-deck", description: "20-year cost breakdown for all three decking materials" },
+  ],
 };

@@ -164,7 +164,7 @@ export function CalculatorPage({
 
       {/* Related */}
       {config.related.length > 0 && (
-        <section className="container-content pb-16">
+        <section className="container-content pb-12">
           <div className="pt-10 border-t border-line">
             <h2 className="text-2xl font-bold tracking-tight mb-6">
               Related calculators
@@ -178,6 +178,32 @@ export function CalculatorPage({
                 >
                   <h3 className="text-base font-semibold mb-1">{rel.name}</h3>
                   <p className="text-xs text-ink-muted">{rel.description}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Related guides */}
+      {config.relatedGuides && config.relatedGuides.length > 0 && (
+        <section className="container-content pb-16">
+          <div className="pt-10 border-t border-line">
+            <h2 className="text-2xl font-bold tracking-tight mb-6">
+              Buying guides
+            </h2>
+            <div className="grid grid-cols-1 gap-3">
+              {config.relatedGuides.map((guide) => (
+                <Link
+                  key={guide.slug}
+                  href={`/guides/${guide.slug}`}
+                  className="block p-5 bg-bg-warm border border-line rounded-lg hover:border-accent hover:-translate-y-0.5 transition-all"
+                >
+                  <p className="text-[10px] uppercase tracking-[0.08em] text-accent font-bold mb-1.5">
+                    Guide
+                  </p>
+                  <h3 className="text-base font-semibold mb-1">{guide.name}</h3>
+                  <p className="text-xs text-ink-muted">{guide.description}</p>
                 </Link>
               ))}
             </div>

@@ -245,4 +245,7 @@ export const btuCalculatorConfig: CalculatorConfig = {
         "For peak summer days. Use the calculator's default hot-climate setting if you experience prolonged 90°F+ days. Undersizing to save money on cooler days backfires during July-August heat waves, when the unit runs nonstop and still can't catch up.",
     },
   ],
+  relatedGuides: [
+    { name: "Heat pump vs furnace + AC", slug: "heat-pump-vs-furnace", description: "Climate-zone comparison of heat pump vs gas furnace operating costs" },
+  ],
 };

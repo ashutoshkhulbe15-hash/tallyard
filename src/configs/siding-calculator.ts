@@ -223,4 +223,7 @@ export const sidingCalculatorConfig: CalculatorConfig = {
         "Vinyl siding can be installed over existing wood or vinyl siding in some cases, but it's not recommended — hides potential rot, adds 1-2\" thickness to walls (messes with window and door trim), and limits the ability to inspect for damage. For a proper job, tear off old siding to the sheathing and re-install.",
     },
   ],
+  relatedGuides: [
+    { name: "Vinyl vs fiber cement siding", slug: "vinyl-vs-fiber-cement-siding", description: "30-year cost comparison with fire ratings and maintenance math" },
+  ],
 };

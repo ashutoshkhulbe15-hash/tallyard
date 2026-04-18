@@ -212,4 +212,7 @@ export const stairCalculatorConfig: CalculatorConfig = {
         "Required by IRC for any stair with more than 12 risers in a single run, or at any turn. Landings must be at least as deep as the stair is wide (so a 36\" wide stair needs a 36\" deep landing). The calculator treats the stair as a single straight run — for L-shaped or U-shaped stairs, calculate each run separately.",
     },
   ],
+  relatedGuides: [
+    { name: "Composite vs PT vs cedar decking", slug: "composite-vs-pressure-treated-vs-cedar-deck", description: "20-year cost breakdown for all three decking materials" },
+  ],
 };

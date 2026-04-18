@@ -222,4 +222,7 @@ export const deckCalculatorConfig: CalculatorConfig = {
         "Rough rule: one post per 80-100 sq ft of deck for basic spacing. Actual post count depends on beam capacity. Most decks have 4-6 posts on the outside perimeter (beam support) plus a ledger attachment to the house on the fourth side. Freestanding decks need posts on all four sides.",
     },
   ],
+  relatedGuides: [
+    { name: "Composite vs PT vs cedar decking", slug: "composite-vs-pressure-treated-vs-cedar-deck", description: "20-year cost breakdown for all three decking materials" },
+  ],
 };

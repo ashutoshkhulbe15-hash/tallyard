@@ -200,4 +200,7 @@ export const lumberCalculatorConfig: CalculatorConfig = {
         "MBF = thousand board feet (Roman M = 1,000). Lumber wholesale is quoted per MBF: '$850/MBF' means $0.85 per board foot. A single 2×4×8' board is 5.33 bf, so at $850/MBF it's $4.53 per piece. Retail stores usually quote per piece directly; wholesale and contractor pricing use MBF.",
     },
   ],
+  relatedGuides: [
+    { name: "Composite vs PT vs cedar decking", slug: "composite-vs-pressure-treated-vs-cedar-deck", description: "20-year cost breakdown for all three decking materials" },
+  ],
 };
