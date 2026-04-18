@@ -341,7 +341,7 @@ function SegmentedSelect({
       : count === 3
         ? "grid-cols-3"
         : count === 4
-          ? "grid-cols-4"
+          ? "grid-cols-2 sm:grid-cols-4"
           : "grid-cols-2";
 
   return (
@@ -353,7 +353,7 @@ function SegmentedSelect({
             key={opt.value}
             type="button"
             onClick={() => onChange(opt.value)}
-            className={`px-3 py-2.5 rounded-md text-sm font-semibold transition-colors border ${
+            className={`px-2 sm:px-3 py-2.5 rounded-md text-xs sm:text-sm font-semibold transition-colors border text-center leading-snug ${
               isOn
                 ? "bg-accent text-white border-accent"
                 : "bg-bg text-ink border-line hover:border-accent hover:text-accent"
