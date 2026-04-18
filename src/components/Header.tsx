@@ -20,6 +20,7 @@ export function Header() {
           <nav aria-label="Primary" className="hidden sm:block">
             <ul className="flex items-center gap-6 md:gap-8 text-sm text-ink-muted font-medium">
               <li><Link href="/calculators" className="hover:text-ink transition-colors">Calculators</Link></li>
+              <li><Link href="/planner" className="hover:text-ink transition-colors">Planner</Link></li>
               <li><Link href="/guides" className="hover:text-ink transition-colors">Guides</Link></li>
               <li><Link href="/about" className="hover:text-ink transition-colors">About</Link></li>
             </ul>

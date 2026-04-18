@@ -1,0 +1,31 @@
+import type { Metadata } from "next";
+import { BannerHeadline } from "@/components/BannerHeadline";
+import PaintPlannerClient from "./PaintPlanner";
+
+export const metadata: Metadata = {
+  title: "Paint a room — complete material planner",
+  description: "Plan a room painting project: wall paint, primer, ceiling paint, and all supplies. Get quantities and cost, then compare against quotes.",
+  alternates: { canonical: "/planner/paint-a-room" },
+};
+
+export default function PaintPlannerPage() {
+  return (
+    <>
+      <section className="container-wide pt-6 md:pt-8">
+        <div className="bg-bg-warm rounded-xl p-8 md:p-10">
+          <nav aria-label="Breadcrumb" className="text-[11px] uppercase tracking-[0.08em] text-ink-faint mb-3 font-semibold">
+            <a href="/planner" className="text-accent hover:text-accent-hover transition-colors">Planner</a>
+            <span className="mx-2">·</span><span>Paint</span>
+          </nav>
+          <h1 className="text-3xl md:text-5xl font-bold tracking-tighter leading-[1.05] mb-3 text-ink">
+            <BannerHeadline text="Plan your paint job." />
+          </h1>
+          <p className="text-base md:text-lg text-ink-muted max-w-xl leading-relaxed">
+            Enter your room dimensions once. Get paint, primer, ceiling paint, and supply quantities with cost estimates.
+          </p>
+        </div>
+      </section>
+      <section className="container-wide py-10 md:py-12"><PaintPlannerClient /></section>
+    </>
+  );
+}
