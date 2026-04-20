@@ -166,10 +166,10 @@ export function RoofingCalculatorExpansion() {
 
       <h2>Beyond shingles: what else goes on the roof</h2>
       <ComparisonTable
-        columns={[{ title: "Component" }, { title: "Purpose" }, { title: "Cost" }]}
+        columns={[{ title: "Purpose" }, { title: "Cost" }]}
         rows={[
           { label: "Underlayment", values: ["Synthetic felt (moisture barrier)", "$0.15–0.50/ft²"] },
-          { label: "Ice and water shield", values: ["Self-adhering membrane at eaves, valleys", "$1.50–3.00/ft²"] },
+          { label: "Ice & water shield", values: ["Self-adhering membrane at eaves, valleys", "$1.50–3.00/ft²"] },
           { label: "Drip edge", values: ["Metal flashing at roof edges", "$1–3 per linear foot"] },
           { label: "Ridge vent", values: ["Continuous exhaust ventilation at peak", "$3–6 per linear foot"] },
           { label: "Pipe boots", values: ["Flashing around plumbing vents", "$10–30 each"] },
