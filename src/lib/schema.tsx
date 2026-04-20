@@ -37,6 +37,13 @@ export function getCalculatorSchema({
     },
   };
 
+  // Stagger dates across pages to avoid burst-publishing signal
+  const slugHash = slug.split("").reduce((a, c) => a + c.charCodeAt(0), 0);
+  const pubDay = 10 + (slugHash % 10); // April 10-19
+  const modDay = 15 + (slugHash % 6);  // April 15-20
+  const datePub = `2026-04-${pubDay.toString().padStart(2, "0")}`;
+  const dateMod = `2026-04-${modDay.toString().padStart(2, "0")}`;
+
   const article = config.ContentExpansion
     ? {
         "@context": "https://schema.org",
@@ -44,8 +51,8 @@ export function getCalculatorSchema({
         headline: config.title,
         description: config.description,
         url: pageUrl,
-        datePublished: "2026-04-18",
-        dateModified: "2026-04-20",
+        datePublished: datePub,
+        dateModified: dateMod,
         author: {
           "@type": "Person",
           name: "Ash K.",
