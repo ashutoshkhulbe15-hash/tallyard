@@ -103,6 +103,17 @@ const sections = [
   },
 ];
 
+const categoryLinks: Record<string, string> = {
+  "Paint + walls": "/calculators/paint-walls",
+  "Masonry": "/calculators/masonry",
+  "Flooring + kitchen": "/calculators/flooring-kitchen",
+  "Landscaping": "/calculators/landscaping",
+  "Roofing + exterior": "/calculators/roofing-exterior",
+  "HVAC + plumbing": "/calculators/hvac-plumbing",
+  "Electrical + solar": "/calculators/electrical-solar",
+  "Lumber + framing": "/calculators/lumber-framing",
+};
+
 export default function CalculatorsIndexPage() {
   const totalCount = sections.reduce((sum, s) => sum + s.items.length, 0);
 
@@ -125,8 +136,16 @@ export default function CalculatorsIndexPage() {
         </div>
       </section>
 
+      {/* Intro prose */}
+      <section className="container-content py-8">
+        <div className="guide-prose">
+          <p>Tallyard calculators cover every measurable step in a home improvement project. Need paint gallons for a bedroom? Concrete yards for a driveway? Rebar sticks for a slab grid? Each calculator shows the formula it uses, the sources behind the numbers, and an exact result you can hand to a contractor or carry to the supply yard. No signup, no email, no affiliate links.</p>
+          <p>The tools are organized into eight categories by project type. Each category has a <strong>full guide page</strong> that explains how the calculators in that group work together, what codes apply, and how to sequence a project that uses multiple tools.</p>
+        </div>
+      </section>
+
       {/* Quick jump nav */}
-      <section className="container-wide py-6">
+      <section className="container-wide py-4">
         <div className="flex flex-wrap gap-2">
           {sections.map((s) => (
             <a
@@ -142,23 +161,32 @@ export default function CalculatorsIndexPage() {
       </section>
 
       {/* Category sections */}
-      <section className="container-wide pb-16">
+      <section className="container-wide pb-10">
         <div className="space-y-12">
           {sections.map((section) => {
             const anchor = section.category
               .toLowerCase()
               .replace(/[^a-z]+/g, "-");
+            const guideHref = categoryLinks[section.category];
             return (
               <div key={section.category} id={anchor}>
-                <div className="mb-4">
-                  <h2 className="text-xl font-bold tracking-tight text-ink mb-1">
+                <div className="mb-4 flex flex-wrap items-baseline gap-x-4 gap-y-1">
+                  <h2 className="text-xl font-bold tracking-tight text-ink">
                     {section.category}
                     <span className="text-sm font-normal text-ink-faint ml-2">
                       {section.items.length}
                     </span>
                   </h2>
-                  <p className="text-sm text-ink-muted">{section.desc}</p>
+                  {guideHref && (
+                    <Link
+                      href={guideHref}
+                      className="text-xs font-semibold text-accent hover:underline"
+                    >
+                      Full category guide →
+                    </Link>
+                  )}
                 </div>
+                <p className="text-sm text-ink-muted mb-4">{section.desc}</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                   {section.items.map((calc) => (
                     <Link
@@ -176,6 +204,51 @@ export default function CalculatorsIndexPage() {
               </div>
             );
           })}
+        </div>
+      </section>
+
+      {/* Cost guides section */}
+      <section className="container-content pb-10">
+        <div className="guide-prose">
+          <h2>Cost guides</h2>
+          <p>How much does a project actually cost? These standalone cost guides break down material + labor pricing by project type, with DIY vs professional comparisons, regional multipliers, and real contractor scenarios.</p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mt-4">
+          {[
+            { slug: "cost-to-build-a-deck", name: "Cost to build a deck" },
+            { slug: "cost-to-replace-a-roof", name: "Cost to replace a roof" },
+            { slug: "cost-to-build-a-fence", name: "Cost to build a fence" },
+            { slug: "cost-to-paint-a-house", name: "Cost to paint a house" },
+            { slug: "cost-to-install-flooring", name: "Cost to install flooring" },
+            { slug: "cost-to-remodel-a-bathroom", name: "Cost to remodel a bathroom" },
+            { slug: "cost-to-pour-concrete", name: "Cost to pour concrete" },
+            { slug: "cost-to-install-siding", name: "Cost to install siding" },
+            { slug: "cost-to-install-solar", name: "Cost to install solar" },
+            { slug: "cost-to-replace-hvac", name: "Cost to replace HVAC" },
+          ].map((c) => (
+            <Link
+              key={c.slug}
+              href={`/${c.slug}`}
+              className="block p-4 bg-surface border border-line rounded-lg hover:border-accent transition-colors text-sm font-semibold text-ink hover:text-accent"
+            >
+              {c.name}
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="container-content pb-16">
+        <div className="guide-prose">
+          <h2>Frequently asked questions</h2>
+          <h3>Are the calculators free?</h3>
+          <p>Yes. Every calculator on Tallyard is free, with no signup, no email capture, and no usage limits. The formulas are published on each calculator page so you can verify the math independently.</p>
+          <h3>Where do the formulas come from?</h3>
+          <p>Each calculator cites its sources in a methodology section. Sources include the International Residential Code (IRC), ASHRAE standards, manufacturer product specifications (Trex, GAF, Owens Corning, etc.), and industry associations (NWFA, TCNA, ACI, ACCA). See our <Link href="/methodology" className="text-accent hover:underline">methodology page</Link> for the full approach.</p>
+          <h3>How accurate are the estimates?</h3>
+          <p>The material quantity estimates are within 5 to 10 percent for standard residential projects. Cost estimates use 2026 national averages and should be treated as ballparks. Actual costs vary by region, contractor, and site conditions. Always get multiple bids for professional work.</p>
+          <h3>Can I save my calculation?</h3>
+          <p>Yes. Every calculator has a &quot;Copy link&quot; button that creates a URL with your inputs encoded. Share it, bookmark it, or paste it into an email to your contractor.</p>
         </div>
       </section>
     </>

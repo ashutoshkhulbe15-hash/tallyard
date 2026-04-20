@@ -138,6 +138,42 @@ export default function GuidesIndexPage() {
         </div>
       </section>
 
+      {/* Intro prose */}
+      <section className="container-content py-8">
+        <div className="guide-prose">
+          <h2>Two types of guides for two types of decisions</h2>
+          <p>Tallyard publishes two kinds of guides. <strong>Buying guides</strong> compare two or three materials for the same job (vinyl vs fiber cement, composite vs cedar) using 20 to 30 year total cost of ownership math — not just sticker price. <strong>Cost guides</strong> break down what a project actually costs: materials, labor, permits, and the hidden line items most online estimates leave out.</p>
+          <p>Both types link directly to the calculators you need for your specific project. The guide tells you which option. The calculator tells you how much.</p>
+        </div>
+      </section>
+
+      {/* Cost guides grid */}
+      <section className="container-wide pb-10">
+        <h2 className="text-xl font-bold tracking-tight text-ink mb-4 px-1">Cost guides</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+          {[
+            { slug: "cost-to-build-a-deck", name: "Cost to build a deck" },
+            { slug: "cost-to-replace-a-roof", name: "Cost to replace a roof" },
+            { slug: "cost-to-build-a-fence", name: "Cost to build a fence" },
+            { slug: "cost-to-paint-a-house", name: "Cost to paint a house" },
+            { slug: "cost-to-install-flooring", name: "Cost to install flooring" },
+            { slug: "cost-to-remodel-a-bathroom", name: "Cost to remodel a bathroom" },
+            { slug: "cost-to-pour-concrete", name: "Cost to pour concrete" },
+            { slug: "cost-to-install-siding", name: "Cost to install siding" },
+            { slug: "cost-to-install-solar", name: "Cost to install solar" },
+            { slug: "cost-to-replace-hvac", name: "Cost to replace HVAC" },
+          ].map((c) => (
+            <Link
+              key={c.slug}
+              href={`/${c.slug}`}
+              className="block p-4 bg-surface border border-line rounded-lg hover:border-accent transition-colors text-sm font-semibold text-ink hover:text-accent"
+            >
+              {c.name}
+            </Link>
+          ))}
+        </div>
+      </section>
+
       {/* CTA to calculators */}
       <section className="container-wide py-14 md:py-16">
         <div className="bg-walnut rounded-xl p-8 md:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">

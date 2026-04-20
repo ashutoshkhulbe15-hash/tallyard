@@ -88,5 +88,41 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticPages, ...calculatorPages, ...guidePages];
+  const costSlugs = [
+    "cost-to-build-a-deck",
+    "cost-to-replace-a-roof",
+    "cost-to-build-a-fence",
+    "cost-to-paint-a-house",
+    "cost-to-install-flooring",
+    "cost-to-remodel-a-bathroom",
+    "cost-to-pour-concrete",
+    "cost-to-install-siding",
+    "cost-to-install-solar",
+    "cost-to-replace-hvac",
+  ];
+  const costPages: MetadataRoute.Sitemap = costSlugs.map((slug) => ({
+    url: `${SITE_URL}/${slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
+  const categorySlugs = [
+    "paint-walls",
+    "masonry",
+    "flooring-kitchen",
+    "landscaping",
+    "roofing-exterior",
+    "hvac-plumbing",
+    "electrical-solar",
+    "lumber-framing",
+  ];
+  const categoryPages: MetadataRoute.Sitemap = categorySlugs.map((slug) => ({
+    url: `${SITE_URL}/calculators/${slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  return [...staticPages, ...calculatorPages, ...guidePages, ...costPages, ...categoryPages];
 }

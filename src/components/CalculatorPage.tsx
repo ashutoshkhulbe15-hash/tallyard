@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Calculator } from "./Calculator";
 import { BannerHeadline } from "./BannerHeadline";
 import { CategoryIllustration } from "./CategoryIllustration";
+import { FeedbackWidget } from "./FeedbackWidget";
 import { getConfig } from "@/configs";
 
 interface CalculatorPageProps {
@@ -221,6 +222,10 @@ export function CalculatorPage({
           </div>
         </section>
       )}
+      {/* Feedback */}
+      <section className="container-content">
+        <FeedbackWidget slug={slug} />
+      </section>
     </article>
   );
 }
