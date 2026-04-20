@@ -1,3 +1,4 @@
+import { GroutCalculatorExpansion } from "@/content/grout-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, roundUp, formatNumber } from "@/lib/format";
 
@@ -168,6 +169,8 @@ export const groutCalculatorConfig: CalculatorConfig = {
       ],
     };
   },
+
+  ContentExpansion: GroutCalculatorExpansion,
 
   formulaDescription:
     "lb = (tile perimeter × joint × thickness × 150) ÷ (tile area × 12) × floor area × (1 + waste)",

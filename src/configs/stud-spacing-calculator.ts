@@ -1,3 +1,4 @@
+import { StudSpacingCalculatorExpansion } from "@/content/stud-spacing-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
@@ -144,6 +145,8 @@ export const studSpacingCalculatorConfig: CalculatorConfig = {
       ],
     };
   },
+
+  ContentExpansion: StudSpacingCalculatorExpansion,
 
   formulaDescription:
     "studs = ⌈length × 12 ÷ spacing⌉ + 1 + corners × 2 + doors × 6 + windows × 8",

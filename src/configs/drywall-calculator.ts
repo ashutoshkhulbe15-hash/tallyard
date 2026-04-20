@@ -1,3 +1,4 @@
+import { DrywallCalculatorExpansion } from "@/content/drywall-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, roundUp, formatNumber } from "@/lib/format";
 
@@ -158,6 +159,8 @@ export const drywallCalculatorConfig: CalculatorConfig = {
       },
     };
   },
+
+  ContentExpansion: DrywallCalculatorExpansion,
 
   formulaDescription:
     "sheets = ⌈((wall area + ceiling area) ÷ sheet area) × (1 + waste)⌉",

@@ -1,3 +1,4 @@
+import { TopsoilCalculatorExpansion } from "@/content/topsoil-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, roundUp, formatNumber } from "@/lib/format";
 
@@ -133,6 +134,8 @@ export const topsoilCalculatorConfig: CalculatorConfig = {
       ],
     };
   },
+
+  ContentExpansion: TopsoilCalculatorExpansion,
 
   formulaDescription:
     "volume = area × depth, converted to cubic yards/meters (plus tons and bags)",

@@ -1,3 +1,4 @@
+import { WireSizeCalculatorExpansion } from "@/content/wire-size-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
@@ -173,6 +174,8 @@ export const wireSizeCalculatorConfig: CalculatorConfig = {
       ],
     };
   },
+
+  ContentExpansion: WireSizeCalculatorExpansion,
 
   formulaDescription:
     "smallest AWG where ampacity ≥ load AND voltage drop ≤ limit (VD = 2 × I × R × L / 1000)",

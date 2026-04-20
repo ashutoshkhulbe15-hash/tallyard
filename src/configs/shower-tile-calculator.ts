@@ -1,3 +1,4 @@
+import { ShowerTileCalculatorExpansion } from "@/content/shower-tile-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
@@ -187,6 +188,8 @@ export const showerTileCalculatorConfig: CalculatorConfig = {
       ],
     };
   },
+
+  ContentExpansion: ShowerTileCalculatorExpansion,
 
   formulaDescription:
     "tiles = ⌈((3 walls + niche + floor) × 1.15) ÷ tile area⌉",

@@ -1,3 +1,4 @@
+import { VanityCalculatorExpansion } from "@/content/vanity-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
@@ -153,6 +154,8 @@ export const vanityCalculatorConfig: CalculatorConfig = {
       ],
     };
   },
+
+  ContentExpansion: VanityCalculatorExpansion,
 
   formulaDescription:
     "recommended = largest standard width (18-84\") fitting in (wall − clearances); double sink if users = 2 and width ≥ 60\"",

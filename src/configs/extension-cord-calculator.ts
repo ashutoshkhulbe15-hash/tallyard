@@ -1,3 +1,4 @@
+import { ExtensionCordCalculatorExpansion } from "@/content/extension-cord-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
@@ -150,6 +151,8 @@ export const extensionCordCalculatorConfig: CalculatorConfig = {
       ],
     };
   },
+
+  ContentExpansion: ExtensionCordCalculatorExpansion,
 
   formulaDescription:
     "smallest AWG where ampacity at given length ≥ load; voltage drop = 2 × I × R × L / 1000",

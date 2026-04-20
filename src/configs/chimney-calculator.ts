@@ -1,3 +1,4 @@
+import { ChimneyCalculatorExpansion } from "@/content/chimney-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
@@ -172,6 +173,8 @@ export const chimneyCalculatorConfig: CalculatorConfig = {
       ].filter(Boolean) as string[],
     };
   },
+
+  ContentExpansion: ChimneyCalculatorExpansion,
 
   formulaDescription:
     "masonry fireplace: flue area = opening area ÷ 10 (or ÷ 8 if < 15 ft tall); wood stove: match outlet diameter",

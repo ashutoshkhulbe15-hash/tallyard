@@ -1,3 +1,4 @@
+import { KitchenCabinetCalculatorExpansion } from "@/content/kitchen-cabinet-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
@@ -178,6 +179,8 @@ export const kitchenCabinetCalculatorConfig: CalculatorConfig = {
       },
     };
   },
+
+  ContentExpansion: KitchenCabinetCalculatorExpansion,
 
   formulaDescription:
     "base ft = perimeter − appliances; upper ft = perimeter × 70-75%; cabinets = ⌈ft × 12 ÷ 24⌉",

@@ -1,3 +1,4 @@
+import { WallpaperCalculatorExpansion } from "@/content/wallpaper-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
@@ -148,6 +149,8 @@ export const wallpaperCalculatorConfig: CalculatorConfig = {
       ],
     };
   },
+
+  ContentExpansion: WallpaperCalculatorExpansion,
 
   formulaDescription:
     "rolls = ⌈((perimeter × height − openings) × (1 + pattern waste)) ÷ roll coverage⌉",

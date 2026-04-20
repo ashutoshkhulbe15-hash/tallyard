@@ -1,3 +1,4 @@
+import { AsphaltCalculatorExpansion } from "@/content/asphalt-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, roundUp, formatNumber } from "@/lib/format";
 
@@ -139,6 +140,8 @@ export const asphaltCalculatorConfig: CalculatorConfig = {
       ],
     };
   },
+
+  ContentExpansion: AsphaltCalculatorExpansion,
 
   formulaDescription:
     "tons = area × thickness × density × (1 + waste), where density = 145 lb/ft³",

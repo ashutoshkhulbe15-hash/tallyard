@@ -1,3 +1,4 @@
+import { RebarCalculatorExpansion } from "@/content/rebar-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
@@ -161,6 +162,8 @@ export const rebarCalculatorConfig: CalculatorConfig = {
       ],
     };
   },
+
+  ContentExpansion: RebarCalculatorExpansion,
 
   formulaDescription:
     "bars = ⌈dimension ÷ spacing⌉ + 1 per direction; total = (long × long length) + (trans × trans length) + perimeter",

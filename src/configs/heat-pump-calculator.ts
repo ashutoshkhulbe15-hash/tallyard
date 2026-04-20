@@ -1,3 +1,4 @@
+import { HeatPumpCalculatorExpansion } from "@/content/heat-pump-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
@@ -191,6 +192,8 @@ export const heatPumpCalculatorConfig: CalculatorConfig = {
       },
     };
   },
+
+  ContentExpansion: HeatPumpCalculatorExpansion,
 
   formulaDescription:
     "BTU = sqft × climate factor × insulation × ceiling × windows; tons = BTU ÷ 12,000",

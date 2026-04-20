@@ -1,3 +1,4 @@
+import { BacksplashCalculatorExpansion } from "@/content/backsplash-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
@@ -154,6 +155,8 @@ export const backsplashCalculatorConfig: CalculatorConfig = {
       ],
     };
   },
+
+  ContentExpansion: BacksplashCalculatorExpansion,
 
   formulaDescription:
     "tiles = ⌈((linear ft × height − outlets − window) × 1.15) ÷ tile area⌉",

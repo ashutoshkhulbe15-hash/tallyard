@@ -1,3 +1,4 @@
+import { SnowLoadCalculatorExpansion } from "@/content/snow-load-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
@@ -144,6 +145,8 @@ export const snowLoadCalculatorConfig: CalculatorConfig = {
       },
     };
   },
+
+  ContentExpansion: SnowLoadCalculatorExpansion,
 
   formulaDescription:
     "load (psf) = snow depth × density + ice × 57; compare vs design load (code-specified)",

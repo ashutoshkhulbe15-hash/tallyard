@@ -1,3 +1,4 @@
+import { ShedCalculatorExpansion } from "@/content/shed-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
@@ -169,6 +170,8 @@ export const shedCalculatorConfig: CalculatorConfig = {
       ],
     };
   },
+
+  ContentExpansion: ShedCalculatorExpansion,
 
   formulaDescription:
     "floor + walls + roof framing + sheathing for any shed footprint and wall height",

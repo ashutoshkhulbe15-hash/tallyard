@@ -1,3 +1,4 @@
+import { PoolChlorineCalculatorExpansion } from "@/content/pool-chlorine-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
@@ -164,6 +165,8 @@ export const poolChlorineCalculatorConfig: CalculatorConfig = {
       ],
     };
   },
+
+  ContentExpansion: PoolChlorineCalculatorExpansion,
 
   formulaDescription:
     "dose = (volume ÷ 10,000) × ppm needed × product factor (oz per 10k gal per ppm)",

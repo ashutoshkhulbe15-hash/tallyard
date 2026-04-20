@@ -1,3 +1,4 @@
+import { GarageDoorCalculatorExpansion } from "@/content/garage-door-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
@@ -167,6 +168,8 @@ export const garageDoorCalculatorConfig: CalculatorConfig = {
       ],
     };
   },
+
+  ContentExpansion: GarageDoorCalculatorExpansion,
 
   formulaDescription:
     "door ≤ 10ft = single, ≤ 18ft = double; opener HP by area × material weight factor",

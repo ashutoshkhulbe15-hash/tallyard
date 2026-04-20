@@ -1,3 +1,4 @@
+import { DrainPipeCalculatorExpansion } from "@/content/drain-pipe-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { formatNumber } from "@/lib/format";
 
@@ -153,6 +154,8 @@ export const drainPipeCalculatorConfig: CalculatorConfig = {
       ].filter(Boolean) as string[],
     };
   },
+
+  ContentExpansion: DrainPipeCalculatorExpansion,
 
   formulaDescription:
     "total DFU = sum(fixtures × DFU rating); pipe size per IPC/UPC tables (toilet line ≥ 3\")",

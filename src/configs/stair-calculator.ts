@@ -1,3 +1,4 @@
+import { StairCalculatorExpansion } from "@/content/stair-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
@@ -137,6 +138,8 @@ export const stairCalculatorConfig: CalculatorConfig = {
       ],
     };
   },
+
+  ContentExpansion: StairCalculatorExpansion,
 
   formulaDescription:
     "risers = round(total rise ÷ ideal riser); treads = risers − 1; stringer = √(rise² + run²)",

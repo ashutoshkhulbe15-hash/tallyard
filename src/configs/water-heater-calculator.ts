@@ -1,3 +1,4 @@
+import { WaterHeaterCalculatorExpansion } from "@/content/water-heater-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
@@ -184,6 +185,8 @@ export const waterHeaterCalculatorConfig: CalculatorConfig = {
       ],
     };
   },
+
+  ContentExpansion: WaterHeaterCalculatorExpansion,
 
   formulaDescription:
     "tank: size = peak hour demand ÷ 1.3; tankless: GPM = peak simultaneous, BTU = GPM × temp rise × 500",

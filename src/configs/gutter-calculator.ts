@@ -1,3 +1,4 @@
+import { GutterCalculatorExpansion } from "@/content/gutter-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
@@ -144,6 +145,8 @@ export const gutterCalculatorConfig: CalculatorConfig = {
       ],
     };
   },
+
+  ContentExpansion: GutterCalculatorExpansion,
 
   formulaDescription:
     "gutter = roof edge ft; downspouts = ⌈effective area ÷ (600-1200 ft² per DS)⌉; size = 5\" up to 5,500 ft², 6\" above",

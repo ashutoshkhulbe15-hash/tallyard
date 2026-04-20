@@ -1,3 +1,4 @@
+import { SodCalculatorExpansion } from "@/content/sod-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, roundUp, formatNumber } from "@/lib/format";
 
@@ -117,6 +118,8 @@ export const sodCalculatorConfig: CalculatorConfig = {
       ],
     };
   },
+
+  ContentExpansion: SodCalculatorExpansion,
 
   formulaDescription:
     "pieces = ⌈(area × (1 + shape waste)) ÷ coverage per piece⌉",

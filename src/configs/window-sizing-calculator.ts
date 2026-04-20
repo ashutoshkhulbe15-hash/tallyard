@@ -1,3 +1,4 @@
+import { WindowSizingCalculatorExpansion } from "@/content/window-sizing-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
@@ -175,6 +176,8 @@ export const windowSizingCalculatorConfig: CalculatorConfig = {
       ],
     };
   },
+
+  ContentExpansion: WindowSizingCalculatorExpansion,
 
   formulaDescription:
     "openable = glass × window type factor; egress = 5.7 ft² min + 20\"w × 24\"h clear; light = room × 8%; vent = room × 4%",

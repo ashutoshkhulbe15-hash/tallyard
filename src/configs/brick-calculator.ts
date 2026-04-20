@@ -1,3 +1,4 @@
+import { BrickCalculatorExpansion } from "@/content/brick-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, roundUp, formatNumber } from "@/lib/format";
 
@@ -150,6 +151,8 @@ export const brickCalculatorConfig: CalculatorConfig = {
       ],
     };
   },
+
+  ContentExpansion: BrickCalculatorExpansion,
 
   formulaDescription:
     "bricks = area × (144 ÷ ((brick L + joint) × (brick H + joint))) × wythe × (1 + waste)",

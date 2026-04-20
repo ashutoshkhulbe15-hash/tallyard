@@ -1,3 +1,4 @@
+import { GravelCalculatorExpansion } from "@/content/gravel-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, roundUp, formatNumber } from "@/lib/format";
 
@@ -128,6 +129,8 @@ export const gravelCalculatorConfig: CalculatorConfig = {
       ],
     };
   },
+
+  ContentExpansion: GravelCalculatorExpansion,
 
   formulaDescription:
     "volume = area × depth, weight = volume × density (tons per yd³ or tonnes per m³)",

@@ -1,3 +1,4 @@
+import { AtticVentilationCalculatorExpansion } from "@/content/attic-ventilation-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
@@ -153,6 +154,8 @@ export const atticVentilationCalculatorConfig: CalculatorConfig = {
       },
     };
   },
+
+  ContentExpansion: AtticVentilationCalculatorExpansion,
 
   formulaDescription:
     "NFVA = attic area ÷ ratio (1:300 or 1:150), split 50/50 between intake and exhaust",

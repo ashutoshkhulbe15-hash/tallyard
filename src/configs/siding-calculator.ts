@@ -1,3 +1,4 @@
+import { SidingCalculatorExpansion } from "@/content/siding-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
@@ -148,6 +149,8 @@ export const sidingCalculatorConfig: CalculatorConfig = {
       ],
     };
   },
+
+  ContentExpansion: SidingCalculatorExpansion,
 
   formulaDescription:
     "squares = ((perimeter × height + gables − openings) × (1 + waste)) ÷ 100",

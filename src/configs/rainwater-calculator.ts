@@ -1,3 +1,4 @@
+import { RainwaterCalculatorExpansion } from "@/content/rainwater-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
@@ -116,6 +117,8 @@ export const rainwaterCalculatorConfig: CalculatorConfig = {
       ],
     };
   },
+
+  ContentExpansion: RainwaterCalculatorExpansion,
 
   formulaDescription:
     "gallons = roof ft² × rainfall inches × 0.623 × efficiency",

@@ -1,3 +1,4 @@
+import { PaverCalculatorExpansion } from "@/content/paver-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, roundUp, formatNumber } from "@/lib/format";
 
@@ -173,6 +174,8 @@ export const paverCalculatorConfig: CalculatorConfig = {
       ],
     };
   },
+
+  ContentExpansion: PaverCalculatorExpansion,
 
   formulaDescription:
     "pavers = ⌈area ÷ paver area × (1 + pattern waste)⌉; includes base gravel and bedding sand",

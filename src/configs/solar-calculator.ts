@@ -1,3 +1,4 @@
+import { SolarCalculatorExpansion } from "@/content/solar-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, roundUp, formatNumber } from "@/lib/format";
 
@@ -120,6 +121,8 @@ export const solarCalculatorConfig: CalculatorConfig = {
       },
     };
   },
+
+  ContentExpansion: SolarCalculatorExpansion,
 
   formulaDescription:
     "panels = ⌈(daily kWh ÷ (sun hours × efficiency) × 1000) ÷ panel watts⌉",

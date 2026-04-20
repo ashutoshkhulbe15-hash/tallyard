@@ -1,3 +1,4 @@
+import { CountertopCalculatorExpansion } from "@/content/countertop-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
@@ -161,6 +162,8 @@ export const countertopCalculatorConfig: CalculatorConfig = {
       },
     };
   },
+
+  ContentExpansion: CountertopCalculatorExpansion,
 
   formulaDescription:
     "area = (linear ft × depth) + island + waste; linear edge = main front + island perimeter",
