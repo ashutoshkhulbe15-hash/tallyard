@@ -215,7 +215,7 @@ export function BTUCalculatorExpansion() {
       </p>
 
       <p>
-        Mini-splits deserve serious consideration for homes without ductwork, for additions, and for rooms that are consistently too hot or too cold. They are 30 to 50 percent more efficient than window units, nearly silent indoors, and allow zone-by-zone temperature control. The installed cost ($3,000 to $7,000 for a single-zone system) is higher than window units but lower than adding ductwork to a house that does not have it. For homes where <a href="/insulation-calculator">insulation upgrades</a> have reduced the heating and cooling load, a mini-split may be all you need.
+        Mini-splits deserve serious consideration for homes without ductwork, for additions, and for rooms that are consistently too hot or too cold. They are 30 to 50 percent more efficient than window units, nearly silent indoors, and allow zone-by-zone temperature control. The installed cost ($3,000 to $7,000 for a single-zone system) is higher than window units but lower than adding ductwork to a house that does not have it. For homes where <a href="/insulation-calculator">insulation upgrades</a> have reduced the heating and cooling load, a mini-split may be all you need. For hot water sizing, the <a href="/water-heater-calculator">water heater calculator</a> determines tank or tankless capacity by household size.
       </p>
     </>
   );

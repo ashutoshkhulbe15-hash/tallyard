@@ -178,6 +178,7 @@ export function RoofingCalculatorExpansion() {
         caption="These items are not optional. A shingle-only estimate that doesn't include underlayment and flashing is either incomplete or the roofer is cutting corners."
       />
       <p>Use the <a href="/attic-ventilation-calculator">attic ventilation calculator</a> to size ridge vent and soffit intake for your roof area, and the <a href="/gutter-calculator">gutter calculator</a> for downspout count. The underlayment and ice barrier are invisible once shingles go down, but they&apos;re doing most of the waterproofing work. Synthetic underlayment has almost entirely replaced 15-lb or 30-lb felt paper — it&apos;s lighter, lays flatter, and doesn&apos;t wrinkle when wet. Ice and water shield is required by code along the first 24 inches of eaves in cold climates to prevent ice dam leaks.</p>
+      <p>If the exterior renovation includes a garage, the <a href="/garage-door-calculator">garage door calculator</a> checks sizing, headroom, and opener HP requirements.</p>
     </>
   );
 }

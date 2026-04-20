@@ -107,7 +107,7 @@ export function GutterCalculatorExpansion() {
 
       <Callout label="Gutter guards">Leaf guards and mesh screens reduce cleaning frequency but do not eliminate it. Fine debris (pine needles, shingle grit, seed pods) still gets through most guards. Budget $7-15/LF installed for quality guards. Cheap foam or brush inserts ($2-3/LF) clog within 2 years and create worse drainage problems than open gutters.</Callout>
 
-      <p>If you are replacing gutters as part of a <a href="/roofing-calculator">roof replacement</a>, do both at the same time. The <a href="/planner/replace-a-roof">roof replacement planner</a> chains gutter and roofing quantities together from one set of inputs.</p>
+      <p>If you are replacing gutters as part of a <a href="/roofing-calculator">roof replacement</a>, do both at the same time. The <a href="/planner/replace-a-roof">roof replacement planner</a> chains gutter and roofing quantities together from one set of inputs. For rainwater collection from the same roof, the <a href="/rainwater-calculator">rainwater calculator</a> sizes storage tanks by roof area and local rainfall.</p>
     </>
   );
 }
