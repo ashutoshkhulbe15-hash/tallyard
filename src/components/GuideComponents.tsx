@@ -61,24 +61,33 @@ export function ComparisonTable({
   rows: ComparisonRow[];
   caption?: string;
 }) {
+  const colCount = columns.length;
+  // On mobile, tables with 3+ data columns get horizontal scroll.
+  // Tables with 1-2 data columns fit without scrolling.
+  const needsScroll = colCount > 2;
+
   return (
     <div className="my-8 -mx-4 md:mx-0 overflow-x-auto">
-      <table className="w-full min-w-[560px] bg-surface border border-line rounded-lg overflow-hidden text-sm">
+      <table
+        className={`w-full bg-surface border border-line rounded-lg overflow-hidden text-sm ${
+          needsScroll ? "min-w-[480px]" : ""
+        }`}
+      >
         <thead>
           <tr className="bg-bg-warm border-b border-line">
-            <th className="text-left font-semibold text-ink-faint uppercase tracking-wider text-[11px] px-4 py-3 w-1/4">
+            <th className="text-left font-semibold text-ink-faint uppercase tracking-wider text-[11px] px-3 md:px-4 py-3">
               &nbsp;
             </th>
             {columns.map((col, i) => (
               <th
                 key={i}
-                className={`text-left font-semibold px-4 py-3 ${
+                className={`text-left font-semibold px-3 md:px-4 py-3 ${
                   col.highlight
                     ? "bg-accent-soft border-b-2 border-accent"
                     : ""
                 }`}
               >
-                <div className="text-sm text-ink font-semibold">
+                <div className="text-xs md:text-sm text-ink font-semibold">
                   {col.title}
                 </div>
                 {col.subtitle && (
@@ -96,13 +105,13 @@ export function ComparisonTable({
               key={i}
               className={i < rows.length - 1 ? "border-b border-line" : ""}
             >
-              <td className="text-xs font-semibold text-ink-faint uppercase tracking-wider px-4 py-3 align-top">
+              <td className="text-xs font-semibold text-ink-faint uppercase tracking-wider px-3 md:px-4 py-3 align-top">
                 {row.label}
               </td>
               {row.values.map((val, j) => (
                 <td
                   key={j}
-                  className={`text-sm text-ink px-4 py-3 align-top ${
+                  className={`text-xs md:text-sm text-ink px-3 md:px-4 py-3 align-top ${
                     columns[j]?.highlight ? "bg-accent-soft/40" : ""
                   }`}
                 >
