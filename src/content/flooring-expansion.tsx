@@ -127,7 +127,7 @@ export function FlooringCalculatorExpansion() {
         reviewedAgainst="NWFA installation guidelines and manufacturer specs from Shaw, Mohawk, and LifeProof"
       />
 
-      <h2>The complete guide to calculating flooring</h2>
+      <h2>Why 400 square feet of floor needs 430 square feet of flooring</h2>
       <p>My uncle installed laminate in his basement in 2022. He measured the room at 400 square feet, drove to Home Depot, and bought 400 square feet of flooring. Sixteen boxes. He ran out with two rows left against the far wall. The problem wasn&apos;t his measurement — the room was 400 square feet. The problem was the 38 cuts he made along walls, around a support column, and at the doorway transition. Each cut created an offcut too short to start the next row. Those offcuts went in the trash. He needed 430 square feet to finish 400.</p>
 
       <MethodologyNote>
@@ -197,6 +197,7 @@ export function FlooringCalculatorExpansion() {
         <li><strong>Moisture.</strong> Test concrete subfloors with a calcium chloride kit. Readings over 3 lb per 1,000 ft² per 24 hours mean you need a moisture barrier, and some solid hardwoods can&apos;t be installed at all. LVP handles moisture best.</li>
         <li><strong>Structure.</strong> Bounce test: walk across the room. If the subfloor flexes noticeably, the joists may need sistering or blocking before tile or stone goes down. Flexible subfloors crack rigid flooring.</li>
       </ul>
+      <p>If your project involves tile instead of plank flooring, the <a href="/tile-calculator">tile calculator</a> and <a href="/grout-calculator">grout calculator</a> handle the different waste and grout math. For rooms with both tile (bathroom) and plank (bedroom), calculate each area separately.</p>
     </>
   );
 }

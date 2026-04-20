@@ -51,16 +51,24 @@ export function Calculator({ slug }: CalculatorProps) {
 
   const [values, setValues] = useState<Record<string, number | string>>({});
   const [valuesInit, setValuesInit] = useState(false);
+  const [copied, setCopied] = useState(false);
 
-  // Initialize input values from config defaults once the config loads.
+  // Initialize input values from URL params (if present) or config defaults.
   useEffect(() => {
     if (!config || valuesInit) return;
+    const params = new URLSearchParams(window.location.search);
     const initial: Record<string, number | string> = {};
     config.inputs.forEach((input) => {
-      initial[input.id] =
-        units === "metric" && input.defaultMetric !== undefined
-          ? input.defaultMetric
-          : input.defaultImperial;
+      const paramVal = params.get(input.id);
+      if (paramVal !== null) {
+        initial[input.id] =
+          input.type === "number" ? Number(paramVal) || input.defaultImperial : paramVal;
+      } else {
+        initial[input.id] =
+          units === "metric" && input.defaultMetric !== undefined
+            ? input.defaultMetric
+            : input.defaultImperial;
+      }
     });
     setValues(initial);
     setValuesInit(true);
@@ -235,6 +243,27 @@ export function Calculator({ slug }: CalculatorProps) {
                 exact: {formatNumber(result.value, 3)} {result.unit}
               </div>
             )}
+
+            {/* Copy link button */}
+            <button
+              onClick={() => {
+                const params = new URLSearchParams();
+                Object.entries(values).forEach(([k, v]) => params.set(k, String(v)));
+                const shareUrl = `${window.location.origin}${window.location.pathname}?${params.toString()}`;
+                navigator.clipboard.writeText(shareUrl).then(() => {
+                  setCopied(true);
+                  setTimeout(() => setCopied(false), 2000);
+                });
+              }}
+              className="mt-5 w-full text-xs font-semibold py-2 rounded-md transition-colors"
+              style={{
+                background: "rgba(255,255,255,0.08)",
+                color: "rgba(255,255,255,0.6)",
+                border: "1px solid rgba(255,255,255,0.1)",
+              }}
+            >
+              {copied ? "✓ Copied!" : "Copy link to this calculation"}
+            </button>
           </>
         )}
       </div>
@@ -312,8 +341,10 @@ export function Calculator({ slug }: CalculatorProps) {
           </details>
         )}
 
-        <div className="text-xs text-ink-faint font-mono pt-3 mt-1">
-          {config.formulaDescription}
+        <div className="text-xs text-ink-faint pt-3 mt-1">
+          <code className="font-mono bg-bg-warm px-2 py-1 rounded text-ink-faint">
+            {config.formulaDescription}
+          </code>
         </div>
       </div>
     </div>

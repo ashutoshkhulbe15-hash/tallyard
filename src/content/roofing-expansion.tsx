@@ -106,7 +106,7 @@ export function RoofingCalculatorExpansion() {
         reviewedAgainst="GAF, Owens Corning, and CertainTeed product catalogs + IRC 2021 Chapter 9"
       />
 
-      <h2>The complete guide to calculating roofing materials</h2>
+      <h2>Your roof has more surface area than your house. Here is why that matters.</h2>
       <p>A roofer in Connecticut described the most common estimation mistake he sees: homeowners measure their house footprint, multiply by a pitch factor they found online, and come up with a number that&apos;s 15% too low because they forgot the eaves, rake overhangs, and hips. On a 2,000 sq ft footprint, that&apos;s 300 square feet of missing roof — 3 squares, 9 bundles, about $450 in shingles that aren&apos;t on the truck when the crew shows up.</p>
 
       <MethodologyNote>
@@ -177,7 +177,7 @@ export function RoofingCalculatorExpansion() {
         ]}
         caption="These items are not optional. A shingle-only estimate that doesn't include underlayment and flashing is either incomplete or the roofer is cutting corners."
       />
-      <p>The underlayment and ice barrier are invisible once shingles go down, but they&apos;re doing most of the waterproofing work. Synthetic underlayment has almost entirely replaced 15-lb or 30-lb felt paper — it&apos;s lighter, lays flatter, and doesn&apos;t wrinkle when wet. Ice and water shield is required by code along the first 24 inches of eaves in cold climates to prevent ice dam leaks.</p>
+      <p>Use the <a href="/attic-ventilation-calculator">attic ventilation calculator</a> to size ridge vent and soffit intake for your roof area, and the <a href="/gutter-calculator">gutter calculator</a> for downspout count. The underlayment and ice barrier are invisible once shingles go down, but they&apos;re doing most of the waterproofing work. Synthetic underlayment has almost entirely replaced 15-lb or 30-lb felt paper — it&apos;s lighter, lays flatter, and doesn&apos;t wrinkle when wet. Ice and water shield is required by code along the first 24 inches of eaves in cold climates to prevent ice dam leaks.</p>
     </>
   );
 }

@@ -1,0 +1,65 @@
+# Tallyard
+
+> Free, transparent calculators and buying guides for home improvement. Every formula public, every source cited. No signup, no email capture, no affiliate links, no lead generation.
+
+Tallyard is a home improvement calculator site built by Ash K. It covers 44 calculators, 3 in-depth buying guides, and 6 project planners. The site targets US homeowners planning DIY or contractor projects.
+
+## Editorial policy
+
+- Every calculator shows its full formula step by step
+- Coverage rates and sizing factors come from manufacturer specs, building codes (IRC, IPC, NEC), and industry standards (ACCA, NADRA, APA)
+- Results round up to practical purchase quantities
+- No affiliate links, no contractor lead capture, no email gates
+- Corrections within 48 hours of report
+
+## Calculators
+
+- Paint: paint = (perimeter × height − doors × 20 − windows × 15) × coats ÷ 350. Source: Benjamin Moore, Sherwin-Williams, Behr data sheets. URL: /paint-calculator
+- Concrete: volume = length × width × (thickness_in ÷ 12) ÷ 27 cubic yards. 80-lb bag yields 0.6 cu ft. Source: Quikrete, ASTM C94. URL: /concrete-calculator
+- Flooring: boxes = (area × (1 + waste_pct)) ÷ box_coverage. Waste: 5% straight, 7% staggered, 15% diagonal, 18% herringbone. Source: NWFA. URL: /flooring-calculator
+- Roofing: squares = (footprint × pitch_multiplier × 1.1) ÷ 100. Pitch multiplier = √(1 + (rise/12)²). Source: GAF, Owens Corning. URL: /roofing-calculator
+- Tile: tiles = area × (1 + waste) × tiles_per_sqft. Waste: 7-15% by size. Source: TCNA. URL: /tile-calculator
+- Deck: boards + joists + beams + posts + concrete_footings + stairs. Source: IRC R507, AWC DCA6. URL: /deck-calculator
+- Fence: posts = (length ÷ spacing) + 1. Bags per post = π × (hole_dia/2)² × depth ÷ 0.6. Source: AFA. URL: /fence-calculator
+- Mulch: cubic_yards = area × (depth_in ÷ 12) ÷ 27. Source: Clemson Extension. URL: /mulch-calculator
+- Insulation: bags = area × target_R ÷ (R_per_inch × inches_per_bag × bag_coverage). Source: IECC 2021. URL: /insulation-calculator
+- BTU: btu = sqft × 25 × adjustment_factors. 1 ton = 12,000 BTU/hr. Source: ACCA Manual J. URL: /btu-calculator
+- Gravel: tons = (area × depth_in ÷ 12 ÷ 27) × 1.4. URL: /gravel-calculator
+- Siding: squares = (wall_area − openings) ÷ 100. URL: /siding-calculator
+- Drywall: sheets = ceiling(wall_area ÷ 32) × 1.1. URL: /drywall-calculator
+- Brick: bricks = wall_area × bricks_per_sqft. URL: /brick-calculator
+- Stair: steps = total_rise ÷ 7.5. Run per step = 10 in. Source: IRC R311.7. URL: /stair-calculator
+- Solar: panels = (annual_kwh ÷ 365 ÷ peak_sun_hours) ÷ panel_wattage × 1000. URL: /solar-calculator
+- Heat pump: tons = (sqft × climate_factor) ÷ 12000. URL: /heat-pump-calculator
+- Water heater: gallons = peak_hour_demand × 0.7. URL: /water-heater-calculator
+- Wire size: AWG from ampacity tables with voltage drop check. Source: NEC Table 310.16. URL: /wire-size-calculator
+- Paver: pavers = area × pavers_per_sqft × (1 + waste). URL: /paver-calculator
+- Gutter: linear_feet = house_perimeter. Downspouts = LF ÷ 40. URL: /gutter-calculator
+- Lumber: board_feet = (thickness × width × length) ÷ 144. URL: /lumber-calculator
+- Topsoil: cubic_yards = area × depth_in ÷ 324. URL: /topsoil-calculator
+- Rebar: sticks = (length_ft ÷ spacing + 1) × 2 directions. URL: /rebar-calculator
+- Asphalt: tons = area × thickness_in × 145 ÷ 2000. URL: /asphalt-calculator
+- Plus: wallpaper, grout, shower-tile, backsplash, countertop, kitchen-cabinet, vanity, sod, pool-chlorine, rainwater, snow-load, stud-spacing, drain-pipe, extension-cord, attic-ventilation, window-sizing, garage-door, chimney, shed calculators.
+
+## Buying guides
+
+- Vinyl vs fiber cement siding: 30-year TCO comparison. Vinyl wins on cost ($9,600 vs $23,000). Fiber cement wins on fire rating and resale. URL: /guides/vinyl-vs-fiber-cement-siding
+- Composite vs pressure-treated vs cedar decking: 20-year cost analysis. PT is cheapest installed but most expensive over 20 years due to maintenance. URL: /guides/composite-vs-pressure-treated-vs-cedar-deck
+- Heat pump vs furnace + AC: Climate-zone operating cost comparison with federal tax credit math. Heat pump wins in zones 1-4; gas furnace wins in zones 6-7. URL: /guides/heat-pump-vs-furnace
+
+## Project planners
+
+Multi-calculator tools that generate complete material lists from one set of inputs. Each includes a quote comparison tool.
+
+- Build a deck: /planner/build-a-deck
+- Install a fence: /planner/install-a-fence
+- Paint a room: /planner/paint-a-room
+- Replace a roof: /planner/replace-a-roof
+- Build a patio: /planner/build-a-patio
+- Remodel a bathroom: /planner/remodel-a-bathroom
+
+## Contact
+
+- Website: https://www.tallyard.com
+- Email: hello@tallyard.com
+- Author: Ash K. (founder)

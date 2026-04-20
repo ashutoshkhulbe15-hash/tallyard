@@ -118,7 +118,7 @@ export function ConcreteCalculatorExpansion() {
         reviewedAgainst="Quikrete product specs, ASTM C94, and ready-mix industry standards"
       />
 
-      <h2>The complete guide to calculating concrete</h2>
+      <h2>One quarter-yard short: why concrete estimation has zero margin for error</h2>
       <p>A contractor in Ohio told me about a driveway pour that went sideways in 2024. The homeowner measured his driveway at 18 × 50 feet, plugged it into a calculator online, and ordered 11 cubic yards. What he forgot was that the apron near the garage was 6 inches thick, not 4. That two-inch difference across 18 × 8 feet added 0.9 yards he didn&apos;t order. The truck ran dry 6 feet from the end. The batch plant couldn&apos;t send another truck for 3 hours. The cold joint where the two pours met cracked through by the following spring.</p>
       <p>Concrete estimation comes down to three decisions: how thick, how much waste to add, and whether to use bags or call a truck. The volume formula itself — length times width times thickness divided by 27 — is the easy part.</p>
 
@@ -195,7 +195,7 @@ export function ConcreteCalculatorExpansion() {
         ]}
         caption="Rebar is the standard for any load-bearing slab. Wire mesh is the budget option for patios. Fiber is a supplement, not a replacement for steel."
       />
-      <p>A common mistake: laying wire mesh flat on the subgrade and pouring concrete on top. The mesh needs to be in the middle third of the slab to work — pull it up during the pour or set it on rebar chairs beforehand. Mesh sitting on the ground does nothing for crack control.</p>
+      <p>A common mistake — and one the <a href="/rebar-calculator">rebar calculator</a> can help you avoid — is laying wire mesh flat on the subgrade and pouring concrete on top. The mesh needs to be in the middle third of the slab to work — pull it up during the pour or set it on rebar chairs beforehand. Mesh sitting on the ground does nothing for crack control.</p>
 
       <h2>Cost to pour concrete in 2026</h2>
       <ComparisonTable

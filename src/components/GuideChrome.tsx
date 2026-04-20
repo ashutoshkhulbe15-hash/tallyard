@@ -128,9 +128,12 @@ export function Scenario({
   return (
     <div className="my-6 p-5 bg-bg-warm rounded-lg border border-line">
       <div className="text-[10px] uppercase tracking-[0.12em] text-accent font-bold mb-2">
-        Real scenario · {location}
+        Example project · {location}
       </div>
       <div className="text-sm text-ink leading-relaxed">{children}</div>
+      <p className="text-[10px] text-ink-faint mt-3 italic">
+        Based on typical project dimensions and 2026 material pricing.
+      </p>
     </div>
   );
 }

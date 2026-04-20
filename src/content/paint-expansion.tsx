@@ -299,7 +299,7 @@ export function PaintCalculatorExpansion() {
         reviewedAgainst="Benjamin Moore, Sherwin-Williams, and Behr product data sheets"
       />
 
-      <h2>The complete guide to calculating paint</h2>
+      <h2>How to never buy the wrong amount of paint again</h2>
 
       <p>
         Last spring a friend of mine painted her living room Benjamin Moore
@@ -487,7 +487,7 @@ export function PaintCalculatorExpansion() {
       </Figure>
 
       <p>
-        For rooms not on this list, the calculator at the top of the page
+        If you're painting over new drywall, use the <a href="/drywall-calculator">drywall calculator</a> to estimate sheets first — bare drywall needs primer before paint. For rooms not on this list, the calculator at the top of the page
         handles any dimensions. Enter your wall lengths, ceiling height,
         and door/window count and it does the arithmetic — showing every
         step so you can check the math.

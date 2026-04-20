@@ -37,6 +37,29 @@ export function getCalculatorSchema({
     },
   };
 
+  const article = config.ContentExpansion
+    ? {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        headline: config.title,
+        description: config.description,
+        url: pageUrl,
+        datePublished: "2026-04-18",
+        dateModified: "2026-04-20",
+        author: {
+          "@type": "Person",
+          name: "Ash K.",
+          url: `${baseUrl}/about`,
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "Tallyard",
+          url: baseUrl,
+        },
+        mainEntityOfPage: pageUrl,
+      }
+    : null;
+
   const faqPage =
     config.faq.length > 0
       ? {
@@ -78,9 +101,10 @@ export function getCalculatorSchema({
     ],
   };
 
-  return faqPage
-    ? [webApplication, faqPage, breadcrumbs]
-    : [webApplication, breadcrumbs];
+  const schemas: object[] = [webApplication, breadcrumbs];
+  if (article) schemas.push(article);
+  if (faqPage) schemas.push(faqPage);
+  return schemas;
 }
 
 /**
