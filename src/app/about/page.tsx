@@ -21,23 +21,26 @@ function AboutSchema() {
         name: "Ash K.",
         jobTitle: "Founder",
       },
-      sameAs: [],
+      sameAs: ["https://www.linkedin.com/in/ash-k-5baa5016a/"],
     },
     {
       "@context": "https://schema.org",
       "@type": "Person",
       name: "Ash K.",
       jobTitle: "Founder",
+      image: "https://www.tallyard.com/ash-k.jpg",
+      url: "https://www.tallyard.com/about",
+      sameAs: ["https://www.linkedin.com/in/ash-k-5baa5016a/"],
       worksFor: {
         "@type": "Organization",
         name: "Tallyard",
         url: "https://www.tallyard.com",
       },
       knowsAbout: [
+        "Programmatic web tools",
+        "Data-driven reference products",
         "Home improvement cost estimation",
         "Construction material calculations",
-        "HVAC system sizing",
-        "Residential building codes",
       ],
     },
   ];
@@ -86,38 +89,62 @@ export default function AboutPage() {
           </p>
         </div>
 
-        {/* Founder section — E-E-A-T: named person with expertise context */}
+        {/* Founder section — E-E-A-T: named person with photo and LinkedIn */}
         <div className="mt-12 pt-10 border-t border-line">
           <p className="text-[11px] uppercase tracking-[0.08em] text-ink-faint mb-3 font-semibold">
             Founder
           </p>
-          <h2 className="text-2xl font-bold tracking-tight mb-4">
-            Ash K.
-          </h2>
-          <div className="space-y-4 text-base text-ink-muted leading-relaxed max-w-prose">
+          <div className="flex flex-col sm:flex-row gap-6 items-start">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/ash-k.jpg"
+              alt="Ash K., founder of Tallyard"
+              width={120}
+              height={120}
+              className="rounded-xl object-cover w-[120px] h-[120px] shrink-0"
+            />
+            <div>
+              <h2 className="text-2xl font-bold tracking-tight mb-1">
+                Ash K.
+              </h2>
+              <a
+                href="https://www.linkedin.com/in/ash-k-5baa5016a/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-accent hover:underline"
+              >
+                LinkedIn →
+              </a>
+            </div>
+          </div>
+          <div className="space-y-4 text-base text-ink-muted leading-relaxed max-w-prose mt-6">
             <p>
-              Ash K. is the founder and editor of Tallyard. He started
-              the project after spending an afternoon trying to figure out
-              how many bags of concrete he needed for a set of fence post
-              footings and finding that every online calculator either
-              asked him to sign up, hid the formula, or gave a different
-              answer.
+              I build data-driven web tools. Tallyard started because I
+              needed a concrete calculator that showed its formula and
+              could not find one. Every result on every other site was a
+              black box: enter your numbers, get an answer, no idea how
+              it was calculated or whether it was right. So I built one
+              that shows the math. Then I built 43 more.
             </p>
             <p>
-              Ash has been building digital products for over five years,
-              with a focus on tools that solve real problems for people
-              who aren&apos;t being served well by existing options. He
-              researches each calculator&apos;s formulas against
-              manufacturer specifications, building codes (IRC, IPC,
-              NEC), and industry references (ACCA, NADRA, APA) before
-              publishing.
+              I am not a contractor, an electrician, or an HVAC technician.
+              The formulas on this site do not come from my personal trade
+              experience. They come from the people and organizations who
+              set the standards: the International Residential Code (IRC),
+              ACCA Manual J, the Tile Council of North America (TCNA),
+              manufacturer product specifications from companies like GAF,
+              Trex, Owens Corning, and James Hardie, and industry
+              associations like NADRA, NWFA, and APA. Every calculator
+              cites its sources in a methodology section so you can verify
+              the math independently.
             </p>
             <p>
-              He personally reviews and fact-checks every guide, with
-              operating cost data sourced from the EIA, efficiency ratings
-              from Energy Star&apos;s qualified product database, and
-              installation costs cross-referenced against HomeGuide, Angi,
-              and contractor bid data.
+              Before Tallyard, I built JaankariHub and other reference
+              tools that serve millions of users. The approach is the same
+              across all of them: find a question people search for, find
+              the authoritative source for the answer, build a tool that
+              makes the answer accessible without requiring expertise to
+              interpret it.
             </p>
           </div>
         </div>
