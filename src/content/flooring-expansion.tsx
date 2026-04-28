@@ -198,6 +198,25 @@ export function FlooringCalculatorExpansion() {
         <li><strong>Structure.</strong> Bounce test: walk across the room. If the subfloor flexes noticeably, the joists may need sistering or blocking before tile or stone goes down. Flexible subfloors crack rigid flooring.</li>
       </ul>
       <p>If your project involves tile instead of plank flooring, the <a href="/tile-calculator">tile calculator</a> and <a href="/grout-calculator">grout calculator</a> handle the different waste and grout math. For rooms with both tile (bathroom) and plank (bedroom), calculate each area separately.</p>
+
+      <h2>Flooring installation cost per square foot</h2>
+
+      <p>Material is only part of the bill. Labor, underlayment, transitions, and old floor removal add 50 to 100 percent to the sticker price on the box. Here is what each flooring type costs fully installed:</p>
+
+      <ComparisonTable
+        columns={[{title:"Material/ft²"},{title:"Labor/ft²"},{title:"Total installed/ft²"}]}
+        rows={[
+          {label:"LVP (luxury vinyl plank)",values:["$2–5","$1.50–3","$3–8"]},
+          {label:"Laminate",values:["$1–4","$1.50–3","$2.50–7"]},
+          {label:"Engineered hardwood",values:["$4–10","$3–5","$6–14"]},
+          {label:"Solid hardwood",values:["$5–12","$4–6","$8–16"]},
+          {label:"Porcelain tile",values:["$3–10","$5–10","$7–20"]},
+          {label:"Natural stone tile",values:["$5–20","$8–15","$12–35"]},
+        ]}
+        caption="Hardwood floor installation cost runs $8-16/ft² total. The labor premium is higher than LVP because nail-down and glue-down installation requires skilled floor installers."
+      />
+
+      <p>For a cost-per-square-foot comparison including old floor removal, see the <a href="/cost-to-install-flooring">cost to install flooring</a> guide.</p>
     </>
   );
 }

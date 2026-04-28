@@ -149,6 +149,23 @@ export function SolarCalculatorExpansion() {
       />
 
       <p>After the payback period, solar electricity is essentially free for the remaining 15 to 20 years of panel warranty life. A system that pays back in 7 years and lasts 25 years generates 18 years of free electricity. At $150 per month in electricity savings, that is $32,400 in total savings after payback. Use the <a href="/wire-size-calculator">wire size calculator</a> if you are running dedicated circuits from solar inverter to panel. For battery backup sizing, that will be a future Tallyard calculator.</p>
+
+      <h2>How many solar panels do I need?</h2>
+
+      <p>The formula: monthly kWh usage ÷ 30 ÷ peak sun hours ÷ panel wattage × 1.2 (system losses) = number of panels. For a home using 900 kWh per month in a location with 5 peak sun hours, with 400-watt panels: 900 ÷ 30 ÷ 5 ÷ 0.4 × 1.2 = 18 panels. In Phoenix (6.5 sun hours), the same home needs only 14 panels. In Seattle (3.8 sun hours), it needs 24.</p>
+
+      <ComparisonTable
+        columns={[{title:"Panels needed"},{title:"Roof space needed"}]}
+        rows={[
+          {label:"600 kWh/mo (small home)",values:["10–14 panels","180–250 ft²"]},
+          {label:"900 kWh/mo (average)",values:["15–20 panels","270–360 ft²"]},
+          {label:"1,200 kWh/mo (large)",values:["20–28 panels","360–500 ft²"]},
+          {label:"1,800 kWh/mo (very large)",values:["30–42 panels","540–760 ft²"]},
+        ]}
+        caption="Each 400-watt panel occupies about 18 sq ft of roof space. South-facing roof sections produce the most energy. East and west faces produce about 80% as much."
+      />
+
+      <p>The average cost per watt for installed solar panels in 2026 is $2.50 to $3.50 before the 30% federal tax credit. At $3.00 per watt, an 18-panel system (7.2 kW) costs $21,600 before ITC, or $15,120 after. The calculator above does this math from your electricity usage and location automatically.</p>
     </>
   );
 }

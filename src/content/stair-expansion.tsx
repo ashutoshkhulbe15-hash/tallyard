@@ -121,6 +121,40 @@ export function StairCalculatorExpansion() {
       />
 
       <p>For deck projects where stairs are part of a larger build, the <a href="/deck-calculator">deck calculator</a> and the <a href="/planner/build-a-deck">deck planner</a> chain the stair calculation with decking, framing, and footing quantities automatically.</p>
+
+      <h2>How many stair stringers do I need?</h2>
+
+      <p>Stringer count depends on stair width and tread material. For 36-inch-wide stairs (code minimum) with standard 2× treads: 3 stringers (one on each side plus one center). For stairs wider than 36 inches, add a stringer every 16 to 18 inches of additional width. A 48-inch-wide staircase needs 4 stringers. Stairs using composite or thin decking boards as treads need stringers every 12 to 16 inches because those materials flex more than solid lumber under foot traffic.</p>
+
+      <ComparisonTable
+        columns={[{title:"Stringer count"},{title:"Max span between"}]}
+        rows={[
+          {label:"Stair width 36\"",values:["3 stringers","18\" between"]},
+          {label:"Stair width 48\"",values:["4 stringers","16\" between"]},
+          {label:"Stair width 60\"",values:["4–5 stringers","15–16\" between"]},
+          {label:"Composite treads (any width)",values:["Add 1 extra","12–16\" max span"]},
+        ]}
+        caption="Center stringers prevent tread bounce. If your treads flex when you step in the middle, you need another stringer."
+      />
+
+      <h2>Standard stair rise and run dimensions (IRC R311.7)</h2>
+
+      <p>The IRC sets exact limits that every residential staircase must meet. These are not recommendations. Stairs that fall outside these ranges fail inspection and must be rebuilt.</p>
+
+      <ComparisonTable
+        columns={[{title:"IRC requirement"},{title:"What it means"}]}
+        rows={[
+          {label:"Max riser height",values:["7.75 inches","Each step can be no taller than this"]},
+          {label:"Min tread depth",values:["10 inches","Each step must be at least this deep"]},
+          {label:"Min width",values:["36 inches","Clear width between walls or railings"]},
+          {label:"Max variation",values:["3/8 inch","Largest riser minus smallest riser"]},
+          {label:"Headroom",values:["80 inches minimum","Measured from nosing to ceiling above"]},
+          {label:"Landing",values:["36\" deep minimum","Required at top; at bottom if total rise > 12 ft"]},
+        ]}
+        caption="The 3/8-inch variation rule is the one most DIYers fail. If your first riser is 7.5 inches and your last is 7.0 inches, that 1/2-inch difference fails code. The calculator keeps all risers uniform to prevent this."
+      />
+
+      <p>Common rise and run combinations that pass code: 7.0-inch rise with 10.5-inch run (comfortable, gentle slope), 7.5-inch rise with 10-inch run (standard, the most common residential stair), 7.75-inch rise with 10-inch run (steepest allowed, saves horizontal space). The calculator finds the optimal combination from your total height.</p>
     </>
   );
 }

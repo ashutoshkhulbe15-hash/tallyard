@@ -138,7 +138,23 @@ export function SidingCalculatorExpansion() {
 
       <p>No matter which material you choose, the installation layers are the same. Sheathing (OSB or plywood) provides structure. House wrap (Tyvek or equivalent) provides the air and moisture barrier. Siding goes over the house wrap with a nailing pattern that allows drainage behind the cladding. Fiber cement boards are heavy (a 12-foot plank weighs 30+ pounds) and require two people to handle. Vinyl is light and clicks into a nailing hem, which makes it the most DIY-friendly siding material.</p>
 
-      <p>For the <a href="/gutter-calculator">gutter</a> and <a href="/insulation-calculator">insulation</a> calculators, use those tools alongside this one since all three are typically part of the same exterior renovation project.</p>
+      <h2>Siding installation cost per square foot</h2>
+
+      <p>The installed price per square foot is the number contractors quote and the number you need for budgeting. It includes material, labor, house wrap, trim, and basic flashing. It does not include removal of old siding (add $1 to $3 per square foot if tear-off is needed).</p>
+
+      <ComparisonTable
+        columns={[{title:"Material/ft²"},{title:"Labor/ft²"},{title:"Total installed/ft²"}]}
+        rows={[
+          {label:"Vinyl",values:["$2–4","$2–4","$3–8"]},
+          {label:"Fiber cement (Hardie)",values:["$3–6","$4–7","$6–13"]},
+          {label:"Engineered wood (LP)",values:["$3–5","$3–5","$5–10"]},
+          {label:"Cedar lap",values:["$5–9","$4–7","$8–16"]},
+          {label:"Aluminum",values:["$2–4","$3–5","$4–8"]},
+        ]}
+        caption="Labor is 40-55% of the installed price for most siding types. Fiber cement labor is the highest because the boards are heavy and require precise face-nailing with caulked joints."
+      />
+
+      <p>For a full cost analysis with 30-year total cost of ownership, see the <a href="/cost-to-install-siding">cost to install siding</a> guide. For the <a href="/gutter-calculator">gutter</a> and <a href="/insulation-calculator">insulation</a> calculators, use those tools alongside this one since all three are typically part of the same exterior renovation project.</p>
     </>
   );
 }

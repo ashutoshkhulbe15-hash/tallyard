@@ -558,6 +558,41 @@ export function PaintCalculatorExpansion() {
         Less air in the container means less skin formation on the paint
         surface.
       </p>
+
+      <h2>How much primer do I need?</h2>
+
+      <p>
+        Primer covers 300 to 400 square feet per gallon, roughly the same
+        as paint. A 12 × 14 room with 8-foot ceilings has about 350
+        square feet of wall after subtracting a door and two windows.
+        That is one gallon of primer for one coat. You need primer in
+        three situations: bare drywall (the paper face absorbs paint
+        unevenly without it), drastic color changes (dark to light or
+        light to dark), and stain blocking (water marks, smoke damage,
+        marker). For a same-color repaint over existing paint in good
+        condition, skip primer entirely and save $25 to $35 per gallon
+        plus the time for an extra coat.
+      </p>
+
+      <h2>Exterior house paint calculator: how much paint for the outside</h2>
+
+      <p>
+        Exterior paint coverage is slightly lower than interior because
+        textured surfaces (wood lap siding, stucco, brick) absorb more.
+        Budget 250 to 350 square feet per gallon depending on surface
+        texture. Smooth siding gets 350. Rough-sawn cedar or stucco gets
+        250. The exterior wall area formula: house perimeter times wall
+        height, plus gable triangles, minus windows and doors. A 1,500
+        square foot single-story home with 9-foot walls and a 160-foot
+        perimeter has about 1,440 square feet of paintable exterior wall
+        (after deductions). At 300 square feet per gallon and two coats,
+        that is 10 gallons of exterior paint. At $40 to $70 per gallon
+        for quality exterior latex, material runs $400 to $700. The
+        <a href="/siding-calculator">siding calculator</a> uses the same
+        wall area measurement if you are comparing paint versus new
+        siding. For full exterior painting cost including labor, see the
+        <a href="/cost-to-paint-a-house">cost to paint a house</a> guide.
+      </p>
     </>
   );
 }

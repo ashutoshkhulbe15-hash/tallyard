@@ -208,6 +208,40 @@ export default function CostToBuildDeck() {
 
           <p>The most popular residential deck size is 12 × 16 or 16 × 20. Smaller than 10 × 10 and the per-square-foot cost rises because fixed costs (permit, mobilization, minimum stair) are spread over less area. Larger than 20 × 24 and the per-square-foot cost drops slightly because framing becomes more efficient with longer spans. Use the <Link href="/deck-calculator" className="text-accent hover:underline">deck calculator</Link> to get an exact material list for your dimensions.</p>
 
+          <h2>How much do deck stairs cost?</h2>
+
+          <p>Deck stairs are the most common add-on and the one most online estimates undercount. A simple set of stairs (3 to 5 steps, 36 inches wide, pressure-treated) costs $300 to $800 in materials and $500 to $1,500 installed. A full staircase from a second-story deck to ground (12 to 15 steps with a landing and railing) costs $1,500 to $4,000 installed. The labor cost for deck stairs specifically runs $40 to $60 per step for a standard straight run, more for L-shaped or curved designs.</p>
+
+          <ComparisonTable
+            columns={[{ title: "Materials" }, { title: "Installed" }]}
+            rows={[
+              { label: "Short stairs (3–5 steps)", values: ["$300–600", "$500–1,500"] },
+              { label: "Medium stairs (6–10 steps)", values: ["$500–1,000", "$1,000–2,500"] },
+              { label: "Full staircase (11–15 steps + landing)", values: ["$800–1,800", "$1,500–4,000"] },
+              { label: "Spiral staircase (prefab kit)", values: ["$1,500–3,000", "$2,500–5,000"] },
+            ]}
+            caption="Stair cost depends on height, width, and whether the staircase needs a landing (required by code when total rise exceeds 12 feet). Use the stair calculator to get code-compliant rise and run dimensions."
+          />
+
+          <p>Every deck over 30 inches above grade needs stairs to reach the ground (and a railing on the stairs per IRC R311.7). The <Link href="/stair-calculator" className="text-accent hover:underline">stair calculator</Link> determines the number of steps, rise per step, run per step, and stringer length from your total height. If your deck is at ground level, you can skip stairs entirely and save $500 to $1,500.</p>
+
+          <h2>Cost to build a deck by specific size</h2>
+
+          <ComparisonTable
+            columns={[{ title: "PT wood" }, { title: "Composite" }]}
+            rows={[
+              { label: "8×8 (64 ft²)", values: ["$1,600–3,200", "$2,600–5,100"] },
+              { label: "8×10 (80 ft²)", values: ["$2,000–4,000", "$3,200–6,400"] },
+              { label: "10×10 (100 ft²)", values: ["$2,500–5,000", "$4,000–8,000"] },
+              { label: "10×12 (120 ft²)", values: ["$3,000–6,000", "$4,800–9,600"] },
+              { label: "12×16 (192 ft²)", values: ["$4,800–9,600", "$7,700–15,400"] },
+              { label: "16×10 (160 ft²)", values: ["$4,000–8,000", "$6,400–12,800"] },
+              { label: "16×20 (320 ft²)", values: ["$8,000–16,000", "$12,800–25,600"] },
+              { label: "20×24 (480 ft²)", values: ["$12,000–24,000", "$19,200–38,400"] },
+            ]}
+            caption="Includes frame, decking, one set of stairs, standard railing, and professional installation. Add 30-40% for elevated decks over 6 feet requiring engineered plans."
+          />
+
           <h2>DIY vs professional: where the savings actually are</h2>
 
           <ComparisonTable
