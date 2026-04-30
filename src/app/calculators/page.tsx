@@ -23,6 +23,7 @@ const sections = [
     desc: "Volume and unit calculators for concrete, brick, rebar, asphalt, and chimney construction.",
     items: [
       { slug: "concrete-calculator", name: "Concrete", desc: "Cubic yards for slabs, footings, and round pours" },
+      { slug: "mortar-calculator", name: "Mortar", desc: "Bags of mortar mix for brick, block, and stone walls" },
       { slug: "asphalt-calculator", name: "Asphalt", desc: "Tons for driveways, lots, and paving" },
       { slug: "rebar-calculator", name: "Rebar", desc: "Lineal feet and 20-ft sticks for slab grids" },
       { slug: "brick-calculator", name: "Brick", desc: "Bricks and mortar bags by size and joint width" },

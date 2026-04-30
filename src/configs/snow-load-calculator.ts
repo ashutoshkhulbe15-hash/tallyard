@@ -111,14 +111,15 @@ export const snowLoadCalculatorConfig: CalculatorConfig = {
         : `OK (${round(pctOfDesign, 0)}% of design)`;
 
     return {
-      value: round(totalPsf, 1),
-      unit: "psf",
-      valueRounded: Math.ceil(totalPsf),
+      value: round(totalLb, 0),
+      unit: "lb total weight on roof",
+      valueRounded: Math.ceil(totalLb),
       breakdown: [
         { label: "snow load", value: `${round(snowLoadPsf, 1)} psf` },
         { label: "ice load", value: `${round(iceLoadPsf, 1)} psf` },
-        { label: "total load", value: `${round(totalPsf, 1)} psf` },
-        { label: "total weight on roof", value: `${formatNumber(round(totalLb, 0))} lb` },
+        { label: "total pressure", value: `${round(totalPsf, 1)} psf` },
+        { label: "roof area", value: `${formatNumber(round(roofAreaSqFt, 0))} ft²` },
+        { label: "total weight", value: `${formatNumber(round(totalLb, 0))} lb (${formatNumber(round(totalLb / 2000, 1))} tons)` },
         { label: "design limit", value: `${designLoad} psf` },
         { label: "status", value: status },
       ],
