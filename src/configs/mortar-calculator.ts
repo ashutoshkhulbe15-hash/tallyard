@@ -183,7 +183,7 @@ export const mortarCalculatorConfig: CalculatorConfig = {
         `Bags (before waste): ${formatNumber(totalMortarCuIn, 0)} ÷ ${cuInPerBag} = ${formatNumber(bagsExact, 1)} bags`,
         `With 10% waste: ${bags} bags`,
       ],
-      breakdowns: [
+      breakdown: [
         { label: "Wall area", value: `${formatNumber(wallArea, 0)} ft²` },
         { label: "Bricks needed (with 5% waste)", value: `${formatNumber(brickCount, 0)} bricks` },
         { label: `${mortarTypeLabel} mortar (80-lb bags)`, value: `${bags} bags` },
