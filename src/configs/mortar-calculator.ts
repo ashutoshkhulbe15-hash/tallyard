@@ -111,6 +111,21 @@ export const mortarCalculatorConfig: CalculatorConfig = {
     },
   ],
 
+  methodology: [
+    "Mortar volume per brick is calculated from the joint geometry: bed joint (length × width × depth) plus head joint (height × width × depth) for each brick face. Standard bricks with 3/8-inch joints use approximately 6.5 cubic inches of mortar per brick. Wider joints increase this proportionally.",
+    "An 80-lb bag of pre-mixed mortar yields approximately 450 cubic inches of mixed mortar, enough for about 30-40 standard bricks at 3/8-inch joints. Coverage varies with joint width: wider joints use more mortar per brick and reduce bags-per-1000 count.",
+    "A 10% waste factor covers mortar that drops during tooling, mortar that sets before use, and extra material needed for cap rows and tooling joints. Experienced masons waste less; first-time DIYers may waste 15-20%.",
+    "Mortar type (S, N, M) does not change the volume calculation. All three types yield the same volume per bag. The type affects bond strength, compressive strength, and weather resistance. Type S is the default for exterior residential masonry.",
+    "Concrete block (CMU) uses significantly more mortar per unit than brick because the face shells and web create longer joint lines per block. A standard 8×8×16 block uses approximately 22.5 cubic inches of mortar at 3/8-inch joints.",
+  ],
+
+  related: [
+    { name: "Brick calculator", slug: "brick-calculator", description: "Brick count for the same wall" },
+    { name: "Concrete calculator", slug: "concrete-calculator", description: "Footings under masonry walls" },
+    { name: "Rebar calculator", slug: "rebar-calculator", description: "Reinforcement in block walls" },
+    { name: "Grout calculator", slug: "grout-calculator", description: "For tile joints (different from mortar)" },
+  ],
+
   formulaDescription:
     "bags = (wall_area_ft² × bricks_per_ft² × joint_volume_per_brick) ÷ coverage_per_bag",
 
