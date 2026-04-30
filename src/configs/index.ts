@@ -43,6 +43,7 @@ import { kitchenCabinetCalculatorConfig } from "./kitchen-cabinet-calculator";
 import { garageDoorCalculatorConfig } from "./garage-door-calculator";
 import { windowSizingCalculatorConfig } from "./window-sizing-calculator";
 import { chimneyCalculatorConfig } from "./chimney-calculator";
+import { mortarCalculatorConfig } from "./mortar-calculator";
 
 export const configs: Record<string, CalculatorConfig> = {
   "paint-calculator": paintCalculatorConfig,
@@ -89,6 +90,7 @@ export const configs: Record<string, CalculatorConfig> = {
   "garage-door-calculator": garageDoorCalculatorConfig,
   "window-sizing-calculator": windowSizingCalculatorConfig,
   "chimney-calculator": chimneyCalculatorConfig,
+  "mortar-calculator": mortarCalculatorConfig,
 };
 
 export function getConfig(slug: string): CalculatorConfig | null {

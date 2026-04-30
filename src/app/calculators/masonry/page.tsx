@@ -13,6 +13,7 @@ const tools = [
   { slug: "rebar-calculator", name: "Rebar calculator", desc: "Bar count, total length, and sticks for grid reinforcement in slabs and footings." },
   { slug: "asphalt-calculator", name: "Asphalt calculator", desc: "Tons of hot-mix by area and thickness. Driveway and parking area sizing." },
   { slug: "chimney-calculator", name: "Chimney calculator", desc: "Flue sizing by fireplace opening area. Height requirements per IRC R1003." },
+  { slug: "mortar-calculator", name: "Mortar calculator", desc: "Bags of mortar mix by wall area, brick size, and joint width. Type S, N, and M." },
 ];
 
 export default function MasonryPillar() {
