@@ -212,6 +212,56 @@ export default function MethodologyPage() {
             section.
           </p>
         </div>
+
+        {/* Source directory */}
+        <div>
+          <h2 className="text-xl font-bold tracking-tight text-ink mb-3">
+            Primary source directory
+          </h2>
+          <p className="text-base text-ink-muted leading-relaxed mb-4">
+            Every calculator formula traces back to one or more of these
+            sources. We reference specific sections, tables, and product
+            data sheets — not summaries or secondary sources.
+          </p>
+          <div className="space-y-3 text-sm text-ink-muted">
+            <p><strong className="text-ink">Building codes:</strong> International Residential Code (IRC) 2021 — sections R301 (design criteria), R311 (means of egress/stairs), R402 (insulation), R507 (decks), R602 (wall framing), R806 (ventilation), R1003 (chimneys). International Plumbing Code (IPC) — Table 710.1 (drain fixture units). National Electrical Code (NEC) 2023 — Table 310.16 (ampacity), Article 210 (branch circuits).</p>
+            <p><strong className="text-ink">Industry standards:</strong> ACCA Manual J (HVAC load calculations), ASTM C270 (mortar), ASTM C62/C216 (brick), ANSI A108 (tile installation), ASCE 7-22 Chapter 7 (snow loads), TCNA Handbook (tile and grout), AWC DCA6 (prescriptive deck construction).</p>
+            <p><strong className="text-ink">Industry associations:</strong> NADRA (decks and railing), NWFA (wood flooring), APA (engineered wood), BIA (brick), PCA (cement and concrete), NRMCA (ready-mix concrete), ARMA (asphalt roofing), ICPI (interlocking concrete pavement), CSIA (chimney safety), AFA (fencing), PHTA (pool and hot tub).</p>
+            <p><strong className="text-ink">Manufacturer specifications:</strong> Benjamin Moore, Sherwin-Williams, Behr (paint coverage). GAF, Owens Corning, CertainTeed (roofing). Trex, TimberTech (composite decking). James Hardie, LP SmartSide (siding). Mapei, Laticrete (grout). Owens Corning, Rockwool (insulation).</p>
+            <p><strong className="text-ink">Government and research:</strong> US Department of Energy (insulation fact sheets). Energy Information Administration (residential energy rates). IRS Section 25D/25C (solar and heat pump tax credits). NREL PVWatts (solar resource data). NOAA (precipitation data for rainwater calculators).</p>
+            <p><strong className="text-ink">Cost data:</strong> HomeGuide, Angi, and Fixr contractor cost databases. RS Means residential cost data. EnergySage solar marketplace reports. Remodeling Magazine Cost vs Value report.</p>
+          </div>
+        </div>
+
+        {/* Quality process */}
+        <div>
+          <h2 className="text-xl font-bold tracking-tight text-ink mb-3">
+            Quality process
+          </h2>
+          <p className="text-base text-ink-muted leading-relaxed mb-3">
+            Each calculator goes through four steps before publishing.
+            First, formula research: we identify the primary source
+            (code section, manufacturer spec, or industry standard) and
+            verify it against at least one secondary source. Second,
+            implementation: the formula is coded with unit conversion,
+            rounding to practical purchase units, and waste factor
+            application. Third, verification: we test the calculator
+            against known examples (a 10×12 slab should output 1.5
+            cubic yards at 4 inches; a 200 LF fence at 8-foot spacing
+            should output 26 posts). Fourth, documentation: the formula,
+            sources, and methodology note are written and displayed on
+            the calculator page so any user can verify the math
+            independently.
+          </p>
+          <p className="text-base text-ink-muted leading-relaxed">
+            Pricing data is updated when we publish new cost guides or
+            when source databases (HomeGuide, Angi, RS Means) release
+            annual updates. Material formulas (area, volume, unit
+            counts) do not change unless the underlying code or standard
+            is revised. Formulas are universal. Cost estimates and
+            building code references are US-specific.
+          </p>
+        </div>
       </div>
     </div>
   );

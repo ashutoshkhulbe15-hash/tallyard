@@ -117,9 +117,24 @@ const categoryLinks: Record<string, string> = {
 
 export default function CalculatorsIndexPage() {
   const totalCount = sections.reduce((sum, s) => sum + s.items.length, 0);
+  const allItems = sections.flatMap(s => s.items);
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Home Improvement Calculators",
+    description: "Free calculators for paint, concrete, roofing, decking, fencing, and 40+ other home projects.",
+    numberOfItems: allItems.length,
+    itemListElement: allItems.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      url: `https://www.tallyard.com/${item.slug}`,
+    })),
+  };
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
       {/* Hero banner */}
       <section className="container-wide pt-6 md:pt-8">
         <div className="bg-bg-warm rounded-xl p-8 md:p-12">

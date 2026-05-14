@@ -11,9 +11,26 @@ export const metadata: Metadata = {
 
 export default function GuidesIndexPage() {
   const allGuides = getAllGuides();
+  const collectionSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Home Improvement Guides",
+    description: "Buying guides and cost guides for home improvement projects.",
+    url: "https://www.tallyard.com/guides",
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: allGuides.map((g, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: g.title,
+        url: `https://www.tallyard.com/guides/${g.slug}`,
+      })),
+    },
+  };
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
       {/* Hero */}
       <section className="container-wide pt-6 md:pt-8">
         <div className="bg-bg-warm rounded-xl p-8 md:p-12">

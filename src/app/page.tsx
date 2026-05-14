@@ -1,5 +1,22 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { BannerHeadline } from "@/components/BannerHeadline";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "Tallyard — Free home improvement calculators that show their work",
+    description: "45 calculators for paint, concrete, roofing, decking, fencing, and more. Every formula public, every source cited, no signup required.",
+    url: "https://www.tallyard.com",
+    images: [{ url: "/og-default.png", width: 1200, height: 630, alt: "Tallyard — Calculators that show their work" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tallyard — Free home improvement calculators",
+    description: "45 calculators with public formulas. No signup, no affiliate links.",
+    images: ["/og-default.png"],
+  },
+};
 
 const categories = [
   {
@@ -77,8 +94,33 @@ const guides = [
 ];
 
 export default function HomePage() {
+  const schemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "Tallyard",
+      url: "https://www.tallyard.com",
+      description: "Free home improvement calculators with public formulas.",
+      potentialAction: {
+        "@type": "SearchAction",
+        target: "https://www.tallyard.com/calculators?q={search_term_string}",
+        "query-input": "required name=search_term_string",
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "Tallyard",
+      url: "https://www.tallyard.com",
+      logo: "https://www.tallyard.com/og-default.png",
+      founder: { "@type": "Person", name: "Ash K.", url: "https://www.tallyard.com/about", sameAs: ["https://www.linkedin.com/in/ash-k-5baa5016a/"] },
+      sameAs: ["https://www.linkedin.com/in/ash-k-5baa5016a/"],
+    },
+  ];
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }} />
       {/* ===== 1. HERO ===== */}
       <section className="container-wide pt-6 md:pt-8">
         <div className="bg-bg-warm rounded-xl p-8 md:p-14 overflow-hidden">
