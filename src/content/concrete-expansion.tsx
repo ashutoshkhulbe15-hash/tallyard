@@ -210,6 +210,35 @@ export function ConcreteCalculatorExpansion() {
         caption="DIY is viable for simple slabs under 100 sq ft. Larger pours need a crew — concrete waits for nobody."
       />
       <p>The hidden cost of DIY concrete is time pressure. Once the truck arrives, you have about 90 minutes before the concrete starts setting. A 10×10 pad is manageable alone. A 400 sq ft driveway needs 3-4 people working in coordinated sequence: one directing the chute, one spreading, one screeding, one bull-floating. If you don&apos;t have a crew, hire the pour out.</p>
+
+      <h2>Concrete slab calculator: yards for any flat pour</h2>
+
+      <p>A slab is the most common residential concrete project: patios, garage floors, sidewalks, and driveways. The formula is length × width × thickness (in feet) ÷ 27 = cubic yards. A 4-inch slab is 0.333 feet thick. A 10 × 12 foot patio at 4 inches: 10 × 12 × 0.333 ÷ 27 = 1.48 cubic yards. Always round up and add 10% for uneven subgrade and form variation. Order 1.7 yards. A 20 × 30 foot driveway at 4 inches: 20 × 30 × 0.333 ÷ 27 = 7.4 yards — order 8.2 yards.</p>
+
+      <h2>Concrete bag calculator: how many bags do I need?</h2>
+
+      <p>An 80-lb bag of concrete mix yields 0.6 cubic feet of finished concrete. One cubic yard contains 27 cubic feet. So one yard equals 45 bags of 80-lb mix. A 60-lb bag yields 0.45 cubic feet (60 bags per yard). A small project like a 4 × 4 foot post pad at 6 inches deep needs 0.3 cubic yards, or about 14 bags. Above 1.5 cubic yards (about 68 bags), a ready-mix truck delivery is cheaper, faster, and produces better concrete because the mix is consistent and hydration is controlled.</p>
+
+      <h2>How many bags of concrete in a yard?</h2>
+
+      <ComparisonTable
+        columns={[{title:"Bags per yard"},{title:"Total weight"}]}
+        rows={[
+          {label:"80-lb bags",values:["45 bags","3,600 lb (1.8 tons)"]},
+          {label:"60-lb bags",values:["60 bags","3,600 lb (1.8 tons)"]},
+          {label:"50-lb bags",values:["72 bags","3,600 lb (1.8 tons)"]},
+          {label:"40-lb bags",values:["90 bags","3,600 lb (1.8 tons)"]},
+        ]}
+        caption="One cubic yard weighs approximately 3,600 lb regardless of bag size. The 80-lb bag is the most common and the most efficient to mix. At $5.50-7.50 per bag, one yard of bagged concrete costs $250-340 — versus $130-180 per yard delivered by truck."
+      />
+
+      <h2>Concrete volume calculator: cubic yards from any shape</h2>
+
+      <p>Not every pour is a rectangle. Round footings use the cylinder formula: π × radius² × depth ÷ 27. A 12-inch diameter footing (6-inch radius = 0.5 feet) at 48 inches deep (4 feet): π × 0.5² × 4 ÷ 27 = 0.116 cubic yards. Ten footings: 1.16 yards. The calculator above handles round pours, rectangular slabs, and stepped footings. For irregular shapes, break them into rectangles, calculate each separately, and add the volumes together.</p>
+
+      <h2>How much does a yard of concrete cost?</h2>
+
+      <p>Ready-mix concrete from a truck costs $130 to $180 per cubic yard delivered in 2026, depending on region and mix specification. Standard 3,000 PSI residential mix is on the lower end. High-strength 4,000+ PSI or fiber-reinforced mixes cost $160-200 per yard. Most companies charge a short-load fee ($40-60 per yard) for deliveries under 5 yards. Saturday and late-afternoon deliveries may carry a surcharge. The material cost is only 20-30% of a finished slab — labor, grading, forming, finishing, and curing are the rest. See the <a href="/cost-to-pour-concrete">cost to pour concrete</a> guide for full installed pricing.</p>
     </>
   );
 }

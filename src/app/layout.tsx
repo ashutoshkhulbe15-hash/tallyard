@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     url: "https://www.tallyard.com",
     siteName: "Tallyard",
     type: "website",
-    images: [{ url: "/og-default.png", width: 1200, height: 630, alt: "Tallyard — Calculators that show their work" }],
+    images: [{ url: "/og-default.png", width: 1200, height: 630, alt: "Tallyard" }],
   },
   twitter: {
     card: "summary_large_image",

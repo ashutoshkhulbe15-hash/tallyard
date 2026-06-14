@@ -401,6 +401,22 @@ export function PaintCalculatorExpansion() {
         </li>
       </ul>
 
+      <h2>Paint coverage per gallon: interior walls</h2>
+
+      <p>
+        One gallon of interior latex paint covers 350 to 400 square feet
+        on smooth drywall with one coat. Two coats (standard for
+        any repaint or color change) means one gallon covers 175 to 200
+        square feet of finished wall. A 12 × 14 foot bedroom with
+        8-foot ceilings has about 350 square feet of paintable wall
+        after subtracting a door and two windows. That is exactly
+        one gallon for one coat, or two gallons for the standard two
+        coats. Textured walls (knockdown, orange peel, skip trowel)
+        reduce coverage by 10 to 20% because paint fills the texture
+        grooves. Budget 300 to 350 square feet per gallon on textured
+        surfaces.
+      </p>
+
       <h2>How much does it cost to paint a room?</h2>
 
       <p>

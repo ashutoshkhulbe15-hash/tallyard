@@ -152,6 +152,18 @@ export function PaverCalculatorExpansion() {
       <p>Polymeric joint sand is the final step. Sweep it into every joint, mist with water, and it hardens into a semi-rigid filler that prevents weed growth and ant hills while still allowing water drainage. Regular sand washes out in the first heavy rain. Polymeric sand stays put for 3 to 5 years before needing a top-up. Budget one 50-lb bag per 50 to 60 square feet of paver surface.</p>
 
       <p>For gravel base calculations, use the <a href="/gravel-calculator">gravel calculator</a>. For projects that combine pavers with a concrete border or steps, the <a href="/concrete-calculator">concrete calculator</a> handles the footing math.</p>
+
+      <h2>Paver base calculator: how much gravel under pavers</h2>
+
+      <p>Every paver patio and walkway sits on a compacted gravel base. The base depth depends on soil conditions and climate: 4 inches for well-drained sandy soil in mild climates, 6 inches for clay soils, 8 to 12 inches for freeze-thaw regions or vehicular loads (driveways). The formula: area in square feet × base depth in inches ÷ 324 = cubic yards of gravel. A 200 square foot patio with a 6-inch base needs 200 × 6 ÷ 324 = 3.7 cubic yards. Order 4.1 yards (gravel compacts 10-15% so you need more loose volume than the finished depth suggests). Use 3/4-inch crushed stone (not river rock — angular stone locks together, round stone shifts). The <a href="/gravel-calculator">gravel calculator</a> handles the volume and converts to tons for ordering.</p>
+
+      <h2>Paver sand calculator: bedding and joint sand quantities</h2>
+
+      <p>Two types of sand go into a paver project, and they are not interchangeable. Bedding sand (coarse concrete sand, ASTM C33) goes between the gravel base and the pavers, 1 inch thick, screeded flat. The formula: area × 1 inch ÷ 324 = cubic yards. A 200 square foot patio needs 200 × 1 ÷ 324 = 0.62 cubic yards of bedding sand (about 1 ton). Joint sand (polymeric sand) fills the gaps between pavers after they are laid. One 50-lb bag of polymeric sand covers approximately 25 to 50 square feet depending on joint width and paver thickness. A 200 square foot patio with 3/16-inch joints needs 4 to 8 bags. Polymeric sand hardens when misted with water and prevents weed growth and ant intrusion in the joints.</p>
+
+      <h2>Brick paver calculator</h2>
+
+      <p>Brick pavers (clay pavers) are sized differently from concrete pavers. Standard clay pavers are 4 × 8 inches (3.75 × 7.75 actual). In a running bond pattern, you need 4.5 brick pavers per square foot. In a herringbone pattern, the count is the same but waste increases to 10-15% because of the angled cuts at the edges. A 200 square foot walkway in running bond: 200 × 4.5 × 1.10 (waste) = 990 brick pavers. The calculator above handles both concrete and clay paver sizes — select your paver dimensions and it adjusts the count automatically.</p>
     </>
   );
 }

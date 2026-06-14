@@ -155,6 +155,24 @@ export function StairCalculatorExpansion() {
       />
 
       <p>Common rise and run combinations that pass code: 7.0-inch rise with 10.5-inch run (comfortable, gentle slope), 7.5-inch rise with 10-inch run (standard, the most common residential stair), 7.75-inch rise with 10-inch run (steepest allowed, saves horizontal space). The calculator finds the optimal combination from your total height.</p>
+
+      <h2>Stair stringer calculator: length, count, and cut dimensions</h2>
+
+      <p>The stringer is the diagonal board that supports the treads. Its length is calculated from total rise and total run using the Pythagorean theorem: stringer length = √(total rise² + total run²). A staircase with 108 inches of total rise and 130 inches of total run needs stringers at least √(108² + 130²) = 169 inches, or 14 feet 1 inch. Buy 16-foot 2×12 boards for stringers — shorter boards won't reach, and the notch cuts remove enough wood that anything narrower than a 2×12 lacks structural integrity.</p>
+
+      <p>The number of stringers depends on stair width: 3 stringers for 36-inch stairs (code minimum), 4 for 48-inch stairs, 5 for 60-inch stairs. Composite or thin decking treads flex more and need stringers every 12 inches instead of 16-18.</p>
+
+      <h2>Deck stair calculator</h2>
+
+      <p>Deck stairs follow the same IRC R311.7 code as interior stairs but have additional requirements. Every deck over 30 inches above grade needs stairs to reach ground level. The total rise is the vertical distance from the deck surface to the ground. For a deck 48 inches above grade with a 7.5-inch rise, you need 6 or 7 risers. The total run extends outward from the deck edge by 60 to 70 inches — important for planning where the staircase lands and whether it fits within the yard. The <a href="/deck-calculator">deck calculator</a> chains the stair calculation with the overall deck material list automatically.</p>
+
+      <h2>Stair calculator with landing</h2>
+
+      <p>A landing is required by IRC when the total rise exceeds 12 feet (147 inches, about 19 risers). The landing must be at least 36 inches deep (measured in the direction of travel) and at least as wide as the staircase. L-shaped staircases use a landing to change direction 90 degrees; U-shaped stairs use a landing to reverse 180 degrees. When a landing splits the staircase, calculate each flight separately (each flight has its own total rise, run, and stringer length) and add the landing as a 36 × 36 inch (minimum) framed platform between them.</p>
+
+      <h2>Stair tread calculator: how many treads and what size</h2>
+
+      <p>The number of treads is always one fewer than the number of risers. A staircase with 14 risers has 13 treads — the top "tread" is the floor or deck surface itself. Standard tread material for interior stairs is 1-inch (nominal) hardwood, typically 11.25 inches deep for a 10-inch run with a 1.25-inch nosing. For deck stairs, 2× pressure-treated or composite boards work as treads: two 5.5-inch boards per tread (total 11 inches) or one 11.25-inch stair tread board. The calculator tells you exact tread count; multiply by tread board cost for your material estimate.</p>
     </>
   );
 }

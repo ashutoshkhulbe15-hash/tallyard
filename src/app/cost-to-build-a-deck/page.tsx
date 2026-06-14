@@ -242,6 +242,14 @@ export default function CostToBuildDeck() {
             caption="Includes frame, decking, one set of stairs, standard railing, and professional installation. Add 30-40% for elevated decks over 6 feet requiring engineered plans."
           />
 
+          <h2>Trex and composite decking cost</h2>
+
+          <p>Trex is the most common composite decking brand and typically the first upgrade homeowners consider over pressure-treated wood. Trex decking costs $4.50 to $13.00 per square foot for the boards alone, depending on the product line. Trex Enhance (entry composite) runs $4.50 to $6.00/ft². Trex Select (mid-range) costs $6.00 to $8.00/ft². Trex Transcend (premium) costs $8.00 to $13.00/ft². Installed, add $8 to $15 per square foot for framing, footings, railing, and labor. A 320 square foot (16×20) Trex Enhance deck costs $8,000 to $12,000 installed. Trex Transcend: $12,000 to $20,000. TimberTech and Fiberon price similarly. The premium over pressure-treated wood is 40 to 100%, but composite requires zero staining, sealing, or board replacement over its 25-year warranty life.</p>
+
+          <h2>Labor cost to build a deck per square foot</h2>
+
+          <p>Labor runs $15 to $35 per square foot for a standard ground-level deck, and $25 to $50 per square foot for an elevated deck (over 4 feet above grade, which requires taller posts, cross-bracing, and often engineered plans). A simple 320 square foot ground-level deck at $20/ft² labor = $6,400 in labor alone. The framing is 40% of labor time, decking surface is 30%, and stairs plus railing is 30%. Removing an old deck before building the new one adds $3 to $5 per square foot in labor. In high-cost metro areas (San Francisco, New York, Boston), labor can reach $45 to $60 per square foot even for ground-level decks.</p>
+
           <h2>DIY vs professional: where the savings actually are</h2>
 
           <ComparisonTable
