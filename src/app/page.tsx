@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { HomeDirectory } from "./HomeDirectory";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -12,54 +13,71 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", images: ["/og-default.png"] },
 };
 
-const categories = [
+const projectPaths = [
   {
-    name: "Paint + walls",
-    count: 3,
-    slugs: ["paint-calculator", "wallpaper-calculator", "drywall-calculator"],
-    desc: "Gallons, rolls, and sheets",
+    goal: "OUTDOOR BUILD",
+    name: "Building a deck",
+    meta: "4 tools · 1 planner",
+    steps: [
+      { n: "1", label: "Deck boards + joists", href: "/deck-calculator" },
+      { n: "2", label: "Footings (concrete)", href: "/concrete-calculator" },
+      { n: "3", label: "Stairs", href: "/stair-calculator" },
+      { n: "4", label: "Railing + fasteners", href: "/planner/build-a-deck" },
+    ],
   },
   {
-    name: "Masonry",
-    count: 5,
-    slugs: ["concrete-calculator", "brick-calculator", "rebar-calculator"],
-    desc: "Concrete, brick, rebar, asphalt",
+    goal: "INTERIOR ROOM",
+    name: "Redoing a room",
+    meta: "4 tools",
+    steps: [
+      { n: "1", label: "Paint", href: "/paint-calculator" },
+      { n: "2", label: "Flooring", href: "/flooring-calculator" },
+      { n: "3", label: "Drywall", href: "/drywall-calculator" },
+      { n: "4", label: "Baseboard lumber", href: "/lumber-calculator" },
+    ],
   },
   {
-    name: "Flooring + kitchen",
-    count: 8,
-    slugs: ["flooring-calculator", "tile-calculator", "kitchen-cabinet-calculator"],
-    desc: "Tile, hardwood, cabinets, countertops",
+    goal: "POUR + SET",
+    name: "Concrete + masonry",
+    meta: "6 tools",
+    steps: [
+      { n: "1", label: "Concrete volume", href: "/concrete-calculator" },
+      { n: "2", label: "Rebar grid", href: "/rebar-calculator" },
+      { n: "3", label: "Gravel base", href: "/gravel-calculator" },
+      { n: "", label: "Brick · Mortar · Asphalt", href: "/calculators/masonry" },
+    ],
   },
   {
-    name: "Landscaping",
-    count: 9,
-    slugs: ["deck-calculator", "fence-calculator", "paver-calculator"],
-    desc: "Deck, fence, mulch, gravel, sod",
+    goal: "SYSTEMS",
+    name: "Heating, cooling + power",
+    meta: "7 tools",
+    steps: [
+      { n: "1", label: "BTU / heat pump size", href: "/heat-pump-calculator" },
+      { n: "2", label: "Water heater", href: "/water-heater-calculator" },
+      { n: "3", label: "Wire gauge", href: "/wire-size-calculator" },
+      { n: "", label: "Solar · Cords", href: "/calculators/electrical-solar" },
+    ],
+  },
+];
+
+const proof = [
+  {
+    fx: "832 sf ÷ 350 sf/gal = ",
+    fxb: "2.38 gal",
+    title: "Shows the formula",
+    body: "Every input, every intermediate step, every rounding rule is on the page. If the answer looks off, you can trace it.",
   },
   {
-    name: "Roofing + exterior",
-    count: 6,
-    slugs: ["roofing-calculator", "siding-calculator", "gutter-calculator"],
-    desc: "Shingles, siding, gutters, snow load",
+    fx: "coverage: ",
+    fxb: "Sherwin-Williams TDS",
+    title: "Cites the source",
+    body: "Rates and code minimums come from manufacturer data, the IRC / IPC / NEC, and industry references — all linked.",
   },
   {
-    name: "HVAC + plumbing",
-    count: 4,
-    slugs: ["heat-pump-calculator", "btu-calculator", "water-heater-calculator"],
-    desc: "Heat pump, BTU, water heater, drain",
-  },
-  {
-    name: "Electrical + solar",
-    count: 3,
-    slugs: ["solar-calculator", "wire-size-calculator", "extension-cord-calculator"],
-    desc: "Panels, wire gauge, extension cords",
-  },
-  {
-    name: "Lumber + framing",
-    count: 5,
-    slugs: ["lumber-calculator", "stair-calculator", "stud-spacing-calculator"],
-    desc: "Board feet, stairs, studs, windows",
+    fx: "2.38 gal → ",
+    fxb: "1 gal + 2 qt",
+    title: "Rounds to buyable",
+    body: "You can't buy 2.38 gallons. Results round up to real purchase units, with the raw number shown beside them.",
   },
 ];
 
@@ -67,21 +85,21 @@ const guides = [
   {
     slug: "vinyl-vs-fiber-cement-siding",
     title: "Vinyl vs fiber cement siding",
-    desc: "30-year TCO math, fire ratings, and the repaint cycle nobody talks about",
-    tag: "Roofing",
+    desc: "30-year total-cost math, fire ratings, and the repaint cycle nobody talks about.",
+    tag: "ROOFING",
     time: "11 min",
   },
   {
     slug: "composite-vs-pressure-treated-vs-cedar-deck",
     title: "Composite vs PT vs cedar decking",
-    desc: "20-year cost breakdown — pressure-treated is actually the most expensive option",
-    tag: "Landscaping",
+    desc: "20-year cost breakdown — pressure-treated turns out to be the most expensive option.",
+    tag: "LANDSCAPING",
     time: "12 min",
   },
   {
     slug: "heat-pump-vs-furnace",
     title: "Heat pump vs furnace + AC",
-    desc: "Climate-zone-by-zone operating costs with federal tax credit math",
+    desc: "Climate-zone-by-zone operating costs, with the federal tax credit math worked through.",
     tag: "HVAC",
     time: "14 min",
   },
@@ -180,223 +198,172 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ===== 3. BROWSE BY CATEGORY ===== */}
-      <section className="container-wide pb-16">
-        <div className="flex items-end justify-between mb-6">
-          <div>
-            <p className="text-[11px] uppercase tracking-[0.08em] text-ink-faint mb-2 font-semibold">
-              By project type
-            </p>
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
-              Browse by category
-            </h2>
+      {/* ===== 2. PROJECT PATHS — start by what you're building ===== */}
+      <section className="container-wide pt-4 md:pt-6">
+        <div className="border-t border-line pt-14">
+          <p className="font-mono text-[11px] tracking-[0.16em] uppercase text-ink-faint mb-2">
+            Where to start · <span className="text-accent">by what you&apos;re building</span>
+          </p>
+          <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-7">
+            Tell us the project, not the <span className="accent-italic">tool.</span>
+          </h2>
+          <div className="flex flex-col gap-3.5">
+            {projectPaths.map((p) => (
+              <div
+                key={p.name}
+                className="border border-line rounded-xl bg-surface overflow-hidden hover:border-accent transition-colors"
+              >
+                <div className="grid grid-cols-1 md:grid-cols-[230px_1fr]">
+                  <div
+                    className="p-6 md:border-r border-line border-b md:border-b-0"
+                    style={{ background: "linear-gradient(#FCFDFB,#F6F8F4)" }}
+                  >
+                    <div className="font-mono text-[10px] tracking-[0.1em] text-accent mb-2">
+                      {p.goal}
+                    </div>
+                    <h3 className="text-lg font-bold tracking-tight leading-tight">
+                      {p.name}
+                    </h3>
+                    <div className="font-mono text-[11px] text-ink-faint mt-2">
+                      {p.meta}
+                    </div>
+                  </div>
+                  <div className="p-6 flex items-center flex-wrap gap-2">
+                    {p.steps.map((s, i) => (
+                      <span key={s.label} className="flex items-center gap-2">
+                        <Link
+                          href={s.href}
+                          className="inline-flex items-center gap-2 text-[13px] font-medium text-ink bg-surface-alt border border-line rounded-lg px-3 py-2 hover:border-accent hover:bg-accent-soft transition-colors"
+                        >
+                          {s.n && (
+                            <span className="font-mono text-[10px] text-accent">
+                              {s.n}
+                            </span>
+                          )}
+                          {s.label}
+                        </Link>
+                        {i < p.steps.length - 1 && (
+                          <span className="font-mono text-xs text-ink-faint">
+                            →
+                          </span>
+                        )}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
+        </div>
+      </section>
+
+      {/* ===== 3. PROOF — why you can trust the number ===== */}
+      <section className="container-wide pt-14 md:pt-16">
+        <div className="border border-line rounded-xl bg-surface overflow-hidden">
+          <div className="flex justify-between items-center px-6 py-3.5 border-b border-line bg-surface-alt">
+            <span className="font-semibold text-sm">
+              Why you can trust the number
+            </span>
+            <span className="font-mono text-[11px] text-accent bg-accent-soft px-2.5 py-1 rounded-full whitespace-nowrap ml-3">
+              ✓ every tool, every time
+            </span>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3">
+            {proof.map((p, i) => (
+              <div
+                key={p.title}
+                className={`p-6 border-line ${i < proof.length - 1 ? "border-b md:border-b-0 md:border-r" : ""}`}
+              >
+                <div className="font-mono text-[11px] text-ink-faint mb-3 pb-3 border-b border-dashed border-line">
+                  {p.fx}
+                  <b className="text-accent font-medium">{p.fxb}</b>
+                </div>
+                <h3 className="text-base font-semibold mb-1.5">{p.title}</h3>
+                <p className="text-[12.5px] text-ink-muted leading-relaxed">
+                  {p.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== 4. DIRECTORY — search-first, browse everything ===== */}
+      <section className="container-wide pt-14 md:pt-16">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
+            Or start typing your project
+            <span className="font-mono text-[13px] text-accent font-medium ml-2.5 tracking-normal align-middle">
+              45 TOOLS · 8 CATEGORIES
+            </span>
+          </h2>
+          <div className="font-mono text-[11.5px] text-ink-muted">
+            EVERY TOOL:{" "}
+            <b className="text-accent font-medium">FORMULA + SOURCE</b> · NO
+            SIGNUP
+          </div>
+        </div>
+        <HomeDirectory />
+      </section>
+
+      {/* ===== 5. GUIDES — decisions that need real math ===== */}
+      <section className="container-wide pt-14 md:pt-16">
+        <p className="font-mono text-[11px] tracking-[0.16em] uppercase text-ink-faint mb-2">
+          Before you buy · <span className="text-accent">decisions that need real math</span>
+        </p>
+        <div className="flex items-baseline justify-between mb-6">
+          <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
+            Buying guides
+          </h2>
           <Link
-            href="/calculators"
-            className="text-sm text-ink-muted hover:text-accent transition-colors font-medium hidden sm:inline"
+            href="/guides"
+            className="text-sm text-ink-muted hover:text-accent transition-colors font-medium"
           >
-            View all 44 →
+            All guides →
           </Link>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
-          {categories.map((cat) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 border-t border-line">
+          {guides.map((g, i) => (
             <Link
-              key={cat.name}
-              href={`/${cat.slugs[0]}`}
-              className="group block p-5 bg-surface border border-line rounded-lg hover:border-accent hover:-translate-y-0.5 transition-all"
+              key={g.slug}
+              href={`/guides/${g.slug}`}
+              className={`group py-7 border-line ${i < guides.length - 1 ? "md:border-r border-b md:border-b-0" : ""} ${i > 0 ? "md:pl-6" : ""} md:pr-6`}
             >
-              <div className="flex items-start justify-between mb-2">
-                <h3 className="text-base font-semibold text-ink">
-                  {cat.name}
-                </h3>
-                <span className="text-[10px] uppercase tracking-wide text-accent font-semibold px-1.5 py-0.5 bg-accent-soft rounded shrink-0 ml-2">
-                  {cat.count}
-                </span>
+              <div className="flex justify-between items-center font-mono text-[10px] tracking-[0.06em] mb-2.5">
+                <span className="text-amber">{g.tag}</span>
+                <span className="text-ink-faint">{g.time}</span>
               </div>
-              <p className="text-xs text-ink-muted leading-relaxed">
-                {cat.desc}
-              </p>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* ===== 4. FEATURED GUIDES ===== */}
-      <section className="bg-walnut">
-        <div className="container-wide py-16 md:py-20">
-          <div className="flex items-end justify-between mb-8">
-            <div>
-              <p
-                className="text-[11px] uppercase tracking-[0.08em] mb-2 font-semibold"
-                style={{ color: "#147A46" }}
-              >
-                Buying guides
-              </p>
-              <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-white">
-                Decisions that need real math
-              </h2>
-            </div>
-            <Link
-              href="/guides"
-              className="text-sm font-medium hidden sm:inline transition-colors"
-              style={{ color: "rgba(255,255,255,0.6)" }}
-            >
-              All guides →
-            </Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-            {guides.map((g) => (
-              <Link
-                key={g.slug}
-                href={`/guides/${g.slug}`}
-                className="block p-6 rounded-lg border transition-all hover:-translate-y-0.5"
-                style={{
-                  background: "rgba(255,255,255,0.06)",
-                  borderColor: "rgba(255,255,255,0.1)",
-                }}
-              >
-                <div className="flex items-center gap-2 mb-3">
-                  <span
-                    className="text-[10px] uppercase tracking-[0.08em] font-bold px-2 py-0.5 rounded"
-                    style={{ color: "#147A46", background: "rgba(20,122,70,0.15)" }}
-                  >
-                    {g.tag}
-                  </span>
-                  <span
-                    className="text-[10px]"
-                    style={{ color: "rgba(255,255,255,0.4)" }}
-                  >
-                    {g.time}
-                  </span>
-                </div>
-                <h3 className="text-base font-semibold text-white mb-2">
-                  {g.title}
-                </h3>
-                <p
-                  className="text-sm leading-relaxed"
-                  style={{ color: "rgba(255,255,255,0.55)" }}
-                >
-                  {g.desc}
-                </p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ===== 5. HOW IT WORKS ===== */}
-      <section className="container-wide py-16 md:py-20">
-        <p className="text-[11px] uppercase tracking-[0.08em] text-ink-faint mb-2 font-semibold">
-          How it works
-        </p>
-        <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-10">
-          Three things every calculator <span className="accent-italic">does</span>
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            {
-              step: "01",
-              title: "Shows the formula",
-              body: "Every calculator displays the exact formula it used — not just the answer. You see every input, every intermediate step, and every rounding rule. If the answer looks wrong, you can trace it.",
-            },
-            {
-              step: "02",
-              title: "Cites the source",
-              body: "Coverage rates, sizing factors, and code requirements come from manufacturer data sheets, building codes (IRC, IPC, NEC), and industry references (ACCA, NADRA, APA). Sources are linked on every page.",
-            },
-            {
-              step: "03",
-              title: "Rounds to buyable units",
-              body: "You can't buy 2.67 gallons of paint. Results are rounded up to the nearest practical purchase quantity — with the raw number shown alongside so you can make your own call.",
-            },
-          ].map((item) => (
-            <div key={item.step} className="p-6 bg-surface border border-line rounded-lg">
-              <div className="text-3xl font-bold tracking-tighter text-accent leading-none mb-3">
-                {item.step}
-              </div>
-              <h3 className="text-base font-semibold text-ink mb-2">
-                {item.title}
+              <h3 className="text-lg font-bold tracking-tight leading-snug mb-2 group-hover:text-accent transition-colors">
+                {g.title}
               </h3>
-              <p className="text-sm text-ink-muted leading-relaxed">
-                {item.body}
+              <p className="text-[13px] text-ink-muted leading-relaxed">
+                {g.desc}
               </p>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
 
-      {/* ===== 6. TRUST SECTION ===== */}
-      <section className="bg-bg-warm border-t border-line">
-        <div className="container-content py-16 md:py-20">
-          <p className="text-[11px] uppercase tracking-[0.08em] text-ink-faint mb-2 font-semibold">
-            Why Tallyard
-          </p>
-          <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-10">
-            What we don&apos;t <span className="accent-italic">do</span>
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-7">
-            {[
-              {
-                title: "No email gates",
-                body: "You never need to sign up, log in, or hand over your email to use a calculator. The tools are free and unrestricted.",
-              },
-              {
-                title: "No lead generation",
-                body: "We don't sell your zip code to contractors. No \"get 3 free quotes\" forms, no contractor matching, no data brokering.",
-              },
-              {
-                title: "No affiliate bias",
-                body: "Guide recommendations reflect what the numbers say, not which link pays the highest commission. We don't run affiliate links.",
-              },
-              {
-                title: "No hidden formulas",
-                body: "If we can't show you how we got the number, we don't publish the calculator. Transparency isn't a feature — it's the whole point.",
-              },
-            ].map((item) => (
-              <div key={item.title}>
-                <h3 className="text-base font-semibold text-ink mb-1.5">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-ink-muted leading-relaxed">
-                  {item.body}
-                </p>
-              </div>
-            ))}
+      {/* ===== 6. PLEDGE — running manifesto ===== */}
+      <section className="container-wide py-14 md:py-20">
+        <div className="border border-line border-l-[3px] border-l-accent rounded-r-xl bg-surface px-8 py-9 md:px-10">
+          <div className="font-mono text-[10.5px] tracking-[0.14em] uppercase text-accent mb-4">
+            The pledge
           </div>
-        </div>
-      </section>
-
-      {/* ===== 7. CTA BANNER ===== */}
-      <section className="container-wide py-16 md:py-20">
-        <div className="bg-walnut rounded-xl p-8 md:p-12 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-white mb-3">
-            Start with the math
-          </h2>
-          <p
-            className="text-base max-w-md mx-auto mb-7 leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.6)" }}
-          >
-            Pick a calculator, enter your measurements, and get an answer
-            you can verify. No account required.
+          <p className="text-base md:text-lg leading-[1.75] text-ink max-w-[74ch]">
+            <b className="font-bold">
+              No email gates. No lead generation. No affiliate bias. No hidden
+              formulas.
+            </b>{" "}
+            You never sign up, log in, or hand over an email to use a tool. We
+            don&apos;t sell your zip code to contractors or run &quot;get 3 free
+            quotes&quot; forms. Guide recommendations follow what the numbers
+            say, not which link pays the highest commission. And if we can&apos;t
+            show you how we got a number, we don&apos;t publish the calculator —{" "}
+            <span className="accent-italic">
+              transparency isn&apos;t a feature, it&apos;s the whole point.
+            </span>
           </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <Link
-              href="/calculators"
-              className="inline-flex items-center px-6 py-3 text-sm font-semibold bg-accent hover:bg-accent-hover text-white rounded-md transition-colors"
-            >
-              Browse 45 calculators
-            </Link>
-            <Link
-              href="/about"
-              className="inline-flex items-center px-6 py-3 text-sm font-semibold rounded-md transition-colors"
-              style={{
-                color: "rgba(255,255,255,0.8)",
-                border: "1px solid rgba(255,255,255,0.2)",
-              }}
-            >
-              About Tallyard
-            </Link>
-          </div>
         </div>
       </section>
     </>
