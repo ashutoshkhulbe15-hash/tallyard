@@ -10,7 +10,7 @@ module.exports = {
         "surface-alt": "#F6F8F4",
         ink: {
           DEFAULT: "#111814",
-          muted: "#4A544E",
+          muted: "#42504A",
           faint: "#6B756E",
         },
         walnut: {

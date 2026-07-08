@@ -69,6 +69,46 @@
     padding-left: 24px;
     padding-right: 24px;
   }
+
+  /* Full-height sidebar shell used by calculator and guide pages.
+     The rail is sticky, spans the viewport height, and pins a status
+     block to its bottom so the left column never leaves dead space. */
+  .page-shell {
+    max-width: 1340px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 32px;
+    padding-right: 32px;
+    display: grid;
+    grid-template-columns: 236px minmax(0, 1fr);
+  }
+  .page-rail {
+    position: sticky;
+    top: 56px;
+    align-self: start;
+    height: calc(100vh - 56px);
+    border-right: 1px solid #D8DFD6;
+    padding: 34px 28px 34px 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  .page-main {
+    min-width: 0;
+    padding: 40px 0 60px 44px;
+  }
+  @media (max-width: 1080px) {
+    .page-shell {
+      grid-template-columns: minmax(0, 1fr);
+      max-width: 820px;
+    }
+    .page-rail {
+      display: none;
+    }
+    .page-main {
+      padding-left: 0;
+    }
+  }
   .accent-italic {
     font-style: normal;
     font-weight: 800;
@@ -79,7 +119,7 @@
      components explicitly placed inside the article (tables, callouts,
      CTAs) keep their own styles. */
   .guide-prose {
-    font-size: 16px;
+    font-size: 17.5px;
     line-height: 1.75;
     color: #111814;
   }

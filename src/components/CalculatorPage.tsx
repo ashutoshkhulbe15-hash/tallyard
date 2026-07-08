@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Calculator } from "./Calculator";
 import { BannerHeadline } from "./BannerHeadline";
 import { FeedbackWidget } from "./FeedbackWidget";
+import { PageRail } from "./PageRail";
 import { getConfig } from "@/configs";
 
 interface CalculatorPageProps {
@@ -46,133 +47,103 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
     .map((s) => s.name)
     .join(" and ");
 
+  const railNav = [
+    { href: "#calculator", label: "The calculator" },
+    ...(config.methodology.length > 0
+      ? [{ href: "#methodology", label: "How we calculated" }]
+      : []),
+    ...(config.sources.length > 0
+      ? [{ href: "#sources", label: "Sources" }]
+      : []),
+    ...(config.faq.length > 0
+      ? [{ href: "#faq", label: "Frequently asked" }]
+      : []),
+    ...(config.related.length > 0
+      ? [{ href: "#related", label: "Related calculators" }]
+      : []),
+  ];
+
+  const railToolGroups =
+    config.related.length > 0
+      ? [
+          {
+            heading: "Related tools",
+            tools: config.related.slice(0, 4).map((r) => ({
+              href: `/${r.slug}`,
+              name: r.name,
+            })),
+          },
+        ]
+      : [];
+
   return (
-    <article>
-      {/* Hero: copy left, working calculator right */}
-      <section className="container-wide pt-7 md:pt-10 pb-12 md:pb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_440px] xl:grid-cols-[1fr_480px] gap-10 lg:gap-12 items-start">
-          <div className="pt-1">
-            <nav
-              aria-label="Breadcrumb"
-              className="font-mono text-xs text-ink-muted mb-5"
-            >
-              <Link
-                href="/calculators"
-                className="hover:text-accent transition-colors"
+    <div className="page-shell">
+      <PageRail
+        navHeading="On this page"
+        nav={railNav}
+        toolGroups={railToolGroups}
+        footLines={["✓ FORMULA SHOWN", "SOURCE CITED", "NO SIGNUP · FREE"]}
+      />
+
+      <article className="page-main">
+        {/* Hero: copy left, working calculator right */}
+        <section id="calculator" className="pb-12 md:pb-16 scroll-mt-20">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_460px] gap-10 lg:gap-12 items-start">
+            <div className="pt-1">
+              <nav
+                aria-label="Breadcrumb"
+                className="font-mono text-[13px] text-ink-muted mb-5"
               >
-                Calculators
-              </Link>
-              <span className="mx-2 text-ink-faint">·</span>
-              <span>{config.categoryLabel}</span>
-            </nav>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tighter leading-[1.05] mb-4 text-ink">
-              <BannerHeadline text={config.bannerHeadline} />
-            </h1>
-            <p className="text-base md:text-lg text-ink-muted max-w-md leading-relaxed">
-              {config.description}
-            </p>
-            {config.bannerTags.length > 0 && (
-              <div className="flex flex-wrap gap-2 mt-6">
-                {config.bannerTags.map((tag, i) => (
-                  <span
-                    key={i}
-                    className="font-mono text-[11px] tracking-[0.06em] uppercase text-accent bg-accent-soft px-3 py-1.5 rounded-full"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
-            {reviewedNames && (
-              <div className="mt-8 max-w-md flex gap-2.5 items-start p-4 bg-surface border border-line rounded-md text-[12.5px] text-ink-muted leading-relaxed">
-                <span
-                  className="mt-1 w-2 h-2 rounded-full shrink-0"
-                  style={{ background: "#147A46" }}
-                  aria-hidden
-                />
-                <span>
-                  <b className="text-ink font-semibold">Reviewed against</b>{" "}
-                  {reviewedNames}. Formula and sources published below.
-                </span>
-              </div>
-            )}
-
-            {/* On-this-page nav + related tools — fills the column beside the
-                calculator so there's no dead space under the intro. Hidden on
-                small screens where everything stacks. */}
-            <div className="hidden lg:block mt-10 max-w-md">
-              <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-ink-faint mb-3">
-                On this page
-              </div>
-              <nav className="flex flex-col">
-                {config.methodology.length > 0 && (
-                  <a
-                    href="#methodology"
-                    className="text-[13.5px] text-ink-soft border-l-2 border-line pl-3.5 py-1.5 hover:text-ink hover:border-l-accent transition-colors"
-                  >
-                    How we calculated this
-                  </a>
-                )}
-                {config.sources.length > 0 && (
-                  <a
-                    href="#sources"
-                    className="text-[13.5px] text-ink-soft border-l-2 border-line pl-3.5 py-1.5 hover:text-ink hover:border-l-accent transition-colors"
-                  >
-                    Sources
-                  </a>
-                )}
-                {config.faq.length > 0 && (
-                  <a
-                    href="#faq"
-                    className="text-[13.5px] text-ink-soft border-l-2 border-line pl-3.5 py-1.5 hover:text-ink hover:border-l-accent transition-colors"
-                  >
-                    Frequently asked
-                  </a>
-                )}
-                {config.related.length > 0 && (
-                  <a
-                    href="#related"
-                    className="text-[13.5px] text-ink-soft border-l-2 border-line pl-3.5 py-1.5 hover:text-ink hover:border-l-accent transition-colors"
-                  >
-                    Related calculators
-                  </a>
-                )}
+                <Link
+                  href="/calculators"
+                  className="hover:text-accent transition-colors"
+                >
+                  Calculators
+                </Link>
+                <span className="mx-2 text-ink-faint">·</span>
+                <span>{config.categoryLabel}</span>
               </nav>
-
-              {config.related.length > 0 && (
-                <div className="mt-8">
-                  <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-ink-faint mb-2">
-                    Related tools
-                  </div>
-                  <div className="border-t border-line">
-                    {config.related.slice(0, 3).map((rel) => (
-                      <Link
-                        key={rel.slug}
-                        href={`/${rel.slug}`}
-                        className="group flex items-baseline justify-between gap-3 py-2.5 border-b border-dashed border-line"
-                      >
-                        <span className="text-[13px] font-semibold group-hover:text-accent transition-colors">
-                          {rel.name}
-                        </span>
-                        <span className="font-mono text-[11px] text-ink-faint group-hover:text-accent transition-colors">
-                          →
-                        </span>
-                      </Link>
-                    ))}
-                  </div>
+              <h1 className="text-4xl md:text-5xl font-bold tracking-tighter leading-[1.03] mb-4 text-ink">
+                <BannerHeadline text={config.bannerHeadline} />
+              </h1>
+              <p className="text-[17px] md:text-lg text-ink-muted max-w-md leading-relaxed">
+                {config.description}
+              </p>
+              {config.bannerTags.length > 0 && (
+                <div className="flex flex-wrap gap-2 mt-6">
+                  {config.bannerTags.map((tag, i) => (
+                    <span
+                      key={i}
+                      className="font-mono text-[11.5px] tracking-[0.06em] uppercase text-accent bg-accent-soft px-3 py-1.5 rounded-full"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+              {reviewedNames && (
+                <div className="mt-8 max-w-md flex gap-2.5 items-start p-4 bg-surface border border-line rounded-md text-[13.5px] text-ink-muted leading-relaxed">
+                  <span
+                    className="mt-1.5 w-2 h-2 rounded-full shrink-0"
+                    style={{ background: "#147A46" }}
+                    aria-hidden
+                  />
+                  <span>
+                    <b className="text-ink font-semibold">Reviewed against</b>{" "}
+                    {reviewedNames}. Formula and sources published below.
+                  </span>
                 </div>
               )}
             </div>
+            <div className="lg:sticky lg:top-20">
+              <Calculator slug={slug} panelTitle={config.title} />
+            </div>
           </div>
-          <div className="lg:sticky lg:top-20">
-            <Calculator slug={slug} panelTitle={config.title} />
-          </div>
-        </div>
-      </section>
+        </section>
 
       {/* Methodology */}
       {config.methodology.length > 0 && (
-        <section id="methodology" className="container-content pb-12 scroll-mt-24">
+        <section id="methodology" className="pb-12 scroll-mt-20 max-w-[760px]">
           <div className="pt-10 border-t border-line">
             <h2 className="text-2xl font-bold tracking-tight mb-5">
               How we calculated this
@@ -185,7 +156,7 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
             </div>
             <div className="space-y-4">
               {config.methodology.map((paragraph, i) => (
-                <p key={i} className="text-base text-ink-muted leading-relaxed">
+                <p key={i} className="text-[16.5px] text-ink-muted leading-relaxed">
                   {paragraph}
                 </p>
               ))}
@@ -196,7 +167,7 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
 
       {/* Content expansion (rich article below the calculator) */}
       {config.ContentExpansion && (
-        <section className="container-content pb-12">
+        <section className="pb-12 max-w-[760px]">
           <div className="pt-10 border-t border-line">
             <div className="guide-prose">
               <config.ContentExpansion />
@@ -207,7 +178,7 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
 
       {/* Sources */}
       {config.sources.length > 0 && (
-        <section id="sources" className="container-content pb-12 scroll-mt-24">
+        <section id="sources" className="pb-12 scroll-mt-20 max-w-[760px]">
           <h2 className="text-2xl font-bold tracking-tight mb-5">Sources</h2>
           <ul className="space-y-2.5 text-sm text-ink-muted">
             {config.sources.map((source, i) => (
@@ -235,7 +206,7 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
 
       {/* FAQ */}
       {config.faq.length > 0 && (
-        <section id="faq" className="container-content pb-12 scroll-mt-24">
+        <section id="faq" className="pb-12 scroll-mt-20 max-w-[760px]">
           <div className="pt-10 border-t border-line">
             <h2 className="text-2xl font-bold tracking-tight mb-6">
               Frequently asked
@@ -258,7 +229,7 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
 
       {/* Related */}
       {config.related.length > 0 && (
-        <section id="related" className="container-content pb-12 scroll-mt-24">
+        <section id="related" className="pb-12 scroll-mt-20 max-w-[900px]">
           <div className="pt-10 border-t border-line">
             <h2 className="text-2xl font-bold tracking-tight mb-6">
               Related calculators
@@ -286,7 +257,7 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
 
       {/* Related guides */}
       {config.relatedGuides && config.relatedGuides.length > 0 && (
-        <section className="container-content pb-16">
+        <section className="pb-16 max-w-[900px]">
           <div className="pt-10 border-t border-line">
             <h2 className="text-2xl font-bold tracking-tight mb-6">
               Buying guides
@@ -310,9 +281,10 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
         </section>
       )}
       {/* Feedback */}
-      <section className="container-content">
+      <section className="max-w-[760px]">
         <FeedbackWidget slug={slug} />
       </section>
-    </article>
+      </article>
+    </div>
   );
 }
