@@ -7,31 +7,27 @@ import type { CalculatorConfig } from "@/lib/types";
 
 interface CalculatorProps {
   slug: string;
+  /** Panel header title, e.g. "Lumber calculator". Falls back to config.title. */
+  panelTitle?: string;
 }
 
 /**
- * V3 calculator: split two-column layout on desktop, stacked on mobile
- * with result first. Inputs on the left in a cream card. Dark walnut
- * result card on the right with huge number, unit, and composition bar.
+ * Ledger calculator panel: a single white instrument card.
+ * Head strip (title + formula badge) → mono input fields →
+ * a live receipt that recalculates line by line → total → actions.
  *
- * Config is loaded dynamically per slug via webpack code splitting.
- * Each config becomes its own chunk so each page's client bundle only
- * pulls in its own calculator's code, not all of them.
+ * Config is loaded dynamically per slug via webpack code splitting,
+ * so each page's client bundle only pulls its own calculator.
  */
-export function Calculator({ slug }: CalculatorProps) {
+export function Calculator({ slug, panelTitle }: CalculatorProps) {
   const { units } = useUnits();
   const [config, setConfig] = useState<CalculatorConfig | null>(null);
 
-  // Dynamic import keyed on slug. Webpack creates a chunk per config file
-  // matching the pattern; only the matching one is fetched at runtime.
   useEffect(() => {
     let cancelled = false;
     import(`../configs/${slug}`)
       .then((mod) => {
         if (cancelled) return;
-        // Find the exported config object by its slug property.
-        // Robust to any naming convention (paintCalculatorConfig,
-        // wireSizeCalculatorConfig, etc.).
         const found = Object.values(mod).find(
           (v): v is CalculatorConfig =>
             v !== null &&
@@ -53,7 +49,6 @@ export function Calculator({ slug }: CalculatorProps) {
   const [valuesInit, setValuesInit] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  // Initialize input values from URL params (if present) or config defaults.
   useEffect(() => {
     if (!config || valuesInit) return;
     const params = new URLSearchParams(window.location.search);
@@ -100,25 +95,21 @@ export function Calculator({ slug }: CalculatorProps) {
     }
   }, [values, units, config, valuesInit]);
 
-  // Loading skeleton — same dimensions as final layout so page doesn't
-  // jump when the chunk arrives (typically under 100ms).
+  // Loading skeleton — same panel silhouette so the page doesn't jump.
   if (!config) {
     return (
-      <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-6 lg:gap-7">
-        <div className="lg:order-2 bg-walnut rounded-lg p-7 md:p-8 min-h-[280px] flex items-center justify-center">
-          <div className="text-walnut-ink-muted text-sm animate-pulse">
-            Loading…
-          </div>
+      <div className="bg-surface border border-line rounded-lg shadow-receipt overflow-hidden">
+        <div className="flex justify-between items-center px-6 py-4 border-b border-line bg-surface-alt">
+          <div className="h-4 w-36 bg-bg-warm rounded animate-pulse" />
+          <div className="h-5 w-24 bg-bg-warm rounded-full animate-pulse" />
         </div>
-        <div className="lg:order-1 bg-surface border border-line rounded-lg p-6 md:p-7 min-h-[280px]">
-          <div className="space-y-4">
-            {[1, 2, 3].map((i) => (
-              <div key={i}>
-                <div className="h-3 w-20 bg-bg-warm rounded mb-2 animate-pulse" />
-                <div className="h-10 bg-bg-warm rounded animate-pulse" />
-              </div>
-            ))}
-          </div>
+        <div className="p-6 space-y-4 min-h-[320px]">
+          {[1, 2, 3, 4].map((i) => (
+            <div key={i}>
+              <div className="h-2.5 w-20 bg-bg-warm rounded mb-2 animate-pulse" />
+              <div className="h-11 bg-bg-warm rounded animate-pulse" />
+            </div>
+          ))}
         </div>
       </div>
     );
@@ -135,149 +126,37 @@ export function Calculator({ slug }: CalculatorProps) {
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-6 lg:gap-7">
-      {/* Result card — appears first on mobile, sticky on desktop so it stays visible while scrolling */}
-      <div className="lg:order-2 lg:self-start lg:sticky lg:top-20 bg-walnut walnut-section rounded-lg p-7 md:p-8 text-white flex flex-col">
-        {result && (
-          <>
-            <div
-              className="text-xs uppercase tracking-[0.12em] font-bold mb-2.5"
-              style={{ color: "#147A46" }}
-            >
-              You need
-            </div>
-            <div className="text-5xl md:text-6xl font-bold tracking-tighter leading-none mb-1">
-              {formatNumber(result.valueRounded)}
-            </div>
-            <div className="text-base md:text-lg text-walnut-ink-muted font-medium mb-7">
-              {result.unit}
-            </div>
-
-            {/* Composition bar */}
-            {result.composition && result.composition.segments.length > 0 && (
-              <div className="mb-5">
-                <div className="flex justify-between items-baseline text-xs text-walnut-ink-muted mb-3 font-mono">
-                  <span>Composition</span>
-                  <span>
-                    <strong className="text-white font-semibold">
-                      {formatNumber(result.composition.total, 0)}
-                    </strong>{" "}
-                    {result.composition.unit}
-                  </span>
-                </div>
-                <div
-                  className="h-2 rounded-sm overflow-hidden flex"
-                  style={{ background: "rgba(255,255,255,0.08)" }}
-                >
-                  {result.composition.segments.map((seg, i) => {
-                    const pct =
-                      (seg.amount / result.composition!.total) * 100;
-                    const color =
-                      seg.shade === "primary"
-                        ? "#147A46"
-                        : seg.shade === "secondary"
-                          ? "#9BA8A0"
-                          : "#6B5E43";
-                    return (
-                      <div
-                        key={i}
-                        style={{ width: `${pct}%`, backgroundColor: color }}
-                      />
-                    );
-                  })}
-                </div>
-                <div className="flex flex-wrap gap-x-5 gap-y-2 mt-4 text-xs">
-                  {result.composition.segments.map((seg, i) => {
-                    const color =
-                      seg.shade === "primary"
-                        ? "#147A46"
-                        : seg.shade === "secondary"
-                          ? "#9BA8A0"
-                          : "#6B5E43";
-                    return (
-                      <div
-                        key={i}
-                        className="flex items-center gap-2 text-walnut-ink-muted"
-                      >
-                        <div
-                          className="w-2 h-2 rounded-sm"
-                          style={{ backgroundColor: color }}
-                        />
-                        {seg.label}{" "}
-                        <strong className="text-white font-medium font-mono ml-0.5">
-                          {formatNumber(seg.amount, 0)}
-                        </strong>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
-
-            {/* Plain stat rows (used when composition is not provided) */}
-            {!result.composition && result.breakdown.length > 0 && (
-              <div
-                className="rounded-md p-4"
-                style={{ background: "rgba(255,255,255,0.04)" }}
-              >
-                {result.breakdown.map((b, i) => (
-                  <div
-                    key={i}
-                    className="flex justify-between py-2 text-sm font-mono"
-                    style={{
-                      borderBottom:
-                        i < result.breakdown.length - 1
-                          ? "1px solid rgba(255,255,255,0.06)"
-                          : "none",
-                    }}
-                  >
-                    <span className="text-walnut-ink-muted">{b.label}</span>
-                    <span className="text-white font-medium">{b.value}</span>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {result.value !== result.valueRounded && (
-              <div className="text-xs text-walnut-ink-faint mt-4 font-mono">
-                exact: {formatNumber(result.value, 3)} {result.unit}
-              </div>
-            )}
-
-            {/* Copy link button */}
-            <button
-              onClick={() => {
-                const params = new URLSearchParams();
-                Object.entries(values).forEach(([k, v]) => params.set(k, String(v)));
-                const shareUrl = `${window.location.origin}${window.location.pathname}?${params.toString()}`;
-                navigator.clipboard.writeText(shareUrl).then(() => {
-                  setCopied(true);
-                  setTimeout(() => setCopied(false), 2000);
-                });
-              }}
-              className="mt-5 w-full text-xs font-semibold py-2 rounded-md transition-colors"
-              style={{
-                background: "rgba(255,255,255,0.08)",
-                color: "rgba(255,255,255,0.6)",
-                border: "1px solid rgba(255,255,255,0.1)",
-              }}
-            >
-              {copied ? "✓ Copied!" : "Copy link to this calculation"}
-            </button>
-          </>
-        )}
+    <div className="bg-surface border border-line rounded-lg shadow-receipt overflow-hidden">
+      {/* Panel head */}
+      <div
+        className="flex justify-between items-center gap-3 px-6 py-4 border-b border-line"
+        style={{ background: "linear-gradient(#FCFDFB,#F6F8F4)" }}
+      >
+        <span className="text-sm font-semibold text-ink">
+          {panelTitle || config.title}
+        </span>
+        <span className="font-mono text-[11px] text-accent bg-accent-soft px-2.5 py-1 rounded-full whitespace-nowrap">
+          ✓ formula shown
+        </span>
       </div>
 
-      {/* Input card */}
-      <div className="lg:order-1 bg-surface border border-line rounded-lg p-6 md:p-7 shadow-soft">
-        <div className="space-y-5">
+      {/* Fields */}
+      <div className="p-6 pb-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {config.inputs.map((input) => {
             const unitLabel = getUnitLabel(input);
+            const spanFull =
+              input.type !== "number" &&
+              input.options &&
+              input.options.some((o) => o.label.length > 14);
             return (
-              <div key={input.id}>
+              <div
+                key={input.id}
+                className={spanFull ? "sm:col-span-2" : undefined}
+              >
                 <label
                   htmlFor={input.id}
-                  className="block text-xs text-ink-faint font-semibold uppercase tracking-wider mb-2"
+                  className="block font-mono text-[10.5px] uppercase tracking-[0.12em] text-ink-muted mb-1.5"
                 >
                   {input.label}
                 </label>
@@ -300,7 +179,7 @@ export function Calculator({ slug }: CalculatorProps) {
                           isNaN(val as number) ? "" : val
                         );
                       }}
-                      className="w-full bg-bg border border-line rounded-md px-3.5 py-2.5 text-base font-mono font-semibold text-ink focus:border-accent focus:outline-none focus:bg-surface transition-colors"
+                      className="w-full bg-bg border border-line rounded px-3 py-2.5 text-[14.5px] font-mono text-ink focus:border-accent focus:outline-none transition-colors"
                       inputMode="decimal"
                     />
                     {unitLabel && (
@@ -310,7 +189,7 @@ export function Calculator({ slug }: CalculatorProps) {
                     )}
                   </div>
                 ) : (
-                  <SegmentedSelect
+                  <LedgerSelect
                     input={input}
                     value={values[input.id]}
                     onChange={(v) => updateValue(input.id, v)}
@@ -324,38 +203,125 @@ export function Calculator({ slug }: CalculatorProps) {
           })}
         </div>
 
-        {/* Formula trace */}
+        {/* The receipt */}
+        {result && (
+          <div className="mt-6 pt-2 border-t border-dashed border-line font-mono text-[13px]">
+            {result.breakdown.map((b, i) => (
+              <div
+                key={i}
+                className="flex justify-between gap-4 py-2 border-b border-dashed border-line"
+              >
+                <span className="text-ink-muted lowercase">{b.label}</span>
+                <span className="text-ink text-right">{b.value}</span>
+              </div>
+            ))}
+
+            {/* Composition segments render as receipt lines + a slim bar */}
+            {result.composition && result.composition.segments.length > 0 && (
+              <>
+                {result.composition.segments.map((seg, i) => (
+                  <div
+                    key={i}
+                    className="flex justify-between gap-4 py-2 border-b border-dashed border-line"
+                  >
+                    <span className="text-ink-muted lowercase">{seg.label}</span>
+                    <span className="text-ink text-right">
+                      {formatNumber(seg.amount, 0)} {result.composition!.unit}
+                    </span>
+                  </div>
+                ))}
+                <div className="h-1.5 rounded-sm overflow-hidden flex mt-3">
+                  {result.composition.segments.map((seg, i) => {
+                    const pct =
+                      (seg.amount / result.composition!.total) * 100;
+                    const color =
+                      seg.shade === "primary"
+                        ? "#147A46"
+                        : seg.shade === "secondary"
+                          ? "#9BA8A0"
+                          : "#B9791A";
+                    return (
+                      <div
+                        key={i}
+                        style={{ width: `${pct}%`, backgroundColor: color }}
+                      />
+                    );
+                  })}
+                </div>
+              </>
+            )}
+
+            {/* Total */}
+            <div className="flex justify-between items-baseline gap-4 pt-4 pb-0.5">
+              <span className="text-[11px] uppercase tracking-[0.14em] text-accent font-medium">
+                You need
+              </span>
+              <span className="text-2xl md:text-3xl font-bold text-ink tracking-tight text-right">
+                {formatNumber(result.valueRounded)}{" "}
+                <span className="text-base font-medium text-ink-muted">
+                  {result.unit}
+                </span>
+              </span>
+            </div>
+            {result.value !== result.valueRounded && (
+              <div className="flex justify-end pb-1 text-xs text-ink-faint">
+                exact: {formatNumber(result.value, 3)} {result.unit}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Show the math */}
         {result && result.formulaSteps.length > 0 && (
-          <details className="group mt-6 pt-5 border-t border-line">
-            <summary className="cursor-pointer text-sm text-ink-muted hover:text-ink flex items-center gap-1.5 select-none font-medium">
+          <details className="group mt-4 mb-1">
+            <summary className="cursor-pointer text-[13px] text-ink-muted hover:text-ink flex items-center gap-1.5 select-none font-medium">
               <span className="transition-transform group-open:rotate-90 inline-block">
                 ›
               </span>
               Show the math
             </summary>
-            <div className="mt-3 p-4 bg-surface-alt border border-line rounded-md font-mono text-xs text-ink-muted space-y-1 overflow-x-auto">
+            <div className="mt-2 p-3.5 bg-surface-alt border border-line rounded font-mono text-xs text-ink-muted space-y-1 overflow-x-auto">
               {result.formulaSteps.map((step, i) => (
                 <div key={i}>{step}</div>
               ))}
             </div>
           </details>
         )}
+      </div>
 
-        <div className="text-xs text-ink-faint pt-3 mt-1">
-          <code className="font-mono bg-bg-warm px-2 py-1 rounded text-ink-faint">
-            {config.formulaDescription}
-          </code>
-        </div>
+      {/* Panel foot */}
+      <div className="flex gap-2.5 p-6 pt-5">
+        <button
+          onClick={() => {
+            const params = new URLSearchParams();
+            Object.entries(values).forEach(([k, v]) => params.set(k, String(v)));
+            const shareUrl = `${window.location.origin}${window.location.pathname}?${params.toString()}`;
+            navigator.clipboard.writeText(shareUrl).then(() => {
+              setCopied(true);
+              setTimeout(() => setCopied(false), 2000);
+            });
+          }}
+          className="flex-1 bg-ink text-bg text-sm font-semibold py-3 rounded hover:bg-walnut-soft transition-colors"
+        >
+          {copied ? "✓ Copied!" : "Copy link with my inputs"}
+        </button>
+        <button
+          onClick={() => window.print()}
+          className="px-4 bg-surface border border-line text-ink text-sm font-semibold py-3 rounded hover:border-accent hover:text-accent transition-colors"
+        >
+          Print
+        </button>
       </div>
     </div>
   );
 }
 
 /**
- * Segmented button group for select-type inputs. Renders each option
- * as a button, with the current value styled terracotta.
+ * Ledger-style select for option inputs: a native <select> in mono
+ * on paper background, matching number inputs. Replaces the old
+ * segmented pill buttons.
  */
-function SegmentedSelect({
+function LedgerSelect({
   input,
   value,
   onChange,
@@ -365,35 +331,28 @@ function SegmentedSelect({
   onChange: (v: string | number) => void;
 }) {
   if (!input.options) return null;
-  const count = input.options.length;
-  const colClass =
-    count <= 2
-      ? "grid-cols-2"
-      : count === 3
-        ? "grid-cols-3"
-        : count === 4
-          ? "grid-cols-2 sm:grid-cols-4"
-          : "grid-cols-2";
-
   return (
-    <div className={`grid ${colClass} gap-2`}>
-      {input.options.map((opt) => {
-        const isOn = String(value) === String(opt.value);
-        return (
-          <button
-            key={opt.value}
-            type="button"
-            onClick={() => onChange(opt.value)}
-            className={`px-2 sm:px-3 py-2.5 rounded-md text-xs sm:text-sm font-semibold transition-colors border text-center leading-snug ${
-              isOn
-                ? "bg-accent text-white border-accent"
-                : "bg-bg text-ink border-line hover:border-accent hover:text-accent"
-            }`}
-          >
+    <div className="relative">
+      <select
+        id={input.id}
+        value={String(value)}
+        onChange={(e) => {
+          const opt = input.options!.find(
+            (o) => String(o.value) === e.target.value
+          );
+          onChange(opt ? opt.value : e.target.value);
+        }}
+        className="w-full appearance-none bg-bg border border-line rounded px-3 py-2.5 pr-8 text-[14.5px] font-mono text-ink focus:border-accent focus:outline-none transition-colors cursor-pointer"
+      >
+        {input.options.map((opt) => (
+          <option key={opt.value} value={String(opt.value)}>
             {opt.label}
-          </button>
-        );
-      })}
+          </option>
+        ))}
+      </select>
+      <span className="absolute right-3 top-1/2 -translate-y-1/2 text-ink-faint pointer-events-none text-xs">
+        ▾
+      </span>
     </div>
   );
 }
