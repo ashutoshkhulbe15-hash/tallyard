@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { BannerHeadline } from "./BannerHeadline";
-import { CategoryIllustration } from "./CategoryIllustration";
+
 import type { GuideConfig } from "@/lib/guides-types";
 
 interface GuidePageProps {
@@ -20,52 +20,42 @@ export function GuidePage({ config }: GuidePageProps) {
 
   return (
     <article>
-      {/* Banner */}
-      <section className="container-wide pt-6 md:pt-8">
-        <div className="bg-bg-warm rounded-xl p-8 md:p-10 grid grid-cols-1 md:grid-cols-[1.3fr_1fr] gap-6 items-center overflow-hidden">
-          <div>
-            <nav
-              aria-label="Breadcrumb"
-              className="text-[11px] uppercase tracking-[0.08em] text-ink-faint mb-3 font-semibold"
+      {/* Editorial header */}
+      <section className="container-wide pt-7 md:pt-10">
+        <div className="pb-8 md:pb-10 border-b border-line">
+          <nav
+            aria-label="Breadcrumb"
+            className="font-mono text-xs text-ink-muted mb-5"
+          >
+            <Link
+              href="/guides"
+              className="hover:text-accent transition-colors"
             >
-              <Link
-                href="/guides"
-                className="text-accent hover:text-accent-hover transition-colors"
-              >
-                Guides
-              </Link>
-              <span className="mx-2 text-ink-faint">·</span>
-              <span>{config.categoryLabel}</span>
-              <span className="mx-2 text-ink-faint">·</span>
-              <span className="text-ink-faint font-normal">
-                {config.readTime}
-              </span>
-            </nav>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tighter leading-[1.05] mb-3 text-ink">
-              <BannerHeadline text={config.bannerHeadline} />
-            </h1>
-            <p className="text-base md:text-lg text-ink-muted max-w-md leading-relaxed">
-              {config.description}
-            </p>
-            {config.bannerTags.length > 0 && (
-              <div className="flex flex-wrap gap-2 mt-5">
-                {config.bannerTags.map((tag, i) => (
-                  <span
-                    key={i}
-                    className="bg-accent-soft text-accent px-2.5 py-1 rounded-full text-xs font-semibold"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
-          <div className="flex justify-center md:justify-end items-center">
-            <CategoryIllustration
-              category={config.category}
-              valueLabel={config.heroValue}
-            />
-          </div>
+              Guides
+            </Link>
+            <span className="mx-2 text-ink-faint">·</span>
+            <span>{config.categoryLabel}</span>
+            <span className="mx-2 text-ink-faint">·</span>
+            <span className="text-ink-faint">{config.readTime}</span>
+          </nav>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tighter leading-[1.05] mb-4 text-ink max-w-3xl">
+            <BannerHeadline text={config.bannerHeadline} />
+          </h1>
+          <p className="text-base md:text-lg text-ink-muted max-w-2xl leading-relaxed">
+            {config.description}
+          </p>
+          {config.bannerTags.length > 0 && (
+            <div className="flex flex-wrap gap-2 mt-6">
+              {config.bannerTags.map((tag, i) => (
+                <span
+                  key={i}
+                  className="font-mono text-[11px] tracking-[0.06em] uppercase text-accent bg-accent-soft px-3 py-1.5 rounded-full"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

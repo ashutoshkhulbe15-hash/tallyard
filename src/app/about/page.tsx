@@ -64,7 +64,7 @@ export default function AboutPage() {
       <AboutSchema />
 
       <div className="container-content py-12 md:py-16">
-        <p className="text-[11px] uppercase tracking-[0.08em] text-ink-faint mb-3 font-semibold">
+        <p className="font-mono text-xs text-ink-muted mb-5">
           About
         </p>
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-6">
@@ -91,7 +91,7 @@ export default function AboutPage() {
 
         {/* Founder section — E-E-A-T: named person with photo and LinkedIn */}
         <div className="mt-12 pt-10 border-t border-line">
-          <p className="text-[11px] uppercase tracking-[0.08em] text-ink-faint mb-3 font-semibold">
+          <p className="font-mono text-xs text-ink-muted mb-5">
             Founder
           </p>
           <div className="flex flex-col sm:flex-row gap-6 items-start">
@@ -151,7 +151,7 @@ export default function AboutPage() {
 
         {/* Editorial process — E-E-A-T: transparency about how content is produced */}
         <div className="mt-12 pt-10 border-t border-line">
-          <p className="text-[11px] uppercase tracking-[0.08em] text-ink-faint mb-3 font-semibold">
+          <p className="font-mono text-xs text-ink-muted mb-5">
             Editorial process
           </p>
           <h2 className="text-2xl font-bold tracking-tight mb-4">
@@ -221,7 +221,7 @@ export default function AboutPage() {
 
         {/* The name — E-E-A-T: explains the entity */}
         <div className="mt-12 pt-10 border-t border-line">
-          <p className="text-[11px] uppercase tracking-[0.08em] text-ink-faint mb-3 font-semibold">
+          <p className="font-mono text-xs text-ink-muted mb-5">
             Why &ldquo;Tallyard&rdquo;
           </p>
           <p className="text-base text-ink-muted leading-relaxed max-w-prose">

@@ -112,8 +112,8 @@ export default function CostToBuildFence() {
   return (
     <article>
       <section className="container-wide pt-6 md:pt-8">
-        <div className="bg-bg-warm rounded-xl p-8 md:p-10">
-          <nav aria-label="Breadcrumb" className="text-[11px] uppercase tracking-[0.08em] text-ink-faint mb-3 font-semibold">
+        <div className="pt-2 pb-8 md:pb-10 border-b border-line">
+          <nav aria-label="Breadcrumb" className="font-mono text-xs text-ink-muted mb-5">
             <Link href="/" className="text-accent hover:text-accent-hover transition-colors">Home</Link>
             <span className="mx-2">·</span><span>Cost guides</span>
           </nav>

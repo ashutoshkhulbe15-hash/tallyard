@@ -5,13 +5,13 @@
  */
 export const GUIDE_SVG = {
   // Surface
-  bgWarm: "#F5EFE4",
+  bgWarm: "#F1F4EF",
   bgSurface: "#FAFBF8",
   // Ink
   ink: "#111814",
   inkMuted: "#3D3D3A",
   inkFaint: "#888780",
-  // Accent (terracotta) — use for highlights, totals, the answer
+  // Accent (verify green) — use for highlights, totals, the answer
   accent: "#147A46",
   accentSoft: "#E7F3EC",
   // Walnut — dark callouts, compressor boxes, the answer blocks

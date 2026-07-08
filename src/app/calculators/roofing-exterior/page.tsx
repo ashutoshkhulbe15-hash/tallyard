@@ -10,8 +10,8 @@ const tools = [
   { slug: "garage-door-calculator", name: "Garage door calculator", desc: "Door sizing and headroom check." },
 ];
 export default function RoofingExteriorPillar() { return (<article>
-  <section className="container-wide pt-6 md:pt-8"><div className="bg-bg-warm rounded-xl p-8 md:p-10">
-    <nav aria-label="Breadcrumb" className="text-[11px] uppercase tracking-[0.08em] text-ink-faint mb-3 font-semibold"><Link href="/calculators" className="text-accent hover:text-accent-hover transition-colors">Calculators</Link><span className="mx-2">·</span><span>Roofing + exterior</span></nav>
+  <section className="container-wide pt-6 md:pt-8"><div className="pt-2 pb-8 md:pb-10 border-b border-line">
+    <nav aria-label="Breadcrumb" className="font-mono text-xs text-ink-muted mb-5"><Link href="/calculators" className="text-accent hover:text-accent-hover transition-colors">Calculators</Link><span className="mx-2">·</span><span>Roofing + exterior</span></nav>
     <h1 className="text-3xl md:text-5xl font-bold tracking-tighter leading-[1.05] mb-3 text-ink">Roofing, siding, and exterior</h1>
     <p className="text-base md:text-lg text-ink-muted max-w-2xl leading-relaxed">Six calculators for the building envelope. Roof, walls, gutters, and ventilation work as one system.</p>
   </div></section>

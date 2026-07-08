@@ -59,8 +59,8 @@ export default function PlannerIndexPage() {
     <>
       {/* Banner */}
       <section className="container-wide pt-6 md:pt-8">
-        <div className="bg-bg-warm rounded-xl p-8 md:p-12">
-          <p className="text-[11px] uppercase tracking-[0.08em] text-ink-faint mb-3 font-semibold">
+        <div className="pt-2 pb-8 md:pb-10 border-b border-line">
+          <p className="font-mono text-xs text-ink-muted mb-5">
             Project planner
           </p>
           <h1 className="text-3xl md:text-5xl font-bold tracking-tighter leading-[1.05] mb-3 text-ink">

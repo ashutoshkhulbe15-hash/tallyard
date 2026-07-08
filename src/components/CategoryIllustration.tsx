@@ -38,7 +38,7 @@ export function CategoryIllustration({
             strokeWidth="1.5"
             rx="4"
           />
-          <rect x="65" y="55" width="70" height="45" fill="#FFE9D0" rx="2" />
+          <rect x="65" y="55" width="70" height="45" fill="#E7F3EC" rx="2" />
           <rect x="65" y="110" width="32" height="32" fill="#F1F4EF" rx="2" />
           <rect x="103" y="110" width="32" height="32" fill="#F1F4EF" rx="2" />
           <circle cx="120" cy="65" r="4" fill="#147A46" />
@@ -104,8 +104,8 @@ export function CategoryIllustration({
             <line x1="40" y1="100" x2="160" y2="100" />
             <line x1="40" y1="130" x2="160" y2="130" />
           </g>
-          <rect x="70" y="70" width="30" height="30" fill="#FFE9D0" />
-          <rect x="100" y="100" width="30" height="30" fill="#FFE9D0" />
+          <rect x="70" y="70" width="30" height="30" fill="#E7F3EC" />
+          <rect x="100" y="100" width="30" height="30" fill="#E7F3EC" />
           {valueLabel && (
             <text x="100" y="30" fontFamily="JetBrains Mono, ui-monospace, monospace" fontSize="10" fill="#147A46" fontWeight="600" textAnchor="middle">{valueLabel}</text>
           )}
@@ -162,7 +162,7 @@ export function CategoryIllustration({
           {/* Drywall sheets stacked */}
           <rect x="40" y="50" width="80" height="100" fill="#fff" stroke="#147A46" strokeWidth="1.5" rx="2" />
           <rect x="55" y="60" width="80" height="100" fill="#F1F4EF" stroke="#147A46" strokeWidth="1.5" rx="2" />
-          <rect x="70" y="70" width="80" height="100" fill="#FFE9D0" stroke="#147A46" strokeWidth="1.5" rx="2" />
+          <rect x="70" y="70" width="80" height="100" fill="#E7F3EC" stroke="#147A46" strokeWidth="1.5" rx="2" />
           {valueLabel && (
             <text x="100" y="40" fontFamily="JetBrains Mono, ui-monospace, monospace" fontSize="10" fill="#147A46" fontWeight="600" textAnchor="middle">{valueLabel}</text>
           )}
