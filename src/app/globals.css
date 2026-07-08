@@ -13,10 +13,10 @@
   body {
     background-color: #FAFBF8;
     background-image:
-      linear-gradient(rgba(17,24,20,0.08) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(17,24,20,0.08) 1px, transparent 1px),
-      linear-gradient(rgba(17,24,20,0.045) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(17,24,20,0.045) 1px, transparent 1px);
+      linear-gradient(rgba(17,24,20,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(17,24,20,0.05) 1px, transparent 1px),
+      linear-gradient(rgba(17,24,20,0.028) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(17,24,20,0.028) 1px, transparent 1px);
     background-size: 96px 96px, 96px 96px, 24px 24px, 24px 24px;
     color: #111814;
     font-family: "Instrument Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;

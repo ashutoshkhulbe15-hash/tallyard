@@ -96,6 +96,73 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
                 </span>
               </div>
             )}
+
+            {/* On-this-page nav + related tools — fills the column beside the
+                calculator so there's no dead space under the intro. Hidden on
+                small screens where everything stacks. */}
+            <div className="hidden lg:block mt-10 max-w-md">
+              <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-ink-faint mb-3">
+                On this page
+              </div>
+              <nav className="flex flex-col">
+                {config.methodology.length > 0 && (
+                  <a
+                    href="#methodology"
+                    className="text-[13.5px] text-ink-soft border-l-2 border-line pl-3.5 py-1.5 hover:text-ink hover:border-l-accent transition-colors"
+                  >
+                    How we calculated this
+                  </a>
+                )}
+                {config.sources.length > 0 && (
+                  <a
+                    href="#sources"
+                    className="text-[13.5px] text-ink-soft border-l-2 border-line pl-3.5 py-1.5 hover:text-ink hover:border-l-accent transition-colors"
+                  >
+                    Sources
+                  </a>
+                )}
+                {config.faq.length > 0 && (
+                  <a
+                    href="#faq"
+                    className="text-[13.5px] text-ink-soft border-l-2 border-line pl-3.5 py-1.5 hover:text-ink hover:border-l-accent transition-colors"
+                  >
+                    Frequently asked
+                  </a>
+                )}
+                {config.related.length > 0 && (
+                  <a
+                    href="#related"
+                    className="text-[13.5px] text-ink-soft border-l-2 border-line pl-3.5 py-1.5 hover:text-ink hover:border-l-accent transition-colors"
+                  >
+                    Related calculators
+                  </a>
+                )}
+              </nav>
+
+              {config.related.length > 0 && (
+                <div className="mt-8">
+                  <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-ink-faint mb-2">
+                    Related tools
+                  </div>
+                  <div className="border-t border-line">
+                    {config.related.slice(0, 3).map((rel) => (
+                      <Link
+                        key={rel.slug}
+                        href={`/${rel.slug}`}
+                        className="group flex items-baseline justify-between gap-3 py-2.5 border-b border-dashed border-line"
+                      >
+                        <span className="text-[13px] font-semibold group-hover:text-accent transition-colors">
+                          {rel.name}
+                        </span>
+                        <span className="font-mono text-[11px] text-ink-faint group-hover:text-accent transition-colors">
+                          →
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
           <div className="lg:sticky lg:top-20">
             <Calculator slug={slug} panelTitle={config.title} />
@@ -105,7 +172,7 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
 
       {/* Methodology */}
       {config.methodology.length > 0 && (
-        <section className="container-content pb-12">
+        <section id="methodology" className="container-content pb-12 scroll-mt-24">
           <div className="pt-10 border-t border-line">
             <h2 className="text-2xl font-bold tracking-tight mb-5">
               How we calculated this
@@ -140,7 +207,7 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
 
       {/* Sources */}
       {config.sources.length > 0 && (
-        <section className="container-content pb-12">
+        <section id="sources" className="container-content pb-12 scroll-mt-24">
           <h2 className="text-2xl font-bold tracking-tight mb-5">Sources</h2>
           <ul className="space-y-2.5 text-sm text-ink-muted">
             {config.sources.map((source, i) => (
@@ -168,7 +235,7 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
 
       {/* FAQ */}
       {config.faq.length > 0 && (
-        <section className="container-content pb-12">
+        <section id="faq" className="container-content pb-12 scroll-mt-24">
           <div className="pt-10 border-t border-line">
             <h2 className="text-2xl font-bold tracking-tight mb-6">
               Frequently asked
@@ -191,7 +258,7 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
 
       {/* Related */}
       {config.related.length > 0 && (
-        <section className="container-content pb-12">
+        <section id="related" className="container-content pb-12 scroll-mt-24">
           <div className="pt-10 border-t border-line">
             <h2 className="text-2xl font-bold tracking-tight mb-6">
               Related calculators
