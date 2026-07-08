@@ -17,7 +17,7 @@ export function VerdictCard({
     <div className="bg-walnut walnut-section rounded-lg p-7 md:p-8 text-white my-8">
       <div
         className="text-xs uppercase tracking-[0.12em] font-bold mb-3"
-        style={{ color: "#D4691C" }}
+        style={{ color: "#147A46" }}
       >
         {label}
       </div>
@@ -217,7 +217,7 @@ export function CalculatorCTA({
       <div className="flex-1">
         <div
           className="text-[11px] uppercase tracking-[0.12em] font-bold mb-2"
-          style={{ color: "#D4691C" }}
+          style={{ color: "#147A46" }}
         >
           Try the math yourself
         </div>
@@ -228,7 +228,7 @@ export function CalculatorCTA({
       </div>
       <div
         className="text-2xl font-bold leading-none mt-2 shrink-0"
-        style={{ color: "#D4691C" }}
+        style={{ color: "#147A46" }}
       >
         →
       </div>

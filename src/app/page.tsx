@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BannerHeadline } from "@/components/BannerHeadline";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -91,58 +90,93 @@ const guides = [
 export default function HomePage() {
   return (
     <>
-      {/* ===== 1. HERO ===== */}
-      <section className="container-wide pt-6 md:pt-8">
-        <div className="bg-bg-warm rounded-xl p-8 md:p-14 overflow-hidden">
-          <p className="text-[11px] uppercase tracking-[0.08em] text-ink-faint mb-3 font-semibold">
-            Home improvement · DIY
-          </p>
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tighter leading-[1.02] mb-5 max-w-3xl">
-            <BannerHeadline text="Calculators that show their work." />
-          </h1>
-          <p className="text-base md:text-lg text-ink-muted max-w-xl leading-relaxed mb-7">
-            Free tools for home improvement projects. Every formula public,
-            every source cited. No signup, no email capture, no affiliate
-            agenda.
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href="/calculators"
-              className="inline-flex items-center px-5 py-3 text-sm font-semibold bg-accent hover:bg-accent-hover text-white rounded-md transition-colors"
-            >
-              Browse all calculators
-            </Link>
-            <Link
-              href="/guides"
-              className="inline-flex items-center px-5 py-3 text-sm font-semibold text-ink border border-line-strong hover:border-accent hover:text-accent bg-surface rounded-md transition-colors"
-            >
-              Read buying guides
-            </Link>
+      {/* ===== 1. HERO: headline + worked-calculation receipt ===== */}
+      <section className="container-wide pt-10 md:pt-16 pb-10">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-16 items-center">
+          {/* Left: headline */}
+          <div>
+            <p className="font-mono text-xs uppercase tracking-[0.14em] text-accent mb-5 font-medium flex items-center gap-2.5">
+              <span className="w-7 h-px bg-accent inline-block" aria-hidden="true" />
+              Free · No signup · Formulas public
+            </p>
+            <h1 className="font-display text-4xl md:text-6xl font-extrabold tracking-tighter leading-[1.02] mb-6 max-w-3xl">
+              Calculators that <span className="accent-italic">show their work.</span>
+            </h1>
+            <p className="text-base md:text-lg text-ink-muted max-w-xl leading-relaxed mb-8">
+              Free tools for home improvement projects. Every formula public,
+              every source cited. No signup, no email capture, no affiliate
+              agenda.
+            </p>
+            <div className="flex flex-wrap gap-3 mb-9">
+              <Link
+                href="/calculators"
+                className="inline-flex items-center px-5 py-3 text-sm font-semibold bg-ink hover:-translate-y-px text-bg rounded-md transition-all hover:shadow-lg"
+              >
+                Browse all calculators
+              </Link>
+              <Link
+                href="/guides"
+                className="inline-flex items-center px-5 py-3 text-sm font-semibold text-ink border border-line hover:border-ink-muted bg-surface rounded-md transition-colors"
+              >
+                Read buying guides
+              </Link>
+            </div>
+            <div className="flex gap-8">
+              {[
+                { value: "45", label: "calculators" },
+                { value: "10", label: "cost guides" },
+                { value: "0", label: "signup forms" },
+              ].map((stat) => (
+                <div key={stat.label}>
+                  <b className="font-mono text-xl font-bold tracking-tight block">{stat.value}</b>
+                  <span className="text-xs text-ink-faint uppercase tracking-[0.08em]">{stat.label}</span>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
 
-      {/* ===== 2. STATS BAR ===== */}
-      <section className="container-wide py-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          {[
-            { value: "44", label: "calculators" },
-            { value: "11", label: "categories" },
-            { value: "3", label: "buying guides" },
-            { value: "0", label: "signup forms" },
-          ].map((stat) => (
-            <div
-              key={stat.label}
-              className="p-5 bg-surface border border-line rounded-lg text-center"
-            >
-              <div className="text-3xl md:text-4xl font-bold tracking-tighter text-accent leading-none">
-                {stat.value}
+          {/* Right: animated worked-calculation receipt */}
+          <div className="relative bg-surface border border-line rounded-lg shadow-receipt overflow-hidden">
+            <span className="absolute -top-[1px] right-6 bg-amber text-white font-mono text-[10.5px] tracking-[0.1em] px-2.5 py-1 rounded-b uppercase z-10">
+              Worked example
+            </span>
+            <div className="flex justify-between items-center px-5 py-4 border-b border-line bg-surface-alt">
+              <span className="font-semibold text-sm">Paint calculator — 12 × 14 ft bedroom</span>
+              <span className="font-mono text-[11px] text-accent bg-accent-soft px-2 py-1 rounded-full font-medium whitespace-nowrap ml-3">
+                ✓ formula shown
+              </span>
+            </div>
+            <div className="p-5 font-mono text-[13.5px]">
+              <div className="receipt-line flex justify-between py-2 border-b border-dashed border-line">
+                <span className="text-ink-muted">wall area (2 coats)</span>
+                <span className="font-medium">832 sq ft</span>
               </div>
-              <div className="text-xs text-ink-faint uppercase tracking-wider mt-2 font-semibold">
-                {stat.label}
+              <div className="receipt-line flex justify-between py-2 border-b border-dashed border-line">
+                <span className="text-ink-muted">− doors &amp; windows</span>
+                <span className="font-medium">−62 sq ft</span>
+              </div>
+              <div className="receipt-line flex justify-between py-2 border-b border-dashed border-line">
+                <span className="text-ink-muted">÷ coverage rate</span>
+                <span className="font-medium">350 sq ft/gal</span>
+              </div>
+              <div className="receipt-line flex justify-between py-2 border-b border-dashed border-line">
+                <span className="text-ink-muted">raw result</span>
+                <span className="font-medium">2.20 gal</span>
+              </div>
+              <div className="receipt-line flex justify-between py-2 border-b border-dashed border-line">
+                <span className="text-ink-muted">round to buyable</span>
+                <span className="font-medium">1 gal + 2 qt</span>
+              </div>
+              <div className="receipt-total flex justify-between pt-4 pb-1 font-bold text-base">
+                <span>You need</span>
+                <span className="text-accent">2.5 gallons</span>
+              </div>
+              <div className="receipt-source mt-3.5 pt-3.5 border-t border-line text-[11.5px] text-ink-faint flex gap-2 items-center font-sans">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent flex-none" aria-hidden="true" />
+                Coverage rate: Sherwin-Williams technical data sheet, interior latex
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </section>
 
@@ -194,7 +228,7 @@ export default function HomePage() {
             <div>
               <p
                 className="text-[11px] uppercase tracking-[0.08em] mb-2 font-semibold"
-                style={{ color: "#D4691C" }}
+                style={{ color: "#147A46" }}
               >
                 Buying guides
               </p>
@@ -224,7 +258,7 @@ export default function HomePage() {
                 <div className="flex items-center gap-2 mb-3">
                   <span
                     className="text-[10px] uppercase tracking-[0.08em] font-bold px-2 py-0.5 rounded"
-                    style={{ color: "#D4691C", background: "rgba(212,105,28,0.15)" }}
+                    style={{ color: "#147A46", background: "rgba(20,122,70,0.15)" }}
                   >
                     {g.tag}
                   </span>
@@ -350,7 +384,7 @@ export default function HomePage() {
               href="/calculators"
               className="inline-flex items-center px-6 py-3 text-sm font-semibold bg-accent hover:bg-accent-hover text-white rounded-md transition-colors"
             >
-              Browse 44 calculators
+              Browse 45 calculators
             </Link>
             <Link
               href="/about"

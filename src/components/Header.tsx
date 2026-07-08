@@ -116,10 +116,10 @@ export function Header() {
   };
 
   return (
-    <header className="border-b border-line bg-bg sticky top-0 z-40 backdrop-blur-sm" style={{ backgroundColor: "rgba(250, 246, 239, 0.85)" }}>
+    <header className="border-b border-line sticky top-0 z-40 backdrop-blur-sm" style={{ backgroundColor: "rgba(250, 251, 248, 0.9)" }}>
       <div className="container-wide flex items-center justify-between h-16 gap-3">
         <Link href="/" className="flex items-center gap-1.5 text-lg font-bold tracking-tighter text-ink hover:opacity-80 transition-opacity shrink-0" aria-label="Tallyard home" onClick={() => setMenuOpen(false)}>
-          <span className="w-[7px] h-[7px] rounded-full bg-accent" aria-hidden="true" />
+          <span className="w-[22px] h-[22px] rounded-sm bg-accent grid place-items-center text-white text-[13px] font-mono leading-none" aria-hidden="true">✓</span>
           Tallyard
         </Link>
 

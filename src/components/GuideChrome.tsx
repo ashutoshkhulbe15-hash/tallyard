@@ -6,22 +6,22 @@
 export const GUIDE_SVG = {
   // Surface
   bgWarm: "#F5EFE4",
-  bgSurface: "#FAF6EF",
+  bgSurface: "#FAFBF8",
   // Ink
-  ink: "#1A1814",
+  ink: "#111814",
   inkMuted: "#3D3D3A",
   inkFaint: "#888780",
   // Accent (terracotta) — use for highlights, totals, the answer
-  accent: "#D4691C",
-  accentSoft: "#F9EDE4",
+  accent: "#147A46",
+  accentSoft: "#E7F3EC",
   // Walnut — dark callouts, compressor boxes, the answer blocks
-  walnut: "#1A1814",
+  walnut: "#111814",
   // Secondary tints for "the other option" in comparisons — cool slate
   slate: "#B4C4D0",
   slateSoft: "#EAF0F5",
   // Semantic for cold/hot indicators
   cool: "#6B91AD",
-  warm: "#D4691C",
+  warm: "#B9791A",
   line: "rgba(26, 24, 20, 0.14)",
 } as const;
 

@@ -251,7 +251,7 @@ export function MaterialList({
       <div className="bg-walnut rounded-lg p-6 md:p-8 text-white mb-6">
         <p
           className="text-[10px] uppercase tracking-[0.12em] font-bold mb-2"
-          style={{ color: "#D4691C" }}
+          style={{ color: "#147A46" }}
         >
           Complete material list
         </p>

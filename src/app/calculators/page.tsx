@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "All 44 calculators — free home improvement tools",
+  title: "All 45 calculators — free home improvement tools",
   description:
     "Browse 44 free calculators for home improvement: paint, concrete, roofing, HVAC, landscaping, electrical, and more. Every formula public, no signup required.",
   alternates: { canonical: "/calculators" },

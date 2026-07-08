@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -11,26 +11,36 @@
     text-rendering: optimizeLegibility;
   }
   body {
-    background-color: #FAF6EF;
-    color: #1A1814;
-    font-family: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+    background-color: #FAFBF8;
+    background-image:
+      linear-gradient(rgba(17,24,20,0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(17,24,20,0.08) 1px, transparent 1px),
+      linear-gradient(rgba(17,24,20,0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(17,24,20,0.045) 1px, transparent 1px);
+    background-size: 96px 96px, 96px 96px, 24px 24px, 24px 24px;
+    color: #111814;
+    font-family: "Instrument Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
     font-size: 15px;
     line-height: 1.6;
     -webkit-tap-highlight-color: transparent;
+  }
+  h1, h2, h3 {
+    font-family: "Archivo", "Instrument Sans", sans-serif;
+    font-stretch: 105%;
   }
   h1, h2, h3, h4 {
     letter-spacing: -0.025em;
     font-weight: 700;
   }
   ::selection {
-    background-color: rgba(212, 105, 28, 0.25);
+    background-color: rgba(20, 122, 70, 0.20);
   }
   .walnut-section ::selection {
-    background-color: rgba(212, 105, 28, 0.4);
+    background-color: rgba(20, 122, 70, 0.35);
     color: #fff;
   }
   *:focus-visible {
-    outline: 2px solid #D4691C;
+    outline: 2px solid #147A46;
     outline-offset: 2px;
     border-radius: 4px;
   }
@@ -60,10 +70,9 @@
     padding-right: 24px;
   }
   .accent-italic {
-    font-family: "Cambria", "Georgia", serif;
-    font-style: italic;
-    font-weight: 500;
-    color: #D4691C;
+    font-style: normal;
+    font-weight: 800;
+    color: #147A46;
   }
 
   /* Long-form article typography. Applies to direct descendants so
@@ -72,7 +81,7 @@
   .guide-prose {
     font-size: 16px;
     line-height: 1.75;
-    color: #1A1814;
+    color: #111814;
   }
   .guide-prose > h2 {
     font-size: 1.75rem;
@@ -95,17 +104,17 @@
   }
   .guide-prose > p {
     margin-bottom: 1.25rem;
-    color: #3D3D3A;
+    color: #3A443E;
   }
   .guide-prose > p strong {
     font-weight: 600;
-    color: #1A1814;
+    color: #111814;
   }
   .guide-prose > ul,
   .guide-prose > ol {
     margin: 1rem 0 1.5rem 0;
     padding-left: 1.5rem;
-    color: #3D3D3A;
+    color: #3A443E;
   }
   .guide-prose > ul {
     list-style-type: disc;
@@ -120,23 +129,23 @@
   }
   .guide-prose > ul > li::marker,
   .guide-prose > ol > li::marker {
-    color: #D4691C;
+    color: #147A46;
   }
   .guide-prose a {
-    color: #D4691C;
+    color: #147A46;
     text-decoration: underline;
     text-underline-offset: 3px;
     text-decoration-thickness: 1px;
   }
   .guide-prose a:hover {
-    color: #B55713;
+    color: #0F6238;
   }
   .guide-prose > blockquote {
-    border-left: 4px solid #D4691C;
+    border-left: 4px solid #147A46;
     padding-left: 1.25rem;
     margin: 1.5rem 0;
     font-style: italic;
-    color: #3D3D3A;
+    color: #3A443E;
     font-family: "Cambria", "Georgia", serif;
     font-size: 1.1rem;
     line-height: 1.6;
@@ -146,4 +155,33 @@
 @media print {
   nav, footer { display: none !important; }
   body { background: white; }
+}
+
+/* ===== Ledger theme additions ===== */
+@layer components {
+  .receipt-line {
+    opacity: 0;
+    animation: receipt-print 0.5s ease forwards;
+  }
+  .receipt-line:nth-child(1) { animation-delay: 0.2s; }
+  .receipt-line:nth-child(2) { animation-delay: 0.5s; }
+  .receipt-line:nth-child(3) { animation-delay: 0.8s; }
+  .receipt-line:nth-child(4) { animation-delay: 1.1s; }
+  .receipt-line:nth-child(5) { animation-delay: 1.4s; }
+  .receipt-total { opacity: 0; animation: receipt-print 0.5s ease 1.8s forwards; }
+  .receipt-source { opacity: 0; animation: receipt-print 0.5s ease 2.1s forwards; }
+  @keyframes receipt-print {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .receipt-line, .receipt-total, .receipt-source {
+      animation: none;
+      opacity: 1;
+    }
+  }
+  .ledger-panel {
+    background: #FFFFFF;
+    border: 1px solid #DCE2DB;
+  }
 }

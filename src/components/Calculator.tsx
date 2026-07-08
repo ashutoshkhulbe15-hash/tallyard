@@ -142,7 +142,7 @@ export function Calculator({ slug }: CalculatorProps) {
           <>
             <div
               className="text-xs uppercase tracking-[0.12em] font-bold mb-2.5"
-              style={{ color: "#D4691C" }}
+              style={{ color: "#147A46" }}
             >
               You need
             </div>
@@ -174,9 +174,9 @@ export function Calculator({ slug }: CalculatorProps) {
                       (seg.amount / result.composition!.total) * 100;
                     const color =
                       seg.shade === "primary"
-                        ? "#D4691C"
+                        ? "#147A46"
                         : seg.shade === "secondary"
-                          ? "#A09580"
+                          ? "#9BA8A0"
                           : "#6B5E43";
                     return (
                       <div
@@ -190,9 +190,9 @@ export function Calculator({ slug }: CalculatorProps) {
                   {result.composition.segments.map((seg, i) => {
                     const color =
                       seg.shade === "primary"
-                        ? "#D4691C"
+                        ? "#147A46"
                         : seg.shade === "secondary"
-                          ? "#A09580"
+                          ? "#9BA8A0"
                           : "#6B5E43";
                     return (
                       <div
