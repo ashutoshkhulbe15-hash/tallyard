@@ -99,10 +99,10 @@ export function Footer() {
             aria-label="Tallyard home"
           >
             <span
-              className="w-[20px] h-[20px] rounded-sm grid place-items-center text-white text-[12px] font-mono leading-none"
+              className="w-[7px] h-[7px] rounded-full"
               style={{ background: "#147A46" }}
               aria-hidden="true"
-            >✓</span>
+            />
             Tallyard
           </Link>
           <p
