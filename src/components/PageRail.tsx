@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export interface RailNavItem {
   href: string;
@@ -11,20 +14,16 @@ export interface RailToolGroup {
 }
 
 interface PageRailProps {
-  /** Heading for the jump-nav block, e.g. "On this page" / "In this guide" */
   navHeading: string;
-  /** Anchor links to on-page sections (only pass ones that exist) */
   nav: RailNavItem[];
-  /** One or more labelled groups of related links below the nav */
   toolGroups?: RailToolGroup[];
-  /** Three short mono lines pinned to the bottom; middle line renders green */
   footLines: [string, string, string];
 }
 
 /**
- * The full-height left rail. Sticky, spans the viewport, and pins a status
- * block to the bottom so the column is never half-empty beside long content.
- * Hidden below 1080px (handled by .page-rail).
+ * Full-height sticky left rail with scroll-spy: the nav link whose section
+ * is currently in view gets highlighted. Sticky, spans the viewport, pins a
+ * status block to the bottom. Hidden below 1080px (via .page-rail).
  */
 export function PageRail({
   navHeading,
@@ -32,21 +31,64 @@ export function PageRail({
   toolGroups = [],
   footLines,
 }: PageRailProps) {
+  const ids = nav.map((n) => n.href.replace("#", ""));
+  const [active, setActive] = useState(ids[0] ?? "");
+
+  useEffect(() => {
+    if (ids.length === 0) return;
+    const sections = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+    if (sections.length === 0) return;
+
+    // The active section is the last one whose top has scrolled above the
+    // trigger line just under the sticky header.
+    const onScroll = () => {
+      const trigger = 120;
+      let current = sections[0].id;
+      for (const el of sections) {
+        if (el.getBoundingClientRect().top <= trigger) {
+          current = el.id;
+        } else {
+          break;
+        }
+      }
+      setActive(current);
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ids.join(",")]);
+
   return (
     <aside className="page-rail">
       <div className="font-mono text-[10.5px] tracking-[0.16em] uppercase text-ink-faint mb-3.5">
         {navHeading}
       </div>
       <nav className="flex flex-col">
-        {nav.map((item) => (
-          <a
-            key={item.href}
-            href={item.href}
-            className="text-[14.5px] text-ink-muted border-l-2 border-line pl-[15px] py-2 hover:text-ink hover:border-l-accent transition-colors"
-          >
-            {item.label}
-          </a>
-        ))}
+        {nav.map((item) => {
+          const isActive = item.href.replace("#", "") === active;
+          return (
+            <a
+              key={item.href}
+              href={item.href}
+              aria-current={isActive ? "true" : undefined}
+              className={`text-[14.5px] border-l-2 pl-[15px] py-2 transition-colors ${
+                isActive
+                  ? "text-ink font-semibold border-l-accent"
+                  : "text-ink-muted border-l-line hover:text-ink hover:border-l-accent"
+              }`}
+            >
+              {item.label}
+            </a>
+          );
+        })}
       </nav>
 
       {toolGroups.map((group) => (
