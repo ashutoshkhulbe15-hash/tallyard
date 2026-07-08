@@ -1200,6 +1200,8 @@ export const heatPumpVsFurnaceGuide: GuideConfig = {
   heroValue: "BY CLIMATE ZONE",
   publishedAt: "2026-04-18",
   readTime: "14 min read",
+  verdict:
+    "A heat pump saves roughly $300–500 per year versus a gas furnace plus AC in climate zones 1–4, breaks about even in zone 5, and loses to gas in the coldest zones 6–7 — where a dual-fuel hybrid closes most of the gap.",
   Content,
   faq: [
     {

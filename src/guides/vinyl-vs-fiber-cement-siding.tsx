@@ -637,6 +637,8 @@ export const vinylVsFiberCementGuide: GuideConfig = {
   heroValue: "30-YEAR TCO",
   publishedAt: "2026-04-18",
   readTime: "11 min read",
+  verdict:
+    "Fiber cement siding lasts 50+ years to vinyl's 20–40 and wins on 30-year total cost and fire rating — but only if you stay long enough to bank the difference; vinyl wins on upfront cost and is the better pick for shorter ownership horizons.",
   Content,
   faq: [
     {

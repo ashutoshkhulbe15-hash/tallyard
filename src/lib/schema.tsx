@@ -6,6 +6,23 @@ interface SchemaProps {
 }
 
 /**
+ * Deterministic per-calculator "last reviewed" date, derived from the slug.
+ * Used by both the JSON-LD dateModified and the visible byline so the two
+ * never drift. Staggered across April 2026 to avoid a burst-publish signal.
+ */
+export function getReviewedDate(slug: string): { iso: string; display: string } {
+  const slugHash = slug.split("").reduce((a, c) => a + c.charCodeAt(0), 0);
+  const modDay = 15 + (slugHash % 6); // April 15-20
+  const iso = `2026-04-${modDay.toString().padStart(2, "0")}`;
+  const display = new Date(iso + "T00:00:00").toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+  return { iso, display };
+}
+
+/**
  * Generate the full JSON-LD schema bundle for a calculator page:
  * - WebApplication (for the tool itself)
  * - FAQPage (for the FAQ section)
@@ -40,9 +57,8 @@ export function getCalculatorSchema({
   // Stagger dates across pages to avoid burst-publishing signal
   const slugHash = config.slug.split("").reduce((a, c) => a + c.charCodeAt(0), 0);
   const pubDay = 10 + (slugHash % 10); // April 10-19
-  const modDay = 15 + (slugHash % 6);  // April 15-20
   const datePub = `2026-04-${pubDay.toString().padStart(2, "0")}`;
-  const dateMod = `2026-04-${modDay.toString().padStart(2, "0")}`;
+  const dateMod = getReviewedDate(config.slug).iso;
 
   const article = config.ContentExpansion
     ? {

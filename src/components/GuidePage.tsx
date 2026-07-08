@@ -96,6 +96,16 @@ export function GuidePage({ config }: GuidePageProps) {
 
         {/* Article body */}
         <section className="pt-10 md:pt-12 pb-10 max-w-[720px]">
+          {config.verdict && (
+            <div className="guide-verdict mb-8 rounded-xl border border-[#BEE3CC] bg-accent-soft px-6 py-5">
+              <div className="font-mono text-[10.5px] tracking-[0.14em] uppercase text-accent mb-2">
+                The verdict
+              </div>
+              <p className="text-[17px] md:text-lg font-semibold text-ink leading-snug tracking-tight">
+                {config.verdict}
+              </p>
+            </div>
+          )}
           <div className="guide-prose">
             <Content />
           </div>

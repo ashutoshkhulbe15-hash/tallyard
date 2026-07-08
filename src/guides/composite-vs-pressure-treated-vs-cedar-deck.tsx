@@ -636,6 +636,8 @@ export const compositeVsPTVsCedarDeckGuide: GuideConfig = {
   heroValue: "20-YEAR TCO",
   publishedAt: "2026-04-18",
   readTime: "12 min read",
+  verdict:
+    "Over 20 years, pressure-treated decking ends up the most expensive of the three because its surface boards need replacing around year 15; composite costs the most upfront but the least to own long-term, and cedar sits in between.",
   Content,
   faq: [
     {

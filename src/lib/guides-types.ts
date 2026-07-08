@@ -53,6 +53,10 @@ export interface GuideConfig {
   publishedAt: string;
   /** Human-readable read time */
   readTime: string;
+  /** One-sentence verdict — the answer the reader came for. Rendered as a
+   *  summary box at the top of the article and emitted in Article schema as
+   *  `abstract` + `speakable` so AI answer engines can lift it directly. */
+  verdict?: string;
   /** Body content — rendered inside the article container */
   Content: ComponentType;
   /** FAQ items — become JSON-LD FAQPage schema */

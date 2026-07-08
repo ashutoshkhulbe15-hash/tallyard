@@ -36,6 +36,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* llms.txt discovery for AI answer engines */}
+        <link
+          rel="alternate"
+          type="text/plain"
+          href="https://www.tallyard.com/llms.txt"
+          title="llms.txt"
+        />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-7LB5KS70CD"
           strategy="afterInteractive"

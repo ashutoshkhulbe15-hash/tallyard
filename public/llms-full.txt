@@ -1,0 +1,735 @@
+# Tallyard — Full Reference
+
+> Complete methodology reference for Tallyard's 45 home improvement calculators. Every formula, its derivation, and the standard it comes from. This is the extended companion to /llms.txt.
+
+Tallyard is a free home improvement calculator site built by Ash K. for US homeowners. Every calculator shows its formula step by step and cites its source (IRC, IPC, NEC, ACCA, TCNA, NADRA, APA, and manufacturer data sheets). No signup, no email capture, no affiliate links, no lead generation. The author is not a licensed contractor; all formulas derive from published standards.
+
+## Drywall
+
+### Drywall
+
+URL: /drywall-calculator
+
+Formula: sheets = ⌈((wall area + ceiling area) ÷ sheet area) × (1 + waste)⌉
+
+Sheets of drywall needed for any room or wall. Accounts for waste, cuts, and standard sheet sizes so you buy once.
+
+Methodology:
+- Wall area is calculated as perimeter (2 × length + 2 × width) times ceiling height. If 'include ceiling' is selected, the ceiling area (length × width) is added. No subtraction is made for doors and windows — drywall cuts leave unusable scrap, and the waste factor covers those small openings better than exact subtraction does.
+- Sheet sizes are the three standard options sold at lumber yards in North America: 4×8 (most common, easiest to carry), 4×10 (reduces seams on 10-ft ceilings), and 4×12 (fewest seams, hardest to handle). Metric markets use the equivalent 1.2 × 2.4 m, 1.2 × 3.0 m, and 1.2 × 3.6 m panels.
+- Waste factor of 10% is standard for square rooms with few openings. Use 15% for most typical rooms; 20% for rooms with lots of windows, doors, angled walls, or vaulted ceilings where cut scraps can't be reused.
+- The result is rounded up to the next whole sheet because you can't buy half a sheet. For larger projects, round up to the next even number — damaged sheets and miscounts during install are common, and a spare pair saves a return trip.
+
+## Electrical
+
+### Drain Pipe
+
+URL: /drain-pipe-calculator
+
+Formula: total DFU = sum(fixtures × DFU rating); pipe size per IPC/UPC tables (toilet line ≥ 3\
+
+Drain pipe size by fixture count. Uses DFU (drainage fixture units) per IPC / UPC codes to pick the right pipe diameter for any bathroom or kitchen branch.
+
+Methodology:
+- DFU (Drainage Fixture Units) is a standardized measure of drain loading developed by plumbing engineers. Each fixture contributes a specific DFU value reflecting typical discharge rate and volume: water closets (toilets) 4 DFU, bathroom sinks 1 DFU, kitchen sinks 2 DFU, showers 2 DFU, tubs 2 DFU, washers 3 DFU, dishwashers 2 DFU. The calculator uses averages for private residential use per IPC 2021 Table 709.1.
+- Total DFU on a branch determines the minimum pipe size per IPC Table 710.1. Horizontal branches at standard 1/4" per foot slope: 1.5" handles 3 DFU, 2" handles 6 DFU, 3" handles 20 DFU, 4" handles 160 DFU. Vertical stacks have different ratings because gravity assists flow — they handle more DFU at the same diameter.
+- Building drains (the pipe from the building to the sewer or septic tank) follow their own table because they handle longer runs with less vertical assist. A 3" building drain handles up to 42 DFU — enough for a 2-bathroom house. A 4" drain handles up to 216 DFU — typical for larger homes or commercial buildings.
+- A critical rule: any pipe carrying toilet waste must be at least 3 inches in diameter. This is not DFU-based — it's a fixed requirement because toilet waste physically requires the larger pipe to prevent clogging. The calculator applies this automatically when toilets are present.
+- This calculator estimates pipe size for typical residential bathroom and kitchen branches. Real plumbing design also considers: vent sizing (vents are typically 1.5" or 2"), trap arm length limits (distance from trap to vent), fixture unit offsets and changes in direction, horizontal vs vertical transitions, and local code variations. A proper plumbing design follows IPC or UPC with cross-checks for all these factors.
+- Not captured: combined building sewer sizing (includes gray water), cleanout locations, slope requirements (1/4" per foot for 4" pipe, 1/8" per foot for 4"+ pipe), vent requirements, or hydraulic calculations for pressurized systems. For rough-in planning this tool is useful; for permit-ready plans, hire a licensed plumber.
+
+### Extension Cord
+
+URL: /extension-cord-calculator
+
+Formula: smallest AWG where ampacity at given length ≥ load; voltage drop = 2 × I × R × L / 1000
+
+Right extension cord gauge for any tool, appliance, or outdoor device. Accounts for amps, length, and voltage drop.
+
+Methodology:
+- Extension cord gauges are rated by how much current they can handle at a specific length while keeping voltage drop under 3%. The three key variables: amps (the appliance load), length (how far from the outlet), and whether outdoor conditions require weather-rated jackets.
+- Voltage drop math follows the same formula as the wire size calculator: VD = 2 × I × R × L / 1000, where R is the resistance per 1000 feet of that gauge. Lower gauge numbers mean thicker copper, less resistance, less voltage drop. A 12 AWG cord has about 40% less resistance than a 14 AWG cord.
+- Length matters enormously. At 25 feet, a 16 AWG cord handles 13 amps. At 100 feet, the same 16 AWG cord is only rated for 7 amps — the extra length means the same current produces more voltage drop. For long runs with heavy loads, always step up one or two gauges.
+- The appliance presets are practical compromises. 'Small electronics' (lamps, phones, laptops) are usually under 5 amps. 'Power tools' (drills, circular saws, small air compressors) are 5-10 amps. 'Heaters and large tools' (space heaters, portable ACs, table saws) run 10-15 amps. 'Heavy equipment' (RV loads, large compressors, industrial tools) can draw 15-20 amps.
+- Outdoor cords need jacket ratings that survive moisture and UV: SJTW or W-rated (e.g., '12/3 SJTW' means 12 AWG, 3 conductors, thermoplastic jacket, weather-resistant). Indoor cords (SJT, SVT) aren't rated for outdoor use and degrade quickly in sun and rain. Running an indoor cord outside is a fire hazard if the jacket cracks.
+- For continuous loads (tools running more than 3 hours straight, or appliances that cycle frequently), derate by 20%: pick a cord rated for 125% of the load. Also: never daisy-chain extension cords — every connection point adds resistance. Use one long cord, not three short ones.
+
+### Wire Size
+
+URL: /wire-size-calculator
+
+Formula: smallest AWG where ampacity ≥ load AND voltage drop ≤ limit (VD = 2 × I × R × L / 1000)
+
+Electrical wire gauge (AWG) for any amp load and run length. Accounts for voltage drop so your circuit stays within code.
+
+Methodology:
+- The calculator steps through standard AWG wire gauges from smallest to largest, checking two constraints for each: ampacity (does the wire handle the current without overheating?) and voltage drop (does the voltage at the load stay within the allowed percentage of the source voltage?). The smallest wire that meets both constraints is the recommendation.
+- Ampacity values come from NEC Table 310.16 — the industry standard for conductor capacity in typical residential conditions (60-75°C insulation, up to 3 current-carrying conductors in a raceway, 30°C ambient). For unusual installations (conduit fill above 3 wires, high ambient temperature, direct burial), derating factors apply — consult NEC or an electrician.
+- Voltage drop is calculated using the standard formula VD = 2 × I × R × L / 1000, where 2 accounts for the round-trip (current flows out on one conductor and back on another), I is amperage, R is resistance per 1000 ft, and L is the one-way distance. The 3% branch / 5% feeder limit in the NEC is a recommendation, not a code requirement — but exceeding it causes poor appliance performance and wasted energy.
+- For long runs (over 100 ft at 15-20A), voltage drop usually drives the wire size up from what ampacity alone would suggest. For short runs at high current (under 30 ft at 50A+), ampacity is the binding constraint. The calculator tells you which one drove the choice.
+- Aluminum wire has lower ampacity than copper for the same AWG (about 80% of copper's rating) and higher resistance (about 60% more). For long runs, aluminum requires a larger gauge to achieve the same voltage drop. Aluminum is common for service entrance and subpanel feeders; copper is standard for branch circuits and where terminals aren't rated for aluminum.
+
+## Flooring
+
+### Backsplash
+
+URL: /backsplash-calculator
+
+Formula: tiles = ⌈((linear ft × height − outlets − window) × 1.15) ÷ tile area⌉
+
+Tiles and boxes for a kitchen backsplash. Accounts for window cutouts, outlet openings, and the 15% cut waste typical of backsplashes.
+
+Methodology:
+- Backsplash area is the sum of all counter linear feet times the backsplash height. Typical kitchens have 15-25 linear feet of counter backsplash: 6-8 ft along the stove wall, 4-6 ft along the sink wall, plus any island or peninsula. For an L-shaped kitchen, sum both legs. For a U-shaped, sum all three.
+- Height choices reflect common designs: 4 inches is the short 'just above the counter' strip common in older kitchens and budget remodels. 18 inches is the standard counter-to-upper-cabinet height — the most common backsplash height in modern kitchens. 24 inches is tall, typical when uppers are raised. Full-height (36+ inches) goes to the ceiling, used for feature walls and behind ranges without upper cabinets.
+- Outlets and switches: each GFCI or standard electrical box in the backsplash punches a ~0.1 sq ft hole. Typical kitchens have 3-5 boxes in the backsplash (over the counter code requires GFCI outlets every 4 feet). Small subtraction but adds up.
+- Windows above the counter: use the closest size preset. A small over-sink window is about 6 sq ft; a medium window is 12 sq ft; a large window (often behind a sink with a view) is 20 sq ft. These subtractions are approximate — round-number estimates of real window openings that typically range 2-5 ft wide × 3-5 ft tall.
+- Waste factor is 15% because backsplashes cluster near fixtures that require cuts. Every outlet opening needs trimming around it. Windows require tile cuts along their edges. The area around the stove often has specialized cuts for appliances. Subway tile at 3×6 inches has many cuts per row; larger tile has fewer but bigger scraps.
+- Tile size matters for appearance and install time. Classic 3×6 subway takes many more tiles per sq ft (about 8) but is forgiving of uneven walls. Large-format tile (12×24) uses fewer pieces (about 0.5 per sq ft) but each cut must be precise. Mosaic (2×2 or 1×1 mounted on mesh sheets) is sold by the sheet but calculated as individual tiles in this tool — enter tile size as 2×2 for standard mosaic math.
+
+### Countertop
+
+URL: /countertop-calculator
+
+Formula: area = (linear ft × depth) + island + waste; linear edge = main front + island perimeter
+
+Square feet and linear feet of countertop for any kitchen or bath. Accounts for standard depth, waste, and edge treatments.
+
+Methodology:
+- Kitchen counter area is linear feet (front edge) times depth. Standard kitchen counters are 25.5 inches deep — just under 2.125 linear feet. A 20-foot run of kitchen counter has 42.5 square feet of surface. Bathroom vanities use 22-inch depth typically.
+- Islands are handled as separate pieces because they have different edge geometry. A small island (4 × 2 ft) adds 8 sq ft but has all four edges exposed — 12 linear feet of edge. Compare to a 4-ft wall counter section that adds 8.5 sq ft but only 4 linear feet of exposed front edge. Islands cost more per square foot installed because of the extra edge treatment.
+- Linear edge matters for pricing — edge treatment (bullnose, ogee, eased, mitered) is typically priced per linear foot beyond the basic cut. A straight eased edge is often included; decorative edges cost $10-30 per linear foot extra. More exposed edge means more cost for fancy edges.
+- Waste factor for countertops is lower than tile because countertops are cut from slabs. Quartz and granite slabs are typically 55 × 120 inches (2×3 yards). A good fabricator lays out cuts to minimize waste, but seams, edge grain matching (for veined stone), and cutout offcuts (for sinks, cooktops) all contribute. 10% is standard for simple kitchens; 15-20% for complex layouts with many cutouts and short runs.
+- Price estimates are for installed countertops in 2025-2026 US market (per square foot): quartz $60-120 (engineered stone, low maintenance), granite $50-120 (natural stone, more variation), marble $80-200 (premium natural stone, stains), butcher block $40-100 (wood, requires oiling), laminate $20-50 (synthetic, most economical), concrete $75-150 (industrial look, custom). Prices vary regionally and with complexity.
+- Not included: sink cutouts (typically free with the slab), faucet holes, edge treatment upgrades, underlayment (usually just plywood for stone slabs), backsplash (see backsplash calculator), and removal of existing counters. These can add $500-2,000 to a total kitchen installation.
+
+### Flooring
+
+URL: /flooring-calculator
+
+Formula: boxes = ⌈(area × (1 + waste)) ÷ sq ft per box⌉
+
+Square footage and box count for hardwood, laminate, or vinyl plank. Accounts for the industry-standard 10% waste and pattern cuts.
+
+Methodology:
+- The calculator starts with floor area (length × width) and multiplies by a waste factor determined by the installation pattern. Straight staggered layouts (standard) use 10% waste. Diagonal layouts (boards at 45 degrees) require extra cuts at every perimeter, pushing waste to 15%. Herringbone patterns double the cuts and push waste to 20%.
+- Solid hardwood gets an additional 2% bonus because the first and last rows typically require ripping boards to fit, leaving narrow scraps that rarely get reused. Engineered hardwood, laminate, and LVP have more flexible installation that handles rips efficiently.
+- Box size varies significantly by product — always check the label. Typical ranges: solid hardwood 20-30 sq ft/box, engineered 25-30 sq ft/box, laminate 18-22 sq ft/box, luxury vinyl plank 22-30 sq ft/box. Narrower boards pack fewer square feet; thicker boards pack fewer as well.
+- Box count rounds up to the next whole box because you can't buy a partial box. For larger projects, buy one extra box beyond the calculator's result to keep as an attic spare — flooring patterns and dye lots get discontinued, and matching 5 years later is impossible.
+- The calculator assumes a rectangular room. For L-shaped or irregular rooms, divide into rectangles, calculate each separately, and sum the box counts. For rooms with closets, calculate the main area plus each closet separately rather than subtracting closet area from a single rectangle (avoids negative waste math).
+- Not included: underlayment (most floating floors need an acoustic underlayment beneath them — typical roll covers 100 sq ft), transition strips (one per doorway, approximately $20-40 each), and reducer strips or thresholds where the new floor meets a different flooring surface.
+
+### Grout
+
+URL: /grout-calculator
+
+Formula: lb = (tile perimeter × joint × thickness × 150) ÷ (tile area × 12) × floor area × (1 + waste)
+
+Pounds of grout for any tile installation. Accounts for tile size, joint width, and thickness so you buy the right bags.
+
+Methodology:
+- The grout needed per square foot depends on three tile characteristics: how much joint perimeter exists around each tile (smaller tiles = more joints = more grout), how wide the joints are, and how thick the tiles are (thicker tiles = deeper joints to fill). The calculator uses the industry standard formula from cement grout manufacturers like Mapei and Custom Building Products.
+- Small tiles (4×4, 6×6) need significantly more grout than large tiles at the same joint width — a mosaic or small subway tile installation can require 3-4x the grout of a 24×24 floor installation of equivalent area, because there are many more linear feet of joint per square foot of coverage.
+- Joint width is the other major driver. Modern rectified tiles allow 1/16" joints, which use about half the grout of standard 1/8" joints. Rustic installations with 1/4" or wider joints use substantially more. Match the joint width to the tile — using a narrow joint on unrectified tile creates uneven lines.
+- Sanded grout is required for joints wider than 1/8". The sand prevents the grout from shrinking and cracking in wider joints. Unsanded grout is for joints 1/8" and narrower, especially on polished stone or soft tile that sanded grout would scratch.
+- The 15% waste factor covers the small amount that sticks to the mixing bucket, float, sponge, and tile surfaces during cleanup. For large complex installations with lots of cuts or multiple sessions, bump to 20%. Always mix grout in complete bag quantities — partial bags don't color-match reliably when mixed in different batches.
+
+### Kitchen Cabinet
+
+URL: /kitchen-cabinet-calculator
+
+Formula: base ft = perimeter − appliances; upper ft = perimeter × 70-75%; cabinets = ⌈ft × 12 ÷ 24⌉
+
+Linear feet of upper and base cabinets for any kitchen. Budget and cabinet count by kitchen size and layout.
+
+Methodology:
+- Kitchen cabinets are measured in linear feet — the combined length of all base and upper cabinet sections. Base cabinets (on the floor, 24" deep, 34.5" tall before countertop) run along most walls. Upper cabinets (mounted on the wall, 12" deep, typically 30-42" tall) cover 70-75% of the same wall length because sinks, stoves, and windows interrupt the run.
+- Layout determines total perimeter. Single-wall: one run of 10-15 ft typically. Galley: two parallel walls, 8-12 ft each. L-shape: two walls meeting at a corner. U-shape: three walls. L + island: L-shape plus an island (typically 6-8 ft of base cabinets, no uppers). Your layout + wall lengths tells the calculator everything.
+- Appliance deduction: each major appliance (stove, sink, dishwasher) replaces about 3 feet of base cabinet. A kitchen with stove, sink, and dishwasher loses 9 linear feet of base cabinetry. Single-wall layouts have 6 ft deducted (usually no dishwasher or smaller kitchen).
+- Cabinet count uses 24-inch average width. Real cabinets range from 12" (single door) to 36-48" (wide double-door or drawer banks) — the 24-inch average produces a realistic estimate for typical kitchens. Tight kitchens with many small cabinets have more units; spacious kitchens with fewer-but-larger cabinets have fewer.
+- Price estimates (installed, 2025-2026 US) by grade: stock cabinets (IKEA Sektion, Home Depot Hampton Bay) $80-180/ft — pre-assembled or flat-pack, limited sizes, basic finishes, quick install. Mid-range semi-custom (Kraftmaid, Thomasville, Diamond) $180-400/ft — most Americans' choice, 8-10 week lead time, lots of options. Custom cabinetry $400-800/ft — made-to-spec, any size or style, 12-20 week lead time.
+- Not captured: countertop (see countertop calculator), backsplash (see backsplash calculator), appliances themselves, hardware upgrades (pulls/knobs average $5-20 each, 20-40 per kitchen), crown molding and trim, lighting. Total kitchen remodel budget (materials + labor + permits) typically 2-3× the cabinet cost alone.
+
+### Shower Tile
+
+URL: /shower-tile-calculator
+
+Formula: tiles = ⌈((3 walls + niche + floor) × 1.15) ÷ tile area⌉
+
+Tiles and boxes for a shower or tub surround. Calculates three walls plus optional niche and floor — with cut waste built in.
+
+Methodology:
+- The calculator treats a shower as three tile surfaces: back wall, two side walls, and an optional floor/ceiling. Standard tub surrounds run 60 inches wide × 32 inches deep × 96 inches tall to the ceiling (or 60-72 inches tall for a tub surround only, without reaching the ceiling). Walk-in showers vary — measure the actual back and side dimensions.
+- Niches add complexity. A standard 14 × 24 inch niche carved into the back wall: the opening itself (14 × 24 = 336 sq in) is subtracted from the back wall area, then all five interior surfaces (two sides, top, bottom, back) are added. Net: a typical niche adds a small amount of tile (1-2 sq ft) rather than subtracting from the total.
+- Shower floor (for walk-in showers): add the floor area to the wall total. Drop-in tubs have no tiled floor (the tub is the floor). Many walk-in showers use smaller mosaic tile on the floor for grip — if using different tile on the floor, calculate separately.
+- Waste factor is 15% — higher than standard floor tile because shower walls have many edges, corners, and fixture cutouts (valve openings, shower head, niche boundaries). Every cut produces scrap that rarely gets reused. Large-format tile (12×24, 24×24) in showers pushes waste up further because bigger scraps are less reusable.
+- Tiles round up to whole tiles; boxes round up to whole boxes. Buy at least 1-2 extra boxes beyond the calculator's count for future repairs. Shower tile gets chipped by dropped shampoo bottles and razors; matching replacement tile years later is rarely possible.
+- Not included: backer board (cement board or foam board behind the tile — see drywall calculator for area), waterproofing membrane (recommended: 1 roll covers about 30 sq ft), thinset (1 bag of 50-lb per 40-50 sq ft), grout (see grout calculator), niche trim pieces, and fixtures (shower head, valve, soap dish).
+
+### Tile
+
+URL: /tile-calculator
+
+Formula: tiles = ⌈(area ÷ tile size) × (1 + waste)⌉, boxes = ⌈tiles ÷ per box⌉
+
+Tiles and boxes needed for any floor or wall. Accounts for cuts, waste, and patterns so you only make one trip to the store.
+
+Methodology:
+- The calculator computes the floor area (length × width), divides by the area of a single tile (converted to the same unit), and multiplies the result by 1 plus the waste factor. Tile dimensions are listed in inches (imperial) or centimeters (metric) and internally converted to square feet or square meters.
+- Waste factor covers cuts along edges, miscellaneous breakage during installation, and keeping a few spare tiles for future repairs. The right factor depends on your layout: 10% is fine for straight-lay patterns, 15% for 45-degree diagonals, 20% for herringbone or other patterns with lots of cuts.
+- Tile count is rounded up to the nearest whole tile because you can't buy fractional tiles. Boxes are rounded up to the next whole box — you buy by the box, not the tile.
+- Variation between tiles from different production runs is real. Always buy all your tile at once from the same lot number, and keep 1-2 full boxes of extras for repairs years later (specific patterns and colors get discontinued).
+
+### Vanity
+
+URL: /vanity-calculator
+
+Formula: recommended = largest standard width (18-84\
+
+Right-size a bathroom vanity for your space. Standard sizes, clearance requirements, and single vs. double sink guidance.
+
+Methodology:
+- Vanities are sold in standard widths: 18, 24, 30, 36, 42, 48, 60, 66, 72, and 84 inches. The calculator finds the largest standard width that fits the available wall space after subtracting side clearances. Custom widths exist (any size to the inch) but cost 40-100% more than standard and have longer lead times (4-8 weeks vs stock).
+- Side clearances: minimum 2 inches of breathing room on any side for aesthetics. If the vanity is next to a swinging door, allow the door's full swing radius (usually 28-32 inches from the hinge side). If it's next to a toilet, IRC 2021 requires 15 inches from the centerline of the toilet to any obstruction — measure carefully.
+- Single vs double sink: the breakpoint is 60 inches. Below 60 inches, a double sink leaves too little counter space between and around the sinks to be practical. At 60-66 inches, double is possible but tight. At 72+ inches, double sinks are the norm for two-user bathrooms. Single-sink 72-inch vanities exist and provide maximum counter space for one user.
+- Depth: standard 21 inches (front to wall) works for all vanities 30 inches or wider. For very small bathrooms with vanities under 24 inches, shallow 18-inch depth preserves walk-through space. Front-to-countertop overhang typically adds 1 inch on each side beyond the cabinet — factor this if clearance is very tight.
+- Height: 32-34 inches is the traditional 'standard' height, now considered kid-friendly. 36 inches is 'comfort height' — the kitchen counter standard, increasingly common in master bathrooms because it's easier on the back. For families with young children, 32 inches remains sensible; for adults-only master baths, 36 inches is preferable.
+- Countertop area is calculated for pairing with other calculators. For a standard 36 × 21 inch vanity, the countertop is 5.25 square feet — useful input for the countertop and backsplash calculators.
+
+## HVAC
+
+### BTU
+
+URL: /btu-calculator
+
+Formula: BTU = area × 20 × height × climate × sun + occupancy adjustment
+
+Air conditioner BTU size for any room. Accounts for climate, insulation, sun exposure, and occupancy so you buy the right unit.
+
+Methodology:
+- The baseline formula is 20 BTU per hour per square foot of room area — a well-established rule of thumb for typical homes with average insulation and 8-foot ceilings. This covers most residential rooms in temperate climates.
+- Ceiling height above 8 feet adds about 5% per additional foot. A room with 10-foot ceilings has 10% more air volume to cool, and the calculator adjusts for that automatically.
+- Climate adjustment reflects how hard the AC has to work. Cool climates (Seattle, Pacific Northwest) subtract 10% because peak temperatures rarely exceed 85°F. Hot climates (Phoenix, Florida) add 15% because the unit runs harder during prolonged 90°F+ days.
+- Sun exposure matters because sunny rooms gain significant heat through windows. South-facing rooms or rooms with large windows add 10%. North-facing or shaded rooms reduce 10%.
+- Occupancy: each person adds about 600 BTU of body heat. The baseline assumes 2 people; add 600 BTU per additional regular occupant (including pets, which contribute about half that).
+- The result is rounded up to the nearest 500 BTU because AC units are sold in standard sizes: 5,000 BTU (small window), 8,000 BTU (medium window), 10,000-12,000 BTU (large window or small portable), 18,000-24,000 BTU (mini-split), and so on. Round up to the next standard size — undersizing is worse than oversizing within reason, though gross oversizing leads to humidity problems.
+
+### Heat Pump
+
+URL: /heat-pump-calculator
+
+Formula: BTU = sqft × climate factor × insulation × ceiling × windows; tons = BTU ÷ 12,000
+
+Right-size a heat pump for your home. Sizes both heating and cooling loads based on square footage, climate zone, and insulation quality.
+
+Methodology:
+- Heat pump sizing is more complex than pure AC sizing because it must handle both cooling in summer AND heating in winter. Heat pumps are sized by the LARGER of the two loads — in cold climates, heating drives the size; in warm climates, cooling does. The calculator computes both and picks the larger.
+- Climate zone sets the baseline BTU per square foot. Cooling load decreases from Zone 1 (25 BTU/ft², hot) to Zone 7 (16 BTU/ft², mild summers). Heating load increases from Zone 1 (25 BTU/ft²) to Zone 7 (60 BTU/ft², very cold winters). Zone 5 (typical northern US) is where heating and cooling loads are similar; zones 6-7 are heating-dominated.
+- Insulation quality adjusts the base BTU up or down. Poor insulation (old homes, minimal attic insulation, single-pane windows) increases load by 25%. Average insulation (meets current code) is the baseline. Good insulation (upgraded with extra attic batt, storm windows) reduces by 10%. Energy Star excellent insulation reduces by 20%.
+- Ceiling height matters because you're heating and cooling the entire volume of the home, not just the floor area. Standard 8-9 ft ceilings are the baseline. Vaulted ceilings (10-12 ft average) add 15%. Cathedral ceilings (14+ ft) add 30%. Homes with a mix of ceiling types should use whichever is most common.
+- Window coverage adjusts for solar gain and thermal losses. Windows are weaker thermal barriers than walls — R-3 or R-4 for good double-pane, vs R-13+ for insulated walls. Homes with lots of windows lose more heat in winter and gain more heat from sun in summer.
+- Standard heat pump sizes are in half-ton increments from 1.5 to 5.0 tons (most residential), then 6 and 7.5 tons for larger homes. 1 ton = 12,000 BTU/hr. The calculator rounds UP to the next standard size — undersized heat pumps fail to keep up on peak hot/cold days. Oversizing by one size is fine; oversizing by 2+ sizes causes short-cycling and humidity problems.
+- This is a simplified sizing. Professional HVAC installers use ACCA Manual J, a room-by-room load calculation that accounts for: specific window R-values, room orientation, duct losses, infiltration rates, and more. For a home purchase, use this calculator for rough estimates. For a real install, insist the contractor does Manual J — without it, sizing errors of 30-50% are common.
+
+### Water Heater
+
+URL: /water-heater-calculator
+
+Formula: tank: size = peak hour demand ÷ 1.3; tankless: GPM = peak simultaneous, BTU = GPM × temp rise × 500
+
+Right-size a tank or tankless water heater for your household. Based on peak-hour demand, fixture count, and household size.
+
+Methodology:
+- Tank water heaters are sized by the First-Hour Rating (FHR) — how many gallons of hot water the unit can deliver in the first hour, starting with a full tank. The tank size itself is usually smaller than FHR because the heater continues to heat water as you use it. A 50-gallon tank with an FHR of 65-75 gallons is typical.
+- Tank peak-hour demand is the total hot water you use during your busiest hour. The calculator estimates 20 gallons per shower, 3 gallons per person for sinks (hand washing, shaving), and adds 14 gallons if 3+ simultaneous uses suggest a washing machine is running too. Morning rush in a 4-person household is typically 80-100 gallons.
+- Standard tank sizes are 30, 40, 50, 65, 75, and 80 gallons for residential. 50-gallon is the most common size for typical 3-4 person homes. 40-gallon works for 1-2 person households. 65-80 gallon for 5+ person homes or homes with large soaking tubs.
+- Tankless water heaters are sized completely differently: by flow rate (GPM) and temperature rise. The heater must deliver hot water at your peak simultaneous flow, raising the incoming water temperature to 120°F. In cold climates with 35°F incoming water, the temp rise is 85°F — a huge demand. In warm climates with 70°F incoming water, only a 50°F rise is needed.
+- Tankless BTU calculation: BTU/hr = GPM × temp rise × 500. A family that wants 2 simultaneous showers (5 GPM) in a cold climate (85°F rise) needs 212,500 BTU/hr — more than residential tankless can provide. They'd need two units or a large commercial unit. The same family in Florida (40°F rise) only needs 100,000 BTU, which any standard tankless handles easily.
+- Not covered: vent sizing (gas units), electrical panel capacity (electric tankless needs large 240V circuits — a 27 kW tankless pulls 113 amps), gas line size (tankless units need ¾" gas lines, tank heaters typically use ½"), or water treatment (tankless is sensitive to hard water — sediment causes scale buildup requiring annual flushing).
+
+## Insulation
+
+### Insulation
+
+URL: /insulation-calculator
+
+Formula: bags = ⌈(area × (1 + waste)) ÷ bag coverage⌉ at R-value for climate zone
+
+R-value and square footage of insulation for any wall, attic, or floor. Rolls or batts, with climate-appropriate R-value recommendations.
+
+Methodology:
+- The calculator starts with your climate zone (IECC zones 1-7 from hot to cold) and recommends the minimum R-value for your application per US DOE guidance. R-values are the industry-standard measure of thermal resistance — higher numbers mean better insulation.
+- Recommended R-values vary by application: attics need the highest (R-30 to R-60) because heat rises and most energy loss happens through ceilings. Walls are next (R-13 to R-21). Floors over unheated spaces (R-13 to R-38) are typically less than attics because they're insulated against conductive, not convective, losses.
+- Area includes a waste factor for cuts around obstacles (framing, wiring, pipes) and to accommodate fit. 10% is standard for straight rectangular spaces; bump to 15% for attics with lots of framing or cathedral ceilings with angles.
+- Bag counts are approximate because bag size varies by manufacturer and R-value. Higher R-value means thicker batts, which means fewer batts fit in a bag. The calculator uses typical coverage per bag — confirm with your specific product before buying. For unfaced roll insulation, coverage per roll is different (usually 20-60 sq ft per roll depending on thickness).
+- Stud/joist spacing determines batt width: 16-inch on center uses batts that cover 14.5 inches of space; 24-inch on center uses batts that cover 22.5 inches. Using the wrong width creates gaps that severely compromise performance — always match batt width to framing spacing.
+
+## Landscaping
+
+### Deck
+
+URL: /deck-calculator
+
+Formula: boards = ⌈area ÷ board coverage × 1.1 ÷ 16⌉; joists = ⌈length ÷ spacing⌉ + 1
+
+Deck boards, joists, beams, and fasteners for any size deck. Accounts for board width, joist spacing, and the support frame.
+
+Methodology:
+- Deck boards: the calculator assumes boards run perpendicular to the joists (standard orientation). Board count is derived from deck width divided by effective board coverage (actual width plus a 1/8" gap for expansion). Total linear feet converts to 16-foot board count with 10% waste, which is standard for straight-cut installations.
+- Joists: spaced at the specified on-center distance, running perpendicular to the decking. Joist count is the length of the deck divided by spacing, plus one for the closing joist. All joists span the full width. Composite decking requires 12-inch or 16-inch spacing; pressure-treated 2×6 decking can span 24 inches if solid (but not preferred).
+- Beams are the horizontal members running under the joists, transferring loads to the posts. Most residential decks use doubled (2-ply) 2×8 or 2×10 beams. The calculator assumes 2 beams at 2 plies each, running the full length — this covers typical deck framing but is approximate. Complex deck shapes require more beams.
+- Posts: rough estimate of one 4×4 or 6×6 post per 80 square feet of deck area. Actual post count depends on beam span capacity, which depends on beam size and wood species. For engineered accuracy, consult the International Residential Code (IRC) 2021 prescriptive tables or have a pro design.
+- Fasteners: visible deck screws at 2 per board per joist (front and back of board), or hidden fasteners at 1 clip per board per joist. Hidden fasteners cost 3-5× more and add an hour per 100 sq ft of install time but deliver a cleaner finished look.
+- Not included: ledger board (attaches deck to house), flashing (critical for ledger waterproofing), joist hangers (one per joist end), knee braces for lateral stability, railing posts and balusters (calculate separately), and stairs. These add significantly to material cost — budget 30-40% more than the calculator's output for a complete build.
+
+### Fence
+
+URL: /fence-calculator
+
+Formula: posts = ⌈length ÷ spacing⌉ + 1 + gates × 2 + corners, pickets = length × 12 ÷ picket width
+
+Posts, rails, and pickets for any fence length. Includes concrete for post holes and accounts for gates and corners.
+
+Methodology:
+- Posts are calculated by dividing the fence length by the post spacing (typically 8 feet) and adding one for the final end post. Each gate adds two posts (a hinge post and a latch post, both reinforced compared to regular line posts). Each corner adds one post where the fence changes direction.
+- Rails (horizontal 2×4s that support the pickets) are usually 2 per section for fences up to 4 feet tall, and 3 per section for 6-foot-plus fences. The extra middle rail prevents sagging on tall fences.
+- Picket count assumes standard 5.5-inch wide cedar or pine pickets with a 0.25-inch gap between each (for wood movement and airflow), giving 5.75 inches per picket. Narrower pickets or tighter spacing increases the count — recalculate manually if needed. For shadowbox or board-on-board fences, picket count roughly doubles.
+- Concrete for post holes: standard guidance is 1 bag of 60-lb ready-mix per post for fences 4 feet or shorter, and 2 bags per post for 6-foot or taller fences. This assumes 8-12 inch diameter holes, 2-3 feet deep. Freezing climates require deeper holes (below frost line) which may need more concrete.
+- The calculator does not include: gate hardware (hinges, latches, brackets), finish nails or screws (estimate 2-3 lbs per section), stain or preservative (see paint calculator), or post caps. These are typically selected separately based on style preference.
+
+### Gravel
+
+URL: /gravel-calculator
+
+Formula: volume = area × depth, weight = volume × density (tons per yd³ or tonnes per m³)
+
+Cubic yards of gravel, stone, or aggregate for driveways, paths, or base layers. Converts to tons for bulk ordering.
+
+Methodology:
+- Volume is calculated by multiplying area (length × width) by depth, then converting to cubic yards for imperial (÷27) or staying in cubic meters for metric. Most landscape suppliers sell gravel by the cubic yard; some also sell by the ton, which is why the calculator returns both.
+- Density varies by gravel type but the differences are small for most applications. Crushed stone and pea gravel are about 1.4 tons per cubic yard. River rock is slightly lighter (1.35 tons/yd³) because of its rounded shape leaving more air. Sand is denser (1.5 tons/yd³) because it packs tighter.
+- The right depth depends on the use: 2 inches for decorative paths; 3 inches for walkways; 4 inches for driveway surface layer; 4 inches for base under a concrete slab or paver installation; 6-8 inches for driveways with heavy vehicles or for deep base layers.
+- Gravel ordered by the cubic yard is usually delivered by dump truck with a minimum load (typically 1-3 yards depending on supplier). Small quantities are more economical in bags from a home center (0.5 cu ft bags × about 60 = 1 cu yd).
+
+### Mulch
+
+URL: /mulch-calculator
+
+Formula: volume = area × depth, converted to cubic yards or meters (or bags)
+
+Cubic yards of mulch for any garden bed. Shows bag count if you're buying in bags, and bulk yardage if you're ordering by the truck.
+
+Methodology:
+- The calculator multiplies bed area (length × width) by depth to compute total volume. Depth is entered in inches or centimeters and converted to feet or meters before the multiplication so everything is in consistent units.
+- Imperial results are converted from cubic feet to cubic yards by dividing by 27. Cubic yards is the standard bulk sale unit at landscape suppliers. Metric results stay in cubic meters directly.
+- For bag calculations, the standard bag is 2 cubic feet of mulch (which is 0.074 cubic yards or about 0.057 cubic meters). Bags round up to the nearest whole bag because you can't buy a partial bag.
+- The right depth depends on your goals: 2 inches keeps weeds down in established beds; 3 inches is standard for new beds or areas needing moisture retention; 4 inches is for heavily weeded areas or around shrubs. Going deeper than 4 inches can suffocate plant roots.
+
+### Paver
+
+URL: /paver-calculator
+
+Formula: pavers = ⌈area ÷ paver area × (1 + pattern waste)⌉; includes base gravel and bedding sand
+
+Pavers, base gravel, and sand for any patio or path. Accounts for cuts, pattern waste, and the underlying base layers.
+
+Methodology:
+- Paver count is calculated by dividing the project area by the area of a single paver, then multiplying by a pattern-specific waste factor. Running bond and stack bond patterns have minimal cuts (3-5% waste). Herringbone requires diagonal cuts at all edges (15% waste). Basket weave sits in between (8%).
+- A proper paver installation is a three-layer system: compacted gravel base (structural), bedding sand (leveling), and the pavers themselves. The calculator computes all three. Base depth depends on use — 4-6 inches for pedestrian patios and walkways, 8-10 inches for driveways that bear vehicle weight.
+- Base gravel is typically crushed stone #57 or #3 (angular, self-compacting). The calculator uses density of 1.4 tons per cubic yard, which covers most crushed aggregate. Order by the yard for large jobs (over 3 yd³); by the bag for small patios.
+- Bedding sand is coarse concrete sand (ASTM C33) spread 1 inch deep and screeded level. Never use play sand or masonry sand — they hold moisture and cause pavers to sink or heave.
+- Joint sand (polymeric or regular) fills the gaps between pavers. 1 pound per square foot is a rough estimate for standard 1/8" joints on 4×8 brick pavers. Larger pavers with the same joint width use less; wider joints use more. Polymeric sand hardens when activated with water and prevents weeds and ant invasion.
+- The calculator does not include: edge restraint (plastic or metal edging at the perimeter, typically 1 linear foot per linear foot of edge), geotextile fabric (recommended under base on clay soils), or drainage provisions. Budget those items separately.
+
+### Pool Chlorine
+
+URL: /pool-chlorine-calculator
+
+Formula: dose = (volume ÷ 10,000) × ppm needed × product factor (oz per 10k gal per ppm)
+
+Chlorine dose for any pool size and starting level. Handles shock, daily maintenance, and liquid or tablet math.
+
+Methodology:
+- Pool chlorine dosing depends on three things: pool volume (the amount of water to treat), the gap between current and target chlorine levels (how many ppm to add), and the specific product's active chlorine concentration. Each type of chlorine product has a different strength, so the same ppm increase requires different amounts of different products.
+- Standard dosing factors (ounces of product per 10,000 gallons per 1 ppm increase): liquid 10% sodium hypochlorite = 10.5 oz; calcium hypochlorite 65% granular = 1.8 oz; trichlor 90% (stabilized tablets) = 1.3 oz; dichlor 55% (stabilized granular) = 2.1 oz. Trichlor is the most concentrated by weight, but also the most acidic — regular use drops pH.
+- Target levels depend on use: 1-3 ppm is normal maintenance for a residential pool. 3-5 ppm during heavy use or warm weather. 10 ppm is shock treatment after algae, cloudy water, or a heavy swim day. Levels above 5 ppm should drop to 3 ppm before swimming (take 4-8 hours for chlorine to break down naturally).
+- Pool volume matters enormously. The rectangular pool formula: length × width × average depth × 7.5 (gallons) or × 1000 (liters). For a 15 × 30 ft pool with 4.5 ft average depth: 15 × 30 × 4.5 × 7.5 = 15,188 gallons. Round pools use π × radius² × depth. Irregular shapes are harder — use your pool builder's documentation.
+- Liquid chlorine is the most common for pool maintenance — direct pour into the pool with the pump running. Granular products dissolve faster and are stronger per volume but add calcium (cal-hypo) or cyanuric acid (dichlor) that accumulates over time. Trichlor tablets go in floating dispensers or inline feeders for slow, continuous dosing.
+- Important caveats not captured here: cyanuric acid (stabilizer) levels affect effective chlorine — a pool with high CYA (60+ ppm) needs higher free chlorine to remain sanitary. pH affects chlorine effectiveness — at pH 8.0, chlorine is only 20% effective; at pH 7.5, it's 50%+ effective. Always test and adjust pH BEFORE dosing chlorine. Use this calculator for initial dosing; retest after 30-60 minutes and adjust.
+
+### Rainwater Harvesting
+
+URL: /rainwater-calculator
+
+Formula: gallons = roof ft² × rainfall inches × 0.623 × efficiency
+
+Gallons of rainwater you can collect from your roof. Sizes barrels and tanks for any roof area and annual rainfall.
+
+Methodology:
+- The core formula: every inch of rain on one square foot of roof produces 0.623 gallons. Multiply roof footprint by inches of rain to get theoretical gallons. Actual yield depends on collection efficiency.
+- Collection efficiency accounts for water that doesn't make it into storage: splash over the gutter edge, evaporation on hot roofs, splash at the downspout, first-flush diversion, and filter cleaning. Well-installed systems achieve 80-90% efficiency.
+- Roof area is the footprint (horizontal projection), not the sloped surface. A 30×40 ft house footprint collects rain from a 1,200 sq ft catchment regardless of roof pitch — steeper roofs don't catch more rain.
+- For storm sizing, use 1-inch rainfall (common storm in most US climates). For annual yield, use your region's annual total: 40 inches Eastern US, 25 inches Midwest, 15 inches arid Southwest.
+- Storage: for single storms, 55-gallon rain barrels are standard DIY ($80-150 each). 275-gallon IBC totes next step up. Above 1,000 gallons, move to dedicated cisterns (polyethylene or concrete, $0.50-2 per gallon installed).
+- Not included: first-flush diverters, filters, distribution piping, pumps (for pressurized use), winterization. For whole-house or toilet use, add UV sterilization and particulate filtration (~$500-1,500 for residential systems). Check local codes — some jurisdictions restrict rainwater collection or have mandatory backflow prevention for indoor use.
+
+### Sod
+
+URL: /sod-calculator
+
+Formula: pieces = ⌈(area × (1 + shape waste)) ÷ coverage per piece⌉
+
+Square footage, rolls, and pallets of sod for any lawn. Accounts for cuts and waste so you can finish installation in one day.
+
+Methodology:
+- The calculator multiplies lawn area by a shape-dependent waste factor. Rectangular lawns need only 5% waste — sod lays in straight rows with minimal end cuts. Irregular lawns (curves, trees, flower beds to work around) need 15% because every edge piece requires a cut. Heavily curved lawns with lots of obstacles need 25% — every cut produces scrap that rarely fits elsewhere.
+- Sod is sold in three main formats: individual slabs (16" × 24" ≈ 2.67 sq ft each, most common at garden centers and small farms), small rolls (2 × 5 ft ≈ 10 sq ft, used for residential installs where workers can carry rolls), and big rolls (3.3 × 6 ft ≈ 20 sq ft, used for commercial and large residential installs with equipment).
+- Pallet counts are for logistics planning: a standard pallet of slabs holds about 500 square feet. Suppliers charge by the pallet delivery plus a per-square-foot rate. Ordering in partial pallets is possible at some suppliers but usually adds a surcharge.
+- The calculator rounds piece counts and pallet counts up — you can't buy half a slab or half a pallet. Because sod lives only 8-24 hours off the farm before it starts degrading, order conservatively. Install within one day of delivery; leftover pieces become compost or fill for future bare spots.
+- For accurate estimates with oddly-shaped lawns, break the area into rectangles (a driveway strip + a backyard rectangle + a front curve), calculate each separately, and add the piece counts. This gives more accurate results than applying one waste factor to an awkward total.
+
+### Topsoil
+
+URL: /topsoil-calculator
+
+Formula: volume = area × depth, converted to cubic yards/meters (plus tons and bags)
+
+Cubic yards of topsoil or fill dirt for any garden bed, lawn, or fill project. Converts to bags for small jobs and tons for delivery.
+
+Methodology:
+- The calculator multiplies bed area (length × width) by depth to compute total volume. Depth is entered in inches or centimeters and converted to feet or meters before the multiplication. Imperial volume in cubic feet is divided by 27 to convert to cubic yards (the bulk purchase unit). Metric stays in cubic meters.
+- Weight is calculated from density. Topsoil is typically 1.1 tons per cubic yard; fill dirt is heavier (1.25 t/yd³) because it contains more clay and minerals; compost is lighter (0.75 t/yd³) because it's full of air and organic matter. Garden mix (blended topsoil and compost) sits in between at 1.0 t/yd³.
+- Bag equivalent assumes standard 0.75 cubic foot bags, which is what most home centers carry. At that size, a cubic yard is 36 bags. Some suppliers sell 1 cu ft or 40 lb bags — 40-lb bags of topsoil are roughly 0.5 cu ft, so you'd need 54 bags per cubic yard.
+- Proper depth depends on use: 2 inches for overseeding existing lawn, 4 inches for lawn repair or grading small areas, 6 inches for establishing new garden beds, 8 inches for raised vegetable beds (deeper root vegetables need more), 12+ inches for deep fill or drainage correction. Deeper than 12 inches typically means you're doing structural fill, not just planting soil.
+- Bulk delivery is much cheaper than bags above about 1 cubic yard. Bulk topsoil is typically $25-50 per cubic yard plus delivery ($75-150). Bagged topsoil is $3-5 per 0.75 cu ft bag, so a yard in bags is $100-150. For jobs over 1 yard, order bulk. For small patching, bags are practical.
+
+## Lumber
+
+### Lumber
+
+URL: /lumber-calculator
+
+Formula: board feet = (thickness × width × length_ft) ÷ 12, per board × quantity with waste
+
+Board feet and lineal feet for any lumber order. Handles nominal sizes (2×4, 2×6, etc.) and quantities — for framing, decks, and projects.
+
+Methodology:
+- Board feet is the standard unit for lumber volume in North America. One board foot equals a piece 1 inch thick, 12 inches wide, and 1 foot long — or 144 cubic inches of wood. The formula is (nominal thickness × nominal width × length in feet) divided by 12.
+- Note the 'nominal' in that formula. A 2×4 is actually 1.5 × 3.5 inches after milling, but board-foot calculations use the nominal dimensions (2 × 4) to keep things consistent across rough and dressed lumber. This is how lumber has been sold for over a century.
+- Lineal feet is the simpler measurement — total length of lumber regardless of cross-section. A 2×4 at 8 feet long is 8 lineal feet. A 2×12 at 8 feet long is also 8 lineal feet. But the 2×12 is 6 board feet versus the 2×4's 5.33 board feet, so the 2×12 costs roughly 12× more per lineal foot.
+- Waste factor for framing and construction lumber: 0% if you're ordering to a precise pre-calculated list, 10% for typical projects where you're cutting stock to fit. 15% for projects with complex angles or repeated short cuts that leave lots of unusable scrap. Always round up to whole boards — a 10% buffer on 50 boards is 55, not 55.0.
+- Pricing: lumber yards quote in different units. Big-box retailers usually price per piece ("$5.47 each"). Wholesale lumber yards quote per 1,000 board feet ("$850 MBF"). Convert between them: price per piece ÷ board feet per piece = price per board foot. Multiply by 1,000 for MBF.
+
+### Shed
+
+URL: /shed-calculator
+
+Formula: floor + walls + roof framing + sheathing for any shed footprint and wall height
+
+Materials for any backyard shed: floor, walls, roof sheathing, and siding. Sized by shed footprint and wall height.
+
+Methodology:
+- Shed construction has four systems: floor (joists + sheathing on a base), walls (studs + plates + sheathing), roof (rafters + sheathing + shingles), and siding (exterior finish). The calculator estimates each from just length, width, wall height, and roof style.
+- Floor: 2×6 joists spaced 16" on center spanning the width, supported by perimeter rim joists. Floor sheathing is 3/4" tongue-and-groove plywood or OSB, 4×8 sheets. For a 10×8 shed: 7 joists spanning 8 ft each, 3 sheets of sheathing. Most shed floors sit on pressure-treated 4×4 skids or a concrete slab.
+- Walls: 2×4 studs 16" on center with doubled top plates and a single bottom plate. Corner studs are doubled or tripled for rigidity. For an 8-ft wall, use 8-foot pre-cut studs (actually 92-5/8"). Wall sheathing is 7/16" OSB or 1/2" plywood in 4×8 sheets. Door and window openings subtract studs but add headers — the calculator doesn't model openings; budget extra material for them.
+- Roof: gable (most common) has rafters running from eaves to a ridge board. Assuming 6/12 pitch (standard shed pitch), rafter length is √(run² + rise²) plus a 1-foot overhang. Rafters 24" on center for most sheds. Roof sheathing is 7/16" OSB, 4×8 sheets. Shingles at 3 bundles per square plus 10% waste.
+- Lean-to roof is simpler: a single slope from a high wall down to a low wall. Uses fewer materials than a gable. Common for small sheds against an existing structure. Gambrel (barn-style) uses 4 slopes to maximize interior storage height — more rafters, more sheathing, more complex framing, but the extra roof surface is useful headroom.
+- Not included: foundation (concrete slab, gravel pad, or skid foundation), interior finishing (drywall, insulation, electrical — use those respective calculators), doors and windows (subtract material for openings but add headers and trim), fasteners (nails, screws, hurricane ties), and paint or stain. Budget 20-30% more in materials cost beyond this framing list.
+
+### Stair
+
+URL: /stair-calculator
+
+Formula: risers = round(total rise ÷ ideal riser); treads = risers − 1; stringer = √(rise² + run²)
+
+Stair stringer length, rise, run, and tread count for any height. Meets IRC code limits on rise and tread dimensions.
+
+Methodology:
+- The calculator divides total vertical rise by your target riser height and rounds to the nearest whole number — because stair risers must all be equal. Once you know the riser count, actual riser height is total rise divided by that count. If your total rise is 108 inches and you target 7.5-inch risers, you get 14 risers at 7.71 inches each (close to target but equal across all risers).
+- The number of treads is always one less than the number of risers because the last 'step' at the top is the upper floor itself, not an additional tread. This catches people off by one — if you have 14 risers, you need 13 treads.
+- Total run is treads times tread depth. A 14-riser / 13-tread staircase at 11-inch treads needs 143 inches (11 feet 11 inches) of horizontal space. This is the most commonly underestimated dimension when planning a staircase inside a house — measure your available horizontal space before committing to a stair layout.
+- Stringer length is the hypotenuse of the rise and run — Pythagoras. For ordering: round up to the next standard lumber length. 2×12 stringers come in 8, 10, 12, 14, 16, 20 foot lengths. The calculated stringer length is the actual path along the stair; you need some extra for the top and bottom mounting, so order one standard length above the calculated number.
+- IRC 2021 compliance: riser height 4"-7.75" (no more than 3/8" variation between any two risers), tread depth minimum 10", stair width minimum 36". The calculator checks these automatically. Some municipalities have stricter local codes — always verify with your building department before cutting stringers.
+- The 'rule of 25' is a carpenter's comfort guideline: 2 × riser + tread ≈ 24-25 inches. Too low (aggressive rise, shallow tread) feels steep. Too high (shallow rise, deep tread) feels awkward and stretched. 7.5" rise + 10" tread = 25. 7" rise + 11" tread = 25. Most comfortable stairs land near 25.
+
+### Stud Spacing
+
+URL: /stud-spacing-calculator
+
+Formula: studs = ⌈length × 12 ÷ spacing⌉ + 1 + corners × 2 + doors × 6 + windows × 8
+
+Studs needed for any wall, including headers for openings. IRC-compliant spacing with king studs, jack studs, and cripples.
+
+Methodology:
+- Line studs are spaced at either 16" or 24" on center. 16" OC is the residential standard — stronger wall, easier drywall install (4-ft sheets break on studs), and what most carpenters default to. 24" OC saves ~35% studs and is permitted for most non-bearing interior walls and some exterior walls with engineered sheathing. The calculator computes the line by dividing the wall length (in inches) by spacing and adding one for the end stud.
+- Corner framing adds extra studs for the intersection of walls. A standard 3-stud corner adds 2 studs beyond the line count (one at the end, plus a 2-stud L at the corner itself). Modern energy-efficient corners use 2 studs with a corner backing board, saving lumber and allowing more insulation.
+- Each door opening requires 6 extra studs beyond the line: 2 king studs (full-height, flanking the opening), 2 jack studs (shorter, supporting the header), and typically 2 cripple studs above the header to complete the wall. The calculator doesn't subtract the line studs that would have been in the opening — this builds in a small buffer that's typical of how carpenters actually order.
+- Each window adds 8 extra studs: 2 king, 2 jack, 2 cripples above the header, and 2 cripples below the rough sill. Wider windows need more cripples — the calculator uses 2 as a baseline for typical 3-foot-wide windows. For 6+ foot windows, add 2 more cripples per opening.
+- Header sizing: non-bearing walls (interior partitions not supporting roof or floor loads) can use 2×4 flat-plate headers for openings under 4 feet. Bearing walls (most exterior walls, load-bearing interior walls) require heavier headers per IRC 2021 Table R602.7: 2×6 up to 4-ft spans, 2×8 up to 6-ft spans, 2×10 up to 8-ft spans, 2×12 up to 10-ft spans. The calculator recommends a minimum — always verify with actual span calculations.
+- Not covered: non-standard framing (balloon framing, advanced framing, SIPs), engineered lumber (LVL, glulam, I-joists for headers), seismic or hurricane hold-downs, or shear wall requirements. This is a materials estimator — for load-bearing decisions, consult a residential structural engineer or IRC span tables.
+
+### Window Sizing
+
+URL: /window-sizing-calculator
+
+Formula: openable = glass × window type factor; egress = 5.7 ft² min + 20\
+
+Right window size for any room. Checks code-required egress, natural light minimums, and recommends rough opening dimensions.
+
+Methodology:
+- IRC 2021 (Section R310) requires every sleeping room to have at least one window or door that meets egress requirements — a path out of the room in case of fire. Egress windows must have at least 5.7 square feet of openable area, with minimum clear opening dimensions of 20 inches wide and 24 inches tall. The maximum sill height is 44 inches above the finished floor. Ground floor bedrooms can use 5.0 square feet openable area.
+- Openable area depends heavily on window type. Double-hung and single-hung: only about half the total glass area opens (the sash). Casement windows crank outward and open about 90% of the glass area. Sliding horizontal windows: half opens. Fixed windows don't open at all. Awning and hopper windows: about 70% openable. The calculator applies the appropriate factor automatically.
+- Natural light and ventilation (IRC R303.1): habitable rooms need total glazing equal to 8% of floor area for light. For an 150 sq ft bedroom, that's 12 sq ft of window glass. For ventilation (unless mechanical ventilation is provided), 4% of floor area must be openable — 6 sq ft for the same bedroom. Kitchens and bathrooms may have mechanical ventilation (exhaust fan) that exempts them from the 4% openable requirement.
+- Rough opening dimensions add about 1/2 inch on each side to the window's actual dimensions to allow for shimming and adjustment during installation. A 36 × 48 inch window needs a 37 × 49 inch rough opening. Manufacturer specs sometimes require more (up to 1 inch each side for specific brands) — always verify with the exact window you're buying before cutting the framing.
+- For basements, egress requirements are the same as bedrooms — basement bedrooms must have compliant egress windows or a direct exit door. Window wells are required for any egress window whose sill is below grade; the well itself has minimum size requirements (9 sq ft area, 36 inches projection) and must include a permanent ladder for wells deeper than 44 inches.
+- Not captured: energy performance ratings (U-factor, SHGC for ENERGY STAR compliance), impact-resistance ratings (required in hurricane zones), triple-pane upgrades, glazing type, tempered glass requirements (within 24" of doors, floors, or wet areas), and egress window cost ($300-1,000 per window installed depending on type and size).
+
+## Masonry
+
+### Asphalt
+
+URL: /asphalt-calculator
+
+Formula: tons = area × thickness × density × (1 + waste), where density = 145 lb/ft³
+
+Tons of asphalt for any driveway or parking area. Accounts for typical 145 lb/ft³ density and standard compaction depths.
+
+Methodology:
+- The calculator multiplies area by compacted thickness to get volume, then converts volume to weight using asphalt's typical density of 145 pounds per cubic foot (hot-mix asphalt, after compaction). For metric, that's approximately 2.32 tonnes per cubic meter.
+- Rectangular areas use length × width. Circular areas (turnaround circles, cul-de-sacs) use π × radius². Enter the diameter in the length field and leave width alone — it's ignored for circular shapes.
+- Thickness is the finished, compacted thickness — not the loose lift thickness the crew shovels down. Hot asphalt compacts about 25% under the roller, so 4 inches of loose material becomes 3 inches compacted. When ordering, you want enough material for the compacted thickness; waste factor covers the compaction loss.
+- Standard compacted thicknesses: 2 inches for a residential overlay over existing asphalt or concrete; 3 inches for a new residential driveway on prepared base; 4 inches for driveways that bear trucks or RVs; 6 inches for parking lots with heavy truck traffic. Anything thicker than 6 inches is typically poured in multiple lifts.
+- Waste factor of 10% is standard — covers material that cools during transit, trimmings around edges, and the truck's 'last drop' that often isn't fully usable. Use 5% for simple rectangular driveways with a pumper or chute delivery; 15% for complex shapes or when material has to be wheeled to the site in buckets.
+- This calculator does not include: the gravel base layer under asphalt (typically 4-8 inches of compacted crushed stone — use the gravel calculator), edge forms, curbing, or drainage. A proper asphalt installation is asphalt + base + drainage planning + final sealing.
+
+### Brick
+
+URL: /brick-calculator
+
+Formula: bricks = area × (144 ÷ ((brick L + joint) × (brick H + joint))) × wythe × (1 + waste)
+
+Bricks and mortar bags for any wall or project. Accounts for brick size, mortar joint width, and typical 10% cut waste.
+
+Methodology:
+- Brick count is calculated from the wall area, the brick size, and the mortar joint width. The formula accounts for the effective area each brick covers (brick dimensions plus joint width on two sides). Smaller bricks mean more per square foot; wider joints reduce the count slightly because each brick covers more total area with the mortar included.
+- Brick sizes vary by manufacturer and region. Modular brick (3.625 × 2.25 × 7.625 inches) is the US standard — 6.86 bricks per square foot with 3/8-inch joints. Standard brick is slightly longer (8 inches). Queen and jumbo are larger formats that reduce brick count and labor but cost more per brick.
+- Wythe refers to the thickness of the wall in brick layers. Single-wythe (one brick thick) is used for modern veneer — the brick is decorative, with a framed wall behind providing structural support. Double-wythe (two bricks thick, bonded together) was common before 1960 and is still used for structural masonry, garden walls, and chimneys. Double-wythe uses twice as many bricks.
+- Mortar calculation is approximate. A cubic foot of mortar typically sets about 30 bricks at 3/8" joints. Wider joints use proportionally more mortar per brick. Standard 80-pound bags of pre-mixed mortar yield about 0.75 cubic feet each. The calculator adjusts the mortar estimate based on your joint width.
+- Waste factor of 10% covers typical cuts at corners, around openings, and breakage during handling. Use 15% for complex masonry with many openings, arches, or decorative patterns; 5% for long straight walls with minimal cuts.
+- Not included in this calculator: flashing, weep holes, wall ties (1 per 2.67 sq ft of veneer), expansion joints, lintels over openings, and cleaning materials. For structural walls, also factor in rebar (see rebar calculator) and grout for reinforced cells.
+
+### Chimney
+
+URL: /chimney-calculator
+
+Formula: masonry fireplace: flue area = opening area ÷ 10 (or ÷ 8 if < 15 ft tall); wood stove: match outlet diameter
+
+Flue size for fireplaces and wood stoves. Uses the 1/10 rule for masonry fireplaces and appliance-specific sizing for stoves and inserts.
+
+Methodology:
+- The classic rule for masonry fireplaces: flue cross-sectional area should be approximately 1/10 of the fireplace opening area. A 36 × 30 inch opening (1,080 sq in) needs about 108 sq in of flue — which is between a 12×12 (80 sq in) and 12×16 (112 sq in) terra cotta liner, so use the larger one. IRC R1003.15 codifies this with slight variations for rectangular vs round flues.
+- Short chimneys (under 15 feet) need larger flues because draft is weaker. The calculator uses 1:8 ratio for chimneys under 15 ft and 1:10 for chimneys 15 ft or taller. Very short chimneys (under 10 ft above the firebox) generally don't draft properly for traditional fireplaces — consider a taller structure or switch to a different appliance.
+- Wood stoves are sized differently — you match the flue exactly to the stove's outlet diameter, which is set by the manufacturer based on the stove's heat output and flow characteristics. Most residential wood stoves have 6-inch outlets. Large stoves and some brands use 7 or 8 inches. Never reduce or enlarge the flue from the stove outlet — this is a fire safety issue, not just a performance issue.
+- Chimney height: IRC requires fireplace chimneys to extend at least 15 feet from the firebox (top of opening to top of chimney). For wood stoves, the manufacturer specifies the minimum, typically 13-15 feet. This height generates the draft (pressure differential) that pulls combustion gases out of the house.
+- Termination clearance follows the 3-2-10 rule: the chimney top must be at least 3 feet above the roof at the penetration point, AND at least 2 feet above any part of the roof or structure within 10 horizontal feet. This prevents downdrafts from wind hitting nearby structures. Violating this rule is the most common cause of poor-drafting fireplaces.
+- Not covered: heat exchanger specifications, draft control dampers, chase construction, spark arrestors, smoke chambers, lintel sizing, firebox construction, ash dump, or the 8-inch masonry thickness required for fireplace walls. A masonry fireplace is one of the most regulated pieces of residential construction — always consult IRC Chapter 10 or hire a CSIA-certified chimney professional.
+
+### Concrete
+
+URL: /concrete-calculator
+
+Formula: volume = area × thickness × (1 + waste), converted to cubic yards or meters
+
+Cubic yards of concrete for slabs, footings, and round pours. Waste factor included so your order matches your project.
+
+Methodology:
+- For rectangular pours, the calculator multiplies length by width by thickness to get raw volume. For round pours, it uses π × radius² × thickness. Thickness is entered in inches (or centimeters) and converted to the same unit as length and width before the multiplication.
+- Imperial results convert from cubic feet to cubic yards by dividing by 27 (since 1 cubic yard = 27 cubic feet). Metric results stay in cubic meters directly. Yards and meters are how concrete is sold, so this is what you'll actually order.
+- A waste factor of 10% is standard for most slab pours — it covers spillage, uneven subgrade, over-excavation, and the practical reality that concrete trucks don't come back for tiny shortages. Use 5% for very flat, well-prepared sites; 15% for irregular shapes or rough subgrade.
+- The final number is rounded up to the nearest 0.01 cubic yards or meters because concrete suppliers typically sell in increments of 0.25 yards. When you order, round up again to the nearest quarter-yard to account for truck minimums.
+
+### Mortar
+
+URL: /mortar-calculator
+
+Formula: bags = (wall_area_ft² × bricks_per_ft² × joint_volume_per_brick) ÷ coverage_per_bag
+
+Bags of mortar mix for brick, block, and stone walls. Accounts for joint width, brick size, and mortar type so you order the right amount.
+
+Methodology:
+- Mortar volume per brick is calculated from the joint geometry: bed joint (length × width × depth) plus head joint (height × width × depth) for each brick face. Standard bricks with 3/8-inch joints use approximately 6.5 cubic inches of mortar per brick. Wider joints increase this proportionally.
+- An 80-lb bag of pre-mixed mortar yields approximately 450 cubic inches of mixed mortar, enough for about 30-40 standard bricks at 3/8-inch joints. Coverage varies with joint width: wider joints use more mortar per brick and reduce bags-per-1000 count.
+- A 10% waste factor covers mortar that drops during tooling, mortar that sets before use, and extra material needed for cap rows and tooling joints. Experienced masons waste less; first-time DIYers may waste 15-20%.
+- Mortar type (S, N, M) does not change the volume calculation. All three types yield the same volume per bag. The type affects bond strength, compressive strength, and weather resistance. Type S is the default for exterior residential masonry.
+- Concrete block (CMU) uses significantly more mortar per unit than brick because the face shells and web create longer joint lines per block. A standard 8×8×16 block uses approximately 22.5 cubic inches of mortar at 3/8-inch joints.
+
+### Rebar
+
+URL: /rebar-calculator
+
+Formula: bars = ⌈dimension ÷ spacing⌉ + 1 per direction; total = (long × long length) + (trans × trans length) + perimeter
+
+Rebar lineal feet and pieces for any concrete slab. Standard grid spacing, with overlap for continuous runs.
+
+Methodology:
+- The calculator assumes a grid layout — rebar running both directions at the specified on-center spacing, creating a mesh that reinforces concrete against tension forces. Longitudinal bars run along the length of the slab; transverse bars run across the width. Bar count in each direction is the slab dimension divided by spacing, plus one for the closing bar at the far edge.
+- For slabs longer than 20 feet (the standard rebar stick length), bars must be overlapped where joined. The calculator adds 1.5 feet of overlap per joint. The technically correct overlap is 40 × bar diameter (which is 20 inches for #4 rebar, 25 inches for #5), but 1.5 feet is a safe simplification covering most cases.
+- Perimeter ring: an additional rebar loop around the edge of the slab, tied to the grid. Recommended for driveways and structural slabs, optional for simple patios. The ring strengthens edges which tend to crack first. Skip it for shallow decorative slabs.
+- Bar size selection: #4 (1/2 inch diameter) is the residential default for 4-inch slabs. #3 (3/8") is used in lighter applications like walkways. #5 (5/8") and #6 (3/4") are for structural slabs, retaining walls, and any pour over 6 inches thick. Larger bars don't just add strength — they add significant weight and cost.
+- Weight is calculated from standard lb-per-linear-foot values. This matters for ordering: steel is typically sold by weight. A full 20-foot stick of #4 rebar weighs 13.4 lb. A large slab might need 300-500+ pounds of rebar, enough to require multiple truck trips or careful loading.
+- Not included: chairs or dobie blocks (used to hold rebar up from the subgrade to the middle of the slab depth — one every 4 feet is typical), tie wire (for fastening bars at intersections, about 1 lb per 200 feet of rebar), saddles/corners for turn connections. Budget those separately.
+
+## Paint
+
+### Paint
+
+URL: /paint-calculator
+
+Formula: paint = (perimeter × height − doors − windows) × coats ÷ coverage
+
+Every formula public. Every source cited. Know exactly what you need before you go to the store.
+
+Methodology:
+- The calculator figures total wall area as perimeter times ceiling height, then subtracts a standard area for each door (21 sq ft / 2 sq m) and window (15 sq ft / 1.4 sq m) you enter. The net area is multiplied by the number of coats and divided by coverage per gallon or liter.
+- Coverage is set at 350 square feet per gallon (approximately 9 square meters per liter), which is the average for most interior latex paints on primed drywall. Check your specific paint can — coverage can range from 250 to 400 sq ft per gallon depending on the paint type, finish, and surface texture.
+- The result is rounded up to the nearest tenth of a gallon or liter — because you can't buy 2.67 gallons. The exact calculated amount is shown alongside so you can see the difference.
+- Ceilings are not included in this calculation. Use the ceiling paint calculator separately, or add the ceiling area (length × width) manually and recalculate.
+
+### Wallpaper
+
+URL: /wallpaper-calculator
+
+Formula: rolls = ⌈((perimeter × height − openings) × (1 + pattern waste)) ÷ roll coverage⌉
+
+Rolls of wallpaper for any room. Accounts for pattern repeat, roll coverage, and typical 15% cut waste so you buy exactly what you need.
+
+Methodology:
+- Gross wall area is computed from the room perimeter times the wall height. This assumes you're papering all four walls — for accent walls or partial rooms, enter just the perimeter you're papering (length of wall × 2 if just one wall: you can also enter the actual length in perimeter field since perimeter math is just linear feet).
+- Doors and windows are subtracted using standard sizes: 21 square feet per door (7 ft × 3 ft typical), 15 square feet per window (4 ft × 4 ft average). Small decorative windows should be ignored; only subtract openings larger than a few square feet.
+- Pattern repeat is the key driver of wallpaper waste. With no pattern, you can use nearly every inch of every strip. With a 24-inch repeat, every strip needs to be trimmed to align with the adjacent strip — wasting up to half a repeat per strip. The calculator scales waste from 10% (no pattern) to 30% (24-inch repeat).
+- Roll coverage varies by market. American 'double rolls' cover 56 sq ft (sold in the US because single rolls are too small to be practical). European single rolls cover 29 sq ft. Metric rolls cover about 15 sq meters (161 sq ft). Always verify coverage with your specific product — some designer brands use non-standard roll sizes.
+- Rolls round up to whole rolls. For larger rooms, buy one extra roll beyond the calculator's count as insurance — you cannot practically match dye lots by buying more rolls later. Discontinued patterns are especially unforgiving; keep one unopened roll for years as a repair reserve.
+
+## Roofing
+
+### Attic Ventilation
+
+URL: /attic-ventilation-calculator
+
+Formula: NFVA = attic area ÷ ratio (1:300 or 1:150), split 50/50 between intake and exhaust
+
+Square inches of intake and exhaust attic venting needed. Follows the 1:300 rule with 50/50 balanced intake and exhaust.
+
+Methodology:
+- Attic ventilation prevents two problems: summer heat buildup (which bakes shingles from below and raises cooling bills) and winter condensation (which rots sheathing and feeds mold). The industry standard is the 1:300 rule — one square foot of Net Free Ventilation Area (NFVA) for every 300 square feet of attic floor. Homes without a vapor barrier use the stricter 1:150 ratio.
+- NFVA is the actual open area of the vent, not the exterior dimensions. A 12 × 12 inch louvered vent has an outside area of 144 sq in but typically only 50-70 sq in of actual NFVA because the louvers and screens take up space. Always use the manufacturer's NFVA spec when sizing.
+- Balanced ventilation requires 50% intake (low, at the soffit) and 50% exhaust (high, at the ridge or gable peak). Intake-only or exhaust-only systems short-circuit — air doesn't flow properly through the attic. Unbalanced systems are a leading cause of ice dams in cold climates and ineffective cooling in hot climates.
+- Ridge vents provide about 12-18 sq in of NFVA per linear foot (using 15 as a standard). For a 40-foot ridge, that's 600 sq in of exhaust — enough for about 3,600 sq ft of attic using the 1:300 rule. Gable vents are typically 50-100 sq in each (use 70 as standard). Box/roof vents are about 50 sq in each. Power vents are sized in CFM (cubic feet per minute) and move air actively.
+- The calculator recommends soffit (intake) venting based on the exhaust type. Continuous soffit strips provide about 9 sq in per linear foot; individual soffit vents provide about 35 sq in each. In most homes, you need both — continuous soffit venting along the entire eave, possibly supplemented with circular vents in specific bays where the ceiling is blocked.
+- Common mistakes: mixing exhaust types (ridge AND gable) creates short-circuit airflow patterns; installing insulation that blocks soffit vents; using power vents without adequate intake (they pull conditioned air from the house). Fix: pick one exhaust type and size it correctly, protect soffit intake with baffles, verify attic air circulation during hot days.
+
+### Garage Door
+
+URL: /garage-door-calculator
+
+Formula: door ≤ 10ft = single, ≤ 18ft = double; opener HP by area × material weight factor
+
+Right garage door size, headroom, and opener power for any garage. Checks clearances and recommends single vs double door.
+
+Methodology:
+- Standard garage door widths: 8 or 9 ft for single-car openings, 16 ft for standard double, 18 ft for extra-wide double (for modern large SUVs and trucks), 20 ft+ for RV or commercial bays. Standard heights: 7 ft (standard for passenger cars and most small SUVs), 8 ft (full-size pickups and RVs with top carriers), 9-10 ft (RVs, small commercial, workshop access for trucks with racks).
+- Headroom is the critical dimension most homeowners overlook. A standard sectional garage door needs 12 inches of clearance between the top of the opening and the ceiling for the tracks to curve back. Less than 12 inches requires a low-headroom conversion kit (adds $100-200 to door cost) that works down to about 4.5 inches. Below 4.5 inches: sectional doors won't fit; consider side-folding or roll-up options.
+- Side room is the horizontal clearance between each side of the opening and the nearest wall. Standard installations need 3.75 inches each side for the vertical tracks and track brackets. Torsion spring systems may need 8+ inches on one side for the spring. Tight side room is workable but may limit spring choices.
+- Opener sizing depends on door weight: a non-insulated steel door is lightweight (~120-180 lbs for a 16×7 door), insulated steel is medium (150-250 lbs), aluminum-and-glass doors vary (180-350 lbs), wood doors are heaviest (300-600+ lbs). For doors under 150 lbs: 1/2 HP opener. For 150-250 lbs: 3/4 HP. For 250+ lbs: 1 HP or DC chain drive. Overdrive openers (1.25+ HP) extend lifespan for any heavy door.
+- Material cost ranges (installed for a 16×7 ft double door, 2025-2026 US): basic steel $400-900; insulated steel $700-1,800 (most popular); aluminum with glass panels $1,500-3,500 (modern look, premium); wood $2,000-6,000 (custom staining, high maintenance). Prices scale roughly linearly with door width.
+- Not included: springs, tracks, hinges, cables (standard with new door), remote openers (add $150-400 for smart openers with WiFi), insulation upgrades, weatherstripping at the bottom, decorative hardware. Installation labor typically adds $200-500 for a single door, $400-800 for a double.
+
+### Gutter
+
+URL: /gutter-calculator
+
+Formula: gutter = roof edge ft; downspouts = ⌈effective area ÷ (600-1200 ft² per DS)⌉; size = 5\
+
+Linear feet of gutter, downspouts, and accessories for any home. Sizes gutters for your roof area and rainfall intensity.
+
+Methodology:
+- Gutter sizing starts with the effective drainage area — the roof area that funnels water into the longest gutter run, adjusted for roof pitch and local rainfall intensity. Steeper roofs deliver water to the gutter faster, so pitch factor bumps up effective area (1.1 for 4-6/12 pitch, up to 1.3 for very steep roofs). Regional rainfall matters too — Gulf Coast storms deliver 9 in/hr of rain; the Pacific Northwest rarely exceeds 5 in/hr.
+- The rule of thumb: 5-inch K-style gutters handle effective areas up to ~5,500 sq ft. Above that, step up to 6-inch gutters which handle ~7,900 sq ft. Most residential homes use 5-inch; large houses or high-rainfall areas often need 6-inch. Commercial and industrial buildings use even larger sizes.
+- Downspouts: one per 600-800 sq ft of effective drainage area for 5-inch gutters, one per 1,200 sq ft for 6-inch. Also a minimum of one downspout per 40 feet of gutter run to prevent overflow from long unbroken runs. A simple rectangular home often has 4 downspouts (one per corner); larger homes need more.
+- Hangers (the metal brackets holding the gutter to the fascia) space 24-32 inches on center. The calculator uses 32-inch spacing which is standard for most climates. In snow-load regions (New England, Upper Midwest), spec 16-20 inch spacing because snow weight can pull out widely-spaced hangers.
+- Elbows are the 45 or 90-degree fittings that connect downspouts to the gutter and turn corners at the ground level. Typical downspout uses 3 elbows: one at the top (gutter to downspout), one at the bottom (downspout to ground discharge), and sometimes one at the middle (to clear trim or offset).
+- Not included: splash blocks (concrete pads at downspout discharge), gutter guards or screens, heated gutter cables (for ice dam prevention in cold climates), fascia repair materials, and labor. Professional installation costs $5-15 per linear foot for aluminum, $15-35 for copper.
+
+### Roofing
+
+URL: /roofing-calculator
+
+Formula: bundles = ⌈(footprint × slope × (1 + waste)) ÷ square size × 3⌉ + ridge caps
+
+Shingles and squares of roofing for any pitch and footprint. Accounts for waste, ridge caps, and the slope multiplier.
+
+Methodology:
+- The calculator takes your house footprint (the outline viewed from above, not the actual roof surface), multiplies by a slope factor based on your pitch, and adds a waste percentage. The slope factor accounts for the fact that a sloped roof has more surface area than a flat one — a 6/12 pitch adds about 12%; a 12/12 pitch adds 41%.
+- Pitch is measured as rise over run — 6/12 means the roof rises 6 inches for every 12 inches of horizontal distance. In the US, 4/12 is the minimum for most shingle warranties; 6/12 is the most common residential pitch; anything over 10/12 typically needs special safety equipment and rope work.
+- In imperial units, roofing is sold by the 'square' — 100 square feet of coverage. Three-tab asphalt shingles typically pack 3 bundles per square. The calculator converts your total roof area to squares and then to bundles.
+- Ridge cap bundles are estimated separately. A simple gable roof needs ridge caps along the peak (the length of the house). Complex roofs with hips and valleys need more — add 1-2 bundles for typical homes with multiple roof planes.
+- For complex roofs with dormers, hips, valleys, or multiple gables, bump the waste factor to 15-20%. The footprint-times-slope-factor method underestimates total area on complex shapes because it doesn't account for the extra surface from hip and valley planes.
+
+### Siding
+
+URL: /siding-calculator
+
+Formula: squares = ((perimeter × height + gables − openings) × (1 + waste)) ÷ 100
+
+Squares and linear feet of siding for any house. Accounts for gables, openings, and typical 10-15% waste by material type.
+
+Methodology:
+- Wall area is the perimeter of the house times the average wall height. Perimeter means the sum of all exterior wall lengths — for a simple rectangular house, just 2 × (length + width). For houses with offsets, bays, or wings, add each wall length separately.
+- Gable triangles (the triangular ends of a house with a gable roof) are added separately because the math is different. A gable is half of a rectangle: (base × rise) ÷ 2. Gable size depends on roof pitch and house width — 30 sq ft is typical for a small gable on a narrow house; 100 sq ft is large (steep pitch on a wide house). Hip roofs have no gables.
+- Openings (doors and windows) are subtracted using an average of 20 square feet each. This is a compromise: exterior doors are about 21 sq ft, standard windows are 15-18 sq ft, large picture windows are 25-35 sq ft. For more accuracy, count large windows as two.
+- Waste factor varies by material. Vinyl lap siding has panels 12 feet long with butt-joint ends — minimal waste (10%). Fiber cement (like James Hardie) comes in 12-foot planks with similar waste. Wood clapboard has more cuts and grain matching — 15%. Engineered wood (LP SmartSide) falls in between at 12%.
+- Siding is sold by 'square' — 100 square feet of coverage. One carton of vinyl siding covers 2 squares (200 sq ft). Fiber cement comes in cartons that cover about 1.5 squares per box. The calculator rounds up to the nearest whole square when ordering.
+- Not included in this calculator: soffit, fascia, house wrap, insulation, fasteners, corner posts, starter strip, or finish trim pieces. These typically add 15-25% to the total material cost. Budget for these separately when shopping. Also not included: the labor cost, which for professional installation runs $2-8 per sq ft depending on material and region.
+
+### Snow Load
+
+URL: /snow-load-calculator
+
+Formula: load (psf) = snow depth × density + ice × 57; compare vs design load (code-specified)
+
+Roof snow load in pounds per square foot. Compares your actual snow against design load capacity — flags when roof is over-stressed.
+
+Methodology:
+- Snow weight varies hugely by type. Fresh powder is only about 5 pounds per cubic foot. Settled snow after a few days is 15 lb/ft³. Wet, partially melted snow is 25 lb/ft³. Old compacted snow or ice-crusted snow approaches 35 lb/ft³. Solid ice is the heaviest at 57 lb/ft³.
+- Roof snow load in pounds per square foot (psf) is snow depth times density. A 2-foot accumulation of packed snow at 15 lb/ft³ = 30 psf. Same depth of wet snow = 50 psf. Same depth with a 1-inch ice glaze adds another 4-5 psf. Multiply by roof area to get total pounds of load the structure carries.
+- Compare actual load against your region's design snow load — the code-specified ground snow load your roof was engineered to handle. Southern US typically 20 psf. Mid-Atlantic and central US 30-40 psf. Northeast, Great Lakes, and Rockies 50-70 psf. Mountain resort areas and Upper Peninsula can require 80+ psf design loads.
+- When actual load approaches 80% of design, consider removing snow — heavy drifts, ice dams, or prolonged accumulation can exceed design capacity even in normal storms. When actual load exceeds design, immediate action: clear the roof (professional service in heavy loads), and consult a structural engineer to inspect for damage.
+- Important caveats: these calculations use uniform snow distribution. Drifting concentrates snow on leeward sides, behind dormers, and in roof valleys — local loads in these areas can be 2-3× the uniform load. Flat roofs retain more snow than pitched. Unheated structures accumulate more than heated (melt from below). In doubt, call a structural engineer, not this calculator.
+- Not captured: dynamic loads from wind+snow combinations, seismic considerations for heavy snow regions, non-uniform drift loading per ASCE 7 section 7.7, or rain-on-snow load increases. For engineering purposes, use a professional per ASCE 7-22 chapter 7 rather than this educational tool.
+
+## Solar
+
+### Solar Panel
+
+URL: /solar-calculator
+
+Formula: panels = ⌈(daily kWh ÷ (sun hours × efficiency) × 1000) ÷ panel watts⌉
+
+Solar system size for your electricity usage. Accounts for sun hours by region, panel wattage, and system losses so you size right the first time.
+
+Methodology:
+- The calculator starts with your monthly electricity consumption (from your utility bill) and divides by 30 to get daily kWh. System size in kilowatts is daily kWh divided by peak sun hours, divided by system efficiency.
+- Peak sun hours is the daily equivalent of full-strength (1 kW/m²) sunshine your location receives. Arizona and the desert Southwest get 6+ hours; the UK and Pacific Northwest get 3-4; most of North America and Europe falls in the 4-5 range. Use NREL's PVWatts tool for your exact ZIP code if you want precision.
+- System efficiency accounts for real-world losses that the pure math doesn't capture: inverter conversion losses (~4%), wiring resistance (~2%), temperature derate on hot days (~8%), soiling from dust and pollen (~3%), and shading (variable). 80% is a reasonable default for a clean, well-installed system in typical conditions.
+- Panel count rounds up to whole panels. Because panels come in discrete wattages, your actual installed system will be slightly larger than the calculated need — that's normal and provides a small production buffer for cloudy weeks. The calculator shows both the computed need and the actual installed size.
+- Rough rule for roof area: about 17-20 sq ft per panel depending on panel size. A 10-panel system needs roughly 170-200 sq ft of unobstructed, south-facing roof. Complex roof shapes and shading from trees can reduce usable area significantly.
+
+## Buying guides
+
+- Vinyl vs fiber cement siding (/guides/vinyl-vs-fiber-cement-siding): Fiber cement lasts 50+ years vs vinyl 20-40 and wins on 30-year total cost and fire rating if you stay long enough to bank the difference; vinyl wins on upfront cost.
+- Composite vs pressure-treated vs cedar decking (/guides/composite-vs-pressure-treated-vs-cedar-deck): Over 20 years pressure-treated is most expensive because surface boards replace around year 15; composite costs most upfront but least to own; cedar sits between.
+- Heat pump vs furnace + AC (/guides/heat-pump-vs-furnace): Heat pump saves ~$300-500/yr in climate zones 1-4, breaks even in zone 5, loses to gas in zones 6-7 where dual-fuel closes the gap.
+
+## Contact
+
+Website: https://www.tallyard.com | Email: hello@tallyard.com | Author: Ash K.

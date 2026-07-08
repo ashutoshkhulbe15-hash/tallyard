@@ -111,13 +111,13 @@ function DIYSavingsSVG() {
 export default function CostToBuildFence() {
   return (
     <article>
-      <section className="container-wide pt-6 md:pt-8">
-        <div className="pt-2 pb-8 md:pb-10 border-b border-line">
+      <section className="container-wide pt-7 md:pt-10">
+        <div className="pb-8 md:pb-10 border-b border-line">
           <nav aria-label="Breadcrumb" className="font-mono text-xs text-ink-muted mb-5">
-            <Link href="/" className="text-accent hover:text-accent-hover transition-colors">Home</Link>
+            <Link href="/" className="hover:text-accent transition-colors">Home</Link>
             <span className="mx-2">·</span><span>Cost guides</span>
           </nav>
-          <h1 className="text-3xl md:text-5xl font-bold tracking-tighter leading-[1.05] mb-3 text-ink">How much does it cost to build a fence?</h1>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tighter leading-[1.03] mb-4 text-ink">How much does it cost to build a fence?</h1>
           <p className="text-base md:text-lg text-ink-muted max-w-2xl leading-relaxed">A 200 linear foot wood privacy fence costs $4,500 to $7,000 installed. Vinyl runs $6,400. Chain link drops to $3,400. The per-foot price tells you which material fits your budget.</p>
         </div>
       </section>
@@ -183,6 +183,17 @@ export default function CostToBuildFence() {
         </div>
       </section>
 
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org", "@type": "Dataset",
+        name: "Fence installation cost (2026 US average)",
+        description: "2026 US average typical installed project cost range, materials and labor, compiled by Tallyard from industry cost data.",
+        url: "https://www.tallyard.com/cost-to-build-a-fence", license: "https://www.tallyard.com/about",
+        creator: { "@type": "Organization", name: "Tallyard", url: "https://www.tallyard.com" },
+        variableMeasured: [
+          { "@type": "PropertyValue", name: "Low estimate", value: 1900, unitText: "USD", description: "typical installed project" },
+          { "@type": "PropertyValue", name: "High estimate", value: 4500, unitText: "USD", description: "typical installed project" }
+        ]
+      }) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org", "@type": "Article",
         headline: "How much does it cost to build a fence? (2026 prices)",

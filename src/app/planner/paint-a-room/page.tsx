@@ -12,16 +12,16 @@ export const metadata: Metadata = {
 export default function PaintPlannerPage() {
   return (
     <>
-      <section className="container-wide pt-6 md:pt-8">
-        <div className="pt-2 pb-8 md:pb-10 border-b border-line">
+      <section className="container-wide pt-7 md:pt-10">
+        <div className="pb-8 md:pb-10 border-b border-line">
           <nav aria-label="Breadcrumb" className="font-mono text-xs text-ink-muted mb-5">
-            <a href="/planner" className="text-accent hover:text-accent-hover transition-colors">Planner</a>
+            <Link href="/planner" className="hover:text-accent transition-colors">Planner</Link>
             <span className="mx-2">·</span><span>Paint</span>
           </nav>
-          <h1 className="text-3xl md:text-5xl font-bold tracking-tighter leading-[1.05] mb-3 text-ink">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tighter leading-[1.03] mb-4 text-ink">
             <BannerHeadline text="Plan your paint job." />
           </h1>
-          <p className="text-base md:text-lg text-ink-muted max-w-xl leading-relaxed">
+          <p className="text-[17px] md:text-lg text-ink-muted max-w-2xl leading-relaxed">
             Enter your room dimensions. Get paint, primer, ceiling paint, and supply quantities with cost estimates.
           </p>
         </div>

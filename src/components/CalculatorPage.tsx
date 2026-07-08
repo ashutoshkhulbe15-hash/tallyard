@@ -4,6 +4,7 @@ import { BannerHeadline } from "./BannerHeadline";
 import { FeedbackWidget } from "./FeedbackWidget";
 import { PageRail } from "./PageRail";
 import { getConfig } from "@/configs";
+import { getReviewedDate } from "@/lib/schema";
 
 interface CalculatorPageProps {
   slug: string;
@@ -131,6 +132,9 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
                   <span>
                     <b className="text-ink font-semibold">Reviewed against</b>{" "}
                     {reviewedNames}. Formula and sources published below.
+                    <span className="block mt-1.5 font-mono text-[11px] text-ink-faint">
+                      Last reviewed {getReviewedDate(slug).display}
+                    </span>
                   </span>
                 </div>
               )}

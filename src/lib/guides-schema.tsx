@@ -22,6 +22,15 @@ export function getGuideSchema({
     "@type": "Article",
     headline: config.title,
     description: config.description,
+    ...(config.verdict
+      ? {
+          abstract: config.verdict,
+          speakable: {
+            "@type": "SpeakableSpecification",
+            cssSelector: [".guide-verdict"],
+          },
+        }
+      : {}),
     url: pageUrl,
     datePublished: config.publishedAt,
     dateModified: config.publishedAt,
