@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms of use — Tallyard",
+  title: "Terms of use: Tallyard",
   description:
     "Terms governing use of Tallyard calculators and guides. Estimates are for planning, not engineering.",
   alternates: { canonical: "/terms" },

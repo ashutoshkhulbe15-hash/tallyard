@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-export const metadata: Metadata = { title: "HVAC, heat pump, and plumbing calculators — Tallyard", description: "Calculators for BTU sizing, heat pump, water heater, insulation, and drain pipe.", alternates: { canonical: "/calculators/hvac-plumbing" } };
+export const metadata: Metadata = { title: "HVAC, heat pump, and plumbing calculators: Tallyard", description: "Calculators for BTU sizing, heat pump, water heater, insulation, and drain pipe.", alternates: { canonical: "/calculators/hvac-plumbing" } };
 const tools = [
   { slug: "btu-calculator", name: "BTU calculator", desc: "Cooling capacity by room size and conditions." },
   { slug: "heat-pump-calculator", name: "Heat pump calculator", desc: "System sizing by climate zone with cost comparison." },

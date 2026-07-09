@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "stud-spacing-calculator";
 
 export const metadata: Metadata = {
-  title: "Stud Spacing Calculator — Studs For Any Wall",
+  title: "Stud Spacing Calculator: Studs For Any Wall",
   description:
     "Calculate studs for any wall including headers, jacks, kings, and cripples for openings. IRC-compliant.",
   alternates: { canonical: "/stud-spacing-calculator" },
   openGraph: {
-    title: "Stud Spacing Calculator — Studs For Any Wall",
+    title: "Stud Spacing Calculator: Studs For Any Wall",
     description: "Calculate studs with openings for any framed wall.",
     url: "https://www.tallyard.com/stud-spacing-calculator",
     type: "website",

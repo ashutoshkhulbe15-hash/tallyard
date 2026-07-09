@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "backsplash-calculator";
 
 export const metadata: Metadata = {
-  title: "Backsplash Calculator — Kitchen Tile Count",
+  title: "Backsplash Calculator: Kitchen Tile Count",
   description:
     "Calculate tiles and boxes for a kitchen backsplash. Handles subway, mosaic, and large-format tile with outlet and window cutouts.",
   alternates: { canonical: "/backsplash-calculator" },
   openGraph: {
-    title: "Backsplash Calculator — Kitchen Tile Count",
+    title: "Backsplash Calculator: Kitchen Tile Count",
     description: "Calculate backsplash tile with outlet and window subtractions.",
     url: "https://www.tallyard.com/backsplash-calculator",
     type: "website",

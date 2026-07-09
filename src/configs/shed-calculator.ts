@@ -173,36 +173,74 @@ export const shedCalculatorConfig: CalculatorConfig = {
 
   ContentExpansion: ShedCalculatorExpansion,
 
+  howTo: {
+    name: "How to calculate materials for a shed",
+    description:
+      "Estimate the lumber, sheathing, and shingles for a backyard shed from its footprint, wall height, and roof style.",
+    steps: [
+      {
+        name: "Measure the footprint",
+        text: "Decide the shed length and width in feet. Standard sizes are 8x10, 10x12, and 12x16. Size up if you are between two options, because sheds fill fast.",
+      },
+      {
+        name: "Set wall height and roof style",
+        text: "Pick a wall height (8 ft is standard) and a roof style: gable for the all-purpose shed, lean-to for a small shed against a wall, or gambrel for maximum loft storage.",
+      },
+      {
+        name: "Choose stud spacing",
+        text: "Use 16 inches on center for a sturdy shed, or 24 inches on center to save lumber on a budget build.",
+      },
+      {
+        name: "Read the material list",
+        text: "The calculator returns floor joists, floor and wall sheathing, wall studs and plates, rafters, roof sheathing, shingle bundles, and siding, each rounded up to whole purchasable units.",
+      },
+      {
+        name: "Add the parts it does not count",
+        text: "Budget separately for the foundation, doors and windows with their headers, fasteners, and finish. These add roughly 20 to 30 percent on top of the framing list.",
+      },
+    ],
+  },
+
   formulaDescription:
     "floor + walls + roof framing + sheathing for any shed footprint and wall height",
 
   methodology: [
-    "Shed construction has four systems: floor (joists + sheathing on a base), walls (studs + plates + sheathing), roof (rafters + sheathing + shingles), and siding (exterior finish). The calculator estimates each from just length, width, wall height, and roof style.",
-    "Floor: 2×6 joists spaced 16\" on center spanning the width, supported by perimeter rim joists. Floor sheathing is 3/4\" tongue-and-groove plywood or OSB, 4×8 sheets. For a 10×8 shed: 7 joists spanning 8 ft each, 3 sheets of sheathing. Most shed floors sit on pressure-treated 4×4 skids or a concrete slab.",
-    "Walls: 2×4 studs 16\" on center with doubled top plates and a single bottom plate. Corner studs are doubled or tripled for rigidity. For an 8-ft wall, use 8-foot pre-cut studs (actually 92-5/8\"). Wall sheathing is 7/16\" OSB or 1/2\" plywood in 4×8 sheets. Door and window openings subtract studs but add headers — the calculator doesn't model openings; budget extra material for them.",
-    "Roof: gable (most common) has rafters running from eaves to a ridge board. Assuming 6/12 pitch (standard shed pitch), rafter length is √(run² + rise²) plus a 1-foot overhang. Rafters 24\" on center for most sheds. Roof sheathing is 7/16\" OSB, 4×8 sheets. Shingles at 3 bundles per square plus 10% waste.",
-    "Lean-to roof is simpler: a single slope from a high wall down to a low wall. Uses fewer materials than a gable. Common for small sheds against an existing structure. Gambrel (barn-style) uses 4 slopes to maximize interior storage height — more rafters, more sheathing, more complex framing, but the extra roof surface is useful headroom.",
-    "Not included: foundation (concrete slab, gravel pad, or skid foundation), interior finishing (drywall, insulation, electrical — use those respective calculators), doors and windows (subtract material for openings but add headers and trim), fasteners (nails, screws, hurricane ties), and paint or stain. Budget 20-30% more in materials cost beyond this framing list.",
+    "Shed construction has four systems: floor (joists plus sheathing on a base), walls (studs plus plates plus sheathing), roof (rafters plus sheathing plus shingles), and siding. The calculator estimates each from just length, width, wall height, and roof style, then rounds every material up to whole purchasable units.",
+    "Floor: 2x6 joists spaced 16 inches on center spanning the width, supported by perimeter rim joists, with 3/4-inch tongue-and-groove sheathing in 4x8 sheets. Walls: 2x4 studs 16 inches on center (adjustable to 24 inches for economy) with a single bottom plate and doubled top plate, plus extra studs at corners. Wall and roof sheathing both work out as total area divided by 32 square feet per sheet, rounded up.",
+    "Roof framing follows the selected style. Gable rafters run from the eaves to a ridge board at a 6/12 pitch, so each rafter is the square root of run squared plus rise squared, plus a foot of overhang. Lean-to uses a single sloped rafter and the least material. Gambrel uses four slopes for maximum loft headroom and the most material. Shingles are estimated at 3 bundles per roofing square plus 10 percent waste.",
+    "Not included: foundation (gravel pad, piers, or slab), doors and windows (openings subtract studs but add headers, so the framing count runs slightly conservative), fasteners and hardware, and interior finish. Budget 20 to 30 percent above this framing list for the parts a lumber takeoff does not capture. The article below walks through foundations, roof styles, a full worked 10x12 example, and cost.",
   ],
 
   sources: [
     {
-      name: "IRC 2021 — Detached Accessory Structures",
-      url: "https://codes.iccsafe.org/",
-      note: "Code requirements for sheds and outbuildings",
+      name: "IRC 2021 Section R105.2: Work Exempt from Permit",
+      url: "https://codes.iccsafe.org/content/IRC2021P2/chapter-1-scope-and-administration",
+      note: "The 120 sq ft permit-exemption threshold for accessory structures",
     },
     {
-      name: "APA Engineered Wood — Shed Design",
+      name: "APA: Engineered Wood Construction Guide",
+      url: "https://www.apawood.org/publication-search",
+      note: "Sheathing spans, panel grades, and fastening for walls and roofs",
+    },
+    {
+      name: "AWC: Wood Frame Construction Manual",
+      url: "https://awc.org/publications/",
+      note: "Stud spacing, plate, and rafter framing standards",
+    },
+    {
+      name: "APA: Panel Handbook (4x8 sheet coverage)",
       url: "https://www.apawood.org/",
-      note: "Engineered wood construction references",
+      note: "Basis for the 32 sq ft per sheet sheathing math",
     },
   ],
 
   related: [
     { name: "Lumber calculator", slug: "lumber-calculator", description: "Board feet for any framing" },
-    { name: "Deck calculator", slug: "deck-calculator", description: "Boards, joists, fasteners" },
+    { name: "Stud spacing calculator", slug: "stud-spacing-calculator", description: "Studs, plates, and headers" },
     { name: "Roofing calculator", slug: "roofing-calculator", description: "Shingles for any pitch" },
-    { name: "Concrete calculator", slug: "concrete-calculator", description: "Slab or footing foundations" },
+    { name: "Concrete calculator", slug: "concrete-calculator", description: "Slab or pier foundations" },
+    { name: "Gravel calculator", slug: "gravel-calculator", description: "Tons for a gravel pad base" },
+    { name: "Insulation calculator", slug: "insulation-calculator", description: "R-value for a finished shed" },
   ],
 
   faq: [
@@ -219,7 +257,7 @@ export const shedCalculatorConfig: CalculatorConfig = {
     {
       question: "Do I need a permit?",
       answer:
-        "Depends on your jurisdiction. Most US codes exempt sheds under 120 sq ft (a 10×12 or smaller). Over that, permits required. Electrical wiring or plumbing always requires permits. HOA restrictions may apply regardless of permits. Check before building — retroactive permits cost more than original.",
+        "Depends on your jurisdiction. Most US codes exempt sheds under 120 sq ft (a 10×12 or smaller). Over that, permits required. Electrical wiring or plumbing always requires permits. HOA restrictions may apply regardless of permits. Check before building. Retroactive permits cost more than original.",
     },
     {
       question: "What foundation does a shed need?",
@@ -239,7 +277,7 @@ export const shedCalculatorConfig: CalculatorConfig = {
     {
       question: "Can I skip the roof sheathing?",
       answer:
-        "Not for asphalt shingles — they need a solid nailing surface. You can skip sheathing if you use metal roofing with purlins (horizontal boards every 24\" across the rafters). Metal roofing costs more per square foot but saves on sheathing material. For wood shakes or shingles, sheathing is optional but recommended for weatherproofing.",
+        "Not for asphalt shingles, they need a solid nailing surface. You can skip sheathing if you use metal roofing with purlins (horizontal boards every 24\" across the rafters). Metal roofing costs more per square foot but saves on sheathing material. For wood shakes or shingles, sheathing is optional but recommended for weatherproofing.",
     },
     {
       question: "What about insulation and drywall?",

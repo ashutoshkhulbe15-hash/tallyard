@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-export const metadata: Metadata = { title: "Lumber, framing, stair, and shed calculators — Tallyard", description: "Calculators for board feet, stair rise/run, stud spacing, window sizing, and shed materials with IRC references.", alternates: { canonical: "/calculators/lumber-framing" } };
+export const metadata: Metadata = { title: "Lumber, framing, stair, and shed calculators: Tallyard", description: "Calculators for board feet, stair rise/run, stud spacing, window sizing, and shed materials with IRC references.", alternates: { canonical: "/calculators/lumber-framing" } };
 const tools = [
   { slug: "lumber-calculator", name: "Lumber calculator", desc: "Board feet and linear feet by dimensions." },
   { slug: "stair-calculator", name: "Stair calculator", desc: "Rise, run, and stringers per IRC R311.7." },

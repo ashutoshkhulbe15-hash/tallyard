@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy policy — Tallyard",
+  title: "Privacy policy: Tallyard",
   description:
     "How Tallyard handles your data. Short version: calculator inputs stay in your browser, we don't collect personal information, and we don't sell anything.",
   alternates: { canonical: "/privacy" },

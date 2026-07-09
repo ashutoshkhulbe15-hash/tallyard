@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "lumber-calculator";
 
 export const metadata: Metadata = {
-  title: "Lumber Calculator — Board Feet And Lineal Feet",
+  title: "Lumber Calculator: Board Feet And Lineal Feet",
   description:
     "Calculate board feet and lineal feet for any lumber order. Handles all nominal sizes with waste factor.",
   alternates: { canonical: "/lumber-calculator" },
   openGraph: {
-    title: "Lumber Calculator — Board Feet And Lineal Feet",
+    title: "Lumber Calculator: Board Feet And Lineal Feet",
     description: "Calculate board feet for framing, decks, and any lumber project.",
     url: "https://www.tallyard.com/lumber-calculator",
     type: "website",

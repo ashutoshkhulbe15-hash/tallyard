@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Paint, wallpaper, and drywall calculators — Tallyard",
+  title: "Paint, wallpaper, and drywall calculators: Tallyard",
   description:
     "Everything you need to estimate wall projects: paint gallons, wallpaper rolls, and drywall sheets. Free calculators with material lists and cost estimates.",
   alternates: { canonical: "/calculators/paint-walls" },

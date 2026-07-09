@@ -4,7 +4,7 @@ import { BannerHeadline } from "@/components/BannerHeadline";
 import RoofPlannerClient from "./RoofPlanner";
 
 export const metadata: Metadata = {
-  title: "Replace a roof — complete material planner",
+  title: "Replace a roof: complete material planner",
   description: "Plan a full roof replacement: shingles, underlayment, ventilation, gutters, and tear-off. Complete material list with quote comparison.",
   alternates: { canonical: "/planner/replace-a-roof" },
 };

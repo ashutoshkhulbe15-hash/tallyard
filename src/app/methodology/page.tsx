@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Methodology — how Tallyard calculators work",
+  title: "Methodology: how Tallyard calculators work",
   description:
     "Every Tallyard calculator shows its formula and cites its sources. Learn how we derive coverage rates, sizing factors, and rounding rules.",
   alternates: { canonical: "/methodology" },

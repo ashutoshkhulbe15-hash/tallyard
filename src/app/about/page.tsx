@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Tallyard — who we are and why this exists",
+  title: "About Tallyard: who we are and why this exists",
   description:
     "Tallyard was founded by Ash K. to build free, transparent home improvement calculators. Learn about our editorial process, sourcing standards, and what we don't do.",
   alternates: { canonical: "/about" },

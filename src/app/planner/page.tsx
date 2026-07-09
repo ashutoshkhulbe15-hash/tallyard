@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Project planner — complete material lists for home improvement",
+  title: "Project planner: complete material lists for home improvement",
   description:
     "Plan an entire home improvement project in one tool. Enter your dimensions once and get a complete material list with cost estimates. Then compare against contractor quotes.",
   alternates: { canonical: "/planner" },

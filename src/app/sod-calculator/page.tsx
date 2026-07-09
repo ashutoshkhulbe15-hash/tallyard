@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "sod-calculator";
 
 export const metadata: Metadata = {
-  title: "Sod Calculator — Square Feet, Rolls, And Pallets",
+  title: "Sod Calculator: Square Feet, Rolls, And Pallets",
   description:
     "Calculate square feet, slabs, rolls, and pallets of sod needed for any lawn. Accounts for cuts and waste.",
   alternates: { canonical: "/sod-calculator" },
   openGraph: {
-    title: "Sod Calculator — Square Feet, Rolls, And Pallets",
+    title: "Sod Calculator: Square Feet, Rolls, And Pallets",
     description: "Calculate sod pieces and pallets for any lawn installation.",
     url: "https://www.tallyard.com/sod-calculator",
     type: "website",

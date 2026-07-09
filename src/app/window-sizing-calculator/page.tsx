@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "window-sizing-calculator";
 
 export const metadata: Metadata = {
-  title: "Window Sizing Calculator — Egress, Light, And Rough Opening",
+  title: "Window Sizing Calculator: Egress, Light, And Rough Opening",
   description:
     "Calculate window size with IRC egress, natural light, and ventilation checks. Rough opening dimensions included.",
   alternates: { canonical: "/window-sizing-calculator" },
   openGraph: {
-    title: "Window Sizing Calculator — Egress, Light, And Rough Opening",
+    title: "Window Sizing Calculator: Egress, Light, And Rough Opening",
     description: "Calculate window size with egress and light checks.",
     url: "https://www.tallyard.com/window-sizing-calculator",
     type: "website",

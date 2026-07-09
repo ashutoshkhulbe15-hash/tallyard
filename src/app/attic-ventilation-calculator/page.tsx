@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "attic-ventilation-calculator";
 
 export const metadata: Metadata = {
-  title: "Attic Ventilation Calculator — NFVA Intake And Exhaust",
+  title: "Attic Ventilation Calculator: NFVA Intake And Exhaust",
   description:
     "Size attic venting with the 1:300 rule. Balanced intake and exhaust for ridge, gable, box, or power vents.",
   alternates: { canonical: "/attic-ventilation-calculator" },
   openGraph: {
-    title: "Attic Ventilation Calculator — NFVA Intake And Exhaust",
+    title: "Attic Ventilation Calculator: NFVA Intake And Exhaust",
     description: "Calculate attic ventilation with the 1:300 rule.",
     url: "https://www.tallyard.com/attic-ventilation-calculator",
     type: "website",

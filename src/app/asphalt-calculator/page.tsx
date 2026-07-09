@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "asphalt-calculator";
 
 export const metadata: Metadata = {
-  title: "Asphalt Calculator — Tons For Any Driveway",
+  title: "Asphalt Calculator: Tons For Any Driveway",
   description:
     "Calculate tons of asphalt needed for any driveway, lot, or path. Accounts for compaction thickness and waste.",
   alternates: { canonical: "/asphalt-calculator" },
   openGraph: {
-    title: "Asphalt Calculator — Tons For Any Driveway",
+    title: "Asphalt Calculator: Tons For Any Driveway",
     description: "Calculate tons of asphalt for any driveway or parking project.",
     url: "https://www.tallyard.com/asphalt-calculator",
     type: "website",

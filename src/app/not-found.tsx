@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "404 — Page not found | Tallyard",
+  title: "404: Page not found | Tallyard",
   description: "This page doesn't exist on Tallyard.",
   robots: { index: false, follow: true },
 };

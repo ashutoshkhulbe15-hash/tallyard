@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "brick-calculator";
 
 export const metadata: Metadata = {
-  title: "Brick Calculator — Bricks And Mortar Bags",
+  title: "Brick Calculator: Bricks And Mortar Bags",
   description:
     "Calculate bricks and mortar for any wall. All standard sizes with single or double wythe and proper joint math.",
   alternates: { canonical: "/brick-calculator" },
   openGraph: {
-    title: "Brick Calculator — Bricks And Mortar Bags",
+    title: "Brick Calculator: Bricks And Mortar Bags",
     description: "Calculate bricks and mortar bags for any wall project.",
     url: "https://www.tallyard.com/brick-calculator",
     type: "website",

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description:
     "Transparent calculators for home improvement and DIY. Every formula public, every source cited, no signup required.",
   openGraph: {
-    title: "Tallyard — Calculators that show their work",
+    title: "Tallyard: Calculators that show their work",
     description:
       "Transparent calculators for home improvement and DIY. Every formula public, every source cited.",
     url: "https://www.tallyard.com",

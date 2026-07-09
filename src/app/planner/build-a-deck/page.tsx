@@ -4,12 +4,12 @@ import { BannerHeadline } from "@/components/BannerHeadline";
 import DeckPlannerClient from "./DeckPlanner";
 
 export const metadata: Metadata = {
-  title: "Build a deck — complete material planner",
+  title: "Build a deck: complete material planner",
   description:
     "Plan your entire deck project in one tool. Get a complete material list for decking, frame, concrete footings, stairs, railing, and fasteners. Compare against contractor quotes.",
   alternates: { canonical: "/planner/build-a-deck" },
   openGraph: {
-    title: "Build a deck — complete material planner",
+    title: "Build a deck: complete material planner",
     description: "Plan your entire deck project: decking, frame, footings, stairs, railing, and fasteners in one tool.",
     url: "https://www.tallyard.com/planner/build-a-deck",
     type: "website",

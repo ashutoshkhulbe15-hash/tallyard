@@ -177,7 +177,7 @@ export const studSpacingCalculatorConfig: CalculatorConfig = {
     { name: "Drywall calculator", slug: "drywall-calculator", description: "Sheets for framed walls" },
     { name: "Lumber calculator", slug: "lumber-calculator", description: "Board feet for any order" },
     { name: "Insulation calculator", slug: "insulation-calculator", description: "R-value by framing spacing" },
-    { name: "Paint calculator", slug: "paint-calculator", description: "Gallons once walls are framed" },
+    { name: "Shed calculator", slug: "shed-calculator", description: "Framing takeoff for a whole shed" },
   ],
 
   faq: [

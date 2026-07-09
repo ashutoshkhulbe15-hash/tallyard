@@ -156,7 +156,7 @@ export const lumberCalculatorConfig: CalculatorConfig = {
 
   related: [
     { name: "Deck calculator", slug: "deck-calculator", description: "Boards and joists for any deck" },
-    { name: "Fence calculator", slug: "fence-calculator", description: "Posts, rails, and pickets" },
+    { name: "Shed calculator", slug: "shed-calculator", description: "Full material list for a backyard shed" },
     { name: "Drywall calculator", slug: "drywall-calculator", description: "Sheets for walls and ceilings" },
     { name: "Stair calculator", slug: "stair-calculator", description: "Stringers, treads, and risers" },
   ],

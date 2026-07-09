@@ -4,7 +4,7 @@ import { BannerHeadline } from "@/components/BannerHeadline";
 import PaintPlannerClient from "./PaintPlanner";
 
 export const metadata: Metadata = {
-  title: "Paint a room — complete material planner",
+  title: "Paint a room: complete material planner",
   description: "Plan a room painting project: wall paint, primer, ceiling paint, and all supplies. Get quantities and cost, then compare against quotes.",
   alternates: { canonical: "/planner/paint-a-room" },
 };

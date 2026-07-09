@@ -5,7 +5,7 @@ import { HomeDirectory } from "./HomeDirectory";
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Tallyard — Free home improvement calculators that show their work",
+    title: "Tallyard: Free home improvement calculators that show their work",
     description: "45 calculators for paint, concrete, roofing, decking, fencing, and more.",
     url: "https://www.tallyard.com",
     images: [{ url: "/og-default.png", width: 1200, height: 630, alt: "Tallyard" }],

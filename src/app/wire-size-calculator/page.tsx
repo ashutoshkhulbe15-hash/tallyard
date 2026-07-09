@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "wire-size-calculator";
 
 export const metadata: Metadata = {
-  title: "Wire Size Calculator — AWG For Any Amp Load",
+  title: "Wire Size Calculator: AWG For Any Amp Load",
   description:
     "Calculate the right electrical wire gauge for your circuit. Accounts for amps, voltage drop, distance, and wire material.",
   alternates: { canonical: "/wire-size-calculator" },
   openGraph: {
-    title: "Wire Size Calculator — AWG For Any Amp Load",
+    title: "Wire Size Calculator: AWG For Any Amp Load",
     description:
       "Calculate the right electrical wire gauge for your circuit, with voltage drop included.",
     url: "https://www.tallyard.com/wire-size-calculator",

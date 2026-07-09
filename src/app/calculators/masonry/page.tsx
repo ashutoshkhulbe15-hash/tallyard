@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Concrete, brick, rebar, and asphalt calculators — Tallyard",
+  title: "Concrete, brick, rebar, and asphalt calculators: Tallyard",
   description: "Masonry and paving calculators: concrete yards, brick counts, rebar grids, and asphalt tonnage. Free tools with code-compliant specifications.",
   alternates: { canonical: "/calculators/masonry" },
 };

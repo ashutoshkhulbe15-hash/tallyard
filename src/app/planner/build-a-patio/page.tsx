@@ -4,7 +4,7 @@ import { BannerHeadline } from "@/components/BannerHeadline";
 import PatioPlannerClient from "./PatioPlanner";
 
 export const metadata: Metadata = {
-  title: "Build a patio — complete material planner",
+  title: "Build a patio: complete material planner",
   description: "Plan a paver patio: pavers, gravel base, bedding sand, edge restraint, and joint sand. Full material list with cost estimates.",
   alternates: { canonical: "/planner/build-a-patio" },
 };

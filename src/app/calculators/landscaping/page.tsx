@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-export const metadata: Metadata = { title: "Landscaping, deck, and fence calculators — Tallyard", description: "Calculators for deck, fence, paver, mulch, gravel, sod, topsoil, pool, and rainwater. Free tools for outdoor projects.", alternates: { canonical: "/calculators/landscaping" } };
+export const metadata: Metadata = { title: "Landscaping, deck, and fence calculators: Tallyard", description: "Calculators for deck, fence, paver, mulch, gravel, sod, topsoil, pool, and rainwater. Free tools for outdoor projects.", alternates: { canonical: "/calculators/landscaping" } };
 const tools = [
   { slug: "deck-calculator", name: "Deck calculator", desc: "Decking, joists, posts, and footings by size and material." },
   { slug: "fence-calculator", name: "Fence calculator", desc: "Posts, rails, pickets, and concrete by linear footage." },

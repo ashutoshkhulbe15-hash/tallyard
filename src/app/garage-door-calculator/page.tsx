@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "garage-door-calculator";
 
 export const metadata: Metadata = {
-  title: "Garage Door Calculator — Size And Opener HP",
+  title: "Garage Door Calculator: Size And Opener HP",
   description:
     "Right garage door size and opener power for any opening. Checks headroom, side room, and recommends material.",
   alternates: { canonical: "/garage-door-calculator" },
   openGraph: {
-    title: "Garage Door Calculator — Size And Opener HP",
+    title: "Garage Door Calculator: Size And Opener HP",
     description: "Calculate garage door size, clearances, and opener HP.",
     url: "https://www.tallyard.com/garage-door-calculator",
     type: "website",

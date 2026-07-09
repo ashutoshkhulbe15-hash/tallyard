@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-export const metadata: Metadata = { title: "Roofing, siding, gutter, and exterior calculators — Tallyard", description: "Calculators for roofing, siding, gutters, attic ventilation, snow load, and garage doors.", alternates: { canonical: "/calculators/roofing-exterior" } };
+export const metadata: Metadata = { title: "Roofing, siding, gutter, and exterior calculators: Tallyard", description: "Calculators for roofing, siding, gutters, attic ventilation, snow load, and garage doors.", alternates: { canonical: "/calculators/roofing-exterior" } };
 const tools = [
   { slug: "roofing-calculator", name: "Roofing calculator", desc: "Squares of shingles by footprint and pitch." },
   { slug: "siding-calculator", name: "Siding calculator", desc: "Squares of siding by wall area with deductions." },

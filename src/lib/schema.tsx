@@ -124,9 +124,29 @@ export function getCalculatorSchema({
     ],
   };
 
+  const howTo =
+    config.howTo && config.howTo.steps.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "HowTo",
+          name: config.howTo.name,
+          description: config.howTo.description,
+          totalTime: "PT2M",
+          tool: [{ "@type": "HowToTool", name: `${config.title}` }],
+          step: config.howTo.steps.map((s, i) => ({
+            "@type": "HowToStep",
+            position: i + 1,
+            name: s.name,
+            text: s.text,
+            url: `${pageUrl}#calculator`,
+          })),
+        }
+      : null;
+
   const schemas: object[] = [webApplication, breadcrumbs];
   if (article) schemas.push(article);
   if (faqPage) schemas.push(faqPage);
+  if (howTo) schemas.push(howTo);
   return schemas;
 }
 

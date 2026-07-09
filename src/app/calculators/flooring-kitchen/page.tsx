@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Flooring, tile, and kitchen calculators — Tallyard",
+  title: "Flooring, tile, and kitchen calculators: Tallyard",
   description: "Calculators for flooring, tile, grout, backsplash, countertop, vanity, and kitchen cabinets. Free tools with waste factors and cost estimates.",
   alternates: { canonical: "/calculators/flooring-kitchen" },
 };

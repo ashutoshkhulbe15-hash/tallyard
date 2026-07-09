@@ -229,7 +229,7 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
                         {source.note && (
                           <span className="text-ink-faint">
                             {" "}
-                            — {source.note}
+                            - {source.note}
                           </span>
                         )}
                       </li>

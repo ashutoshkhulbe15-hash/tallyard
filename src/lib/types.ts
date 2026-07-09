@@ -117,7 +117,16 @@ export interface CalculatorConfig {
     description: string;
   }>;
 
-  /** Optional rich content expansion — rendered as a full article section
+  /** Optional rich content expansion - rendered as a full article section
    *  below methodology and above FAQ. Uses guide-prose styling. */
   ContentExpansion?: React.ComponentType;
+
+  /** Optional HowTo steps. When present, emits HowTo JSON-LD so AI answer
+   *  engines and Google's "how to" rich results can lift the procedure.
+   *  Describe the real steps a person follows to get the answer. */
+  howTo?: {
+    name: string;
+    description: string;
+    steps: Array<{ name: string; text: string }>;
+  };
 }

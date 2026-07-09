@@ -4,7 +4,7 @@ import { BannerHeadline } from "@/components/BannerHeadline";
 import BathroomPlannerClient from "./BathroomPlanner";
 
 export const metadata: Metadata = {
-  title: "Remodel a bathroom — complete material planner",
+  title: "Remodel a bathroom: complete material planner",
   description: "Plan a bathroom remodel: floor tile, shower tile, vanity, paint, and accessories. One form, complete material list with quote comparison.",
   alternates: { canonical: "/planner/remodel-a-bathroom" },
 };

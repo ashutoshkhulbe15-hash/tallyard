@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "stair-calculator";
 
 export const metadata: Metadata = {
-  title: "Stair Calculator — Rise, Run, And Stringer Length",
+  title: "Stair Calculator: Rise, Run, And Stringer Length",
   description:
     "Calculate risers, treads, stringer length, and total run for any stair. IRC-code compliant with comfort checks.",
   alternates: { canonical: "/stair-calculator" },
   openGraph: {
-    title: "Stair Calculator — Rise, Run, And Stringer Length",
+    title: "Stair Calculator: Rise, Run, And Stringer Length",
     description: "Calculate risers, treads, and stringer length for any staircase.",
     url: "https://www.tallyard.com/stair-calculator",
     type: "website",

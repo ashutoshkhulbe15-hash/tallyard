@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "grout-calculator";
 
 export const metadata: Metadata = {
-  title: "Grout Calculator — Pounds Of Grout For Tile",
+  title: "Grout Calculator: Pounds Of Grout For Tile",
   description:
     "Calculate pounds of grout for any tile installation. Accounts for tile size, joint width, and thickness.",
   alternates: { canonical: "/grout-calculator" },
   openGraph: {
-    title: "Grout Calculator — Pounds Of Grout For Tile",
+    title: "Grout Calculator: Pounds Of Grout For Tile",
     description:
       "Calculate pounds of grout for any tile installation.",
     url: "https://www.tallyard.com/grout-calculator",

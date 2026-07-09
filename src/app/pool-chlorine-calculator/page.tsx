@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "pool-chlorine-calculator";
 
 export const metadata: Metadata = {
-  title: "Pool Chlorine Calculator — Dose For Any Pool",
+  title: "Pool Chlorine Calculator: Dose For Any Pool",
   description:
     "Calculate chlorine dose for any pool volume. Handles liquid, granular, trichlor, and dichlor products.",
   alternates: { canonical: "/pool-chlorine-calculator" },
   openGraph: {
-    title: "Pool Chlorine Calculator — Dose For Any Pool",
+    title: "Pool Chlorine Calculator: Dose For Any Pool",
     description: "Calculate chlorine dose for pool maintenance and shock.",
     url: "https://www.tallyard.com/pool-chlorine-calculator",
     type: "website",

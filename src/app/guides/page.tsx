@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { getAllGuides } from "@/guides";
 
 export const metadata: Metadata = {
-  title: "Buying guides — real cost math for home improvement decisions",
+  title: "Buying guides: real cost math for home improvement decisions",
   description:
     "In-depth buying guides for home improvement: vinyl vs fiber cement siding, composite vs pressure-treated decking, heat pump vs furnace. Real total cost of ownership math.",
   alternates: { canonical: "/guides" },

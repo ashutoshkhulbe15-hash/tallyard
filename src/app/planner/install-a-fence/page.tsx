@@ -4,7 +4,7 @@ import { BannerHeadline } from "@/components/BannerHeadline";
 import FencePlannerClient from "./FencePlanner";
 
 export const metadata: Metadata = {
-  title: "Install a fence — complete material planner",
+  title: "Install a fence: complete material planner",
   description: "Plan your fence project: posts, rails, pickets, concrete footings, and gates. One form, full material list, quote comparison.",
   alternates: { canonical: "/planner/install-a-fence" },
 };

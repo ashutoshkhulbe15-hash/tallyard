@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-export const metadata: Metadata = { title: "Solar, electrical, and wire calculators — Tallyard", description: "Calculators for solar panels, wire gauge, and extension cords with NEC references.", alternates: { canonical: "/calculators/electrical-solar" } };
+export const metadata: Metadata = { title: "Solar, electrical, and wire calculators: Tallyard", description: "Calculators for solar panels, wire gauge, and extension cords with NEC references.", alternates: { canonical: "/calculators/electrical-solar" } };
 const tools = [
   { slug: "solar-calculator", name: "Solar calculator", desc: "System size, panel count, cost, and payback period." },
   { slug: "wire-size-calculator", name: "Wire size calculator", desc: "AWG gauge by amperage and distance per NEC." },

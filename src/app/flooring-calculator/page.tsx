@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "flooring-calculator";
 
 export const metadata: Metadata = {
-  title: "Flooring Calculator — Hardwood, Laminate, Vinyl",
+  title: "Flooring Calculator: Hardwood, Laminate, Vinyl",
   description:
     "Calculate boxes of hardwood, laminate, or luxury vinyl plank flooring for any room. Waste factor by pattern.",
   alternates: { canonical: "/flooring-calculator" },
   openGraph: {
-    title: "Flooring Calculator — Hardwood, Laminate, Vinyl",
+    title: "Flooring Calculator: Hardwood, Laminate, Vinyl",
     description:
       "Calculate boxes of hardwood, laminate, or vinyl plank flooring for any room.",
     url: "https://www.tallyard.com/flooring-calculator",
