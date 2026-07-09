@@ -145,7 +145,7 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
             {/* Calculator: order 2 on mobile (right after intro), spans the
                 right column across both rows on desktop so it stays sticky
                 beside the article. */}
-            <div className="order-2 w-full lg:order-none lg:col-start-2 lg:row-start-1 lg:row-span-2">
+            <div className="order-2 w-full lg:order-none lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:self-stretch">
               <StickyCalc>
                 <Calculator slug={slug} panelTitle={config.title} />
               </StickyCalc>
