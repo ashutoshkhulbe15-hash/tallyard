@@ -3,6 +3,7 @@ import { Calculator } from "./Calculator";
 import { BannerHeadline } from "./BannerHeadline";
 import { FeedbackWidget } from "./FeedbackWidget";
 import { PageRail } from "./PageRail";
+import { StickyCalc } from "./StickyCalc";
 import { getConfig } from "@/configs";
 import { getReviewedDate } from "@/lib/schema";
 
@@ -237,9 +238,9 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
                 </section>
               )}
             </div>
-            <div className="lg:sticky lg:top-20">
+            <StickyCalc>
               <Calculator slug={slug} panelTitle={config.title} />
-            </div>
+            </StickyCalc>
           </div>
         </section>
 
