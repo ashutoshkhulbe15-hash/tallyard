@@ -49,7 +49,7 @@ export const gutterCalculatorConfig: CalculatorConfig = {
         { label: "7/12 to 9/12", value: 1.2 },
         { label: "10/12+", value: 1.3 },
       ],
-      help: "Steeper roofs channel more water — need bigger gutters",
+      help: "Steeper roofs channel more water - need bigger gutters",
     },
     {
       id: "rainfall",
@@ -148,43 +148,81 @@ export const gutterCalculatorConfig: CalculatorConfig = {
 
   ContentExpansion: GutterCalculatorExpansion,
 
+  howTo: {
+    name: "How to calculate gutters and downspouts for a house",
+    description:
+      "Size gutters, downspouts, hangers, and accessories from your roof edge length, roof area, pitch, and regional rainfall.",
+    steps: [
+      {
+        name: "Measure your gutter run",
+        text: "Add up the length of every eave where you want gutters. Eaves are the low horizontal roof edges, not the sloped gable ends. This is your total linear feet of gutter.",
+      },
+      {
+        name: "Find the roof area that drains into the longest run",
+        text: "Estimate the square footage of roof that feeds your busiest single gutter run. The calculator sizes the gutter to the worst run, not the average.",
+      },
+      {
+        name: "Set pitch and rainfall",
+        text: "Pick your roof pitch and your regional peak rainfall rate. Steeper roofs and higher rainfall raise the effective drainage area and can push you from 5-inch to 6-inch gutters.",
+      },
+      {
+        name: "Read the material list",
+        text: "The calculator returns gutter size and length, downspout count, hangers, elbows, corners, and end caps, each ready to buy.",
+      },
+      {
+        name: "Plan slope and downspout placement",
+        text: "Slope each run about a quarter inch per 10 feet toward a downspout, put a downspout at every low end and at least one per 40 feet, and discharge 4 to 6 feet from the foundation.",
+      },
+    ],
+  },
+
   formulaDescription:
     "gutter = roof edge ft; downspouts = ⌈effective area ÷ (600-1200 ft² per DS)⌉; size = 5\" up to 5,500 ft², 6\" above",
 
   methodology: [
-    "Gutter sizing starts with the effective drainage area — the roof area that funnels water into the longest gutter run, adjusted for roof pitch and local rainfall intensity. Steeper roofs deliver water to the gutter faster, so pitch factor bumps up effective area (1.1 for 4-6/12 pitch, up to 1.3 for very steep roofs). Regional rainfall matters too — Gulf Coast storms deliver 9 in/hr of rain; the Pacific Northwest rarely exceeds 5 in/hr.",
-    "The rule of thumb: 5-inch K-style gutters handle effective areas up to ~5,500 sq ft. Above that, step up to 6-inch gutters which handle ~7,900 sq ft. Most residential homes use 5-inch; large houses or high-rainfall areas often need 6-inch. Commercial and industrial buildings use even larger sizes.",
-    "Downspouts: one per 600-800 sq ft of effective drainage area for 5-inch gutters, one per 1,200 sq ft for 6-inch. Also a minimum of one downspout per 40 feet of gutter run to prevent overflow from long unbroken runs. A simple rectangular home often has 4 downspouts (one per corner); larger homes need more.",
-    "Hangers (the metal brackets holding the gutter to the fascia) space 24-32 inches on center. The calculator uses 32-inch spacing which is standard for most climates. In snow-load regions (New England, Upper Midwest), spec 16-20 inch spacing because snow weight can pull out widely-spaced hangers.",
-    "Elbows are the 45 or 90-degree fittings that connect downspouts to the gutter and turn corners at the ground level. Typical downspout uses 3 elbows: one at the top (gutter to downspout), one at the bottom (downspout to ground discharge), and sometimes one at the middle (to clear trim or offset).",
-    "Not included: splash blocks (concrete pads at downspout discharge), gutter guards or screens, heated gutter cables (for ice dam prevention in cold climates), fascia repair materials, and labor. Professional installation costs $5-15 per linear foot for aluminum, $15-35 for copper.",
+    "Gutter sizing starts with the effective drainage area, which is the roof area feeding the longest single gutter run, adjusted for roof pitch and local rainfall intensity. Steeper roofs deliver water to the gutter faster, so the pitch factor raises effective area (1.1 for 4-6/12 pitch, up to 1.3 for very steep roofs). Regional rainfall matters just as much: Gulf Coast storms can deliver 9 inches per hour while the Pacific Northwest rarely exceeds 5.",
+    "The size threshold: 5-inch K-style gutters handle effective drainage areas up to roughly 5,500 sq ft, and 6-inch handles up to about 7,900. As a quick rule of thumb before the pitch and rainfall math, a single run draining more than about 2,500 sq ft of actual roof, a steep roof, or a high-rainfall region all point to 6-inch. Most homes use 5-inch; large, steep, or storm-prone roofs use 6-inch.",
+    "Gutters slope toward the downspout at about a quarter inch per 10 feet of run so water drains instead of standing. On a 40-foot run that is a 1-inch total fall. Very long eaves slope from a high point in the middle down to a downspout at each end to keep the fall reasonable.",
+    "Downspouts: at least one per 40 feet of gutter run, plus enough to cover the effective drainage area (roughly one per 600-800 sq ft for 5-inch gutters, one per 1,200 for 6-inch). Place them at the low ends of runs and discharge 4-6 feet from the foundation. Hangers space 24-32 inches on center in most climates, tightened to 16-20 inches in heavy-snow regions.",
+    "Elbows connect the downspout to the gutter outlet and turn the run at the ground. A typical downspout uses about 3: one at the top, one at the bottom, and sometimes one to offset around trim. End caps close each gutter run.",
+    "Not included: splash blocks, gutter guards, heated cables for ice dams, fascia repair, and labor. Installed cost runs $6-14 per linear foot for aluminum or steel and $25-50 for copper.",
   ],
 
   sources: [
     {
-      name: "SMACNA — Architectural Sheet Metal Manual",
-      url: "https://www.smacna.org/",
-      note: "Industry standard for gutter sizing by drainage area",
+      name: "SMACNA: Architectural Sheet Metal Manual",
+      url: "https://www.smacna.org/technical/manuals",
+      note: "Industry gutter and downspout sizing tables by drainage area",
     },
     {
-      name: "IRC 2021 Chapter 11 — Roofing",
-      url: "https://codes.iccsafe.org/",
-      note: "Code requirements for drainage and downspout placement",
+      name: "IRC 2021 Section R903: Weather Protection",
+      url: "https://codes.iccsafe.org/content/IRC2021P2/chapter-9-roof-assemblies-and-rooftop-structures",
+      note: "Roof drainage and downspout discharge requirements",
+    },
+    {
+      name: "NOAA Atlas 14: Precipitation Frequency",
+      url: "https://hdsc.nws.noaa.gov/pfds/",
+      note: "Regional peak rainfall intensity data used for sizing",
+    },
+    {
+      name: "Aluminum Association: Coil Coating Specs",
+      url: "https://www.aluminum.org/",
+      note: "Seamless aluminum gutter material properties and lifespan",
     },
   ],
 
   related: [
     { name: "Roofing calculator", slug: "roofing-calculator", description: "Shingle bundles for any pitch" },
+    { name: "Snow load calculator", slug: "snow-load-calculator", description: "What a roof carries in snow country" },
+    { name: "Rainwater calculator", slug: "rainwater-calculator", description: "Size a tank from your roof area" },
     { name: "Siding calculator", slug: "siding-calculator", description: "Squares of siding for any home" },
-    { name: "Paint calculator", slug: "paint-calculator", description: "Exterior paint and trim" },
-    { name: "Insulation calculator", slug: "insulation-calculator", description: "Attic insulation R-value" },
   ],
 
   faq: [
     {
       question: "How many feet of gutter do I need for my house?",
       answer:
-        "Measure the total length of all roof eaves where you want gutters — typically the sum of the long sides of the house. A typical 30×40 ft ranch has 70-80 ft of gutter if only the long sides have gutters, or ~140 ft if all four sides do. The calculator handles any length.",
+        "Measure the total length of all roof eaves where you want gutters - typically the sum of the long sides of the house. A typical 30×40 ft ranch has 70-80 ft of gutter if only the long sides have gutters, or ~140 ft if all four sides do. The calculator handles any length.",
     },
     {
       question: "Should I use 5-inch or 6-inch gutters?",
@@ -199,12 +237,12 @@ export const gutterCalculatorConfig: CalculatorConfig = {
     {
       question: "Where should I place downspouts?",
       answer:
-        "At outside corners (lowest points of the roof's slope) and at the ends of long runs. Downspouts need clear discharge paths — never onto a neighbor's property, toward a foundation, or onto hardscape that sends water back to the house. Always extend downspouts 4-6 feet from the foundation or direct into an approved drainage system.",
+        "At outside corners (lowest points of the roof's slope) and at the ends of long runs. Downspouts need clear discharge paths - never onto a neighbor's property, toward a foundation, or onto hardscape that sends water back to the house. Always extend downspouts 4-6 feet from the foundation or direct into an approved drainage system.",
     },
     {
       question: "How far apart should gutter hangers be?",
       answer:
-        "Standard climates: 24-32 inches on center. In snow-load regions, 16-20 inches. Hangers cost $2-5 each, so tighter spacing adds little material cost but provides crucial durability. Older homes often have hangers at 36-48 inches, which is inadequate — expect gutters to pull loose from the fascia over time.",
+        "Standard climates: 24-32 inches on center. In snow-load regions, 16-20 inches. Hangers cost $2-5 each, so tighter spacing adds little material cost but provides crucial durability. Older homes often have hangers at 36-48 inches, which is inadequate - expect gutters to pull loose from the fascia over time.",
     },
     {
       question: "Can I install gutters myself?",
@@ -214,12 +252,12 @@ export const gutterCalculatorConfig: CalculatorConfig = {
     {
       question: "What do gutter guards cost?",
       answer:
-        "DIY mesh screens: $1-3 per linear foot. Foam or brush-style inserts: $3-8 per linear foot. Professional micro-mesh (like LeafGuard or Gutter Helmet): $20-60 per linear foot installed. Not included in this calculator — budget separately if desired. Value varies; foam inserts clog with fine debris, professional systems have better long-term performance.",
+        "DIY mesh screens: $1-3 per linear foot. Foam or brush-style inserts: $3-8 per linear foot. Professional micro-mesh (like LeafGuard or Gutter Helmet): $20-60 per linear foot installed. Not included in this calculator - budget separately if desired. Value varies; foam inserts clog with fine debris, professional systems have better long-term performance.",
     },
     {
       question: "How long do gutters last?",
       answer:
-        "Aluminum: 20-30 years. Galvanized steel: 20-30 years but may rust. Copper: 50-100 years (premium, expensive). Vinyl: 10-20 years. Lifespan depends on climate — ice dams, hail, leaves trapped for years, and falling tree limbs all shorten life. Clean gutters twice yearly (spring and fall) to maximize lifespan.",
+        "Aluminum: 20-30 years. Galvanized steel: 20-30 years but may rust. Copper: 50-100 years (premium, expensive). Vinyl: 10-20 years. Lifespan depends on climate - ice dams, hail, leaves trapped for years, and falling tree limbs all shorten life. Clean gutters twice yearly (spring and fall) to maximize lifespan.",
     },
   ],
   relatedGuides: [

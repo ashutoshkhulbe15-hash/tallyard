@@ -6,13 +6,14 @@ import { getConfig } from "@/configs";
 const SLUG = "gutter-calculator";
 
 export const metadata: Metadata = {
-  title: "Gutter Calculator: Linear Feet And Downspouts",
+  title: "Gutter Calculator: Size, Downspouts & Cost Estimate",
   description:
-    "Calculate gutters, downspouts, and accessories for any home. Sizes gutters by roof area and regional rainfall.",
+    "Free gutter calculator: linear feet, downspouts, and 5-inch vs 6-inch sizing for any roof. Includes slope, material costs, and how to measure. No signup.",
   alternates: { canonical: "/gutter-calculator" },
   openGraph: {
-    title: "Gutter Calculator: Linear Feet And Downspouts",
-    description: "Calculate gutter linear feet and downspouts for any home.",
+    title: "Gutter Calculator: Size, Downspouts & Cost Estimate",
+    description:
+      "Free gutter calculator: linear feet, downspouts, and 5-inch vs 6-inch sizing for any roof. Includes slope, material costs, and how to measure.",
     url: "https://www.tallyard.com/gutter-calculator",
     type: "website",
   },
