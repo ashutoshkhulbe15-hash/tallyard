@@ -162,7 +162,7 @@ export const concreteCalculatorConfig: CalculatorConfig = {
   ],
 
   related: [
-    { name: "Paint calculator", slug: "paint-calculator", description: "Gallons of paint for any room" },
+    { name: "Stair calculator", slug: "stair-calculator", description: "Stringers, treads, and stair footings" },
     { name: "Shed calculator", slug: "shed-calculator", description: "Framing for a shed on your slab" },
     { name: "Gravel calculator", slug: "gravel-calculator", description: "Cubic yards of gravel base for slabs" },
     { name: "Fence calculator", slug: "fence-calculator", description: "Posts, rails, and concrete for post holes" },

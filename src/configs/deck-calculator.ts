@@ -178,7 +178,7 @@ export const deckCalculatorConfig: CalculatorConfig = {
 
   related: [
     { name: "Concrete calculator", slug: "concrete-calculator", description: "For deck footings" },
-    { name: "Fence calculator", slug: "fence-calculator", description: "Matching fence for deck enclosure" },
+    { name: "Stair calculator", slug: "stair-calculator", description: "Deck stairs: rise, run, and stringers" },
     { name: "Shed calculator", slug: "shed-calculator", description: "Framing and sheathing for a shed" },
     { name: "Lumber calculator", slug: "lumber-calculator", description: "Board feet for framing" },
   ],

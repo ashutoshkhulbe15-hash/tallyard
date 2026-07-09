@@ -141,28 +141,66 @@ export const stairCalculatorConfig: CalculatorConfig = {
 
   ContentExpansion: StairCalculatorExpansion,
 
+  howTo: {
+    name: "How to calculate stairs, stringers, rise and run",
+    description:
+      "Find the number of steps, exact rise and run, stringer length, and stringer count for any staircase from your total floor-to-floor rise.",
+    steps: [
+      {
+        name: "Measure total rise",
+        text: "Measure the exact vertical distance from the lower finished floor to the upper finished floor in inches. Every other number depends on this, so be precise.",
+      },
+      {
+        name: "Find the step count",
+        text: "Divide total rise by a target riser height (7 to 7.5 inches is the comfortable range) and round up to a whole number. That is your riser count.",
+      },
+      {
+        name: "Get the actual rise and run",
+        text: "Divide total rise by the riser count for the actual rise per step, which is now identical across every step. Pair it with a 10 to 11 inch run.",
+      },
+      {
+        name: "Calculate the stringer length",
+        text: "Stringer length is the square root of total rise squared plus total run squared. Round up to the next standard 2x12 length.",
+      },
+      {
+        name: "Set the stringer count",
+        text: "Use 3 stringers for a 36-inch-wide stair and add one for every 16 to 18 inches of extra width. Add one more if the treads are composite or thin decking.",
+      },
+    ],
+  },
+
   formulaDescription:
     "risers = round(total rise ÷ ideal riser); treads = risers − 1; stringer = √(rise² + run²)",
 
   methodology: [
-    "The calculator divides total vertical rise by your target riser height and rounds to the nearest whole number — because stair risers must all be equal. Once you know the riser count, actual riser height is total rise divided by that count. If your total rise is 108 inches and you target 7.5-inch risers, you get 14 risers at 7.71 inches each (close to target but equal across all risers).",
-    "The number of treads is always one less than the number of risers because the last 'step' at the top is the upper floor itself, not an additional tread. This catches people off by one — if you have 14 risers, you need 13 treads.",
-    "Total run is treads times tread depth. A 14-riser / 13-tread staircase at 11-inch treads needs 143 inches (11 feet 11 inches) of horizontal space. This is the most commonly underestimated dimension when planning a staircase inside a house — measure your available horizontal space before committing to a stair layout.",
-    "Stringer length is the hypotenuse of the rise and run — Pythagoras. For ordering: round up to the next standard lumber length. 2×12 stringers come in 8, 10, 12, 14, 16, 20 foot lengths. The calculated stringer length is the actual path along the stair; you need some extra for the top and bottom mounting, so order one standard length above the calculated number.",
-    "IRC 2021 compliance: riser height 4\"-7.75\" (no more than 3/8\" variation between any two risers), tread depth minimum 10\", stair width minimum 36\". The calculator checks these automatically. Some municipalities have stricter local codes — always verify with your building department before cutting stringers.",
-    "The 'rule of 25' is a carpenter's comfort guideline: 2 × riser + tread ≈ 24-25 inches. Too low (aggressive rise, shallow tread) feels steep. Too high (shallow rise, deep tread) feels awkward and stretched. 7.5\" rise + 10\" tread = 25. 7\" rise + 11\" tread = 25. Most comfortable stairs land near 25.",
+    "The calculator divides total vertical rise by your target riser height and rounds to the nearest whole number, because stair risers must all be equal. Once you know the riser count, actual riser height is total rise divided by that count. A 108-inch total rise targeting 7.5-inch risers gives 14 risers at about 7.71 inches each, close to target and identical across the flight.",
+    "The number of treads is always one less than the number of risers, because the last step at the top is the upper floor itself. This is the classic off-by-one: 14 risers means 13 treads.",
+    "Total run is treads times tread depth. A 14-riser, 13-tread staircase at 11-inch treads needs 143 inches, nearly 12 feet, of horizontal space. This is the most commonly underestimated dimension when planning a staircase, so measure your available run before committing to a layout.",
+    "Stringer length is the hypotenuse of rise and run, from the Pythagorean theorem. Round up to the next standard 2x12 length (8, 10, 12, 14, 16, 20 feet) and add a little for top and bottom mounting.",
+    "IRC 2021 R311.7 compliance: riser height up to 7.75 inches with no more than 3/8 inch variation between any two risers, tread depth at least 10 inches, width at least 36 inches, and a stringer throat of at least 3.5 inches after notching. The calculator checks these. Some municipalities are stricter, so verify with your building department before cutting.",
+    "The rule of 25 is a carpenter comfort guideline: 2 times the riser plus the tread lands around 24 to 25 inches. A 7.5-inch rise with a 10-inch tread hits 25; a 7-inch rise with an 11-inch tread also hits 25. Most comfortable stairs land near that number.",
   ],
 
   sources: [
     {
-      name: "IRC 2021 Chapter 3 — Stairways",
+      name: "IRC 2021 Section R311.7: Stairways",
       url: "https://codes.iccsafe.org/content/IRC2021P2/chapter-3-building-planning",
-      note: "Riser, tread, and width code requirements",
+      note: "Riser, tread, width, headroom, and landing requirements",
     },
     {
-      name: "This Old House — Stair Design",
-      url: "https://www.thisoldhouse.com/",
-      note: "Practical stair design and the rule of 25",
+      name: "AWC: Wood Frame Construction Manual",
+      url: "https://awc.org/publications/",
+      note: "Stringer sizing and framing standards",
+    },
+    {
+      name: "AWC: Span Tables for Joists and Rafters",
+      url: "https://awc.org/codes-standards/publications/stjr-2015",
+      note: "Basis for 2x12 stringer spans and spacing",
+    },
+    {
+      name: "IRC 2021 Section R311.7.5: Handrails",
+      url: "https://codes.iccsafe.org/content/IRC2021P2/chapter-3-building-planning",
+      note: "Handrail height and graspability for stairs",
     },
   ],
 
@@ -170,24 +208,24 @@ export const stairCalculatorConfig: CalculatorConfig = {
     { name: "Lumber calculator", slug: "lumber-calculator", description: "Board feet for stringers and treads" },
     { name: "Deck calculator", slug: "deck-calculator", description: "Boards, joists, and deck stairs" },
     { name: "Concrete calculator", slug: "concrete-calculator", description: "For stair footings and landings" },
-    { name: "Paint calculator", slug: "paint-calculator", description: "For painted stair treads" },
+    { name: "Stud spacing calculator", slug: "stud-spacing-calculator", description: "Framing for stair walls and landings" },
   ],
 
   faq: [
     {
       question: "How many stairs do I need for an 8-foot ceiling?",
       answer:
-        "For a floor-to-floor rise of about 8.75 feet (105 inches — 8 ft ceiling plus floor assembly), you need 14 risers and 13 treads with a 7.5\" target. For a 9-foot ceiling (about 117 inches total rise), 16 risers and 15 treads. The calculator above handles any rise.",
+        "For a floor-to-floor rise of about 8.75 feet (105 inches - 8 ft ceiling plus floor assembly), you need 14 risers and 13 treads with a 7.5\" target. For a 9-foot ceiling (about 117 inches total rise), 16 risers and 15 treads. The calculator above handles any rise.",
     },
     {
       question: "What's the IRC code for stair dimensions?",
       answer:
-        "IRC 2021 residential: risers 4\"-7.75\" (variation ≤ 3/8\" between any two risers), treads minimum 10\", stair width minimum 36\". Handrails required if more than 4 risers. Some local codes are stricter — always check before building.",
+        "IRC 2021 residential: risers 4\"-7.75\" (variation ≤ 3/8\" between any two risers), treads minimum 10\", stair width minimum 36\". Handrails required if more than 4 risers. Some local codes are stricter - always check before building.",
     },
     {
       question: "How long should my stair stringer be?",
       answer:
-        "The calculated stringer length is the actual slope length. For lumber ordering, round up to the next standard length (2×12 stringers come in 2-foot increments from 8 to 20 ft). A 108-inch rise at 7.5\" risers needs a stringer about 155 inches long — order a 14-foot stringer (168 inches) with extra for cutting.",
+        "The calculated stringer length is the actual slope length. For lumber ordering, round up to the next standard length (2×12 stringers come in 2-foot increments from 8 to 20 ft). A 108-inch rise at 7.5\" risers needs a stringer about 155 inches long - order a 14-foot stringer (168 inches) with extra for cutting.",
     },
     {
       question: "How many stringers do I need?",
@@ -202,7 +240,7 @@ export const stairCalculatorConfig: CalculatorConfig = {
     {
       question: "Can I adjust tread depth if my space is tight?",
       answer:
-        "Yes, down to 10\" (IRC minimum). Below that is not code-compliant. If you're truly tight on horizontal space, consider a winder stair (wedge-shaped treads turning at a corner) or a spiral stair — both consume less horizontal space than a straight run but are harder to navigate with furniture.",
+        "Yes, down to 10\" (IRC minimum). Below that is not code-compliant. If you're truly tight on horizontal space, consider a winder stair (wedge-shaped treads turning at a corner) or a spiral stair - both consume less horizontal space than a straight run but are harder to navigate with furniture.",
     },
     {
       question: "How do I measure total rise if the floor isn't finished?",
@@ -212,7 +250,7 @@ export const stairCalculatorConfig: CalculatorConfig = {
     {
       question: "What about landings?",
       answer:
-        "Required by IRC for any stair with more than 12 risers in a single run, or at any turn. Landings must be at least as deep as the stair is wide (so a 36\" wide stair needs a 36\" deep landing). The calculator treats the stair as a single straight run — for L-shaped or U-shaped stairs, calculate each run separately.",
+        "Required by IRC for any stair with more than 12 risers in a single run, or at any turn. Landings must be at least as deep as the stair is wide (so a 36\" wide stair needs a 36\" deep landing). The calculator treats the stair as a single straight run - for L-shaped or U-shaped stairs, calculate each run separately.",
     },
   ],
   relatedGuides: [
