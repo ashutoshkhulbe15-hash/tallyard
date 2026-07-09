@@ -53,11 +53,11 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
     ...(config.methodology.length > 0
       ? [{ href: "#methodology", label: "How we calculated" }]
       : []),
-    ...(config.sources.length > 0
-      ? [{ href: "#sources", label: "Sources" }]
-      : []),
     ...(config.faq.length > 0
       ? [{ href: "#faq", label: "Frequently asked" }]
+      : []),
+    ...(config.sources.length > 0
+      ? [{ href: "#sources", label: "Sources" }]
       : []),
     ...(config.related.length > 0
       ? [{ href: "#related", label: "Related calculators" }]
@@ -138,98 +138,110 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
                   </span>
                 </div>
               )}
+
+              {/* Article content flows up beside the sticky calculator so
+                  there's no dead space in this column. Methodology → FAQ →
+                  Sources; Related stays full-width below the grid. */}
+              {config.methodology.length > 0 && (
+                <section
+                  id="methodology"
+                  className="mt-10 pt-8 border-t border-line scroll-mt-20"
+                >
+                  <h2 className="text-2xl font-bold tracking-tight mb-5">
+                    How we calculated this
+                  </h2>
+                  <div className="bg-surface border border-line border-l-[3px] border-l-accent rounded-md px-6 py-5 mb-6 font-mono text-sm text-ink leading-relaxed">
+                    <span className="block text-[10px] uppercase tracking-[0.14em] text-accent mb-1.5">
+                      The formula
+                    </span>
+                    {config.formulaDescription}
+                  </div>
+                  <div className="space-y-4">
+                    {config.methodology.map((paragraph, i) => (
+                      <p
+                        key={i}
+                        className="text-[16.5px] text-ink-muted leading-relaxed"
+                      >
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                </section>
+              )}
+
+              {config.ContentExpansion && (
+                <section className="mt-10 pt-8 border-t border-line">
+                  <div className="guide-prose">
+                    <config.ContentExpansion />
+                  </div>
+                </section>
+              )}
+
+              {config.faq.length > 0 && (
+                <section
+                  id="faq"
+                  className="mt-10 pt-8 border-t border-line scroll-mt-20"
+                >
+                  <h2 className="text-2xl font-bold tracking-tight mb-6">
+                    Frequently asked
+                  </h2>
+                  <div className="space-y-7">
+                    {config.faq.map((item, i) => (
+                      <div key={i}>
+                        <h3 className="text-[17px] font-semibold mb-2">
+                          {item.question}
+                        </h3>
+                        <p className="text-[15px] text-ink-muted leading-relaxed">
+                          {item.answer}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+
+              {config.sources.length > 0 && (
+                <section
+                  id="sources"
+                  className="mt-10 pt-8 border-t border-line scroll-mt-20"
+                >
+                  <h2 className="text-2xl font-bold tracking-tight mb-5">
+                    Sources
+                  </h2>
+                  <ul className="space-y-2.5 text-[15px] text-ink-muted">
+                    {config.sources.map((source, i) => (
+                      <li key={i}>
+                        {source.url ? (
+                          <a
+                            href={source.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-accent hover:underline font-medium"
+                          >
+                            {source.name}
+                          </a>
+                        ) : (
+                          <span className="text-ink font-medium">
+                            {source.name}
+                          </span>
+                        )}
+                        {source.note && (
+                          <span className="text-ink-faint">
+                            {" "}
+                            — {source.note}
+                          </span>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              )}
             </div>
             <div className="lg:sticky lg:top-20">
               <Calculator slug={slug} panelTitle={config.title} />
             </div>
           </div>
         </section>
-
-      {/* Methodology */}
-      {config.methodology.length > 0 && (
-        <section id="methodology" className="pb-12 scroll-mt-20 max-w-[760px]">
-          <div className="pt-10 border-t border-line">
-            <h2 className="text-2xl font-bold tracking-tight mb-5">
-              How we calculated this
-            </h2>
-            <div className="bg-surface border border-line border-l-[3px] border-l-accent rounded-md px-6 py-5 mb-6 font-mono text-sm text-ink leading-relaxed">
-              <span className="block text-[10px] uppercase tracking-[0.14em] text-accent mb-1.5">
-                The formula
-              </span>
-              {config.formulaDescription}
-            </div>
-            <div className="space-y-4">
-              {config.methodology.map((paragraph, i) => (
-                <p key={i} className="text-[16.5px] text-ink-muted leading-relaxed">
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Content expansion (rich article below the calculator) */}
-      {config.ContentExpansion && (
-        <section className="pb-12 max-w-[760px]">
-          <div className="pt-10 border-t border-line">
-            <div className="guide-prose">
-              <config.ContentExpansion />
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Sources */}
-      {config.sources.length > 0 && (
-        <section id="sources" className="pb-12 scroll-mt-20 max-w-[760px]">
-          <h2 className="text-2xl font-bold tracking-tight mb-5">Sources</h2>
-          <ul className="space-y-2.5 text-sm text-ink-muted">
-            {config.sources.map((source, i) => (
-              <li key={i}>
-                {source.url ? (
-                  <a
-                    href={source.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-accent hover:underline font-medium"
-                  >
-                    {source.name}
-                  </a>
-                ) : (
-                  <span className="text-ink font-medium">{source.name}</span>
-                )}
-                {source.note && (
-                  <span className="text-ink-faint"> — {source.note}</span>
-                )}
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-
-      {/* FAQ */}
-      {config.faq.length > 0 && (
-        <section id="faq" className="pb-12 scroll-mt-20 max-w-[760px]">
-          <div className="pt-10 border-t border-line">
-            <h2 className="text-2xl font-bold tracking-tight mb-6">
-              Frequently asked
-            </h2>
-            <div className="space-y-7">
-              {config.faq.map((item, i) => (
-                <div key={i}>
-                  <h3 className="text-base font-semibold mb-2">
-                    {item.question}
-                  </h3>
-                  <p className="text-sm text-ink-muted leading-relaxed">
-                    {item.answer}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* Related */}
       {config.related.length > 0 && (
