@@ -90,8 +90,9 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
       <article className="page-main">
         {/* Hero: copy left, working calculator right */}
         <section id="calculator" className="pb-12 md:pb-16 scroll-mt-20">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_460px] gap-10 lg:gap-12 items-start">
-            <div className="pt-1">
+          <div className="flex flex-col lg:grid lg:grid-cols-[1fr_460px] lg:grid-rows-[auto_1fr] gap-10 lg:gap-x-12 lg:gap-y-0 items-start">
+            {/* Intro: order 1 everywhere. Desktop: col 1 row 1. */}
+            <div className="order-1 pt-1 lg:col-start-1 lg:row-start-1">
               <nav
                 aria-label="Breadcrumb"
                 className="font-mono text-[13px] text-ink-muted mb-5"
@@ -139,10 +140,20 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
                   </span>
                 </div>
               )}
+            </div>
 
-              {/* Article content flows up beside the sticky calculator so
-                  there's no dead space in this column. Methodology → FAQ →
-                  Sources; Related stays full-width below the grid. */}
+            {/* Calculator: order 2 on mobile (right after intro), spans the
+                right column across both rows on desktop so it stays sticky
+                beside the article. */}
+            <div className="order-2 w-full lg:order-none lg:col-start-2 lg:row-start-1 lg:row-span-2">
+              <StickyCalc>
+                <Calculator slug={slug} panelTitle={config.title} />
+              </StickyCalc>
+            </div>
+
+            {/* Article: order 3 on mobile (after the calculator). Desktop:
+                col 1 row 2, directly under the intro, beside the calculator. */}
+            <div className="order-3 w-full min-w-0 lg:col-start-1 lg:row-start-2">
               {config.methodology.length > 0 && (
                 <section
                   id="methodology"
@@ -238,9 +249,6 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
                 </section>
               )}
             </div>
-            <StickyCalc>
-              <Calculator slug={slug} panelTitle={config.title} />
-            </StickyCalc>
           </div>
         </section>
 
