@@ -30,6 +30,6 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: "https://www.tallyard.com/sitemap.xml",
-    host: "https://www.tallyard.com",
+    host: "www.tallyard.com",
   };
 }
