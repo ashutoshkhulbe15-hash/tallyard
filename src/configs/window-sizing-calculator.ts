@@ -112,7 +112,7 @@ export const windowSizingCalculatorConfig: CalculatorConfig = {
     const minEgressWidth = 20;
     const minEgressHeight = 24;
 
-    // Clear opening dimensions (approximation — actual clear opening for double-hung is height × half the width)
+    // Clear opening dimensions (approximation - actual clear opening for double-hung is height × half the width)
     let clearWidth = widthIn;
     let clearHeight = heightIn;
     if (windowType === "doublehung" || windowType === "singlehung") {
@@ -166,8 +166,8 @@ export const windowSizingCalculatorConfig: CalculatorConfig = {
         `window type = ${windowType} (${Math.round(openableRatio[windowType] * 100)}% openable)`,
         `openable area = ${round(totalGlassArea, 2)} × ${openableRatio[windowType]} = ${round(openableArea, 2)} ft²`,
         `room area = ${round(roomArea, 0)} ft²`,
-        `light requirement (8%) = ${round(minLightArea, 1)} ft² — ${lightOK ? "OK" : "fail"}`,
-        `vent requirement (4%) = ${round(minVentArea, 1)} ft² — ${ventOK ? "OK" : "fail"}`,
+        `light requirement (8%) = ${round(minLightArea, 1)} ft² - ${lightOK ? "OK" : "fail"}`,
+        `vent requirement (4%) = ${round(minVentArea, 1)} ft² - ${ventOK ? "OK" : "fail"}`,
         roomType === "bedroom" || roomType === "basement"
           ? `egress req: 5.7 ft² openable, 20" wide, 24" tall clear opening`
           : "egress: not required for this room type",
@@ -179,28 +179,66 @@ export const windowSizingCalculatorConfig: CalculatorConfig = {
 
   ContentExpansion: WindowSizingCalculatorExpansion,
 
+  howTo: {
+    name: "How to size and measure a window",
+    description:
+      "Check a window against egress, light, and ventilation code, size the rough opening, and measure an existing window for a replacement.",
+    steps: [
+      {
+        name: "Enter the room floor area",
+        text: "The calculator returns the minimum glass area for natural light (8 percent of the floor) and the minimum operable opening for ventilation (4 percent).",
+      },
+      {
+        name: "Check egress on the clear opening",
+        text: "For a bedroom, confirm the clear opening is at least 5.7 square feet (5.0 at grade), at least 20 inches wide, at least 24 inches tall, with a sill no higher than 44 inches.",
+      },
+      {
+        name: "Size the rough opening",
+        text: "Add half an inch on each side and at the top of the window unit, then confirm against the manufacturer spec sheet.",
+      },
+      {
+        name: "Measure an existing window for replacement",
+        text: "Measure width and height in three places each and use the smallest number. Check the diagonals for square, then order about a quarter inch under the smallest opening dimension.",
+      },
+      {
+        name: "Pick the right product",
+        text: "Order a replacement window for a sound existing frame, or a new construction window with a nailing flange for a new rough opening.",
+      },
+    ],
+  },
+
   formulaDescription:
     "openable = glass × window type factor; egress = 5.7 ft² min + 20\"w × 24\"h clear; light = room × 8%; vent = room × 4%",
 
   methodology: [
-    "IRC 2021 (Section R310) requires every sleeping room to have at least one window or door that meets egress requirements — a path out of the room in case of fire. Egress windows must have at least 5.7 square feet of openable area, with minimum clear opening dimensions of 20 inches wide and 24 inches tall. The maximum sill height is 44 inches above the finished floor. Ground floor bedrooms can use 5.0 square feet openable area.",
+    "IRC 2021 (Section R310) requires every sleeping room to have at least one window or door that meets egress requirements - a path out of the room in case of fire. Egress windows must have at least 5.7 square feet of openable area, with minimum clear opening dimensions of 20 inches wide and 24 inches tall. The maximum sill height is 44 inches above the finished floor. Ground floor bedrooms can use 5.0 square feet openable area.",
     "Openable area depends heavily on window type. Double-hung and single-hung: only about half the total glass area opens (the sash). Casement windows crank outward and open about 90% of the glass area. Sliding horizontal windows: half opens. Fixed windows don't open at all. Awning and hopper windows: about 70% openable. The calculator applies the appropriate factor automatically.",
-    "Natural light and ventilation (IRC R303.1): habitable rooms need total glazing equal to 8% of floor area for light. For an 150 sq ft bedroom, that's 12 sq ft of window glass. For ventilation (unless mechanical ventilation is provided), 4% of floor area must be openable — 6 sq ft for the same bedroom. Kitchens and bathrooms may have mechanical ventilation (exhaust fan) that exempts them from the 4% openable requirement.",
-    "Rough opening dimensions add about 1/2 inch on each side to the window's actual dimensions to allow for shimming and adjustment during installation. A 36 × 48 inch window needs a 37 × 49 inch rough opening. Manufacturer specs sometimes require more (up to 1 inch each side for specific brands) — always verify with the exact window you're buying before cutting the framing.",
-    "For basements, egress requirements are the same as bedrooms — basement bedrooms must have compliant egress windows or a direct exit door. Window wells are required for any egress window whose sill is below grade; the well itself has minimum size requirements (9 sq ft area, 36 inches projection) and must include a permanent ladder for wells deeper than 44 inches.",
+    "Natural light and ventilation (IRC R303.1): habitable rooms need total glazing equal to 8% of floor area for light. For an 150 sq ft bedroom, that's 12 sq ft of window glass. For ventilation (unless mechanical ventilation is provided), 4% of floor area must be openable - 6 sq ft for the same bedroom. Kitchens and bathrooms may have mechanical ventilation (exhaust fan) that exempts them from the 4% openable requirement.",
+    "Rough opening dimensions add about 1/2 inch on each side to the window's actual dimensions to allow for shimming and adjustment during installation. A 36 × 48 inch window needs a 37 × 49 inch rough opening. Manufacturer specs sometimes require more (up to 1 inch each side for specific brands) - always verify with the exact window you're buying before cutting the framing.",
+    "For basements, egress requirements are the same as bedrooms - basement bedrooms must have compliant egress windows or a direct exit door. Window wells are required for any egress window whose sill is below grade; the well itself has minimum size requirements (9 sq ft area, 36 inches projection) and must include a permanent ladder for wells deeper than 44 inches.",
     "Not captured: energy performance ratings (U-factor, SHGC for ENERGY STAR compliance), impact-resistance ratings (required in hurricane zones), triple-pane upgrades, glazing type, tempered glass requirements (within 24\" of doors, floors, or wet areas), and egress window cost ($300-1,000 per window installed depending on type and size).",
   ],
 
   sources: [
     {
-      name: "IRC 2021 Section R310 — Emergency Escape and Rescue Openings",
-      url: "https://codes.iccsafe.org/content/IRC2021P2",
-      note: "Code-required egress window dimensions and locations",
+      name: "IRC 2021 Section R310: Emergency Escape and Rescue Openings",
+      url: "https://codes.iccsafe.org/content/IRC2021P2/chapter-3-building-planning",
+      note: "Egress clear opening, width, height, and sill height requirements",
     },
     {
-      name: "IRC 2021 Section R303 — Light, Ventilation, Heating",
-      url: "https://codes.iccsafe.org/",
-      note: "Natural light and ventilation requirements for habitable rooms",
+      name: "IRC 2021 Section R303: Light, Ventilation, and Heating",
+      url: "https://codes.iccsafe.org/content/IRC2021P2/chapter-3-building-planning",
+      note: "8 percent light and 4 percent ventilation minimums",
+    },
+    {
+      name: "AAMA/WDMA/CSA 101: Window Performance Standard",
+      url: "https://fgiaonline.org/",
+      note: "Window unit and rough opening tolerances",
+    },
+    {
+      name: "IRC 2021 Section R310.2.3: Window Wells",
+      url: "https://codes.iccsafe.org/content/IRC2021P2/chapter-3-building-planning",
+      note: "Basement egress window well size and ladder rules",
     },
   ],
 
@@ -220,17 +258,17 @@ export const windowSizingCalculatorConfig: CalculatorConfig = {
     {
       question: "Why are casement windows better for egress?",
       answer:
-        "Casements open ~90% of their glass area (the whole sash swings outward on a hinge). Double-hung windows only open ~50% because only one sash moves at a time. For the same egress opening, a casement can be much smaller overall — practical for tight spaces where you can't fit a large double-hung.",
+        "Casements open ~90% of their glass area (the whole sash swings outward on a hinge). Double-hung windows only open ~50% because only one sash moves at a time. For the same egress opening, a casement can be much smaller overall - practical for tight spaces where you can't fit a large double-hung.",
     },
     {
       question: "How do I calculate rough opening size?",
       answer:
-        "Standard rule: add 1/2 inch to each side of the window's advertised dimensions. A 36 × 48 window needs a 37 × 49 rough opening. Some brands specify more — Andersen often calls for 5/8\" each side, Pella varies. Always verify with the installation instructions for the specific window you're buying.",
+        "Standard rule: add 1/2 inch to each side of the window's advertised dimensions. A 36 × 48 window needs a 37 × 49 rough opening. Some brands specify more - Andersen often calls for 5/8\" each side, Pella varies. Always verify with the installation instructions for the specific window you're buying.",
     },
     {
       question: "Do I need egress windows in the basement?",
       answer:
-        "If the basement has any sleeping rooms, yes — those rooms need compliant egress windows. If the basement is purely storage/utility, egress is not required per IRC but may be required locally. Egress windows in basements need window wells (below-grade excavated space) with minimum 9 sq ft area and a permanent ladder for deep wells.",
+        "If the basement has any sleeping rooms, yes - those rooms need compliant egress windows. If the basement is purely storage/utility, egress is not required per IRC but may be required locally. Egress windows in basements need window wells (below-grade excavated space) with minimum 9 sq ft area and a permanent ladder for deep wells.",
     },
     {
       question: "What does 'rough opening' mean?",
@@ -240,12 +278,12 @@ export const windowSizingCalculatorConfig: CalculatorConfig = {
     {
       question: "How much natural light do I need per room?",
       answer:
-        "IRC requires 8% of floor area as glass for habitable rooms (bedrooms, living rooms, dining rooms, kitchens). For a 150 sq ft bedroom: 12 sq ft of glass minimum. A single 36 × 48\" window is 12 sq ft — just meeting code. For comfortable light, double this. The calculator flags rooms where the window is too small.",
+        "IRC requires 8% of floor area as glass for habitable rooms (bedrooms, living rooms, dining rooms, kitchens). For a 150 sq ft bedroom: 12 sq ft of glass minimum. A single 36 × 48\" window is 12 sq ft - just meeting code. For comfortable light, double this. The calculator flags rooms where the window is too small.",
     },
     {
       question: "Can I use a skylight for egress or light?",
       answer:
-        "Skylights count for light (when overhead, they provide more lumens per sq ft than wall windows due to direct sky view). Skylights do NOT count for egress — you can't climb out of a skylight in a fire. Skylights can count for ventilation if they're operable. For bedrooms: always need at least one wall window or door for egress.",
+        "Skylights count for light (when overhead, they provide more lumens per sq ft than wall windows due to direct sky view). Skylights do NOT count for egress - you can't climb out of a skylight in a fire. Skylights can count for ventilation if they're operable. For bedrooms: always need at least one wall window or door for egress.",
     },
     {
       question: "What about window wells?",
