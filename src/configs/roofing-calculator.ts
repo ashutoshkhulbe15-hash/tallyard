@@ -174,7 +174,7 @@ export const roofingCalculatorConfig: CalculatorConfig = {
   related: [
     { name: "Concrete calculator", slug: "concrete-calculator", description: "Cubic yards for any slab or footing" },
     { name: "Gutter calculator", slug: "gutter-calculator", description: "Linear feet of gutter for a house" },
-    { name: "Insulation calculator", slug: "insulation-calculator", description: "Attic insulation R-value and coverage" },
+    { name: "Rainwater calculator", slug: "rainwater-calculator", description: "Gallons your roof can collect" },
     { name: "Shed calculator", slug: "shed-calculator", description: "Roof, walls, and floor for a shed" },
   ],
 

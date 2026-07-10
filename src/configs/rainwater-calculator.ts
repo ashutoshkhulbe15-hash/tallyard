@@ -35,9 +35,9 @@ export const rainwaterCalculatorConfig: CalculatorConfig = {
         { label: "0.5 in (light shower)", value: 0.5 },
         { label: "1 in (common storm)", value: 1 },
         { label: "2 in (heavy storm)", value: 2 },
-        { label: "Annual avg — 40 in", value: 40 },
-        { label: "Annual avg — 25 in", value: 25 },
-        { label: "Annual avg — 15 in (arid)", value: 15 },
+        { label: "Annual avg - 40 in", value: 40 },
+        { label: "Annual avg - 25 in", value: 25 },
+        { label: "Annual avg - 15 in (arid)", value: 15 },
       ],
       help: "Single storm for sizing, or annual for yield",
     },
@@ -120,28 +120,66 @@ export const rainwaterCalculatorConfig: CalculatorConfig = {
 
   ContentExpansion: RainwaterCalculatorExpansion,
 
+  howTo: {
+    name: "How to calculate rainwater collection from your roof",
+    description:
+      "Estimate the gallons your roof yields from a given rainfall and size a storage tank to your garden's use.",
+    steps: [
+      {
+        name: "Measure your roof footprint",
+        text: "Use the horizontal footprint in square feet, not the sloped surface. A steeper roof does not catch more rain. A 30 by 40 foot house is a 1,200 square foot catchment.",
+      },
+      {
+        name: "Enter the rainfall",
+        text: "Use 1 inch for a single typical storm, or your region's annual total for yearly yield. The calculator multiplies area by inches by 0.623 gallons per square foot per inch.",
+      },
+      {
+        name: "Apply real-world capture",
+        text: "Plan on catching 75 to 90 percent of the theoretical number after first-flush diversion, gutter overflow, and evaporation.",
+      },
+      {
+        name: "Size your storage",
+        text: "Match the tank to about a week of dry-season garden use. A single 55-gallon barrel is a starter; chain barrels or move to a tote or cistern for real irrigation.",
+      },
+      {
+        name: "Add the parts a barrel needs",
+        text: "Budget for a first-flush diverter, an inlet screen against mosquitoes, and an overflow outlet routed away from the foundation.",
+      },
+    ],
+  },
+
   formulaDescription:
     "gallons = roof ft² × rainfall inches × 0.623 × efficiency",
 
   methodology: [
     "The core formula: every inch of rain on one square foot of roof produces 0.623 gallons. Multiply roof footprint by inches of rain to get theoretical gallons. Actual yield depends on collection efficiency.",
     "Collection efficiency accounts for water that doesn't make it into storage: splash over the gutter edge, evaporation on hot roofs, splash at the downspout, first-flush diversion, and filter cleaning. Well-installed systems achieve 80-90% efficiency.",
-    "Roof area is the footprint (horizontal projection), not the sloped surface. A 30×40 ft house footprint collects rain from a 1,200 sq ft catchment regardless of roof pitch — steeper roofs don't catch more rain.",
+    "Roof area is the footprint (horizontal projection), not the sloped surface. A 30×40 ft house footprint collects rain from a 1,200 sq ft catchment regardless of roof pitch - steeper roofs don't catch more rain.",
     "For storm sizing, use 1-inch rainfall (common storm in most US climates). For annual yield, use your region's annual total: 40 inches Eastern US, 25 inches Midwest, 15 inches arid Southwest.",
     "Storage: for single storms, 55-gallon rain barrels are standard DIY ($80-150 each). 275-gallon IBC totes next step up. Above 1,000 gallons, move to dedicated cisterns (polyethylene or concrete, $0.50-2 per gallon installed).",
-    "Not included: first-flush diverters, filters, distribution piping, pumps (for pressurized use), winterization. For whole-house or toilet use, add UV sterilization and particulate filtration (~$500-1,500 for residential systems). Check local codes — some jurisdictions restrict rainwater collection or have mandatory backflow prevention for indoor use.",
+    "Not included: first-flush diverters, filters, distribution piping, pumps (for pressurized use), winterization. For whole-house or toilet use, add UV sterilization and particulate filtration (~$500-1,500 for residential systems). Check local codes - some jurisdictions restrict rainwater collection or have mandatory backflow prevention for indoor use.",
   ],
 
   sources: [
     {
-      name: "American Rainwater Catchment Systems Association",
-      url: "https://arcsa.org/",
-      note: "Industry standards for residential rainwater harvesting",
+      name: "ARCSA: Rainwater Harvesting Standards",
+      url: "https://arcsa.org/education/",
+      note: "Design standards for residential rainwater catchment",
     },
     {
-      name: "EPA — WaterSense Rainwater Harvesting",
-      url: "https://www.epa.gov/watersense",
-      note: "Reference for collection efficiency and yield",
+      name: "EPA WaterSense: Water-Efficient Landscaping",
+      url: "https://www.epa.gov/watersense/water-efficient-landscaping",
+      note: "Guidance on capture efficiency and outdoor reuse",
+    },
+    {
+      name: "NOAA: Climate Normals (annual precipitation)",
+      url: "https://www.ncei.noaa.gov/products/land-based-station/us-climate-normals",
+      note: "Regional annual rainfall totals used for yield estimates",
+    },
+    {
+      name: "Texas A&M AgriLife: Rainwater Harvesting",
+      url: "https://rainwaterharvesting.tamu.edu/",
+      note: "0.623 gallon conversion and first-flush sizing",
     },
   ],
 
@@ -156,12 +194,12 @@ export const rainwaterCalculatorConfig: CalculatorConfig = {
     {
       question: "How much rainwater can I collect from my roof?",
       answer:
-        "Roughly 600 gallons per 1,000 sq ft of roof per inch of rain (at 85% efficiency). A 2,000 sq ft roof in a 40-inch annual rainfall region yields about 42,000 gallons per year — more than most households use for outdoor irrigation.",
+        "Roughly 600 gallons per 1,000 sq ft of roof per inch of rain (at 85% efficiency). A 2,000 sq ft roof in a 40-inch annual rainfall region yields about 42,000 gallons per year - more than most households use for outdoor irrigation.",
     },
     {
       question: "How big should my rain barrel be?",
       answer:
-        "For 1 inch of rain on 1,000 sq ft of roof catchment: about 530 gallons — 10 standard 55-gallon barrels, or 2 × 275-gal IBC totes. Most DIYers start with 1-2 barrels (55-110 gallons) because that's what a single downspout realistically fills.",
+        "For 1 inch of rain on 1,000 sq ft of roof catchment: about 530 gallons - 10 standard 55-gallon barrels, or 2 × 275-gal IBC totes. Most DIYers start with 1-2 barrels (55-110 gallons) because that's what a single downspout realistically fills.",
     },
     {
       question: "Is rainwater safe to drink?",
@@ -181,17 +219,17 @@ export const rainwaterCalculatorConfig: CalculatorConfig = {
     {
       question: "Does it work in arid climates?",
       answer:
-        "Yes, but differently. Arid regions (15-20 inches/year) need larger storage to bridge dry periods — a month or more of use capacity rather than just storm capacity. A 2,000 sq ft roof in Tucson (12 inches/year) yields about 13,000 gallons — enough for summer garden irrigation with proper storage.",
+        "Yes, but differently. Arid regions (15-20 inches/year) need larger storage to bridge dry periods - a month or more of use capacity rather than just storm capacity. A 2,000 sq ft roof in Tucson (12 inches/year) yields about 13,000 gallons - enough for summer garden irrigation with proper storage.",
     },
     {
       question: "What about overflow during big storms?",
       answer:
-        "Critical — undersized systems overflow during large storms. Every rain barrel or tank needs an overflow pipe that directs excess water away from the foundation (4-6 feet minimum). For larger cisterns, overflow should route to a rain garden, dry well, or existing drainage. Never let overflow puddle at the foundation.",
+        "Critical - undersized systems overflow during large storms. Every rain barrel or tank needs an overflow pipe that directs excess water away from the foundation (4-6 feet minimum). For larger cisterns, overflow should route to a rain garden, dry well, or existing drainage. Never let overflow puddle at the foundation.",
     },
     {
       question: "How long does a rain barrel last?",
       answer:
-        "Plastic rain barrels: 10-20 years (UV-resistant polyethylene). Food-grade IBC totes: 15-25 years. Galvanized metal: 30-50 years. Concrete cisterns: 50+ years. All benefit from winterization in freezing climates — drain before hard freeze or allow expansion room for ice.",
+        "Plastic rain barrels: 10-20 years (UV-resistant polyethylene). Food-grade IBC totes: 15-25 years. Galvanized metal: 30-50 years. Concrete cisterns: 50+ years. All benefit from winterization in freezing climates - drain before hard freeze or allow expansion room for ice.",
     },
   ],
 };

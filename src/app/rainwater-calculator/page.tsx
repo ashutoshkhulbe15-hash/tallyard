@@ -6,13 +6,14 @@ import { getConfig } from "@/configs";
 const SLUG = "rainwater-calculator";
 
 export const metadata: Metadata = {
-  title: "Rainwater Harvesting Calculator: Gallons From Your Roof",
+  title: "Rainwater Collection Calculator: Gallons & Tank Size",
   description:
-    "Calculate rainwater collection yield from any roof. Barrels, tanks, and gallons per storm or annual rainfall.",
+    "Free rainwater calculator: gallons your roof collects from any rainfall, plus tank and barrel sizing. See how much water an inch of rain really is. No signup.",
   alternates: { canonical: "/rainwater-calculator" },
   openGraph: {
-    title: "Rainwater Harvesting Calculator: Gallons From Your Roof",
-    description: "Calculate rainwater yield and sizes barrels or tanks.",
+    title: "Rainwater Collection Calculator: Gallons & Tank Size",
+    description:
+      "Free rainwater calculator: gallons your roof collects from any rainfall, plus tank and barrel sizing. See how much an inch of rain really is.",
     url: "https://www.tallyard.com/rainwater-calculator",
     type: "website",
   },
