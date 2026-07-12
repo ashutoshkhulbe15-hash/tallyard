@@ -28,6 +28,42 @@ export const metadata: Metadata = {
   },
 };
 
+// Sitewide entity schema. Organization establishes the Tallyard brand entity
+// (helps the "tallyard" brand query and AI-engine citation); WebSite ties
+// every page back to the publisher.
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.tallyard.com/#organization",
+      name: "Tallyard",
+      url: "https://www.tallyard.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://www.tallyard.com/og-default.png",
+        width: 1200,
+        height: 630,
+      },
+      description:
+        "Free home improvement calculators that show their work. Every formula public, every source cited against published standards (IRC, NEC, AWC, TCNA).",
+      founder: {
+        "@type": "Person",
+        name: "Ash K.",
+        url: "https://www.tallyard.com/about",
+        sameAs: ["https://www.linkedin.com/in/ash-k-5baa5016a/"],
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.tallyard.com/#website",
+      name: "Tallyard",
+      url: "https://www.tallyard.com",
+      publisher: { "@id": "https://www.tallyard.com/#organization" },
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -36,6 +72,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+        />
         {/* llms.txt discovery for AI answer engines */}
         <link
           rel="alternate"

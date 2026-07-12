@@ -2,25 +2,44 @@ import type { MetadataRoute } from "next";
 
 const SITE_URL = "https://www.tallyard.com";
 
+// Real last-modified dates. Google ignores lastmod that changes on every
+// deploy, so dates here must reflect actual content changes.
+// RULE (playbook): when a page is refined, update its date here in the same commit.
+const DEFAULT_DATE = new Date("2026-04-20"); // initial content build-out
+const REDESIGN_DATE = new Date("2026-07-09"); // sitewide Ledger redesign shipped
+const MODIFIED: Record<string, Date> = {
+  // page-refinement series deploys
+  "shed-calculator": new Date("2026-07-10"),
+  "gutter-calculator": new Date("2026-07-11"),
+  "stair-calculator": new Date("2026-07-11"),
+  "rainwater-calculator": new Date("2026-07-11"),
+  "window-sizing-calculator": new Date("2026-07-11"),
+  // structurally redesigned pages
+  "": REDESIGN_DATE, // homepage
+  "calculators": REDESIGN_DATE,
+  "guides": REDESIGN_DATE,
+  "planner": REDESIGN_DATE,
+};
+const lastMod = (slug: string): Date => MODIFIED[slug] ?? DEFAULT_DATE;
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
 
   const staticPages: MetadataRoute.Sitemap = [
-    { url: `${SITE_URL}/`, lastModified: now, changeFrequency: "weekly", priority: 1.0 },
-    { url: `${SITE_URL}/calculators`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${SITE_URL}/guides`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${SITE_URL}/planner`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${SITE_URL}/planner/build-a-deck`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${SITE_URL}/planner/install-a-fence`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${SITE_URL}/planner/paint-a-room`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${SITE_URL}/planner/replace-a-roof`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${SITE_URL}/planner/build-a-patio`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${SITE_URL}/planner/remodel-a-bathroom`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${SITE_URL}/methodology`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
-    { url: `${SITE_URL}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
-    { url: `${SITE_URL}/contact`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
-    { url: `${SITE_URL}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
-    { url: `${SITE_URL}/terms`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${SITE_URL}/`, lastModified: lastMod(""), changeFrequency: "weekly", priority: 1.0 },
+    { url: `${SITE_URL}/calculators`, lastModified: lastMod("calculators"), changeFrequency: "weekly", priority: 0.9 },
+    { url: `${SITE_URL}/guides`, lastModified: lastMod("guides"), changeFrequency: "weekly", priority: 0.8 },
+    { url: `${SITE_URL}/planner`, lastModified: lastMod("planner"), changeFrequency: "weekly", priority: 0.8 },
+    { url: `${SITE_URL}/planner/build-a-deck`, lastModified: lastMod("planner/build-a-deck"), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/planner/install-a-fence`, lastModified: lastMod("planner/install-a-fence"), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/planner/paint-a-room`, lastModified: lastMod("planner/paint-a-room"), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/planner/replace-a-roof`, lastModified: lastMod("planner/replace-a-roof"), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/planner/build-a-patio`, lastModified: lastMod("planner/build-a-patio"), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/planner/remodel-a-bathroom`, lastModified: lastMod("planner/remodel-a-bathroom"), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/methodology`, lastModified: lastMod("methodology"), changeFrequency: "monthly", priority: 0.6 },
+    { url: `${SITE_URL}/about`, lastModified: lastMod("about"), changeFrequency: "monthly", priority: 0.5 },
+    { url: `${SITE_URL}/contact`, lastModified: lastMod("contact"), changeFrequency: "yearly", priority: 0.3 },
+    { url: `${SITE_URL}/privacy`, lastModified: lastMod("privacy"), changeFrequency: "yearly", priority: 0.3 },
+    { url: `${SITE_URL}/terms`, lastModified: lastMod("terms"), changeFrequency: "yearly", priority: 0.3 },
   ];
 
   const calculatorSlugs = [
@@ -71,7 +90,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
   const calculatorPages: MetadataRoute.Sitemap = calculatorSlugs.map((slug) => ({
     url: `${SITE_URL}/${slug}`,
-    lastModified: now,
+    lastModified: lastMod(slug),
     changeFrequency: "monthly",
     priority: 0.9,
   }));
@@ -83,7 +102,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
   const guidePages: MetadataRoute.Sitemap = guideSlugs.map((slug) => ({
     url: `${SITE_URL}/guides/${slug}`,
-    lastModified: now,
+    lastModified: lastMod(`guides/${slug}`),
     changeFrequency: "monthly",
     priority: 0.8,
   }));
@@ -102,7 +121,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
   const costPages: MetadataRoute.Sitemap = costSlugs.map((slug) => ({
     url: `${SITE_URL}/${slug}`,
-    lastModified: now,
+    lastModified: lastMod(slug),
     changeFrequency: "monthly",
     priority: 0.8,
   }));
@@ -119,7 +138,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
   const categoryPages: MetadataRoute.Sitemap = categorySlugs.map((slug) => ({
     url: `${SITE_URL}/calculators/${slug}`,
-    lastModified: now,
+    lastModified: lastMod(`calculators/${slug}`),
     changeFrequency: "monthly",
     priority: 0.7,
   }));
