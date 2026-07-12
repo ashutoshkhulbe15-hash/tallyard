@@ -6,14 +6,14 @@ import { getConfig } from "@/configs";
 const SLUG = "flooring-calculator";
 
 export const metadata: Metadata = {
-  title: "Flooring Calculator: Hardwood, Laminate, Vinyl",
+  title: "Flooring Calculator: Square Footage, Cost & Waste",
   description:
-    "Calculate boxes of hardwood, laminate, or luxury vinyl plank flooring for any room. Waste factor by pattern.",
+    "Free flooring calculator: how to figure square footage for any room, plus waste factor and cost by material for hardwood, laminate, vinyl, and tile. No signup.",
   alternates: { canonical: "/flooring-calculator" },
   openGraph: {
-    title: "Flooring Calculator: Hardwood, Laminate, Vinyl",
+    title: "Flooring Calculator: Square Footage, Cost & Waste",
     description:
-      "Calculate boxes of hardwood, laminate, or vinyl plank flooring for any room.",
+      "Free flooring calculator: figure square footage, waste factor, and cost by material for hardwood, laminate, vinyl, and tile.",
     url: "https://www.tallyard.com/flooring-calculator",
     type: "website",
   },

@@ -58,7 +58,7 @@ export const flooringCalculatorConfig: CalculatorConfig = {
       defaultMetric: 1.85,
       min: 5,
       step: 1,
-      help: "Check the box label — typical: 18-24 ft² (laminate), 20-30 ft² (hardwood)",
+      help: "Check the box label - typical: 18-24 ft² (laminate), 20-30 ft² (hardwood)",
     },
     {
       id: "pattern",
@@ -146,28 +146,66 @@ export const flooringCalculatorConfig: CalculatorConfig = {
 
   ContentExpansion: FlooringCalculatorExpansion,
 
+  howTo: {
+    name: "How to calculate flooring square footage and material",
+    description:
+      "Measure a room's square footage, add a waste factor for the lay pattern, and get the material and boxes to buy.",
+    steps: [
+      {
+        name: "Break the room into rectangles",
+        text: "Sketch the room from above and divide it into rectangles along the walls. An L-shaped room is two, a room with a closet is three.",
+      },
+      {
+        name: "Measure and add the rectangles",
+        text: "Measure each rectangle in feet (to the wall, not the baseboard), multiply length by width, and add them. Include closets and alcoves.",
+      },
+      {
+        name: "Add a waste factor",
+        text: "Add 5 percent for a straight lay, 7 to 10 percent for staggered plank, 15 percent for diagonal, and up to 20 percent for herringbone.",
+      },
+      {
+        name: "Add a spare box",
+        text: "Buy one extra box beyond the waste for future repairs, since dye lots change and the match will not exist later.",
+      },
+      {
+        name: "Convert to boxes and cost",
+        text: "The calculator turns your total square footage into boxes to buy and an estimated material cost by flooring type.",
+      },
+    ],
+  },
+
   formulaDescription:
     "boxes = ⌈(area × (1 + waste)) ÷ sq ft per box⌉",
 
   methodology: [
     "The calculator starts with floor area (length × width) and multiplies by a waste factor determined by the installation pattern. Straight staggered layouts (standard) use 10% waste. Diagonal layouts (boards at 45 degrees) require extra cuts at every perimeter, pushing waste to 15%. Herringbone patterns double the cuts and push waste to 20%.",
     "Solid hardwood gets an additional 2% bonus because the first and last rows typically require ripping boards to fit, leaving narrow scraps that rarely get reused. Engineered hardwood, laminate, and LVP have more flexible installation that handles rips efficiently.",
-    "Box size varies significantly by product — always check the label. Typical ranges: solid hardwood 20-30 sq ft/box, engineered 25-30 sq ft/box, laminate 18-22 sq ft/box, luxury vinyl plank 22-30 sq ft/box. Narrower boards pack fewer square feet; thicker boards pack fewer as well.",
-    "Box count rounds up to the next whole box because you can't buy a partial box. For larger projects, buy one extra box beyond the calculator's result to keep as an attic spare — flooring patterns and dye lots get discontinued, and matching 5 years later is impossible.",
+    "Box size varies significantly by product - always check the label. Typical ranges: solid hardwood 20-30 sq ft/box, engineered 25-30 sq ft/box, laminate 18-22 sq ft/box, luxury vinyl plank 22-30 sq ft/box. Narrower boards pack fewer square feet; thicker boards pack fewer as well.",
+    "Box count rounds up to the next whole box because you can't buy a partial box. For larger projects, buy one extra box beyond the calculator's result to keep as an attic spare - flooring patterns and dye lots get discontinued, and matching 5 years later is impossible.",
     "The calculator assumes a rectangular room. For L-shaped or irregular rooms, divide into rectangles, calculate each separately, and sum the box counts. For rooms with closets, calculate the main area plus each closet separately rather than subtracting closet area from a single rectangle (avoids negative waste math).",
-    "Not included: underlayment (most floating floors need an acoustic underlayment beneath them — typical roll covers 100 sq ft), transition strips (one per doorway, approximately $20-40 each), and reducer strips or thresholds where the new floor meets a different flooring surface.",
+    "Not included: underlayment (most floating floors need an acoustic underlayment beneath them - typical roll covers 100 sq ft), transition strips (one per doorway, approximately $20-40 each), and reducer strips or thresholds where the new floor meets a different flooring surface.",
   ],
 
   sources: [
     {
-      name: "National Wood Flooring Association (NWFA)",
-      url: "https://www.nwfa.org/",
-      note: "Industry standards for hardwood installation waste",
+      name: "NWFA: Wood Flooring Installation Guidelines",
+      url: "https://nwfa.org/resources/",
+      note: "Acclimation, expansion gaps, and waste factors for wood",
     },
     {
-      name: "Armstrong — Vinyl Flooring Installation Guide",
-      url: "https://www.armstrongflooring.com/",
-      note: "Reference for waste by pattern and coverage",
+      name: "ASTM F710: Preparing Concrete Floors",
+      url: "https://www.astm.org/f0710-19.html",
+      note: "Subfloor flatness and moisture testing standard",
+    },
+    {
+      name: "Armstrong: Vinyl Flooring Installation Guide",
+      url: "https://www.armstrongflooring.com/en-us/customer-support/installation.html",
+      note: "Waste by pattern and underlayment guidance",
+    },
+    {
+      name: "NALFA: Laminate Flooring Standards",
+      url: "https://nalfa.com/",
+      note: "Laminate acclimation and moisture limits",
     },
   ],
 
@@ -182,7 +220,7 @@ export const flooringCalculatorConfig: CalculatorConfig = {
     {
       question: "How much flooring do I need for a 12×14 room?",
       answer:
-        "For a 12×14 ft room (168 sq ft) with standard 10% waste and laminate boxes of 20 sq ft each, you need 10 boxes (184 sq ft of flooring). Larger waste factors or bigger boxes change the count — use the calculator with your specific product specs.",
+        "For a 12×14 ft room (168 sq ft) with standard 10% waste and laminate boxes of 20 sq ft each, you need 10 boxes (184 sq ft of flooring). Larger waste factors or bigger boxes change the count - use the calculator with your specific product specs.",
     },
     {
       question: "Why is the waste factor so high?",
@@ -192,12 +230,12 @@ export const flooringCalculatorConfig: CalculatorConfig = {
     {
       question: "Can I use less than 10% waste?",
       answer:
-        "Only for very simple rectangular rooms with minimal cuts. Even then, 8% is the floor. Going below risks coming up short mid-install — and since dye lots are batch-specific, additional flooring purchased later may not match your existing stock.",
+        "Only for very simple rectangular rooms with minimal cuts. Even then, 8% is the floor. Going below risks coming up short mid-install - and since dye lots are batch-specific, additional flooring purchased later may not match your existing stock.",
     },
     {
       question: "Do I need underlayment?",
       answer:
-        "Laminate and luxury vinyl plank: yes — an acoustic underlayment (2-4mm foam) is usually required by the manufacturer warranty. Engineered hardwood floating installations: yes, same reason. Solid hardwood nailed down: no, but rosin paper or felt is common. Check your specific product's install guide.",
+        "Laminate and luxury vinyl plank: yes - an acoustic underlayment (2-4mm foam) is usually required by the manufacturer warranty. Engineered hardwood floating installations: yes, same reason. Solid hardwood nailed down: no, but rosin paper or felt is common. Check your specific product's install guide.",
     },
     {
       question: "What about transition strips and moldings?",
@@ -207,17 +245,17 @@ export const flooringCalculatorConfig: CalculatorConfig = {
     {
       question: "Should I buy from the same dye lot?",
       answer:
-        "Critical for hardwood and engineered hardwood — the color and grain variation between dye lots is visible. Buy all your flooring at once from the same lot. Laminate and LVP are less variable but still worth matching lots when possible. Keep the SKU and lot number written on the back of one installed board for future reference.",
+        "Critical for hardwood and engineered hardwood - the color and grain variation between dye lots is visible. Buy all your flooring at once from the same lot. Laminate and LVP are less variable but still worth matching lots when possible. Keep the SKU and lot number written on the back of one installed board for future reference.",
     },
     {
       question: "How accurate is 'per box' from the product spec?",
       answer:
-        "Manufacturer listings are accurate to the square foot. Always check the specific product — hardwood boxes vary from 15 to 35 sq ft depending on board width and length. Narrower, longer boards pack less per box; wider, shorter boards pack more.",
+        "Manufacturer listings are accurate to the square foot. Always check the specific product - hardwood boxes vary from 15 to 35 sq ft depending on board width and length. Narrower, longer boards pack less per box; wider, shorter boards pack more.",
     },
     {
       question: "Can I acclimate the flooring in boxes?",
       answer:
-        "Hardwood and engineered: yes — 3-7 days in the installation space before laying, with the boxes open for air circulation. Laminate: 48 hours typically. LVP: often no acclimation needed. Skipping acclimation causes gaps or buckling as the floor expands or contracts after install.",
+        "Hardwood and engineered: yes - 3-7 days in the installation space before laying, with the boxes open for air circulation. Laminate: 48 hours typically. LVP: often no acclimation needed. Skipping acclimation causes gaps or buckling as the floor expands or contracts after install.",
     },
   ],
 };

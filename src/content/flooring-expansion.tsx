@@ -1,120 +1,49 @@
-import { Figure, GuideByline, MethodologyNote, Scenario, GUIDE_SVG } from "@/components/GuideChrome";
+import { Figure, GuideByline, Scenario, GUIDE_SVG } from "@/components/GuideChrome";
 import { ComparisonTable, Callout } from "@/components/GuideComponents";
 
-function MaterialComparisonSVG() {
-  const materials = [
-    { label: "Vinyl plank (LVP)", cost: "$2–7", life: "15–25 yr", diy: "Easy", y: 65 },
-    { label: "Laminate", cost: "$1–5", life: "15–25 yr", diy: "Easy", y: 100 },
-    { label: "Engineered hardwood", cost: "$4–14", life: "20–40 yr", diy: "Moderate", y: 135 },
-    { label: "Solid hardwood", cost: "$6–18", life: "50–100 yr", diy: "Hard", y: 170 },
-    { label: "Tile (porcelain)", cost: "$3–15", life: "50+ yr", diy: "Hard", y: 205 },
-  ];
+/**
+ * Square-footage measurement diagram. The linkable hero: an L-shaped room
+ * broken into labeled rectangles. Serves the "how to figure square footage
+ * for flooring" cluster visually.
+ */
+function SquareFootageSVG() {
   return (
-    <svg viewBox="0 0 680 260" width="100%" height="auto" role="img"
-      aria-label="Flooring material comparison showing cost per square foot, lifespan, and DIY difficulty for five common materials from vinyl plank to tile.">
-      <text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>Flooring materials at a glance</text>
-      <text x="20" y="43" fontSize="10" fill={GUIDE_SVG.inkFaint}>Material cost only — add $3–10/ft² for professional installation</text>
-      <rect x="40" y={50} width="600" height="26" rx="4" fill={GUIDE_SVG.bgWarm} />
-      {[{ l: "Material", x: 130 }, { l: "Cost/ft²", x: 300 }, { l: "Lifespan", x: 420 }, { l: "DIY level", x: 560 }].map((h) => (
-        <text key={h.l} x={h.x} y={66} textAnchor="middle" fontSize="10" fontWeight="700" fill={GUIDE_SVG.inkMuted}>{h.l}</text>
-      ))}
-      {materials.map((m, i) => (
-        <g key={m.label}>
-          {i % 2 === 0 && <rect x="40" y={m.y - 4} width="600" height="30" fill={GUIDE_SVG.bgWarm} opacity="0.3" />}
-          <text x="130" y={m.y + 14} textAnchor="middle" fontSize="11" fontWeight="600" fill={GUIDE_SVG.ink}>{m.label}</text>
-          <text x="300" y={m.y + 14} textAnchor="middle" fontSize="11" fill={GUIDE_SVG.accent} fontWeight="600">{m.cost}</text>
-          <text x="420" y={m.y + 14} textAnchor="middle" fontSize="11" fill={GUIDE_SVG.inkMuted}>{m.life}</text>
-          <text x="560" y={m.y + 14} textAnchor="middle" fontSize="11" fill={GUIDE_SVG.inkFaint}>{m.diy}</text>
-        </g>
-      ))}
-    </svg>
-  );
-}
+    <svg
+      viewBox="0 0 680 400"
+      width="100%"
+      height="auto"
+      role="img"
+      aria-label="An L-shaped room broken into three rectangles A, B, and C to calculate total flooring square footage, with a closet added and dimensions labeled on each section, then a waste factor added."
+    >
+      <text x="20" y="26" fontSize="14" fontWeight="700" fill={GUIDE_SVG.ink}>
+        Figuring square footage: break the room into rectangles
+      </text>
 
-function WasteByPatternSVG() {
-  const patterns = [
-    { label: "Straight lay", waste: "5%", w: 75, color: GUIDE_SVG.slate },
-    { label: "Staggered (1/3 offset)", waste: "7%", w: 105, color: GUIDE_SVG.inkFaint },
-    { label: "Diagonal (45°)", waste: "15%", w: 225, color: GUIDE_SVG.accent },
-    { label: "Herringbone", waste: "18%", w: 270, color: GUIDE_SVG.accent },
-  ];
-  return (
-    <svg viewBox="0 0 680 210" width="100%" height="auto" role="img"
-      aria-label="Waste factor by installation pattern. Straight lay wastes 5%, staggered 7%, diagonal 15%, herringbone 18%.">
-      <text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>Waste factor by lay pattern</text>
-      <text x="20" y="43" fontSize="10" fill={GUIDE_SVG.inkFaint}>Diagonal and herringbone cuts produce more offcuts that can&apos;t be reused</text>
-      {patterns.map((p, i) => {
-        const y = 65 + i * 34;
-        return (
-          <g key={p.label}>
-            <text x="210" y={y + 14} textAnchor="end" fontSize="11" fontWeight="600" fill={GUIDE_SVG.ink}>{p.label}</text>
-            <rect x="220" y={y} width={p.w} height="20" rx="3" fill={p.color} opacity="0.6" />
-            <text x={228 + p.w} y={y + 14} fontSize="12" fontWeight="700" fill={GUIDE_SVG.ink}>+{p.waste}</text>
-          </g>
-        );
-      })}
-    </svg>
-  );
-}
+      <rect x="80" y="70" width="260" height="160" fill={GUIDE_SVG.accentSoft} stroke={GUIDE_SVG.accent} strokeWidth="2" />
+      <text x="210" y="145" textAnchor="middle" fontSize="15" fontWeight="700" fill={GUIDE_SVG.accent}>A</text>
+      <text x="210" y="165" textAnchor="middle" fontSize="11" fontFamily="monospace" fill={GUIDE_SVG.inkMuted}>14 x 12 = 168 ft²</text>
 
-function CostPerRoomSVG() {
-  const rooms = [
-    { label: "Bathroom (50 ft²)", lvp: "$250", lam: "$175", hw: "$600", tile: "$500" },
-    { label: "Bedroom (150 ft²)", lvp: "$600", lam: "$450", hw: "$1,500", tile: "$1,200" },
-    { label: "Living room (300 ft²)", lvp: "$1,200", lam: "$900", hw: "$3,000", tile: "$2,400" },
-    { label: "Whole house (1,200 ft²)", lvp: "$4,800", lam: "$3,600", hw: "$12,000", tile: "$9,600" },
-  ];
-  const headerY = 70;
-  const rowH = 30;
-  return (
-    <svg viewBox="0 0 680 240" width="100%" height="auto" role="img"
-      aria-label="Material cost by room size for four flooring types showing costs from bathroom to whole house.">
-      <text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>What flooring actually costs by room (materials only)</text>
-      <text x="20" y="43" fontSize="10" fill={GUIDE_SVG.inkFaint}>Mid-range pricing, before installation labor</text>
-      <rect x="30" y={headerY - 18} width="620" height="26" rx="4" fill={GUIDE_SVG.bgWarm} />
-      {[{ l: "Room", x: 120 }, { l: "LVP", x: 280 }, { l: "Laminate", x: 370 }, { l: "Hardwood", x: 470 }, { l: "Tile", x: 570 }].map((h) => (
-        <text key={h.l} x={h.x} y={headerY - 2} textAnchor="middle" fontSize="10" fontWeight="700" fill={GUIDE_SVG.inkMuted}>{h.l}</text>
-      ))}
-      {rooms.map((r, i) => {
-        const y = headerY + 10 + i * rowH;
-        return (
-          <g key={r.label}>
-            {i % 2 === 0 && <rect x="30" y={y - 4} width="620" height={rowH} fill={GUIDE_SVG.bgWarm} opacity="0.4" />}
-            <text x="120" y={y + 14} textAnchor="middle" fontSize="11" fontWeight="600" fill={GUIDE_SVG.ink}>{r.label}</text>
-            <text x="280" y={y + 14} textAnchor="middle" fontSize="11" fill={GUIDE_SVG.accent}>{r.lvp}</text>
-            <text x="370" y={y + 14} textAnchor="middle" fontSize="11" fill={GUIDE_SVG.inkMuted}>{r.lam}</text>
-            <text x="470" y={y + 14} textAnchor="middle" fontSize="11" fill={GUIDE_SVG.inkMuted}>{r.hw}</text>
-            <text x="570" y={y + 14} textAnchor="middle" fontSize="11" fill={GUIDE_SVG.inkFaint}>{r.tile}</text>
-          </g>
-        );
-      })}
-    </svg>
-  );
-}
+      <rect x="340" y="130" width="150" height="100" fill={GUIDE_SVG.slateSoft} stroke={GUIDE_SVG.accent} strokeWidth="2" />
+      <text x="415" y="175" textAnchor="middle" fontSize="15" fontWeight="700" fill={GUIDE_SVG.accent}>B</text>
+      <text x="415" y="194" textAnchor="middle" fontSize="11" fontFamily="monospace" fill={GUIDE_SVG.inkMuted}>8 x 6 = 48 ft²</text>
 
-function AcclimationSVG() {
-  return (
-    <svg viewBox="0 0 680 160" width="100%" height="auto" role="img"
-      aria-label="Acclimation timeline: vinyl plank needs 48 hours, laminate 48-72 hours, engineered hardwood 3-5 days, solid hardwood 7-14 days in the room before installation.">
-      <text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>Acclimation time before installation</text>
-      <text x="20" y="43" fontSize="10" fill={GUIDE_SVG.inkFaint}>Leave unopened boxes in the room at room temperature. Skip this and boards buckle.</text>
-      {[
-        { label: "LVP", days: "48 hrs", w: 60, x: 60, color: GUIDE_SVG.slate },
-        { label: "Laminate", days: "48–72 hrs", w: 90, x: 200, color: GUIDE_SVG.inkFaint },
-        { label: "Engineered HW", days: "3–5 days", w: 140, x: 370, color: GUIDE_SVG.inkMuted },
-        { label: "Solid hardwood", days: "7–14 days", w: 240, x: 370, color: GUIDE_SVG.accent },
-      ].map((m, i) => {
-        const y = 65 + (i > 1 ? (i - 2) * 38 + 38 : i * 38);
-        const row = i < 2 ? 0 : 1;
-        const yPos = 65 + i * 24;
-        return (
-          <g key={m.label}>
-            <text x="140" y={65 + i * 24 + 10} textAnchor="end" fontSize="11" fontWeight="600" fill={GUIDE_SVG.ink}>{m.label}</text>
-            <rect x="150" y={65 + i * 24} width={m.w} height="16" rx="3" fill={m.color} opacity="0.6" />
-            <text x={158 + m.w} y={65 + i * 24 + 12} fontSize="10" fontWeight="600" fill={GUIDE_SVG.ink}>{m.days}</text>
-          </g>
-        );
-      })}
+      <rect x="80" y="230" width="90" height="60" fill={GUIDE_SVG.bgWarm} stroke={GUIDE_SVG.accent} strokeWidth="1.5" strokeDasharray="4 3" />
+      <text x="125" y="256" textAnchor="middle" fontSize="13" fontWeight="700" fill={GUIDE_SVG.accent}>C</text>
+      <text x="125" y="272" textAnchor="middle" fontSize="10" fontFamily="monospace" fill={GUIDE_SVG.inkMuted}>4x5=20</text>
+      <text x="125" y="305" textAnchor="middle" fontSize="9" fontFamily="monospace" fill={GUIDE_SVG.inkFaint}>closet (add it)</text>
+
+      <text x="210" y="60" textAnchor="middle" fontSize="10" fontFamily="monospace" fill={GUIDE_SVG.warm}>14 ft</text>
+      <line x1="80" y1="64" x2="340" y2="64" stroke={GUIDE_SVG.warm} strokeWidth="0.75" />
+      <text x="66" y="150" textAnchor="middle" fontSize="10" fontFamily="monospace" fill={GUIDE_SVG.warm} transform="rotate(-90 66 150)">12 ft</text>
+      <line x1="72" y1="70" x2="72" y2="230" stroke={GUIDE_SVG.warm} strokeWidth="0.75" />
+
+      <rect x="400" y="285" width="220" height="86" rx="8" fill={GUIDE_SVG.accent} opacity="0.08" stroke={GUIDE_SVG.accent} strokeWidth="1" />
+      <text x="510" y="312" textAnchor="middle" fontSize="12" fontFamily="monospace" fontWeight="700" fill={GUIDE_SVG.accent}>A + B + C</text>
+      <text x="510" y="333" textAnchor="middle" fontSize="12" fontFamily="monospace" fill={GUIDE_SVG.ink}>168 + 48 + 20 = 236 ft²</text>
+      <text x="510" y="356" textAnchor="middle" fontSize="11" fontFamily="monospace" fill={GUIDE_SVG.warm}>+ 10% waste = 260 ft²</text>
+
+      <text x="80" y="360" fontSize="10" fontFamily="monospace" fill={GUIDE_SVG.inkFaint}>Measure each rectangle, add them,</text>
+      <text x="80" y="375" fontSize="10" fontFamily="monospace" fill={GUIDE_SVG.inkFaint}>then add a waste factor. Buy to that number.</text>
     </svg>
   );
 }
@@ -123,100 +52,216 @@ export function FlooringCalculatorExpansion() {
   return (
     <>
       <GuideByline
-        updated="April 18, 2026"
-        reviewedAgainst="NWFA installation guidelines and manufacturer specs from Shaw, Mohawk, and LifeProof"
+        updated="April 20, 2026"
+        reviewedAgainst="NWFA installation guidelines, ASTM F710 subfloor moisture standards, and flooring manufacturer acclimation specs"
       />
 
-      <h2>Why 400 square feet of floor needs 430 square feet of flooring</h2>
-      <p>My uncle installed laminate in his basement in 2022. He measured the room at 400 square feet, drove to Home Depot, and bought 400 square feet of flooring. Sixteen boxes. He ran out with two rows left against the far wall. The problem wasn&apos;t his measurement — the room was 400 square feet. The problem was the 38 cuts he made along walls, around a support column, and at the doorway transition. Each cut created an offcut too short to start the next row. Those offcuts went in the trash. He needed 430 square feet to finish 400.</p>
+      <h2>Flooring is sold by the square foot, so measuring is the whole game</h2>
+      <p>
+        Every flooring project comes down to one number: how many square feet you
+        need to buy. Get it right and the job goes smoothly. Get it wrong and you
+        either run out three rows from the finish, with the same lot number now
+        sold out, or you overbuy by 40 percent and eat the cost. The calculator up
+        top turns your room into a material count, but the number it needs from you
+        is the square footage, and that is the part people fumble. So this page
+        starts there: how to actually figure the square footage of a room, including
+        the awkward ones that are not simple rectangles.
+      </p>
+      <p>
+        The good news is that a room of almost any shape is just a few rectangles
+        stuck together. Measure each rectangle, add them up, add a waste factor for
+        the pieces you will cut and throw away, and that is your number. Here is the
+        method on an L-shaped room.
+      </p>
 
-      <MethodologyNote>
-        <p>
-          Waste factors are based on National Wood Flooring Association
-          (NWFA) installation guidelines. Material pricing reflects 2026
-          retail from Home Depot, Lowe&apos;s, and Floor &amp; Decor.
-          Acclimation times are from Shaw, Mohawk, and Armstrong product
-          specifications. Coverage per box varies by brand — always check
-          your specific product before ordering.
-        </p>
-      </MethodologyNote>
-
-      <h2>Choosing your material</h2>
-      <Figure number={1} caption="Five common residential flooring types compared on cost, lifespan, and DIY difficulty. LVP dominates the market because it's cheap, waterproof, and click-together installation works for beginners.">
-        <MaterialComparisonSVG />
+      <Figure
+        number={1}
+        caption="Any room is a set of rectangles. Split it, measure each piece in feet, multiply length by width, and add the pieces together. Add closets and alcoves. Then add a waste factor and buy to that total."
+      >
+        <SquareFootageSVG />
       </Figure>
-      <p>The market has shifted dramatically since 2020. Luxury vinyl plank (LVP) now outsells all other flooring types combined in US residential renovation. The reasons are practical: it&apos;s waterproof, it clicks together without glue or nails, it handles temperature swings, and at $2–7 per square foot it undercuts everything except budget laminate. If you&apos;re replacing carpet in a rental or doing a quick whole-house refresh, LVP is the default choice for good reason.</p>
-      <p>Solid hardwood remains the premium option for homeowners who want a floor that lasts 50–100 years and can be sanded and refinished 5–8 times over its life. The catch is installation: it needs a nail gun, requires careful moisture management, and expands and contracts with humidity more aggressively than any other material. It&apos;s not a weekend DIY project.</p>
 
-      <h2>How much waste to order</h2>
-      <Figure number={2} caption="Your lay pattern determines waste. Straight runs waste 5% (the offcuts from the last plank of each row start the next row). Diagonal and herringbone create short offcuts that can't be reused.">
-        <WasteByPatternSVG />
-      </Figure>
-      <Callout label="The box math">Flooring is sold in boxes covering a fixed area (typically 20–25 sq ft per box). You can&apos;t buy half a box. So even after calculating the right waste percentage, round up to the next full box. That last partial box is your replacement supply — keep it for when a plank gets damaged in year 3.</Callout>
+      <h2>How to figure square footage for flooring</h2>
+      <p>
+        Start by drawing the room from above, roughly to scale, on a piece of paper.
+        Then divide it into rectangles along the walls. A plain rectangular bedroom
+        is one rectangle. An L-shaped living room is two. A room with a bumped-out
+        bay or a closet is that many more. The goal is to end up with shapes you can
+        measure with a straight tape: length times width.
+      </p>
+      <p>
+        Measure each rectangle in feet, and if a dimension lands between feet, use
+        the decimal, so 12 feet 6 inches is 12.5 feet. Multiply length by width for
+        each rectangle, then add all the rectangles together. In the diagram, a 14
+        by 12 main area is 168 square feet, an 8 by 6 extension is 48, and a 4 by 5
+        closet is 20, for 236 square feet of actual floor. Do not skip the closet.
+        Flooring usually runs into closets, and a forgotten closet is exactly the
+        kind of small miss that leaves you a box short.
+      </p>
+      <p>
+        A few rules keep this honest. Measure to the wall, not to the baseboard,
+        since the baseboard comes off. Do not subtract for kitchen islands or
+        cabinets that are already in place unless they are permanent and staying,
+        because the difference is small and the safety margin is worth more than the
+        savings. And do not try to subtract for doorways, since you want flooring to
+        run into them. Once you have the raw square footage, you are ready for the
+        part that trips up even careful people: waste.
+      </p>
 
-      <h2>What flooring costs by room</h2>
-      <Figure number={3} caption="Material cost only — installation adds $3–10/ft² for professional labor. A 1,200 sq ft whole-house LVP job runs about $4,800 in materials vs $12,000 for solid hardwood.">
-        <CostPerRoomSVG />
-      </Figure>
+      <h2>The waste factor is not optional</h2>
+      <p>
+        You never buy exactly your square footage. Every cut at a wall leaves an
+        offcut, and only some of those offcuts are long enough to start the next
+        row. The rest are scrap. So you buy extra, and how much extra depends
+        entirely on how you lay the floor. A simple straight layout wastes little. A
+        diagonal or a herringbone pattern wastes a lot, because the angled cuts at
+        every wall produce triangular scrap that cannot be reused.
+      </p>
 
       <ComparisonTable
-        columns={[{ title: "DIY" }, { title: "Professional" }]}
-        rows={[
-          { label: "Material (200 ft² LVP)", values: ["$800", "$800"] },
-          { label: "Underlayment", values: ["$60", "Included"] },
-          { label: "Transition strips + trim", values: ["$40", "Included"] },
-          { label: "Tool rental (saw, spacers)", values: ["$50", "Included"] },
-          { label: "Labor", values: ["$0 (6–8 hours)", "$600–2,000"] },
-          { label: "Total for 200 ft²", values: [<strong key="d">$950</strong>, <strong key="p">$1,400–2,800</strong>] },
+        columns={[
+          { title: "Lay pattern", highlight: true },
+          { title: "Add for waste" },
+          { title: "Why" },
         ]}
-        caption="LVP is the most DIY-friendly flooring. Hardwood and tile should be hired out unless you have experience."
+        rows={[
+          { label: "Straight lay", values: ["5%", "Clean cuts, most offcuts reusable"] },
+          { label: "Staggered (1/3 offset)", values: ["7 to 10%", "The standard for plank; slight extra cutting"] },
+          { label: "Diagonal (45 degrees)", values: ["15%", "Angled wall cuts make triangular scrap"] },
+          { label: "Herringbone", values: ["18 to 20%", "Every piece is cut; heavy offcut loss"] },
+        ]}
+        caption="Add the waste percentage to your measured square footage before you buy. On a 236 square foot room, a staggered plank floor at 10 percent means buying about 260 square feet."
       />
 
-      <h2>The step everyone skips: acclimation</h2>
-      <Figure number={4} caption="All flooring materials need time to adjust to your room's temperature and humidity before installation. Solid hardwood is the most sensitive — install too soon and it will buckle or gap as it adjusts.">
-        <AcclimationSVG />
-      </Figure>
-      <p>Acclimation means leaving the unopened boxes of flooring in the room where they&apos;ll be installed, at normal living temperature, for a set period. The material absorbs or releases moisture to match the room conditions. Install before it&apos;s acclimated and the boards will expand or contract after they&apos;re locked in — causing buckles, gaps, or both.</p>
-      <p>LVP is the most forgiving — 48 hours is usually enough. Solid hardwood is the least forgiving — skip the 7–14 day acclimation and you may see cupping or crowning within the first season.</p>
+      <p>
+        Buy one extra factor beyond waste too: an extra box for the future. Floors
+        get damaged, and dye lots change, so the plank that matches today will not
+        match in three years. One spare box in the closet is cheap insurance against
+        a repair that otherwise means refloring the whole room. Add it to the order,
+        not to the waste math, so you can see it as the deliberate choice it is.
+      </p>
 
-      <Scenario location="Portland, OR">
-        A couple installed 800 sq ft of LVP (LifeProof Sterling Oak) in
-        their 1960s ranch. They ordered 840 sq ft (5% waste). The house
-        had 14 doorway transitions and a diagonal hallway. Actual waste
-        was 11% — the hallway angle created short offcuts on every row.
-        They were 48 sq ft short and had to wait 10 days for the same
-        dye lot to ship. The mismatched section from a different lot is
-        visible in the hallway. Lesson: bump to 10% for rooms with
-        angles or many transitions.
+      <h2>What each material costs</h2>
+      <p>
+        The material you choose drives both the price and the install difficulty,
+        and the spread is enormous, from about a dollar a square foot for cheap
+        laminate to eighteen for solid hardwood before anyone lifts a tool. Here is
+        the honest comparison in 2026 dollars, material only, before installation.
+      </p>
+
+      <ComparisonTable
+        columns={[
+          { title: "Vinyl plank (LVP)", highlight: true },
+          { title: "Laminate" },
+          { title: "Engineered wood" },
+          { title: "Solid hardwood" },
+          { title: "Tile" },
+        ]}
+        rows={[
+          { label: "Material per ft²", values: ["$2 to 7", "$1 to 5", "$4 to 14", "$6 to 18", "$3 to 15"] },
+          { label: "Install per ft²", values: ["$3 to 6", "$3 to 6", "$4 to 8", "$6 to 12", "$7 to 14"] },
+          { label: "Lifespan", values: ["15 to 25 yr", "15 to 25 yr", "20 to 40 yr", "50 to 100 yr", "50+ yr"] },
+          { label: "DIY difficulty", values: ["Easy", "Easy", "Moderate", "Hard", "Hard"] },
+          { label: "Wet rooms", values: ["Excellent", "Poor", "Fair", "Poor", "Excellent"] },
+        ]}
+        caption="Vinyl plank is the value pick for most rooms and the only easy DIY option that also handles bathrooms and basements. Solid hardwood lasts generations but costs the most and is the hardest to install. Tile is forever but slow and skilled work."
+      />
+
+      <p>
+        The install cost is the part people forget when they compare flooring by the
+        sticker price. Labor often matches or exceeds the material, so a $5 per
+        square foot hardwood becomes $11 to 17 installed, while a $3 vinyl plank
+        becomes $6 to 9. On a 1,200 square foot house, that is the difference between
+        roughly $7,000 and $18,000 all in. If you want a full installed estimate,
+        the <a href="/cost-to-install-flooring">cost to install flooring</a> guide
+        breaks it down by material and region.
+      </p>
+
+      <Scenario location="1,200 ft² whole-house LVP install">
+        A homeowner measures 1,200 square feet across the living areas and bedrooms,
+        planning a staggered vinyl plank layout. Waste at 10 percent brings the buy
+        to 1,320 square feet, plus one spare box of about 20 square feet, so 1,340
+        total. At $4 a square foot for mid-grade LVP, material runs about $5,360.
+        Hiring the install at $4 a foot on the measured 1,200 adds $4,800, for
+        roughly $10,160 all in. Doing it themselves saves that $4,800, and LVP is the
+        material where DIY is realistic, which is a big part of why it has taken over
+        the market.
       </Scenario>
 
-      <h2>Subfloor: what needs to happen before flooring goes down</h2>
-      <p>Your subfloor determines what flooring you can install and how much prep work is needed. Three checks to do before ordering materials:</p>
-      <ul>
-        <li><strong>Level.</strong> Place a 6-foot straightedge on the subfloor. Gaps over 3/16 inch need leveling compound ($0.50–1.00/ft²). Most click-together products require a flat subfloor to prevent bouncing and joint failure.</li>
-        <li><strong>Moisture.</strong> Test concrete subfloors with a calcium chloride kit. Readings over 3 lb per 1,000 ft² per 24 hours mean you need a moisture barrier, and some solid hardwoods can&apos;t be installed at all. LVP handles moisture best.</li>
-        <li><strong>Structure.</strong> Bounce test: walk across the room. If the subfloor flexes noticeably, the joists may need sistering or blocking before tile or stone goes down. Flexible subfloors crack rigid flooring.</li>
-      </ul>
-      <p>If your project involves tile instead of plank flooring, the <a href="/tile-calculator">tile calculator</a> and <a href="/grout-calculator">grout calculator</a> handle the different waste and grout math. For rooms with both tile (bathroom) and plank (bedroom), calculate each area separately.</p>
+      <h2>Acclimation and expansion gaps: the two rules that prevent buckling</h2>
+      <p>
+        Wood and laminate move with humidity. They swell when the air is damp and
+        shrink when it is dry, and a floor installed without allowing for that
+        movement will buckle up in the middle or gap open at the seams within a
+        season. Two habits prevent it, and both are free.
+      </p>
+      <p>
+        First, acclimate the flooring. Bring the boxes into the actual room where
+        they will be installed, open or loosely stack them, and leave them for the
+        time the manufacturer specifies, usually 48 to 72 hours for wood and
+        laminate. This lets the material reach the room's normal temperature and
+        humidity before it is locked down, so it is not going to make a big move
+        after installation. Skipping this step is the single most common cause of a
+        floor that fails.
+      </p>
+      <p>
+        Second, leave an expansion gap. Every wood, laminate, and vinyl plank floor
+        needs a gap of about a quarter to a half inch around the entire perimeter,
+        against every wall and every fixed object, so the floor has room to expand
+        without pushing against anything. The baseboard and shoe molding hide the
+        gap. Butt a floating floor tight to the walls and it has nowhere to go when
+        it swells, so it lifts. The gap is invisible when the job is done and
+        essential while it works.
+      </p>
 
-      <h2>Flooring installation cost per square foot</h2>
+      <Callout label="Subfloor first">
+        Flooring only goes down as flat as what is under it. A subfloor should be
+        flat within about 3/16 inch over 10 feet, clean, dry, and solid. Fix squeaks
+        and high spots before the new floor goes down, because every dip and bump
+        telegraphs through, especially with thin vinyl and laminate. For concrete
+        slabs, test for moisture first (ASTM F710), since a slab that reads wet will
+        ruin wood and laminate from below.
+      </Callout>
 
-      <p>Material is only part of the bill. Labor, underlayment, transitions, and old floor removal add 50 to 100 percent to the sticker price on the box. Here is what each flooring type costs fully installed:</p>
+      <h2>Underlayment and transitions</h2>
+      <p>
+        Most floating floors need an underlayment, a thin foam or cork layer between
+        the subfloor and the planks that cushions the floor, quiets it underfoot,
+        and in many products adds a moisture barrier. Some vinyl planks come with
+        underlayment already attached, in which case adding more can actually void
+        the warranty, so check the product before buying a separate roll. Match the
+        underlayment to the material and the subfloor, and use a moisture barrier
+        over any concrete.
+      </p>
+      <p>
+        Where the new floor meets another floor or a doorway, you need a transition
+        strip, and it is easy to forget to buy them. Count your doorways and the
+        spots where flooring changes, since each one needs a T-molding, a reducer, or
+        a threshold. If you are also redoing the walls or trim in the same room, the{" "}
+        <a href="/tile-calculator">tile calculator</a> handles any tiled areas like a
+        bathroom or entry, and the{" "}
+        <a href="/grout-calculator">grout calculator</a> covers the grout for those.
+      </p>
 
-      <ComparisonTable
-        columns={[{title:"Material/ft²"},{title:"Labor/ft²"},{title:"Total installed/ft²"}]}
-        rows={[
-          {label:"LVP (luxury vinyl plank)",values:["$2–5","$1.50–3","$3–8"]},
-          {label:"Laminate",values:["$1–4","$1.50–3","$2.50–7"]},
-          {label:"Engineered hardwood",values:["$4–10","$3–5","$6–14"]},
-          {label:"Solid hardwood",values:["$5–12","$4–6","$8–16"]},
-          {label:"Porcelain tile",values:["$3–10","$5–10","$7–20"]},
-          {label:"Natural stone tile",values:["$5–20","$8–15","$12–35"]},
-        ]}
-        caption="Hardwood floor installation cost runs $8-16/ft² total. The labor premium is higher than LVP because nail-down and glue-down installation requires skilled floor installers."
-      />
-
-      <p>For a cost-per-square-foot comparison including old floor removal, see the <a href="/cost-to-install-flooring">cost to install flooring</a> guide.</p>
+      <h2>Where flooring jobs go wrong</h2>
+      <p>
+        The failures are mostly measuring and prep mistakes, and all of them are
+        cheaper to avoid than to fix. Underbuying tops the list, usually from
+        forgetting the waste factor or a closet, and it is the worst one because the
+        matching lot sells out. Right behind it is skipping acclimation, which shows
+        up weeks later as a buckled or gapped floor that has to come up and go back
+        down.
+      </p>
+      <p>
+        Then the prep misses. Laying a floor over a subfloor that was never
+        flattened, so every dip shows. Butting a floating floor tight to the walls
+        with no expansion gap, so it lifts in humid weather. Putting laminate in a
+        bathroom, where the first spill swells the seams. And forgetting the
+        transition strips and spare box, small items that turn into a second trip to
+        the store mid-project. None of these are hard. Measure carefully, add your
+        waste, acclimate the material, prep the subfloor, and leave the gap, and the
+        floor you buy is the floor that lasts.
+      </p>
     </>
   );
 }
