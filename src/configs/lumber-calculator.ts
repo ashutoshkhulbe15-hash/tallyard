@@ -6,12 +6,12 @@ export const lumberCalculatorConfig: CalculatorConfig = {
   slug: "lumber-calculator",
   title: "Lumber Calculator",
   description:
-    "Board feet and lineal feet for any lumber order. Handles nominal sizes (2×4, 2×6, etc.) and quantities — for framing, decks, and projects.",
+    "Board feet and lineal feet for any lumber order. Handles nominal sizes (2×4, 2×6, etc.) and quantities for framing, decks, and projects.",
   categoryLabel: "Lumber",
   category: "drywall",
 
   bannerHeadline: "Order cleanly.",
-  bannerTags: ["Board feet + lineal", "All nominal sizes", "With waste factor"],
+  bannerTags: ["Board feet + lineal", "Weight + cost", "All nominal sizes"],
 
   inputs: [
     {
@@ -70,6 +70,29 @@ export const lumberCalculatorConfig: CalculatorConfig = {
         { label: "15%", value: 15 },
       ],
     },
+    {
+      id: "species",
+      label: "Species / type",
+      type: "select",
+      defaultImperial: "spf",
+      options: [
+        { label: "SPF, kiln-dried (framing)", value: "spf" },
+        { label: "Pressure-treated (wet)", value: "pt" },
+        { label: "Southern yellow pine, dry", value: "syp" },
+        { label: "Cedar / redwood", value: "cedar" },
+        { label: "Red oak (hardwood)", value: "oak" },
+      ],
+      help: "Sets weight per board foot and a baseline price",
+    },
+    {
+      id: "price",
+      label: "Price per board foot (optional)",
+      type: "number",
+      defaultImperial: 0,
+      min: 0,
+      step: 0.05,
+      help: "Leave 0 to use the 2026 baseline for the selected species",
+    },
   ],
 
   calculate: (values) => {
@@ -77,6 +100,8 @@ export const lumberCalculatorConfig: CalculatorConfig = {
     const length = Number(values.length) || 8;
     const quantity = Number(values.quantity) || 1;
     const waste = Number(values.waste) || 10;
+    const species = String(values.species || "spf");
+    const priceOverride = Number(values.price) || 0;
 
     // Nominal dimensions in inches (for board foot calculation)
     const nominalMap: Record<string, { t: number; w: number }> = {
@@ -96,14 +121,36 @@ export const lumberCalculatorConfig: CalculatorConfig = {
     };
     const dims = nominalMap[nominalSize] || nominalMap["2x4"];
 
+    // Weight per board foot (lb) and 2026 baseline price per board foot ($)
+    // by species. Weights from USDA Wood Handbook typical densities; treated
+    // is heavier because it is usually still wet at purchase.
+    const speciesMap: Record<
+      string,
+      { lbPerBf: number; pricePerBf: number; name: string }
+    > = {
+      spf: { lbPerBf: 2.1, pricePerBf: 0.85, name: "SPF (kiln-dried)" },
+      pt: { lbPerBf: 4.0, pricePerBf: 1.45, name: "Pressure-treated" },
+      syp: { lbPerBf: 2.8, pricePerBf: 1.1, name: "Southern yellow pine" },
+      cedar: { lbPerBf: 2.0, pricePerBf: 2.9, name: "Cedar / redwood" },
+      oak: { lbPerBf: 3.6, pricePerBf: 6.0, name: "Red oak" },
+    };
+    const sp = speciesMap[species] || speciesMap.spf;
+
     // Board feet formula: (thickness × width × length in feet) / 12
     // 1 board foot = 1" thick × 12" wide × 1 ft long = 144 cubic inches
     const boardFeetPerBoard = (dims.t * dims.w * length) / 12;
-    const totalBoardFeet = boardFeetPerBoard * quantity;
-    const totalLineal = length * quantity;
 
-    const quantityWithWaste = Math.ceil(quantity * (1 + waste / 100));
+    // Round to 6 places before ceil so floating point (e.g. 50 * 1.1 = 55.0000001)
+    // does not push an exact result up to the next board.
+    const quantityWithWaste = Math.ceil(
+      Number((quantity * (1 + waste / 100)).toFixed(6))
+    );
     const boardFeetWithWaste = boardFeetPerBoard * quantityWithWaste;
+
+    // Weight and cost scale off total board feet
+    const totalWeight = boardFeetWithWaste * sp.lbPerBf;
+    const pricePerBf = priceOverride > 0 ? priceOverride : sp.pricePerBf;
+    const totalCost = boardFeetWithWaste * pricePerBf;
 
     return {
       value: quantityWithWaste,
@@ -114,6 +161,11 @@ export const lumberCalculatorConfig: CalculatorConfig = {
         { label: "board ft per piece", value: `${formatNumber(round(boardFeetPerBoard, 2))} bf` },
         { label: "total board ft", value: `${formatNumber(round(boardFeetWithWaste, 1))} bf` },
         { label: "lineal ft", value: `${quantityWithWaste * length}'` },
+        { label: "total weight", value: `~${formatNumber(round(totalWeight, 0))} lb` },
+        {
+          label: "est. cost",
+          value: `~$${formatNumber(round(totalCost, 0))}${priceOverride > 0 ? "" : ` (${sp.name})`}`,
+        },
       ],
       formulaSteps: [
         `board size = ${dims.t}" × ${dims.w}" nominal, length = ${length} ft`,
@@ -124,33 +176,78 @@ export const lumberCalculatorConfig: CalculatorConfig = {
           : `no waste factor applied = ${quantityWithWaste}`,
         `total board feet = ${formatNumber(round(boardFeetPerBoard, 3))} × ${quantityWithWaste} = ${formatNumber(round(boardFeetWithWaste, 2))} bf`,
         `total lineal feet = ${quantityWithWaste} × ${length} = ${quantityWithWaste * length} ft`,
+        `total weight = ${formatNumber(round(boardFeetWithWaste, 1))} bf × ${sp.lbPerBf} lb/bf (${sp.name}) = ${formatNumber(round(totalWeight, 0))} lb`,
+        `est. cost = ${formatNumber(round(boardFeetWithWaste, 1))} bf × $${pricePerBf.toFixed(2)}/bf = $${formatNumber(round(totalCost, 2))}`,
       ],
     };
   },
 
   ContentExpansion: LumberCalculatorExpansion,
 
+  howTo: {
+    name: "How to calculate board feet of lumber",
+    description:
+      "Convert any lumber list into board feet, linear feet, weight, and cost using the board-foot formula.",
+    steps: [
+      {
+        name: "Use the nominal dimensions",
+        text: "Take the nominal thickness and width (the 2 and 4 in a 2x4), not the smaller milled size, and the length in inches.",
+      },
+      {
+        name: "Apply the board-foot formula",
+        text: "Multiply nominal thickness times nominal width times length in inches, then divide by 144. A 2x4x8 is 2 times 4 times 96 divided by 144, which is 5.33 board feet.",
+      },
+      {
+        name: "Total the cut list",
+        text: "Repeat for each board size and quantity, then add the board feet together for the whole order.",
+      },
+      {
+        name: "Add a waste factor",
+        text: "Add about 10 percent for framing lumber and 15 percent for trim and finish stock to cover offcuts and culled boards.",
+      },
+      {
+        name: "Estimate weight and cost",
+        text: "Multiply board feet by roughly 2.1 pounds for kiln-dried SPF or 3.5 to 4.2 pounds for wet treated lumber, and by the current price per board foot for cost.",
+      },
+    ],
+  },
+
   formulaDescription:
     "board feet = (thickness × width × length_ft) ÷ 12, per board × quantity with waste",
 
   methodology: [
-    "Board feet is the standard unit for lumber volume in North America. One board foot equals a piece 1 inch thick, 12 inches wide, and 1 foot long — or 144 cubic inches of wood. The formula is (nominal thickness × nominal width × length in feet) divided by 12.",
+    "Board feet is the standard unit for lumber volume in North America. One board foot equals a piece 1 inch thick, 12 inches wide, and 1 foot long, which is 144 cubic inches of wood. The formula is (nominal thickness × nominal width × length in feet) divided by 12.",
     "Note the 'nominal' in that formula. A 2×4 is actually 1.5 × 3.5 inches after milling, but board-foot calculations use the nominal dimensions (2 × 4) to keep things consistent across rough and dressed lumber. This is how lumber has been sold for over a century.",
-    "Lineal feet is the simpler measurement — total length of lumber regardless of cross-section. A 2×4 at 8 feet long is 8 lineal feet. A 2×12 at 8 feet long is also 8 lineal feet. But the 2×12 is 6 board feet versus the 2×4's 5.33 board feet, so the 2×12 costs roughly 12× more per lineal foot.",
-    "Waste factor for framing and construction lumber: 0% if you're ordering to a precise pre-calculated list, 10% for typical projects where you're cutting stock to fit. 15% for projects with complex angles or repeated short cuts that leave lots of unusable scrap. Always round up to whole boards — a 10% buffer on 50 boards is 55, not 55.0.",
+    "Lineal feet is the simpler measurement, the total length of lumber regardless of cross-section. A 2×4 at 8 feet long is 8 lineal feet. A 2×12 at 8 feet long is also 8 lineal feet. But the 2×12 is 6 board feet versus the 2x4's 5.33 board feet, so the 2×12 costs roughly 12× more per lineal foot.",
+    "Waste factor for framing and construction lumber: 0% if you're ordering to a precise pre-calculated list, 10% for typical projects where you're cutting stock to fit. 15% for projects with complex angles or repeated short cuts that leave lots of unusable scrap. Always round up to whole boards. A 10% buffer on 50 boards is 55, not 55.0.",
     "Pricing: lumber yards quote in different units. Big-box retailers usually price per piece (\"$5.47 each\"). Wholesale lumber yards quote per 1,000 board feet (\"$850 MBF\"). Convert between them: price per piece ÷ board feet per piece = price per board foot. Multiply by 1,000 for MBF.",
   ],
 
   sources: [
     {
-      name: "American Lumber Standards Committee",
-      url: "https://www.alsc.org/",
-      note: "Nominal vs actual dimension standards",
+      name: "American Lumber Standards Committee: PS 20 American Softwood Lumber Standard",
+      url: "https://www.alsc.org/untreated-lumber_mod_prog_ps20.html",
+      note: "The federal standard defining nominal versus actual softwood lumber dimensions",
     },
     {
-      name: "Western Wood Products Association — Board Foot Reference",
-      url: "https://www.wwpa.org/",
-      note: "Industry reference for board foot calculation",
+      name: "Western Wood Products Association: Board Foot Calculation",
+      url: "https://www.wwpa.org/resources/calculators",
+      note: "Industry reference for the board-foot formula and lumber tallies",
+    },
+    {
+      name: "AWC National Design Specification for Wood Construction",
+      url: "https://awc.org/publications/nds/",
+      note: "Species design values and structural properties for framing lumber",
+    },
+    {
+      name: "USDA Forest Products Laboratory: Wood Handbook",
+      url: "https://www.fpl.fs.usda.gov/products/publications/several_pubs.php?grouping_id=100",
+      note: "Wood density and moisture data behind the weight estimates in this guide",
+    },
+    {
+      name: "Southern Forest Products Association: Pressure-Treated Lumber",
+      url: "https://www.sfpa.org/",
+      note: "Treatment retention levels and ground-contact ratings for southern yellow pine",
     },
   ],
 
@@ -165,7 +262,7 @@ export const lumberCalculatorConfig: CalculatorConfig = {
     {
       question: "What is a board foot?",
       answer:
-        "One board foot equals a piece of lumber 1 inch thick, 12 inches wide, and 1 foot long. That's 144 cubic inches of wood. Board feet is the standard way to measure and sell lumber volume in the US and Canada — it accounts for cross-section (thickness × width) and length together.",
+        "One board foot equals a piece of lumber 1 inch thick, 12 inches wide, and 1 foot long. That's 144 cubic inches of wood. Board feet is the standard way to measure and sell lumber volume in the US and Canada, and it accounts for cross-section (thickness × width) and length together.",
     },
     {
       question: "Why is a 2×4 not actually 2 by 4 inches?",
@@ -180,7 +277,7 @@ export const lumberCalculatorConfig: CalculatorConfig = {
     {
       question: "How much lumber do I need for a deck?",
       answer:
-        "For deck materials specifically, use the deck calculator — it factors in decking boards, joists, beams, posts, and fasteners. The lumber calculator here is for general framing or when you need to compute board feet for cost comparison or bulk ordering.",
+        "For deck materials specifically, use the deck calculator, which factors in decking boards, joists, beams, posts, and fasteners. The lumber calculator here is for general framing or when you need to compute board feet for cost comparison or bulk ordering.",
     },
     {
       question: "What's the difference between cheap and premium lumber?",
