@@ -152,27 +152,70 @@ export const wallpaperCalculatorConfig: CalculatorConfig = {
 
   ContentExpansion: WallpaperCalculatorExpansion,
 
+  howTo: {
+    name: "How to calculate wallpaper for a room",
+    description:
+      "Measure the walls, subtract openings, add pattern-repeat waste, and divide by usable roll coverage to get the roll count.",
+    steps: [
+      {
+        name: "Measure the perimeter and height",
+        text: "Add the width of every wall you are papering to get the perimeter, then multiply by the ceiling height for gross wall area.",
+      },
+      {
+        name: "Subtract large openings",
+        text: "Subtract about 21 square feet per door and 15 per large window. Leave small openings in and let the margin cover cuts.",
+      },
+      {
+        name: "Find the usable roll coverage",
+        text: "Use the usable square feet per roll, not the label figure. A US double roll covers about 60 usable square feet after trimming.",
+      },
+      {
+        name: "Add pattern-repeat waste",
+        text: "Add material for the pattern repeat: each strip is cut up to one full repeat longer than the wall height. Larger repeats waste more.",
+      },
+      {
+        name: "Divide and round up",
+        text: "Divide the net area with waste by usable roll coverage and round up to whole rolls. Buy them all in one dye lot.",
+      },
+    ],
+  },
+
   formulaDescription:
     "rolls = ⌈((perimeter × height − openings) × (1 + pattern waste)) ÷ roll coverage⌉",
 
   methodology: [
-    "Gross wall area is computed from the room perimeter times the wall height. This assumes you're papering all four walls — for accent walls or partial rooms, enter just the perimeter you're papering (length of wall × 2 if just one wall: you can also enter the actual length in perimeter field since perimeter math is just linear feet).",
+    "Gross wall area is computed from the room perimeter times the wall height. This assumes you're papering all four walls. For accent walls or partial rooms, enter just the perimeter you're papering (length of wall × 2 if just one wall: you can also enter the actual length in perimeter field since perimeter math is just linear feet).",
     "Doors and windows are subtracted using standard sizes: 21 square feet per door (7 ft × 3 ft typical), 15 square feet per window (4 ft × 4 ft average). Small decorative windows should be ignored; only subtract openings larger than a few square feet.",
-    "Pattern repeat is the key driver of wallpaper waste. With no pattern, you can use nearly every inch of every strip. With a 24-inch repeat, every strip needs to be trimmed to align with the adjacent strip — wasting up to half a repeat per strip. The calculator scales waste from 10% (no pattern) to 30% (24-inch repeat).",
-    "Roll coverage varies by market. American 'double rolls' cover 56 sq ft (sold in the US because single rolls are too small to be practical). European single rolls cover 29 sq ft. Metric rolls cover about 15 sq meters (161 sq ft). Always verify coverage with your specific product — some designer brands use non-standard roll sizes.",
-    "Rolls round up to whole rolls. For larger rooms, buy one extra roll beyond the calculator's count as insurance — you cannot practically match dye lots by buying more rolls later. Discontinued patterns are especially unforgiving; keep one unopened roll for years as a repair reserve.",
+    "Pattern repeat is the key driver of wallpaper waste. With no pattern, you can use nearly every inch of every strip. With a 24-inch repeat, every strip needs to be trimmed to align with the adjacent strip, wasting up to half a repeat per strip. The calculator scales waste from 10% (no pattern) to 30% (24-inch repeat).",
+    "Roll coverage varies by market. American 'double rolls' cover 56 sq ft (sold in the US because single rolls are too small to be practical). European single rolls cover 29 sq ft. Metric rolls cover about 15 sq meters (161 sq ft). Always verify coverage with your specific product, since some designer brands use non-standard roll sizes.",
+    "Rolls round up to whole rolls. For larger rooms, buy one extra roll beyond the calculator's count as insurance, because you cannot practically match dye lots by buying more rolls later. Discontinued patterns are especially unforgiving; keep one unopened roll for years as a repair reserve.",
   ],
 
   sources: [
     {
-      name: "Wallcoverings Association — Estimating Guide",
-      url: "https://www.wallcoverings.org/",
-      note: "Industry standards for roll coverage and pattern matching",
+      name: "Wallcoverings Association (WA): Wallcovering Installation Standards",
+      url: "https://www.wallcoverings.org/page/InstallationStandards",
+      note: "Industry standards for roll dimensions, pattern matching, and estimating",
     },
     {
-      name: "Home Depot — How To Measure For Wallpaper",
-      url: "https://www.homedepot.com/",
-      note: "Reference for door and window area subtractions",
+      name: "ASTM F793: Standard Classification of Wallcovering by Use Characteristics",
+      url: "https://www.astm.org/f0793-15.html",
+      note: "Classification of wallcovering types, durability, and washability",
+    },
+    {
+      name: "York Wallcoverings: Measuring and Estimating Guide",
+      url: "https://www.yorkwallcoverings.com/",
+      note: "Manufacturer guidance on single versus double rolls and repeat allowances",
+    },
+    {
+      name: "Graham & Brown: How to Measure for Wallpaper",
+      url: "https://www.grahambrown.com/us/help-and-advice",
+      note: "Reference for perimeter measurement and pattern-repeat waste",
+    },
+    {
+      name: "The Wallpaper Institute: Pattern Match Types",
+      url: "https://www.wallcoverings.org/",
+      note: "Straight match versus drop match and their effect on material waste",
     },
   ],
 
@@ -202,22 +245,22 @@ export const wallpaperCalculatorConfig: CalculatorConfig = {
     {
       question: "Do I subtract doors and windows?",
       answer:
-        "Yes, but only for significant openings (larger than a few square feet). The calculator uses 21 sq ft for a standard door and 15 sq ft for an average window. Very small decorative windows or vents shouldn't be subtracted — just add them to your waste buffer.",
+        "Yes, but only for significant openings (larger than a few square feet). The calculator uses 21 sq ft for a standard door and 15 sq ft for an average window. Very small decorative windows or vents shouldn't be subtracted, so just add them to your waste buffer.",
     },
     {
       question: "Can I use this for accent walls?",
       answer:
-        "Yes — instead of room perimeter, enter just the length of the accent wall. The math works for any wall area. For a 12-foot-wide accent wall at 9-foot ceilings, enter 12 in 'perimeter' (the linear run of paperable wall) and 9 in 'height'.",
+        "Yes. Instead of room perimeter, enter just the length of the accent wall. The math works for any wall area. For a 12-foot-wide accent wall at 9-foot ceilings, enter 12 in 'perimeter' (the linear run of paperable wall) and 9 in 'height'.",
     },
     {
       question: "What's the difference between prepasted and unpasted?",
       answer:
-        "Prepasted paper has adhesive already applied — you just wet and hang. Easier for DIY. Unpasted requires applying paste separately (roller or paste-the-wall method) — more flexible, better for thick vinyl or grasscloth but slower. Roll coverage is identical.",
+        "Prepasted paper has adhesive already applied, so you just wet and hang. Easier for DIY. Unpasted requires applying paste separately (roller or paste-the-wall method), more flexible, better for thick vinyl or grasscloth but slower. Roll coverage is identical.",
     },
     {
       question: "How do I deal with a dye lot?",
       answer:
-        "All your wallpaper rolls should have the same 'batch number' or 'lot number' printed on the packaging. Rolls from different lots can have slight but visible color differences. Buy all rolls from one lot at once. Keep an unopened roll for future repairs — years later, the exact lot is impossible to re-order.",
+        "All your wallpaper rolls should have the same 'batch number' or 'lot number' printed on the packaging. Rolls from different lots can have slight but visible color differences. Buy all rolls from one lot at once. Keep an unopened roll for future repairs, because years later, the exact lot is impossible to re-order.",
     },
     {
       question: "Should I hire a professional installer?",

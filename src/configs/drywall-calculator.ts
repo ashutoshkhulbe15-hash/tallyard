@@ -232,7 +232,7 @@ export const drywallCalculatorConfig: CalculatorConfig = {
     { name: "Paint calculator", slug: "paint-calculator", description: "Gallons of paint after drywall is up" },
     { name: "Insulation calculator", slug: "insulation-calculator", description: "R-value and square footage for walls" },
     { name: "Stud spacing calculator", slug: "stud-spacing-calculator", description: "Framing layout so sheet edges land on studs" },
-    { name: "Window sizing calculator", slug: "window-sizing-calculator", description: "Openings, headers, and rough opening" },
+    { name: "Wallpaper calculator", slug: "wallpaper-calculator", description: "Rolls and repeat for papering finished walls" },
   ],
 
   faq: [

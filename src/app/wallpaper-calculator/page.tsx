@@ -6,13 +6,14 @@ import { getConfig } from "@/configs";
 const SLUG = "wallpaper-calculator";
 
 export const metadata: Metadata = {
-  title: "Wallpaper Calculator: Rolls Needed For Any Room",
+  title: "Wallpaper Calculator: Rolls, Repeat & Measuring",
   description:
-    "Calculate rolls of wallpaper for any room. Accounts for pattern repeat, roll coverage, windows, and doors.",
+    "Free wallpaper calculator: rolls needed for any room with pattern repeat, roll size, and openings. Plus how to measure a wall. No signup.",
   alternates: { canonical: "/wallpaper-calculator" },
   openGraph: {
-    title: "Wallpaper Calculator: Rolls Needed For Any Room",
-    description: "Calculate wallpaper rolls with pattern repeat and opening subtractions.",
+    title: "Wallpaper Calculator: Rolls, Repeat & Measuring",
+    description:
+      "Free wallpaper calculator: rolls for any room with pattern repeat and openings, plus how to measure a wall. No signup.",
     url: "https://www.tallyard.com/wallpaper-calculator",
     type: "website",
   },

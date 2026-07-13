@@ -9,6 +9,7 @@ const DEFAULT_DATE = new Date("2026-04-20"); // initial content build-out
 const REDESIGN_DATE = new Date("2026-07-09"); // sitewide Ledger redesign shipped
 const MODIFIED: Record<string, Date> = {
   // page-refinement series deploys
+  "wallpaper-calculator": new Date("2026-07-13"),
   "lumber-calculator": new Date("2026-07-13"),
   "stud-spacing-calculator": new Date("2026-07-13"),
   "drywall-calculator": new Date("2026-07-13"),

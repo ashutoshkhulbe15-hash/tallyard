@@ -175,7 +175,7 @@ export const paintCalculatorConfig: CalculatorConfig = {
   related: [
     { name: "Drywall calculator", slug: "drywall-calculator", description: "Sheets for walls before painting" },
     { name: "Siding calculator", slug: "siding-calculator", description: "Exterior siding and trim coverage" },
-    { name: "Countertop calculator", slug: "countertop-calculator", description: "Surface area for kitchen refinish" },
+    { name: "Wallpaper calculator", slug: "wallpaper-calculator", description: "Rolls and pattern repeat for an accent wall" },
     { name: "Tile calculator", slug: "tile-calculator", description: "Tiles and boxes for floors and walls" },
   ],
 
