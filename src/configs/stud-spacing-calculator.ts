@@ -148,28 +148,71 @@ export const studSpacingCalculatorConfig: CalculatorConfig = {
 
   ContentExpansion: StudSpacingCalculatorExpansion,
 
+  howTo: {
+    name: "How to count studs for a wall",
+    description:
+      "Count the common studs plus the king, jack, cripple, and corner studs needed to frame any wall to code.",
+    steps: [
+      {
+        name: "Count the common studs",
+        text: "Divide the wall length in inches by the spacing (16 or 24) and add 1. A 12-foot wall at 16 inches on center needs 10 common studs.",
+      },
+      {
+        name: "Lay out from the corner",
+        text: "Set the first common stud center at 16 inches from the end of the wall so 4-foot sheet edges land on a stud. Framers mark the first stud at 15-1/4 inches to account for the corner stud.",
+      },
+      {
+        name: "Add studs for every opening",
+        text: "Each door or window adds two king studs and two jack studs, plus cripple studs above the header and below any window sill.",
+      },
+      {
+        name: "Add corner assemblies",
+        text: "Add two studs per corner for a three-stud corner that gives drywall a nailing surface on both walls.",
+      },
+      {
+        name: "Add plates and a waste margin",
+        text: "Order bottom-plate stock plus a doubled top plate for the full wall length, then add about 10 percent extra studs for warped and unusable boards.",
+      },
+    ],
+  },
+
   formulaDescription:
     "studs = ⌈length × 12 ÷ spacing⌉ + 1 + corners × 2 + doors × 6 + windows × 8",
 
   methodology: [
-    "Line studs are spaced at either 16\" or 24\" on center. 16\" OC is the residential standard — stronger wall, easier drywall install (4-ft sheets break on studs), and what most carpenters default to. 24\" OC saves ~35% studs and is permitted for most non-bearing interior walls and some exterior walls with engineered sheathing. The calculator computes the line by dividing the wall length (in inches) by spacing and adding one for the end stud.",
+    "Line studs are spaced at either 16\" or 24\" on center. 16\" OC is the residential standard, and it means a stronger wall, easier drywall install (4-ft sheets break on studs), and what most carpenters default to. 24\" OC saves ~35% studs and is permitted for most non-bearing interior walls and some exterior walls with engineered sheathing. The calculator computes the line by dividing the wall length (in inches) by spacing and adding one for the end stud.",
     "Corner framing adds extra studs for the intersection of walls. A standard 3-stud corner adds 2 studs beyond the line count (one at the end, plus a 2-stud L at the corner itself). Modern energy-efficient corners use 2 studs with a corner backing board, saving lumber and allowing more insulation.",
-    "Each door opening requires 6 extra studs beyond the line: 2 king studs (full-height, flanking the opening), 2 jack studs (shorter, supporting the header), and typically 2 cripple studs above the header to complete the wall. The calculator doesn't subtract the line studs that would have been in the opening — this builds in a small buffer that's typical of how carpenters actually order.",
-    "Each window adds 8 extra studs: 2 king, 2 jack, 2 cripples above the header, and 2 cripples below the rough sill. Wider windows need more cripples — the calculator uses 2 as a baseline for typical 3-foot-wide windows. For 6+ foot windows, add 2 more cripples per opening.",
-    "Header sizing: non-bearing walls (interior partitions not supporting roof or floor loads) can use 2×4 flat-plate headers for openings under 4 feet. Bearing walls (most exterior walls, load-bearing interior walls) require heavier headers per IRC 2021 Table R602.7: 2×6 up to 4-ft spans, 2×8 up to 6-ft spans, 2×10 up to 8-ft spans, 2×12 up to 10-ft spans. The calculator recommends a minimum — always verify with actual span calculations.",
-    "Not covered: non-standard framing (balloon framing, advanced framing, SIPs), engineered lumber (LVL, glulam, I-joists for headers), seismic or hurricane hold-downs, or shear wall requirements. This is a materials estimator — for load-bearing decisions, consult a residential structural engineer or IRC span tables.",
+    "Each door opening requires 6 extra studs beyond the line: 2 king studs (full-height, flanking the opening), 2 jack studs (shorter, supporting the header), and typically 2 cripple studs above the header to complete the wall. The calculator doesn't subtract the line studs that would have been in the opening, which builds in a small buffer that's typical of how carpenters actually order.",
+    "Each window adds 8 extra studs: 2 king, 2 jack, 2 cripples above the header, and 2 cripples below the rough sill. Wider windows need more cripples, so the calculator uses 2 as a baseline for typical 3-foot-wide windows. For 6+ foot windows, add 2 more cripples per opening.",
+    "Header sizing: non-bearing walls (interior partitions not supporting roof or floor loads) can use 2×4 flat-plate headers for openings under 4 feet. Bearing walls (most exterior walls, load-bearing interior walls) require heavier headers per IRC 2021 Table R602.7: 2×6 up to 4-ft spans, 2×8 up to 6-ft spans, 2×10 up to 8-ft spans, 2×12 up to 10-ft spans. The calculator recommends a minimum, and you should always verify with actual span calculations.",
+    "Not covered: non-standard framing (balloon framing, advanced framing, SIPs), engineered lumber (LVL, glulam, I-joists for headers), seismic or hurricane hold-downs, or shear wall requirements. This is a materials estimator, so for load-bearing decisions, consult a residential structural engineer or IRC span tables.",
   ],
 
   sources: [
     {
-      name: "IRC 2021 — Wood Wall Framing",
-      url: "https://codes.iccsafe.org/",
-      note: "Code-required stud spacing and header spans",
+      name: "IRC Section R602.3: Design and Construction (Wood Wall Framing)",
+      url: "https://codes.iccsafe.org/content/IRC2021P2/chapter-6-wall-construction",
+      note: "Stud size, spacing, and height requirements for wood-framed walls",
     },
     {
-      name: "APA Engineered Wood Association",
-      url: "https://www.apawood.org/",
-      note: "Framing best practices and material sizing",
+      name: "IRC Section R602.7: Headers",
+      url: "https://codes.iccsafe.org/content/IRC2021P2/chapter-6-wall-construction",
+      note: "Header spans and the king and jack stud requirements at openings",
+    },
+    {
+      name: "IRC Section R602.7.1: Single Member Headers and Cripples",
+      url: "https://codes.iccsafe.org/content/IRC2021P2/chapter-6-wall-construction",
+      note: "Cripple stud requirements above and below wall openings",
+    },
+    {
+      name: "AWC Wood Frame Construction Manual (WFCM)",
+      url: "https://awc.org/publications/wfcm/",
+      note: "Prescriptive framing tables for stud spacing, plates, and connections",
+    },
+    {
+      name: "APA Advanced Framing Construction Guide",
+      url: "https://www.apawood.org/advanced-framing",
+      note: "24-inch spacing, two-stud corners, and optimum-value framing practice",
     },
   ],
 
@@ -184,17 +227,17 @@ export const studSpacingCalculatorConfig: CalculatorConfig = {
     {
       question: "How many studs do I need for a 20-foot wall?",
       answer:
-        "At 16\" OC: 16 line studs. Add 1 door (+6), 2 windows (+16), and 2 corners (+4) = 42 studs total. The calculator handles any wall length and opening count. For safety, order 10% extras — warped boards are common and unusable.",
+        "At 16\" OC: 16 line studs. Add 1 door (+6), 2 windows (+16), and 2 corners (+4) = 42 studs total. The calculator handles any wall length and opening count. For safety, order 10% extras, because warped boards are common and unusable.",
     },
     {
       question: "Should I use 16\" or 24\" OC spacing?",
       answer:
-        "16\" OC for most residential walls — stronger, easier to sheetrock, and what most building codes require for bearing walls. 24\" OC (sometimes called 'advanced framing') saves lumber for non-bearing interior walls and some single-story exterior walls with engineered sheathing. Check your local code before using 24\" OC for bearing walls.",
+        "16\" OC for most residential walls, since it is stronger, easier to sheetrock, and what most building codes require for bearing walls. 24\" OC (sometimes called 'advanced framing') saves lumber for non-bearing interior walls and some single-story exterior walls with engineered sheathing. Check your local code before using 24\" OC for bearing walls.",
     },
     {
       question: "What are king studs and jack studs?",
       answer:
-        "King studs are full-height studs flanking a door or window opening — they connect the top plate to the bottom plate. Jack studs are shorter, nailed to the king studs, supporting the bottom of the header. Together they form the structural frame around the opening. Larger openings may need doubled or tripled jacks.",
+        "King studs are full-height studs flanking a door or window opening, and they connect the top plate to the bottom plate. Jack studs are shorter, nailed to the king studs, supporting the bottom of the header. Together they form the structural frame around the opening. Larger openings may need doubled or tripled jacks.",
     },
     {
       question: "What size header do I need?",
@@ -209,17 +252,17 @@ export const studSpacingCalculatorConfig: CalculatorConfig = {
     {
       question: "Do partition walls need headers?",
       answer:
-        "For openings under 3 feet in non-load-bearing walls: often just a flat 2×4 header is sufficient. For wider openings in non-bearing walls: 2×6 works. Bearing walls require proper headers regardless of width. When in doubt, install a header — over-engineering a non-bearing wall wastes a few dollars; under-engineering a bearing wall causes structural failure.",
+        "For openings under 3 feet in non-load-bearing walls: often just a flat 2×4 header is sufficient. For wider openings in non-bearing walls: 2×6 works. Bearing walls require proper headers regardless of width. When in doubt, install a header. Over-engineering a non-bearing wall wastes a few dollars; under-engineering a bearing wall causes structural failure.",
     },
     {
       question: "How does corner framing work?",
       answer:
-        "Traditional 3-stud corner: full stud at corner, then 2 studs backing it to provide nailing surface for drywall. Uses 3 studs per corner plus blocking. Energy-efficient 2-stud corner: two studs forming the L, with plywood/OSB scraps for drywall nailing — allows insulation to extend to the corner. The calculator uses +2 studs per corner which covers both methods.",
+        "Traditional 3-stud corner: full stud at corner, then 2 studs backing it to provide nailing surface for drywall. Uses 3 studs per corner plus blocking. Energy-efficient 2-stud corner: two studs forming the L, with plywood/OSB scraps for drywall nailing, which allows insulation to extend to the corner. The calculator uses +2 studs per corner which covers both methods.",
     },
     {
       question: "What about shear walls and bracing?",
       answer:
-        "Not modeled here. Most walls need some form of lateral bracing — either let-in diagonal bracing, metal strap bracing, or (most common) wood structural panel sheathing (OSB or plywood) covering at least part of the wall. Required by code especially in seismic and high-wind regions. Consult your local building official for specific requirements.",
+        "Not modeled here. Most walls need some form of lateral bracing, either let-in diagonal bracing, metal strap bracing, or (most common) wood structural panel sheathing (OSB or plywood) covering at least part of the wall. Required by code especially in seismic and high-wind regions. Consult your local building official for specific requirements.",
     },
   ],
 };

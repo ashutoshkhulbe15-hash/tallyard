@@ -6,13 +6,14 @@ import { getConfig } from "@/configs";
 const SLUG = "stud-spacing-calculator";
 
 export const metadata: Metadata = {
-  title: "Stud Spacing Calculator: Studs For Any Wall",
+  title: "Stud & Wall Framing Calculator: Spacing + Count",
   description:
-    "Calculate studs for any wall including headers, jacks, kings, and cripples for openings. IRC-compliant.",
+    "Free stud calculator: count studs, plates, headers, and corners for any wall at 16 or 24 inch spacing. Wall framing diagram and IRC rules. No signup.",
   alternates: { canonical: "/stud-spacing-calculator" },
   openGraph: {
-    title: "Stud Spacing Calculator: Studs For Any Wall",
-    description: "Calculate studs with openings for any framed wall.",
+    title: "Stud & Wall Framing Calculator: Spacing + Count",
+    description:
+      "Free stud calculator: studs, plates, headers, and corners for any wall. Framing diagram plus 16 vs 24 inch spacing rules. No signup.",
     url: "https://www.tallyard.com/stud-spacing-calculator",
     type: "website",
   },
