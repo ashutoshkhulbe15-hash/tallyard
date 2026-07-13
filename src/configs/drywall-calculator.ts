@@ -162,34 +162,77 @@ export const drywallCalculatorConfig: CalculatorConfig = {
 
   ContentExpansion: DrywallCalculatorExpansion,
 
+  howTo: {
+    name: "How to calculate drywall for a room",
+    description:
+      "Estimate the sheets of drywall plus the joint compound, tape, and screws needed to finish any room from its dimensions.",
+    steps: [
+      {
+        name: "Measure the square footage",
+        text: "Multiply the room perimeter (all four wall lengths added together) by the ceiling height for wall area. Add length times width if you are drywalling the ceiling. Do not subtract standard doors and windows.",
+      },
+      {
+        name: "Divide by sheet size",
+        text: "Divide total square footage by 32 for 4x8 sheets or 48 for 4x12 sheets to get the raw sheet count.",
+      },
+      {
+        name: "Add a waste factor",
+        text: "Add 10 percent for square rooms, 15 percent for typical rooms, or 20 percent for rooms with many openings or angles. Round up to the next whole sheet.",
+      },
+      {
+        name: "Add finishing materials",
+        text: "Plan roughly 1 gallon of joint compound per 100 square feet per coat over three coats, one 500-foot roll of tape per 500 square feet, and about 1 pound of screws per 300 square feet.",
+      },
+      {
+        name: "Pick the thickness and finish level",
+        text: "Use 1/2 inch for walls and 5/8 inch for ceilings and garage separations. Finish to Level 4 for normal painted rooms, or Level 5 for gloss paint and raking-light walls.",
+      },
+    ],
+  },
+
   formulaDescription:
     "sheets = ⌈((wall area + ceiling area) ÷ sheet area) × (1 + waste)⌉",
 
   methodology: [
-    "Wall area is calculated as perimeter (2 × length + 2 × width) times ceiling height. If 'include ceiling' is selected, the ceiling area (length × width) is added. No subtraction is made for doors and windows — drywall cuts leave unusable scrap, and the waste factor covers those small openings better than exact subtraction does.",
+    "Wall area is calculated as perimeter (2 × length + 2 × width) times ceiling height. If 'include ceiling' is selected, the ceiling area (length × width) is added. No subtraction is made for doors and windows, because drywall cuts leave unusable scrap, and the waste factor covers those small openings better than exact subtraction does.",
     "Sheet sizes are the three standard options sold at lumber yards in North America: 4×8 (most common, easiest to carry), 4×10 (reduces seams on 10-ft ceilings), and 4×12 (fewest seams, hardest to handle). Metric markets use the equivalent 1.2 × 2.4 m, 1.2 × 3.0 m, and 1.2 × 3.6 m panels.",
     "Waste factor of 10% is standard for square rooms with few openings. Use 15% for most typical rooms; 20% for rooms with lots of windows, doors, angled walls, or vaulted ceilings where cut scraps can't be reused.",
-    "The result is rounded up to the next whole sheet because you can't buy half a sheet. For larger projects, round up to the next even number — damaged sheets and miscounts during install are common, and a spare pair saves a return trip.",
+    "The result is rounded up to the next whole sheet because you can't buy half a sheet. For larger projects, round up to the next even number, since damaged sheets and miscounts during install are common, and a spare pair saves a return trip.",
   ],
 
   sources: [
     {
-      name: "US Gypsum Company — Drywall Installation Guide",
-      url: "https://www.usg.com/content/usgcom/en/tools-resources/design-studio.html",
-      note: "Industry reference for standard sheet sizes and coverage",
+      name: "Gypsum Association GA-216: Application and Finishing of Gypsum Panel Products",
+      url: "https://gypsum.org/technical/ga-216-application-and-finishing-of-gypsum-panel-products/",
+      note: "Industry standard for fastener spacing, joint compound coverage, and tape application",
     },
     {
-      name: "Family Handyman — How Much Drywall Do I Need",
-      url: "https://www.familyhandyman.com/",
-      note: "Practical waste factor and coverage recommendations",
+      name: "Gypsum Association GA-214: Recommended Levels of Finish",
+      url: "https://gypsum.org/technical/ga-214-recommended-levels-of-finish-for-gypsum-panel-products/",
+      note: "Defines the Level 0 through Level 5 finish scale referenced in this guide",
+    },
+    {
+      name: "IRC Section R702: Interior Covering",
+      url: "https://codes.iccsafe.org/content/IRC2021P2/chapter-7-wall-covering",
+      note: "Thickness and fire-rating requirements, including 5/8 Type X at garage separations",
+    },
+    {
+      name: "ASTM C1396: Standard Specification for Gypsum Board",
+      url: "https://www.astm.org/c1396_c1396m-17.html",
+      note: "Material specification governing standard drywall panel dimensions and grades",
+    },
+    {
+      name: "USG Sheetrock Brand Gypsum Panels Installation Guide",
+      url: "https://www.usg.com/content/usgcom/en/tools-resources/installation-guides.html",
+      note: "Manufacturer installation guidance for sheet handling, hanging order, and finishing",
     },
   ],
 
   related: [
     { name: "Paint calculator", slug: "paint-calculator", description: "Gallons of paint after drywall is up" },
-    { name: "Window sizing calculator", slug: "window-sizing-calculator", description: "Openings, headers, and rough opening" },
     { name: "Insulation calculator", slug: "insulation-calculator", description: "R-value and square footage for walls" },
-    { name: "Concrete calculator", slug: "concrete-calculator", description: "Cubic yards for foundations and slabs" },
+    { name: "Stud spacing calculator", slug: "stud-spacing-calculator", description: "Framing layout so sheet edges land on studs" },
+    { name: "Window sizing calculator", slug: "window-sizing-calculator", description: "Openings, headers, and rough opening" },
   ],
 
   faq: [
@@ -201,17 +244,17 @@ export const drywallCalculatorConfig: CalculatorConfig = {
     {
       question: "Should I use 4×8 or 4×12 sheets?",
       answer:
-        "4×8 sheets (32 sq ft) are the easiest to handle — one person can install them alone. 4×12 sheets (48 sq ft) have fewer horizontal seams on 12-foot-wide walls, which means less taping and a smoother finish. Use 4×12 for long unbroken walls; 4×8 for tight rooms or solo installation.",
+        "4×8 sheets (32 sq ft) are the easiest to handle; one person can install them alone. 4×12 sheets (48 sq ft) have fewer horizontal seams on 12-foot-wide walls, which means less taping and a smoother finish. Use 4×12 for long unbroken walls; 4×8 for tight rooms or solo installation.",
     },
     {
       question: "Do I subtract doors and windows?",
       answer:
-        "No — drywall cuts leave scrap that can rarely be reused around openings. The waste factor accounts for cuts around doors and windows better than subtracting their area directly. Subtracting would actually leave you short.",
+        "No. Drywall cuts leave scrap that can rarely be reused around openings. The waste factor accounts for cuts around doors and windows better than subtracting their area directly. Subtracting would actually leave you short.",
     },
     {
       question: "What thickness of drywall should I buy?",
       answer:
-        "1/2 inch is standard for walls. 5/8 inch is code-required for ceilings (prevents sag) and for fire-rated walls between garages and living space. 1/4 inch is for curved walls or overlays. The calculator assumes standard thickness — thicker sheets don't change area math.",
+        "1/2 inch is standard for walls. 5/8 inch is code-required for ceilings (prevents sag) and for fire-rated walls between garages and living space. 1/4 inch is for curved walls or overlays. The calculator assumes standard thickness, and thicker sheets don't change area math.",
     },
     {
       question: "How much joint compound and tape do I need?",
@@ -221,7 +264,7 @@ export const drywallCalculatorConfig: CalculatorConfig = {
     {
       question: "Is moisture-resistant drywall necessary for bathrooms?",
       answer:
-        "Green board (moisture-resistant) is recommended for bathroom walls except inside the shower enclosure, where cement board or a waterproof substrate is required. Quantity calculation is the same — green board just costs 20-30% more.",
+        "Green board (moisture-resistant) is recommended for bathroom walls except inside the shower enclosure, where cement board or a waterproof substrate is required. Quantity calculation is the same; green board just costs 20-30% more.",
     },
     {
       question: "How long does drywall take to install?",
@@ -231,7 +274,7 @@ export const drywallCalculatorConfig: CalculatorConfig = {
     {
       question: "Can I use this for garage or basement?",
       answer:
-        "Yes — the math is identical for any room. For basements, use moisture-resistant drywall on exterior walls. For garages, check local code — many require 5/8 inch fire-rated drywall on shared walls with the house.",
+        "Yes. The math is identical for any room. For basements, use moisture-resistant drywall on exterior walls. For garages, check local code, since many require 5/8 inch fire-rated drywall on shared walls with the house.",
     },
   ],
 };
