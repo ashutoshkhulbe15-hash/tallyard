@@ -39,10 +39,10 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ["Instrument Sans", "ui-sans-serif", "system-ui", "-apple-system", "sans-serif"],
-        display: ["Archivo", "Instrument Sans", "sans-serif"],
+        sans: ["var(--font-instrument)", "Instrument Sans", "ui-sans-serif", "system-ui", "-apple-system", "sans-serif"],
+        display: ["var(--font-archivo)", "Archivo", "Instrument Sans", "sans-serif"],
         serif: ["Cambria", "Georgia", "Times New Roman", "serif"],
-        mono: ["JetBrains Mono", "ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
+        mono: ["var(--font-mono)", "JetBrains Mono", "ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
       },
       fontSize: {
         xs: ["12px", { lineHeight: "1.5" }],

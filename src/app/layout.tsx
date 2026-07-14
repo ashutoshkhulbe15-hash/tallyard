@@ -1,9 +1,51 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import localFont from "next/font/local";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { UnitProvider } from "@/lib/units";
+
+// Self-hosted fonts via next/font/local. This removes the render-blocking
+// Google Fonts @import chain (HTML -> CSS -> Google CSS -> 3 font files) that
+// was the main cause of the slow mobile LCP. Files are served from our own
+// origin, preloaded, with display:swap so text is visible during load.
+const instrumentSans = localFont({
+  src: [
+    { path: "./fonts/instrument-sans-v4-latin-regular.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/instrument-sans-v4-latin-500.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/instrument-sans-v4-latin-600.woff2", weight: "600", style: "normal" },
+  ],
+  display: "swap",
+  variable: "--font-instrument",
+  preload: true,
+  fallback: ["ui-sans-serif", "system-ui", "-apple-system", "sans-serif"],
+});
+const archivo = localFont({
+  src: [
+    { path: "./fonts/archivo-v25-latin-regular.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/archivo-v25-latin-500.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/archivo-v25-latin-600.woff2", weight: "600", style: "normal" },
+    { path: "./fonts/archivo-v25-latin-700.woff2", weight: "700", style: "normal" },
+    { path: "./fonts/archivo-v25-latin-800.woff2", weight: "800", style: "normal" },
+    { path: "./fonts/archivo-v25-latin-900.woff2", weight: "900", style: "normal" },
+  ],
+  display: "swap",
+  variable: "--font-archivo",
+  preload: true,
+  fallback: ["Instrument Sans", "sans-serif"],
+});
+const jetbrainsMono = localFont({
+  src: [
+    { path: "./fonts/jetbrains-mono-v24-latin-regular.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/jetbrains-mono-v24-latin-500.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/jetbrains-mono-v24-latin-700.woff2", weight: "700", style: "normal" },
+  ],
+  display: "swap",
+  variable: "--font-mono",
+  preload: false,
+  fallback: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.tallyard.com"),
@@ -70,7 +112,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={`${instrumentSans.variable} ${archivo.variable} ${jetbrainsMono.variable}`}
+    >
       <head>
         <script
           type="application/ld+json"
@@ -95,7 +140,7 @@ gtag('config', 'G-7LB5KS70CD');`}
         </Script>
         <Script
   id="ms-clarity"
-  strategy="afterInteractive"
+  strategy="lazyOnload"
   dangerouslySetInnerHTML={{
     __html: `(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "wp47rtb8ix");`,
   }}

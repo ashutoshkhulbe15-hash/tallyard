@@ -21,81 +21,81 @@ Each entry is: name — formula — source standard — URL.
 
 ### Drywall
 
-- Drywall: sheets = ⌈((wall area + ceiling area) ÷ sheet area) × (1 + waste)⌉. Source: US Gypsum Company — Drywall Installation Guide. URL: /drywall-calculator
+- Drywall: sheets = ⌈((wall area + ceiling area) ÷ sheet area) × (1 + waste)⌉. Source: US Gypsum Company — Drywall Installation Guide. [Drywall](/drywall-calculator)
 
 ### Electrical
 
-- Drain Pipe: total DFU = sum(fixtures × DFU rating); pipe size per IPC/UPC tables (toilet line ≥ 3\. Source: IPC 2021 — Drainage Fixture Units. URL: /drain-pipe-calculator
-- Extension Cord: smallest AWG where ampacity at given length ≥ load; voltage drop = 2 × I × R × L / 1000. Source: OSHA — Extension Cord Safety. URL: /extension-cord-calculator
-- Wire Size: smallest AWG where ampacity ≥ load AND voltage drop ≤ limit (VD = 2 × I × R × L / 1000). Source: NEC Table 310.16 — Conductor Ampacity. URL: /wire-size-calculator
+- Drain Pipe: total DFU = sum(fixtures × DFU rating); pipe size per IPC/UPC tables (toilet line ≥ 3\. Source: IPC 2021 — Drainage Fixture Units. [Drain Pipe](/drain-pipe-calculator)
+- Extension Cord: smallest AWG where ampacity at given length ≥ load; voltage drop = 2 × I × R × L / 1000. Source: OSHA — Extension Cord Safety. [Extension Cord](/extension-cord-calculator)
+- Wire Size: smallest AWG where ampacity ≥ load AND voltage drop ≤ limit (VD = 2 × I × R × L / 1000). Source: NEC Table 310.16 — Conductor Ampacity. [Wire Size](/wire-size-calculator)
 
 ### Flooring
 
-- Backsplash: tiles = ⌈((linear ft × height − outlets − window) × 1.15) ÷ tile area⌉. Source: Tile Council of North America. URL: /backsplash-calculator
-- Countertop: area = (linear ft × depth) + island + waste; linear edge = main front + island perimeter. Source: NKBA — Kitchen Planning Guidelines. URL: /countertop-calculator
-- Flooring: boxes = ⌈(area × (1 + waste)) ÷ sq ft per box⌉. Source: National Wood Flooring Association (NWFA). URL: /flooring-calculator
-- Grout: lb = (tile perimeter × joint × thickness × 150) ÷ (tile area × 12) × floor area × (1 + waste). Source: Mapei — Grout Coverage Chart. URL: /grout-calculator
-- Kitchen Cabinet: base ft = perimeter − appliances; upper ft = perimeter × 70-75%; cabinets = ⌈ft × 12 ÷ 24⌉. Source: NKBA — Kitchen Planning Guidelines. URL: /kitchen-cabinet-calculator
-- Shower Tile: tiles = ⌈((3 walls + niche + floor) × 1.15) ÷ tile area⌉. Source: Tile Council of North America — Wet Area Installation. URL: /shower-tile-calculator
-- Tile: tiles = ⌈(area ÷ tile size) × (1 + waste)⌉, boxes = ⌈tiles ÷ per box⌉. Source: Tile Council of North America — Installation Handbook. URL: /tile-calculator
-- Vanity: recommended = largest standard width (18-84\. Source: IRC 2021 Chapter 3 — Plumbing Fixtures. URL: /vanity-calculator
+- Backsplash: tiles = ⌈((linear ft × height − outlets − window) × 1.15) ÷ tile area⌉. Source: Tile Council of North America. [Backsplash](/backsplash-calculator)
+- Countertop: area = (linear ft × depth) + island + waste; linear edge = main front + island perimeter. Source: NKBA — Kitchen Planning Guidelines. [Countertop](/countertop-calculator)
+- Flooring: boxes = ⌈(area × (1 + waste)) ÷ sq ft per box⌉. Source: National Wood Flooring Association (NWFA). [Flooring](/flooring-calculator)
+- Grout: lb = (tile perimeter × joint × thickness × 150) ÷ (tile area × 12) × floor area × (1 + waste). Source: Mapei — Grout Coverage Chart. [Grout](/grout-calculator)
+- Kitchen Cabinet: base ft = perimeter − appliances; upper ft = perimeter × 70-75%; cabinets = ⌈ft × 12 ÷ 24⌉. Source: NKBA — Kitchen Planning Guidelines. [Kitchen Cabinet](/kitchen-cabinet-calculator)
+- Shower Tile: tiles = ⌈((3 walls + niche + floor) × 1.15) ÷ tile area⌉. Source: Tile Council of North America — Wet Area Installation. [Shower Tile](/shower-tile-calculator)
+- Tile: tiles = ⌈(area ÷ tile size) × (1 + waste)⌉, boxes = ⌈tiles ÷ per box⌉. Source: Tile Council of North America — Installation Handbook. [Tile](/tile-calculator)
+- Vanity: recommended = largest standard width (18-84\. Source: IRC 2021 Chapter 3 — Plumbing Fixtures. [Vanity](/vanity-calculator)
 
 ### HVAC
 
-- BTU: BTU = area × 20 × height × climate × sun + occupancy adjustment. Source: Energy Star — Room Air Conditioners. URL: /btu-calculator
-- Heat Pump: BTU = sqft × climate factor × insulation × ceiling × windows; tons = BTU ÷ 12,000. Source: ACCA Manual J — Residential Load Calculation. URL: /heat-pump-calculator
-- Water Heater: tank: size = peak hour demand ÷ 1.3; tankless: GPM = peak simultaneous, BTU = GPM × temp rise × 500. Source: US DOE — Water Heater Sizing. URL: /water-heater-calculator
+- BTU: BTU = area × 20 × height × climate × sun + occupancy adjustment. Source: Energy Star — Room Air Conditioners. [BTU](/btu-calculator)
+- Heat Pump: BTU = sqft × climate factor × insulation × ceiling × windows; tons = BTU ÷ 12,000. Source: ACCA Manual J — Residential Load Calculation. [Heat Pump](/heat-pump-calculator)
+- Water Heater: tank: size = peak hour demand ÷ 1.3; tankless: GPM = peak simultaneous, BTU = GPM × temp rise × 500. Source: US DOE — Water Heater Sizing. [Water Heater](/water-heater-calculator)
 
 ### Insulation
 
-- Insulation: bags = ⌈(area × (1 + waste)) ÷ bag coverage⌉ at R-value for climate zone. Source: US DOE — Insulation R-Value Recommendations. URL: /insulation-calculator
+- Insulation: bags = ⌈(area × (1 + waste)) ÷ bag coverage⌉ at R-value for climate zone. Source: US DOE — Insulation R-Value Recommendations. [Insulation](/insulation-calculator)
 
 ### Landscaping
 
-- Deck: boards = ⌈area ÷ board coverage × 1.1 ÷ 16⌉; joists = ⌈length ÷ spacing⌉ + 1. Source: IRC 2021 — Deck Design Provisions. URL: /deck-calculator
-- Fence: posts = ⌈length ÷ spacing⌉ + 1 + gates × 2 + corners, pickets = length × 12 ÷ picket width. Source: This Old House — Fence Installation Guide. URL: /fence-calculator
-- Gravel: volume = area × depth, weight = volume × density (tons per yd³ or tonnes per m³). Source: Aggregate Research — Gravel Density Reference. URL: /gravel-calculator
-- Mulch: volume = area × depth, converted to cubic yards or meters (or bags). Source: University of Maryland Extension — Mulch Basics. URL: /mulch-calculator
-- Paver: pavers = ⌈area ÷ paver area × (1 + pattern waste)⌉; includes base gravel and bedding sand. Source: ICPI — Interlocking Concrete Pavement Institute. URL: /paver-calculator
-- Pool Chlorine: dose = (volume ÷ 10,000) × ppm needed × product factor (oz per 10k gal per ppm). Source: Pool & Hot Tub Alliance (PHTA). URL: /pool-chlorine-calculator
-- Rainwater Harvesting: gallons = roof ft² × rainfall inches × 0.623 × efficiency. Source: American Rainwater Catchment Systems Association. URL: /rainwater-calculator
-- Sod: pieces = ⌈(area × (1 + shape waste)) ÷ coverage per piece⌉. Source: Turfgrass Producers International. URL: /sod-calculator
-- Topsoil: volume = area × depth, converted to cubic yards/meters (plus tons and bags). Source: Penn State Extension — Soil and Composting. URL: /topsoil-calculator
+- Deck: boards = ⌈area ÷ board coverage × 1.1 ÷ 16⌉; joists = ⌈length ÷ spacing⌉ + 1. Source: IRC 2021 — Deck Design Provisions. [Deck](/deck-calculator)
+- Fence: posts = ⌈length ÷ spacing⌉ + 1 + gates × 2 + corners, pickets = length × 12 ÷ picket width. Source: This Old House — Fence Installation Guide. [Fence](/fence-calculator)
+- Gravel: volume = area × depth, weight = volume × density (tons per yd³ or tonnes per m³). Source: Aggregate Research — Gravel Density Reference. [Gravel](/gravel-calculator)
+- Mulch: volume = area × depth, converted to cubic yards or meters (or bags). Source: University of Maryland Extension — Mulch Basics. [Mulch](/mulch-calculator)
+- Paver: pavers = ⌈area ÷ paver area × (1 + pattern waste)⌉; includes base gravel and bedding sand. Source: ICPI — Interlocking Concrete Pavement Institute. [Paver](/paver-calculator)
+- Pool Chlorine: dose = (volume ÷ 10,000) × ppm needed × product factor (oz per 10k gal per ppm). Source: Pool & Hot Tub Alliance (PHTA). [Pool Chlorine](/pool-chlorine-calculator)
+- Rainwater Harvesting: gallons = roof ft² × rainfall inches × 0.623 × efficiency. Source: American Rainwater Catchment Systems Association. [Rainwater Harvesting](/rainwater-calculator)
+- Sod: pieces = ⌈(area × (1 + shape waste)) ÷ coverage per piece⌉. Source: Turfgrass Producers International. [Sod](/sod-calculator)
+- Topsoil: volume = area × depth, converted to cubic yards/meters (plus tons and bags). Source: Penn State Extension — Soil and Composting. [Topsoil](/topsoil-calculator)
 
 ### Lumber
 
-- Lumber: board feet = (thickness × width × length_ft) ÷ 12, per board × quantity with waste. Source: American Lumber Standards Committee. URL: /lumber-calculator
-- Shed: floor + walls + roof framing + sheathing for any shed footprint and wall height. Source: IRC 2021 — Detached Accessory Structures. URL: /shed-calculator
-- Stair: risers = round(total rise ÷ ideal riser); treads = risers − 1; stringer = √(rise² + run²). Source: IRC 2021 Chapter 3 — Stairways. URL: /stair-calculator
-- Stud Spacing: studs = ⌈length × 12 ÷ spacing⌉ + 1 + corners × 2 + doors × 6 + windows × 8. Source: IRC 2021 — Wood Wall Framing. URL: /stud-spacing-calculator
-- Window Sizing: openable = glass × window type factor; egress = 5.7 ft² min + 20\. Source: IRC 2021 Section R310 — Emergency Escape and Rescue Openings. URL: /window-sizing-calculator
+- Lumber: board feet = (thickness × width × length_ft) ÷ 12, per board × quantity with waste. Source: American Lumber Standards Committee. [Lumber](/lumber-calculator)
+- Shed: floor + walls + roof framing + sheathing for any shed footprint and wall height. Source: IRC 2021 — Detached Accessory Structures. [Shed](/shed-calculator)
+- Stair: risers = round(total rise ÷ ideal riser); treads = risers − 1; stringer = √(rise² + run²). Source: IRC 2021 Chapter 3 — Stairways. [Stair](/stair-calculator)
+- Stud Spacing: studs = ⌈length × 12 ÷ spacing⌉ + 1 + corners × 2 + doors × 6 + windows × 8. Source: IRC 2021 — Wood Wall Framing. [Stud Spacing](/stud-spacing-calculator)
+- Window Sizing: openable = glass × window type factor; egress = 5.7 ft² min + 20\. Source: IRC 2021 Section R310 — Emergency Escape and Rescue Openings. [Window Sizing](/window-sizing-calculator)
 
 ### Masonry
 
-- Asphalt: tons = area × thickness × density × (1 + waste), where density = 145 lb/ft³. Source: National Asphalt Pavement Association (NAPA). URL: /asphalt-calculator
-- Brick: bricks = area × (144 ÷ ((brick L + joint) × (brick H + joint))) × wythe × (1 + waste). Source: Brick Industry Association — Technical Notes. URL: /brick-calculator
-- Chimney: masonry fireplace: flue area = opening area ÷ 10 (or ÷ 8 if < 15 ft tall); wood stove: match outlet diameter. Source: IRC 2021 Chapter 10 — Chimneys and Fireplaces. URL: /chimney-calculator
-- Concrete: volume = area × thickness × (1 + waste), converted to cubic yards or meters. Source: Portland Cement Association — Concrete Basics. URL: /concrete-calculator
-- Mortar: bags = (wall_area_ft² × bricks_per_ft² × joint_volume_per_brick) ÷ coverage_per_bag. Source: Brick Industry Association — Technical Note 8 (Mortar for Brick Masonry). URL: /mortar-calculator
-- Rebar: bars = ⌈dimension ÷ spacing⌉ + 1 per direction; total = (long × long length) + (trans × trans length) + perimeter. Source: CRSI — Concrete Reinforcing Steel Institute. URL: /rebar-calculator
+- Asphalt: tons = area × thickness × density × (1 + waste), where density = 145 lb/ft³. Source: National Asphalt Pavement Association (NAPA). [Asphalt](/asphalt-calculator)
+- Brick: bricks = area × (144 ÷ ((brick L + joint) × (brick H + joint))) × wythe × (1 + waste). Source: Brick Industry Association — Technical Notes. [Brick](/brick-calculator)
+- Chimney: masonry fireplace: flue area = opening area ÷ 10 (or ÷ 8 if < 15 ft tall); wood stove: match outlet diameter. Source: IRC 2021 Chapter 10 — Chimneys and Fireplaces. [Chimney](/chimney-calculator)
+- Concrete: volume = area × thickness × (1 + waste), converted to cubic yards or meters. Source: Portland Cement Association — Concrete Basics. [Concrete](/concrete-calculator)
+- Mortar: bags = (wall_area_ft² × bricks_per_ft² × joint_volume_per_brick) ÷ coverage_per_bag. Source: Brick Industry Association — Technical Note 8 (Mortar for Brick Masonry). [Mortar](/mortar-calculator)
+- Rebar: bars = ⌈dimension ÷ spacing⌉ + 1 per direction; total = (long × long length) + (trans × trans length) + perimeter. Source: CRSI — Concrete Reinforcing Steel Institute. [Rebar](/rebar-calculator)
 
 ### Paint
 
-- Paint: paint = (perimeter × height − doors − windows) × coats ÷ coverage. Source: Benjamin Moore — Paint Coverage Chart. URL: /paint-calculator
-- Wallpaper: rolls = ⌈((perimeter × height − openings) × (1 + pattern waste)) ÷ roll coverage⌉. Source: Wallcoverings Association — Estimating Guide. URL: /wallpaper-calculator
+- Paint: paint = (perimeter × height − doors − windows) × coats ÷ coverage. Source: Benjamin Moore — Paint Coverage Chart. [Paint](/paint-calculator)
+- Wallpaper: rolls = ⌈((perimeter × height − openings) × (1 + pattern waste)) ÷ roll coverage⌉. Source: Wallcoverings Association — Estimating Guide. [Wallpaper](/wallpaper-calculator)
 
 ### Roofing
 
-- Attic Ventilation: NFVA = attic area ÷ ratio (1:300 or 1:150), split 50/50 between intake and exhaust. Source: FHA Minimum Property Standards. URL: /attic-ventilation-calculator
-- Garage Door: door ≤ 10ft = single, ≤ 18ft = double; opener HP by area × material weight factor. Source: DASMA — Door & Access Systems Manufacturers Association. URL: /garage-door-calculator
-- Gutter: gutter = roof edge ft; downspouts = ⌈effective area ÷ (600-1200 ft² per DS)⌉; size = 5\. Source: SMACNA — Architectural Sheet Metal Manual. URL: /gutter-calculator
-- Roofing: bundles = ⌈(footprint × slope × (1 + waste)) ÷ square size × 3⌉ + ridge caps. Source: GAF — Roofing Calculator Guide. URL: /roofing-calculator
-- Siding: squares = ((perimeter × height + gables − openings) × (1 + waste)) ÷ 100. Source: James Hardie — Installation Guide. URL: /siding-calculator
-- Snow Load: load (psf) = snow depth × density + ice × 57; compare vs design load (code-specified). Source: ASCE 7 — Minimum Design Loads. URL: /snow-load-calculator
+- Attic Ventilation: NFVA = attic area ÷ ratio (1:300 or 1:150), split 50/50 between intake and exhaust. Source: FHA Minimum Property Standards. [Attic Ventilation](/attic-ventilation-calculator)
+- Garage Door: door ≤ 10ft = single, ≤ 18ft = double; opener HP by area × material weight factor. Source: DASMA — Door & Access Systems Manufacturers Association. [Garage Door](/garage-door-calculator)
+- Gutter: gutter = roof edge ft; downspouts = ⌈effective area ÷ (600-1200 ft² per DS)⌉; size = 5\. Source: SMACNA — Architectural Sheet Metal Manual. [Gutter](/gutter-calculator)
+- Roofing: bundles = ⌈(footprint × slope × (1 + waste)) ÷ square size × 3⌉ + ridge caps. Source: GAF — Roofing Calculator Guide. [Roofing](/roofing-calculator)
+- Siding: squares = ((perimeter × height + gables − openings) × (1 + waste)) ÷ 100. Source: James Hardie — Installation Guide. [Siding](/siding-calculator)
+- Snow Load: load (psf) = snow depth × density + ice × 57; compare vs design load (code-specified). Source: ASCE 7 — Minimum Design Loads. [Snow Load](/snow-load-calculator)
 
 ### Solar
 
-- Solar Panel: panels = ⌈(daily kWh ÷ (sun hours × efficiency) × 1000) ÷ panel watts⌉. Source: NREL PVWatts Calculator. URL: /solar-calculator
+- Solar Panel: panels = ⌈(daily kWh ÷ (sun hours × efficiency) × 1000) ÷ panel watts⌉. Source: NREL PVWatts Calculator. [Solar Panel](/solar-calculator)
 
 ## Buying guides
 
