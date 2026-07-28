@@ -16,6 +16,7 @@ const MODIFIED: Record<string, Date> = {
   "flooring-calculator": new Date("2026-07-29"),
   "solar-calculator": new Date("2026-07-29"),
   "furnace-replacement-cost-calculator": new Date("2026-07-29"),
+  "egress-window-calculator": new Date("2026-07-29"),
   "shed-calculator": new Date("2026-07-10"),
   "gutter-calculator": new Date("2026-07-11"),
   "stair-calculator": new Date("2026-07-11"),
@@ -94,6 +95,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "kitchen-cabinet-calculator",
     "garage-door-calculator",
     "window-sizing-calculator",
+    "egress-window-calculator",
     "chimney-calculator",
   ];
   const calculatorPages: MetadataRoute.Sitemap = calculatorSlugs.map((slug) => ({

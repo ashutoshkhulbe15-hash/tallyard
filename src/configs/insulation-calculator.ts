@@ -195,7 +195,7 @@ export const insulationCalculatorConfig: CalculatorConfig = {
   related: [
     { name: "Drywall calculator", slug: "drywall-calculator", description: "Sheets for walls and ceilings" },
     { name: "BTU calculator", slug: "btu-calculator", description: "AC size — less with better insulation" },
-    { name: "Paint calculator", slug: "paint-calculator", description: "Gallons of paint for any room" },
+    { name: "Egress window calculator", slug: "egress-window-calculator", description: "Basement bedrooms need compliant egress" },
     { name: "Solar calculator", slug: "solar-calculator", description: "System size reduces with better insulation" },
   ],
 

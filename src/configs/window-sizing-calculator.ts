@@ -244,7 +244,7 @@ export const windowSizingCalculatorConfig: CalculatorConfig = {
 
   related: [
     { name: "Stud spacing calculator", slug: "stud-spacing-calculator", description: "Headers and framing around windows" },
-    { name: "Siding calculator", slug: "siding-calculator", description: "Siding with window openings" },
+    { name: "Egress window calculator", slug: "egress-window-calculator", description: "Code-check bedroom and basement windows" },
     { name: "Insulation calculator", slug: "insulation-calculator", description: "R-value in framed walls" },
     { name: "Drywall calculator", slug: "drywall-calculator", description: "Sheets for walls with openings" },
   ],

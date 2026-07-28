@@ -45,6 +45,7 @@ import { windowSizingCalculatorConfig } from "./window-sizing-calculator";
 import { chimneyCalculatorConfig } from "./chimney-calculator";
 import { mortarCalculatorConfig } from "./mortar-calculator";
 import { furnaceReplacementCostCalculatorConfig } from "./furnace-replacement-cost-calculator";
+import { egressWindowCalculatorConfig } from "./egress-window-calculator";
 
 export const configs: Record<string, CalculatorConfig> = {
   "paint-calculator": paintCalculatorConfig,
@@ -93,6 +94,7 @@ export const configs: Record<string, CalculatorConfig> = {
   "chimney-calculator": chimneyCalculatorConfig,
   "mortar-calculator": mortarCalculatorConfig,
   "furnace-replacement-cost-calculator": furnaceReplacementCostCalculatorConfig,
+  "egress-window-calculator": egressWindowCalculatorConfig,
 };
 
 export function getConfig(slug: string): CalculatorConfig | null {
