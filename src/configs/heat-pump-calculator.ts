@@ -224,7 +224,7 @@ export const heatPumpCalculatorConfig: CalculatorConfig = {
   related: [
     { name: "BTU calculator", slug: "btu-calculator", description: "Room-by-room AC sizing" },
     { name: "Insulation calculator", slug: "insulation-calculator", description: "R-value and bags" },
-    { name: "Wire size calculator", slug: "wire-size-calculator", description: "Circuit wiring for heat pumps" },
+    { name: "Furnace replacement cost", slug: "furnace-replacement-cost-calculator", description: "Compare against replacing the furnace" },
     { name: "Solar panel calculator", slug: "solar-calculator", description: "Offset your heat pump electricity" },
   ],
 

@@ -203,7 +203,7 @@ export const btuCalculatorConfig: CalculatorConfig = {
     { name: "Insulation calculator", slug: "insulation-calculator", description: "R-value and square footage" },
     { name: "Heat pump calculator", slug: "heat-pump-calculator", description: "Heating BTU for any climate" },
     { name: "Solar panel calculator", slug: "solar-calculator", description: "Panels to cover your AC load" },
-    { name: "Solar calculator", slug: "solar-calculator", description: "System size for your usage" },
+    { name: "Furnace replacement cost", slug: "furnace-replacement-cost-calculator", description: "Price a new furnace for this load" },
   ],
 
   faq: [
