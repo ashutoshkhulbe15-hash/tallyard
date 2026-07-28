@@ -237,6 +237,11 @@ export const drywallCalculatorConfig: CalculatorConfig = {
 
   faq: [
     {
+      question: "Is sheetrock the same as drywall?",
+      answer:
+        "Yes. Sheetrock is US Gypsum's brand name for drywall, the way Kleenex is a brand of tissue. Drywall, sheetrock, gypsum board, and wallboard are the same product, and this calculator works identically for all of them.",
+    },
+    {
       question: "How many sheets of drywall do I need for a 12×14 room?",
       answer:
         "For a 12×14 room with 9-foot ceilings including the ceiling, you need about 8 sheets of 4×8 drywall at 10% waste. Walls only: 6 sheets. The calculator above gives you the exact number for your dimensions.",

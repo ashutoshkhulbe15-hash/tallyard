@@ -139,11 +139,13 @@ function HangingSequenceSVG() {
 export function DrywallCalculatorExpansion() {
   return (
     <>
-      <GuideByline updated="July 13, 2026" reviewedAgainst="Gypsum Association GA-216 and GA-214, USG installation guides, IRC Section R702, and ASTM C1396" />
+      <GuideByline updated="July 29, 2026" reviewedAgainst="Gypsum Association GA-216 and GA-214, USG installation guides, IRC Section R702, and ASTM C1396" />
 
       <h2>How many sheets of drywall you need, and everything the sheets don&apos;t include</h2>
 
       <p>Counting the sheets is the easy part. Take the square footage of every wall and ceiling you&apos;re covering, divide by 32 (a standard 4×8 sheet), add 10 percent for cuts and breakage, and round up. A 12 × 14 room with 9-foot ceilings works out to about 22 sheets of 4×8 with the ceiling included. Done.</p>
+
+      <p>A quick word on names before the math. Sheetrock is a brand, the way Kleenex is a brand. US Gypsum owns it. Drywall, sheetrock, gypsum board, wallboard: same product, same sheet sizes, same numbers below. If you got here looking for a sheetrock calculator, this is it.</p>
 
       <p>The part that catches people out is that the sheets are maybe half the job. Once they&apos;re hung you still need joint compound, tape, screws, corner bead, and three rounds of mudding and sanding before a single drop of primer goes on. The finishing materials routinely cost as much as the drywall itself, and the finishing labor is where a weekend turns into two. This page counts the sheets and then does the thing most calculators skip: it tells you how much mud, tape, and screws to buy so you don&apos;t make a second trip.</p>
 
@@ -233,7 +235,9 @@ export function DrywallCalculatorExpansion() {
         A homeowner finishing a basement rec room applied two coats of compound instead of three and sanded hard to try to flatten the joints. After <a href="/paint-calculator">painting</a>, every seam telegraphed through as a visible line in the raking light from the basement windows. The fix was to apply the third coat he&apos;d skipped, re-sand the whole room, re-prime, and repaint. Two extra days, plus another bucket of mud and a gallon of primer, to save what he thought was an afternoon.
       </Scenario>
 
-      <h2>DIY versus hiring it out</h2>
+      <h2>What drywall installation costs</h2>
+
+      <p>Installed pricing is quoted per square foot, hung and finished. In 2026 the going rate runs $1.50 to $3.00 per square foot for a standard Level 4 finish, materials included, with Level 5 pushing past $3.50 because of the skim coat. That means the 636-square-foot room from the example above lands somewhere between $1,200 and $2,800 done by a pro. Quotes below $1.25 per square foot usually mean hang-only, with finishing billed separately. Ask.</p>
 
       <p>Hanging drywall is hard physical work but it isn&apos;t technically difficult. Lifting sheets overhead for a ceiling is the worst of it, and a rented drywall lift solves that. Finishing, on the other hand, is a real skill. A clean Level 4 finish from someone who&apos;s done a hundred rooms looks nothing like a first-timer&apos;s. This is why a common split is to hang the drywall yourself and hire a finisher for the taping and mudding.</p>
 
@@ -248,6 +252,23 @@ export function DrywallCalculatorExpansion() {
         ]}
         caption="The professional range depends heavily on finish level. A Level 5 finish runs well above a Level 4 because of the full skim coat. Materials are cheap; the labor and the finish quality are what you're really paying for."
       />
+
+      <h2>Drywall repair costs</h2>
+
+      <p>Repair pricing looks irrational until you understand that you&apos;re mostly paying for the trip, not the hole. A handyman&apos;s minimum call-out runs $75 to $150 whether the job takes ten minutes or two hours, which is why fixing one nail pop costs nearly as much as fixing five. Batch your repairs. Walk the whole house with painter&apos;s tape, flag everything, and have it done in one visit.</p>
+
+      <ComparisonTable
+        columns={[{title:"DIY"},{title:"Professional"}]}
+        rows={[
+          {label:"Nail or screw pops",values:["Under $10 in mud","$75-150 (minimum call-out)"]},
+          {label:"Small hole, under 6 in (doorknob)",values:["$15 patch kit","$100-250"]},
+          {label:"Large hole, stud-to-stud section",values:["$40-70 in materials","$250-450"]},
+          {label:"Water-damaged ceiling section",values:["Not recommended","$350-750 plus the leak"]},
+        ]}
+        caption="Water damage prices assume the leak is already fixed. No sane contractor patches sheetrock under an active leak, and neither should you."
+      />
+
+      <p>The skill in a repair isn&apos;t the patch, it&apos;s the blend. Matching an orange peel or knockdown texture so the patch disappears is genuinely hard, and it&apos;s the reason a pro&apos;s patch looks invisible and a first attempt reads like a scar under raking light. On smooth Level 4 walls a careful DIY patch is very doable. On textured walls, that call-out fee starts earning its keep.</p>
 
       <p>If you&apos;re building out a space from bare studs, a few of these calculators pair naturally. Run the <a href="/insulation-calculator">insulation calculator</a> first, since insulation goes in the wall cavity before the drywall goes up. Use the <a href="/stud-spacing-calculator">stud spacing calculator</a> to confirm your framing is on 16 or 24 inch centers so the sheet edges land on studs. And once the walls are finished, the <a href="/paint-calculator">paint calculator</a> uses the same square footage you measured here.</p>
     </>
