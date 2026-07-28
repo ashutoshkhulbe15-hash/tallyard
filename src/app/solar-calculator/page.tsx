@@ -6,14 +6,14 @@ import { getConfig } from "@/configs";
 const SLUG = "solar-calculator";
 
 export const metadata: Metadata = {
-  title: "Solar Panel Calculator: How Many Panels Do I Need",
+  title: "Solar Panel Calculator: How Many Panels & Cost by State",
   description:
-    "Calculate solar panel count and system size for your electricity use. Adjusts for sun hours, panel watts, and system efficiency.",
+    "Free solar panel calculator: how many panels you need from your kWh and sun hours, plus 2026 cost per watt by state and real output per panel. No signup.",
   alternates: { canonical: "/solar-calculator" },
   openGraph: {
-    title: "Solar Panel Calculator: How Many Panels Do I Need",
+    title: "Solar Panel Calculator: How Many Panels & Cost by State",
     description:
-      "Calculate solar panel count and system size for your electricity use.",
+    "Free solar panel calculator: how many panels you need from your kWh and sun hours, plus 2026 cost per watt by state and real output per panel. No signup.",
     url: "https://www.tallyard.com/solar-calculator",
     type: "website",
   },

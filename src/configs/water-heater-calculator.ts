@@ -214,7 +214,7 @@ export const waterHeaterCalculatorConfig: CalculatorConfig = {
   ],
 
   related: [
-    { name: "BTU calculator", slug: "btu-calculator", description: "Air conditioner sizing" },
+    { name: "Solar panel calculator", slug: "solar-calculator", description: "Offset an electric water heater with solar" },
     { name: "Heat pump calculator", slug: "heat-pump-calculator", description: "Home heating and cooling size" },
     { name: "Wire size calculator", slug: "wire-size-calculator", description: "Circuit wiring for electric water heaters" },
     { name: "Solar panel calculator", slug: "solar-calculator", description: "Solar to offset water heating" },
