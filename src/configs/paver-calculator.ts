@@ -61,7 +61,7 @@ export const paverCalculatorConfig: CalculatorConfig = {
         { label: "Basket weave", value: "basket" },
         { label: "Stack bond", value: "stack" },
       ],
-      help: "Herringbone uses more cuts — higher waste",
+      help: "Herringbone uses more cuts: higher waste",
     },
     {
       id: "use",
@@ -182,21 +182,21 @@ export const paverCalculatorConfig: CalculatorConfig = {
 
   methodology: [
     "Paver count is calculated by dividing the project area by the area of a single paver, then multiplying by a pattern-specific waste factor. Running bond and stack bond patterns have minimal cuts (3-5% waste). Herringbone requires diagonal cuts at all edges (15% waste). Basket weave sits in between (8%).",
-    "A proper paver installation is a three-layer system: compacted gravel base (structural), bedding sand (leveling), and the pavers themselves. The calculator computes all three. Base depth depends on use — 4-6 inches for pedestrian patios and walkways, 8-10 inches for driveways that bear vehicle weight.",
+    "A proper paver installation is a three-layer system: compacted gravel base (structural), bedding sand (leveling), and the pavers themselves. The calculator computes all three. Base depth depends on use: 4-6 inches for pedestrian patios and walkways, 8-10 inches for driveways that bear vehicle weight.",
     "Base gravel is typically crushed stone #57 or #3 (angular, self-compacting). The calculator uses density of 1.4 tons per cubic yard, which covers most crushed aggregate. Order by the yard for large jobs (over 3 yd³); by the bag for small patios.",
-    "Bedding sand is coarse concrete sand (ASTM C33) spread 1 inch deep and screeded level. Never use play sand or masonry sand — they hold moisture and cause pavers to sink or heave.",
+    "Bedding sand is coarse concrete sand (ASTM C33) spread 1 inch deep and screeded level. Never use play sand or masonry sand: they hold moisture and cause pavers to sink or heave.",
     "Joint sand (polymeric or regular) fills the gaps between pavers. 1 pound per square foot is a rough estimate for standard 1/8\" joints on 4×8 brick pavers. Larger pavers with the same joint width use less; wider joints use more. Polymeric sand hardens when activated with water and prevents weeds and ant invasion.",
     "The calculator does not include: edge restraint (plastic or metal edging at the perimeter, typically 1 linear foot per linear foot of edge), geotextile fabric (recommended under base on clay soils), or drainage provisions. Budget those items separately.",
   ],
 
   sources: [
     {
-      name: "ICPI — Interlocking Concrete Pavement Institute",
+      name: "ICPI: Interlocking Concrete Pavement Institute",
       url: "https://icpi.org/",
       note: "Industry standards for base depth and bedding sand",
     },
     {
-      name: "Belgard — Paver Installation Guide",
+      name: "Belgard: Paver Installation Guide",
       url: "https://www.belgard.com/",
       note: "Pattern waste factors and coverage recommendations",
     },
@@ -218,17 +218,17 @@ export const paverCalculatorConfig: CalculatorConfig = {
     {
       question: "How deep should the base be?",
       answer:
-        "Pedestrian patios and walkways: 4-6 inches of compacted gravel, plus 1 inch of bedding sand. Driveways: 8-10 inches of compacted gravel minimum, plus 1 inch of bedding sand. Insufficient base is the #1 cause of paver failure — sinking, heaving, and uneven surfaces almost always trace back to thin or improperly compacted base.",
+        "Pedestrian patios and walkways: 4-6 inches of compacted gravel, plus 1 inch of bedding sand. Driveways: 8-10 inches of compacted gravel minimum, plus 1 inch of bedding sand. Insufficient base is the #1 cause of paver failure: sinking, heaving, and uneven surfaces almost always trace back to thin or improperly compacted base.",
     },
     {
       question: "What's the difference between base and bedding sand?",
       answer:
-        "Base is compacted crushed stone (structural layer that supports load). Bedding sand is 1 inch of coarse concrete sand on top of the base, used to level the pavers. Don't skip either — just sand on dirt will fail within a season.",
+        "Base is compacted crushed stone (structural layer that supports load). Bedding sand is 1 inch of coarse concrete sand on top of the base, used to level the pavers. Don't skip either, just sand on dirt will fail within a season.",
     },
     {
       question: "Do I need polymeric sand?",
       answer:
-        "Recommended for most installations. Polymeric sand hardens when wetted, preventing weeds, ants, and washout between pavers. Costs 2-3× more than regular sand but the install stays clean for years. Don't use it on permeable pavers or with irrigation that wets the surface daily — it breaks down.",
+        "Recommended for most installations. Polymeric sand hardens when wetted, preventing weeds, ants, and washout between pavers. Costs 2-3× more than regular sand but the install stays clean for years. Don't use it on permeable pavers or with irrigation that wets the surface daily: it breaks down.",
     },
     {
       question: "What pattern uses the least pavers?",
@@ -238,7 +238,7 @@ export const paverCalculatorConfig: CalculatorConfig = {
     {
       question: "Can I install pavers over existing concrete?",
       answer:
-        "Yes — it's called an overlay. You need thin bedding sand (1/2 inch) directly on the concrete, then pavers. Edge restraint is trickier — you can't stake into concrete, so use adhesive edging. Drainage becomes critical since water can't filter through the slab.",
+        "Yes: it's called an overlay. You need thin bedding sand (1/2 inch) directly on the concrete, then pavers. Edge restraint is trickier: you can't stake into concrete, so use adhesive edging. Drainage becomes critical since water can't filter through the slab.",
     },
     {
       question: "How long do pavers take to install?",
@@ -248,7 +248,7 @@ export const paverCalculatorConfig: CalculatorConfig = {
     {
       question: "Do I need an edge restraint?",
       answer:
-        "Yes — without it, outside pavers slowly shift outward and the pattern unravels. Plastic or metal L-shaped edging spiked every 12 inches is standard. Concrete curb works for permanent installations but costs more. Never skip this step.",
+        "Yes, without it, outside pavers slowly shift outward and the pattern unravels. Plastic or metal L-shaped edging spiked every 12 inches is standard. Concrete curb works for permanent installations but costs more. Never skip this step.",
     },
   ],
 };

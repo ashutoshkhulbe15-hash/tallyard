@@ -1201,7 +1201,7 @@ export const heatPumpVsFurnaceGuide: GuideConfig = {
   publishedAt: "2026-04-18",
   readTime: "14 min read",
   verdict:
-    "A heat pump saves roughly $300–500 per year versus a gas furnace plus AC in climate zones 1–4, breaks about even in zone 5, and loses to gas in the coldest zones 6–7 — where a dual-fuel hybrid closes most of the gap.",
+    "A heat pump saves roughly $300–500 per year versus a gas furnace plus AC in climate zones 1–4, breaks about even in zone 5, and loses to gas in the coldest zones 6–7, where a dual-fuel hybrid closes most of the gap.",
   Content,
   faq: [
     {
@@ -1247,37 +1247,37 @@ export const heatPumpVsFurnaceGuide: GuideConfig = {
   ],
   sources: [
     {
-      name: "DOE — Heat Pump Systems",
+      name: "DOE: Heat Pump Systems",
       url: "https://www.energy.gov/energysaver/heat-pump-systems",
       note: "Department of Energy reference for residential heat pump performance and efficiency standards",
     },
     {
-      name: "EPA Energy Star — Heat Pump Qualifying Products",
+      name: "EPA Energy Star: Heat Pump Qualifying Products",
       url: "https://www.energystar.gov/products/heat_pumps",
       note: "Current federal efficiency thresholds and searchable qualifying product database",
     },
     {
-      name: "NEEP — Cold Climate Air-Source Heat Pump Specification",
+      name: "NEEP: Cold Climate Air-Source Heat Pump Specification",
       url: "https://neep.org/",
       note: "Northeast Energy Efficiency Partnerships specification for cold-climate heat pump certification",
     },
     {
-      name: "ACCA Manual J — Residential Load Calculation",
+      name: "ACCA Manual J: Residential Load Calculation",
       url: "https://www.acca.org/standards/technical-manuals",
       note: "Industry-standard load calculation methodology; required for proper heat pump sizing",
     },
     {
-      name: "EIA — Electric Power Monthly",
+      name: "EIA: Electric Power Monthly",
       url: "https://www.eia.gov/electricity/monthly/",
       note: "US Energy Information Administration data for state-level electricity and natural gas pricing",
     },
     {
-      name: "IRS Form 5695 — Residential Energy Credits",
+      name: "IRS Form 5695: Residential Energy Credits",
       url: "https://www.irs.gov/forms-pubs/about-form-5695",
       note: "Official form for claiming the 25C tax credit on heat pump installation",
     },
     {
-      name: "DOE — HEEHRA State Program Directory",
+      name: "DOE: HEEHRA State Program Directory",
       url: "https://www.energy.gov/scep/home-energy-rebate-programs",
       note: "State-by-state rollout status for IRA home electrification rebates",
     },
@@ -1296,7 +1296,7 @@ export const heatPumpVsFurnaceGuide: GuideConfig = {
     {
       name: "Insulation calculator",
       slug: "insulation-calculator",
-      description: "R-value by climate zone — critical for proper heat pump sizing",
+      description: "R-value by climate zone: critical for proper heat pump sizing",
     },
     {
       name: "Water heater calculator",

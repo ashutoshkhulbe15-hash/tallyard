@@ -182,20 +182,20 @@ export const wireSizeCalculatorConfig: CalculatorConfig = {
 
   methodology: [
     "The calculator steps through standard AWG wire gauges from smallest to largest, checking two constraints for each: ampacity (does the wire handle the current without overheating?) and voltage drop (does the voltage at the load stay within the allowed percentage of the source voltage?). The smallest wire that meets both constraints is the recommendation.",
-    "Ampacity values come from NEC Table 310.16 — the industry standard for conductor capacity in typical residential conditions (60-75°C insulation, up to 3 current-carrying conductors in a raceway, 30°C ambient). For unusual installations (conduit fill above 3 wires, high ambient temperature, direct burial), derating factors apply — consult NEC or an electrician.",
-    "Voltage drop is calculated using the standard formula VD = 2 × I × R × L / 1000, where 2 accounts for the round-trip (current flows out on one conductor and back on another), I is amperage, R is resistance per 1000 ft, and L is the one-way distance. The 3% branch / 5% feeder limit in the NEC is a recommendation, not a code requirement — but exceeding it causes poor appliance performance and wasted energy.",
+    "Ampacity values come from NEC Table 310.16, the industry standard for conductor capacity in typical residential conditions (60-75°C insulation, up to 3 current-carrying conductors in a raceway, 30°C ambient). For unusual installations (conduit fill above 3 wires, high ambient temperature, direct burial), derating factors apply: consult NEC or an electrician.",
+    "Voltage drop is calculated using the standard formula VD = 2 × I × R × L / 1000, where 2 accounts for the round-trip (current flows out on one conductor and back on another), I is amperage, R is resistance per 1000 ft, and L is the one-way distance. The 3% branch / 5% feeder limit in the NEC is a recommendation, not a code requirement, but exceeding it causes poor appliance performance and wasted energy.",
     "For long runs (over 100 ft at 15-20A), voltage drop usually drives the wire size up from what ampacity alone would suggest. For short runs at high current (under 30 ft at 50A+), ampacity is the binding constraint. The calculator tells you which one drove the choice.",
     "Aluminum wire has lower ampacity than copper for the same AWG (about 80% of copper's rating) and higher resistance (about 60% more). For long runs, aluminum requires a larger gauge to achieve the same voltage drop. Aluminum is common for service entrance and subpanel feeders; copper is standard for branch circuits and where terminals aren't rated for aluminum.",
   ],
 
   sources: [
     {
-      name: "NEC Table 310.16 — Conductor Ampacity",
+      name: "NEC Table 310.16: Conductor Ampacity",
       url: "https://www.nfpa.org/codes-and-standards/all-codes-and-standards/list-of-codes-and-standards/detail?code=70",
       note: "Official ampacity values for copper and aluminum conductors",
     },
     {
-      name: "NEC Table 8 — Conductor Resistance",
+      name: "NEC Table 8: Conductor Resistance",
       url: "https://www.nfpa.org/",
       note: "DC resistance per 1000 ft for voltage drop calculation",
     },
@@ -217,27 +217,27 @@ export const wireSizeCalculatorConfig: CalculatorConfig = {
     {
       question: "What's the difference between ampacity and voltage drop?",
       answer:
-        "Ampacity is the maximum current a wire can carry without overheating — it's a safety limit. Voltage drop is the power lost to resistance over distance — it's a performance limit (poor appliance operation, wasted energy). Both must be respected: a wire must have ampacity for the current AND low enough voltage drop for the distance.",
+        "Ampacity is the maximum current a wire can carry without overheating: it's a safety limit. Voltage drop is the power lost to resistance over distance: it's a performance limit (poor appliance operation, wasted energy). Both must be respected: a wire must have ampacity for the current AND low enough voltage drop for the distance.",
     },
     {
       question: "Can I use aluminum wire for branch circuits?",
       answer:
-        "Modern aluminum alloys are safe for service entrances and subpanel feeders. For branch circuits (outlets, lights, appliances), copper is strongly preferred — older aluminum in branch circuits is a known fire hazard. If you're installing new, use copper. If you have existing aluminum branch wiring, have it inspected.",
+        "Modern aluminum alloys are safe for service entrances and subpanel feeders. For branch circuits (outlets, lights, appliances), copper is strongly preferred: older aluminum in branch circuits is a known fire hazard. If you're installing new, use copper. If you have existing aluminum branch wiring, have it inspected.",
     },
     {
       question: "What happens if the wire is too small?",
       answer:
-        "Undersized wire overheats under load, which melts insulation and causes fires. The breaker protects against short circuits but not against a wire slightly too small for the continuous load — a 20A breaker on 14 AWG wire will allow the wire to overheat even though the breaker isn't tripping. Always match wire size to breaker size at minimum.",
+        "Undersized wire overheats under load, which melts insulation and causes fires. The breaker protects against short circuits but not against a wire slightly too small for the continuous load, a 20A breaker on 14 AWG wire will allow the wire to overheat even though the breaker isn't tripping. Always match wire size to breaker size at minimum.",
     },
     {
       question: "Do long runs really need bigger wire?",
       answer:
-        "Yes. A 100-foot run of 14 AWG at 15 amps drops 3.7% voltage — above the 3% recommendation. At 200 feet it's 7.4%, which will cause motors and LEDs to perform poorly. For long runs, always run the voltage drop calculation — ampacity alone isn't enough.",
+        "Yes. A 100-foot run of 14 AWG at 15 amps drops 3.7% voltage: above the 3% recommendation. At 200 feet it's 7.4%, which will cause motors and LEDs to perform poorly. For long runs, always run the voltage drop calculation: ampacity alone isn't enough.",
     },
     {
       question: "What about DC wiring for solar and automotive?",
       answer:
-        "Same formulas apply but voltage drop matters more because DC systems often run at lower voltages (12/24/48V). A 3% drop on a 12V system is only 0.36V — not much headroom. For DC solar and automotive, many installers target 2% max drop, which means even larger wire. The calculator's 2% option covers this case.",
+        "Same formulas apply but voltage drop matters more because DC systems often run at lower voltages (12/24/48V). A 3% drop on a 12V system is only 0.36V, not much headroom. For DC solar and automotive, many installers target 2% max drop, which means even larger wire. The calculator's 2% option covers this case.",
     },
     {
       question: "Is this calculator NEC-compliant?",
@@ -247,7 +247,7 @@ export const wireSizeCalculatorConfig: CalculatorConfig = {
     {
       question: "Should I oversize wire?",
       answer:
-        "For long runs or continuous loads (EV chargers, AC condensers), yes — one gauge larger than the minimum provides headroom for future load increases and reduces voltage drop. For standard outlets and lighting in short runs, minimum code is fine. The cost difference between sizes is modest, so erring larger is cheap insurance.",
+        "For long runs or continuous loads (EV chargers, AC condensers), yes, one gauge larger than the minimum provides headroom for future load increases and reduces voltage drop. For standard outlets and lighting in short runs, minimum code is fine. The cost difference between sizes is modest, so erring larger is cheap insurance.",
     },
   ],
 };

@@ -83,7 +83,7 @@ export const mortarCalculatorConfig: CalculatorConfig = {
     {
       question: "What is the difference between Type S, Type N, and Type M mortar?",
       answer:
-        "Type S is the default for exterior walls and structural applications — it has the best bond strength and weather resistance. Type N is for interior and above-grade non-structural work. Type M has the highest compressive strength and is used below grade (retaining walls, foundations).",
+        "Type S is the default for exterior walls and structural applications: it has the best bond strength and weather resistance. Type N is for interior and above-grade non-structural work. Type M has the highest compressive strength and is used below grade (retaining walls, foundations).",
     },
     {
       question: "Can I use mortar instead of grout?",
@@ -99,14 +99,14 @@ export const mortarCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "Brick Industry Association — Technical Note 8 (Mortar for Brick Masonry)",
+      name: "Brick Industry Association: Technical Note 8 (Mortar for Brick Masonry)",
       url: "https://www.gobrick.com/resources/technical-notes",
     },
     {
-      name: "ASTM C270 — Standard Specification for Mortar for Unit Masonry",
+      name: "ASTM C270: Standard Specification for Mortar for Unit Masonry",
     },
     {
-      name: "Portland Cement Association — Mortar Information",
+      name: "Portland Cement Association: Mortar Information",
       url: "https://www.cement.org",
     },
   ],

@@ -169,9 +169,9 @@ export const countertopCalculatorConfig: CalculatorConfig = {
     "area = (linear ft × depth) + island + waste; linear edge = main front + island perimeter",
 
   methodology: [
-    "Kitchen counter area is linear feet (front edge) times depth. Standard kitchen counters are 25.5 inches deep — just under 2.125 linear feet. A 20-foot run of kitchen counter has 42.5 square feet of surface. Bathroom vanities use 22-inch depth typically.",
-    "Islands are handled as separate pieces because they have different edge geometry. A small island (4 × 2 ft) adds 8 sq ft but has all four edges exposed — 12 linear feet of edge. Compare to a 4-ft wall counter section that adds 8.5 sq ft but only 4 linear feet of exposed front edge. Islands cost more per square foot installed because of the extra edge treatment.",
-    "Linear edge matters for pricing — edge treatment (bullnose, ogee, eased, mitered) is typically priced per linear foot beyond the basic cut. A straight eased edge is often included; decorative edges cost $10-30 per linear foot extra. More exposed edge means more cost for fancy edges.",
+    "Kitchen counter area is linear feet (front edge) times depth. Standard kitchen counters are 25.5 inches deep, just under 2.125 linear feet. A 20-foot run of kitchen counter has 42.5 square feet of surface. Bathroom vanities use 22-inch depth typically.",
+    "Islands are handled as separate pieces because they have different edge geometry. A small island (4 × 2 ft) adds 8 sq ft but has all four edges exposed: 12 linear feet of edge. Compare to a 4-ft wall counter section that adds 8.5 sq ft but only 4 linear feet of exposed front edge. Islands cost more per square foot installed because of the extra edge treatment.",
+    "Linear edge matters for pricing: edge treatment (bullnose, ogee, eased, mitered) is typically priced per linear foot beyond the basic cut. A straight eased edge is often included; decorative edges cost $10-30 per linear foot extra. More exposed edge means more cost for fancy edges.",
     "Waste factor for countertops is lower than tile because countertops are cut from slabs. Quartz and granite slabs are typically 55 × 120 inches (2×3 yards). A good fabricator lays out cuts to minimize waste, but seams, edge grain matching (for veined stone), and cutout offcuts (for sinks, cooktops) all contribute. 10% is standard for simple kitchens; 15-20% for complex layouts with many cutouts and short runs.",
     "Price estimates are for installed countertops in 2025-2026 US market (per square foot): quartz $60-120 (engineered stone, low maintenance), granite $50-120 (natural stone, more variation), marble $80-200 (premium natural stone, stains), butcher block $40-100 (wood, requires oiling), laminate $20-50 (synthetic, most economical), concrete $75-150 (industrial look, custom). Prices vary regionally and with complexity.",
     "Not included: sink cutouts (typically free with the slab), faucet holes, edge treatment upgrades, underlayment (usually just plywood for stone slabs), backsplash (see backsplash calculator), and removal of existing counters. These can add $500-2,000 to a total kitchen installation.",
@@ -179,12 +179,12 @@ export const countertopCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "NKBA — Kitchen Planning Guidelines",
+      name: "NKBA: Kitchen Planning Guidelines",
       url: "https://www.nkba.org/",
       note: "Standard counter depths and layout references",
     },
     {
-      name: "HomeAdvisor — Countertop Cost Guide",
+      name: "HomeAdvisor: Countertop Cost Guide",
       url: "https://www.homeadvisor.com/",
       note: "Price ranges by material for installed countertops",
     },
@@ -206,17 +206,17 @@ export const countertopCalculatorConfig: CalculatorConfig = {
     {
       question: "How do I measure my kitchen counters?",
       answer:
-        "Measure the front edge of each counter section in linear feet: the stove run, the sink run, any peninsula or island edge. Sum them. Don't double-count corners — an L-shaped kitchen with 8 ft along one wall and 6 ft along the other is 14 linear feet, not 15. The calculator needs this total linear figure.",
+        "Measure the front edge of each counter section in linear feet: the stove run, the sink run, any peninsula or island edge. Sum them. Don't double-count corners, an L-shaped kitchen with 8 ft along one wall and 6 ft along the other is 14 linear feet, not 15. The calculator needs this total linear figure.",
     },
     {
       question: "Why does the waste factor apply to countertops?",
       answer:
-        "Countertops are cut from slabs. A 120 × 55 inch granite slab is 45.8 sq ft. Your counter layout rarely fits perfectly on a slab — some waste is inevitable around the sink cutout, the stove cutout, and seams between pieces. 10% is typical; 15% for complex layouts with many short sections.",
+        "Countertops are cut from slabs. A 120 × 55 inch granite slab is 45.8 sq ft. Your counter layout rarely fits perfectly on a slab, some waste is inevitable around the sink cutout, the stove cutout, and seams between pieces. 10% is typical; 15% for complex layouts with many short sections.",
     },
     {
       question: "What's the difference between quartz and granite?",
       answer:
-        "Quartz is engineered stone (90% natural quartz mixed with resin). More uniform pattern, non-porous, no sealing required, resistant to stains. Granite is natural stone — each slab unique, requires periodic sealing, can stain if not maintained. Prices overlap; quartz is taking market share because of lower maintenance.",
+        "Quartz is engineered stone (90% natural quartz mixed with resin). More uniform pattern, non-porous, no sealing required, resistant to stains. Granite is natural stone, each slab unique, requires periodic sealing, can stain if not maintained. Prices overlap; quartz is taking market share because of lower maintenance.",
     },
     {
       question: "How much does a new countertop cost?",
@@ -231,12 +231,12 @@ export const countertopCalculatorConfig: CalculatorConfig = {
     {
       question: "Do I need to account for the backsplash?",
       answer:
-        "Countertops often include a short 4\" integrated backsplash as part of the slab (adds slight material but usually negligible cost). Full 18\" or taller backsplashes in tile are a separate purchase — use the backsplash calculator. Stone-slab full-height backsplashes cost about the same per square foot as the counter itself.",
+        "Countertops often include a short 4\" integrated backsplash as part of the slab (adds slight material but usually negligible cost). Full 18\" or taller backsplashes in tile are a separate purchase: use the backsplash calculator. Stone-slab full-height backsplashes cost about the same per square foot as the counter itself.",
     },
     {
       question: "Can I install countertops myself?",
       answer:
-        "Laminate: yes — DIY-friendly, pre-formed sections from home centers. Butcher block: yes — hand-measurable and cuttable. Quartz/granite/marble: no — slabs weigh 15-22 lb/sq ft (a standard kitchen slab can weigh 700+ lb), require templating equipment, specialized cutting tools, and seam bonding. Fabrication + installation is always professional for stone.",
+        "Laminate: yes: DIY-friendly, pre-formed sections from home centers. Butcher block: yes: hand-measurable and cuttable. Quartz/granite/marble: no: slabs weigh 15-22 lb/sq ft (a standard kitchen slab can weigh 700+ lb), require templating equipment, specialized cutting tools, and seam bonding. Fabrication + installation is always professional for stone.",
     },
   ],
 };

@@ -199,23 +199,23 @@ export const heatPumpCalculatorConfig: CalculatorConfig = {
     "BTU = sqft × climate factor × insulation × ceiling × windows; tons = BTU ÷ 12,000",
 
   methodology: [
-    "Heat pump sizing is more complex than pure AC sizing because it must handle both cooling in summer AND heating in winter. Heat pumps are sized by the LARGER of the two loads — in cold climates, heating drives the size; in warm climates, cooling does. The calculator computes both and picks the larger.",
+    "Heat pump sizing is more complex than pure AC sizing because it must handle both cooling in summer AND heating in winter. Heat pumps are sized by the LARGER of the two loads, in cold climates, heating drives the size; in warm climates, cooling does. The calculator computes both and picks the larger.",
     "Climate zone sets the baseline BTU per square foot. Cooling load decreases from Zone 1 (25 BTU/ft², hot) to Zone 7 (16 BTU/ft², mild summers). Heating load increases from Zone 1 (25 BTU/ft²) to Zone 7 (60 BTU/ft², very cold winters). Zone 5 (typical northern US) is where heating and cooling loads are similar; zones 6-7 are heating-dominated.",
     "Insulation quality adjusts the base BTU up or down. Poor insulation (old homes, minimal attic insulation, single-pane windows) increases load by 25%. Average insulation (meets current code) is the baseline. Good insulation (upgraded with extra attic batt, storm windows) reduces by 10%. Energy Star excellent insulation reduces by 20%.",
     "Ceiling height matters because you're heating and cooling the entire volume of the home, not just the floor area. Standard 8-9 ft ceilings are the baseline. Vaulted ceilings (10-12 ft average) add 15%. Cathedral ceilings (14+ ft) add 30%. Homes with a mix of ceiling types should use whichever is most common.",
-    "Window coverage adjusts for solar gain and thermal losses. Windows are weaker thermal barriers than walls — R-3 or R-4 for good double-pane, vs R-13+ for insulated walls. Homes with lots of windows lose more heat in winter and gain more heat from sun in summer.",
-    "Standard heat pump sizes are in half-ton increments from 1.5 to 5.0 tons (most residential), then 6 and 7.5 tons for larger homes. 1 ton = 12,000 BTU/hr. The calculator rounds UP to the next standard size — undersized heat pumps fail to keep up on peak hot/cold days. Oversizing by one size is fine; oversizing by 2+ sizes causes short-cycling and humidity problems.",
-    "This is a simplified sizing. Professional HVAC installers use ACCA Manual J, a room-by-room load calculation that accounts for: specific window R-values, room orientation, duct losses, infiltration rates, and more. For a home purchase, use this calculator for rough estimates. For a real install, insist the contractor does Manual J — without it, sizing errors of 30-50% are common.",
+    "Window coverage adjusts for solar gain and thermal losses. Windows are weaker thermal barriers than walls: R-3 or R-4 for good double-pane, vs R-13+ for insulated walls. Homes with lots of windows lose more heat in winter and gain more heat from sun in summer.",
+    "Standard heat pump sizes are in half-ton increments from 1.5 to 5.0 tons (most residential), then 6 and 7.5 tons for larger homes. 1 ton = 12,000 BTU/hr. The calculator rounds UP to the next standard size: undersized heat pumps fail to keep up on peak hot/cold days. Oversizing by one size is fine; oversizing by 2+ sizes causes short-cycling and humidity problems.",
+    "This is a simplified sizing. Professional HVAC installers use ACCA Manual J, a room-by-room load calculation that accounts for: specific window R-values, room orientation, duct losses, infiltration rates, and more. For a home purchase, use this calculator for rough estimates. For a real install, insist the contractor does Manual J, without it, sizing errors of 30-50% are common.",
   ],
 
   sources: [
     {
-      name: "ACCA Manual J — Residential Load Calculation",
+      name: "ACCA Manual J: Residential Load Calculation",
       url: "https://www.acca.org/standards",
       note: "Industry standard for HVAC load calculations",
     },
     {
-      name: "Energy Star — Heat Pump Sizing",
+      name: "Energy Star: Heat Pump Sizing",
       url: "https://www.energystar.gov/products/heat_pumps",
       note: "Baseline BTU per sq ft by climate zone",
     },
@@ -237,7 +237,7 @@ export const heatPumpCalculatorConfig: CalculatorConfig = {
     {
       question: "Can a heat pump heat my home in cold weather?",
       answer:
-        "Modern cold-climate heat pumps (2022+) work efficiently down to 5°F or lower. Standard heat pumps lose efficiency below 30°F and typically need backup heat (electric resistance strips, gas furnace) below 15-20°F. Size the heat pump for your typical heating load, not worst-case — pair with backup heat for the coldest days.",
+        "Modern cold-climate heat pumps (2022+) work efficiently down to 5°F or lower. Standard heat pumps lose efficiency below 30°F and typically need backup heat (electric resistance strips, gas furnace) below 15-20°F. Size the heat pump for your typical heating load, not worst-case: pair with backup heat for the coldest days.",
     },
     {
       question: "Why is heating load larger than cooling load in cold climates?",
@@ -247,12 +247,12 @@ export const heatPumpCalculatorConfig: CalculatorConfig = {
     {
       question: "Should I oversize my heat pump?",
       answer:
-        "No — one size up is fine, but two sizes up causes problems. An oversized heat pump short-cycles (turns on and off quickly without running long enough to remove humidity or circulate air evenly). Modern two-stage or variable-speed heat pumps handle oversizing better. Single-stage should be sized carefully — never by more than 15% over calculated load.",
+        "No, one size up is fine, but two sizes up causes problems. An oversized heat pump short-cycles (turns on and off quickly without running long enough to remove humidity or circulate air evenly). Modern two-stage or variable-speed heat pumps handle oversizing better. Single-stage should be sized carefully, never by more than 15% over calculated load.",
     },
     {
       question: "What's the difference between a heat pump and an air conditioner?",
       answer:
-        "A heat pump IS an air conditioner that can also run in reverse — moving heat from outside to inside in winter. Same core refrigeration cycle, just with a reversing valve. Most modern 'AC' installations that also need heating are now heat pumps. Furnaces are separate appliances that burn fuel (gas, oil) rather than moving heat.",
+        "A heat pump IS an air conditioner that can also run in reverse: moving heat from outside to inside in winter. Same core refrigeration cycle, just with a reversing valve. Most modern 'AC' installations that also need heating are now heat pumps. Furnaces are separate appliances that burn fuel (gas, oil) rather than moving heat.",
     },
     {
       question: "How much does a heat pump cost?",

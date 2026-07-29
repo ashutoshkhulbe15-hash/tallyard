@@ -16,7 +16,7 @@ function SlabThicknessSVG() {
     <svg viewBox="0 0 680 280" width="100%" height="auto" role="img"
       aria-label="Slab thickness guide showing walkways at 3.5 inches, patios at 4 inches, driveways at 5, garage floors at 6, and heavy equipment pads at 8 inches.">
       <text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>Recommended slab thickness by use</text>
-      <text x="20" y="43" fontSize="10" fill={GUIDE_SVG.inkFaint}>Thicker slabs need more concrete per square foot — and cost more</text>
+      <text x="20" y="43" fontSize="10" fill={GUIDE_SVG.inkFaint}>Thicker slabs need more concrete per square foot, and cost more</text>
       {slabs.map((s) => (
         <g key={s.label}>
           <text x="125" y={s.y + 14} textAnchor="end" fontSize="11" fontWeight="600" fill={GUIDE_SVG.ink}>{s.label}</text>
@@ -120,7 +120,7 @@ export function ConcreteCalculatorExpansion() {
 
       <h2>One quarter-yard short: why concrete estimation has zero margin for error</h2>
       <p>A contractor in Ohio told me about a driveway pour that went sideways in 2024. The homeowner measured his driveway at 18 × 50 feet, plugged it into a calculator online, and ordered 11 cubic yards. What he forgot was that the apron near the garage was 6 inches thick, not 4. That two-inch difference across 18 × 8 feet added 0.9 yards he didn&apos;t order. The truck ran dry 6 feet from the end. The batch plant couldn&apos;t send another truck for 3 hours. The cold joint where the two pours met cracked through by the following spring.</p>
-      <p>Concrete estimation comes down to three decisions: how thick, how much waste to add, and whether to use bags or call a truck. The volume formula itself — length times width times thickness divided by 27 — is the easy part.</p>
+      <p>Concrete estimation comes down to three decisions: how thick, how much waste to add, and whether to use bags or call a truck. The volume formula itself, length times width times thickness divided by 27, is the easy part.</p>
 
       <MethodologyNote>
         <p>
@@ -135,14 +135,14 @@ export function ConcreteCalculatorExpansion() {
       <h2>The formula: cubic feet to cubic yards</h2>
       <p>Concrete is sold by the cubic yard. One cubic yard equals 27 cubic feet. The formula for any rectangular slab is:</p>
       <p><strong>Volume = length (ft) × width (ft) × thickness (ft) ÷ 27</strong></p>
-      <p>The one thing people get wrong every time: thickness has to be in feet, not inches. A 4-inch slab is 0.333 feet thick (4 ÷ 12). Forget that conversion and your order is off by a factor of 12. The calculator at the top handles this automatically — you enter inches and it converts.</p>
+      <p>The one thing people get wrong every time: thickness has to be in feet, not inches. A 4-inch slab is 0.333 feet thick (4 ÷ 12). Forget that conversion and your order is off by a factor of 12. The calculator at the top handles this automatically: you enter inches and it converts.</p>
       <p>For a quick mental shortcut on 4-inch slabs: divide your total square footage by 81. That gives you cubic yards. A 10 × 10 patio (100 sq ft) at 4 inches = 100 ÷ 81 = 1.23 yards. Round up to 1.5 and you&apos;re safe.</p>
 
       <h2>How thick should your slab be?</h2>
       <Figure number={1} caption="The right thickness depends on what the slab supports. A walkway that only handles foot traffic is fine at 3.5 inches. A driveway that parks a full-size truck needs 5-6 inches.">
         <SlabThicknessSVG />
       </Figure>
-      <p>Thickness is the single biggest variable in how much concrete you need. Going from 4 inches to 6 inches on a 400 sq ft driveway adds 50% more concrete — roughly 2.5 extra cubic yards, or $375 more in material. But skipping that thickness on a driveway that parks heavy vehicles means cracking within 3-5 years and tearing it out to start over. The thickness table above isn&apos;t a suggestion — it&apos;s what the concrete will demand from you eventually.</p>
+      <p>Thickness is the single biggest variable in how much concrete you need. Going from 4 inches to 6 inches on a 400 sq ft driveway adds 50% more concrete, roughly 2.5 extra cubic yards, or $375 more in material. But skipping that thickness on a driveway that parks heavy vehicles means cracking within 3-5 years and tearing it out to start over. The thickness table above isn&apos;t a suggestion: it&apos;s what the concrete will demand from you eventually.</p>
 
       <h2>Bags vs ready-mix delivery</h2>
       <Figure number={2} caption="Under 1 cubic yard, bags are practical if you have a mixer and patience. Over 1 yard, ready-mix delivery costs half as much and pours in minutes.">
@@ -176,7 +176,7 @@ export function ConcreteCalculatorExpansion() {
 
       <Scenario location="Denver, CO">
         A homeowner poured a 12 × 20 patio at 4 inches thick. Calculated
-        volume: 2.96 yd³. He ordered 3 yards exactly — no waste factor.
+        volume: 2.96 yd³. He ordered 3 yards exactly, no waste factor.
         The subgrade had a 1.5-inch dip in one corner from settling after
         a sprinkler repair. That dip alone ate 0.3 extra yards. He was
         short. The batch plant sent a short-load truck for the remaining
@@ -190,12 +190,12 @@ export function ConcreteCalculatorExpansion() {
         rows={[
           { label: "Best for", values: ["Driveways, structural slabs", "Patios, walkways", "Small pads, non-structural"] },
           { label: "Cost", values: ["$0.50–1.00 / ft²", "$0.15–0.30 / ft²", "$0.10–0.20 / ft² (added to mix)"] },
-          { label: "Crack control", values: ["Excellent — holds cracks tight", "Good — limits crack width", "Fair — reduces surface cracking"] },
+          { label: "Crack control", values: ["Excellent, holds cracks tight", "Good, limits crack width", "Fair, reduces surface cracking"] },
           { label: "Installation", values: ["Set on chairs before pour", "Lay flat, pull up during pour", "Pre-mixed, no install"] },
         ]}
         caption="Rebar is the standard for any load-bearing slab. Wire mesh is the budget option for patios. Fiber is a supplement, not a replacement for steel."
       />
-      <p>A common mistake — and one the <a href="/rebar-calculator">rebar calculator</a> can help you avoid — is laying wire mesh flat on the subgrade and pouring concrete on top. The mesh needs to be in the middle third of the slab to work — pull it up during the pour or set it on rebar chairs beforehand. Mesh sitting on the ground does nothing for crack control.</p>
+      <p>A common mistake, and one the <a href="/rebar-calculator">rebar calculator</a> can help you avoid, is laying wire mesh flat on the subgrade and pouring concrete on top. The mesh needs to be in the middle third of the slab to work: pull it up during the pour or set it on rebar chairs beforehand. Mesh sitting on the ground does nothing for crack control.</p>
 
       <h2>Cost to pour concrete in 2026</h2>
       <ComparisonTable
@@ -207,13 +207,13 @@ export function ConcreteCalculatorExpansion() {
           { label: "Finishing", values: ["Broom finish (DIY-friendly)", "Stamped, exposed, or troweled"] },
           { label: "10×10 slab (4\") total", values: [<strong key="d">$250–350</strong>, <strong key="p">$800–1,500</strong>] },
         ]}
-        caption="DIY is viable for simple slabs under 100 sq ft. Larger pours need a crew — concrete waits for nobody."
+        caption="DIY is viable for simple slabs under 100 sq ft. Larger pours need a crew: concrete waits for nobody."
       />
       <p>The hidden cost of DIY concrete is time pressure. Once the truck arrives, you have about 90 minutes before the concrete starts setting. A 10×10 pad is manageable alone. A 400 sq ft driveway needs 3-4 people working in coordinated sequence: one directing the chute, one spreading, one screeding, one bull-floating. If you don&apos;t have a crew, hire the pour out.</p>
 
       <h2>Concrete slab calculator: yards for any flat pour</h2>
 
-      <p>A slab is the most common residential concrete project: patios, garage floors, sidewalks, and driveways. The formula is length × width × thickness (in feet) ÷ 27 = cubic yards. A 4-inch slab is 0.333 feet thick. A 10 × 12 foot patio at 4 inches: 10 × 12 × 0.333 ÷ 27 = 1.48 cubic yards. Always round up and add 10% for uneven subgrade and form variation. Order 1.7 yards. A 20 × 30 foot driveway at 4 inches: 20 × 30 × 0.333 ÷ 27 = 7.4 yards — order 8.2 yards.</p>
+      <p>A slab is the most common residential concrete project: patios, garage floors, sidewalks, and driveways. The formula is length × width × thickness (in feet) ÷ 27 = cubic yards. A 4-inch slab is 0.333 feet thick. A 10 × 12 foot patio at 4 inches: 10 × 12 × 0.333 ÷ 27 = 1.48 cubic yards. Always round up and add 10% for uneven subgrade and form variation. Order 1.7 yards. A 20 × 30 foot driveway at 4 inches: 20 × 30 × 0.333 ÷ 27 = 7.4 yards: order 8.2 yards.</p>
 
       <h2>Concrete bag calculator: how many bags do I need?</h2>
 
@@ -229,7 +229,7 @@ export function ConcreteCalculatorExpansion() {
           {label:"50-lb bags",values:["72 bags","3,600 lb (1.8 tons)"]},
           {label:"40-lb bags",values:["90 bags","3,600 lb (1.8 tons)"]},
         ]}
-        caption="One cubic yard weighs approximately 3,600 lb regardless of bag size. The 80-lb bag is the most common and the most efficient to mix. At $5.50-7.50 per bag, one yard of bagged concrete costs $250-340 — versus $130-180 per yard delivered by truck."
+        caption="One cubic yard weighs approximately 3,600 lb regardless of bag size. The 80-lb bag is the most common and the most efficient to mix. At $5.50-7.50 per bag, one yard of bagged concrete costs $250-340: versus $130-180 per yard delivered by truck."
       />
 
       <h2>Concrete volume calculator: cubic yards from any shape</h2>
@@ -238,7 +238,7 @@ export function ConcreteCalculatorExpansion() {
 
       <h2>How much does a yard of concrete cost?</h2>
 
-      <p>Ready-mix concrete from a truck costs $130 to $180 per cubic yard delivered in 2026, depending on region and mix specification. Standard 3,000 PSI residential mix is on the lower end. High-strength 4,000+ PSI or fiber-reinforced mixes cost $160-200 per yard. Most companies charge a short-load fee ($40-60 per yard) for deliveries under 5 yards. Saturday and late-afternoon deliveries may carry a surcharge. The material cost is only 20-30% of a finished slab — labor, grading, forming, finishing, and curing are the rest. See the <a href="/cost-to-pour-concrete">cost to pour concrete</a> guide for full installed pricing.</p>
+      <p>Ready-mix concrete from a truck costs $130 to $180 per cubic yard delivered in 2026, depending on region and mix specification. Standard 3,000 PSI residential mix is on the lower end. High-strength 4,000+ PSI or fiber-reinforced mixes cost $160-200 per yard. Most companies charge a short-load fee ($40-60 per yard) for deliveries under 5 yards. Saturday and late-afternoon deliveries may carry a surcharge. The material cost is only 20-30% of a finished slab: labor, grading, forming, finishing, and curing are the rest. See the <a href="/cost-to-pour-concrete">cost to pour concrete</a> guide for full installed pricing.</p>
     </>
   );
 }

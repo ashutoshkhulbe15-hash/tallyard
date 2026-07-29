@@ -144,18 +144,18 @@ export const concreteCalculatorConfig: CalculatorConfig = {
   methodology: [
     "For rectangular pours, the calculator multiplies length by width by thickness to get raw volume. For round pours, it uses π × radius² × thickness. Thickness is entered in inches (or centimeters) and converted to the same unit as length and width before the multiplication.",
     "Imperial results convert from cubic feet to cubic yards by dividing by 27 (since 1 cubic yard = 27 cubic feet). Metric results stay in cubic meters directly. Yards and meters are how concrete is sold, so this is what you'll actually order.",
-    "A waste factor of 10% is standard for most slab pours — it covers spillage, uneven subgrade, over-excavation, and the practical reality that concrete trucks don't come back for tiny shortages. Use 5% for very flat, well-prepared sites; 15% for irregular shapes or rough subgrade.",
+    "A waste factor of 10% is standard for most slab pours: it covers spillage, uneven subgrade, over-excavation, and the practical reality that concrete trucks don't come back for tiny shortages. Use 5% for very flat, well-prepared sites; 15% for irregular shapes or rough subgrade.",
     "The final number is rounded up to the nearest 0.01 cubic yards or meters because concrete suppliers typically sell in increments of 0.25 yards. When you order, round up again to the nearest quarter-yard to account for truck minimums.",
   ],
 
   sources: [
     {
-      name: "Portland Cement Association — Concrete Basics",
+      name: "Portland Cement Association: Concrete Basics",
       url: "https://www.cement.org/learn/concrete-technology/concrete-construction",
       note: "Industry reference for concrete volume calculation",
     },
     {
-      name: "Concrete Network — How Much Concrete Do I Need",
+      name: "Concrete Network: How Much Concrete Do I Need",
       url: "https://www.concretenetwork.com/concrete/howmuch/calculator.htm",
       note: "Waste factor recommendations for residential pours",
     },
@@ -177,7 +177,7 @@ export const concreteCalculatorConfig: CalculatorConfig = {
     {
       question: "Why do I need to add a waste factor?",
       answer:
-        "Real-world pours always use more than theoretical volume. Subgrade settles, forms bulge, concrete spills during placement, and finishers prefer working with a slight excess. 10% waste is standard; anything less risks running out mid-pour — which is expensive because another truck delivery incurs a minimum charge.",
+        "Real-world pours always use more than theoretical volume. Subgrade settles, forms bulge, concrete spills during placement, and finishers prefer working with a slight excess. 10% waste is standard; anything less risks running out mid-pour, which is expensive because another truck delivery incurs a minimum charge.",
     },
     {
       question: "What's the minimum concrete truck order?",
@@ -192,12 +192,12 @@ export const concreteCalculatorConfig: CalculatorConfig = {
     {
       question: "What thickness should my slab be?",
       answer:
-        "Sidewalks and patios: 4 inches. Driveways for passenger cars: 4 inches. Driveways for trucks or RVs: 6 inches. Garage floors: 4-6 inches. Footings: 8-12 inches or deeper in cold climates. Check local code — frost depth requirements vary.",
+        "Sidewalks and patios: 4 inches. Driveways for passenger cars: 4 inches. Driveways for trucks or RVs: 6 inches. Garage floors: 4-6 inches. Footings: 8-12 inches or deeper in cold climates. Check local code: frost depth requirements vary.",
     },
     {
       question: "How is round concrete calculated differently?",
       answer:
-        "For round pours (tube forms, round patios, fence posts), the calculator uses π × radius² × thickness instead of length × width × thickness. Enter the diameter in the length field and leave width alone — it's ignored for round shapes.",
+        "For round pours (tube forms, round patios, fence posts), the calculator uses π × radius² × thickness instead of length × width × thickness. Enter the diameter in the length field and leave width alone: it's ignored for round shapes.",
     },
     {
       question: "Does this include aggregate, cement, and water?",
@@ -207,7 +207,7 @@ export const concreteCalculatorConfig: CalculatorConfig = {
     {
       question: "What's the difference between cubic yards and yards of concrete?",
       answer:
-        "They're the same thing — 'yards' of concrete is shorthand for cubic yards. A 'yard' of concrete means one cubic yard (3 ft × 3 ft × 3 ft = 27 cubic feet).",
+        "They're the same thing: 'yards' of concrete is shorthand for cubic yards. A 'yard' of concrete means one cubic yard (3 ft × 3 ft × 3 ft = 27 cubic feet).",
     },
   ],
   relatedGuides: [

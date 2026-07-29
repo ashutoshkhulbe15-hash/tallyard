@@ -156,22 +156,22 @@ export const sidingCalculatorConfig: CalculatorConfig = {
     "squares = ((perimeter × height + gables − openings) × (1 + waste)) ÷ 100",
 
   methodology: [
-    "Wall area is the perimeter of the house times the average wall height. Perimeter means the sum of all exterior wall lengths — for a simple rectangular house, just 2 × (length + width). For houses with offsets, bays, or wings, add each wall length separately.",
-    "Gable triangles (the triangular ends of a house with a gable roof) are added separately because the math is different. A gable is half of a rectangle: (base × rise) ÷ 2. Gable size depends on roof pitch and house width — 30 sq ft is typical for a small gable on a narrow house; 100 sq ft is large (steep pitch on a wide house). Hip roofs have no gables.",
+    "Wall area is the perimeter of the house times the average wall height. Perimeter means the sum of all exterior wall lengths, for a simple rectangular house, just 2 × (length + width). For houses with offsets, bays, or wings, add each wall length separately.",
+    "Gable triangles (the triangular ends of a house with a gable roof) are added separately because the math is different. A gable is half of a rectangle: (base × rise) ÷ 2. Gable size depends on roof pitch and house width: 30 sq ft is typical for a small gable on a narrow house; 100 sq ft is large (steep pitch on a wide house). Hip roofs have no gables.",
     "Openings (doors and windows) are subtracted using an average of 20 square feet each. This is a compromise: exterior doors are about 21 sq ft, standard windows are 15-18 sq ft, large picture windows are 25-35 sq ft. For more accuracy, count large windows as two.",
-    "Waste factor varies by material. Vinyl lap siding has panels 12 feet long with butt-joint ends — minimal waste (10%). Fiber cement (like James Hardie) comes in 12-foot planks with similar waste. Wood clapboard has more cuts and grain matching — 15%. Engineered wood (LP SmartSide) falls in between at 12%.",
-    "Siding is sold by 'square' — 100 square feet of coverage. One carton of vinyl siding covers 2 squares (200 sq ft). Fiber cement comes in cartons that cover about 1.5 squares per box. The calculator rounds up to the nearest whole square when ordering.",
+    "Waste factor varies by material. Vinyl lap siding has panels 12 feet long with butt-joint ends: minimal waste (10%). Fiber cement (like James Hardie) comes in 12-foot planks with similar waste. Wood clapboard has more cuts and grain matching: 15%. Engineered wood (LP SmartSide) falls in between at 12%.",
+    "Siding is sold by 'square': 100 square feet of coverage. One carton of vinyl siding covers 2 squares (200 sq ft). Fiber cement comes in cartons that cover about 1.5 squares per box. The calculator rounds up to the nearest whole square when ordering.",
     "Not included in this calculator: soffit, fascia, house wrap, insulation, fasteners, corner posts, starter strip, or finish trim pieces. These typically add 15-25% to the total material cost. Budget for these separately when shopping. Also not included: the labor cost, which for professional installation runs $2-8 per sq ft depending on material and region.",
   ],
 
   sources: [
     {
-      name: "James Hardie — Installation Guide",
+      name: "James Hardie: Installation Guide",
       url: "https://www.jameshardie.com/",
       note: "Coverage and waste for fiber cement siding",
     },
     {
-      name: "Vinyl Siding Institute — Estimating",
+      name: "Vinyl Siding Institute: Estimating",
       url: "https://www.vinylsiding.org/",
       note: "Industry standard coverage for vinyl lap siding",
     },
@@ -193,12 +193,12 @@ export const sidingCalculatorConfig: CalculatorConfig = {
     {
       question: "What's a siding square?",
       answer:
-        "One siding square equals 100 square feet of coverage — same unit as roofing. Siding is sold by the carton, which typically covers 2 squares (200 sq ft) for vinyl. Fiber cement and wood sidings are often sold by the piece or square foot instead, but the 'square' unit still helps with estimating.",
+        "One siding square equals 100 square feet of coverage, same unit as roofing. Siding is sold by the carton, which typically covers 2 squares (200 sq ft) for vinyl. Fiber cement and wood sidings are often sold by the piece or square foot instead, but the 'square' unit still helps with estimating.",
     },
     {
       question: "Do I subtract windows and doors from my total?",
       answer:
-        "The calculator subtracts 20 sq ft per opening automatically. This is a practical average — real doors are 21 sq ft, standard windows 15-18 sq ft, large windows 25-35 sq ft. For a kitchen with lots of large windows, manually count large ones as two openings. For houses with mostly small windows, don't adjust.",
+        "The calculator subtracts 20 sq ft per opening automatically. This is a practical average: real doors are 21 sq ft, standard windows 15-18 sq ft, large windows 25-35 sq ft. For a kitchen with lots of large windows, manually count large ones as two openings. For houses with mostly small windows, don't adjust.",
     },
     {
       question: "How do I measure a gable?",
@@ -213,17 +213,17 @@ export const sidingCalculatorConfig: CalculatorConfig = {
     {
       question: "Do I need house wrap and insulation under the siding?",
       answer:
-        "House wrap (like Tyvek) is recommended under all siding — it sheds liquid water while allowing vapor to escape. Required by most modern building codes. Exterior insulation (rigid foam) under siding is increasingly standard for energy efficiency, especially in colder climates. Neither is in this calculator.",
+        "House wrap (like Tyvek) is recommended under all siding: it sheds liquid water while allowing vapor to escape. Required by most modern building codes. Exterior insulation (rigid foam) under siding is increasingly standard for energy efficiency, especially in colder climates. Neither is in this calculator.",
     },
     {
       question: "How long does siding last?",
       answer:
-        "Vinyl: 30-40 years typical. Fiber cement: 30-50 years. Cedar wood: 20-30 years (requires staining/painting every 3-7 years). Engineered wood: 25-40 years with maintenance. Warranty periods often don't reflect real life — replace when the old siding cracks, fades, warps, or shows water intrusion, not when the warranty expires.",
+        "Vinyl: 30-40 years typical. Fiber cement: 30-50 years. Cedar wood: 20-30 years (requires staining/painting every 3-7 years). Engineered wood: 25-40 years with maintenance. Warranty periods often don't reflect real life: replace when the old siding cracks, fades, warps, or shows water intrusion, not when the warranty expires.",
     },
     {
       question: "Can I install siding over existing siding?",
       answer:
-        "Vinyl siding can be installed over existing wood or vinyl siding in some cases, but it's not recommended — hides potential rot, adds 1-2\" thickness to walls (messes with window and door trim), and limits the ability to inspect for damage. For a proper job, tear off old siding to the sheathing and re-install.",
+        "Vinyl siding can be installed over existing wood or vinyl siding in some cases, but it's not recommended: hides potential rot, adds 1-2\" thickness to walls (messes with window and door trim), and limits the ability to inspect for damage. For a proper job, tear off old siding to the sheathing and re-install.",
     },
   ],
   relatedGuides: [

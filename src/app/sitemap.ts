@@ -31,6 +31,7 @@ const MODIFIED: Record<string, Date> = {
   "": REDESIGN_DATE, // homepage
   "calculators": REDESIGN_DATE,
   "guides": REDESIGN_DATE,
+  "embed-a-calculator": new Date("2026-07-29"),
   "planner": REDESIGN_DATE,
 };
 const lastMod = (slug: string): Date => MODIFIED[slug] ?? DEFAULT_DATE;
@@ -41,6 +42,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/`, lastModified: lastMod(""), changeFrequency: "weekly", priority: 1.0 },
     { url: `${SITE_URL}/calculators`, lastModified: lastMod("calculators"), changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/guides`, lastModified: lastMod("guides"), changeFrequency: "weekly", priority: 0.8 },
+    { url: `${SITE_URL}/embed-a-calculator`, lastModified: lastMod("embed-a-calculator"), changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE_URL}/planner`, lastModified: lastMod("planner"), changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE_URL}/planner/build-a-deck`, lastModified: lastMod("planner/build-a-deck"), changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/planner/install-a-fence`, lastModified: lastMod("planner/install-a-fence"), changeFrequency: "monthly", priority: 0.8 },

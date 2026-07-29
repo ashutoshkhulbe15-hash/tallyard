@@ -178,17 +178,17 @@ export const btuCalculatorConfig: CalculatorConfig = {
     "BTU = area × 20 × height × climate × sun + occupancy adjustment",
 
   methodology: [
-    "The baseline formula is 20 BTU per hour per square foot of room area — a well-established rule of thumb for typical homes with average insulation and 8-foot ceilings. This covers most residential rooms in temperate climates.",
+    "The baseline formula is 20 BTU per hour per square foot of room area, a well-established rule of thumb for typical homes with average insulation and 8-foot ceilings. This covers most residential rooms in temperate climates.",
     "Ceiling height above 8 feet adds about 5% per additional foot. A room with 10-foot ceilings has 10% more air volume to cool, and the calculator adjusts for that automatically.",
     "Climate adjustment reflects how hard the AC has to work. Cool climates (Seattle, Pacific Northwest) subtract 10% because peak temperatures rarely exceed 85°F. Hot climates (Phoenix, Florida) add 15% because the unit runs harder during prolonged 90°F+ days.",
     "Sun exposure matters because sunny rooms gain significant heat through windows. South-facing rooms or rooms with large windows add 10%. North-facing or shaded rooms reduce 10%.",
     "Occupancy: each person adds about 600 BTU of body heat. The baseline assumes 2 people; add 600 BTU per additional regular occupant (including pets, which contribute about half that).",
-    "The result is rounded up to the nearest 500 BTU because AC units are sold in standard sizes: 5,000 BTU (small window), 8,000 BTU (medium window), 10,000-12,000 BTU (large window or small portable), 18,000-24,000 BTU (mini-split), and so on. Round up to the next standard size — undersizing is worse than oversizing within reason, though gross oversizing leads to humidity problems.",
+    "The result is rounded up to the nearest 500 BTU because AC units are sold in standard sizes: 5,000 BTU (small window), 8,000 BTU (medium window), 10,000-12,000 BTU (large window or small portable), 18,000-24,000 BTU (mini-split), and so on. Round up to the next standard size: undersizing is worse than oversizing within reason, though gross oversizing leads to humidity problems.",
   ],
 
   sources: [
     {
-      name: "Energy Star — Room Air Conditioners",
+      name: "Energy Star: Room Air Conditioners",
       url: "https://www.energystar.gov/products/room_air_conditioners",
       note: "Baseline 20 BTU per sq ft recommendation",
     },
@@ -225,7 +225,7 @@ export const btuCalculatorConfig: CalculatorConfig = {
     {
       question: "Does this work for mini-split systems?",
       answer:
-        "Yes — same BTU calculation. Mini-splits are commonly 9,000 / 12,000 / 18,000 / 24,000 BTU. Pick the nearest size above your calculated need. Multi-zone systems should calculate each zone separately and sum.",
+        "Yes, same BTU calculation. Mini-splits are commonly 9,000 / 12,000 / 18,000 / 24,000 BTU. Pick the nearest size above your calculated need. Multi-zone systems should calculate each zone separately and sum.",
     },
     {
       question: "Does this work for central air?",
@@ -235,12 +235,12 @@ export const btuCalculatorConfig: CalculatorConfig = {
     {
       question: "How does climate affect sizing?",
       answer:
-        "AC sizing is based on the design temperature — the peak summer temperature your unit must handle. Hot climates have higher design temps (95-105°F), so the unit must move more heat. Cool climates rarely exceed 85°F, so smaller units suffice. The 10% / 15% adjustments in the calculator roughly cover this.",
+        "AC sizing is based on the design temperature, the peak summer temperature your unit must handle. Hot climates have higher design temps (95-105°F), so the unit must move more heat. Cool climates rarely exceed 85°F, so smaller units suffice. The 10% / 15% adjustments in the calculator roughly cover this.",
     },
     {
       question: "Does the calculator cover heating BTU?",
       answer:
-        "Not directly — heating sizing requires factoring in insulation, windows, and outdoor design temperature. For a quick estimate, cooling BTU is usually 70-80% of heating BTU for the same space, but use a heat pump calculator for accurate heating sizing.",
+        "Not directly: heating sizing requires factoring in insulation, windows, and outdoor design temperature. For a quick estimate, cooling BTU is usually 70-80% of heating BTU for the same space, but use a heat pump calculator for accurate heating sizing.",
     },
     {
       question: "Should I size for worst-case or average?",

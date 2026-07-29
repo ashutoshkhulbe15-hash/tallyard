@@ -151,21 +151,21 @@ export const roofingCalculatorConfig: CalculatorConfig = {
     "bundles = ⌈(footprint × slope × (1 + waste)) ÷ square size × 3⌉ + ridge caps",
 
   methodology: [
-    "The calculator takes your house footprint (the outline viewed from above, not the actual roof surface), multiplies by a slope factor based on your pitch, and adds a waste percentage. The slope factor accounts for the fact that a sloped roof has more surface area than a flat one — a 6/12 pitch adds about 12%; a 12/12 pitch adds 41%.",
-    "Pitch is measured as rise over run — 6/12 means the roof rises 6 inches for every 12 inches of horizontal distance. In the US, 4/12 is the minimum for most shingle warranties; 6/12 is the most common residential pitch; anything over 10/12 typically needs special safety equipment and rope work.",
-    "In imperial units, roofing is sold by the 'square' — 100 square feet of coverage. Three-tab asphalt shingles typically pack 3 bundles per square. The calculator converts your total roof area to squares and then to bundles.",
-    "Ridge cap bundles are estimated separately. A simple gable roof needs ridge caps along the peak (the length of the house). Complex roofs with hips and valleys need more — add 1-2 bundles for typical homes with multiple roof planes.",
+    "The calculator takes your house footprint (the outline viewed from above, not the actual roof surface), multiplies by a slope factor based on your pitch, and adds a waste percentage. The slope factor accounts for the fact that a sloped roof has more surface area than a flat one, a 6/12 pitch adds about 12%; a 12/12 pitch adds 41%.",
+    "Pitch is measured as rise over run: 6/12 means the roof rises 6 inches for every 12 inches of horizontal distance. In the US, 4/12 is the minimum for most shingle warranties; 6/12 is the most common residential pitch; anything over 10/12 typically needs special safety equipment and rope work.",
+    "In imperial units, roofing is sold by the 'square': 100 square feet of coverage. Three-tab asphalt shingles typically pack 3 bundles per square. The calculator converts your total roof area to squares and then to bundles.",
+    "Ridge cap bundles are estimated separately. A simple gable roof needs ridge caps along the peak (the length of the house). Complex roofs with hips and valleys need more: add 1-2 bundles for typical homes with multiple roof planes.",
     "For complex roofs with dormers, hips, valleys, or multiple gables, bump the waste factor to 15-20%. The footprint-times-slope-factor method underestimates total area on complex shapes because it doesn't account for the extra surface from hip and valley planes.",
   ],
 
   sources: [
     {
-      name: "GAF — Roofing Calculator Guide",
+      name: "GAF: Roofing Calculator Guide",
       url: "https://www.gaf.com/en-us/for-homeowners/roofing-advice",
       note: "Industry-standard slope factors and bundle counts",
     },
     {
-      name: "Owens Corning — Asphalt Shingle Installation",
+      name: "Owens Corning: Asphalt Shingle Installation",
       url: "https://www.owenscorning.com/roofing",
       note: "Reference for waste factors and ridge cap requirements",
     },
@@ -187,27 +187,27 @@ export const roofingCalculatorConfig: CalculatorConfig = {
     {
       question: "What does 'roofing square' mean?",
       answer:
-        "One roofing square equals 100 square feet of roof surface. It's the standard unit shingles are sold in — a bundle is typically one-third of a square, so 3 bundles = 1 square. When a contractor says 'a 20-square roof,' they mean 2,000 sq ft of roof surface.",
+        "One roofing square equals 100 square feet of roof surface. It's the standard unit shingles are sold in, a bundle is typically one-third of a square, so 3 bundles = 1 square. When a contractor says 'a 20-square roof,' they mean 2,000 sq ft of roof surface.",
     },
     {
       question: "How do I find my roof pitch without climbing up?",
       answer:
-        "From the ground, sight along the roof edge with a ruler and compare to a pitch guide (many hardware stores carry printed cards). Alternatively, there are free pitch measurement apps. For most houses built after 1980, 4/12 to 6/12 is typical. If you can't tell and it's not obviously steep, assume 6/12 — it's close enough for ordering.",
+        "From the ground, sight along the roof edge with a ruler and compare to a pitch guide (many hardware stores carry printed cards). Alternatively, there are free pitch measurement apps. For most houses built after 1980, 4/12 to 6/12 is typical. If you can't tell and it's not obviously steep, assume 6/12: it's close enough for ordering.",
     },
     {
       question: "Why is roofing more than my footprint?",
       answer:
-        "A sloped roof has more surface area than the floor it covers. A 6/12 pitch adds about 12% area; a 12/12 pitch adds 41%. The calculator's slope factor accounts for this. Don't use just your footprint for ordering — you'll come up short.",
+        "A sloped roof has more surface area than the floor it covers. A 6/12 pitch adds about 12% area; a 12/12 pitch adds 41%. The calculator's slope factor accounts for this. Don't use just your footprint for ordering: you'll come up short.",
     },
     {
       question: "What's the right waste factor for my roof?",
       answer:
-        "10% for simple gable roofs with no dormers or valleys. 15% for typical homes with 1-2 small dormers or chimney cuts. 20% for complex roofs with multiple hips, valleys, dormers, or skylights. When in doubt, pick the higher number — spare shingles are cheap insurance against return trips.",
+        "10% for simple gable roofs with no dormers or valleys. 15% for typical homes with 1-2 small dormers or chimney cuts. 20% for complex roofs with multiple hips, valleys, dormers, or skylights. When in doubt, pick the higher number: spare shingles are cheap insurance against return trips.",
     },
     {
       question: "Does this include ridge caps?",
       answer:
-        "Yes — the calculator adds ridge cap bundles based on the length of your ridge. For a simple gable roof, ridge length roughly equals house length. For complex hip roofs, add 50% more ridge caps since hip edges also need capping.",
+        "Yes, the calculator adds ridge cap bundles based on the length of your ridge. For a simple gable roof, ridge length roughly equals house length. For complex hip roofs, add 50% more ridge caps since hip edges also need capping.",
     },
     {
       question: "Is this calculator for asphalt shingles only?",
@@ -217,7 +217,7 @@ export const roofingCalculatorConfig: CalculatorConfig = {
     {
       question: "Do I need underlayment and nails separately?",
       answer:
-        "Yes — this calculates shingles only. You also need underlayment (roll-by-roll, typically 400 sq ft per roll), drip edge (linear feet of eaves and rakes), starter strips (one bundle per 150 ft of eaves), and roofing nails (about 2 lbs per square). A starter-strip calculator is typically one row along the eaves.",
+        "Yes: this calculates shingles only. You also need underlayment (roll-by-roll, typically 400 sq ft per roll), drip edge (linear feet of eaves and rakes), starter strips (one bundle per 150 ft of eaves), and roofing nails (about 2 lbs per square). A starter-strip calculator is typically one row along the eaves.",
     },
   ],
 };

@@ -186,22 +186,22 @@ export const kitchenCabinetCalculatorConfig: CalculatorConfig = {
     "base ft = perimeter − appliances; upper ft = perimeter × 70-75%; cabinets = ⌈ft × 12 ÷ 24⌉",
 
   methodology: [
-    "Kitchen cabinets are measured in linear feet — the combined length of all base and upper cabinet sections. Base cabinets (on the floor, 24\" deep, 34.5\" tall before countertop) run along most walls. Upper cabinets (mounted on the wall, 12\" deep, typically 30-42\" tall) cover 70-75% of the same wall length because sinks, stoves, and windows interrupt the run.",
+    "Kitchen cabinets are measured in linear feet, the combined length of all base and upper cabinet sections. Base cabinets (on the floor, 24\" deep, 34.5\" tall before countertop) run along most walls. Upper cabinets (mounted on the wall, 12\" deep, typically 30-42\" tall) cover 70-75% of the same wall length because sinks, stoves, and windows interrupt the run.",
     "Layout determines total perimeter. Single-wall: one run of 10-15 ft typically. Galley: two parallel walls, 8-12 ft each. L-shape: two walls meeting at a corner. U-shape: three walls. L + island: L-shape plus an island (typically 6-8 ft of base cabinets, no uppers). Your layout + wall lengths tells the calculator everything.",
     "Appliance deduction: each major appliance (stove, sink, dishwasher) replaces about 3 feet of base cabinet. A kitchen with stove, sink, and dishwasher loses 9 linear feet of base cabinetry. Single-wall layouts have 6 ft deducted (usually no dishwasher or smaller kitchen).",
-    "Cabinet count uses 24-inch average width. Real cabinets range from 12\" (single door) to 36-48\" (wide double-door or drawer banks) — the 24-inch average produces a realistic estimate for typical kitchens. Tight kitchens with many small cabinets have more units; spacious kitchens with fewer-but-larger cabinets have fewer.",
-    "Price estimates (installed, 2025-2026 US) by grade: stock cabinets (IKEA Sektion, Home Depot Hampton Bay) $80-180/ft — pre-assembled or flat-pack, limited sizes, basic finishes, quick install. Mid-range semi-custom (Kraftmaid, Thomasville, Diamond) $180-400/ft — most Americans' choice, 8-10 week lead time, lots of options. Custom cabinetry $400-800/ft — made-to-spec, any size or style, 12-20 week lead time.",
+    "Cabinet count uses 24-inch average width. Real cabinets range from 12\" (single door) to 36-48\" (wide double-door or drawer banks), the 24-inch average produces a realistic estimate for typical kitchens. Tight kitchens with many small cabinets have more units; spacious kitchens with fewer-but-larger cabinets have fewer.",
+    "Price estimates (installed, 2025-2026 US) by grade: stock cabinets (IKEA Sektion, Home Depot Hampton Bay) $80-180/ft: pre-assembled or flat-pack, limited sizes, basic finishes, quick install. Mid-range semi-custom (Kraftmaid, Thomasville, Diamond) $180-400/ft, most Americans' choice, 8-10 week lead time, lots of options. Custom cabinetry $400-800/ft: made-to-spec, any size or style, 12-20 week lead time.",
     "Not captured: countertop (see countertop calculator), backsplash (see backsplash calculator), appliances themselves, hardware upgrades (pulls/knobs average $5-20 each, 20-40 per kitchen), crown molding and trim, lighting. Total kitchen remodel budget (materials + labor + permits) typically 2-3× the cabinet cost alone.",
   ],
 
   sources: [
     {
-      name: "NKBA — Kitchen Planning Guidelines",
+      name: "NKBA: Kitchen Planning Guidelines",
       url: "https://www.nkba.org/",
       note: "Industry standards for kitchen layout and cabinet sizing",
     },
     {
-      name: "HomeAdvisor — Cabinet Cost Guide",
+      name: "HomeAdvisor: Cabinet Cost Guide",
       url: "https://www.homeadvisor.com/",
       note: "Reference for installed cost by cabinet grade",
     },
@@ -253,7 +253,7 @@ export const kitchenCabinetCalculatorConfig: CalculatorConfig = {
     {
       question: "Can I reuse existing cabinets?",
       answer:
-        "Options: refinishing (sand and stain or paint existing, $1,500-4,000 for a typical kitchen), refacing (replace doors and drawer fronts, keep the boxes, $5,000-15,000), or full replacement. Reusing makes sense if cabinets are solid wood in good structural condition — particleboard or MDF boxes 15+ years old are usually not worth refinishing.",
+        "Options: refinishing (sand and stain or paint existing, $1,500-4,000 for a typical kitchen), refacing (replace doors and drawer fronts, keep the boxes, $5,000-15,000), or full replacement. Reusing makes sense if cabinets are solid wood in good structural condition: particleboard or MDF boxes 15+ years old are usually not worth refinishing.",
     },
   ],
 };

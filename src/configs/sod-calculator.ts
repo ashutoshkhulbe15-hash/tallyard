@@ -125,10 +125,10 @@ export const sodCalculatorConfig: CalculatorConfig = {
     "pieces = ⌈(area × (1 + shape waste)) ÷ coverage per piece⌉",
 
   methodology: [
-    "The calculator multiplies lawn area by a shape-dependent waste factor. Rectangular lawns need only 5% waste — sod lays in straight rows with minimal end cuts. Irregular lawns (curves, trees, flower beds to work around) need 15% because every edge piece requires a cut. Heavily curved lawns with lots of obstacles need 25% — every cut produces scrap that rarely fits elsewhere.",
+    "The calculator multiplies lawn area by a shape-dependent waste factor. Rectangular lawns need only 5% waste: sod lays in straight rows with minimal end cuts. Irregular lawns (curves, trees, flower beds to work around) need 15% because every edge piece requires a cut. Heavily curved lawns with lots of obstacles need 25%, every cut produces scrap that rarely fits elsewhere.",
     "Sod is sold in three main formats: individual slabs (16\" × 24\" ≈ 2.67 sq ft each, most common at garden centers and small farms), small rolls (2 × 5 ft ≈ 10 sq ft, used for residential installs where workers can carry rolls), and big rolls (3.3 × 6 ft ≈ 20 sq ft, used for commercial and large residential installs with equipment).",
     "Pallet counts are for logistics planning: a standard pallet of slabs holds about 500 square feet. Suppliers charge by the pallet delivery plus a per-square-foot rate. Ordering in partial pallets is possible at some suppliers but usually adds a surcharge.",
-    "The calculator rounds piece counts and pallet counts up — you can't buy half a slab or half a pallet. Because sod lives only 8-24 hours off the farm before it starts degrading, order conservatively. Install within one day of delivery; leftover pieces become compost or fill for future bare spots.",
+    "The calculator rounds piece counts and pallet counts up: you can't buy half a slab or half a pallet. Because sod lives only 8-24 hours off the farm before it starts degrading, order conservatively. Install within one day of delivery; leftover pieces become compost or fill for future bare spots.",
     "For accurate estimates with oddly-shaped lawns, break the area into rectangles (a driveway strip + a backyard rectangle + a front curve), calculate each separately, and add the piece counts. This gives more accurate results than applying one waste factor to an awkward total.",
   ],
 
@@ -139,7 +139,7 @@ export const sodCalculatorConfig: CalculatorConfig = {
       note: "Industry standards for sod sizing and installation",
     },
     {
-      name: "University of Maryland Extension — Lawn Establishment",
+      name: "University of Maryland Extension: Lawn Establishment",
       url: "https://extension.umd.edu/",
       note: "Timing, site prep, and installation reference",
     },
@@ -156,27 +156,27 @@ export const sodCalculatorConfig: CalculatorConfig = {
     {
       question: "How much sod do I need for a 1,000 sq ft lawn?",
       answer:
-        "For a 1,000 sq ft rectangular lawn, you need about 1,050 sq ft of sod (5% waste) — that's 394 slabs, 2 pallets. An irregular lawn of the same size needs 1,150 sq ft, about 3 pallets. The calculator above adjusts for your specific lawn shape.",
+        "For a 1,000 sq ft rectangular lawn, you need about 1,050 sq ft of sod (5% waste): that's 394 slabs, 2 pallets. An irregular lawn of the same size needs 1,150 sq ft, about 3 pallets. The calculator above adjusts for your specific lawn shape.",
     },
     {
       question: "What's the difference between slabs and rolls?",
       answer:
-        "Slabs (16 × 24 inches) are the standard format at garden centers — easy to handle solo, good for residential areas up to about 1,000 sq ft. Small rolls (2 × 5 ft) speed up installation but need two people. Big rolls (3.3 × 6 ft) require a sod cutter and tractor attachment — for commercial and large residential installs.",
+        "Slabs (16 × 24 inches) are the standard format at garden centers: easy to handle solo, good for residential areas up to about 1,000 sq ft. Small rolls (2 × 5 ft) speed up installation but need two people. Big rolls (3.3 × 6 ft) require a sod cutter and tractor attachment, for commercial and large residential installs.",
     },
     {
       question: "How long can sod sit before installation?",
       answer:
-        "12-24 hours maximum from farm to ground. Longer in hot weather is worse — sod stacked on a pallet in summer sun can die in 6-8 hours. Always schedule delivery for the morning of installation. If you can't install immediately, keep pallets shaded and water them lightly.",
+        "12-24 hours maximum from farm to ground. Longer in hot weather is worse: sod stacked on a pallet in summer sun can die in 6-8 hours. Always schedule delivery for the morning of installation. If you can't install immediately, keep pallets shaded and water them lightly.",
     },
     {
       question: "How much sod fits in a pickup truck?",
       answer:
-        "A full-size pickup can carry one pallet of sod (500 sq ft, about 3,000 lbs). That's near the legal GVW limit — drive carefully. Compact trucks are rated for half a pallet max. For multiple pallets, hire delivery — sod suppliers typically charge $50-150 per delivery plus a per-square-foot rate.",
+        "A full-size pickup can carry one pallet of sod (500 sq ft, about 3,000 lbs). That's near the legal GVW limit: drive carefully. Compact trucks are rated for half a pallet max. For multiple pallets, hire delivery: sod suppliers typically charge $50-150 per delivery plus a per-square-foot rate.",
     },
     {
       question: "Do I need to prep the ground first?",
       answer:
-        "Yes — this is where most DIY installations fail. Remove all existing turf and weeds. Till to loosen compacted soil. Add 2-4 inches of topsoil if existing soil is poor. Rake level, compact lightly with a lawn roller, and water. Only then install sod.",
+        "Yes: this is where most DIY installations fail. Remove all existing turf and weeds. Till to loosen compacted soil. Add 2-4 inches of topsoil if existing soil is poor. Rake level, compact lightly with a lawn roller, and water. Only then install sod.",
     },
     {
       question: "How much does sod cost?",
@@ -186,7 +186,7 @@ export const sodCalculatorConfig: CalculatorConfig = {
     {
       question: "When is the best time to install sod?",
       answer:
-        "Spring and early fall for cool-season grasses (60-75°F air temperature during establishment). Late spring through summer for warm-season grasses (70°F+ soil temperature). Avoid extreme summer heat — newly laid sod transpires water faster than roots can absorb it. Avoid winter — dormant sod doesn't root.",
+        "Spring and early fall for cool-season grasses (60-75°F air temperature during establishment). Late spring through summer for warm-season grasses (70°F+ soil temperature). Avoid extreme summer heat: newly laid sod transpires water faster than roots can absorb it. Avoid winter: dormant sod doesn't root.",
     },
     {
       question: "How much do I water new sod?",

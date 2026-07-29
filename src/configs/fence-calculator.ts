@@ -55,8 +55,8 @@ export const fenceCalculatorConfig: CalculatorConfig = {
       type: "select",
       defaultImperial: "yes",
       options: [
-        { label: "Yes — assume 5.5\" wide", value: "yes" },
-        { label: "No — posts/rails only", value: "no" },
+        { label: "Yes: assume 5.5\" wide", value: "yes" },
+        { label: "No: posts/rails only", value: "no" },
       ],
     },
     {
@@ -158,19 +158,19 @@ export const fenceCalculatorConfig: CalculatorConfig = {
   methodology: [
     "Posts are calculated by dividing the fence length by the post spacing (typically 8 feet) and adding one for the final end post. Each gate adds two posts (a hinge post and a latch post, both reinforced compared to regular line posts). Each corner adds one post where the fence changes direction.",
     "Rails (horizontal 2×4s that support the pickets) are usually 2 per section for fences up to 4 feet tall, and 3 per section for 6-foot-plus fences. The extra middle rail prevents sagging on tall fences.",
-    "Picket count assumes standard 5.5-inch wide cedar or pine pickets with a 0.25-inch gap between each (for wood movement and airflow), giving 5.75 inches per picket. Narrower pickets or tighter spacing increases the count — recalculate manually if needed. For shadowbox or board-on-board fences, picket count roughly doubles.",
+    "Picket count assumes standard 5.5-inch wide cedar or pine pickets with a 0.25-inch gap between each (for wood movement and airflow), giving 5.75 inches per picket. Narrower pickets or tighter spacing increases the count: recalculate manually if needed. For shadowbox or board-on-board fences, picket count roughly doubles.",
     "Concrete for post holes: standard guidance is 1 bag of 60-lb ready-mix per post for fences 4 feet or shorter, and 2 bags per post for 6-foot or taller fences. This assumes 8-12 inch diameter holes, 2-3 feet deep. Freezing climates require deeper holes (below frost line) which may need more concrete.",
     "The calculator does not include: gate hardware (hinges, latches, brackets), finish nails or screws (estimate 2-3 lbs per section), stain or preservative (see paint calculator), or post caps. These are typically selected separately based on style preference.",
   ],
 
   sources: [
     {
-      name: "This Old House — Fence Installation Guide",
+      name: "This Old House: Fence Installation Guide",
       url: "https://www.thisoldhouse.com/fences",
       note: "Standard post spacing and rail count recommendations",
     },
     {
-      name: "Family Handyman — Build a Privacy Fence",
+      name: "Family Handyman: Build a Privacy Fence",
       url: "https://www.familyhandyman.com/",
       note: "Concrete per post and picket spacing reference",
     },
@@ -192,17 +192,17 @@ export const fenceCalculatorConfig: CalculatorConfig = {
     {
       question: "What's the best post spacing?",
       answer:
-        "8 feet on center is standard for most wood fences — balances strength with cost. 6 feet OC makes a more rigid fence that resists wind better, good for exposed sites or privacy fences. 10 feet OC is used for horizontal rail fences where pickets span further — not recommended for solid privacy fences because rails can sag between posts.",
+        "8 feet on center is standard for most wood fences: balances strength with cost. 6 feet OC makes a more rigid fence that resists wind better, good for exposed sites or privacy fences. 10 feet OC is used for horizontal rail fences where pickets span further, not recommended for solid privacy fences because rails can sag between posts.",
     },
     {
       question: "How deep should fence posts go?",
       answer:
-        "At minimum 1/3 of the total post length, or 24-36 inches — whichever is deeper. In frost-prone climates, posts must go below the frost line (varies by region: 36 inches in Chicago, 48 inches in Minneapolis). Shallower posts will heave up over winters.",
+        "At minimum 1/3 of the total post length, or 24-36 inches: whichever is deeper. In frost-prone climates, posts must go below the frost line (varies by region: 36 inches in Chicago, 48 inches in Minneapolis). Shallower posts will heave up over winters.",
     },
     {
       question: "How much concrete per fence post?",
       answer:
-        "For 4-ft fence: 1 bag (60 lb) of ready-mix per post — fills a 9\" diameter × 24\" deep hole. For 6-ft privacy fence: 2 bags per post — fills a 10-12\" diameter × 30-36\" deep hole. For 8-ft tall or heavy-gate posts: 3 bags. Always leave a slight cone of concrete above grade for water runoff.",
+        "For 4-ft fence: 1 bag (60 lb) of ready-mix per post: fills a 9\" diameter × 24\" deep hole. For 6-ft privacy fence: 2 bags per post: fills a 10-12\" diameter × 30-36\" deep hole. For 8-ft tall or heavy-gate posts: 3 bags. Always leave a slight cone of concrete above grade for water runoff.",
     },
     {
       question: "Can I skip concrete and just use dirt?",
@@ -212,7 +212,7 @@ export const fenceCalculatorConfig: CalculatorConfig = {
     {
       question: "How do I handle a slope?",
       answer:
-        "Two options: racked (pickets follow the ground angle, rails stay level) or stepped (each section is level, creating stairs). Racked is simpler and cheaper; stepped looks more formal. Post spacing stays the same either way. For racked installations, pickets need to be trimmed at angles — adds 5-10% to picket count.",
+        "Two options: racked (pickets follow the ground angle, rails stay level) or stepped (each section is level, creating stairs). Racked is simpler and cheaper; stepped looks more formal. Post spacing stays the same either way. For racked installations, pickets need to be trimmed at angles: adds 5-10% to picket count.",
     },
     {
       question: "What about gates?",
@@ -222,7 +222,7 @@ export const fenceCalculatorConfig: CalculatorConfig = {
     {
       question: "Does the calculator work for chain-link or vinyl?",
       answer:
-        "Partially — the post count math is identical. Chain-link uses 1-5/8\" or 2\" galvanized posts set in concrete, with no rails (top rail only). Vinyl uses engineered panels that replace pickets+rails+some posts with a single 8-ft section. For those materials, use the post count and ignore the rail/picket outputs.",
+        "Partially, the post count math is identical. Chain-link uses 1-5/8\" or 2\" galvanized posts set in concrete, with no rails (top rail only). Vinyl uses engineered panels that replace pickets+rails+some posts with a single 8-ft section. For those materials, use the post count and ignore the rail/picket outputs.",
     },
   ],
 };

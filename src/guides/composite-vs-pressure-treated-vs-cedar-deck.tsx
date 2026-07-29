@@ -145,7 +145,7 @@ function DeckAnatomySVG() {
       <text x="340" y="148" textAnchor="middle" fontSize="12" fontWeight="600"
         fill={GUIDE_SVG.ink}>Frame: always pressure-treated</text>
       <text x="340" y="166" textAnchor="middle" fontSize="10"
-        fill={GUIDE_SVG.inkFaint}>Joists, beams, posts, ledger — same cost regardless</text>
+        fill={GUIDE_SVG.inkFaint}>Joists, beams, posts, ledger, same cost regardless</text>
 
       {/* Surface boards (choice) */}
       <rect x="60" y="65" width="176" height="45" rx="4" fill={GUIDE_SVG.slateSoft}
@@ -170,7 +170,7 @@ function DeckAnatomySVG() {
         fill={GUIDE_SVG.inkFaint}>$5–14 / ft²</text>
 
       <text x="340" y="55" textAnchor="middle" fontSize="10" fontWeight="700"
-        letterSpacing="1.2" fill={GUIDE_SVG.inkFaint}>SURFACE — YOUR CHOICE</text>
+        letterSpacing="1.2" fill={GUIDE_SVG.inkFaint}>SURFACE: YOUR CHOICE</text>
 
       <text x="340" y="210" textAnchor="middle" fontSize="10" fill={GUIDE_SVG.inkFaint}
         fontStyle="italic">
@@ -203,7 +203,7 @@ function MaintenanceCycleSVG() {
           fontSize="10" fill={GUIDE_SVG.inkFaint}>{yr}</text>
       ))}
 
-      {/* PT — seal every 2 years */}
+      {/* PT: seal every 2 years */}
       <text x={startX - 5} y="75" textAnchor="end" fontSize="10" fontWeight="600"
         fill={GUIDE_SVG.ink}>PT</text>
       <line x1={startX} y1="70" x2={startX + 20 * px} y2="70"
@@ -218,7 +218,7 @@ function MaintenanceCycleSVG() {
         10 seals
       </text>
 
-      {/* Cedar — seal every 3 years */}
+      {/* Cedar: seal every 3 years */}
       <text x={startX - 5} y="125" textAnchor="end" fontSize="10" fontWeight="600"
         fill="#8B6B3D">Cedar</text>
       <line x1={startX} y1="120" x2={startX + 20 * px} y2="120"
@@ -233,7 +233,7 @@ function MaintenanceCycleSVG() {
         7 seals
       </text>
 
-      {/* Composite — cleaning only */}
+      {/* Composite: cleaning only */}
       <text x={startX - 5} y="175" textAnchor="end" fontSize="10" fontWeight="600"
         fill={GUIDE_SVG.accent}>Comp.</text>
       <line x1={startX} y1="170" x2={startX + 20 * px} y2="170"
@@ -393,7 +393,7 @@ function Content() {
 
       <Figure
         number={2}
-        caption="Your material choice only affects the walking surface. The frame underneath — joists, beams, posts, ledger board — is pressure-treated regardless, and represents about 60% of total material cost."
+        caption="Your material choice only affects the walking surface. The frame underneath, joists, beams, posts, ledger board, is pressure-treated regardless, and represents about 60% of total material cost."
       >
         <DeckAnatomySVG />
       </Figure>
@@ -653,7 +653,7 @@ export const compositeVsPTVsCedarDeckGuide: GuideConfig = {
     {
       question: "Does composite get too hot to walk on barefoot?",
       answer:
-        "Dark colors in direct afternoon sun absolutely do — surface temperatures can reach 140°F+. Light colors (sandy browns, tans, grays) stay 30-40°F cooler. PVC boards (Azek) run slightly cooler than WPC (Trex). If your deck faces south or west in a warm climate, light composite or wood is the right call.",
+        "Dark colors in direct afternoon sun absolutely do: surface temperatures can reach 140°F+. Light colors (sandy browns, tans, grays) stay 30-40°F cooler. PVC boards (Azek) run slightly cooler than WPC (Trex). If your deck faces south or west in a warm climate, light composite or wood is the right call.",
     },
     {
       question: "Can I mix composite surface boards with a pressure-treated frame?",
@@ -668,12 +668,12 @@ export const compositeVsPTVsCedarDeckGuide: GuideConfig = {
     {
       question: "What's the difference between WPC and PVC composite?",
       answer:
-        "WPC (wood-plastic composite) is ~40% wood fiber mixed with plastic — Trex is the classic example. PVC is fully synthetic — Azek pioneered this. PVC is lighter, slightly cooler in sun, more moisture-resistant, and more expensive. WPC feels more like wood and costs less. Both are valid; the choice is mostly about feel and budget.",
+        "WPC (wood-plastic composite) is ~40% wood fiber mixed with plastic: Trex is the classic example. PVC is fully synthetic: Azek pioneered this. PVC is lighter, slightly cooler in sun, more moisture-resistant, and more expensive. WPC feels more like wood and costs less. Both are valid; the choice is mostly about feel and budget.",
     },
     {
       question: "Do I need to let pressure-treated lumber dry before building?",
       answer:
-        "Ideally yes. PT ships wet. Boards that are fastened immediately will warp and cup as they dry over 3-6 months. Good installers let PT acclimate for 2-4 weeks in a flat stack with stickers between layers. Many contractors skip this step — ask directly whether they acclimate and push back if they don't.",
+        "Ideally yes. PT ships wet. Boards that are fastened immediately will warp and cup as they dry over 3-6 months. Good installers let PT acclimate for 2-4 weeks in a flat stack with stickers between layers. Many contractors skip this step: ask directly whether they acclimate and push back if they don't.",
     },
     {
       question: "How do I know my joist spacing is right for composite?",
@@ -683,27 +683,27 @@ export const compositeVsPTVsCedarDeckGuide: GuideConfig = {
   ],
   sources: [
     {
-      name: "NADRA — North American Deck and Railing Association",
+      name: "NADRA: North American Deck and Railing Association",
       url: "https://www.nadra.org/",
       note: "Industry reference for deck construction standards and best practices",
     },
     {
-      name: "Trex — Installation and Technical Guide",
+      name: "Trex: Installation and Technical Guide",
       url: "https://www.trex.com/",
       note: "Joist spacing, gapping, and fastener requirements for capped composite decking",
     },
     {
-      name: "AWC — American Wood Council Span Tables",
+      name: "AWC: American Wood Council Span Tables",
       url: "https://awc.org/",
       note: "Structural reference for deck framing with PT, cedar, and engineered lumber",
     },
     {
-      name: "HomeGuide — 2026 Deck Cost Report",
+      name: "HomeGuide: 2026 Deck Cost Report",
       url: "https://homeguide.com/costs/cost-to-build-a-deck",
       note: "Current installed cost ranges for all residential deck materials",
     },
     {
-      name: "Angi — 2026 Deck Building Costs",
+      name: "Angi: 2026 Deck Building Costs",
       url: "https://www.angi.com/articles/how-much-does-it-cost-build-deck.htm",
       note: "Labor and material cost data by material type and deck size",
     },

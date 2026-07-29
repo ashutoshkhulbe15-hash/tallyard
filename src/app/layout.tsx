@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import localFont from "next/font/local";
 import "./globals.css";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import { SiteChrome } from "@/components/SiteChrome";
 import { UnitProvider } from "@/lib/units";
 
 // Self-hosted fonts via next/font/local. This removes the render-blocking
@@ -50,7 +49,7 @@ const jetbrainsMono = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.tallyard.com"),
   title: {
-    default: "Tallyard — Calculators that show their work",
+    default: "Tallyard: Calculators that show their work",
     template: "%s | Tallyard",
   },
   description:
@@ -148,9 +147,7 @@ gtag('config', 'G-7LB5KS70CD');`}
       </head>
       <body>
         <UnitProvider>
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          <SiteChrome>{children}</SiteChrome>
         </UnitProvider>
       </body>
     </html>

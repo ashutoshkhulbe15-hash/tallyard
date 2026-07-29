@@ -143,19 +143,19 @@ export const topsoilCalculatorConfig: CalculatorConfig = {
   methodology: [
     "The calculator multiplies bed area (length × width) by depth to compute total volume. Depth is entered in inches or centimeters and converted to feet or meters before the multiplication. Imperial volume in cubic feet is divided by 27 to convert to cubic yards (the bulk purchase unit). Metric stays in cubic meters.",
     "Weight is calculated from density. Topsoil is typically 1.1 tons per cubic yard; fill dirt is heavier (1.25 t/yd³) because it contains more clay and minerals; compost is lighter (0.75 t/yd³) because it's full of air and organic matter. Garden mix (blended topsoil and compost) sits in between at 1.0 t/yd³.",
-    "Bag equivalent assumes standard 0.75 cubic foot bags, which is what most home centers carry. At that size, a cubic yard is 36 bags. Some suppliers sell 1 cu ft or 40 lb bags — 40-lb bags of topsoil are roughly 0.5 cu ft, so you'd need 54 bags per cubic yard.",
+    "Bag equivalent assumes standard 0.75 cubic foot bags, which is what most home centers carry. At that size, a cubic yard is 36 bags. Some suppliers sell 1 cu ft or 40 lb bags: 40-lb bags of topsoil are roughly 0.5 cu ft, so you'd need 54 bags per cubic yard.",
     "Proper depth depends on use: 2 inches for overseeding existing lawn, 4 inches for lawn repair or grading small areas, 6 inches for establishing new garden beds, 8 inches for raised vegetable beds (deeper root vegetables need more), 12+ inches for deep fill or drainage correction. Deeper than 12 inches typically means you're doing structural fill, not just planting soil.",
     "Bulk delivery is much cheaper than bags above about 1 cubic yard. Bulk topsoil is typically $25-50 per cubic yard plus delivery ($75-150). Bagged topsoil is $3-5 per 0.75 cu ft bag, so a yard in bags is $100-150. For jobs over 1 yard, order bulk. For small patching, bags are practical.",
   ],
 
   sources: [
     {
-      name: "Penn State Extension — Soil and Composting",
+      name: "Penn State Extension: Soil and Composting",
       url: "https://extension.psu.edu/",
       note: "Density values and application depths for garden soil",
     },
     {
-      name: "University of Minnesota Extension — Topsoil",
+      name: "University of Minnesota Extension: Topsoil",
       url: "https://extension.umn.edu/",
       note: "Soil type differences and use recommendations",
     },
@@ -177,7 +177,7 @@ export const topsoilCalculatorConfig: CalculatorConfig = {
     {
       question: "What's the difference between topsoil, fill dirt, and compost?",
       answer:
-        "Topsoil is the top 4-12 inches of natural soil — good mineral content, some organic matter, supports plant growth. Fill dirt is subsoil from deeper layers — heavier clay, used for structural fill and grading but not for planting. Compost is decomposed organic matter — rich in nutrients, too loose for structural use, used as a soil amendment. Garden mix is usually 50/50 topsoil and compost.",
+        "Topsoil is the top 4-12 inches of natural soil: good mineral content, some organic matter, supports plant growth. Fill dirt is subsoil from deeper layers: heavier clay, used for structural fill and grading but not for planting. Compost is decomposed organic matter: rich in nutrients, too loose for structural use, used as a soil amendment. Garden mix is usually 50/50 topsoil and compost.",
     },
     {
       question: "How deep should topsoil be for grass?",
@@ -187,12 +187,12 @@ export const topsoilCalculatorConfig: CalculatorConfig = {
     {
       question: "How many cubic yards in a pickup truck?",
       answer:
-        "A standard full-size pickup (F-150 / Silverado bed) holds about 2 cubic yards of topsoil — but the gross weight often exceeds the truck's payload capacity. 1.5 cubic yards is a safer maximum. Small trucks (Tacoma/Ranger) top out at 1 yard. Dump trucks deliver 5-10 yards at a time.",
+        "A standard full-size pickup (F-150 / Silverado bed) holds about 2 cubic yards of topsoil, but the gross weight often exceeds the truck's payload capacity. 1.5 cubic yards is a safer maximum. Small trucks (Tacoma/Ranger) top out at 1 yard. Dump trucks deliver 5-10 yards at a time.",
     },
     {
       question: "Is screened topsoil worth the extra cost?",
       answer:
-        "Screened topsoil has been run through a mesh to remove rocks, clay chunks, and roots — producing a uniform, plantable product. Unscreened ('pulverized') topsoil has more debris and is ~30% cheaper. For vegetable gardens or raised beds: screened. For rough grading or lawn base: unscreened is fine.",
+        "Screened topsoil has been run through a mesh to remove rocks, clay chunks, and roots: producing a uniform, plantable product. Unscreened ('pulverized') topsoil has more debris and is ~30% cheaper. For vegetable gardens or raised beds: screened. For rough grading or lawn base: unscreened is fine.",
     },
     {
       question: "How many bags of topsoil make a cubic yard?",
@@ -207,7 +207,7 @@ export const topsoilCalculatorConfig: CalculatorConfig = {
     {
       question: "Does this work for raised beds?",
       answer:
-        "Yes — enter the interior dimensions of the bed and the fill depth. A typical 4×8 ft raised bed at 12 inches deep needs 1.2 cubic yards of soil (about 44 × 0.75 cu ft bags). For a cheaper fill, do the bottom half in soil/fill dirt and top with garden mix — plants root in the top 8-10 inches mostly.",
+        "Yes: enter the interior dimensions of the bed and the fill depth. A typical 4×8 ft raised bed at 12 inches deep needs 1.2 cubic yards of soil (about 44 × 0.75 cu ft bags). For a cheaper fill, do the bottom half in soil/fill dirt and top with garden mix: plants root in the top 8-10 inches mostly.",
     },
   ],
 };

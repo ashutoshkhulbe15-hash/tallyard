@@ -101,7 +101,7 @@ export const garageDoorCalculatorConfig: CalculatorConfig = {
     // Low-headroom conversions available down to 4.5" headroom (special tracks)
     let headroomStatus: string;
     if (headroomIn < 4.5) {
-      headroomStatus = "⚠ INSUFFICIENT — need 4.5\" minimum (low-headroom kit)";
+      headroomStatus = "⚠ INSUFFICIENT: need 4.5\" minimum (low-headroom kit)";
     } else if (headroomIn < 12) {
       headroomStatus = "OK with low-headroom kit (add $100-200)";
     } else {
@@ -110,9 +110,9 @@ export const garageDoorCalculatorConfig: CalculatorConfig = {
 
     let sideroomStatus: string;
     if (sideroomIn < 3.75) {
-      sideroomStatus = "⚠ INSUFFICIENT — need 3.75\" minimum each side";
+      sideroomStatus = "⚠ INSUFFICIENT: need 3.75\" minimum each side";
     } else if (sideroomIn < 8) {
-      sideroomStatus = "OK (tight — verify torsion spring clearance)";
+      sideroomStatus = "OK (tight: verify torsion spring clearance)";
     } else {
       sideroomStatus = "OK (standard installation)";
     }
@@ -185,12 +185,12 @@ export const garageDoorCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "DASMA — Door & Access Systems Manufacturers Association",
+      name: "DASMA: Door & Access Systems Manufacturers Association",
       url: "https://www.dasma.com/",
       note: "Industry standards for garage door specs and sizing",
     },
     {
-      name: "IRC 2021 — Garage Openings",
+      name: "IRC 2021: Garage Openings",
       url: "https://codes.iccsafe.org/",
       note: "Code requirements for garage door headers and openings",
     },
@@ -207,7 +207,7 @@ export const garageDoorCalculatorConfig: CalculatorConfig = {
     {
       question: "What size garage door do I need?",
       answer:
-        "Single-car garage: 8 or 9 ft wide × 7 ft tall. Standard double-car: 16 × 7 ft (fits two compact cars or one large SUV). Wide double: 18 × 7 ft (for two full-size vehicles with side mirrors). Tall double: 16 × 8 ft (for large SUVs, trucks with top carriers). Measure your opening from frame to frame — never trust what the builder 'says' the size is.",
+        "Single-car garage: 8 or 9 ft wide × 7 ft tall. Standard double-car: 16 × 7 ft (fits two compact cars or one large SUV). Wide double: 18 × 7 ft (for two full-size vehicles with side mirrors). Tall double: 16 × 8 ft (for large SUVs, trucks with top carriers). Measure your opening from frame to frame, never trust what the builder 'says' the size is.",
     },
     {
       question: "Can I install a garage door with low ceilings?",
@@ -242,7 +242,7 @@ export const garageDoorCalculatorConfig: CalculatorConfig = {
     {
       question: "What about the header above the door?",
       answer:
-        "Garage door headers are critical structural components. For 16-ft openings: typically a doubled LVL (2-ply 14-18\" deep) or engineered beam. For 18-ft+ openings: tripled LVL or steel beam. Always spec by IRC span tables or engineered drawings — garage door headers are load-bearing and undersized headers cause roof sagging.",
+        "Garage door headers are critical structural components. For 16-ft openings: typically a doubled LVL (2-ply 14-18\" deep) or engineered beam. For 18-ft+ openings: tripled LVL or steel beam. Always spec by IRC span tables or engineered drawings: garage door headers are load-bearing and undersized headers cause roof sagging.",
     },
   ],
 };

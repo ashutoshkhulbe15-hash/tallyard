@@ -104,3 +104,14 @@ export const configs: Record<string, CalculatorConfig> = {
 export function getConfig(slug: string): CalculatorConfig | null {
   return configs[slug] || null;
 }
+
+/** Calculators offered as iframe embeds at /embed/[slug]. Chosen for broad
+ *  third-party usefulness: suppliers, contractors, and bloggers. */
+export const EMBEDDABLE_SLUGS: string[] = [
+  "concrete-calculator",
+  "mulch-calculator",
+  "paint-calculator",
+  "deck-stair-calculator",
+  "gravel-calculator",
+];
+

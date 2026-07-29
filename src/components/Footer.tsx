@@ -203,6 +203,9 @@ export function Footer() {
                 <Link href="/methodology" className="text-sm" style={{ color: "rgba(255,255,255,0.35)" }}>
                   Methodology
                 </Link>
+                <Link href="/embed-a-calculator" className="text-sm" style={{ color: "rgba(255,255,255,0.35)" }}>
+                  Embed a calculator
+                </Link>
               </li>
               <li>
                 <Link href="/about" className="text-sm" style={{ color: "rgba(255,255,255,0.35)" }}>

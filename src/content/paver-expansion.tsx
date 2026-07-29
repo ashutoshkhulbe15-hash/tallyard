@@ -138,7 +138,7 @@ export function PaverCalculatorExpansion() {
           {label:"Labor",values:["$0 (2–3 weekends)","$1,200–3,000"]},
           {label:"Total",values:[<strong key="d">$1,000–1,850</strong>,<strong key="p">$2,000–4,500</strong>]},
         ]}
-        caption="Paver patios are one of the most DIY-friendly hardscape projects. The plate compactor rental is the critical tool — without it the base will not compact properly."
+        caption="Paver patios are one of the most DIY-friendly hardscape projects. The plate compactor rental is the critical tool, without it the base will not compact properly."
       />
 
       <h2>Edge restraint: what keeps the whole thing together</h2>
@@ -155,7 +155,7 @@ export function PaverCalculatorExpansion() {
 
       <h2>Paver base calculator: how much gravel under pavers</h2>
 
-      <p>Every paver patio and walkway sits on a compacted gravel base. The base depth depends on soil conditions and climate: 4 inches for well-drained sandy soil in mild climates, 6 inches for clay soils, 8 to 12 inches for freeze-thaw regions or vehicular loads (driveways). The formula: area in square feet × base depth in inches ÷ 324 = cubic yards of gravel. A 200 square foot patio with a 6-inch base needs 200 × 6 ÷ 324 = 3.7 cubic yards. Order 4.1 yards (gravel compacts 10-15% so you need more loose volume than the finished depth suggests). Use 3/4-inch crushed stone (not river rock — angular stone locks together, round stone shifts). The <a href="/gravel-calculator">gravel calculator</a> handles the volume and converts to tons for ordering.</p>
+      <p>Every paver patio and walkway sits on a compacted gravel base. The base depth depends on soil conditions and climate: 4 inches for well-drained sandy soil in mild climates, 6 inches for clay soils, 8 to 12 inches for freeze-thaw regions or vehicular loads (driveways). The formula: area in square feet × base depth in inches ÷ 324 = cubic yards of gravel. A 200 square foot patio with a 6-inch base needs 200 × 6 ÷ 324 = 3.7 cubic yards. Order 4.1 yards (gravel compacts 10-15% so you need more loose volume than the finished depth suggests). Use 3/4-inch crushed stone (not river rock: angular stone locks together, round stone shifts). The <a href="/gravel-calculator">gravel calculator</a> handles the volume and converts to tons for ordering.</p>
 
       <h2>Paver sand calculator: bedding and joint sand quantities</h2>
 
@@ -163,7 +163,7 @@ export function PaverCalculatorExpansion() {
 
       <h2>Brick paver calculator</h2>
 
-      <p>Brick pavers (clay pavers) are sized differently from concrete pavers. Standard clay pavers are 4 × 8 inches (3.75 × 7.75 actual). In a running bond pattern, you need 4.5 brick pavers per square foot. In a herringbone pattern, the count is the same but waste increases to 10-15% because of the angled cuts at the edges. A 200 square foot walkway in running bond: 200 × 4.5 × 1.10 (waste) = 990 brick pavers. The calculator above handles both concrete and clay paver sizes — select your paver dimensions and it adjusts the count automatically.</p>
+      <p>Brick pavers (clay pavers) are sized differently from concrete pavers. Standard clay pavers are 4 × 8 inches (3.75 × 7.75 actual). In a running bond pattern, you need 4.5 brick pavers per square foot. In a herringbone pattern, the count is the same but waste increases to 10-15% because of the angled cuts at the edges. A 200 square foot walkway in running bond: 200 × 4.5 × 1.10 (waste) = 990 brick pavers. The calculator above handles both concrete and clay paver sizes: select your paver dimensions and it adjusts the count automatically.</p>
     </>
   );
 }

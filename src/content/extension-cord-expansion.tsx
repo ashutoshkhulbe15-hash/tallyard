@@ -9,7 +9,7 @@ function GaugeSVG() {
 function VoltageSVG() {
   return (<svg viewBox="0 0 680 80" width="100%" height="auto" role="img" aria-label="Voltage drop: keep under 5%. Longer cords need thicker gauge.">
     <text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>Voltage drop and why cord length matters</text>
-    <text x="20" y="55" fontSize="11" fill={GUIDE_SVG.inkMuted}>NEC recommends total voltage drop under 5%. A 100-foot 16 AWG cord drops 8% at 10A — too much. Use 12 AWG for long runs.</text>
+    <text x="20" y="55" fontSize="11" fill={GUIDE_SVG.inkMuted}>NEC recommends total voltage drop under 5%. A 100-foot 16 AWG cord drops 8% at 10A: too much. Use 12 AWG for long runs.</text>
     <text x="20" y="75" fontSize="10" fill={GUIDE_SVG.inkFaint}>Symptoms of excessive drop: tool runs hot, motor struggles, lights dim. Can damage motors permanently.</text>
   </svg>);
 }
@@ -26,7 +26,7 @@ export function ExtensionCordCalculatorExpansion() {
     <p>Extension cord fires cause an estimated 3,300 home fires per year in the US according to the Electrical Safety Foundation. Nearly all are caused by one of three things: using an undersized cord for the load, daisy-chaining multiple cords, or running a cord under a rug where heat cannot dissipate. The calculator above sizes the correct gauge based on your tool&apos;s amperage draw and the cord length. Using a thicker gauge than recommended is always safe. Using a thinner gauge than recommended is a fire risk.</p>
     <Figure number={1} caption="Lower gauge number = thicker wire = more capacity. A 12 AWG cord handles 20 amps. A 16 AWG handles only 10."><GaugeSVG /></Figure>
     <MethodologyNote><p>Ampacity ratings from NEC Table 400.5. Voltage drop calculation: Vd = (2 × length × amps × resistance per foot) ÷ 1000. Resistance per foot from NEC Chapter 9, Table 8.</p></MethodologyNote>
-    <Figure number={2} caption="Long cords drop voltage. A 100-foot 16 AWG cord at full load drops 8% — enough to damage a motor."><VoltageSVG /></Figure>
+    <Figure number={2} caption="Long cords drop voltage. A 100-foot 16 AWG cord at full load drops 8%, enough to damage a motor."><VoltageSVG /></Figure>
     <Figure number={3} caption="Three simple rules prevent nearly all extension cord fires. Never daisy-chain. Never run under rugs. Always uncoil completely."><SafetySVG /></Figure>
     <p>For permanent wiring, the <a href="/wire-size-calculator">wire size calculator</a> handles circuit sizing with NEC ampacity tables and voltage drop calculations.</p>
   </>);

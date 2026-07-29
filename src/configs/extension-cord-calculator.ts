@@ -160,15 +160,15 @@ export const extensionCordCalculatorConfig: CalculatorConfig = {
   methodology: [
     "Extension cord gauges are rated by how much current they can handle at a specific length while keeping voltage drop under 3%. The three key variables: amps (the appliance load), length (how far from the outlet), and whether outdoor conditions require weather-rated jackets.",
     "Voltage drop math follows the same formula as the wire size calculator: VD = 2 × I × R × L / 1000, where R is the resistance per 1000 feet of that gauge. Lower gauge numbers mean thicker copper, less resistance, less voltage drop. A 12 AWG cord has about 40% less resistance than a 14 AWG cord.",
-    "Length matters enormously. At 25 feet, a 16 AWG cord handles 13 amps. At 100 feet, the same 16 AWG cord is only rated for 7 amps — the extra length means the same current produces more voltage drop. For long runs with heavy loads, always step up one or two gauges.",
+    "Length matters enormously. At 25 feet, a 16 AWG cord handles 13 amps. At 100 feet, the same 16 AWG cord is only rated for 7 amps, the extra length means the same current produces more voltage drop. For long runs with heavy loads, always step up one or two gauges.",
     "The appliance presets are practical compromises. 'Small electronics' (lamps, phones, laptops) are usually under 5 amps. 'Power tools' (drills, circular saws, small air compressors) are 5-10 amps. 'Heaters and large tools' (space heaters, portable ACs, table saws) run 10-15 amps. 'Heavy equipment' (RV loads, large compressors, industrial tools) can draw 15-20 amps.",
     "Outdoor cords need jacket ratings that survive moisture and UV: SJTW or W-rated (e.g., '12/3 SJTW' means 12 AWG, 3 conductors, thermoplastic jacket, weather-resistant). Indoor cords (SJT, SVT) aren't rated for outdoor use and degrade quickly in sun and rain. Running an indoor cord outside is a fire hazard if the jacket cracks.",
-    "For continuous loads (tools running more than 3 hours straight, or appliances that cycle frequently), derate by 20%: pick a cord rated for 125% of the load. Also: never daisy-chain extension cords — every connection point adds resistance. Use one long cord, not three short ones.",
+    "For continuous loads (tools running more than 3 hours straight, or appliances that cycle frequently), derate by 20%: pick a cord rated for 125% of the load. Also: never daisy-chain extension cords, every connection point adds resistance. Use one long cord, not three short ones.",
   ],
 
   sources: [
     {
-      name: "OSHA — Extension Cord Safety",
+      name: "OSHA: Extension Cord Safety",
       url: "https://www.osha.gov/",
       note: "Workplace safety standards for extension cord use",
     },
@@ -190,12 +190,12 @@ export const extensionCordCalculatorConfig: CalculatorConfig = {
     {
       question: "What gauge extension cord do I need for a 15-amp tool?",
       answer:
-        "Depends on length. For 25 feet: 14 AWG is sufficient (rated 15A). For 50 feet: 12 AWG is needed (rated 15A at 50 ft; 14 AWG drops to 13A rated). For 100 feet: 10 AWG (12 AWG is rated only 13A at 100 ft). Always size up for long runs — voltage drop reduces tool power and can overheat motors.",
+        "Depends on length. For 25 feet: 14 AWG is sufficient (rated 15A). For 50 feet: 12 AWG is needed (rated 15A at 50 ft; 14 AWG drops to 13A rated). For 100 feet: 10 AWG (12 AWG is rated only 13A at 100 ft). Always size up for long runs: voltage drop reduces tool power and can overheat motors.",
     },
     {
       question: "What happens if I use a cord that's too thin?",
       answer:
-        "Undersized cords overheat under load, melting insulation and causing fires. Even before fire: voltage drop causes motors to run hot and lose power (circular saws bog down, refrigerators short-cycle), LEDs dim, and electronic devices may not power on at all. The cord itself may feel warm or hot — that's a warning sign to upgrade.",
+        "Undersized cords overheat under load, melting insulation and causing fires. Even before fire: voltage drop causes motors to run hot and lose power (circular saws bog down, refrigerators short-cycle), LEDs dim, and electronic devices may not power on at all. The cord itself may feel warm or hot: that's a warning sign to upgrade.",
     },
     {
       question: "Can I use an indoor cord outside temporarily?",
@@ -210,12 +210,12 @@ export const extensionCordCalculatorConfig: CalculatorConfig = {
     {
       question: "Can I daisy-chain extension cords?",
       answer:
-        "No — every connection point adds resistance and creates a potential arc point. If you need 100 feet, use a 100-foot cord, not two 50-foot cords. Never connect a smaller gauge cord after a larger gauge (defeats the voltage drop math entirely). For long distances with heavy loads, consider a temporary single cord of the right gauge.",
+        "No, every connection point adds resistance and creates a potential arc point. If you need 100 feet, use a 100-foot cord, not two 50-foot cords. Never connect a smaller gauge cord after a larger gauge (defeats the voltage drop math entirely). For long distances with heavy loads, consider a temporary single cord of the right gauge.",
     },
     {
       question: "How many amps does a typical power tool draw?",
       answer:
-        "Corded drill: 6-10 amps. Circular saw: 12-15 amps. Reciprocating saw: 8-14 amps. Miter saw: 13-15 amps. Angle grinder: 6-12 amps. Small shop vacuum: 6-10 amps. Large shop vacuum: 12 amps. Always check the tool's nameplate — stated amperage is the sustained load, motors draw more during startup.",
+        "Corded drill: 6-10 amps. Circular saw: 12-15 amps. Reciprocating saw: 8-14 amps. Miter saw: 13-15 amps. Angle grinder: 6-12 amps. Small shop vacuum: 6-10 amps. Large shop vacuum: 12 amps. Always check the tool's nameplate: stated amperage is the sustained load, motors draw more during startup.",
     },
     {
       question: "What about 240V extension cords?",
@@ -225,7 +225,7 @@ export const extensionCordCalculatorConfig: CalculatorConfig = {
     {
       question: "Should I use a surge protector on extension cord runs?",
       answer:
-        "For sensitive electronics (computers, TVs, audio equipment), yes — at the OUTLET end of the cord. Don't run surge protectors on thin extension cords or daisy-chain them. For tools and appliances, surge protection isn't needed. For outdoor use, pick outdoor-rated GFCI protection at the source instead of surge suppression.",
+        "For sensitive electronics (computers, TVs, audio equipment), yes, at the OUTLET end of the cord. Don't run surge protectors on thin extension cords or daisy-chain them. For tools and appliances, surge protection isn't needed. For outdoor use, pick outdoor-rated GFCI protection at the source instead of surge suppression.",
     },
   ],
 };

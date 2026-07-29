@@ -119,7 +119,7 @@ export function MortarCalculatorExpansion() {
         between bricks creates a weak bond that crumbles within a year.
         Using mortar between tiles leaves a rough, oversized joint that
         looks terrible and traps dirt. The calculator above is specifically
-        for mortar — bed joints and head joints in masonry walls.
+        for mortar: bed joints and head joints in masonry walls.
       </p>
 
       <p>
@@ -187,7 +187,7 @@ export function MortarCalculatorExpansion() {
         on the wall and had nothing left for the cap row. Mortar for
         cap stones uses more material per unit because the joint is wider
         (the full top surface of the brick). The 10% waste factor in the
-        calculator covers this, but he had been sloppy with mixing —
+        calculator covers this, but he had been sloppy with mixing: 
         letting a half-batch set up before he could use it. He bought
         one more bag ($7.50) to finish. The lesson: do not let mixed
         mortar sit. Mix only what you can lay in 90 minutes.
@@ -200,7 +200,7 @@ export function MortarCalculatorExpansion() {
       </Figure>
 
       <p>
-        The consistency you want is often described as "peanut butter" — 
+        The consistency you want is often described as "peanut butter": 
         thick enough to hold its shape on the trowel when you flip it
         upside down, but wet enough to spread easily into a bed joint.
         Too dry and the mortar will not bond to the brick surface. Too

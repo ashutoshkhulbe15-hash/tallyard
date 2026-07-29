@@ -68,10 +68,10 @@ export const waterHeaterCalculatorConfig: CalculatorConfig = {
       type: "select",
       defaultImperial: 55,
       options: [
-        { label: "Warm (70°F — Gulf, FL)", value: 70 },
-        { label: "Moderate (55°F — mid-US)", value: 55 },
-        { label: "Cold (45°F — N. US, Canada)", value: 45 },
-        { label: "Very cold (35°F — winter, N. Plains)", value: 35 },
+        { label: "Warm (70°F: Gulf, FL)", value: 70 },
+        { label: "Moderate (55°F: mid-US)", value: 55 },
+        { label: "Cold (45°F: N. US, Canada)", value: 45 },
+        { label: "Very cold (35°F: winter, N. Plains)", value: 35 },
       ],
       help: "Tankless sizing depends heavily on incoming water temp",
     },
@@ -192,22 +192,22 @@ export const waterHeaterCalculatorConfig: CalculatorConfig = {
     "tank: size = peak hour demand ÷ 1.3; tankless: GPM = peak simultaneous, BTU = GPM × temp rise × 500",
 
   methodology: [
-    "Tank water heaters are sized by the First-Hour Rating (FHR) — how many gallons of hot water the unit can deliver in the first hour, starting with a full tank. The tank size itself is usually smaller than FHR because the heater continues to heat water as you use it. A 50-gallon tank with an FHR of 65-75 gallons is typical.",
+    "Tank water heaters are sized by the First-Hour Rating (FHR): how many gallons of hot water the unit can deliver in the first hour, starting with a full tank. The tank size itself is usually smaller than FHR because the heater continues to heat water as you use it. A 50-gallon tank with an FHR of 65-75 gallons is typical.",
     "Tank peak-hour demand is the total hot water you use during your busiest hour. The calculator estimates 20 gallons per shower, 3 gallons per person for sinks (hand washing, shaving), and adds 14 gallons if 3+ simultaneous uses suggest a washing machine is running too. Morning rush in a 4-person household is typically 80-100 gallons.",
     "Standard tank sizes are 30, 40, 50, 65, 75, and 80 gallons for residential. 50-gallon is the most common size for typical 3-4 person homes. 40-gallon works for 1-2 person households. 65-80 gallon for 5+ person homes or homes with large soaking tubs.",
-    "Tankless water heaters are sized completely differently: by flow rate (GPM) and temperature rise. The heater must deliver hot water at your peak simultaneous flow, raising the incoming water temperature to 120°F. In cold climates with 35°F incoming water, the temp rise is 85°F — a huge demand. In warm climates with 70°F incoming water, only a 50°F rise is needed.",
-    "Tankless BTU calculation: BTU/hr = GPM × temp rise × 500. A family that wants 2 simultaneous showers (5 GPM) in a cold climate (85°F rise) needs 212,500 BTU/hr — more than residential tankless can provide. They'd need two units or a large commercial unit. The same family in Florida (40°F rise) only needs 100,000 BTU, which any standard tankless handles easily.",
-    "Not covered: vent sizing (gas units), electrical panel capacity (electric tankless needs large 240V circuits — a 27 kW tankless pulls 113 amps), gas line size (tankless units need ¾\" gas lines, tank heaters typically use ½\"), or water treatment (tankless is sensitive to hard water — sediment causes scale buildup requiring annual flushing).",
+    "Tankless water heaters are sized completely differently: by flow rate (GPM) and temperature rise. The heater must deliver hot water at your peak simultaneous flow, raising the incoming water temperature to 120°F. In cold climates with 35°F incoming water, the temp rise is 85°F, a huge demand. In warm climates with 70°F incoming water, only a 50°F rise is needed.",
+    "Tankless BTU calculation: BTU/hr = GPM × temp rise × 500. A family that wants 2 simultaneous showers (5 GPM) in a cold climate (85°F rise) needs 212,500 BTU/hr, more than residential tankless can provide. They'd need two units or a large commercial unit. The same family in Florida (40°F rise) only needs 100,000 BTU, which any standard tankless handles easily.",
+    "Not covered: vent sizing (gas units), electrical panel capacity (electric tankless needs large 240V circuits, a 27 kW tankless pulls 113 amps), gas line size (tankless units need ¾\" gas lines, tank heaters typically use ½\"), or water treatment (tankless is sensitive to hard water, sediment causes scale buildup requiring annual flushing).",
   ],
 
   sources: [
     {
-      name: "US DOE — Water Heater Sizing",
+      name: "US DOE: Water Heater Sizing",
       url: "https://www.energy.gov/energysaver/sizing-new-water-heater",
       note: "Official guide to first-hour rating and tank sizing",
     },
     {
-      name: "Rheem/Rinnai — Tankless Sizing Guides",
+      name: "Rheem/Rinnai: Tankless Sizing Guides",
       url: "https://www.rheem.com/",
       note: "Industry reference for flow rate and temperature rise",
     },
@@ -227,14 +227,14 @@ export const waterHeaterCalculatorConfig: CalculatorConfig = {
         "A 50-gallon tank handles most 4-person families comfortably. Upgrade to 65-75 gallons if you have 3+ bathrooms with frequent simultaneous use, a large soaking tub, or teenagers who take long showers. For tankless, 160,000-199,000 BTU gas or 27 kW electric handles 2 simultaneous showers in cold climates.",
     },
     {
-      question: "Tank or tankless — which is better?",
+      question: "Tank or tankless, which is better?",
       answer:
         "Tankless: lasts 20+ years, endless hot water, 30% more efficient, takes less space. Tank: cheaper upfront ($400-1,000 vs $1,500-3,500), simpler install, no flow-rate limit. Tankless pays back in 8-15 years via energy savings. For homes where gas line and venting are already set up for tank, a tank is the easier swap. New construction or cold climates: tankless is increasingly the default.",
     },
     {
       question: "What's first-hour rating (FHR)?",
       answer:
-        "FHR is the gallons of hot water a tank water heater can deliver in the first hour of use, starting with a full tank. More important than tank capacity when comparing heaters. A 50-gallon tank with a high-output burner might have an FHR of 80 gallons — better for busy mornings than a 75-gallon tank with a smaller burner (FHR 70 gallons).",
+        "FHR is the gallons of hot water a tank water heater can deliver in the first hour of use, starting with a full tank. More important than tank capacity when comparing heaters. A 50-gallon tank with a high-output burner might have an FHR of 80 gallons, better for busy mornings than a 75-gallon tank with a smaller burner (FHR 70 gallons).",
     },
     {
       question: "How do I calculate tankless size?",

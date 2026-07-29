@@ -124,7 +124,7 @@ export const vanityCalculatorConfig: CalculatorConfig = {
     const frontClearanceOK = true; // we don't capture front clearance here; warn only
     const codeCheck =
       recommendedWidth > 0
-        ? sinkCenterToWall >= 4 ? "fits with typical clearance" : "tight right clearance — verify sink faucet position"
+        ? sinkCenterToWall >= 4 ? "fits with typical clearance" : "tight right clearance: verify sink faucet position"
         : "no standard size fits";
 
     return {
@@ -145,7 +145,7 @@ export const vanityCalculatorConfig: CalculatorConfig = {
         `standard sizes that fit: ${standardWidths.filter((s) => s <= maxVanityWidth).join('", ') || "none"}"`,
         recommendedWidth > 0
           ? `recommended = ${recommendedWidth}" (largest standard size that fits)`
-          : `no standard vanity fits — consider custom or reduce clearance`,
+          : `no standard vanity fits: consider custom or reduce clearance`,
         `users = ${users}, double-sink minimum = 60"`,
         `configuration = ${configType}`,
         `depth = ${depth}" (standard 21", 18" for small vanities ≤ 24" wide)`,
@@ -162,21 +162,21 @@ export const vanityCalculatorConfig: CalculatorConfig = {
 
   methodology: [
     "Vanities are sold in standard widths: 18, 24, 30, 36, 42, 48, 60, 66, 72, and 84 inches. The calculator finds the largest standard width that fits the available wall space after subtracting side clearances. Custom widths exist (any size to the inch) but cost 40-100% more than standard and have longer lead times (4-8 weeks vs stock).",
-    "Side clearances: minimum 2 inches of breathing room on any side for aesthetics. If the vanity is next to a swinging door, allow the door's full swing radius (usually 28-32 inches from the hinge side). If it's next to a toilet, IRC 2021 requires 15 inches from the centerline of the toilet to any obstruction — measure carefully.",
+    "Side clearances: minimum 2 inches of breathing room on any side for aesthetics. If the vanity is next to a swinging door, allow the door's full swing radius (usually 28-32 inches from the hinge side). If it's next to a toilet, IRC 2021 requires 15 inches from the centerline of the toilet to any obstruction: measure carefully.",
     "Single vs double sink: the breakpoint is 60 inches. Below 60 inches, a double sink leaves too little counter space between and around the sinks to be practical. At 60-66 inches, double is possible but tight. At 72+ inches, double sinks are the norm for two-user bathrooms. Single-sink 72-inch vanities exist and provide maximum counter space for one user.",
-    "Depth: standard 21 inches (front to wall) works for all vanities 30 inches or wider. For very small bathrooms with vanities under 24 inches, shallow 18-inch depth preserves walk-through space. Front-to-countertop overhang typically adds 1 inch on each side beyond the cabinet — factor this if clearance is very tight.",
-    "Height: 32-34 inches is the traditional 'standard' height, now considered kid-friendly. 36 inches is 'comfort height' — the kitchen counter standard, increasingly common in master bathrooms because it's easier on the back. For families with young children, 32 inches remains sensible; for adults-only master baths, 36 inches is preferable.",
-    "Countertop area is calculated for pairing with other calculators. For a standard 36 × 21 inch vanity, the countertop is 5.25 square feet — useful input for the countertop and backsplash calculators.",
+    "Depth: standard 21 inches (front to wall) works for all vanities 30 inches or wider. For very small bathrooms with vanities under 24 inches, shallow 18-inch depth preserves walk-through space. Front-to-countertop overhang typically adds 1 inch on each side beyond the cabinet: factor this if clearance is very tight.",
+    "Height: 32-34 inches is the traditional 'standard' height, now considered kid-friendly. 36 inches is 'comfort height', the kitchen counter standard, increasingly common in master bathrooms because it's easier on the back. For families with young children, 32 inches remains sensible; for adults-only master baths, 36 inches is preferable.",
+    "Countertop area is calculated for pairing with other calculators. For a standard 36 × 21 inch vanity, the countertop is 5.25 square feet: useful input for the countertop and backsplash calculators.",
   ],
 
   sources: [
     {
-      name: "IRC 2021 Chapter 3 — Plumbing Fixtures",
+      name: "IRC 2021 Chapter 3: Plumbing Fixtures",
       url: "https://codes.iccsafe.org/",
       note: "Code-required clearances for bathroom fixtures",
     },
     {
-      name: "NKBA — Bathroom Planning Guidelines",
+      name: "NKBA: Bathroom Planning Guidelines",
       url: "https://www.nkba.org/",
       note: "Industry standards for vanity sizing and placement",
     },
@@ -198,7 +198,7 @@ export const vanityCalculatorConfig: CalculatorConfig = {
     {
       question: "Can I fit a double sink in a 60-inch vanity?",
       answer:
-        "Yes — 60 inches is the minimum for double sinks. Each sink gets about 22-24 inches of centerline spacing, leaving ~12 inches of counter between them (for shared use). 66\" is more comfortable (15\" between sinks). 72\"+ is luxurious with space for accessories between.",
+        "Yes: 60 inches is the minimum for double sinks. Each sink gets about 22-24 inches of centerline spacing, leaving ~12 inches of counter between them (for shared use). 66\" is more comfortable (15\" between sinks). 72\"+ is luxurious with space for accessories between.",
     },
     {
       question: "What's the standard vanity depth?",
@@ -208,7 +208,7 @@ export const vanityCalculatorConfig: CalculatorConfig = {
     {
       question: "Should I pick 32\" or 36\" height?",
       answer:
-        "36\" (comfort height) is now the preferred standard for adult-only bathrooms — easier on the back, especially for tall users. 32-34\" is traditional height and remains appropriate for kid-friendly baths (kids reach the counter) and period-appropriate remodels. The cost is similar; pick based on use.",
+        "36\" (comfort height) is now the preferred standard for adult-only bathrooms: easier on the back, especially for tall users. 32-34\" is traditional height and remains appropriate for kid-friendly baths (kids reach the counter) and period-appropriate remodels. The cost is similar; pick based on use.",
     },
     {
       question: "Do I need to account for the countertop overhang?",
@@ -218,7 +218,7 @@ export const vanityCalculatorConfig: CalculatorConfig = {
     {
       question: "What if no standard size fits my space?",
       answer:
-        "Custom vanity: 4-8 week lead time, 40-100% more cost than stock. Consider just going smaller — a 24\" vanity with more counter space looks fine. Or reconsider clearances — if you can reduce the right clearance from 4\" to 2\", you might fit the next size up. The calculator alerts when no standard size fits.",
+        "Custom vanity: 4-8 week lead time, 40-100% more cost than stock. Consider just going smaller, a 24\" vanity with more counter space looks fine. Or reconsider clearances, if you can reduce the right clearance from 4\" to 2\", you might fit the next size up. The calculator alerts when no standard size fits.",
     },
     {
       question: "How much counter space do I need?",
@@ -228,7 +228,7 @@ export const vanityCalculatorConfig: CalculatorConfig = {
     {
       question: "What about wall-hung vs. freestanding?",
       answer:
-        "Size calculation is identical. Wall-hung (floating) vanities make small bathrooms feel larger and make floor cleaning easier — they're modern style. Freestanding (on legs or full cabinet base) has more storage and feels more traditional. Cost and size-wise, both are available in the full range of standard widths.",
+        "Size calculation is identical. Wall-hung (floating) vanities make small bathrooms feel larger and make floor cleaning easier: they're modern style. Freestanding (on legs or full cabinet base) has more storage and feels more traditional. Cost and size-wise, both are available in the full range of standard widths.",
     },
   ],
 };

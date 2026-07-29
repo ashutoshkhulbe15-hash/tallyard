@@ -154,19 +154,19 @@ export const paintCalculatorConfig: CalculatorConfig = {
 
   methodology: [
     "The calculator figures total wall area as perimeter times ceiling height, then subtracts a standard area for each door (21 sq ft / 2 sq m) and window (15 sq ft / 1.4 sq m) you enter. The net area is multiplied by the number of coats and divided by coverage per gallon or liter.",
-    "Coverage is set at 350 square feet per gallon (approximately 9 square meters per liter), which is the average for most interior latex paints on primed drywall. Check your specific paint can — coverage can range from 250 to 400 sq ft per gallon depending on the paint type, finish, and surface texture.",
-    "The result is rounded up to the nearest tenth of a gallon or liter — because you can't buy 2.67 gallons. The exact calculated amount is shown alongside so you can see the difference.",
+    "Coverage is set at 350 square feet per gallon (approximately 9 square meters per liter), which is the average for most interior latex paints on primed drywall. Check your specific paint can: coverage can range from 250 to 400 sq ft per gallon depending on the paint type, finish, and surface texture.",
+    "The result is rounded up to the nearest tenth of a gallon or liter, because you can't buy 2.67 gallons. The exact calculated amount is shown alongside so you can see the difference.",
     "Ceilings are not included in this calculation. Use the ceiling paint calculator separately, or add the ceiling area (length × width) manually and recalculate.",
   ],
 
   sources: [
     {
-      name: "Benjamin Moore — Paint Coverage Chart",
+      name: "Benjamin Moore: Paint Coverage Chart",
       url: "https://www.benjaminmoore.com/en-us/paint-colors/paint-coverage",
       note: "Industry-standard 350-400 sq ft/gal for interior latex",
     },
     {
-      name: "Sherwin-Williams — How Much Paint Do I Need",
+      name: "Sherwin-Williams: How Much Paint Do I Need",
       url: "https://www.sherwin-williams.com/homeowners/color/painting-tips/how-much-paint-do-i-need",
       note: "Reference for coverage assumptions and coat recommendations",
     },
@@ -193,7 +193,7 @@ export const paintCalculatorConfig: CalculatorConfig = {
     {
       question: "How much extra paint should I buy?",
       answer:
-        "The rounded-up amount above already gives you a small buffer. For very large rooms or textured walls, consider adding 10-15% extra — textured surfaces absorb more paint than smooth drywall. Keep leftover paint for touch-ups; stored properly it lasts 2-3 years.",
+        "The rounded-up amount above already gives you a small buffer. For very large rooms or textured walls, consider adding 10-15% extra: textured surfaces absorb more paint than smooth drywall. Keep leftover paint for touch-ups; stored properly it lasts 2-3 years.",
     },
     {
       question: "Does this calculator include the ceiling?",
@@ -218,7 +218,7 @@ export const paintCalculatorConfig: CalculatorConfig = {
     {
       question: "Do I need primer? Does the calculator include it?",
       answer:
-        "The calculator is for paint only, not primer. You need primer if you're painting over bare drywall, dark colors (going lighter), patched repairs, or stained surfaces. Primer typically covers the same area as paint — use the primer calculator for a separate estimate.",
+        "The calculator is for paint only, not primer. You need primer if you're painting over bare drywall, dark colors (going lighter), patched repairs, or stained surfaces. Primer typically covers the same area as paint: use the primer calculator for a separate estimate.",
     },
   ],
   relatedGuides: [

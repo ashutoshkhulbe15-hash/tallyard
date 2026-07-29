@@ -159,8 +159,8 @@ export const brickCalculatorConfig: CalculatorConfig = {
 
   methodology: [
     "Brick count is calculated from the wall area, the brick size, and the mortar joint width. The formula accounts for the effective area each brick covers (brick dimensions plus joint width on two sides). Smaller bricks mean more per square foot; wider joints reduce the count slightly because each brick covers more total area with the mortar included.",
-    "Brick sizes vary by manufacturer and region. Modular brick (3.625 × 2.25 × 7.625 inches) is the US standard — 6.86 bricks per square foot with 3/8-inch joints. Standard brick is slightly longer (8 inches). Queen and jumbo are larger formats that reduce brick count and labor but cost more per brick.",
-    "Wythe refers to the thickness of the wall in brick layers. Single-wythe (one brick thick) is used for modern veneer — the brick is decorative, with a framed wall behind providing structural support. Double-wythe (two bricks thick, bonded together) was common before 1960 and is still used for structural masonry, garden walls, and chimneys. Double-wythe uses twice as many bricks.",
+    "Brick sizes vary by manufacturer and region. Modular brick (3.625 × 2.25 × 7.625 inches) is the US standard: 6.86 bricks per square foot with 3/8-inch joints. Standard brick is slightly longer (8 inches). Queen and jumbo are larger formats that reduce brick count and labor but cost more per brick.",
+    "Wythe refers to the thickness of the wall in brick layers. Single-wythe (one brick thick) is used for modern veneer, the brick is decorative, with a framed wall behind providing structural support. Double-wythe (two bricks thick, bonded together) was common before 1960 and is still used for structural masonry, garden walls, and chimneys. Double-wythe uses twice as many bricks.",
     "Mortar calculation is approximate. A cubic foot of mortar typically sets about 30 bricks at 3/8\" joints. Wider joints use proportionally more mortar per brick. Standard 80-pound bags of pre-mixed mortar yield about 0.75 cubic feet each. The calculator adjusts the mortar estimate based on your joint width.",
     "Waste factor of 10% covers typical cuts at corners, around openings, and breakage during handling. Use 15% for complex masonry with many openings, arches, or decorative patterns; 5% for long straight walls with minimal cuts.",
     "Not included in this calculator: flashing, weep holes, wall ties (1 per 2.67 sq ft of veneer), expansion joints, lintels over openings, and cleaning materials. For structural walls, also factor in rebar (see rebar calculator) and grout for reinforced cells.",
@@ -168,12 +168,12 @@ export const brickCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "Brick Industry Association — Technical Notes",
+      name: "Brick Industry Association: Technical Notes",
       url: "https://www.gobrick.com/",
       note: "Standard brick sizes and wall design references",
     },
     {
-      name: "Portland Cement Association — Masonry",
+      name: "Portland Cement Association: Masonry",
       url: "https://www.cement.org/",
       note: "Mortar coverage and joint width references",
     },
@@ -200,17 +200,17 @@ export const brickCalculatorConfig: CalculatorConfig = {
     {
       question: "How much mortar do I need?",
       answer:
-        "Approximately 1 cubic foot of mortar per 30 bricks at 3/8\" joints. An 80-lb bag of pre-mixed mortar yields 0.75 cubic feet. For 1,000 bricks, plan on about 45 bags. Buy extra — running out mid-wall means joints that set before you can finish a course.",
+        "Approximately 1 cubic foot of mortar per 30 bricks at 3/8\" joints. An 80-lb bag of pre-mixed mortar yields 0.75 cubic feet. For 1,000 bricks, plan on about 45 bags. Buy extra: running out mid-wall means joints that set before you can finish a course.",
     },
     {
-      question: "Single-wythe or double-wythe — which do I need?",
+      question: "Single-wythe or double-wythe, which do I need?",
       answer:
-        "Single-wythe (brick veneer over frame or CMU) is standard for modern construction — the brick is decorative cladding, the structure is behind it. Double-wythe is for standalone structural walls: garden walls, chimneys, retaining walls, or older construction methods. Double-wythe uses twice the brick and twice the labor.",
+        "Single-wythe (brick veneer over frame or CMU) is standard for modern construction, the brick is decorative cladding, the structure is behind it. Double-wythe is for standalone structural walls: garden walls, chimneys, retaining walls, or older construction methods. Double-wythe uses twice the brick and twice the labor.",
     },
     {
       question: "What's the best mortar joint width?",
       answer:
-        "3/8 inch is the US standard — sized to make brick coursing dimensions work out nicely. 1/2 inch is used for rougher bricks like handmade or reclaimed. 1/4 inch is used for thin brick veneer and tight modern styles. Wider joints look more traditional; narrower joints look more contemporary.",
+        "3/8 inch is the US standard: sized to make brick coursing dimensions work out nicely. 1/2 inch is used for rougher bricks like handmade or reclaimed. 1/4 inch is used for thin brick veneer and tight modern styles. Wider joints look more traditional; narrower joints look more contemporary.",
     },
     {
       question: "How much do bricks cost?",
@@ -220,12 +220,12 @@ export const brickCalculatorConfig: CalculatorConfig = {
     {
       question: "Can I buy partial pallets of brick?",
       answer:
-        "Usually yes at retail — home centers and masonry yards often sell by the piece or by bundle (500 bricks). Full pallets (typically 500-525 bricks) are cheaper per piece. For large orders, ordering by the pallet is 10-20% cheaper.",
+        "Usually yes at retail: home centers and masonry yards often sell by the piece or by bundle (500 bricks). Full pallets (typically 500-525 bricks) are cheaper per piece. For large orders, ordering by the pallet is 10-20% cheaper.",
     },
     {
       question: "How do I calculate bricks for a chimney or fireplace?",
       answer:
-        "Calculate each wall surface separately: front, back, sides. For chimneys with flue liners, the inside wythe counts separately from the outside wythe. A typical residential chimney uses 800-1,500 bricks. For fireplaces, the firebox uses firebrick (different product, different refractory mortar) — calculate that separately.",
+        "Calculate each wall surface separately: front, back, sides. For chimneys with flue liners, the inside wythe counts separately from the outside wythe. A typical residential chimney uses 800-1,500 bricks. For fireplaces, the firebox uses firebrick (different product, different refractory mortar): calculate that separately.",
     },
   ],
 };

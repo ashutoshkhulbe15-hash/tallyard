@@ -24,7 +24,7 @@ function PitchMultiplierSVG() {
           </g>
         );
       })}
-      <text x="340" y="255" textAnchor="middle" fontSize="9" fill={GUIDE_SVG.inkFaint} fontStyle="italic">A steep 12/12 pitch has 41% more surface than the same footprint at flat — that&apos;s 41% more shingles, underlayment, and labor.</text>
+      <text x="340" y="255" textAnchor="middle" fontSize="9" fill={GUIDE_SVG.inkFaint} fontStyle="italic">A steep 12/12 pitch has 41% more surface than the same footprint at flat: that&apos;s 41% more shingles, underlayment, and labor.</text>
     </svg>
   );
 }
@@ -107,7 +107,7 @@ export function RoofingCalculatorExpansion() {
       />
 
       <h2>Your roof has more surface area than your house. Here is why that matters.</h2>
-      <p>A roofer in Connecticut described the most common estimation mistake he sees: homeowners measure their house footprint, multiply by a pitch factor they found online, and come up with a number that&apos;s 15% too low because they forgot the eaves, rake overhangs, and hips. On a 2,000 sq ft footprint, that&apos;s 300 square feet of missing roof — 3 squares, 9 bundles, about $450 in shingles that aren&apos;t on the truck when the crew shows up.</p>
+      <p>A roofer in Connecticut described the most common estimation mistake he sees: homeowners measure their house footprint, multiply by a pitch factor they found online, and come up with a number that&apos;s 15% too low because they forgot the eaves, rake overhangs, and hips. On a 2,000 sq ft footprint, that&apos;s 300 square feet of missing roof: 3 squares, 9 bundles, about $450 in shingles that aren&apos;t on the truck when the crew shows up.</p>
 
       <MethodologyNote>
         <p>
@@ -128,8 +128,8 @@ export function RoofingCalculatorExpansion() {
       <Figure number={2} caption="Roofing industry measures in 'squares.' One square = 100 sq ft = 3 bundles of architectural shingles. A 2,000 sq ft roof is 20 squares = 60 bundles before waste.">
         <SquareExplainerSVG />
       </Figure>
-      <p>When a roofer quotes &quot;20 squares,&quot; they mean 2,000 square feet of actual roof surface. Architectural shingles (the industry standard since roughly 2010) come 3 bundles per square. Older 3-tab shingles come 4 bundles per square. The bundles weigh 60–80 lbs each, which matters for staging and delivery — 60 bundles is about 2 tons of material going up the ladder.</p>
-      <Callout label="Waste factor for roofing">Standard residential roofs need 10–15% waste factor. Complex roofs with many hips, valleys, dormers, and skylights need 15–20%. The cuts at hips and valleys create short pieces that can&apos;t be reused elsewhere. Ridge cap shingles are ordered separately — roughly 35 linear feet per bundle.</Callout>
+      <p>When a roofer quotes &quot;20 squares,&quot; they mean 2,000 square feet of actual roof surface. Architectural shingles (the industry standard since roughly 2010) come 3 bundles per square. Older 3-tab shingles come 4 bundles per square. The bundles weigh 60–80 lbs each, which matters for staging and delivery: 60 bundles is about 2 tons of material going up the ladder.</p>
+      <Callout label="Waste factor for roofing">Standard residential roofs need 10–15% waste factor. Complex roofs with many hips, valleys, dormers, and skylights need 15–20%. The cuts at hips and valleys create short pieces that can&apos;t be reused elsewhere. Ridge cap shingles are ordered separately, roughly 35 linear feet per bundle.</Callout>
 
       <h2>Asphalt shingle tiers</h2>
       <Figure number={3} caption="Three tiers dominate the residential market. Architectural shingles account for 80%+ of new installations. 3-tab is the budget option; premium is for homes where curb appeal justifies the cost.">
@@ -177,7 +177,7 @@ export function RoofingCalculatorExpansion() {
         ]}
         caption="These items are not optional. A shingle-only estimate that doesn't include underlayment and flashing is either incomplete or the roofer is cutting corners."
       />
-      <p>Use the <a href="/attic-ventilation-calculator">attic ventilation calculator</a> to size ridge vent and soffit intake for your roof area, and the <a href="/gutter-calculator">gutter calculator</a> for downspout count. The underlayment and ice barrier are invisible once shingles go down, but they&apos;re doing most of the waterproofing work. Synthetic underlayment has almost entirely replaced 15-lb or 30-lb felt paper — it&apos;s lighter, lays flatter, and doesn&apos;t wrinkle when wet. Ice and water shield is required by code along the first 24 inches of eaves in cold climates to prevent ice dam leaks.</p>
+      <p>Use the <a href="/attic-ventilation-calculator">attic ventilation calculator</a> to size ridge vent and soffit intake for your roof area, and the <a href="/gutter-calculator">gutter calculator</a> for downspout count. The underlayment and ice barrier are invisible once shingles go down, but they&apos;re doing most of the waterproofing work. Synthetic underlayment has almost entirely replaced 15-lb or 30-lb felt paper: it&apos;s lighter, lays flatter, and doesn&apos;t wrinkle when wet. Ice and water shield is required by code along the first 24 inches of eaves in cold climates to prevent ice dam leaks.</p>
       <p>If the exterior renovation includes a garage, the <a href="/garage-door-calculator">garage door calculator</a> checks sizing, headroom, and opener HP requirements.</p>
     </>
   );

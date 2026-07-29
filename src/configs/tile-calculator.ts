@@ -67,7 +67,7 @@ export const tileCalculatorConfig: CalculatorConfig = {
       defaultImperial: 10,
       min: 1,
       step: 1,
-      help: "Check your tile's packaging — typical: 8-15 tiles per box",
+      help: "Check your tile's packaging: typical: 8-15 tiles per box",
     },
   ],
 
@@ -146,18 +146,18 @@ export const tileCalculatorConfig: CalculatorConfig = {
   methodology: [
     "The calculator computes the floor area (length × width), divides by the area of a single tile (converted to the same unit), and multiplies the result by 1 plus the waste factor. Tile dimensions are listed in inches (imperial) or centimeters (metric) and internally converted to square feet or square meters.",
     "Waste factor covers cuts along edges, miscellaneous breakage during installation, and keeping a few spare tiles for future repairs. The right factor depends on your layout: 10% is fine for straight-lay patterns, 15% for 45-degree diagonals, 20% for herringbone or other patterns with lots of cuts.",
-    "Tile count is rounded up to the nearest whole tile because you can't buy fractional tiles. Boxes are rounded up to the next whole box — you buy by the box, not the tile.",
+    "Tile count is rounded up to the nearest whole tile because you can't buy fractional tiles. Boxes are rounded up to the next whole box: you buy by the box, not the tile.",
     "Variation between tiles from different production runs is real. Always buy all your tile at once from the same lot number, and keep 1-2 full boxes of extras for repairs years later (specific patterns and colors get discontinued).",
   ],
 
   sources: [
     {
-      name: "Tile Council of North America — Installation Handbook",
+      name: "Tile Council of North America: Installation Handbook",
       url: "https://www.tcnatile.com/",
       note: "Industry standards for waste factor by pattern",
     },
     {
-      name: "Home Depot — Tile Buying Guide",
+      name: "Home Depot: Tile Buying Guide",
       url: "https://www.homedepot.com/c/ah/how-to-estimate-tile-needed-for-your-project/",
       note: "Reference for buying tile in lots and boxes",
     },
@@ -174,17 +174,17 @@ export const tileCalculatorConfig: CalculatorConfig = {
     {
       question: "How much extra tile should I buy?",
       answer:
-        "10% is the minimum for simple straight-lay patterns on rectangular floors. Add 5% for each additional complexity: diagonal layouts (15%), herringbone or chevron (20%+), irregular room shapes, many obstructions. When in doubt, buy more — discontinued lots are hard to match later.",
+        "10% is the minimum for simple straight-lay patterns on rectangular floors. Add 5% for each additional complexity: diagonal layouts (15%), herringbone or chevron (20%+), irregular room shapes, many obstructions. When in doubt, buy more: discontinued lots are hard to match later.",
     },
     {
       question: "Why do I need to buy all tile at once?",
       answer:
-        "Tile is manufactured in batches called 'lots' or 'dye lots'. Slight color and size variations exist between lots — invisible individually, but visible when tiles from different lots are installed next to each other. Always buy enough for the entire project plus spares from the same lot.",
+        "Tile is manufactured in batches called 'lots' or 'dye lots'. Slight color and size variations exist between lots: invisible individually, but visible when tiles from different lots are installed next to each other. Always buy enough for the entire project plus spares from the same lot.",
     },
     {
       question: "How many tiles are in a typical box?",
       answer:
-        "Varies by tile size: 12×12 tiles usually 10-15 per box; 12×24 typically 6-8; 18×18 about 6; 24×24 about 3-4. Always check the specific tile you're buying — the calculator uses your input for tiles per box.",
+        "Varies by tile size: 12×12 tiles usually 10-15 per box; 12×24 typically 6-8; 18×18 about 6; 24×24 about 3-4. Always check the specific tile you're buying, the calculator uses your input for tiles per box.",
     },
     {
       question: "Does this include the grout?",
@@ -194,12 +194,12 @@ export const tileCalculatorConfig: CalculatorConfig = {
     {
       question: "How much waste should I expect with 24×24 tiles?",
       answer:
-        "Larger tiles produce more waste because each edge cut leaves a larger unusable piece. For 24×24 tiles on a straight-lay pattern, 12-15% waste is realistic — more if the room has complex edges or obstructions.",
+        "Larger tiles produce more waste because each edge cut leaves a larger unusable piece. For 24×24 tiles on a straight-lay pattern, 12-15% waste is realistic, more if the room has complex edges or obstructions.",
     },
     {
       question: "Do I calculate wall tile the same way?",
       answer:
-        "Yes — the math is identical. Enter the wall dimensions as length and width. For showers, calculate each wall separately and add them. Subtract large openings (windows, niches) only if they're bigger than a few square feet.",
+        "Yes, the math is identical. Enter the wall dimensions as length and width. For showers, calculate each wall separately and add them. Subtract large openings (windows, niches) only if they're bigger than a few square feet.",
     },
     {
       question: "What about diagonal or herringbone layouts?",
@@ -209,7 +209,7 @@ export const tileCalculatorConfig: CalculatorConfig = {
     {
       question: "Can I use this for subway tile or large-format tile?",
       answer:
-        "Yes — use the closest matching preset, or enter the tile size if you need something non-standard. For subway tile (3×6), the math is the same but you'll need many more tiles because each one covers less area.",
+        "Yes: use the closest matching preset, or enter the tile size if you need something non-standard. For subway tile (3×6), the math is the same but you'll need many more tiles because each one covers less area.",
     },
   ],
 };

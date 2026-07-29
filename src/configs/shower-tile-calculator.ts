@@ -6,7 +6,7 @@ export const showerTileCalculatorConfig: CalculatorConfig = {
   slug: "shower-tile-calculator",
   title: "Shower Tile Calculator",
   description:
-    "Tiles and boxes for a shower or tub surround. Calculates three walls plus optional niche and floor — with cut waste built in.",
+    "Tiles and boxes for a shower or tub surround. Calculates three walls plus optional niche and floor, with cut waste built in.",
   categoryLabel: "Flooring",
   category: "flooring",
 
@@ -195,22 +195,22 @@ export const showerTileCalculatorConfig: CalculatorConfig = {
     "tiles = ⌈((3 walls + niche + floor) × 1.15) ÷ tile area⌉",
 
   methodology: [
-    "The calculator treats a shower as three tile surfaces: back wall, two side walls, and an optional floor/ceiling. Standard tub surrounds run 60 inches wide × 32 inches deep × 96 inches tall to the ceiling (or 60-72 inches tall for a tub surround only, without reaching the ceiling). Walk-in showers vary — measure the actual back and side dimensions.",
+    "The calculator treats a shower as three tile surfaces: back wall, two side walls, and an optional floor/ceiling. Standard tub surrounds run 60 inches wide × 32 inches deep × 96 inches tall to the ceiling (or 60-72 inches tall for a tub surround only, without reaching the ceiling). Walk-in showers vary: measure the actual back and side dimensions.",
     "Niches add complexity. A standard 14 × 24 inch niche carved into the back wall: the opening itself (14 × 24 = 336 sq in) is subtracted from the back wall area, then all five interior surfaces (two sides, top, bottom, back) are added. Net: a typical niche adds a small amount of tile (1-2 sq ft) rather than subtracting from the total.",
-    "Shower floor (for walk-in showers): add the floor area to the wall total. Drop-in tubs have no tiled floor (the tub is the floor). Many walk-in showers use smaller mosaic tile on the floor for grip — if using different tile on the floor, calculate separately.",
-    "Waste factor is 15% — higher than standard floor tile because shower walls have many edges, corners, and fixture cutouts (valve openings, shower head, niche boundaries). Every cut produces scrap that rarely gets reused. Large-format tile (12×24, 24×24) in showers pushes waste up further because bigger scraps are less reusable.",
+    "Shower floor (for walk-in showers): add the floor area to the wall total. Drop-in tubs have no tiled floor (the tub is the floor). Many walk-in showers use smaller mosaic tile on the floor for grip, if using different tile on the floor, calculate separately.",
+    "Waste factor is 15%: higher than standard floor tile because shower walls have many edges, corners, and fixture cutouts (valve openings, shower head, niche boundaries). Every cut produces scrap that rarely gets reused. Large-format tile (12×24, 24×24) in showers pushes waste up further because bigger scraps are less reusable.",
     "Tiles round up to whole tiles; boxes round up to whole boxes. Buy at least 1-2 extra boxes beyond the calculator's count for future repairs. Shower tile gets chipped by dropped shampoo bottles and razors; matching replacement tile years later is rarely possible.",
-    "Not included: backer board (cement board or foam board behind the tile — see drywall calculator for area), waterproofing membrane (recommended: 1 roll covers about 30 sq ft), thinset (1 bag of 50-lb per 40-50 sq ft), grout (see grout calculator), niche trim pieces, and fixtures (shower head, valve, soap dish).",
+    "Not included: backer board (cement board or foam board behind the tile: see drywall calculator for area), waterproofing membrane (recommended: 1 roll covers about 30 sq ft), thinset (1 bag of 50-lb per 40-50 sq ft), grout (see grout calculator), niche trim pieces, and fixtures (shower head, valve, soap dish).",
   ],
 
   sources: [
     {
-      name: "Tile Council of North America — Wet Area Installation",
+      name: "Tile Council of North America: Wet Area Installation",
       url: "https://www.tcnatile.com/",
       note: "Industry standards for shower tiling and waterproofing",
     },
     {
-      name: "Schluter Systems — Shower Construction Guide",
+      name: "Schluter Systems: Shower Construction Guide",
       url: "https://www.schluter.com/",
       note: "Wet-area installation and niche design references",
     },
@@ -232,7 +232,7 @@ export const showerTileCalculatorConfig: CalculatorConfig = {
     {
       question: "Should I use the same tile on floor and walls?",
       answer:
-        "You can — but slip resistance is a concern on wet floors. For shower floors, use tiles with DCOF ≥ 0.42 (slip rating) or switch to small mosaic tile (under 2 inches) where grout lines provide grip. Walls don't have this concern. Many showers pair large wall tile with small mosaic floor tile for this reason.",
+        "You can, but slip resistance is a concern on wet floors. For shower floors, use tiles with DCOF ≥ 0.42 (slip rating) or switch to small mosaic tile (under 2 inches) where grout lines provide grip. Walls don't have this concern. Many showers pair large wall tile with small mosaic floor tile for this reason.",
     },
     {
       question: "Why is shower waste 15% instead of 10%?",
@@ -242,7 +242,7 @@ export const showerTileCalculatorConfig: CalculatorConfig = {
     {
       question: "What about the ceiling?",
       answer:
-        "Most showers don't tile the ceiling — use moisture-resistant drywall with mildew-resistant paint instead. If you do tile the ceiling (for a steam shower or luxury finish), calculate the ceiling area separately (back wall width × side depth) and add to the total. Ceiling tile is harder to install and requires special thinset.",
+        "Most showers don't tile the ceiling: use moisture-resistant drywall with mildew-resistant paint instead. If you do tile the ceiling (for a steam shower or luxury finish), calculate the ceiling area separately (back wall width × side depth) and add to the total. Ceiling tile is harder to install and requires special thinset.",
     },
     {
       question: "How big should my niche be?",
@@ -252,17 +252,17 @@ export const showerTileCalculatorConfig: CalculatorConfig = {
     {
       question: "What about curbs and benches?",
       answer:
-        "Not automatically calculated. A standard curb (the barrier at the shower entrance) is about 6 × 4 × 36 inches — adds ~1 ft² of tile. A built-in bench is 15-18 × 48 inches typically — adds 3-5 ft². Add these to your total manually and bump the calculator's dimensions.",
+        "Not automatically calculated. A standard curb (the barrier at the shower entrance) is about 6 × 4 × 36 inches: adds ~1 ft² of tile. A built-in bench is 15-18 × 48 inches typically: adds 3-5 ft². Add these to your total manually and bump the calculator's dimensions.",
     },
     {
       question: "Do I need waterproofing behind tile?",
       answer:
-        "Yes — modern standard. Cement board alone is not waterproof. Use a sheet membrane (like Schluter Kerdi) or liquid-applied waterproofing (like RedGard) over the backer board. Standard shower areas typically need 1 roll (40 sq ft) of sheet membrane or 1-2 gallons of liquid.",
+        "Yes: modern standard. Cement board alone is not waterproof. Use a sheet membrane (like Schluter Kerdi) or liquid-applied waterproofing (like RedGard) over the backer board. Standard shower areas typically need 1 roll (40 sq ft) of sheet membrane or 1-2 gallons of liquid.",
     },
     {
       question: "Can I do this over an existing tub surround?",
       answer:
-        "Not directly on existing tile (old tile must come off first). If removing old tile, inspect the backer — water damage behind old shower tile is very common. Plan to replace the cement board, not just the tile. Factor 1-2 extra days and $200-500 in backer/waterproofing materials on top of new tile.",
+        "Not directly on existing tile (old tile must come off first). If removing old tile, inspect the backer: water damage behind old shower tile is very common. Plan to replace the cement board, not just the tile. Factor 1-2 extra days and $200-500 in backer/waterproofing materials on top of new tile.",
     },
   ],
 };

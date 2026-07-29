@@ -61,7 +61,7 @@ export const insulationCalculatorConfig: CalculatorConfig = {
         { label: "6 · Cold (ND, MT, ME)", value: "6" },
         { label: "7 · Very cold (N. Minnesota, Alaska)", value: "7" },
       ],
-      help: "Use IECC climate zones — mapped from your location",
+      help: "Use IECC climate zones: mapped from your location",
     },
     {
       id: "studSpacing",
@@ -172,21 +172,21 @@ export const insulationCalculatorConfig: CalculatorConfig = {
     "bags = ⌈(area × (1 + waste)) ÷ bag coverage⌉ at R-value for climate zone",
 
   methodology: [
-    "The calculator starts with your climate zone (IECC zones 1-7 from hot to cold) and recommends the minimum R-value for your application per US DOE guidance. R-values are the industry-standard measure of thermal resistance — higher numbers mean better insulation.",
+    "The calculator starts with your climate zone (IECC zones 1-7 from hot to cold) and recommends the minimum R-value for your application per US DOE guidance. R-values are the industry-standard measure of thermal resistance: higher numbers mean better insulation.",
     "Recommended R-values vary by application: attics need the highest (R-30 to R-60) because heat rises and most energy loss happens through ceilings. Walls are next (R-13 to R-21). Floors over unheated spaces (R-13 to R-38) are typically less than attics because they're insulated against conductive, not convective, losses.",
     "Area includes a waste factor for cuts around obstacles (framing, wiring, pipes) and to accommodate fit. 10% is standard for straight rectangular spaces; bump to 15% for attics with lots of framing or cathedral ceilings with angles.",
-    "Bag counts are approximate because bag size varies by manufacturer and R-value. Higher R-value means thicker batts, which means fewer batts fit in a bag. The calculator uses typical coverage per bag — confirm with your specific product before buying. For unfaced roll insulation, coverage per roll is different (usually 20-60 sq ft per roll depending on thickness).",
-    "Stud/joist spacing determines batt width: 16-inch on center uses batts that cover 14.5 inches of space; 24-inch on center uses batts that cover 22.5 inches. Using the wrong width creates gaps that severely compromise performance — always match batt width to framing spacing.",
+    "Bag counts are approximate because bag size varies by manufacturer and R-value. Higher R-value means thicker batts, which means fewer batts fit in a bag. The calculator uses typical coverage per bag: confirm with your specific product before buying. For unfaced roll insulation, coverage per roll is different (usually 20-60 sq ft per roll depending on thickness).",
+    "Stud/joist spacing determines batt width: 16-inch on center uses batts that cover 14.5 inches of space; 24-inch on center uses batts that cover 22.5 inches. Using the wrong width creates gaps that severely compromise performance, always match batt width to framing spacing.",
   ],
 
   sources: [
     {
-      name: "US DOE — Insulation R-Value Recommendations",
+      name: "US DOE: Insulation R-Value Recommendations",
       url: "https://www.energy.gov/energysaver/insulation",
       note: "Official climate zone map and R-value recommendations",
     },
     {
-      name: "Energy Star — Insulation Guide",
+      name: "Energy Star: Insulation Guide",
       url: "https://www.energystar.gov/saveathome/seal_insulate",
       note: "R-value targets by zone for walls, attics, and floors",
     },
@@ -194,7 +194,7 @@ export const insulationCalculatorConfig: CalculatorConfig = {
 
   related: [
     { name: "Drywall calculator", slug: "drywall-calculator", description: "Sheets for walls and ceilings" },
-    { name: "BTU calculator", slug: "btu-calculator", description: "AC size — less with better insulation" },
+    { name: "BTU calculator", slug: "btu-calculator", description: "AC size, less with better insulation" },
     { name: "Egress window calculator", slug: "egress-window-calculator", description: "Basement bedrooms need compliant egress" },
     { name: "Solar calculator", slug: "solar-calculator", description: "System size reduces with better insulation" },
   ],
@@ -208,17 +208,17 @@ export const insulationCalculatorConfig: CalculatorConfig = {
     {
       question: "What's the difference between batts, rolls, and blown insulation?",
       answer:
-        "Batts are pre-cut rectangular pieces sized for standard framing (16\" or 24\" OC), easy to install between studs/joists. Rolls are long unfaced strips you cut to length. Blown insulation (cellulose, fiberglass) is loose-fill installed with a blower — best for attics over existing insulation. This calculator handles batts; blown insulation is sold by bags with coverage specs.",
+        "Batts are pre-cut rectangular pieces sized for standard framing (16\" or 24\" OC), easy to install between studs/joists. Rolls are long unfaced strips you cut to length. Blown insulation (cellulose, fiberglass) is loose-fill installed with a blower: best for attics over existing insulation. This calculator handles batts; blown insulation is sold by bags with coverage specs.",
     },
     {
       question: "Is R-60 in the attic worth it over R-38?",
       answer:
-        "In very cold climates (Zones 6-7), yes — the extra R-value pays back in 3-5 years through heating cost savings. In mild climates (Zones 1-3), the payback is much longer and R-30 is usually sufficient. The calculator respects these climate-specific recommendations.",
+        "In very cold climates (Zones 6-7), yes, the extra R-value pays back in 3-5 years through heating cost savings. In mild climates (Zones 1-3), the payback is much longer and R-30 is usually sufficient. The calculator respects these climate-specific recommendations.",
     },
     {
       question: "Can I add new insulation on top of old?",
       answer:
-        "In attics, yes — install new unfaced insulation perpendicular to existing batts or over loose fill. Do NOT install faced insulation over unfaced (the vapor barrier is trapped). Always check for wet or damaged old insulation first; replace it rather than covering it.",
+        "In attics, yes: install new unfaced insulation perpendicular to existing batts or over loose fill. Do NOT install faced insulation over unfaced (the vapor barrier is trapped). Always check for wet or damaged old insulation first; replace it rather than covering it.",
     },
     {
       question: "What about rim joists and band joists?",
@@ -228,7 +228,7 @@ export const insulationCalculatorConfig: CalculatorConfig = {
     {
       question: "Does R-value include air sealing?",
       answer:
-        "No — R-value measures conductive heat transfer only. Air leakage (convective loss) can account for 30-40% of total heat loss in a poorly-sealed house, regardless of insulation R-value. Always air-seal (caulk, foam, weatherstripping) before or alongside adding insulation. Top areas: rim joists, attic bypasses, plumbing penetrations, electrical boxes.",
+        "No: R-value measures conductive heat transfer only. Air leakage (convective loss) can account for 30-40% of total heat loss in a poorly-sealed house, regardless of insulation R-value. Always air-seal (caulk, foam, weatherstripping) before or alongside adding insulation. Top areas: rim joists, attic bypasses, plumbing penetrations, electrical boxes.",
     },
     {
       question: "What's my climate zone?",
@@ -238,11 +238,11 @@ export const insulationCalculatorConfig: CalculatorConfig = {
     {
       question: "Can I install insulation myself?",
       answer:
-        "Batts and rolls are straightforward DIY — fiberglass irritates skin, so wear long sleeves, gloves, goggles, and an N95 mask. Blown insulation requires a blower (rentable from home centers) and a second person. Spray foam should be professionally installed for large areas — the chemistry is hazardous if mishandled.",
+        "Batts and rolls are straightforward DIY: fiberglass irritates skin, so wear long sleeves, gloves, goggles, and an N95 mask. Blown insulation requires a blower (rentable from home centers) and a second person. Spray foam should be professionally installed for large areas, the chemistry is hazardous if mishandled.",
     },
   ],
   relatedGuides: [
-    { name: "Vinyl vs fiber cement siding", slug: "vinyl-vs-fiber-cement-siding", description: "30-year cost comparison — insulation affects whole-wall performance" },
-    { name: "Heat pump vs furnace + AC", slug: "heat-pump-vs-furnace", description: "Climate-zone HVAC comparison — insulation level changes the math" },
+    { name: "Vinyl vs fiber cement siding", slug: "vinyl-vs-fiber-cement-siding", description: "30-year cost comparison: insulation affects whole-wall performance" },
+    { name: "Heat pump vs furnace + AC", slug: "heat-pump-vs-furnace", description: "Climate-zone HVAC comparison: insulation level changes the math" },
   ],
 };

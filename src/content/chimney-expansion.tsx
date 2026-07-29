@@ -24,7 +24,7 @@ export function ChimneyCalculatorExpansion() {
     <GuideByline updated="April 20, 2026" reviewedAgainst="IRC R1003 (masonry chimneys) and NFPA 211 (chimneys and venting)" />
     <h2>Chimney sizing is a fire safety calculation, not a style choice</h2>
     <p>An undersized flue does not just reduce draft. It allows combustion gases (including carbon monoxide) to spill back into the room. An oversized flue drafts too strongly and wastes heat up the chimney. The correct flue size balances airflow so combustion gases exit efficiently while heat transfers to the room. For fireplaces, the sizing rule is simple: the flue cross-sectional area must be at least 1/10 of the fireplace opening area (for round flues) or 1/8 (for rectangular).</p>
-    <Figure number={1} caption="The 1/10 rule: a fireplace opening of 36×24 inches (864 in²) needs a round flue with at least 86.4 in² of area — roughly a 10.5-inch diameter."><FlueSizeSVG /></Figure>
+    <Figure number={1} caption="The 1/10 rule: a fireplace opening of 36×24 inches (864 in²) needs a round flue with at least 86.4 in² of area, roughly a 10.5-inch diameter."><FlueSizeSVG /></Figure>
     <MethodologyNote><p>Flue sizing per IRC R1003.15 and NFPA 211. Height requirements per IRC R1003.9. Chimney cap and crown specs from Chimney Safety Institute of America (CSIA) guidelines.</p></MethodologyNote>
     <Figure number={2} caption="Height requirements are absolute minimums set by fire code. They ensure adequate draft and prevent roof fires from sparks."><HeightSVG /></Figure>
     <Figure number={3} caption="Relining with stainless steel is the most common chimney project. A full rebuild above the roofline is needed when masonry has deteriorated."><CostSVG /></Figure>

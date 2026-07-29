@@ -149,12 +149,12 @@ export const mulchCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "University of Maryland Extension — Mulch Basics",
+      name: "University of Maryland Extension: Mulch Basics",
       url: "https://extension.umd.edu/resource/mulching-landscape",
       note: "Academic reference for proper mulch depth and application",
     },
     {
-      name: "Sunset Magazine — Mulch Guide",
+      name: "Sunset Magazine: Mulch Guide",
       url: "https://www.sunset.com/garden/landscaping-design/mulch-basics",
       note: "Practical coverage and depth recommendations",
     },
@@ -176,7 +176,7 @@ export const mulchCalculatorConfig: CalculatorConfig = {
     {
       question: "How deep should I apply mulch?",
       answer:
-        "2-3 inches is standard for most garden beds. Go deeper (3-4 inches) for new beds, weedy areas, or around shrubs. Don't exceed 4 inches — too much mulch smothers plant roots and can cause rot. For refreshing existing mulch, 1 inch is often enough.",
+        "2-3 inches is standard for most garden beds. Go deeper (3-4 inches) for new beds, weedy areas, or around shrubs. Don't exceed 4 inches: too much mulch smothers plant roots and can cause rot. For refreshing existing mulch, 1 inch is often enough.",
     },
     {
       question: "Is bulk mulch cheaper than bagged?",
@@ -196,12 +196,12 @@ export const mulchCalculatorConfig: CalculatorConfig = {
     {
       question: "When is the best time to mulch?",
       answer:
-        "Early spring is ideal — after the soil warms but before summer heat. Mulch applied in early spring suppresses weeds before they emerge and conserves moisture through summer. Avoid mulching over cold, wet soil in winter (can promote rot) or over dry soil in peak summer (water first).",
+        "Early spring is ideal, after the soil warms but before summer heat. Mulch applied in early spring suppresses weeds before they emerge and conserves moisture through summer. Avoid mulching over cold, wet soil in winter (can promote rot) or over dry soil in peak summer (water first).",
     },
     {
       question: "Does the calculator work for gravel or stone?",
       answer:
-        "The volume math is identical for any bulk material — gravel, stone, sand, topsoil, compost. But bag sizes differ: stone bags are typically 0.5 cu ft, gravel is often sold by weight (tons). For gravel and stone, use the dedicated gravel calculator.",
+        "The volume math is identical for any bulk material: gravel, stone, sand, topsoil, compost. But bag sizes differ: stone bags are typically 0.5 cu ft, gravel is often sold by weight (tons). For gravel and stone, use the dedicated gravel calculator.",
     },
     {
       question: "How much area does 1 cubic yard of mulch cover?",

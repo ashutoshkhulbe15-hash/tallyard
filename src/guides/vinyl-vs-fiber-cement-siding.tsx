@@ -126,7 +126,7 @@ function WallCrossSectionSVG() {
         Siding isn&apos;t the waterproofing. The layers underneath are.
       </text>
 
-      {/* Layer bars — left is interior, right is exterior */}
+      {/* Layer bars: left is interior, right is exterior */}
       {[
         { label: "Drywall", sub: "½\" gypsum", x: 50, w: 30, fill: "#E8E4DC" },
         { label: "Framing", sub: "2×4 or 2×6 stud + insulation", x: 90, w: 80, fill: "#F5E6C8" },
@@ -366,7 +366,7 @@ function Content() {
 
       <Figure
         number={1}
-        caption="30-year total cost of ownership for 1,100 sq ft of siding. Fiber cement's maintenance burden — two professional repaints at $4,500 each plus three caulk refreshes at $800 each — drives total cost to 2.4× vinyl's."
+        caption="30-year total cost of ownership for 1,100 sq ft of siding. Fiber cement's maintenance burden, two professional repaints at $4,500 each plus three caulk refreshes at $800 each, drives total cost to 2.4× vinyl's."
       >
         <TCOBarChartSVG />
       </Figure>
@@ -450,7 +450,7 @@ function Content() {
 
       <Figure
         number={3}
-        caption="A properly installed wall assembly has five layers. The siding — vinyl or fiber cement — is the outermost rain screen. Water management happens at the WRB and flashing layer. A bad WRB install ruins either siding material; a good one makes either last."
+        caption="A properly installed wall assembly has five layers. The siding, vinyl or fiber cement, is the outermost rain screen. Water management happens at the WRB and flashing layer. A bad WRB install ruins either siding material; a good one makes either last."
       >
         <WallCrossSectionSVG />
       </Figure>
@@ -479,7 +479,7 @@ function Content() {
       {/* FACTOR 3: FIRE */}
       {/* ============================================================= */}
 
-      <h2>Factor 3: Fire performance — when it matters, when it doesn&apos;t</h2>
+      <h2>Factor 3: Fire performance, when it matters, when it doesn&apos;t</h2>
 
       <Figure
         number={4}
@@ -521,7 +521,7 @@ function Content() {
         <strong>Insurance discounts.</strong> Some carriers offer 5 to 15%
         premium reductions for homes with Class A exterior cladding. Over 20
         years on a $2,400/year homeowner&apos;s policy, even a 5% discount
-        ($120/year) compounds to $2,400 — enough to offset a meaningful
+        ($120/year) compounds to $2,400, enough to offset a meaningful
         portion of fiber cement&apos;s install premium. Call your insurer and
         ask for a quote with and without. It takes five minutes.
       </p>
@@ -638,7 +638,7 @@ export const vinylVsFiberCementGuide: GuideConfig = {
   publishedAt: "2026-04-18",
   readTime: "11 min read",
   verdict:
-    "Fiber cement siding lasts 50+ years to vinyl's 20–40 and wins on 30-year total cost and fire rating — but only if you stay long enough to bank the difference; vinyl wins on upfront cost and is the better pick for shorter ownership horizons.",
+    "Fiber cement siding lasts 50+ years to vinyl's 20–40 and wins on 30-year total cost and fire rating, but only if you stay long enough to bank the difference; vinyl wins on upfront cost and is the better pick for shorter ownership horizons.",
   Content,
   faq: [
     {
@@ -684,33 +684,33 @@ export const vinylVsFiberCementGuide: GuideConfig = {
   ],
   sources: [
     {
-      name: "James Hardie — Product Performance Specifications",
+      name: "James Hardie: Product Performance Specifications",
       url: "https://www.jameshardie.com/",
       note: "Manufacturer reference for fiber cement fire rating, lifespan, and paint warranty terms",
     },
     {
-      name: "Vinyl Siding Institute — ASTM D3679 Certification",
+      name: "Vinyl Siding Institute: ASTM D3679 Certification",
       url: "https://www.vinylsiding.org/",
       note: "Industry certification program and performance standards for vinyl siding",
     },
     {
-      name: "Angi — 2026 Siding Cost Data",
+      name: "Angi: 2026 Siding Cost Data",
       url: "https://www.angi.com/articles/fiber-cement-siding-vs-vinyl-siding.htm",
       note: "Current installed cost ranges and project pricing data",
     },
     {
-      name: "ICC — International WUI Code",
+      name: "ICC: International WUI Code",
       url: "https://codes.iccsafe.org/",
       note: "Wildland-Urban Interface code requirements for fire-rated exterior cladding",
     },
     {
-      name: "California Chapter 7A — Exterior Wildfire Standards",
+      name: "California Chapter 7A: Exterior Wildfire Standards",
       note: "State-specific fire-resistive construction requirements for WUI zones",
     },
   ],
   relatedCalculators: [
     { name: "Siding calculator", slug: "siding-calculator", description: "Squares and linear feet for any house exterior" },
-    { name: "Insulation calculator", slug: "insulation-calculator", description: "R-value for walls — critical for whole-wall performance" },
+    { name: "Insulation calculator", slug: "insulation-calculator", description: "R-value for walls: critical for whole-wall performance" },
     { name: "Paint calculator", slug: "paint-calculator", description: "Gallons for the fiber cement repaint cycle" },
     { name: "Gutter calculator", slug: "gutter-calculator", description: "Always pair new siding with drainage review" },
   ],

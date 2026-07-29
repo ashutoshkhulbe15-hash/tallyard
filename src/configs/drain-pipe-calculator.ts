@@ -162,21 +162,21 @@ export const drainPipeCalculatorConfig: CalculatorConfig = {
 
   methodology: [
     "DFU (Drainage Fixture Units) is a standardized measure of drain loading developed by plumbing engineers. Each fixture contributes a specific DFU value reflecting typical discharge rate and volume: water closets (toilets) 4 DFU, bathroom sinks 1 DFU, kitchen sinks 2 DFU, showers 2 DFU, tubs 2 DFU, washers 3 DFU, dishwashers 2 DFU. The calculator uses averages for private residential use per IPC 2021 Table 709.1.",
-    "Total DFU on a branch determines the minimum pipe size per IPC Table 710.1. Horizontal branches at standard 1/4\" per foot slope: 1.5\" handles 3 DFU, 2\" handles 6 DFU, 3\" handles 20 DFU, 4\" handles 160 DFU. Vertical stacks have different ratings because gravity assists flow — they handle more DFU at the same diameter.",
-    "Building drains (the pipe from the building to the sewer or septic tank) follow their own table because they handle longer runs with less vertical assist. A 3\" building drain handles up to 42 DFU — enough for a 2-bathroom house. A 4\" drain handles up to 216 DFU — typical for larger homes or commercial buildings.",
-    "A critical rule: any pipe carrying toilet waste must be at least 3 inches in diameter. This is not DFU-based — it's a fixed requirement because toilet waste physically requires the larger pipe to prevent clogging. The calculator applies this automatically when toilets are present.",
+    "Total DFU on a branch determines the minimum pipe size per IPC Table 710.1. Horizontal branches at standard 1/4\" per foot slope: 1.5\" handles 3 DFU, 2\" handles 6 DFU, 3\" handles 20 DFU, 4\" handles 160 DFU. Vertical stacks have different ratings because gravity assists flow: they handle more DFU at the same diameter.",
+    "Building drains (the pipe from the building to the sewer or septic tank) follow their own table because they handle longer runs with less vertical assist. A 3\" building drain handles up to 42 DFU, enough for a 2-bathroom house. A 4\" drain handles up to 216 DFU: typical for larger homes or commercial buildings.",
+    "A critical rule: any pipe carrying toilet waste must be at least 3 inches in diameter. This is not DFU-based: it's a fixed requirement because toilet waste physically requires the larger pipe to prevent clogging. The calculator applies this automatically when toilets are present.",
     "This calculator estimates pipe size for typical residential bathroom and kitchen branches. Real plumbing design also considers: vent sizing (vents are typically 1.5\" or 2\"), trap arm length limits (distance from trap to vent), fixture unit offsets and changes in direction, horizontal vs vertical transitions, and local code variations. A proper plumbing design follows IPC or UPC with cross-checks for all these factors.",
     "Not captured: combined building sewer sizing (includes gray water), cleanout locations, slope requirements (1/4\" per foot for 4\" pipe, 1/8\" per foot for 4\"+ pipe), vent requirements, or hydraulic calculations for pressurized systems. For rough-in planning this tool is useful; for permit-ready plans, hire a licensed plumber.",
   ],
 
   sources: [
     {
-      name: "IPC 2021 — Drainage Fixture Units",
+      name: "IPC 2021: Drainage Fixture Units",
       url: "https://codes.iccsafe.org/content/IPC2021P1",
       note: "International Plumbing Code official DFU table",
     },
     {
-      name: "UPC 2021 — Drainage System Design",
+      name: "UPC 2021: Drainage System Design",
       url: "https://www.iapmo.org/",
       note: "Uniform Plumbing Code reference",
     },
@@ -198,7 +198,7 @@ export const drainPipeCalculatorConfig: CalculatorConfig = {
     {
       question: "Why does a toilet always need 3-inch pipe?",
       answer:
-        "Solid waste. A 1.5\" or 2\" pipe physically can't reliably pass a toilet discharge without clogging — the waste simply doesn't fit, regardless of slope or flow rate. This is a fixed rule in all plumbing codes; no DFU math changes it. Some ultra-low-flow toilets advertise 2\" drain compatibility, but most local codes still require 3\".",
+        "Solid waste. A 1.5\" or 2\" pipe physically can't reliably pass a toilet discharge without clogging, the waste simply doesn't fit, regardless of slope or flow rate. This is a fixed rule in all plumbing codes; no DFU math changes it. Some ultra-low-flow toilets advertise 2\" drain compatibility, but most local codes still require 3\".",
     },
     {
       question: "What's the difference between a horizontal branch and a stack?",
@@ -208,17 +208,17 @@ export const drainPipeCalculatorConfig: CalculatorConfig = {
     {
       question: "How is DFU different from GPM?",
       answer:
-        "DFU (drainage fixture units) is a loading unit for sizing drains — it accounts for fixture use frequency and typical volume. GPM (gallons per minute) is a flow rate measurement for supply piping. They're related but different: a toilet is 4 DFU for drain sizing, but when flushing actually delivers 3-4 GPM for a few seconds. DFU is the design standard for drain pipes.",
+        "DFU (drainage fixture units) is a loading unit for sizing drains: it accounts for fixture use frequency and typical volume. GPM (gallons per minute) is a flow rate measurement for supply piping. They're related but different: a toilet is 4 DFU for drain sizing, but when flushing actually delivers 3-4 GPM for a few seconds. DFU is the design standard for drain pipes.",
     },
     {
       question: "What about kitchen sinks with garbage disposals?",
       answer:
-        "Standard residential kitchen sink: 2 DFU. Adding a disposal doesn't change the DFU. The 2\" drain that's standard for kitchen sinks handles both a sink and a disposal fine. Where things get tight: double-bowl sinks with two disposals and a dishwasher — still under 4 DFU, still 2\" pipe, but tight. Most plumbers run 2\" for kitchens regardless.",
+        "Standard residential kitchen sink: 2 DFU. Adding a disposal doesn't change the DFU. The 2\" drain that's standard for kitchen sinks handles both a sink and a disposal fine. Where things get tight: double-bowl sinks with two disposals and a dishwasher, still under 4 DFU, still 2\" pipe, but tight. Most plumbers run 2\" for kitchens regardless.",
     },
     {
       question: "Do floor drains count as DFU?",
       answer:
-        "Yes, depending on use. Basement laundry floor drain: 2 DFU. Garage floor drain: 3 DFU (because it drains larger volumes and may include sediment). Bathroom floor drain: 1 DFU. The calculator doesn't have a floor drain input — if you have one, add it as a shower (2 DFU) for a close approximation.",
+        "Yes, depending on use. Basement laundry floor drain: 2 DFU. Garage floor drain: 3 DFU (because it drains larger volumes and may include sediment). Bathroom floor drain: 1 DFU. The calculator doesn't have a floor drain input, if you have one, add it as a shower (2 DFU) for a close approximation.",
     },
     {
       question: "What's the slope requirement for drain pipes?",
@@ -228,7 +228,7 @@ export const drainPipeCalculatorConfig: CalculatorConfig = {
     {
       question: "Do I need a permit?",
       answer:
-        "Yes — virtually all plumbing work requires permits and inspections. DIY is permitted in most jurisdictions for homeowners on their own properties, but the work must pass inspection. Plumbing permit fees typically $100-500 depending on scope. Inspectors check pipe sizing, slope, venting, cleanouts, and fixture connections. Don't skip this step — failed inspections mean tearing out walls.",
+        "Yes: virtually all plumbing work requires permits and inspections. DIY is permitted in most jurisdictions for homeowners on their own properties, but the work must pass inspection. Plumbing permit fees typically $100-500 depending on scope. Inspectors check pipe sizing, slope, venting, cleanouts, and fixture connections. Don't skip this step: failed inspections mean tearing out walls.",
     },
   ],
 };

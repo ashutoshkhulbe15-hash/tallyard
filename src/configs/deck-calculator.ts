@@ -157,20 +157,20 @@ export const deckCalculatorConfig: CalculatorConfig = {
   methodology: [
     "Deck boards: the calculator assumes boards run perpendicular to the joists (standard orientation). Board count is derived from deck width divided by effective board coverage (actual width plus a 1/8\" gap for expansion). Total linear feet converts to 16-foot board count with 10% waste, which is standard for straight-cut installations.",
     "Joists: spaced at the specified on-center distance, running perpendicular to the decking. Joist count is the length of the deck divided by spacing, plus one for the closing joist. All joists span the full width. Composite decking requires 12-inch or 16-inch spacing; pressure-treated 2×6 decking can span 24 inches if solid (but not preferred).",
-    "Beams are the horizontal members running under the joists, transferring loads to the posts. Most residential decks use doubled (2-ply) 2×8 or 2×10 beams. The calculator assumes 2 beams at 2 plies each, running the full length — this covers typical deck framing but is approximate. Complex deck shapes require more beams.",
+    "Beams are the horizontal members running under the joists, transferring loads to the posts. Most residential decks use doubled (2-ply) 2×8 or 2×10 beams. The calculator assumes 2 beams at 2 plies each, running the full length: this covers typical deck framing but is approximate. Complex deck shapes require more beams.",
     "Posts: rough estimate of one 4×4 or 6×6 post per 80 square feet of deck area. Actual post count depends on beam span capacity, which depends on beam size and wood species. For engineered accuracy, consult the International Residential Code (IRC) 2021 prescriptive tables or have a pro design.",
     "Fasteners: visible deck screws at 2 per board per joist (front and back of board), or hidden fasteners at 1 clip per board per joist. Hidden fasteners cost 3-5× more and add an hour per 100 sq ft of install time but deliver a cleaner finished look.",
-    "Not included: ledger board (attaches deck to house), flashing (critical for ledger waterproofing), joist hangers (one per joist end), knee braces for lateral stability, railing posts and balusters (calculate separately), and stairs. These add significantly to material cost — budget 30-40% more than the calculator's output for a complete build.",
+    "Not included: ledger board (attaches deck to house), flashing (critical for ledger waterproofing), joist hangers (one per joist end), knee braces for lateral stability, railing posts and balusters (calculate separately), and stairs. These add significantly to material cost: budget 30-40% more than the calculator's output for a complete build.",
   ],
 
   sources: [
     {
-      name: "IRC 2021 — Deck Design Provisions",
+      name: "IRC 2021: Deck Design Provisions",
       url: "https://codes.iccsafe.org/content/IRC2021P2",
       note: "Code-compliant joist and beam spans",
     },
     {
-      name: "Trex — Composite Decking Installation Guide",
+      name: "Trex: Composite Decking Installation Guide",
       url: "https://www.trex.com/",
       note: "Board spacing and fastener recommendations",
     },
@@ -192,7 +192,7 @@ export const deckCalculatorConfig: CalculatorConfig = {
     {
       question: "What joist spacing should I use?",
       answer:
-        "Standard pressure-treated 2×6 decking: 16\" on center for straight boards, 12\" for diagonal layouts. All composite decking: 16\" maximum (some require 12\"). Wider spacing causes bounce, long-term sag, and voids the composite warranty. Always check the composite manufacturer's spec — they vary.",
+        "Standard pressure-treated 2×6 decking: 16\" on center for straight boards, 12\" for diagonal layouts. All composite decking: 16\" maximum (some require 12\"). Wider spacing causes bounce, long-term sag, and voids the composite warranty. Always check the composite manufacturer's spec: they vary.",
     },
     {
       question: "Do I need hidden fasteners?",
@@ -202,12 +202,12 @@ export const deckCalculatorConfig: CalculatorConfig = {
     {
       question: "How far can my beams span?",
       answer:
-        "Depends on beam size and wood species. Typical residential: doubled 2×8 spans 8 feet, doubled 2×10 spans 10 feet, doubled 2×12 spans 12 feet. Longer spans require LVL or triple plies. The calculator assumes typical spacing but doesn't verify span — always cross-check with IRC tables.",
+        "Depends on beam size and wood species. Typical residential: doubled 2×8 spans 8 feet, doubled 2×10 spans 10 feet, doubled 2×12 spans 12 feet. Longer spans require LVL or triple plies. The calculator assumes typical spacing but doesn't verify span, always cross-check with IRC tables.",
     },
     {
       question: "What's the difference between 16' and 12' board lengths?",
       answer:
-        "16-foot boards produce fewer end-to-end seams on long decks, which looks cleaner and is slightly stronger. 12-foot boards are easier to handle solo and cheaper per board. For a 16-foot-long deck, 16-foot boards have no butt joints at all — just one continuous board per row.",
+        "16-foot boards produce fewer end-to-end seams on long decks, which looks cleaner and is slightly stronger. 12-foot boards are easier to handle solo and cheaper per board. For a 16-foot-long deck, 16-foot boards have no butt joints at all, just one continuous board per row.",
     },
     {
       question: "Do I need ledger flashing?",
@@ -217,7 +217,7 @@ export const deckCalculatorConfig: CalculatorConfig = {
     {
       question: "Can I calculate without the frame?",
       answer:
-        "The calculator's boards-only count (ignoring joists and beams) is accurate for replacing existing decking where the frame is already in place. For new decks, you need the full materials list. For decks being resurfaced over old framing, inspect the joists and beams for rot — replace anything soft.",
+        "The calculator's boards-only count (ignoring joists and beams) is accurate for replacing existing decking where the frame is already in place. For new decks, you need the full materials list. For decks being resurfaced over old framing, inspect the joists and beams for rot: replace anything soft.",
     },
     {
       question: "How many posts do I need?",

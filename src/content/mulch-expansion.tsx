@@ -114,7 +114,7 @@ function SeasonalTimingSVG() {
         return (
           <g key={s.label}>
             <circle cx="35" cy={y + 8} r="8" fill={s.best ? "#EAF3DE" : GUIDE_SVG.slateSoft} />
-            <text x="35" y={y + 12} textAnchor="middle" fontSize="9" fontWeight="700" fill={s.best ? "#2D7F46" : GUIDE_SVG.slate}>{s.best ? "✓" : "—"}</text>
+            <text x="35" y={y + 12} textAnchor="middle" fontSize="9" fontWeight="700" fill={s.best ? "#2D7F46" : GUIDE_SVG.slate}>{s.best ? "✓" : ": "}</text>
             <text x="55" y={y + 6} fontSize="11" fontWeight="600" fill={GUIDE_SVG.ink}>{s.label}</text>
             <text x="55" y={y + 22} fontSize="10" fill={GUIDE_SVG.inkFaint}>{s.note}</text>
           </g>

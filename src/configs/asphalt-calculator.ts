@@ -148,11 +148,11 @@ export const asphaltCalculatorConfig: CalculatorConfig = {
 
   methodology: [
     "The calculator multiplies area by compacted thickness to get volume, then converts volume to weight using asphalt's typical density of 145 pounds per cubic foot (hot-mix asphalt, after compaction). For metric, that's approximately 2.32 tonnes per cubic meter.",
-    "Rectangular areas use length × width. Circular areas (turnaround circles, cul-de-sacs) use π × radius². Enter the diameter in the length field and leave width alone — it's ignored for circular shapes.",
-    "Thickness is the finished, compacted thickness — not the loose lift thickness the crew shovels down. Hot asphalt compacts about 25% under the roller, so 4 inches of loose material becomes 3 inches compacted. When ordering, you want enough material for the compacted thickness; waste factor covers the compaction loss.",
+    "Rectangular areas use length × width. Circular areas (turnaround circles, cul-de-sacs) use π × radius². Enter the diameter in the length field and leave width alone: it's ignored for circular shapes.",
+    "Thickness is the finished, compacted thickness, not the loose lift thickness the crew shovels down. Hot asphalt compacts about 25% under the roller, so 4 inches of loose material becomes 3 inches compacted. When ordering, you want enough material for the compacted thickness; waste factor covers the compaction loss.",
     "Standard compacted thicknesses: 2 inches for a residential overlay over existing asphalt or concrete; 3 inches for a new residential driveway on prepared base; 4 inches for driveways that bear trucks or RVs; 6 inches for parking lots with heavy truck traffic. Anything thicker than 6 inches is typically poured in multiple lifts.",
-    "Waste factor of 10% is standard — covers material that cools during transit, trimmings around edges, and the truck's 'last drop' that often isn't fully usable. Use 5% for simple rectangular driveways with a pumper or chute delivery; 15% for complex shapes or when material has to be wheeled to the site in buckets.",
-    "This calculator does not include: the gravel base layer under asphalt (typically 4-8 inches of compacted crushed stone — use the gravel calculator), edge forms, curbing, or drainage. A proper asphalt installation is asphalt + base + drainage planning + final sealing.",
+    "Waste factor of 10% is standard: covers material that cools during transit, trimmings around edges, and the truck's 'last drop' that often isn't fully usable. Use 5% for simple rectangular driveways with a pumper or chute delivery; 15% for complex shapes or when material has to be wheeled to the site in buckets.",
+    "This calculator does not include: the gravel base layer under asphalt (typically 4-8 inches of compacted crushed stone: use the gravel calculator), edge forms, curbing, or drainage. A proper asphalt installation is asphalt + base + drainage planning + final sealing.",
   ],
 
   sources: [
@@ -162,7 +162,7 @@ export const asphaltCalculatorConfig: CalculatorConfig = {
       note: "Industry standards for asphalt density and compaction",
     },
     {
-      name: "Asphalt Institute — Pavement Design Guide",
+      name: "Asphalt Institute: Pavement Design Guide",
       url: "https://www.asphaltinstitute.org/",
       note: "Thickness requirements by traffic loading",
     },
@@ -199,12 +199,12 @@ export const asphaltCalculatorConfig: CalculatorConfig = {
     {
       question: "Do I need a base under asphalt?",
       answer:
-        "Yes — asphalt alone over dirt fails quickly. Standard residential: 4-6 inches of compacted crushed stone (#57 or #3) under 3 inches of asphalt. Frost-prone climates may need 8-10 inches of base. Skipping base saves initial cost but leads to cracking and sinking within 2-3 years.",
+        "Yes: asphalt alone over dirt fails quickly. Standard residential: 4-6 inches of compacted crushed stone (#57 or #3) under 3 inches of asphalt. Frost-prone climates may need 8-10 inches of base. Skipping base saves initial cost but leads to cracking and sinking within 2-3 years.",
     },
     {
       question: "Can I DIY an asphalt driveway?",
       answer:
-        "Not really — hot-mix asphalt arrives at 275-300°F and must be placed and compacted within 1-2 hours before it cools below workable temperature. Cold patch asphalt (bagged product) is available for small pothole repairs and can be DIY'd, but it's not suitable for a full driveway — it never fully cures and lasts only 1-2 years.",
+        "Not really: hot-mix asphalt arrives at 275-300°F and must be placed and compacted within 1-2 hours before it cools below workable temperature. Cold patch asphalt (bagged product) is available for small pothole repairs and can be DIY'd, but it's not suitable for a full driveway: it never fully cures and lasts only 1-2 years.",
     },
     {
       question: "When is the best time to lay asphalt?",

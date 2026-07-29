@@ -144,12 +144,12 @@ export const gravelCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "Aggregate Research — Gravel Density Reference",
+      name: "Aggregate Research: Gravel Density Reference",
       url: "https://www.aggregateresearch.com/",
       note: "Industry density values for common aggregate types",
     },
     {
-      name: "University of Minnesota Extension — Driveway Base",
+      name: "University of Minnesota Extension: Driveway Base",
       url: "https://extension.umn.edu/",
       note: "Depth recommendations for residential driveways",
     },
@@ -181,7 +181,7 @@ export const gravelCalculatorConfig: CalculatorConfig = {
     {
       question: "How many bags of gravel equal a cubic yard?",
       answer:
-        "About 60 bags of 0.5 cu ft gravel make a cubic yard. At $5-8 per bag, that's $300-500 — typically more expensive than bulk delivery ($25-50 per yard + delivery fee). Bags are practical for jobs under about 0.5 yards.",
+        "About 60 bags of 0.5 cu ft gravel make a cubic yard. At $5-8 per bag, that's $300-500, typically more expensive than bulk delivery ($25-50 per yard + delivery fee). Bags are practical for jobs under about 0.5 yards.",
     },
     {
       question: "What's the difference between gravel types?",
@@ -191,7 +191,7 @@ export const gravelCalculatorConfig: CalculatorConfig = {
     {
       question: "Do I need landscape fabric under gravel?",
       answer:
-        "For driveways: no — fabric tears under vehicle weight. For paths and decorative areas: yes — a woven fabric prevents gravel from mixing with soil and blocks weeds. Buy enough fabric to cover the full area with 6-inch overlaps.",
+        "For driveways: no: fabric tears under vehicle weight. For paths and decorative areas: yes, a woven fabric prevents gravel from mixing with soil and blocks weeds. Buy enough fabric to cover the full area with 6-inch overlaps.",
     },
     {
       question: "How much does gravel cost?",
@@ -201,7 +201,7 @@ export const gravelCalculatorConfig: CalculatorConfig = {
     {
       question: "Can I use this for sand or stone dust?",
       answer:
-        "Yes — the math is identical for any bulk aggregate. Select 'Sand' for approximately correct density. Stone dust is similar to sand in density (~1.5 tons/yd³).",
+        "Yes, the math is identical for any bulk aggregate. Select 'Sand' for approximately correct density. Stone dust is similar to sand in density (~1.5 tons/yd³).",
     },
   ],
 };

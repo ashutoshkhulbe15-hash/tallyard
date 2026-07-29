@@ -322,7 +322,7 @@ export function PaintCalculatorExpansion() {
       <MethodologyNote>
         <p>
           Coverage rates in this guide use 350 sq ft per gallon for
-          standard interior latex on primed drywall — the realistic
+          standard interior latex on primed drywall, the realistic
           average from Benjamin Moore, Sherwin-Williams, and Behr product
           data sheets. Manufacturer labels often claim 400 sq ft/gal
           under ideal conditions. We use the lower number because your
@@ -336,7 +336,7 @@ export function PaintCalculatorExpansion() {
       <p>
         Forget the fancy stuff. You need a tape measure and 90 seconds.
         Walk the room with the tape and write down the length of each wall.
-        Don&apos;t measure the wall surface itself — measure at the floor
+        Don&apos;t measure the wall surface itself: measure at the floor
         from corner to corner. This gives you the perimeter. Multiply by
         your ceiling height. That&apos;s your gross wall area.
       </p>
@@ -366,7 +366,7 @@ export function PaintCalculatorExpansion() {
 
       <p>
         Most paint cans list 350 to 400 square feet per gallon. That
-        number is accurate under lab conditions — smooth primed drywall,
+        number is accurate under lab conditions: smooth primed drywall,
         a single coat applied at the manufacturer&apos;s recommended
         thickness with a quality roller. Your walls are probably not
         lab conditions.
@@ -391,7 +391,7 @@ export function PaintCalculatorExpansion() {
         <li>
           <strong>Bare drywall or new construction</strong>: reduce to
           250 ft²/gal for the first coat. The paper face absorbs heavily.
-          This is why primer exists — it seals the surface cheaply so
+          This is why primer exists: it seals the surface cheaply so
           your expensive paint doesn&apos;t disappear into the paper.
         </li>
         <li>
@@ -444,7 +444,7 @@ export function PaintCalculatorExpansion() {
       />
 
       <p>
-        The biggest cost variable isn&apos;t the paint — it&apos;s whether
+        The biggest cost variable isn&apos;t the paint: it&apos;s whether
         you need primer. One coat of quality primer ($25–35 per gallon)
         on bare drywall or over dark existing colors saves you from needing
         a third coat of expensive topcoat. The math almost always favors
@@ -498,14 +498,14 @@ export function PaintCalculatorExpansion() {
         latex paint at 350 ft² per gallon, and two coats.
       </p>
 
-      <Figure number={5} caption="Quick reference for common room sizes. 'Buy this' column rounds up to practical purchase units. Always buy the next size up — leftover paint is worth having for touch-ups.">
+      <Figure number={5} caption="Quick reference for common room sizes. 'Buy this' column rounds up to practical purchase units. Always buy the next size up: leftover paint is worth having for touch-ups.">
         <QuickReferenceSVG />
       </Figure>
 
       <p>
-        If you're painting over new drywall, use the <a href="/drywall-calculator">drywall calculator</a> to estimate sheets first — bare drywall needs primer before paint. For rooms not on this list, the calculator at the top of the page
+        If you're painting over new drywall, use the <a href="/drywall-calculator">drywall calculator</a> to estimate sheets first: bare drywall needs primer before paint. For rooms not on this list, the calculator at the top of the page
         handles any dimensions. Enter your wall lengths, ceiling height,
-        and door/window count and it does the arithmetic — showing every
+        and door/window count and it does the arithmetic: showing every
         step so you can check the math.
       </p>
 
@@ -515,7 +515,7 @@ export function PaintCalculatorExpansion() {
         ft²/gal label). Gross wall area was 648 sq ft. After subtracting
         2 doors and 3 windows, paintable area was 563 sq ft. Two coats
         needed 1,126 sq ft of coverage. At 350 ft²/gal realistic
-        coverage, that&apos;s 3.2 gallons — not the 2 he bought. He ran
+        coverage, that&apos;s 3.2 gallons, not the 2 he bought. He ran
         out midway through the second coat on the third wall. Three
         gallons plus a quart would have been right.
       </Scenario>
@@ -534,10 +534,10 @@ export function PaintCalculatorExpansion() {
           { title: "Durability" },
         ]}
         rows={[
-          { label: "Flat / matte", values: ["Ceilings, low-traffic bedrooms", "Low — marks easily, hard to clean"] },
-          { label: "Eggshell", values: ["Living rooms, dining rooms, adult bedrooms", "Medium — wipes clean, hides imperfections"] },
-          { label: "Satin", values: ["Kitchens, bathrooms, kids' rooms, hallways", "Good — moisture-resistant, scrubable"] },
-          { label: "Semi-gloss", values: ["Trim, doors, cabinets, high-moisture areas", "High — very washable, shows every wall flaw"] },
+          { label: "Flat / matte", values: ["Ceilings, low-traffic bedrooms", "Low: marks easily, hard to clean"] },
+          { label: "Eggshell", values: ["Living rooms, dining rooms, adult bedrooms", "Medium: wipes clean, hides imperfections"] },
+          { label: "Satin", values: ["Kitchens, bathrooms, kids' rooms, hallways", "Good: moisture-resistant, scrubable"] },
+          { label: "Semi-gloss", values: ["Trim, doors, cabinets, high-moisture areas", "High: very washable, shows every wall flaw"] },
         ]}
         caption="Most residential rooms use eggshell or satin. Flat is only for ceilings and low-traffic spaces. Semi-gloss is for trim and millwork, not walls."
       />
@@ -545,7 +545,7 @@ export function PaintCalculatorExpansion() {
       <p>
         The most common mistake here is using flat paint on walls in
         high-traffic rooms. Flat paint looks great on day one and terrible
-        by month three — every fingerprint, scuff, and chair bump is
+        by month three, every fingerprint, scuff, and chair bump is
         permanent. Eggshell or satin in hallways, kitchens, and kids&apos;
         rooms saves you from repainting in two years.
       </p>
@@ -553,7 +553,7 @@ export function PaintCalculatorExpansion() {
       <h2>How to store leftover paint</h2>
 
       <p>
-        Leftover paint is not waste — it&apos;s your touch-up supply for
+        Leftover paint is not waste: it&apos;s your touch-up supply for
         the next two to three years. Store it correctly and it stays usable
         indefinitely. Store it wrong and it&apos;s a clump of dried latex
         in six months.
@@ -561,9 +561,9 @@ export function PaintCalculatorExpansion() {
 
       <p>
         Keep the can tightly sealed (tap the lid down with a rubber mallet,
-        not a hammer — hammers dent the rim and break the seal). Store
+        not a hammer: hammers dent the rim and break the seal). Store
         upside down so paint forms a seal against the lid. Keep it in a
-        climate-controlled space — garages that freeze in winter will ruin
+        climate-controlled space: garages that freeze in winter will ruin
         latex paint. Write the room name and date on the can with a marker.
         Label the color code and brand too, in case you need to buy more
         later.

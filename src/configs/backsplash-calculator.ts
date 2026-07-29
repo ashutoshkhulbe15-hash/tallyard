@@ -163,11 +163,11 @@ export const backsplashCalculatorConfig: CalculatorConfig = {
 
   methodology: [
     "Backsplash area is the sum of all counter linear feet times the backsplash height. Typical kitchens have 15-25 linear feet of counter backsplash: 6-8 ft along the stove wall, 4-6 ft along the sink wall, plus any island or peninsula. For an L-shaped kitchen, sum both legs. For a U-shaped, sum all three.",
-    "Height choices reflect common designs: 4 inches is the short 'just above the counter' strip common in older kitchens and budget remodels. 18 inches is the standard counter-to-upper-cabinet height — the most common backsplash height in modern kitchens. 24 inches is tall, typical when uppers are raised. Full-height (36+ inches) goes to the ceiling, used for feature walls and behind ranges without upper cabinets.",
+    "Height choices reflect common designs: 4 inches is the short 'just above the counter' strip common in older kitchens and budget remodels. 18 inches is the standard counter-to-upper-cabinet height, the most common backsplash height in modern kitchens. 24 inches is tall, typical when uppers are raised. Full-height (36+ inches) goes to the ceiling, used for feature walls and behind ranges without upper cabinets.",
     "Outlets and switches: each GFCI or standard electrical box in the backsplash punches a ~0.1 sq ft hole. Typical kitchens have 3-5 boxes in the backsplash (over the counter code requires GFCI outlets every 4 feet). Small subtraction but adds up.",
-    "Windows above the counter: use the closest size preset. A small over-sink window is about 6 sq ft; a medium window is 12 sq ft; a large window (often behind a sink with a view) is 20 sq ft. These subtractions are approximate — round-number estimates of real window openings that typically range 2-5 ft wide × 3-5 ft tall.",
+    "Windows above the counter: use the closest size preset. A small over-sink window is about 6 sq ft; a medium window is 12 sq ft; a large window (often behind a sink with a view) is 20 sq ft. These subtractions are approximate: round-number estimates of real window openings that typically range 2-5 ft wide × 3-5 ft tall.",
     "Waste factor is 15% because backsplashes cluster near fixtures that require cuts. Every outlet opening needs trimming around it. Windows require tile cuts along their edges. The area around the stove often has specialized cuts for appliances. Subway tile at 3×6 inches has many cuts per row; larger tile has fewer but bigger scraps.",
-    "Tile size matters for appearance and install time. Classic 3×6 subway takes many more tiles per sq ft (about 8) but is forgiving of uneven walls. Large-format tile (12×24) uses fewer pieces (about 0.5 per sq ft) but each cut must be precise. Mosaic (2×2 or 1×1 mounted on mesh sheets) is sold by the sheet but calculated as individual tiles in this tool — enter tile size as 2×2 for standard mosaic math.",
+    "Tile size matters for appearance and install time. Classic 3×6 subway takes many more tiles per sq ft (about 8) but is forgiving of uneven walls. Large-format tile (12×24) uses fewer pieces (about 0.5 per sq ft) but each cut must be precise. Mosaic (2×2 or 1×1 mounted on mesh sheets) is sold by the sheet but calculated as individual tiles in this tool: enter tile size as 2×2 for standard mosaic math.",
   ],
 
   sources: [
@@ -177,7 +177,7 @@ export const backsplashCalculatorConfig: CalculatorConfig = {
       note: "Industry standards for kitchen tile waste",
     },
     {
-      name: "Home Depot — Backsplash Buying Guide",
+      name: "Home Depot: Backsplash Buying Guide",
       url: "https://www.homedepot.com/c/ah/backsplash-installation-guide/",
       note: "Practical guide for backsplash measurement",
     },
@@ -199,12 +199,12 @@ export const backsplashCalculatorConfig: CalculatorConfig = {
     {
       question: "How tall should my backsplash be?",
       answer:
-        "Most common: 18 inches (standard counter-to-upper-cabinet distance). If you have no upper cabinets or raised uppers, go 24\" or full-height to the ceiling. Minimum functional height is 4\" — just enough to protect the wall from splashes but not aesthetically strong. Behind the stove, many designs use a taller feature (30-36\") even when the rest is 18\".",
+        "Most common: 18 inches (standard counter-to-upper-cabinet distance). If you have no upper cabinets or raised uppers, go 24\" or full-height to the ceiling. Minimum functional height is 4\", just enough to protect the wall from splashes but not aesthetically strong. Behind the stove, many designs use a taller feature (30-36\") even when the rest is 18\".",
     },
     {
       question: "Do I need to subtract outlets and windows?",
       answer:
-        "Windows yes — typical windows subtract 6-20 sq ft. Outlets are tiny (~0.1 sq ft each) but the calculator subtracts them because every outlet is a cut that produces waste. For perfectionists, subtract outlets. For approximation, you can ignore them — the 15% waste factor absorbs small cutouts.",
+        "Windows yes: typical windows subtract 6-20 sq ft. Outlets are tiny (~0.1 sq ft each) but the calculator subtracts them because every outlet is a cut that produces waste. For perfectionists, subtract outlets. For approximation, you can ignore them, the 15% waste factor absorbs small cutouts.",
     },
     {
       question: "Why is backsplash waste 15% instead of 10%?",
@@ -214,22 +214,22 @@ export const backsplashCalculatorConfig: CalculatorConfig = {
     {
       question: "Can I use peel-and-stick tile instead?",
       answer:
-        "Coverage math is identical — same linear feet × height. Peel-and-stick sheets are sold in different sizes (often 1 × 1 ft sheets at $5-15 each). Quality varies widely; budget peel-and-stick shows seams and yellows in 2-5 years. Real tile is 2-4× more expensive but lasts decades.",
+        "Coverage math is identical, same linear feet × height. Peel-and-stick sheets are sold in different sizes (often 1 × 1 ft sheets at $5-15 each). Quality varies widely; budget peel-and-stick shows seams and yellows in 2-5 years. Real tile is 2-4× more expensive but lasts decades.",
     },
     {
       question: "Do I need thinset or can I use mastic?",
       answer:
-        "Mastic (pre-mixed adhesive) works for most kitchen backsplashes — easier for DIY, sticky enough to hold small tile on vertical surfaces. Thinset (mixed cement) is required for natural stone, glass, and any tile larger than 8 inches. Behind a stove that gets hot, use thinset (mastic can soften). 1 gallon of mastic covers ~40 sq ft.",
+        "Mastic (pre-mixed adhesive) works for most kitchen backsplashes: easier for DIY, sticky enough to hold small tile on vertical surfaces. Thinset (mixed cement) is required for natural stone, glass, and any tile larger than 8 inches. Behind a stove that gets hot, use thinset (mastic can soften). 1 gallon of mastic covers ~40 sq ft.",
     },
     {
       question: "How many sheets of mosaic do I need?",
       answer:
-        "Most mosaic comes on 12 × 12 inch sheets (1 sq ft each) with individual tiles ranging from 1×1 to 2×2 inches. For a backsplash of 27 sq ft with 15% waste, you need 31 sheets. Calculate mosaic by sheet (1 sq ft each) rather than individual tile count — enter '1' in tiles per box and use 1 × 12 inch dimensions, or simply use gross area.",
+        "Most mosaic comes on 12 × 12 inch sheets (1 sq ft each) with individual tiles ranging from 1×1 to 2×2 inches. For a backsplash of 27 sq ft with 15% waste, you need 31 sheets. Calculate mosaic by sheet (1 sq ft each) rather than individual tile count: enter '1' in tiles per box and use 1 × 12 inch dimensions, or simply use gross area.",
     },
     {
       question: "Should I run subway tile horizontally or vertically?",
       answer:
-        "Horizontal (offset 50% / running bond) is traditional and makes ceilings look higher on short walls. Vertical (stacked or offset) is modern and makes rooms feel taller. Herringbone is a premium look requiring 20%+ waste. Tile count is identical regardless of orientation — only waste changes.",
+        "Horizontal (offset 50% / running bond) is traditional and makes ceilings look higher on short walls. Vertical (stacked or offset) is modern and makes rooms feel taller. Herringbone is a premium look requiring 20%+ waste. Tile count is identical regardless of orientation, only waste changes.",
     },
   ],
 };

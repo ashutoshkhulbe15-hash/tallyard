@@ -169,22 +169,22 @@ export const rebarCalculatorConfig: CalculatorConfig = {
     "bars = ⌈dimension ÷ spacing⌉ + 1 per direction; total = (long × long length) + (trans × trans length) + perimeter",
 
   methodology: [
-    "The calculator assumes a grid layout — rebar running both directions at the specified on-center spacing, creating a mesh that reinforces concrete against tension forces. Longitudinal bars run along the length of the slab; transverse bars run across the width. Bar count in each direction is the slab dimension divided by spacing, plus one for the closing bar at the far edge.",
+    "The calculator assumes a grid layout: rebar running both directions at the specified on-center spacing, creating a mesh that reinforces concrete against tension forces. Longitudinal bars run along the length of the slab; transverse bars run across the width. Bar count in each direction is the slab dimension divided by spacing, plus one for the closing bar at the far edge.",
     "For slabs longer than 20 feet (the standard rebar stick length), bars must be overlapped where joined. The calculator adds 1.5 feet of overlap per joint. The technically correct overlap is 40 × bar diameter (which is 20 inches for #4 rebar, 25 inches for #5), but 1.5 feet is a safe simplification covering most cases.",
     "Perimeter ring: an additional rebar loop around the edge of the slab, tied to the grid. Recommended for driveways and structural slabs, optional for simple patios. The ring strengthens edges which tend to crack first. Skip it for shallow decorative slabs.",
-    "Bar size selection: #4 (1/2 inch diameter) is the residential default for 4-inch slabs. #3 (3/8\") is used in lighter applications like walkways. #5 (5/8\") and #6 (3/4\") are for structural slabs, retaining walls, and any pour over 6 inches thick. Larger bars don't just add strength — they add significant weight and cost.",
+    "Bar size selection: #4 (1/2 inch diameter) is the residential default for 4-inch slabs. #3 (3/8\") is used in lighter applications like walkways. #5 (5/8\") and #6 (3/4\") are for structural slabs, retaining walls, and any pour over 6 inches thick. Larger bars don't just add strength: they add significant weight and cost.",
     "Weight is calculated from standard lb-per-linear-foot values. This matters for ordering: steel is typically sold by weight. A full 20-foot stick of #4 rebar weighs 13.4 lb. A large slab might need 300-500+ pounds of rebar, enough to require multiple truck trips or careful loading.",
-    "Not included: chairs or dobie blocks (used to hold rebar up from the subgrade to the middle of the slab depth — one every 4 feet is typical), tie wire (for fastening bars at intersections, about 1 lb per 200 feet of rebar), saddles/corners for turn connections. Budget those separately.",
+    "Not included: chairs or dobie blocks (used to hold rebar up from the subgrade to the middle of the slab depth, one every 4 feet is typical), tie wire (for fastening bars at intersections, about 1 lb per 200 feet of rebar), saddles/corners for turn connections. Budget those separately.",
   ],
 
   sources: [
     {
-      name: "CRSI — Concrete Reinforcing Steel Institute",
+      name: "CRSI: Concrete Reinforcing Steel Institute",
       url: "https://www.crsi.org/",
       note: "Standard sizes, weights, and spacing recommendations",
     },
     {
-      name: "ACI 318 — Building Code Requirements for Structural Concrete",
+      name: "ACI 318: Building Code Requirements for Structural Concrete",
       url: "https://www.concrete.org/",
       note: "Reference for overlap and spacing requirements",
     },
@@ -206,7 +206,7 @@ export const rebarCalculatorConfig: CalculatorConfig = {
     {
       question: "Do I actually need rebar in a slab?",
       answer:
-        "For thin decorative slabs under 3 inches: no, wire mesh is sufficient. For 4\"+ slabs that bear any load: yes — rebar is cheap insurance against cracks. For anything over 6 inches or bearing vehicles: always. The cost difference ($50-150 for a typical slab) is trivial vs. the cost of cracking and replacing.",
+        "For thin decorative slabs under 3 inches: no, wire mesh is sufficient. For 4\"+ slabs that bear any load: yes: rebar is cheap insurance against cracks. For anything over 6 inches or bearing vehicles: always. The cost difference ($50-150 for a typical slab) is trivial vs. the cost of cracking and replacing.",
     },
     {
       question: "What's the spacing for a driveway?",
@@ -231,12 +231,12 @@ export const rebarCalculatorConfig: CalculatorConfig = {
     {
       question: "What position in the slab should rebar sit?",
       answer:
-        "Middle-to-upper third of the slab thickness. For a 4-inch slab, the rebar grid should sit 1.5-2 inches from the top. Use dobie blocks or chairs to hold the rebar at this height — never let it sit on the ground, where it provides no structural benefit and may rust out from below.",
+        "Middle-to-upper third of the slab thickness. For a 4-inch slab, the rebar grid should sit 1.5-2 inches from the top. Use dobie blocks or chairs to hold the rebar at this height, never let it sit on the ground, where it provides no structural benefit and may rust out from below.",
     },
     {
       question: "How much does rebar weigh?",
       answer:
-        "Per linear foot: #3 = 0.376 lb, #4 = 0.668 lb, #5 = 1.043 lb, #6 = 1.502 lb. A typical 20-foot stick of #4 weighs 13.4 lb. A slab with 500 feet of rebar weighs 334 lb. The calculator shows the total weight — check if your vehicle can carry it.",
+        "Per linear foot: #3 = 0.376 lb, #4 = 0.668 lb, #5 = 1.043 lb, #6 = 1.502 lb. A typical 20-foot stick of #4 weighs 13.4 lb. A slab with 500 feet of rebar weighs 334 lb. The calculator shows the total weight: check if your vehicle can carry it.",
     },
   ],
 };

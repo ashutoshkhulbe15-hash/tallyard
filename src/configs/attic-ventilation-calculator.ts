@@ -33,7 +33,7 @@ export const atticVentilationCalculatorConfig: CalculatorConfig = {
       defaultImperial: "300",
       options: [
         { label: "1:150 (no vapor barrier)", value: "150" },
-        { label: "1:300 (with vapor barrier — standard)", value: "300" },
+        { label: "1:300 (with vapor barrier: standard)", value: "300" },
       ],
       help: "Most modern homes have vapor barriers; use 1:300",
     },
@@ -161,11 +161,11 @@ export const atticVentilationCalculatorConfig: CalculatorConfig = {
     "NFVA = attic area ÷ ratio (1:300 or 1:150), split 50/50 between intake and exhaust",
 
   methodology: [
-    "Attic ventilation prevents two problems: summer heat buildup (which bakes shingles from below and raises cooling bills) and winter condensation (which rots sheathing and feeds mold). The industry standard is the 1:300 rule — one square foot of Net Free Ventilation Area (NFVA) for every 300 square feet of attic floor. Homes without a vapor barrier use the stricter 1:150 ratio.",
+    "Attic ventilation prevents two problems: summer heat buildup (which bakes shingles from below and raises cooling bills) and winter condensation (which rots sheathing and feeds mold). The industry standard is the 1:300 rule, one square foot of Net Free Ventilation Area (NFVA) for every 300 square feet of attic floor. Homes without a vapor barrier use the stricter 1:150 ratio.",
     "NFVA is the actual open area of the vent, not the exterior dimensions. A 12 × 12 inch louvered vent has an outside area of 144 sq in but typically only 50-70 sq in of actual NFVA because the louvers and screens take up space. Always use the manufacturer's NFVA spec when sizing.",
-    "Balanced ventilation requires 50% intake (low, at the soffit) and 50% exhaust (high, at the ridge or gable peak). Intake-only or exhaust-only systems short-circuit — air doesn't flow properly through the attic. Unbalanced systems are a leading cause of ice dams in cold climates and ineffective cooling in hot climates.",
-    "Ridge vents provide about 12-18 sq in of NFVA per linear foot (using 15 as a standard). For a 40-foot ridge, that's 600 sq in of exhaust — enough for about 3,600 sq ft of attic using the 1:300 rule. Gable vents are typically 50-100 sq in each (use 70 as standard). Box/roof vents are about 50 sq in each. Power vents are sized in CFM (cubic feet per minute) and move air actively.",
-    "The calculator recommends soffit (intake) venting based on the exhaust type. Continuous soffit strips provide about 9 sq in per linear foot; individual soffit vents provide about 35 sq in each. In most homes, you need both — continuous soffit venting along the entire eave, possibly supplemented with circular vents in specific bays where the ceiling is blocked.",
+    "Balanced ventilation requires 50% intake (low, at the soffit) and 50% exhaust (high, at the ridge or gable peak). Intake-only or exhaust-only systems short-circuit: air doesn't flow properly through the attic. Unbalanced systems are a leading cause of ice dams in cold climates and ineffective cooling in hot climates.",
+    "Ridge vents provide about 12-18 sq in of NFVA per linear foot (using 15 as a standard). For a 40-foot ridge, that's 600 sq in of exhaust, enough for about 3,600 sq ft of attic using the 1:300 rule. Gable vents are typically 50-100 sq in each (use 70 as standard). Box/roof vents are about 50 sq in each. Power vents are sized in CFM (cubic feet per minute) and move air actively.",
+    "The calculator recommends soffit (intake) venting based on the exhaust type. Continuous soffit strips provide about 9 sq in per linear foot; individual soffit vents provide about 35 sq in each. In most homes, you need both: continuous soffit venting along the entire eave, possibly supplemented with circular vents in specific bays where the ceiling is blocked.",
     "Common mistakes: mixing exhaust types (ridge AND gable) creates short-circuit airflow patterns; installing insulation that blocks soffit vents; using power vents without adequate intake (they pull conditioned air from the house). Fix: pick one exhaust type and size it correctly, protect soffit intake with baffles, verify attic air circulation during hot days.",
   ],
 
@@ -176,7 +176,7 @@ export const atticVentilationCalculatorConfig: CalculatorConfig = {
       note: "Source of the 1:300 / 1:150 attic ventilation rules",
     },
     {
-      name: "IRC 2021 — Attic Ventilation",
+      name: "IRC 2021: Attic Ventilation",
       url: "https://codes.iccsafe.org/",
       note: "Code requirements for balanced intake and exhaust",
     },
@@ -198,7 +198,7 @@ export const atticVentilationCalculatorConfig: CalculatorConfig = {
     {
       question: "What's the difference between NFVA and actual vent area?",
       answer:
-        "NFVA (Net Free Ventilation Area) is the actual open space that allows air flow through a vent. Actual vent dimensions are larger because louvers, screens, and frames block some area. A 14 × 8 inch vent might have 112 sq in gross but only 45-60 sq in NFVA. Always use manufacturer NFVA specs — assuming gross area leads to under-ventilation.",
+        "NFVA (Net Free Ventilation Area) is the actual open space that allows air flow through a vent. Actual vent dimensions are larger because louvers, screens, and frames block some area. A 14 × 8 inch vent might have 112 sq in gross but only 45-60 sq in NFVA. Always use manufacturer NFVA specs: assuming gross area leads to under-ventilation.",
     },
     {
       question: "Should I use ridge vents or gable vents?",
@@ -208,17 +208,17 @@ export const atticVentilationCalculatorConfig: CalculatorConfig = {
     {
       question: "Can I mix ridge vents and gable vents?",
       answer:
-        "No — this creates air short-circuits. Air takes the path of least resistance, which usually means ridge-to-gable or gable-to-gable flow that bypasses the attic space you're trying to ventilate. Pick one exhaust type. If you have existing gable vents and install ridge vents, seal the gable vents.",
+        "No: this creates air short-circuits. Air takes the path of least resistance, which usually means ridge-to-gable or gable-to-gable flow that bypasses the attic space you're trying to ventilate. Pick one exhaust type. If you have existing gable vents and install ridge vents, seal the gable vents.",
     },
     {
       question: "What's a power attic vent, and should I use one?",
       answer:
-        "An electric fan that actively pulls air out of the attic. Sized in CFM (about 1 CFM per 1.5 sq ft of attic). Works well if properly balanced with adequate soffit intake. But a common failure mode is insufficient intake — the fan then pulls CONDITIONED air from the house through ceiling bypasses, wasting AC. Passive ridge vents avoid this problem. Use power vents only if passive ventilation isn't feasible.",
+        "An electric fan that actively pulls air out of the attic. Sized in CFM (about 1 CFM per 1.5 sq ft of attic). Works well if properly balanced with adequate soffit intake. But a common failure mode is insufficient intake, the fan then pulls CONDITIONED air from the house through ceiling bypasses, wasting AC. Passive ridge vents avoid this problem. Use power vents only if passive ventilation isn't feasible.",
     },
     {
       question: "Do I need ventilation if I have a conditioned attic?",
       answer:
-        "No — conditioned attics (with spray foam on the roof deck, bringing the attic inside the building envelope) are NOT ventilated. The attic becomes indoor space. This is common in hot climates and with cathedral ceilings. Don't add ventilation to a conditioned attic — it defeats the purpose.",
+        "No: conditioned attics (with spray foam on the roof deck, bringing the attic inside the building envelope) are NOT ventilated. The attic becomes indoor space. This is common in hot climates and with cathedral ceilings. Don't add ventilation to a conditioned attic: it defeats the purpose.",
     },
     {
       question: "What happens with insufficient attic ventilation?",
