@@ -193,6 +193,24 @@
 @media print {
   nav, footer { display: none !important; }
   body { background: white; }
+  .no-print { display: none !important; }
+}
+
+/* When a result diagram is on the page, printing isolates just the cut sheet */
+@media print {
+  body:has(.result-diagram) * { visibility: hidden; }
+  body:has(.result-diagram) .result-diagram,
+  body:has(.result-diagram) .result-diagram * { visibility: visible; }
+  body:has(.result-diagram) .result-diagram {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+  .result-diagram svg { width: 100%; height: auto; page-break-inside: avoid; }
 }
 
 /* ===== Ledger theme additions ===== */

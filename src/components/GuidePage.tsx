@@ -154,7 +154,7 @@ export function GuidePage({ config }: GuidePageProps) {
                     <span className="text-ink font-medium">{source.name}</span>
                   )}
                   {source.note && (
-                    <span className="text-ink-faint"> — {source.note}</span>
+                    <span className="text-ink-faint"> · {source.note}</span>
                   )}
                 </li>
               ))}

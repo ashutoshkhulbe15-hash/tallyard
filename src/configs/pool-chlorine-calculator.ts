@@ -173,23 +173,38 @@ export const poolChlorineCalculatorConfig: CalculatorConfig = {
 
   methodology: [
     "Pool chlorine dosing depends on three things: pool volume (the amount of water to treat), the gap between current and target chlorine levels (how many ppm to add), and the specific product's active chlorine concentration. Each type of chlorine product has a different strength, so the same ppm increase requires different amounts of different products.",
-    "Standard dosing factors (ounces of product per 10,000 gallons per 1 ppm increase): liquid 10% sodium hypochlorite = 10.5 oz; calcium hypochlorite 65% granular = 1.8 oz; trichlor 90% (stabilized tablets) = 1.3 oz; dichlor 55% (stabilized granular) = 2.1 oz. Trichlor is the most concentrated by weight, but also the most acidic — regular use drops pH.",
+    "Standard dosing factors (ounces of product per 10,000 gallons per 1 ppm increase): liquid 10% sodium hypochlorite = 10.5 oz; calcium hypochlorite 65% granular = 1.8 oz; trichlor 90% (stabilized tablets) = 1.3 oz; dichlor 55% (stabilized granular) = 2.1 oz. Trichlor is the most concentrated by weight, but also the most acidic; regular use drops pH.",
     "Target levels depend on use: 1-3 ppm is normal maintenance for a residential pool. 3-5 ppm during heavy use or warm weather. 10 ppm is shock treatment after algae, cloudy water, or a heavy swim day. Levels above 5 ppm should drop to 3 ppm before swimming (take 4-8 hours for chlorine to break down naturally).",
-    "Pool volume matters enormously. The rectangular pool formula: length × width × average depth × 7.5 (gallons) or × 1000 (liters). For a 15 × 30 ft pool with 4.5 ft average depth: 15 × 30 × 4.5 × 7.5 = 15,188 gallons. Round pools use π × radius² × depth. Irregular shapes are harder — use your pool builder's documentation.",
-    "Liquid chlorine is the most common for pool maintenance — direct pour into the pool with the pump running. Granular products dissolve faster and are stronger per volume but add calcium (cal-hypo) or cyanuric acid (dichlor) that accumulates over time. Trichlor tablets go in floating dispensers or inline feeders for slow, continuous dosing.",
-    "Important caveats not captured here: cyanuric acid (stabilizer) levels affect effective chlorine — a pool with high CYA (60+ ppm) needs higher free chlorine to remain sanitary. pH affects chlorine effectiveness — at pH 8.0, chlorine is only 20% effective; at pH 7.5, it's 50%+ effective. Always test and adjust pH BEFORE dosing chlorine. Use this calculator for initial dosing; retest after 30-60 minutes and adjust.",
+    "Pool volume matters enormously. The rectangular pool formula: length × width × average depth × 7.5 (gallons) or × 1000 (liters). For a 15 × 30 ft pool with 4.5 ft average depth: 15 × 30 × 4.5 × 7.5 = 15,188 gallons. Round pools use π × radius² × depth. Irregular shapes are harder, so use your pool builder's documentation.",
+    "Liquid chlorine is the most common for pool maintenance: direct pour into the pool with the pump running. Granular products dissolve faster and are stronger per volume but add calcium (cal-hypo) or cyanuric acid (dichlor) that accumulates over time. Trichlor tablets go in floating dispensers or inline feeders for slow, continuous dosing.",
+    "Important caveats not captured here: cyanuric acid (stabilizer) levels affect effective chlorine, and a pool with high CYA (60+ ppm) needs higher free chlorine to remain sanitary. pH affects chlorine effectiveness: at pH 8.0, chlorine is only 20% effective; at pH 7.5, it's 50%+ effective. Always test and adjust pH BEFORE dosing chlorine. Use this calculator for initial dosing; retest after 30-60 minutes and adjust.",
   ],
 
   sources: [
     {
-      name: "Pool & Hot Tub Alliance (PHTA)",
-      url: "https://www.phta.org/",
-      note: "Industry standards for water chemistry and dosing",
+      name: "CDC Model Aquatic Health Code (MAHC), Chapter 5",
+      url: "https://www.cdc.gov/model-aquatic-health-code/php/index.html",
+      note: "Federal public-health disinfection standard: the 1-10 ppm free chlorine range and cyanuric acid limits this calculator applies",
     },
     {
-      name: "CDC — Model Aquatic Health Code",
-      url: "https://www.cdc.gov/mahc/",
-      note: "Public health guidance for pool chlorine levels",
+      name: "CDC MAHC Annex, disinfection rationale",
+      url: "https://www.cdc.gov/model-aquatic-health-code/php/annex/index.html",
+      note: "The published reasoning behind the free chlorine and pH targets, including CT inactivation values",
+    },
+    {
+      name: "Pool & Hot Tub Alliance (PHTA), formerly APSP",
+      url: "https://www.phta.org/standards/",
+      note: "ANSI/APSP/ICC-11 water quality standards used across the industry for residential dosing",
+    },
+    {
+      name: "EPA - Registered Pool Sanitizers",
+      url: "https://www.epa.gov/pesticide-registration/pesticide-registration-manual-chapter-4-additional-considerations",
+      note: "Label rates for chlorine products are federally enforceable; the label always overrides a calculator",
+    },
+    {
+      name: "WHO Guidelines for Safe Recreational Water",
+      url: "https://www.who.int/publications/i/item/9241546808",
+      note: "International reference on disinfection byproducts and chlorine exposure",
     },
   ],
 
@@ -209,7 +224,7 @@ export const poolChlorineCalculatorConfig: CalculatorConfig = {
     {
       question: "What's the difference between the chlorine types?",
       answer:
-        "Liquid (sodium hypochlorite, 10%) — cheapest, daily use, no residue but bulky. Cal-hypo (65%) — fast-acting, good for shock but adds calcium. Trichlor tablets (90%) — slow-release convenience, adds stabilizer (CYA). Dichlor (55%) — fast-dissolve with built-in stabilizer, good for spot treatment.",
+        "Liquid (sodium hypochlorite, 10%): cheapest, daily use, no residue but bulky. Cal-hypo (65%): fast-acting, good for shock but adds calcium. Trichlor tablets (90%): slow-release convenience, adds stabilizer (CYA). Dichlor (55%): fast-dissolve with built-in stabilizer, good for spot treatment.",
     },
     {
       question: "How often should I add chlorine?",
@@ -224,7 +239,7 @@ export const poolChlorineCalculatorConfig: CalculatorConfig = {
     {
       question: "Why can't I just use more chlorine?",
       answer:
-        "Chlorine above 10 ppm irritates eyes and skin, bleaches swimsuits, and breaks down quickly in sunlight (wasted). Very high levels cause corrosion of pump seals and metal fittings. More importantly: if your chlorine isn't effective, the problem is usually pH (should be 7.2-7.6) or cyanuric acid (should be 30-50 ppm) — fix those first, not more chlorine.",
+        "Chlorine above 10 ppm irritates eyes and skin, bleaches swimsuits, and breaks down quickly in sunlight (wasted). Very high levels cause corrosion of pump seals and metal fittings. More importantly: if your chlorine isn't effective, the problem is usually pH (should be 7.2-7.6) or cyanuric acid (should be 30-50 ppm), so fix those first, not more chlorine.",
     },
     {
       question: "Can I swim right after adding chlorine?",

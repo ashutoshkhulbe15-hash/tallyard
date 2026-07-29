@@ -271,6 +271,13 @@ export function Calculator({ slug, panelTitle }: CalculatorProps) {
           </div>
         )}
 
+        {/* Optional result diagram (e.g. stair stringer cut sheet) */}
+        {result && config.ResultDiagram && (
+          <div className="mt-6 result-diagram">
+            <config.ResultDiagram result={result} />
+          </div>
+        )}
+
         {/* Show the math */}
         {result && result.formulaSteps.length > 0 && (
           <details className="group mt-4 mb-1">

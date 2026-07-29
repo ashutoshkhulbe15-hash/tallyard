@@ -255,7 +255,7 @@ export const lumberCalculatorConfig: CalculatorConfig = {
     { name: "Deck calculator", slug: "deck-calculator", description: "Boards and joists for any deck" },
     { name: "Shed calculator", slug: "shed-calculator", description: "Full material list for a backyard shed" },
     { name: "Drywall calculator", slug: "drywall-calculator", description: "Sheets for walls and ceilings" },
-    { name: "Stair calculator", slug: "stair-calculator", description: "Stringers, treads, and risers" },
+    { name: "Deck stair calculator", slug: "deck-stair-calculator", description: "Stringer and tread board counts" },
   ],
 
   faq: [

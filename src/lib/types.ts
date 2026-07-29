@@ -46,6 +46,8 @@ export interface CalculatorResult {
   breakdown: Array<{ label: string; value: string }>;
   /** Human-readable formula trace, step by step */
   formulaSteps: string[];
+  /** Optional numeric payload for a ResultDiagram to draw from */
+  diagramData?: Record<string, number | string | boolean>;
   /** Optional compositional breakdown for the bar chart */
   composition?: {
     /** The unit label for composition values (e.g. "sq ft") */
@@ -120,6 +122,8 @@ export interface CalculatorConfig {
   /** Optional rich content expansion - rendered as a full article section
    *  below methodology and above FAQ. Uses guide-prose styling. */
   ContentExpansion?: React.ComponentType;
+  /** Optional diagram rendered under the result receipt, redrawn from live results */
+  ResultDiagram?: React.ComponentType<{ result: CalculatorResult }>;
 
   /** Optional HowTo steps. When present, emits HowTo JSON-LD so AI answer
    *  engines and Google's "how to" rich results can lift the procedure.

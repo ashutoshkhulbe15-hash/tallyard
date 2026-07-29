@@ -212,8 +212,8 @@ export const flooringCalculatorConfig: CalculatorConfig = {
   related: [
     { name: "Tile calculator", slug: "tile-calculator", description: "Tiles and boxes for kitchens and baths" },
     { name: "Grout calculator", slug: "grout-calculator", description: "For tiled transitions" },
+    { name: "Hardwood flooring cost", slug: "hardwood-flooring-cost-calculator", description: "Installed price by wood species" },
     { name: "Paint calculator", slug: "paint-calculator", description: "Gallons of paint for any room" },
-    { name: "Wallpaper calculator", slug: "wallpaper-calculator", description: "Rolls and repeat for feature walls" },
   ],
 
   faq: [

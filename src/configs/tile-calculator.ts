@@ -167,7 +167,7 @@ export const tileCalculatorConfig: CalculatorConfig = {
     { name: "Grout calculator", slug: "grout-calculator", description: "Grout volume for tile projects" },
     { name: "Flooring calculator", slug: "flooring-calculator", description: "Hardwood, laminate, vinyl square footage" },
     { name: "Concrete calculator", slug: "concrete-calculator", description: "For slab prep under tile" },
-    { name: "Paint calculator", slug: "paint-calculator", description: "Gallons of paint for any room" },
+    { name: "Hardwood flooring cost", slug: "hardwood-flooring-cost-calculator", description: "Installed price by wood species" },
   ],
 
   faq: [

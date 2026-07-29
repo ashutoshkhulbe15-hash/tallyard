@@ -206,7 +206,7 @@ export const stairCalculatorConfig: CalculatorConfig = {
 
   related: [
     { name: "Lumber calculator", slug: "lumber-calculator", description: "Board feet for stringers and treads" },
-    { name: "Deck calculator", slug: "deck-calculator", description: "Boards, joists, and deck stairs" },
+    { name: "Deck stair calculator", slug: "deck-stair-calculator", description: "Outdoor stringers and landing pads" },
     { name: "Concrete calculator", slug: "concrete-calculator", description: "For stair footings and landings" },
     { name: "Stud spacing calculator", slug: "stud-spacing-calculator", description: "Framing for stair walls and landings" },
   ],

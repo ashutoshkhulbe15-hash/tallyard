@@ -178,7 +178,7 @@ export const deckCalculatorConfig: CalculatorConfig = {
 
   related: [
     { name: "Concrete calculator", slug: "concrete-calculator", description: "For deck footings" },
-    { name: "Stair calculator", slug: "stair-calculator", description: "Deck stairs: rise, run, and stringers" },
+    { name: "Deck stair calculator", slug: "deck-stair-calculator", description: "Stringer cut sheet with IRC checks" },
     { name: "Shed calculator", slug: "shed-calculator", description: "Framing and sheathing for a shed" },
     { name: "Lumber calculator", slug: "lumber-calculator", description: "Board feet for framing" },
   ],
