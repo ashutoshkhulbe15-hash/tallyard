@@ -13,7 +13,7 @@ const steps: PlannerStep[] = [
     id: "dimensions",
     title: "Deck size and height",
     context:
-      "Start with the basic footprint. These dimensions drive everything else — boards, joists, beams, posts, and concrete footings.",
+      "Start with the basic footprint. These dimensions drive everything else: boards, joists, beams, posts, and concrete footings.",
     inputs: [
       {
         id: "length",
@@ -60,7 +60,7 @@ const steps: PlannerStep[] = [
         options: [
           { label: "Pressure-treated pine ($3–6/ft²)", value: "pt" },
           { label: "Cedar ($4–8/ft²)", value: "cedar" },
-          { label: "Composite — Trex/TimberTech ($5–14/ft²)", value: "composite" },
+          { label: "Composite: Trex/TimberTech ($5–14/ft²)", value: "composite" },
         ],
       },
       {
@@ -70,7 +70,7 @@ const steps: PlannerStep[] = [
         defaultValue: 5.5,
         options: [
           { label: '5.5" (standard 2×6 or composite)', value: 5.5 },
-          { label: '3.5" (2×4 — narrow look)', value: 3.5 },
+          { label: '3.5" (2×4: narrow look)', value: 3.5 },
         ],
       },
       {
@@ -98,8 +98,8 @@ const steps: PlannerStep[] = [
         type: "select",
         defaultValue: "yes",
         options: [
-          { label: "Yes — full staircase to ground", value: "yes" },
-          { label: "No — ground-level or existing stairs", value: "no" },
+          { label: "Yes: full staircase to ground", value: "yes" },
+          { label: "No: ground-level or existing stairs", value: "no" },
         ],
       },
       {
@@ -149,7 +149,7 @@ const steps: PlannerStep[] = [
         defaultValue: 12,
         options: [
           { label: '10" (4×4 posts)', value: 10 },
-          { label: '12" (standard — most 4×4 and 6×6)', value: 12 },
+          { label: '12" (standard, most 4×4 and 6×6)', value: 12 },
           { label: '14" (6×6 posts, heavy loads)', value: 14 },
         ],
       },
@@ -284,19 +284,19 @@ function calculateResults(
       items: [
         {
           category: "Frame",
-          item: `Joists — 2×8 PT, ${joistLength} ft each, ${joistOC}" OC`,
+          item: `Joists: 2×8 PT, ${joistLength} ft each, ${joistOC}" OC`,
           quantity: String(joistCount),
           unit: "pieces",
         },
         {
           category: "Frame",
-          item: `Beams — doubled 2×10 PT, ${beamLength} ft each`,
+          item: `Beams: doubled 2×10 PT, ${beamLength} ft each`,
           quantity: String(beamCount),
           unit: "beams",
         },
         {
           category: "Frame",
-          item: `Posts — 4×4 or 6×6 PT, ${postLength} ft each`,
+          item: `Posts: 4×4 or 6×6 PT, ${postLength} ft each`,
           quantity: String(totalPosts),
           unit: "posts",
         },

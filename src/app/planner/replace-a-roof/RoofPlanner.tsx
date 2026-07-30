@@ -7,7 +7,7 @@ const steps: PlannerStep[] = [
   {
     id: "roof",
     title: "Roof dimensions",
-    context: "Measure the footprint of your house (not the roof surface — the calculator applies the pitch multiplier). Include overhangs.",
+    context: "Measure the footprint of your house (not the roof surface, the calculator applies the pitch multiplier). Include overhangs.",
     inputs: [
       { id: "footprintLength", label: "House length", type: "number", unit: "ft", defaultValue: 50, min: 10, step: 1 },
       { id: "footprintWidth", label: "House width", type: "number", unit: "ft", defaultValue: 30, min: 10, step: 1 },
@@ -32,8 +32,8 @@ const steps: PlannerStep[] = [
         { label: "Premium / designer ($250–500/square)", value: "premium" },
       ]},
       { id: "tearOff", label: "Tear off existing roof?", type: "select", defaultValue: "yes", options: [
-        { label: "Yes — remove old shingles first", value: "yes" },
-        { label: "No — overlay on existing (1 layer only)", value: "no" },
+        { label: "Yes: remove old shingles first", value: "yes" },
+        { label: "No: overlay on existing (1 layer only)", value: "no" },
       ]},
     ],
   },
@@ -44,8 +44,8 @@ const steps: PlannerStep[] = [
     inputs: [
       { id: "ridgeLength", label: "Ridge length (peak)", type: "number", unit: "ft", defaultValue: 40, min: 10, step: 1, help: "Usually close to the house length" },
       { id: "replaceGutters", label: "Replace gutters?", type: "select", defaultValue: "yes", options: [
-        { label: "Yes — new gutters + downspouts", value: "yes" },
-        { label: "No — existing gutters are fine", value: "no" },
+        { label: "Yes: new gutters + downspouts", value: "yes" },
+        { label: "No: existing gutters are fine", value: "no" },
       ]},
       { id: "gutterLF", label: "Gutter length (if replacing)", type: "number", unit: "ft", defaultValue: 120, min: 0, step: 1 },
     ],

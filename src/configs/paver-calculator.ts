@@ -206,7 +206,7 @@ export const paverCalculatorConfig: CalculatorConfig = {
     { name: "Gravel calculator", slug: "gravel-calculator", description: "Base gravel for under pavers" },
     { name: "Concrete calculator", slug: "concrete-calculator", description: "Slabs and footings" },
     { name: "Gravel calculator", slug: "gravel-calculator", description: "Base gravel for paver beds" },
-    { name: "Mulch calculator", slug: "mulch-calculator", description: "For beds around paver installations" },
+    { name: "Deck calculator", slug: "deck-calculator", description: "Boards, joists, and framing cost" },
   ],
 
   faq: [

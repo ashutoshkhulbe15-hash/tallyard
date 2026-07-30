@@ -105,10 +105,16 @@ export const snowLoadCalculatorConfig: CalculatorConfig = {
     const pctOfDesign = (totalPsf / designLoad) * 100;
 
     const status = overLimit
-      ? `⚠ OVER design load (${round(pctOfDesign, 0)}%)`
+      ? `EXCEEDS design load (${round(pctOfDesign, 0)}% of capacity)`
       : pctOfDesign > 80
-        ? `CAUTION (${round(pctOfDesign, 0)}% of design)`
-        : `OK (${round(pctOfDesign, 0)}% of design)`;
+        ? `CAUTION, ${round(pctOfDesign, 0)}% of capacity`
+        : `within capacity, ${round(pctOfDesign, 0)}%`;
+
+    // IRC checks. R301.6 sets the minimum roof live load; ground snow load
+    // for the site comes from IRC Table R301.2 as adopted locally, and the
+    // governing calculation method is ASCE 7 Chapter 7.
+    const meetsMinimumLiveLoad = designLoad >= 20;
+    const headroomPsf = round(designLoad - totalPsf, 1);
 
     return {
       value: round(totalLb, 0),
@@ -120,8 +126,12 @@ export const snowLoadCalculatorConfig: CalculatorConfig = {
         { label: "total pressure", value: `${round(totalPsf, 1)} psf` },
         { label: "roof area", value: `${formatNumber(round(roofAreaSqFt, 0))} ft²` },
         { label: "total weight", value: `${formatNumber(round(totalLb, 0))} lb (${formatNumber(round(totalLb / 2000, 1))} tons)` },
-        { label: "design limit", value: `${designLoad} psf` },
-        { label: "status", value: status },
+        { label: "design limit (R301.6)", value: `${designLoad} psf${meetsMinimumLiveLoad ? "" : ", below the 20 psf IRC minimum"}` },
+        {
+          label: "remaining capacity",
+          value: overLimit ? `over by ${Math.abs(headroomPsf)} psf` : `${headroomPsf} psf to spare`,
+        },
+        { label: "verdict", value: status },
       ],
       formulaSteps: [
         `snow depth = ${snowDepthInput} ${units === "metric" ? "cm" : "in"} = ${round(snowDepthFt, 2)} ft`,
@@ -132,7 +142,9 @@ export const snowLoadCalculatorConfig: CalculatorConfig = {
           : "no ice layer",
         `total psf = ${round(snowLoadPsf, 1)} + ${round(iceLoadPsf, 1)} = ${round(totalPsf, 1)} psf`,
         `total weight = ${round(totalPsf, 1)} psf × ${formatNumber(round(roofAreaSqFt, 0))} ft² = ${formatNumber(round(totalLb, 0))} lb`,
-        `vs design limit ${designLoad} psf: ${status}`,
+        `design capacity (IRC R301.6, min 20 psf) = ${designLoad} psf`,
+        `${round(totalPsf, 1)} psf vs ${designLoad} psf → ${status}`,
+        `site ground snow load comes from IRC Table R301.2 as adopted locally; ASCE 7 Ch. 7 governs the full calculation`,
       ],
       composition: {
         unit: "psf",

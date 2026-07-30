@@ -49,7 +49,7 @@ export default function MasonryPillar() {
 
           <h2>Concrete: the foundation of everything else</h2>
 
-          <p>Concrete is measured in cubic yards (27 cubic feet per yard). The formula is area times thickness divided by 324 for inches, or divided by 27 for feet. A 20 × 24 foot driveway at 4 inches thick needs 5.9 cubic yards. The <Link href="/concrete-calculator" className="text-accent hover:underline">concrete calculator</Link> handles the unit conversion and tells you the breakpoint between bags and ready-mix delivery (usually around 1.5 yards — below that, bags are practical; above that, a delivery truck saves hours of mixing).</p>
+          <p>Concrete is measured in cubic yards (27 cubic feet per yard). The formula is area times thickness divided by 324 for inches, or divided by 27 for feet. A 20 × 24 foot driveway at 4 inches thick needs 5.9 cubic yards. The <Link href="/concrete-calculator" className="text-accent hover:underline">concrete calculator</Link> handles the unit conversion and tells you the breakpoint between bags and ready-mix delivery (usually around 1.5 yards: below that, bags are practical; above that, a delivery truck saves hours of mixing).</p>
 
           <p>The thickness decision is structural, not budgetary. A 4-inch slab is code minimum for residential. Driveways that park heavy vehicles (trucks, RVs) should be 5 to 6 inches. Footings under posts and columns have minimum depth requirements set by local code (usually 12 × 12 × 12 inches minimum for deck footings, deeper in cold climates where frost line drives the depth).</p>
 
@@ -63,7 +63,7 @@ export default function MasonryPillar() {
 
           <h2>Asphalt: tonnage, base prep, and the sealcoat schedule</h2>
 
-          <p>Asphalt is measured in tons (not yards) because it is sold by weight. A standard 2 to 3 inch residential driveway uses about 0.17 tons per square foot. The <Link href="/asphalt-calculator" className="text-accent hover:underline">asphalt calculator</Link> converts your area and thickness to tons. The material is only half the equation — the gravel base underneath determines whether the asphalt lasts 8 years or 20. Four to six inches of compacted process stone is the standard residential base. Use the <Link href="/gravel-calculator" className="text-accent hover:underline">gravel calculator</Link> for the base layer tonnage.</p>
+          <p>Asphalt is measured in tons (not yards) because it is sold by weight. A standard 2 to 3 inch residential driveway uses about 0.17 tons per square foot. The <Link href="/asphalt-calculator" className="text-accent hover:underline">asphalt calculator</Link> converts your area and thickness to tons. The material is only half the equation, the gravel base underneath determines whether the asphalt lasts 8 years or 20. Four to six inches of compacted process stone is the standard residential base. Use the <Link href="/gravel-calculator" className="text-accent hover:underline">gravel calculator</Link> for the base layer tonnage.</p>
 
           <h2>Chimneys: fire safety sizing</h2>
 

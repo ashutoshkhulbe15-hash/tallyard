@@ -165,14 +165,29 @@ export const deckCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "IRC 2021: Deck Design Provisions",
-      url: "https://codes.iccsafe.org/content/IRC2021P2",
-      note: "Code-compliant joist and beam spans",
+      name: "AWC DCA 6: Prescriptive Residential Deck Construction Guide",
+      url: "https://awc.org/publications/dca6/",
+      note: "Free guide governing joist and beam spans, ledger attachment, and footing sizing",
     },
     {
-      name: "Trex: Composite Decking Installation Guide",
-      url: "https://www.trex.com/",
-      note: "Board spacing and fastener recommendations",
+      name: "IRC Section R507 (Exterior Decks)",
+      url: "https://codes.iccsafe.org/content/IRC2021P2/chapter-5-floors",
+      note: "Adopted code provisions for deck framing, ledger connection, and lateral load",
+    },
+    {
+      name: "IRC Section R311.7 and R312 (Stairs and Guards)",
+      url: "https://codes.iccsafe.org/content/IRC2021P2/chapter-3-building-planning",
+      note: "Guard requirement above 30 inches and stair geometry for deck stairs",
+    },
+    {
+      name: "NADRA Deck Safety and Inspection Guidance",
+      url: "https://www.nadra.org/consumers/deck-safety/",
+      note: "Industry data on ledger and connection failures found in deck inspections",
+    },
+    {
+      name: "AWC Span Calculator",
+      url: "https://awc.org/codes-standards/calculators-software/spancalc/",
+      note: "Official tool for verifying joist and beam spans for a specific species and grade",
     },
   ],
 
@@ -183,7 +198,29 @@ export const deckCalculatorConfig: CalculatorConfig = {
     { name: "Lumber calculator", slug: "lumber-calculator", description: "Board feet for framing" },
   ],
 
+  howTo: {
+    name: "How to calculate deck materials",
+    description: "Work out decking boards, joists, beams, posts, and fasteners for a deck in five steps, starting from the surface material rather than the frame.",
+    steps: [
+      { name: "Choose the decking board first", text: "Pick the surface material before framing anything. Composite brands set their own maximum joist spacing, commonly 16 inches on center for straight lay and 12 inches for a 45 degree pattern, and that requirement drives the entire frame." },
+      { name: "Measure and set the frame layout", text: "Enter deck length and width along with the joist spacing your decking requires. Long shallow decks along the house cost less per square foot than square decks, because deeper decks need an intermediate beam and another row of footings." },
+      { name: "Count decking boards by length", text: "Divide deck width by the actual board coverage, including the gap between boards, then match board length to the deck run so full boards span without seams. Buying 16 foot boards for a 16 foot deck wastes far less than 12 foot boards." },
+      { name: "Add framing, footings, and fasteners", text: "Add joists at the required spacing, beams and posts per DCA 6 span tables, and footings below the local frost line. Use fasteners rated for the decking: stainless or coated screws for pressure-treated, hidden clips for grooved composite." },
+      { name: "Price stairs, railing, and permit separately", text: "Guards are required above a 30 inch drop and are quoted per linear foot. Stairs are their own calculation under IRC R311.7. Both are commonly missing from a deck quote, and both are required for a permit." },
+    ],
+  },
+
   faq: [
+    {
+      question: "How much does it cost to build a deck in 2026?",
+      answer:
+        "$30-50 per square foot installed for pressure-treated and $50-80 for composite. A 12×16 deck runs about $5,800-9,600 in pressure-treated or $9,600-15,400 in composite. Railing ($25-60 per linear foot) and stairs ($800-2,200) are quoted separately and are the two items most often missing from a comparison.",
+    },
+    {
+      question: "How is a deck ledger supposed to be attached?",
+      answer:
+        "With through-bolts or approved structural screws in a staggered pattern per IRC R507.9 and AWC DCA 6, never with nails, and with flashing above it to divert water out over the siding. Ledger failures account for a large share of reported deck collapses, and they are the first thing an inspector checks.",
+    },
     {
       question: "How many deck boards do I need for a 12×16 deck?",
       answer:

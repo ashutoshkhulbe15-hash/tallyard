@@ -180,7 +180,7 @@ export const fenceCalculatorConfig: CalculatorConfig = {
     { name: "Concrete calculator", slug: "concrete-calculator", description: "Cubic yards for post holes and footings" },
     { name: "Paint calculator", slug: "paint-calculator", description: "Stain or paint for fence sections" },
     { name: "Gravel calculator", slug: "gravel-calculator", description: "Gravel for post hole drainage" },
-    { name: "Lumber calculator", slug: "lumber-calculator", description: "Board feet for framing and pickets" },
+    { name: "Deck calculator", slug: "deck-calculator", description: "Boards, joists, and framing cost" },
   ],
 
   faq: [

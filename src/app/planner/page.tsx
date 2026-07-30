@@ -94,7 +94,7 @@ export default function PlannerIndexPage() {
           Plan the whole <span className="accent-italic">project.</span>
         </h1>
         <p className="text-base md:text-lg text-ink-muted max-w-2xl leading-relaxed">
-          A calculator answers one material. A planner chains several — enter
+          A calculator answers one material. A planner chains several: enter
           your dimensions once and get a complete, buyable material list for the
           entire build, ready to check against a contractor&apos;s quote.
         </p>
@@ -170,7 +170,7 @@ export default function PlannerIndexPage() {
         </div>
       </section>
 
-      {/* Calculator vs planner — one ledger comparison */}
+      {/* Calculator vs planner, one ledger comparison */}
       <section className="container-content py-12 md:py-16">
         <div className="border border-line rounded-xl bg-surface overflow-hidden">
           <div className="flex justify-between items-center px-5 md:px-6 py-3.5 bg-walnut text-white font-mono text-[11px] tracking-[0.14em] uppercase">
@@ -201,8 +201,8 @@ export default function PlannerIndexPage() {
               </h3>
               <p className="text-[13px] text-ink-muted leading-relaxed">
                 Enter dimensions once; the planner runs all the tools together
-                and returns one material list — boards, frame, footings, stairs,
-                railing, fasteners — with a cost estimate to check against a
+                and returns one material list: boards, frame, footings, stairs,
+                railing, fasteners, with a cost estimate to check against a
                 quote.
               </p>
               <div className="font-mono text-[11px] text-ink-faint mt-3 p-2.5 bg-surface-alt rounded">

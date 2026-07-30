@@ -17,7 +17,7 @@ const steps: PlannerStep[] = [
   {
     id: "floor",
     title: "Floor tile",
-    context: "Bathroom floors are almost always tile — ceramic or porcelain. Budget 10-15% waste for cuts around the toilet, vanity, and doorway.",
+    context: "Bathroom floors are almost always tile: ceramic or porcelain. Budget 10-15% waste for cuts around the toilet, vanity, and doorway.",
     inputs: [
       { id: "floorTileSize", label: "Tile size", type: "select", defaultValue: "12x12", options: [
         { label: '12×12" (standard)', value: "12x12" },
@@ -58,7 +58,7 @@ const steps: PlannerStep[] = [
   {
     id: "fixtures",
     title: "Vanity and paint",
-    context: "Size the vanity to fit your countertop and sink needs. Remaining wall area gets painted — typically satin or semi-gloss in bathrooms.",
+    context: "Size the vanity to fit your countertop and sink needs. Remaining wall area gets painted, typically satin or semi-gloss in bathrooms.",
     inputs: [
       { id: "vanityWidth", label: "Vanity width", type: "select", defaultValue: 36, options: [
         { label: '24" (small bath, single sink)', value: 24 },

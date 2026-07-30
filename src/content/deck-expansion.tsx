@@ -210,6 +210,28 @@ export function DeckCalculatorExpansion() {
         caption="Hidden clips add $200-500 to a typical deck but are standard for composite and allow individual board replacement if one gets damaged."
       />
 
+      <h2>Deck size: what the numbers do to the budget</h2>
+
+      <p>
+        Deck cost scales with area, but not smoothly. Crossing certain thresholds adds whole categories of expense rather than a proportional amount. A deck under 30 inches above grade needs no guards; cross that line and you are buying railing for the entire perimeter, which on a 16 by 20 deck is 72 linear feet of railing at $25 to $60 per foot installed. That single inch of height can add $2,000.
+      </p>
+
+      <p>
+        Beam spans set the next threshold. Widen a deck past roughly 12 feet and the joists need an intermediate beam and another row of footings, so the frame cost jumps rather than creeps. Going deeper is more expensive per square foot than going wider along the house, which is why long shallow decks price better than square ones of the same area.
+      </p>
+
+      <ComparisonTable
+        columns={[{ title: "Pressure-treated" }, { title: "Composite" }]}
+        rows={[
+          { label: "10 × 12 (120 sq ft)", values: ["$3,600-6,000", "$6,000-9,600"] },
+          { label: "12 × 16 (192 sq ft)", values: ["$5,800-9,600", "$9,600-15,400"] },
+          { label: "16 × 20 (320 sq ft)", values: ["$9,600-16,000", "$16,000-25,600"] },
+          { label: "Railing, per linear foot", values: ["$25-40", "$40-60"] },
+          { label: "Stairs, straight run to grade", values: ["$800-1,500", "$1,400-2,200"] },
+        ]}
+        caption="Installed cost ranges at 2026 US pricing, $30-50 per square foot for pressure-treated and $50-80 for composite. Railing and stairs are quoted separately and are the two line items most often missing from a comparison."
+      />
+
       <h2>Permits and inspections</h2>
 
       <Figure number={5} caption="Most attached decks and any deck over 30 inches above grade require a building permit. The inspector checks your ledger, footings, joist hangers, and railing posts.">
@@ -232,6 +254,38 @@ export function DeckCalculatorExpansion() {
 
       <p>
         One thing contractors sometimes skip on lower decks: they set posts directly on poured concrete pads instead of using post base brackets. This puts the wood in direct contact with a surface that wicks moisture. Within 5 to 8 years the post base rots from the inside out. A $4 galvanized post base bracket on every footing keeps wood above the concrete and adds decades to post life. If your contractor&apos;s quote does not include post brackets, ask why.
+      </p>
+
+      <h2>The ledger is the connection that kills people</h2>
+
+      <p>
+        More than half of reported deck collapses trace to the ledger, the board that fastens the deck frame to the house. It is the single most load-critical connection on the structure and the one most often built wrong, because nails are fast and lag screws are slow and both look identical once the decking goes on.
+      </p>
+
+      <p>
+        Nails are not acceptable. IRC R507.9 and AWC DCA 6 both call for through-bolts or approved structural screws in a specified staggered pattern, sized and spaced to the joist span. Behind the ledger, flashing has to divert water out and over the siding, because a ledger that stays wet rots the house rim joist as well as itself, and by the time anyone notices, the failure is structural on both sides of the wall.
+      </p>
+
+      <p>
+        Two things to check on any existing deck this weekend. Look under the ledger for bolt heads or screw heads in a staggered pattern rather than nail heads. Then look for flashing above it, a bent metal or membrane strip tucked under the siding. If you find nails, or no flashing, that is not a maintenance item to schedule; it is the reason to stop using the deck until it is corrected. Freestanding decks avoid the whole problem by carrying their own posts on the house side, which is why some builders skip the ledger entirely on new work.
+      </p>
+
+      <h2>Where deck projects go wrong</h2>
+
+      <p>
+        Framing before choosing the decking. Joist spacing is set by the surface material, not the other way around, and most composite brands require 16 inches on center for straight lay and 12 inches for a 45 degree pattern. Frame at 24 inches, then fall in love with composite, and the fix is adding joists to a completed frame. Choose the board first, read its spec sheet, then frame.
+      </p>
+
+      <p>
+        Ordering by area instead of by board length. A 16 foot deck built from 12 foot boards has a seam in every run and buys roughly 15 percent more material in offcuts than the same deck built from 16 foot stock. Board length drives waste more than the waste percentage does, and the fix costs nothing at the ordering stage. The <a href="/guides/waste-factor-reference">waste factor reference</a> covers when to move off the default 10 percent.
+      </p>
+
+      <p>
+        Forgetting that stairs are their own project. A deck quote often stops at the deck. Stairs need their own stringers, their own landing pad, their own railing, and they carry their own code requirements under IRC R311.7, which is a separate calculation from anything above. Price them with the <a href="/deck-stair-calculator">deck stair calculator</a>, which returns a printable stringer cut sheet and flags any dimension that fails code.
+      </p>
+
+      <p>
+        Skipping the permit. Attached decks and anything over 30 inches above grade need one nearly everywhere, and the inspection exists to catch precisely the ledger, footing, and connection failures listed above. Unpermitted deck work surfaces at sale, and an unpermitted deck that later fails is an insurance conversation nobody wants to have.
       </p>
     </>
   );

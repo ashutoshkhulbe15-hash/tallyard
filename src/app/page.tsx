@@ -71,7 +71,7 @@ const proof = [
     fx: "coverage: ",
     fxb: "Sherwin-Williams TDS",
     title: "Cites the source",
-    body: "Rates and code minimums come from manufacturer data, the IRC / IPC / NEC, and industry references — all linked.",
+    body: "Rates and code minimums come from manufacturer data, the IRC / IPC / NEC, and industry references, all linked.",
   },
   {
     fx: "2.38 gal → ",
@@ -92,7 +92,7 @@ const guides = [
   {
     slug: "composite-vs-pressure-treated-vs-cedar-deck",
     title: "Composite vs PT vs cedar decking",
-    desc: "20-year cost breakdown — pressure-treated turns out to be the most expensive option.",
+    desc: "20-year cost breakdown: pressure-treated turns out to be the most expensive option.",
     tag: "LANDSCAPING",
     time: "12 min",
   },
@@ -159,7 +159,7 @@ export default function HomePage() {
               Worked example
             </span>
             <div className="flex justify-between items-center px-5 py-4 border-b border-line bg-surface-alt">
-              <span className="font-semibold text-sm">Paint calculator — 12 × 14 ft bedroom</span>
+              <span className="font-semibold text-sm">Paint calculator: 12 × 14 ft bedroom</span>
               <span className="font-mono text-[11px] text-accent bg-accent-soft px-2 py-1 rounded-full font-medium whitespace-nowrap ml-3">
                 ✓ formula shown
               </span>
@@ -198,7 +198,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ===== 2. PROJECT PATHS — start by what you're building ===== */}
+      {/* ===== 2. PROJECT PATHS: start by what you're building ===== */}
       <section className="container-wide pt-4 md:pt-6">
         <div className="border-t border-line pt-14">
           <p className="font-mono text-[11px] tracking-[0.16em] uppercase text-ink-faint mb-2">
@@ -257,7 +257,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ===== 3. PROOF — why you can trust the number ===== */}
+      {/* ===== 3. PROOF: why you can trust the number ===== */}
       <section className="container-wide pt-14 md:pt-16">
         <div className="border border-line rounded-xl bg-surface overflow-hidden">
           <div className="flex justify-between items-center px-6 py-3.5 border-b border-line bg-surface-alt">
@@ -288,7 +288,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ===== 4. DIRECTORY — search-first, browse everything ===== */}
+      {/* ===== 4. DIRECTORY: search-first, browse everything ===== */}
       <section className="container-wide pt-14 md:pt-16">
         <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 mb-4">
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
@@ -306,7 +306,7 @@ export default function HomePage() {
         <HomeDirectory />
       </section>
 
-      {/* ===== 5. GUIDES — decisions that need real math ===== */}
+      {/* ===== 5. GUIDES: decisions that need real math ===== */}
       <section className="container-wide pt-14 md:pt-16">
         <p className="font-mono text-[11px] tracking-[0.16em] uppercase text-ink-faint mb-2">
           Before you buy · <span className="text-accent">decisions that need real math</span>
@@ -344,7 +344,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ===== 6. PLEDGE — running manifesto ===== */}
+      {/* ===== 6. PLEDGE: running manifesto ===== */}
       <section className="container-wide py-14 md:py-20">
         <div className="border border-line border-l-[3px] border-l-accent rounded-r-xl bg-surface px-8 py-9 md:px-10">
           <div className="font-mono text-[10.5px] tracking-[0.14em] uppercase text-accent mb-4">
@@ -359,7 +359,7 @@ export default function HomePage() {
             don&apos;t sell your zip code to contractors or run &quot;get 3 free
             quotes&quot; forms. Guide recommendations follow what the numbers
             say, not which link pays the highest commission. And if we can&apos;t
-            show you how we got a number, we don&apos;t publish the calculator —{" "}
+            show you how we got a number, we don&apos;t publish the calculator: {" "}
             <span className="accent-italic">
               transparency isn&apos;t a feature, it&apos;s the whole point.
             </span>

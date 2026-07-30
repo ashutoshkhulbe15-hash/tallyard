@@ -12,7 +12,7 @@ export default function CostToPaintHouse() { return (<article>
   <section className="container-content py-10 md:py-14"><div className="guide-prose">
     <GuideByline updated="April 20, 2026" reviewedAgainst="PCA (Painting Contractors of America) cost surveys and manufacturer coverage rates" />
     <h2>Interior and exterior are two completely different jobs</h2>
-    <p>Interior painting is mostly cutting in and rolling — low setup, moderate skill, manageable for a DIYer. Exterior painting involves ladders, scaffolding, power washing, scraping, caulking, priming bare wood, and weather windows that limit when you can work. The prep on an exterior job typically takes longer than the painting itself. That is why exterior costs 40 to 80 percent more per square foot than interior, even though the paint is the same price.</p>
+    <p>Interior painting is mostly cutting in and rolling: low setup, moderate skill, manageable for a DIYer. Exterior painting involves ladders, scaffolding, power washing, scraping, caulking, priming bare wood, and weather windows that limit when you can work. The prep on an exterior job typically takes longer than the painting itself. That is why exterior costs 40 to 80 percent more per square foot than interior, even though the paint is the same price.</p>
     <Figure number={1} caption="Interior is cheaper per square foot because access is easier, prep is lighter, and weather is not a factor."><IntVsExtSVG /></Figure>
     <MethodologyNote><p>Interior costs from PCA residential painting surveys. Exterior costs from HomeGuide and Angi 2025-2026 contractor databases. Coverage rates from Benjamin Moore, Sherwin-Williams, and Behr product data sheets.</p></MethodologyNote>
     <h2>Interior: cost by room</h2>

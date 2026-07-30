@@ -32,8 +32,8 @@ const steps: PlannerStep[] = [
         { label: "3 coats (drastic color change)", value: 3 },
       ]},
       { id: "needPrimer", label: "Primer needed?", type: "select", defaultValue: "no", options: [
-        { label: "No — repainting over existing paint", value: "no" },
-        { label: "Yes — bare drywall, dark color, or stains", value: "yes" },
+        { label: "No: repainting over existing paint", value: "no" },
+        { label: "Yes: bare drywall, dark color, or stains", value: "yes" },
       ]},
       { id: "paintCeiling", label: "Paint the ceiling?", type: "select", defaultValue: "no", options: [
         { label: "No", value: "no" },

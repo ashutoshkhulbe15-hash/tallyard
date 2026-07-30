@@ -46,7 +46,7 @@ const steps: PlannerStep[] = [
     id: "footings",
     title: "Post footings",
     context:
-      "Every post needs a concrete footing below the frost line. Depth depends on your climate — deeper in cold regions to prevent frost heave.",
+      "Every post needs a concrete footing below the frost line. Depth depends on your climate: deeper in cold regions to prevent frost heave.",
     inputs: [
       { id: "frostDepth", label: "Frost line depth", type: "select", defaultValue: 36, options: [
         { label: '18" (Southern US)', value: 18 },

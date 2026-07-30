@@ -194,7 +194,7 @@ export default function CostToBuildDeck() {
 
           <h2>Where the money actually goes</h2>
 
-          <Figure number={2} caption="The decking surface you walk on is about 30% of the total cost. The other 70% goes to the invisible structure, hardware, and labor. This is why composite decks are not 2× the price of wood decks — only the surface layer changes; the frame is the same.">
+          <Figure number={2} caption="The decking surface you walk on is about 30% of the total cost. The other 70% goes to the invisible structure, hardware, and labor. This is why composite decks are not 2× the price of wood decks, only the surface layer changes; the frame is the same.">
             <BudgetBreakdownSVG />
           </Figure>
 
@@ -298,7 +298,7 @@ export default function CostToBuildDeck() {
       </section>
 
       {/* JSON-LD */}
-      {/* Cost Dataset — makes the price range machine-extractable for AI answer engines */}
+      {/* Cost Dataset: makes the price range machine-extractable for AI answer engines */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

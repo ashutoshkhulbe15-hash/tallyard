@@ -176,7 +176,7 @@ export const hardwoodFlooringCostCalculatorConfig: CalculatorConfig = {
     { name: "Flooring calculator", slug: "flooring-calculator", description: "Square footage and box count for any flooring" },
     { name: "Insulation calculator", slug: "insulation-calculator", description: "Subfloor and crawlspace R-value" },
     { name: "Countertop calculator", slug: "countertop-calculator", description: "Square footage for the rest of the remodel" },
-    { name: "Paint calculator", slug: "paint-calculator", description: "Gallons for the room the floor goes in" },
+    { name: "Floor refinishing cost", slug: "hardwood-floor-refinishing-cost-calculator", description: "Sand and refinish instead of replacing" },
   ],
 
   howTo: {

@@ -200,7 +200,7 @@ export const groutCalculatorConfig: CalculatorConfig = {
     { name: "Tile calculator", slug: "tile-calculator", description: "Tiles and boxes for any floor" },
     { name: "Paint calculator", slug: "paint-calculator", description: "Gallons of paint for any room" },
     { name: "Flooring calculator", slug: "flooring-calculator", description: "Hardwood, laminate, vinyl" },
-    { name: "Concrete calculator", slug: "concrete-calculator", description: "For slab prep under tile" },
+    { name: "Floor refinishing cost", slug: "hardwood-floor-refinishing-cost-calculator", description: "Sand and refinish instead of replacing" },
   ],
 
   faq: [

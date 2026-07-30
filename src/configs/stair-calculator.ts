@@ -94,16 +94,23 @@ export const stairCalculatorConfig: CalculatorConfig = {
       totalRiseInches * totalRiseInches + totalRun * totalRun
     );
 
-    // Check IRC compliance
+    // IRC R311.7 checks, each reported against its own code section
     const riserIRCOK = actualRiser <= 7.75 && actualRiser >= 4;
     const treadIRCOK = treadDepthInches >= 10;
-    const rulePlus = Math.abs(actualRiser * 2 + treadDepthInches - 25); // "rule of 25"
-    const compliance =
-      riserIRCOK && treadIRCOK
-        ? "IRC-compliant"
-        : !riserIRCOK
-          ? "riser out of range"
-          : "tread too shallow";
+    const widthIRCOK = stairWidthInches >= 36;
+    const allIRCOK = riserIRCOK && treadIRCOK && widthIRCOK;
+
+    const fmtIn = (n: number) => `${formatNumber(round(n, 2))}"`;
+    const compliance = allIRCOK
+      ? "meets IRC R311.7"
+      : !riserIRCOK
+        ? `riser ${fmtIn(actualRiser)} exceeds 7.75" max (R311.7.5.1)`
+        : !treadIRCOK
+          ? `tread ${fmtIn(treadDepthInches)} under 10" min (R311.7.5.2)`
+          : `width ${fmtIn(stairWidthInches)} under 36" min (R311.7.1)`;
+
+    // Minimum tread depth needed to pass the "rule of 25" comfort check
+    const comfortSum = actualRiser * 2 + treadDepthInches;
 
     const displayRise =
       units === "metric" ? round(actualRiser * 2.54, 1) : round(actualRiser, 3);
@@ -122,7 +129,19 @@ export const stairCalculatorConfig: CalculatorConfig = {
         { label: "actual rise", value: `${formatNumber(displayRise)} ${lengthUnit}` },
         { label: "total run", value: `${formatNumber(displayRun)} ${lengthUnit}` },
         { label: "stringer length", value: `${formatNumber(displayStringer)} ${lengthUnit}` },
-        { label: "compliance", value: compliance },
+        {
+          label: "riser (R311.7.5.1)",
+          value: `${fmtIn(actualRiser)} ${riserIRCOK ? "ok, max 7.75\"" : "FAILS, max 7.75\""}`,
+        },
+        {
+          label: "tread (R311.7.5.2)",
+          value: `${fmtIn(treadDepthInches)} ${treadIRCOK ? "ok, min 10\"" : "FAILS, min 10\""}`,
+        },
+        {
+          label: "width (R311.7.1)",
+          value: `${fmtIn(stairWidthInches)} ${widthIRCOK ? "ok, min 36\"" : "FAILS, min 36\""}`,
+        },
+        { label: "verdict", value: compliance },
       ],
       formulaSteps: [
         `total rise = ${totalRise} ${units === "metric" ? "cm" : "in"}${units === "metric" ? ` (${formatNumber(round(totalRiseInches, 1))}")` : ""}`,
@@ -133,8 +152,11 @@ export const stairCalculatorConfig: CalculatorConfig = {
         `treads = ${numRisers} − 1 = ${numTreads}`,
         `total run = ${numTreads} × ${treadDepthInches}" = ${formatNumber(round(totalRun, 1))}"`,
         `stringer = √(${formatNumber(round(totalRiseInches, 1))}² + ${formatNumber(round(totalRun, 1))}²) = ${formatNumber(round(stringerLength, 2))}"`,
-        `IRC check: riser ≤ 7.75" and ≥ 4"? ${riserIRCOK ? "✓" : "✗"}; tread ≥ 10"? ${treadIRCOK ? "✓" : "✗"}`,
-        `rule of 25: 2R + T = ${formatNumber(round(actualRiser * 2 + treadDepthInches, 2))} (target ~24-25)`,
+        `R311.7.5.1 riser ≤ 7.75": ${fmtIn(actualRiser)} → ${riserIRCOK ? "pass" : "FAIL"}`,
+        `R311.7.5.2 tread ≥ 10": ${fmtIn(treadDepthInches)} → ${treadIRCOK ? "pass" : "FAIL"}`,
+        `R311.7.1 width ≥ 36": ${fmtIn(stairWidthInches)} → ${widthIRCOK ? "pass" : "FAIL"}`,
+        `rule of 25: 2R + T = ${formatNumber(round(comfortSum, 2))} (target 24-25)`,
+        allIRCOK ? `verdict: meets IRC R311.7` : `verdict: ${compliance}`,
       ],
     };
   },

@@ -34,7 +34,7 @@ export async function GET() {
   const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tallyard — Home improvement calculators</title>
+    <title>Tallyard: Home improvement calculators</title>
     <link>${baseUrl}</link>
     <description>Free calculators for paint, concrete, roofing, decking, fencing, and 40+ other home projects.</description>
     <language>en-us</language>

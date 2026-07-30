@@ -213,7 +213,7 @@ export const flooringCalculatorConfig: CalculatorConfig = {
     { name: "Tile calculator", slug: "tile-calculator", description: "Tiles and boxes for kitchens and baths" },
     { name: "Grout calculator", slug: "grout-calculator", description: "For tiled transitions" },
     { name: "Hardwood flooring cost", slug: "hardwood-flooring-cost-calculator", description: "Installed price by wood species" },
-    { name: "Paint calculator", slug: "paint-calculator", description: "Gallons of paint for any room" },
+    { name: "Floor refinishing cost", slug: "hardwood-floor-refinishing-cost-calculator", description: "Sand and refinish instead of replacing" },
   ],
 
   faq: [

@@ -18,12 +18,12 @@ const guideMeta: Record<
 > = {
   "vinyl-vs-fiber-cement-siding": {
     verdict:
-      "Fiber cement lasts **50+ years** to vinyl's 20–40 and wins on 30-year cost — if you're staying long enough to bank it.",
+      "Fiber cement lasts **50+ years** to vinyl's 20–40 and wins on 30-year cost, if you're staying long enough to bank it.",
     uses: ["Siding calculator", "Cost to install siding"],
   },
   "composite-vs-pressure-treated-vs-cedar-deck": {
     verdict:
-      "Over 20 years **pressure-treated ends up most expensive** — its boards need replacing around year 15.",
+      "Over 20 years **pressure-treated ends up most expensive**: its boards need replacing around year 15.",
     uses: ["Deck calculator", "Cost to build a deck"],
   },
   "heat-pump-vs-furnace": {
@@ -88,12 +88,12 @@ export default function GuidesIndexPage() {
         <p className="text-base md:text-lg text-ink-muted max-w-2xl leading-relaxed">
           For the choices where the wrong pick costs thousands over the
           ownership period. We lead with the verdict, then show the 20–30 year
-          total-cost math behind it — and link the calculators to run it for
+          total-cost math behind it, and link the calculators to run it for
           your project.
         </p>
       </section>
 
-      {/* Buying guides — verdict-forward rows */}
+      {/* Buying guides: verdict-forward rows */}
       <section className="container-content pt-10 md:pt-12">
         <div className="font-mono text-[11px] tracking-[0.16em] uppercase text-ink-faint mb-5 flex items-center gap-3">
           Buying guides ·{" "}
@@ -166,7 +166,7 @@ export default function GuidesIndexPage() {
         </div>
       </section>
 
-      {/* Cost guides — dense ledger with price ranges */}
+      {/* Cost guides: dense ledger with price ranges */}
       <section className="container-content pt-12 md:pt-14">
         <div className="font-mono text-[11px] tracking-[0.16em] uppercase text-ink-faint mb-5 flex items-center gap-3">
           Cost guides ·{" "}
@@ -202,7 +202,7 @@ export default function GuidesIndexPage() {
         </div>
       </section>
 
-      {/* Principles — one three-cell strip */}
+      {/* Principles, one three-cell strip */}
       <section className="container-content py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 border border-line rounded-xl bg-surface overflow-hidden">
           {[

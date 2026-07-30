@@ -89,7 +89,7 @@ export default function AboutPage() {
           </p>
         </div>
 
-        {/* Founder section — E-E-A-T: named person with photo and LinkedIn */}
+        {/* Founder section: E-E-A-T: named person with photo and LinkedIn */}
         <div className="mt-12 pt-10 border-t border-line">
           <p className="font-mono text-xs text-ink-muted mb-5">
             Founder
@@ -149,7 +149,7 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Editorial process — E-E-A-T: transparency about how content is produced */}
+        {/* Editorial process: E-E-A-T: transparency about how content is produced */}
         <div className="mt-12 pt-10 border-t border-line">
           <p className="font-mono text-xs text-ink-muted mb-5">
             Editorial process
@@ -219,7 +219,7 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* The name — E-E-A-T: explains the entity */}
+        {/* The name: E-E-A-T: explains the entity */}
         <div className="mt-12 pt-10 border-t border-line">
           <p className="font-mono text-xs text-ink-muted mb-5">
             Why &ldquo;Tallyard&rdquo;

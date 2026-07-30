@@ -48,6 +48,7 @@ import { furnaceReplacementCostCalculatorConfig } from "./furnace-replacement-co
 import { egressWindowCalculatorConfig } from "./egress-window-calculator";
 import { deckStairCalculatorConfig } from "./deck-stair-calculator";
 import { hardwoodFlooringCostCalculatorConfig } from "./hardwood-flooring-cost-calculator";
+import { floorRefinishingCostCalculatorConfig } from "./hardwood-floor-refinishing-cost-calculator";
 
 export const configs: Record<string, CalculatorConfig> = {
   "paint-calculator": paintCalculatorConfig,
@@ -99,6 +100,7 @@ export const configs: Record<string, CalculatorConfig> = {
   "egress-window-calculator": egressWindowCalculatorConfig,
   "deck-stair-calculator": deckStairCalculatorConfig,
   "hardwood-flooring-cost-calculator": hardwoodFlooringCostCalculatorConfig,
+  "hardwood-floor-refinishing-cost-calculator": floorRefinishingCostCalculatorConfig,
 };
 
 export function getConfig(slug: string): CalculatorConfig | null {

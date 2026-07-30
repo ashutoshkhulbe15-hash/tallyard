@@ -186,7 +186,7 @@ export function CalculatorIndex() {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Type your project — deck, concrete slab, paint a bedroom, wire a subpanel…"
+            placeholder="Type your project: deck, concrete slab, paint a bedroom, wire a subpanel…"
             autoComplete="off"
             className="flex-1 min-w-0 bg-transparent border-0 text-base py-3.5 px-4 text-ink placeholder:text-ink-faint focus:outline-none"
           />
@@ -319,8 +319,8 @@ export function CalculatorIndex() {
             <div className="px-5 py-12 text-center text-[14.5px] text-ink-muted">
               No calculator matches that yet.
               <span className="block font-mono text-accent text-[12.5px] mt-1.5">
-                Try a material — &quot;concrete&quot;, &quot;tile&quot;,
-                &quot;wire&quot; — or a project — &quot;deck&quot;,
+                Try a material: &quot;concrete&quot;, &quot;tile&quot;,
+                &quot;wire&quot;, or a project, &quot;deck&quot;,
                 &quot;shed&quot;.
               </span>
             </div>
@@ -366,10 +366,10 @@ export function CalculatorIndex() {
           </div>
           <p className="mt-7 text-[13px] text-ink-muted max-w-[70ch] leading-relaxed">
             <b className="text-ink">About this index.</b> Every calculator is
-            free — no signup, no email capture, no usage limits. Estimates land
+            free, no signup, no email capture, no usage limits. Estimates land
             within 5–10% for standard residential projects; formulas come from
             the IRC, NEC, IPC, ASHRAE, ACI, TCNA, and manufacturer data sheets,
-            cited on each page — see our{" "}
+            cited on each page: see our{" "}
             <Link
               href="/methodology"
               className="text-accent hover:underline font-medium"

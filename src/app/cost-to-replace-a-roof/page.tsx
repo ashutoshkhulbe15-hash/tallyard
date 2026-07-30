@@ -162,7 +162,7 @@ export default function CostToReplaceRoof() {
             <PitchMultiplierSVG />
           </Figure>
 
-          <p>A 2,000 square foot house with a 6/12 pitch has about 2,240 square feet of actual roof surface — 22.4 squares. The same house with a 12/12 pitch has 2,820 square feet — 28.2 squares. That is 6 additional squares of shingles, underlayment, and labor. At $450 per square, pitch alone adds $2,700 to the project. The <Link href="/roofing-calculator" className="text-accent hover:underline">roofing calculator</Link> applies the correct multiplier for your pitch automatically.</p>
+          <p>A 2,000 square foot house with a 6/12 pitch has about 2,240 square feet of actual roof surface: 22.4 squares. The same house with a 12/12 pitch has 2,820 square feet: 28.2 squares. That is 6 additional squares of shingles, underlayment, and labor. At $450 per square, pitch alone adds $2,700 to the project. The <Link href="/roofing-calculator" className="text-accent hover:underline">roofing calculator</Link> applies the correct multiplier for your pitch automatically.</p>
 
           <Callout label="Steep roofs cost more per square, too">Roofs above 8/12 pitch require scaffolding or roof jacks for worker safety. This adds $500 to $1,500 in access equipment rental and slows the crew down. Steep roofs also use more nails per shingle (6 instead of 4) per manufacturer wind warranty requirements. Both factors increase the per-square labor rate above the standard $100-150 range.</Callout>
 
