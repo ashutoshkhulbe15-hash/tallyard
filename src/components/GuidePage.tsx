@@ -56,7 +56,7 @@ export function GuidePage({ config }: GuidePageProps) {
         navHeading="In this guide"
         nav={railNav}
         toolGroups={toolGroups}
-        footLines={["TALLYARD EDITORIAL", "NO LEAD FORMS", "SOURCES CITED"]}
+        footLines={["TALLYARD EDITORIAL", "STANDARDS CITED", "MATH SHOWN"]}
       />
 
       <article className="page-main">

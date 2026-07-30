@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     template: "%s | Tallyard",
   },
   description:
-    "Transparent calculators for home improvement and DIY. Every formula public, every source cited, no signup required.",
+    "Transparent calculators for home improvement and DIY. Every formula public, every source cited, every figure checked against published standards.",
   openGraph: {
     title: "Tallyard: Calculators that show their work",
     description:

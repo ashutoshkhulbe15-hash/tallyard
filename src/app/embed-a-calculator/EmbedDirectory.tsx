@@ -100,8 +100,8 @@ export function EmbedDirectory() {
       <p className="text-ink-muted max-w-2xl mb-3">
         Free to use on any site, commercial or not. Paste one line of HTML and
         the working calculator appears on your page: same formulas, same cited
-        standards, no ads, no signup, nothing tracked back to your visitors
-        beyond a standard page request.
+        standards, nothing tracked back to your visitors beyond a standard page
+        request.
       </p>
       <p className="text-ink-muted max-w-2xl mb-10">
         The only condition is the attribution link that ships inside each embed.
@@ -150,8 +150,8 @@ export function EmbedDirectory() {
             <dt className="font-semibold">Will it slow my page down?</dt>
             <dd className="text-ink-muted mt-1">
               The snippet uses lazy loading, so the calculator only loads when a
-              visitor scrolls near it. Fonts are self-hosted and there are no
-              third-party ad or tracking scripts inside the frame.
+              visitor scrolls near it. Fonts are self-hosted and the frame stays
+              lightweight.
             </dd>
           </div>
           <div>

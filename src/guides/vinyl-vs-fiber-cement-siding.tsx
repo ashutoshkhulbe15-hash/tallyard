@@ -629,7 +629,7 @@ export const vinylVsFiberCementGuide: GuideConfig = {
   slug: "vinyl-vs-fiber-cement-siding",
   title: "Vinyl vs fiber cement siding: the real 30-year cost",
   description:
-    "Honest comparison of vinyl and fiber cement siding with 30-year TCO math, fire performance data, and installation guidance. No lead forms.",
+    "Honest comparison of vinyl and fiber cement siding with 30-year TCO math, fire performance data, and installation guidance.",
   bannerHeadline: "Vinyl vs fiber cement siding.",
   bannerTags: ["30-year TCO", "Fire ratings", "Wall cross-section"],
   categoryLabel: "Roofing",

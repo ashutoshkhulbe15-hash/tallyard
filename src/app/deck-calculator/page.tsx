@@ -8,12 +8,12 @@ const SLUG = "deck-calculator";
 export const metadata: Metadata = {
   title: "Deck Calculator: Boards, Joists, Framing & Cost",
   description:
-    "Free deck calculator: boards, joists, beams, posts, and fasteners for any deck size, plus 2026 build cost by size and material. No signup.",
+    "Free deck calculator: boards, joists, beams, posts, and fasteners for any deck size, plus 2026 build cost by size and material.",
   alternates: { canonical: "/deck-calculator" },
   openGraph: {
     title: "Deck Calculator: Boards, Joists, Framing & Cost",
     description:
-      "Free deck calculator: boards, joists, and framing for any deck, plus 2026 build cost by size and material. No signup.",
+      "Free deck calculator: boards, joists, and framing for any deck, plus 2026 build cost by size and material.",
     url: "https://www.tallyard.com/deck-calculator",
     type: "website",
   },

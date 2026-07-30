@@ -8,12 +8,12 @@ const SLUG = "egress-window-calculator";
 export const metadata: Metadata = {
   title: "Egress Window Calculator: Size, Code & Cost (IRC R310)",
   description:
-    "Free egress window calculator: check net clear opening against IRC R310, plus window well rules and the cost to add a basement egress window. No signup.",
+    "Free egress window calculator: check net clear opening against IRC R310, plus window well rules and the cost to add a basement egress window.",
   alternates: { canonical: "/egress-window-calculator" },
   openGraph: {
     title: "Egress Window Calculator: Size, Code & Cost (IRC R310)",
     description:
-      "Free egress window calculator: check net clear opening against IRC R310, plus window well rules and basement egress costs. No signup.",
+      "Free egress window calculator: check net clear opening against IRC R310, plus window well rules and basement egress costs.",
     url: "https://www.tallyard.com/egress-window-calculator",
     type: "website",
   },

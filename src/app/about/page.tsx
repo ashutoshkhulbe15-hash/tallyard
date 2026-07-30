@@ -192,10 +192,10 @@ export default function AboutPage() {
               <p>
                 We don&apos;t accept payment from manufacturers, retailers,
                 or contractors to influence calculator results or guide
-                recommendations. We don&apos;t collect personal information.
-                We don&apos;t run affiliate links. Calculator inputs are
-                processed entirely in your browser. We have no financial
-                relationship with any brand mentioned on this site.
+                recommendations. Calculator inputs are processed entirely in
+                your browser. Where a link earns a commission, it is disclosed,
+                and it never changes what a calculator returns or which product
+                a guide recommends.
               </p>
             </div>
             <div>

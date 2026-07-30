@@ -8,7 +8,7 @@ const SLUG = "flooring-calculator";
 export const metadata: Metadata = {
   title: "Flooring Calculator: Square Footage & Installation Cost",
   description:
-    "Free flooring calculator: figure square footage, waste, and installation cost per sq ft for hardwood, laminate, vinyl, and tile. No signup.",
+    "Free flooring calculator: figure square footage, waste, and installation cost per sq ft for hardwood, laminate, vinyl, and tile.",
   alternates: { canonical: "/flooring-calculator" },
   openGraph: {
     title: "Flooring Calculator: Square Footage & Installation Cost",

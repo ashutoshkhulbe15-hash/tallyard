@@ -8,7 +8,7 @@ const SLUG = "rainwater-calculator";
 export const metadata: Metadata = {
   title: "Rainwater Collection Calculator: Gallons & Tank Size",
   description:
-    "Free rainwater calculator: gallons your roof collects from any rainfall, plus tank and barrel sizing. See how much water an inch of rain really is. No signup.",
+    "Free rainwater calculator: gallons your roof collects from any rainfall, plus tank and barrel sizing. See how much water an inch of rain really is.",
   alternates: { canonical: "/rainwater-calculator" },
   openGraph: {
     title: "Rainwater Collection Calculator: Gallons & Tank Size",

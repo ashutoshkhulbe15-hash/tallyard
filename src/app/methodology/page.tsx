@@ -184,11 +184,12 @@ export default function MethodologyPage() {
               the bottom.
             </p>
             <p>
-              Guides do not accept sponsored content, paid placements, or
-              affiliate commissions. Manufacturer names appear only when
-              relevant to the recommendation (naming a specific cold-climate
-              heat pump model, for example). No manufacturer pays for
-              inclusion.
+              Guides do not accept sponsored content or paid placements.
+              Manufacturer names appear only when relevant to the
+              recommendation (naming a specific cold-climate heat pump model,
+              for example). No manufacturer pays for inclusion, and any
+              commission-earning link is disclosed and never influences a
+              recommendation.
             </p>
           </div>
         </div>

@@ -170,7 +170,7 @@ export function CalculatorIndex() {
           </h1>
           <div className="font-mono text-[11.5px] text-ink-muted">
             EVERY ROW: <b className="text-accent font-medium">FORMULA + SOURCE</b>{" "}
-            · NO SIGNUP
+            · CHECKABLE
           </div>
         </div>
         <div className="mt-4 flex items-center bg-surface border-[1.5px] border-ink rounded-md overflow-hidden shadow-[0_10px_30px_-18px_rgba(17,24,20,0.3)]">
@@ -366,7 +366,7 @@ export function CalculatorIndex() {
           </div>
           <p className="mt-7 text-[13px] text-ink-muted max-w-[70ch] leading-relaxed">
             <b className="text-ink">About this index.</b> Every calculator is
-            free, no signup, no email capture, no usage limits. Estimates land
+            free to use with no usage limits. Estimates land
             within 5–10% for standard residential projects; formulas come from
             the IRC, NEC, IPC, ASHRAE, ACI, TCNA, and manufacturer data sheets,
             cited on each page: see our{" "}

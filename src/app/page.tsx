@@ -115,15 +115,15 @@ export default function HomePage() {
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.14em] text-accent mb-5 font-medium flex items-center gap-2.5">
               <span className="w-7 h-px bg-accent inline-block" aria-hidden="true" />
-              Free · No signup · Formulas public
+              Free · Formulas public · Sources cited
             </p>
             <h1 className="font-display text-4xl md:text-6xl font-extrabold tracking-tighter leading-[1.02] mb-6 max-w-3xl">
               Calculators that <span className="accent-italic">show their work.</span>
             </h1>
             <p className="text-base md:text-lg text-ink-muted max-w-xl leading-relaxed mb-8">
               Free tools for home improvement projects. Every formula public,
-              every source cited. No signup, no email capture, no affiliate
-              agenda.
+              every source cited, every number checkable against a published
+              standard.
             </p>
             <div className="flex flex-wrap gap-3 mb-9">
               <Link
@@ -299,8 +299,8 @@ export default function HomePage() {
           </h2>
           <div className="font-mono text-[11.5px] text-ink-muted">
             EVERY TOOL:{" "}
-            <b className="text-accent font-medium">FORMULA + SOURCE</b> · NO
-            SIGNUP
+            <b className="text-accent font-medium">FORMULA + SOURCE</b> ·
+            CHECKABLE
           </div>
         </div>
         <HomeDirectory />
@@ -348,18 +348,18 @@ export default function HomePage() {
       <section className="container-wide py-14 md:py-20">
         <div className="border border-line border-l-[3px] border-l-accent rounded-r-xl bg-surface px-8 py-9 md:px-10">
           <div className="font-mono text-[10.5px] tracking-[0.14em] uppercase text-accent mb-4">
-            The pledge
+            How these numbers are made
           </div>
           <p className="text-base md:text-lg leading-[1.75] text-ink max-w-[74ch]">
             <b className="font-bold">
-              No email gates. No lead generation. No affiliate bias. No hidden
-              formulas.
+              Every formula visible. Every figure traced to a published
+              standard.
             </b>{" "}
-            You never sign up, log in, or hand over an email to use a tool. We
-            don&apos;t sell your zip code to contractors or run &quot;get 3 free
-            quotes&quot; forms. Guide recommendations follow what the numbers
-            say, not which link pays the highest commission. And if we can&apos;t
-            show you how we got a number, we don&apos;t publish the calculator: {" "}
+            Each calculator shows the arithmetic it ran, names the code section
+            or trade standard behind each constant, and links the source so you
+            can check it yourself. Recommendations follow what the numbers say.
+            And if we can&apos;t show you how we got a number, we don&apos;t
+            publish the calculator:{" "}
             <span className="accent-italic">
               transparency isn&apos;t a feature, it&apos;s the whole point.
             </span>

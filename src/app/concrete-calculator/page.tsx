@@ -8,7 +8,7 @@ const SLUG = "concrete-calculator";
 export const metadata: Metadata = {
   title: "Concrete Calculator: How Many Yards Of Concrete",
   description:
-    "Calculate cubic yards of concrete for any slab, footing, or round pour. Free, no signup. Waste factor included.",
+    "Calculate cubic yards of concrete for any slab, footing, or round pour. Free. Waste factor and formula shown.",
   alternates: { canonical: "/concrete-calculator" },
   openGraph: {
     title: "Concrete Calculator: How Many Yards Of Concrete",

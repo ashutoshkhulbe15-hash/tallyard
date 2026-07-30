@@ -8,7 +8,7 @@ const SLUG = "gutter-calculator";
 export const metadata: Metadata = {
   title: "Gutter Calculator: Size, Downspouts & Cost Estimate",
   description:
-    "Free gutter calculator: linear feet, downspouts, and 5-inch vs 6-inch sizing for any roof. Includes slope, material costs, and how to measure. No signup.",
+    "Free gutter calculator: linear feet, downspouts, and 5-inch vs 6-inch sizing for any roof. Includes slope, material costs, and how to measure.",
   alternates: { canonical: "/gutter-calculator" },
   openGraph: {
     title: "Gutter Calculator: Size, Downspouts & Cost Estimate",

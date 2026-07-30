@@ -8,7 +8,7 @@ const SLUG = "stair-calculator";
 export const metadata: Metadata = {
   title: "Stair Calculator: Stringers, Rise & Run with Diagram",
   description:
-    "Free stair calculator with diagram: steps, rise and run, stringer length and count for any staircase. IRC code compliant with a full parts breakdown. No signup.",
+    "Free stair calculator with diagram: steps, rise and run, stringer length and count for any staircase. IRC code compliant with a full parts breakdown.",
   alternates: { canonical: "/stair-calculator" },
   openGraph: {
     title: "Stair Calculator: Stringers, Rise & Run with Diagram",

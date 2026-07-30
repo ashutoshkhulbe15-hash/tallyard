@@ -8,7 +8,7 @@ const SLUG = "window-sizing-calculator";
 export const metadata: Metadata = {
   title: "Window Size Calculator: Egress, Rough Opening & Measuring",
   description:
-    "Free window calculator: egress size, rough opening, and light and vent minimums to code. Plus how to measure a window for replacement. No signup.",
+    "Free window calculator: egress size, rough opening, and light and vent minimums to code. Plus how to measure a window for replacement.",
   alternates: { canonical: "/window-sizing-calculator" },
   openGraph: {
     title: "Window Size Calculator: Egress, Rough Opening & Measuring",

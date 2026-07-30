@@ -8,7 +8,7 @@ const SLUG = "paint-calculator";
 export const metadata: Metadata = {
   title: "Paint Calculator: How Much Paint Do I Need",
   description:
-    "Calculate how many gallons of paint you need for any room. Free, no signup. Shows the math and accounts for doors and windows.",
+    "Calculate how many gallons of paint you need for any room. Free. Shows the math and accounts for doors and windows.",
   alternates: {
     canonical: "/paint-calculator",
   },

@@ -84,7 +84,7 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
         navHeading="On this page"
         nav={railNav}
         toolGroups={railToolGroups}
-        footLines={["✓ FORMULA SHOWN", "SOURCE CITED", "NO SIGNUP · FREE"]}
+        footLines={["✓ FORMULA SHOWN", "SOURCE CITED", "FREE TO USE"]}
       />
 
       <article className="page-main">

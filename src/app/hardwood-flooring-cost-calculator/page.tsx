@@ -8,12 +8,12 @@ const SLUG = "hardwood-flooring-cost-calculator";
 export const metadata: Metadata = {
   title: "Hardwood Flooring Cost Calculator: Price by Species",
   description:
-    "Free hardwood flooring cost calculator: installed price per square foot by species, solid or engineered, prefinished or site-finished, with labor itemized. No signup.",
+    "Free hardwood flooring cost calculator: installed price per square foot by species, solid or engineered, prefinished or site-finished, with labor itemized.",
   alternates: { canonical: "/hardwood-flooring-cost-calculator" },
   openGraph: {
     title: "Hardwood Flooring Cost Calculator: Price by Species",
     description:
-      "Free hardwood flooring cost calculator: installed price by species, construction, and finish, with labor itemized. No signup.",
+      "Free hardwood flooring cost calculator: installed price by species, construction, and finish, with labor itemized.",
     url: "https://www.tallyard.com/hardwood-flooring-cost-calculator",
     type: "website",
   },

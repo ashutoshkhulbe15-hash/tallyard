@@ -8,12 +8,12 @@ const SLUG = "solar-calculator";
 export const metadata: Metadata = {
   title: "Solar Panel Calculator: How Many Panels & Cost by State",
   description:
-    "Free solar panel calculator: how many panels you need from your kWh and sun hours, plus 2026 cost per watt by state and real output per panel. No signup.",
+    "Free solar panel calculator: how many panels you need from your kWh and sun hours, plus 2026 cost per watt by state and real output per panel.",
   alternates: { canonical: "/solar-calculator" },
   openGraph: {
     title: "Solar Panel Calculator: How Many Panels & Cost by State",
     description:
-    "Free solar panel calculator: how many panels you need from your kWh and sun hours, plus 2026 cost per watt by state and real output per panel. No signup.",
+    "Free solar panel calculator: how many panels you need from your kWh and sun hours, plus 2026 cost per watt by state and real output per panel.",
     url: "https://www.tallyard.com/solar-calculator",
     type: "website",
   },

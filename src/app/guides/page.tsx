@@ -213,8 +213,8 @@ export default function GuidesIndexPage() {
             },
             {
               n: "02",
-              title: "No affiliate bias",
-              body: "No commissions, no lead collection, no sponsored placements. The recommendation follows the numbers, not which link pays.",
+              title: "Recommendations follow the numbers",
+              body: "No sponsored placements and no paid inclusion. Where a guide names a product, it is because the math or the standard points there.",
             },
             {
               n: "03",

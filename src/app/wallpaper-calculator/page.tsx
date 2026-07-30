@@ -8,12 +8,12 @@ const SLUG = "wallpaper-calculator";
 export const metadata: Metadata = {
   title: "Wallpaper Calculator: Rolls, Repeat & Measuring",
   description:
-    "Free wallpaper calculator: rolls needed for any room with pattern repeat, roll size, and openings. Plus how to measure a wall. No signup.",
+    "Free wallpaper calculator: rolls needed for any room with pattern repeat, roll size, and openings. Plus how to measure a wall.",
   alternates: { canonical: "/wallpaper-calculator" },
   openGraph: {
     title: "Wallpaper Calculator: Rolls, Repeat & Measuring",
     description:
-      "Free wallpaper calculator: rolls for any room with pattern repeat and openings, plus how to measure a wall. No signup.",
+      "Free wallpaper calculator: rolls for any room with pattern repeat and openings, plus how to measure a wall.",
     url: "https://www.tallyard.com/wallpaper-calculator",
     type: "website",
   },
