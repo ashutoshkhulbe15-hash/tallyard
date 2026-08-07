@@ -205,7 +205,7 @@ export const paverCalculatorConfig: CalculatorConfig = {
   related: [
     { name: "Gravel calculator", slug: "gravel-calculator", description: "Base gravel for under pavers" },
     { name: "Concrete calculator", slug: "concrete-calculator", description: "Slabs and footings" },
-    { name: "Gravel calculator", slug: "gravel-calculator", description: "Base gravel for paver beds" },
+    { name: "Pool chlorine calculator", slug: "pool-chlorine-calculator", description: "Dosing for the pool your patio surrounds" },
     { name: "Deck calculator", slug: "deck-calculator", description: "Boards, joists, and framing cost" },
   ],
 

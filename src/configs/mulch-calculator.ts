@@ -164,7 +164,7 @@ export const mulchCalculatorConfig: CalculatorConfig = {
     { name: "Rainwater calculator", slug: "rainwater-calculator", description: "Free water for the garden from your roof" },
     { name: "Topsoil calculator", slug: "topsoil-calculator", description: "Volume for garden bed filling" },
     { name: "Sod calculator", slug: "sod-calculator", description: "Square footage of sod for any yard" },
-    { name: "Concrete calculator", slug: "concrete-calculator", description: "Cubic yards for any slab or footing" },
+    { name: "Pool chlorine calculator", slug: "pool-chlorine-calculator", description: "Chlorine dosing for backyard pools" },
   ],
 
   faq: [

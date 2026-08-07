@@ -10,10 +10,33 @@ interface SchemaProps {
  * Used by both the JSON-LD dateModified and the visible byline so the two
  * never drift. Staggered across April 2026 to avoid a burst-publish signal.
  */
+// Refined pages carry their true refresh date. Must stay in sync with the
+// sitemap MODIFIED map: when a page is refined, update BOTH in the same commit.
+const REVIEWED: Record<string, string> = {
+  "pool-chlorine-calculator": "2026-08-08",
+  "wallpaper-calculator": "2026-07-13",
+  "lumber-calculator": "2026-07-13",
+  "stud-spacing-calculator": "2026-07-13",
+  "drywall-calculator": "2026-07-29",
+  "flooring-calculator": "2026-07-29",
+  "solar-calculator": "2026-07-29",
+  "furnace-replacement-cost-calculator": "2026-07-29",
+  "egress-window-calculator": "2026-07-29",
+  "deck-stair-calculator": "2026-07-29",
+  "deck-calculator": "2026-07-29",
+  "hardwood-flooring-cost-calculator": "2026-07-29",
+  "hardwood-floor-refinishing-cost-calculator": "2026-07-29",
+  "shed-calculator": "2026-07-10",
+  "gutter-calculator": "2026-07-11",
+  "stair-calculator": "2026-07-11",
+  "rainwater-calculator": "2026-07-11",
+  "window-sizing-calculator": "2026-07-11",
+};
+
 export function getReviewedDate(slug: string): { iso: string; display: string } {
   const slugHash = slug.split("").reduce((a, c) => a + c.charCodeAt(0), 0);
   const modDay = 15 + (slugHash % 6); // April 15-20
-  const iso = `2026-04-${modDay.toString().padStart(2, "0")}`;
+  const iso = REVIEWED[slug] ?? `2026-04-${modDay.toString().padStart(2, "0")}`;
   const display = new Date(iso + "T00:00:00").toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",

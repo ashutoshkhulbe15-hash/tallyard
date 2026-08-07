@@ -166,6 +166,34 @@ export const poolChlorineCalculatorConfig: CalculatorConfig = {
     };
   },
 
+  howTo: {
+    name: "How to calculate how much chlorine to add to your pool",
+    description:
+      "Work out an exact chlorine dose from your pool volume, current free chlorine reading, and product type.",
+    steps: [
+      {
+        name: "Find your pool volume",
+        text: "Rectangular pools: length x width x average depth x 7.5 gallons. Round pools: diameter squared x average depth x 5.9. Standard round above-ground pools hold 48 inches of water: a 24 foot pool is about 13,600 gallons.",
+      },
+      {
+        name: "Test the water first",
+        text: "Measure free chlorine and pH with a test kit. Adjust pH into the 7.2 to 7.6 range before dosing, because chlorine loses most of its killing power above pH 8.0.",
+      },
+      {
+        name: "Pick a target level",
+        text: "Use 3 ppm for normal maintenance per CDC MAHC and PHTA guidance, 5 ppm during heavy use or heat, and 10 ppm for shock treatment after algae or a crowded weekend.",
+      },
+      {
+        name: "Choose your product and dose",
+        text: "Per 10,000 gallons per 1 ppm raise: 10.5 fl oz of 10 percent liquid, 1.8 oz of cal-hypo 65, 1.3 oz of trichlor 90, or 2.1 oz of dichlor 55. The calculator scales this to your gallons and ppm gap.",
+      },
+      {
+        name: "Add, circulate, retest",
+        text: "Pour liquid in front of a return jet with the pump running, or pre-dissolve granular in a bucket of pool water. Retest after 30 to 60 minutes and swim only when free chlorine is 4 ppm or below.",
+      },
+    ],
+  },
+
   ContentExpansion: PoolChlorineCalculatorExpansion,
 
   formulaDescription:

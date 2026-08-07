@@ -6,13 +6,13 @@ import { getConfig } from "@/configs";
 const SLUG = "pool-chlorine-calculator";
 
 export const metadata: Metadata = {
-  title: "Pool Chlorine Calculator: Dose For Any Pool",
+  title: "Pool Chlorine Calculator: How Much to Add & Shock",
   description:
-    "Calculate chlorine dose for any pool volume. Handles liquid, granular, trichlor, and dichlor products.",
+    "How much chlorine to add to your pool, by product. Liquid, tablet, granular, and shock doses from your gallons and current ppm, using CDC MAHC targets.",
   alternates: { canonical: "/pool-chlorine-calculator" },
   openGraph: {
-    title: "Pool Chlorine Calculator: Dose For Any Pool",
-    description: "Calculate chlorine dose for pool maintenance and shock.",
+    title: "Pool Chlorine Calculator: How Much to Add & Shock",
+    description: "Chlorine dose for maintenance and shock, from volume and current ppm.",
     url: "https://www.tallyard.com/pool-chlorine-calculator",
     type: "website",
   },
