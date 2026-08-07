@@ -237,7 +237,7 @@ export const countertopCalculatorConfig: CalculatorConfig = {
     { name: "Backsplash calculator", slug: "backsplash-calculator", description: "Kitchen tile above counter" },
     { name: "Vanity calculator", slug: "vanity-calculator", description: "Size a bathroom vanity" },
     { name: "Tile calculator", slug: "tile-calculator", description: "Floor and wall tile" },
-    { name: "Hardwood flooring cost", slug: "hardwood-flooring-cost-calculator", description: "Installed price by wood species" },
+    { name: "Kitchen cabinet calculator", slug: "kitchen-cabinet-calculator", description: "The cabinet run your new counter sits on" },
   ],
 
   faq: [

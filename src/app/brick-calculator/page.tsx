@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "brick-calculator";
 
 export const metadata: Metadata = {
-  title: "Brick Calculator: Bricks And Mortar Bags",
+  title: "Brick Calculator: Count, Sizes & Cost Per Brick",
   description:
-    "Calculate bricks and mortar for any wall. All standard sizes with single or double wythe and proper joint math.",
+    "How many bricks you need from wall size, with the standard brick size chart, bricks per square foot, and 2026 cost per brick and per thousand.",
   alternates: { canonical: "/brick-calculator" },
   openGraph: {
-    title: "Brick Calculator: Bricks And Mortar Bags",
+    title: "Brick Calculator: Count, Sizes & Cost Per Brick",
     description: "Calculate bricks and mortar bags for any wall project.",
     url: "https://www.tallyard.com/brick-calculator",
     type: "website",

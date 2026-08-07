@@ -181,7 +181,7 @@ export const sidingCalculatorConfig: CalculatorConfig = {
     { name: "Roofing calculator", slug: "roofing-calculator", description: "Shingle bundles for any pitch" },
     { name: "Insulation calculator", slug: "insulation-calculator", description: "R-value and bags for walls" },
     { name: "Window sizing calculator", slug: "window-sizing-calculator", description: "Egress, rough opening, and measuring" },
-    { name: "Drywall calculator", slug: "drywall-calculator", description: "Interior sheets for walls" },
+    { name: "Brick calculator", slug: "brick-calculator", description: "Brick veneer as the other cladding option" },
   ],
 
   faq: [

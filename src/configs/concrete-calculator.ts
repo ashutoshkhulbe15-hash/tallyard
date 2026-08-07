@@ -162,7 +162,7 @@ export const concreteCalculatorConfig: CalculatorConfig = {
   ],
 
   related: [
-    { name: "Pool chlorine calculator", slug: "pool-chlorine-calculator", description: "Chlorine dose after the pool deck is poured" },
+    { name: "Rebar calculator", slug: "rebar-calculator", description: "Bars, spacing, and laps for the slab you pour" },
     { name: "Shed calculator", slug: "shed-calculator", description: "Framing for a shed on your slab" },
     { name: "Gravel calculator", slug: "gravel-calculator", description: "Cubic yards of gravel base for slabs" },
     { name: "Drain pipe calculator", slug: "drain-pipe-calculator", description: "Size the line before cutting the slab for it" },

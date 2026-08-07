@@ -163,6 +163,34 @@ export const rebarCalculatorConfig: CalculatorConfig = {
     };
   },
 
+  howTo: {
+    name: "How to calculate rebar for a slab",
+    description:
+      "Turn slab dimensions and grid spacing into a bar count, linear feet, and order weight.",
+    steps: [
+      {
+        name: "Pick the bar and grid",
+        text: "Residential 4 inch slabs use #3 or #4 bar at 12 to 18 inches on center each way. Driveways and garages get #4 at 12 inches.",
+      },
+      {
+        name: "Count the runs each way",
+        text: "Slab dimension divided by spacing, plus one, per direction. A 20 foot side at 12 inch spacing is about 20 runs.",
+      },
+      {
+        name: "Convert to linear feet and weight",
+        text: "Runs times run length, both directions, minus 3 inches of cover at each end. Multiply feet by the bar weight: 0.376 lb/ft for #3, 0.668 for #4.",
+      },
+      {
+        name: "Add laps where sticks meet",
+        text: "Bars overlap 40 diameters at splices: 20 inches for #4. Add the lap footage on runs longer than a 20 foot stick and stagger splices between adjacent runs.",
+      },
+      {
+        name: "Buy chairs with the steel",
+        text: "Bars sit at mid-depth on chairs every 3 to 4 feet, with 3 inches of cover against earth. Steel lying on the ground reinforces nothing.",
+      },
+    ],
+  },
+
   ContentExpansion: RebarCalculatorExpansion,
 
   formulaDescription:
@@ -179,14 +207,29 @@ export const rebarCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "CRSI: Concrete Reinforcing Steel Institute",
-      url: "https://www.crsi.org/",
-      note: "Standard sizes, weights, and spacing recommendations",
+      name: "ASTM A615: Deformed Carbon-Steel Bars",
+      url: "https://www.astm.org/a0615_a0615m-22.html",
+      note: "The specification behind the size chart: diameters and weights per foot",
     },
     {
-      name: "ACI 318: Building Code Requirements for Structural Concrete",
-      url: "https://www.concrete.org/",
-      note: "Reference for overlap and spacing requirements",
+      name: "ACI 318: Development and Lap Splice Provisions",
+      url: "https://www.concrete.org/tools/318buildingcodeportal.aspx",
+      note: "The code behind lap lengths and concrete cover; engineered drawings compute from this",
+    },
+    {
+      name: "CRSI: Placing Reinforcing Bars",
+      url: "https://www.crsi.org/resources/",
+      note: "Industry placement practice: chairs, ties, and lap staggering",
+    },
+    {
+      name: "ACI 332: Residential Concrete",
+      url: "https://www.concrete.org/store/productdetail.aspx?ItemID=33220",
+      note: "Prescriptive residential footing and slab reinforcement",
+    },
+    {
+      name: "ASTM A1064: Welded Wire Reinforcement",
+      url: "https://www.astm.org/a1064_a1064m-22.html",
+      note: "The standard for the mesh alternative compared on this page",
     },
   ],
 

@@ -119,6 +119,34 @@ export const sodCalculatorConfig: CalculatorConfig = {
     };
   },
 
+  howTo: {
+    name: "How to measure and order sod",
+    description:
+      "Convert yard measurements to square feet, pallets, and a delivery plan that keeps the sod alive.",
+    steps: [
+      {
+        name: "Measure by section",
+        text: "Length times width for each rectangle of lawn; treat curves as rectangles and let waste cover the trimming.",
+      },
+      {
+        name: "Add waste",
+        text: "5 percent for a rectangular yard, 8 to 10 percent where beds curve or trees interrupt the runs.",
+      },
+      {
+        name: "Convert to pallets",
+        text: "Divide by your farm's pallet coverage. 450 to 500 square feet is typical, but it ranges 400 to 700 by region, so confirm the number on the quote.",
+      },
+      {
+        name: "Prepare the ground first",
+        text: "Strip old grass, grade away from the house, add topsoil where the soil is poor, rake smooth, and dampen the ground the morning of delivery.",
+      },
+      {
+        name: "Schedule delivery for laying day",
+        text: "Farms cut to order; sod composts itself on the pallet within a day in summer. Lay within 24 hours, stagger joints, roll, and water daily for two weeks.",
+      },
+    ],
+  },
+
   ContentExpansion: SodCalculatorExpansion,
 
   formulaDescription:
@@ -134,14 +162,24 @@ export const sodCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "Turfgrass Producers International",
-      url: "https://www.turfgrasssod.org/",
-      note: "Industry standards for sod sizing and installation",
+      name: "Turfgrass Producers International: Buying and Installing Sod",
+      url: "https://www.turfgrasssod.org/consumers/",
+      note: "Industry guidance on pallet handling, timing, and establishment",
+    },
+    {
+      name: "UF/IFAS Extension: St. Augustinegrass",
+      url: "https://edis.ifas.ufl.edu/entity/topic/st_augustinegrass",
+      note: "The reference for the Gulf-state shade variety, including establishment watering",
+    },
+    {
+      name: "Clemson HGIC: Sodding a Lawn",
+      url: "https://hgic.clemson.edu/factsheet/sodding-a-lawn/",
+      note: "Extension establishment sequence: prep, laying, rolling, and the watering taper",
     },
     {
       name: "University of Maryland Extension: Lawn Establishment",
-      url: "https://extension.umd.edu/",
-      note: "Timing, site prep, and installation reference",
+      url: "https://extension.umd.edu/resource/lawn-establishment-overseeding-and-renovation",
+      note: "Cool-season variety guidance for northern lawns",
     },
   ],
 

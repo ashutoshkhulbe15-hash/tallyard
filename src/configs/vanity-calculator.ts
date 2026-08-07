@@ -184,7 +184,7 @@ export const vanityCalculatorConfig: CalculatorConfig = {
 
   related: [
     { name: "Countertop calculator", slug: "countertop-calculator", description: "Square feet for counter surfaces" },
-    { name: "Shower tile calculator", slug: "shower-tile-calculator", description: "Tile for tub and shower" },
+    { name: "Kitchen cabinet calculator", slug: "kitchen-cabinet-calculator", description: "Same estimate for the kitchen version" },
     { name: "Backsplash calculator", slug: "backsplash-calculator", description: "Kitchen and bath backsplash" },
     { name: "Tile calculator", slug: "tile-calculator", description: "For bathroom floors and walls" },
   ],

@@ -8,7 +8,7 @@ const SLUG = "stair-calculator";
 export const metadata: Metadata = {
   title: "Stair Calculator: Stringers, Rise & Run with Diagram",
   description:
-    "Free stair calculator with diagram: steps, rise and run, stringer length and count for any staircase. IRC code compliant with a full parts breakdown.",
+    "Stair rise, run, and stringer layout with a cut diagram. Covers standard and max riser height (IRC 7-3/4 in), tread depth, and the 2R + T comfort rule.",
   alternates: { canonical: "/stair-calculator" },
   openGraph: {
     title: "Stair Calculator: Stringers, Rise & Run with Diagram",

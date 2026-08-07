@@ -163,6 +163,32 @@ export function StairCalculatorExpansion() {
         probably do not have.
       </Callout>
 
+      <h2>Standard and maximum stair riser height</h2>
+      <p>
+        The numbers people search for, stated plainly. Standard riser
+        height in US homes is 7 to 7.5 inches. The IRC maximum is 7-3/4
+        inches, and there is no residential minimum, though anything
+        under about 4 inches reads as a trip edge rather than a step.
+        Commercial buildings under the IBC run tighter: 7 inch maximum
+        riser, 4 inch minimum, 11 inch minimum tread. Exterior and deck
+        stairs follow the same IRC residential limits as indoor stairs,
+        with one practical difference: outdoor risers are usually built
+        at 7 inches or a touch under, because wet treads punish steep
+        flights.
+      </p>
+      <p>
+        The comfort check builders actually use is the old formula: two
+        times the riser plus the tread should land between 24 and 25
+        inches (written 2R + T = 24 to 25). A 7 inch rise with an 11
+        inch tread hits 25 exactly, which is why the 7-11 stair feels
+        right underfoot. A code-legal 7.75 rise with a 10 inch tread
+        scores 25.5, technically passing inspection while telling your
+        knees it cut every corner the code allows. If a flight must
+        turn, the math does not change: an L-shaped stair is two
+        straight flights joined by a landing at least as deep as the
+        stair is wide, and each flight runs its own identical risers.
+      </p>
+
       <h2>What angle should stairs be</h2>
       <p>
         Angle is just rise and run wearing a different hat. A staircase built to the

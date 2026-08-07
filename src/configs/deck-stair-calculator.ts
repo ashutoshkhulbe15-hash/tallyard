@@ -208,7 +208,7 @@ export const deckStairCalculatorConfig: CalculatorConfig = {
   related: [
     { name: "Deck calculator", slug: "deck-calculator", description: "Boards, joists, and fasteners for the deck itself" },
     { name: "Stair calculator", slug: "stair-calculator", description: "Interior stair layout and code limits" },
-    { name: "Lumber calculator", slug: "lumber-calculator", description: "Board feet for the stringer and tread order" },
+    { name: "Rebar calculator", slug: "rebar-calculator", description: "Mesh or bars for the landing pad" },
     { name: "Concrete calculator", slug: "concrete-calculator", description: "The landing pad the stringers sit on" },
   ],
 

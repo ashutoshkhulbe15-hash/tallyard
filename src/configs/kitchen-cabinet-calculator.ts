@@ -180,6 +180,34 @@ export const kitchenCabinetCalculatorConfig: CalculatorConfig = {
     };
   },
 
+  howTo: {
+    name: "How to estimate kitchen cabinets by linear foot",
+    description:
+      "Convert wall measurements into cabinet linear feet and a budget range by grade.",
+    steps: [
+      {
+        name: "Measure each wall of the run",
+        text: "Wall by wall, in inches, along the base cabinet line. Include the island as its own run.",
+      },
+      {
+        name: "Subtract the appliances",
+        text: "Remove the range (usually 30 inches), fridge (36), and dishwasher (24) openings. Those feet hold no cabinets.",
+      },
+      {
+        name: "Account for corners",
+        text: "Each L or U corner consumes about 36 inches from both walls it touches, filled by a corner or lazy susan unit.",
+      },
+      {
+        name: "Convert to linear feet and price by grade",
+        text: "Divide by 12. Installed 2026 ranges: stock $100-300 per linear foot, semi-custom $200-650, custom $500-1,200 and up.",
+      },
+      {
+        name: "Fill the run in 3 inch increments",
+        text: "Standard widths run 9 to 48 inches in 3 inch steps; every run ends with a 1 to 3 inch filler scribed to the wall.",
+      },
+    ],
+  },
+
   ContentExpansion: KitchenCabinetCalculatorExpansion,
 
   formulaDescription:
@@ -196,14 +224,24 @@ export const kitchenCabinetCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "NKBA: Kitchen Planning Guidelines",
-      url: "https://www.nkba.org/",
-      note: "Industry standards for kitchen layout and cabinet sizing",
+      name: "KCMA/ANSI A161.1: Cabinet Performance Standard",
+      url: "https://www.kcma.org/certifications/ansi-kcma-a161-1-certification/",
+      note: "The industry standard behind fixed heights, depths, and the 3 inch width system",
     },
     {
-      name: "HomeAdvisor: Cabinet Cost Guide",
-      url: "https://www.homeadvisor.com/",
-      note: "Reference for installed cost by cabinet grade",
+      name: "NKBA: Kitchen Planning Guidelines",
+      url: "https://nkba.org/guidelines/",
+      note: "Clearances, work triangle, and landing space rules that shape cabinet layouts",
+    },
+    {
+      name: "KCMA: Certified Cabinet Directory",
+      url: "https://www.kcma.org/certifications/directory-of-certified-cabinet-manufacturers/",
+      note: "Which stock and semi-custom lines actually carry the certification seal",
+    },
+    {
+      name: "ANSI/BHMA A156.9: Cabinet Hardware",
+      url: "https://www.buildershardware.com/standards",
+      note: "The cycle-testing standard behind hinge and slide durability claims",
     },
   ],
 

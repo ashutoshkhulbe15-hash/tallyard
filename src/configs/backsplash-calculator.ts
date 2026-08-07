@@ -186,7 +186,7 @@ export const backsplashCalculatorConfig: CalculatorConfig = {
   related: [
     { name: "Tile calculator", slug: "tile-calculator", description: "For floors and general tile installs" },
     { name: "Grout calculator", slug: "grout-calculator", description: "Grout for tile projects" },
-    { name: "Shower tile calculator", slug: "shower-tile-calculator", description: "For tub and shower walls" },
+    { name: "Kitchen cabinet calculator", slug: "kitchen-cabinet-calculator", description: "Linear feet and cost for the cabinets below" },
     { name: "Countertop calculator", slug: "countertop-calculator", description: "Counter square footage" },
   ],
 

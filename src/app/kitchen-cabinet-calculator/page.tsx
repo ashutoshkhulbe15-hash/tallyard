@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "kitchen-cabinet-calculator";
 
 export const metadata: Metadata = {
-  title: "Kitchen Cabinet Calculator: Linear Feet And Budget",
+  title: "Kitchen Cabinet Calculator: Cost Per Linear Foot",
   description:
-    "Calculate linear feet of cabinets for any kitchen layout. Upper and base cabinet counts with cost estimate by grade.",
+    "Cabinet linear feet and cost from your kitchen layout, with the standard size chart in 3 inch increments and 2026 prices for stock to custom.",
   alternates: { canonical: "/kitchen-cabinet-calculator" },
   openGraph: {
-    title: "Kitchen Cabinet Calculator: Linear Feet And Budget",
+    title: "Kitchen Cabinet Calculator: Cost Per Linear Foot",
     description: "Calculate kitchen cabinet linear feet for any layout.",
     url: "https://www.tallyard.com/kitchen-cabinet-calculator",
     type: "website",

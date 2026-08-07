@@ -152,6 +152,34 @@ export const brickCalculatorConfig: CalculatorConfig = {
     };
   },
 
+  howTo: {
+    name: "How to calculate how many bricks you need",
+    description:
+      "Convert wall dimensions to a brick order using modular coverage and a waste factor.",
+    steps: [
+      {
+        name: "Measure the wall area",
+        text: "Length times height per wall section in square feet. Subtract window and door openings.",
+      },
+      {
+        name: "Multiply by bricks per square foot",
+        text: "Modular brick with a 3/8 inch joint covers at 6.9 bricks per square foot of single-wythe wall. Other sizes are in the chart: standard 6.6, queen 5.8, king 4.8.",
+      },
+      {
+        name: "Double for double wythe",
+        text: "An 8 inch solid brick wall is two wythes, so double the count. A veneer over frame is single wythe.",
+      },
+      {
+        name: "Add waste",
+        text: "Use 5 percent for a clean rectangular wall and 10 percent where there are arches, angles, or several openings, since every cut wastes part of a brick.",
+      },
+      {
+        name: "Order the whole job at once",
+        text: "Brick color varies by kiln run and a later top-up order will not match. Compare supplier quotes per thousand bricks, not per cube, since cube counts vary from 400 to 530.",
+      },
+    ],
+  },
+
   ContentExpansion: BrickCalculatorExpansion,
 
   formulaDescription:
@@ -168,14 +196,29 @@ export const brickCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "Brick Industry Association: Technical Notes",
-      url: "https://www.gobrick.com/",
-      note: "Standard brick sizes and wall design references",
+      name: "BIA Technical Note 10: Dimensioning and Estimating Brick Masonry",
+      url: "https://www.gobrick.com/resources/technical-notes",
+      note: "The modular sizing system and per-square-foot coverage this calculator applies",
     },
     {
-      name: "Portland Cement Association: Masonry",
-      url: "https://www.cement.org/",
-      note: "Mortar coverage and joint width references",
+      name: "BIA Technical Note 10B: Brick Sizes and Related Information",
+      url: "https://www.gobrick.com/resources/technical-notes",
+      note: "The size chart: modular, queen, king, engineer, and utility dimensions",
+    },
+    {
+      name: "ASTM C216: Facing Brick Specification",
+      url: "https://www.astm.org/c0216-23.html",
+      note: "The quality standard facing brick is graded against",
+    },
+    {
+      name: "ASTM C62: Building Brick Specification",
+      url: "https://www.astm.org/c0062-17.html",
+      note: "The standard for structural common brick",
+    },
+    {
+      name: "Portland Cement Association: Masonry Mortar",
+      url: "https://www.cement.org/cement-concrete/products/masonry",
+      note: "Mortar types and coverage per brick count",
     },
   ],
 

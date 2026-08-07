@@ -187,7 +187,7 @@ export const rainwaterCalculatorConfig: CalculatorConfig = {
     { name: "Gutter calculator", slug: "gutter-calculator", description: "Linear feet and downspouts" },
     { name: "Roofing calculator", slug: "roofing-calculator", description: "Shingle bundles by pitch" },
     { name: "Mulch calculator", slug: "mulch-calculator", description: "Garden beds watered by harvest" },
-    { name: "Pool chlorine calculator", slug: "pool-chlorine-calculator", description: "Dose for collected pool fill" },
+    { name: "Sod calculator", slug: "sod-calculator", description: "The lawn the harvested water keeps alive" },
   ],
 
   faq: [

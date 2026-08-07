@@ -240,6 +240,16 @@ export const stairCalculatorConfig: CalculatorConfig = {
         "For a floor-to-floor rise of about 8.75 feet (105 inches - 8 ft ceiling plus floor assembly), you need 14 risers and 13 treads with a 7.5\" target. For a 9-foot ceiling (about 117 inches total rise), 16 risers and 15 treads. The calculator above handles any rise.",
     },
     {
+      question: "What is the standard stair riser height?",
+      answer:
+        "7 to 7.5 inches in US homes. The IRC maximum is 7-3/4 inches per riser with no more than 3/8 inch variation across the flight. Commercial stairs under the IBC are capped at 7 inches. Exterior and deck stairs follow the same residential limits, usually built at 7 inches or less for wet-weather comfort.",
+    },
+    {
+      question: "What is the 2R + T stair formula?",
+      answer:
+        "Twice the riser height plus the tread depth should total 24 to 25 inches. A 7 inch rise with an 11 inch tread scores exactly 25, the classic comfortable stair. The formula catches flights that pass code but feel wrong: a 7.75 rise on a 10 inch tread is legal and still cramped.",
+    },
+    {
       question: "What's the IRC code for stair dimensions?",
       answer:
         "IRC 2021 residential: risers 4\"-7.75\" (variation ≤ 3/8\" between any two risers), treads minimum 10\", stair width minimum 36\". Handrails required if more than 4 risers. Some local codes are stricter - always check before building.",
