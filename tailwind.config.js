@@ -4,14 +4,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        bg: "#FAFBF8",
-        "bg-warm": "#F1F4EF",
+        bg: "#FCFDFB",
+        "bg-warm": "#F5F7F3",
         surface: "#FFFFFF",
-        "surface-alt": "#F6F8F4",
+        "surface-alt": "#F9FAF7",
         ink: {
-          DEFAULT: "#111814",
-          muted: "#42504A",
-          faint: "#6B756E",
+          DEFAULT: "#0B100D",
+          muted: "#333F39",
+          faint: "#59635C",
         },
         walnut: {
           DEFAULT: "#111814",

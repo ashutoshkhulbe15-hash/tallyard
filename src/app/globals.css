@@ -9,14 +9,14 @@
     text-rendering: optimizeLegibility;
   }
   body {
-    background-color: #FAFBF8;
+    background-color: #FCFDFB;
     background-image:
       linear-gradient(rgba(17,24,20,0.05) 1px, transparent 1px),
       linear-gradient(90deg, rgba(17,24,20,0.05) 1px, transparent 1px),
       linear-gradient(rgba(17,24,20,0.028) 1px, transparent 1px),
       linear-gradient(90deg, rgba(17,24,20,0.028) 1px, transparent 1px);
     background-size: 96px 96px, 96px 96px, 24px 24px, 24px 24px;
-    color: #111814;
+    color: #0B100D;
     font-family: var(--font-instrument), "Instrument Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
     font-size: 15px;
     line-height: 1.6;
@@ -119,7 +119,7 @@
   .guide-prose {
     font-size: 17.5px;
     line-height: 1.75;
-    color: #111814;
+    color: #0B100D;
   }
   .guide-prose > h2 {
     font-size: 1.75rem;
@@ -146,7 +146,7 @@
   }
   .guide-prose > p strong {
     font-weight: 600;
-    color: #111814;
+    color: #0B100D;
   }
   .guide-prose > ul,
   .guide-prose > ol {

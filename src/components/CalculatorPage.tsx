@@ -181,76 +181,81 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
                 </section>
               )}
 
-              {config.ContentExpansion && (
-                <section className="mt-10 pt-8 border-t border-line">
-                  <div className="guide-prose">
-                    <config.ContentExpansion />
-                  </div>
-                </section>
-              )}
 
-              {config.faq.length > 0 && (
-                <section
-                  id="faq"
-                  className="mt-10 pt-8 border-t border-line scroll-mt-20"
-                >
-                  <h2 className="text-2xl font-bold tracking-tight mb-6">
-                    Frequently asked
-                  </h2>
-                  <div className="space-y-7">
-                    {config.faq.map((item, i) => (
-                      <div key={i}>
-                        <h3 className="text-[17px] font-semibold mb-2">
-                          {item.question}
-                        </h3>
-                        <p className="text-[15px] text-ink-muted leading-relaxed">
-                          {item.answer}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </section>
-              )}
-
-              {config.sources.length > 0 && (
-                <section
-                  id="sources"
-                  className="mt-10 pt-8 border-t border-line scroll-mt-20"
-                >
-                  <h2 className="text-2xl font-bold tracking-tight mb-5">
-                    Sources
-                  </h2>
-                  <ul className="space-y-2.5 text-[15px] text-ink-muted">
-                    {config.sources.map((source, i) => (
-                      <li key={i}>
-                        {source.url ? (
-                          <a
-                            href={source.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-accent hover:underline font-medium"
-                          >
-                            {source.name}
-                          </a>
-                        ) : (
-                          <span className="text-ink font-medium">
-                            {source.name}
-                          </span>
-                        )}
-                        {source.note && (
-                          <span className="text-ink-faint">
-                            {" "}
-                            - {source.note}
-                          </span>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                </section>
-              )}
             </div>
           </div>
         </section>
+
+      {/* Guide: full reading width below the calculator grid so diagrams
+          and tables get room. Mobile reading order is unchanged (this
+          already followed the calculator in DOM order). */}
+      {config.ContentExpansion && (
+        <section id="guide" className="scroll-mt-20 max-w-[900px]">
+          <div className="pt-10 border-t border-line guide-prose">
+            <config.ContentExpansion />
+          </div>
+        </section>
+      )}
+
+      {config.faq.length > 0 && (
+        <section
+          id="faq"
+          className="mt-10 pt-8 border-t border-line scroll-mt-20"
+        >
+          <h2 className="text-2xl font-bold tracking-tight mb-6">
+            Frequently asked
+          </h2>
+          <div className="space-y-7">
+            {config.faq.map((item, i) => (
+              <div key={i}>
+                <h3 className="text-[17px] font-semibold mb-2">
+                  {item.question}
+                </h3>
+                <p className="text-[15px] text-ink-muted leading-relaxed">
+                  {item.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {config.sources.length > 0 && (
+        <section
+          id="sources"
+          className="mt-10 pt-8 border-t border-line scroll-mt-20"
+        >
+          <h2 className="text-2xl font-bold tracking-tight mb-5">
+            Sources
+          </h2>
+          <ul className="space-y-2.5 text-[15px] text-ink-muted">
+            {config.sources.map((source, i) => (
+              <li key={i}>
+                {source.url ? (
+                  <a
+                    href={source.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-accent hover:underline font-medium"
+                  >
+                    {source.name}
+                  </a>
+                ) : (
+                  <span className="text-ink font-medium">
+                    {source.name}
+                  </span>
+                )}
+                {source.note && (
+                  <span className="text-ink-faint">
+                    {" "}
+                    - {source.note}
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       {/* Related */}
       {config.related.length > 0 && (

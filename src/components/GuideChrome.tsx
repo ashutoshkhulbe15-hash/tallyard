@@ -3,19 +3,21 @@
  * across Tallyard. Kept in one place so guide visualizations stay
  * consistent even when the author draws custom diagrams.
  */
+import { FigureLightbox } from "./FigureLightbox";
+
 export const GUIDE_SVG = {
   // Surface
-  bgWarm: "#F1F4EF",
-  bgSurface: "#FAFBF8",
+  bgWarm: "#F5F7F3",
+  bgSurface: "#FCFDFB",
   // Ink
-  ink: "#111814",
-  inkMuted: "#3D3D3A",
-  inkFaint: "#888780",
+  ink: "#0B100D",
+  inkMuted: "#333330",
+  inkFaint: "#6F6E66",
   // Accent (verify green) — use for highlights, totals, the answer
   accent: "#147A46",
   accentSoft: "#E7F3EC",
   // Walnut — dark callouts, compressor boxes, the answer blocks
-  walnut: "#111814",
+  walnut: "#0B100D",
   // Secondary tints for "the other option" in comparisons — cool slate
   slate: "#B4C4D0",
   slateSoft: "#EAF0F5",
@@ -41,9 +43,7 @@ export function Figure({
 }) {
   return (
     <figure className="my-8 -mx-2 md:mx-0">
-      <div className="bg-surface border border-line rounded-lg p-4 md:p-6 overflow-hidden">
-        {children}
-      </div>
+      <FigureLightbox>{children}</FigureLightbox>
       {(caption || number) && (
         <figcaption className="text-xs text-ink-faint mt-2 px-2 md:px-0 leading-relaxed">
           {number && (
