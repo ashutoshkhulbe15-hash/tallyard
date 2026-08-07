@@ -46,9 +46,9 @@ function ChemistryTargetsSVG() {
         return (
           <g key={r.label}>
             <text x="150" y={y + 6} textAnchor="end" fontSize="11" fontWeight="700" fill={GUIDE_SVG.ink}>{r.label}</text>
-            <rect x="165" y={y - 8} width="120" height="22" rx="11" fill={GUIDE_SVG.accentSoft} stroke={GUIDE_SVG.accent} strokeWidth="1" />
-            <text x="225" y={y + 7} textAnchor="middle" fontSize="11" fontWeight="700" fill={GUIDE_SVG.accent}>{r.low} to {r.high}</text>
-            <text x="300" y={y + 6} fontSize="9.5" fill={GUIDE_SVG.inkFaint}>{r.note}</text>
+            <rect x="165" y={y - 8} width="148" height="22" rx="11" fill={GUIDE_SVG.accentSoft} stroke={GUIDE_SVG.accent} strokeWidth="1" />
+            <text x="239" y={y + 7} textAnchor="middle" fontSize="11" fontWeight="700" fill={GUIDE_SVG.accent}>{r.low} to {r.high}</text>
+            <text x="325" y={y + 6} fontSize="9.5" fill={GUIDE_SVG.inkFaint}>{r.note}</text>
           </g>
         );
       })}
@@ -58,7 +58,7 @@ function ChemistryTargetsSVG() {
 
 function VolumeFormulaSVG() {
   return (
-    <svg viewBox="0 0 680 240" width="100%" height="auto" role="img" aria-label="Pool volume formulas: rectangular pools use length times width times average depth times 7.5. Round pools use diameter squared times average depth times 5.9.">
+    <svg viewBox="0 0 680 256" width="100%" height="auto" role="img" aria-label="Pool volume formulas: rectangular pools use length times width times average depth times 7.5. Round pools use diameter squared times average depth times 5.9.">
       <text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>Finding your gallons</text>
       <text x="20" y="43" fontSize="10" fill={GUIDE_SVG.inkFaint}>Average depth = (shallow end + deep end) divided by 2</text>
       <rect x="40" y="70" width="170" height="90" rx="4" fill={GUIDE_SVG.slateSoft} stroke={GUIDE_SVG.cool} strokeWidth="1.5" />
