@@ -214,7 +214,7 @@ export const waterHeaterCalculatorConfig: CalculatorConfig = {
   ],
 
   related: [
-    { name: "Solar panel calculator", slug: "solar-calculator", description: "Offset an electric water heater with solar" },
+    { name: "Drain pipe calculator", slug: "drain-pipe-calculator", description: "DFU sizing for the drain lines in the same wall" },
     { name: "Heat pump calculator", slug: "heat-pump-calculator", description: "Home heating and cooling size" },
     { name: "Wire size calculator", slug: "wire-size-calculator", description: "Circuit wiring for electric water heaters" },
     { name: "Furnace replacement cost", slug: "furnace-replacement-cost-calculator", description: "Furnaces often share the water heater flue" },

@@ -220,7 +220,7 @@ export const studSpacingCalculatorConfig: CalculatorConfig = {
     { name: "Drywall calculator", slug: "drywall-calculator", description: "Sheets for framed walls" },
     { name: "Egress window calculator", slug: "egress-window-calculator", description: "R310 checks for the opening you frame" },
     { name: "Insulation calculator", slug: "insulation-calculator", description: "R-value by framing spacing" },
-    { name: "Window sizing calculator", slug: "window-sizing-calculator", description: "Rough openings and window headers" },
+    { name: "Drain pipe calculator", slug: "drain-pipe-calculator", description: "DFU pipe sizing for the wet wall you frame" },
   ],
 
   faq: [

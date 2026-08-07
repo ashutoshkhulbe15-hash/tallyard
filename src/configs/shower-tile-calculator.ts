@@ -219,7 +219,7 @@ export const showerTileCalculatorConfig: CalculatorConfig = {
   related: [
     { name: "Tile calculator", slug: "tile-calculator", description: "For floors and general tile installs" },
     { name: "Grout calculator", slug: "grout-calculator", description: "Grout for tile projects" },
-    { name: "Backsplash calculator", slug: "backsplash-calculator", description: "Kitchen backsplash tile" },
+    { name: "Drain pipe calculator", slug: "drain-pipe-calculator", description: "Size the shower drain line by fixture units" },
     { name: "Drywall calculator", slug: "drywall-calculator", description: "Backer board for shower walls" },
   ],
 

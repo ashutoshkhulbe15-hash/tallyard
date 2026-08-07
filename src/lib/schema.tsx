@@ -14,6 +14,8 @@ interface SchemaProps {
 // sitemap MODIFIED map: when a page is refined, update BOTH in the same commit.
 const REVIEWED: Record<string, string> = {
   "pool-chlorine-calculator": "2026-08-08",
+  "drain-pipe-calculator": "2026-08-08",
+  "countertop-calculator": "2026-08-08",
   "wallpaper-calculator": "2026-07-13",
   "lumber-calculator": "2026-07-13",
   "stud-spacing-calculator": "2026-07-13",

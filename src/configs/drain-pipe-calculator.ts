@@ -155,6 +155,34 @@ export const drainPipeCalculatorConfig: CalculatorConfig = {
     };
   },
 
+  howTo: {
+    name: "How to size a drain pipe with fixture units",
+    description:
+      "Add up drainage fixture units for the fixtures on a line, then read the required pipe size from the IPC tables.",
+    steps: [
+      {
+        name: "List the fixtures on the line",
+        text: "Count every fixture the pipe will carry: toilets, sinks, showers, tubs, washing machine standpipes, dishwashers, and floor drains.",
+      },
+      {
+        name: "Add the DFU values",
+        text: "Per IPC Table 709.1: toilet 3 or 4, kitchen sink 2, lavatory 1, shower or tub 2, washer standpipe 2. A full bathroom group counts as 5 total.",
+      },
+      {
+        name: "Read the pipe size from the table",
+        text: "Per IPC Table 710.1(2), a horizontal branch carries 3 DFU at 1-1/2 inches, 6 at 2 inches, 20 at 3 inches, and 160 at 4 inches.",
+      },
+      {
+        name: "Apply the toilet rule",
+        text: "Any line serving a toilet is 3 inch minimum regardless of DFU total, because solids need diameter, not just capacity.",
+      },
+      {
+        name: "Set the slope and check the drop",
+        text: "Use 1/4 inch of fall per foot for pipe 2-1/2 inches and smaller. Drop equals run in feet times slope, so a 16 foot branch drops 4 inches.",
+      },
+    ],
+  },
+
   ContentExpansion: DrainPipeCalculatorExpansion,
 
   formulaDescription:
@@ -171,14 +199,29 @@ export const drainPipeCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "IPC 2021: Drainage Fixture Units",
-      url: "https://codes.iccsafe.org/content/IPC2021P1",
-      note: "International Plumbing Code official DFU table",
+      name: "IPC 2021, Table 709.1: Drainage Fixture Units",
+      url: "https://codes.iccsafe.org/content/IPC2021P1/chapter-7-sanitary-drainage",
+      note: "The official DFU value for every fixture; the ratings this calculator applies",
     },
     {
-      name: "UPC 2021: Drainage System Design",
-      url: "https://www.iapmo.org/",
-      note: "Uniform Plumbing Code reference",
+      name: "IPC 2021, Tables 710.1(1) and 710.1(2): Pipe Sizing",
+      url: "https://codes.iccsafe.org/content/IPC2021P1/chapter-7-sanitary-drainage",
+      note: "Maximum DFU per pipe size for stacks, branches, and building drains",
+    },
+    {
+      name: "IPC 2021, Section 704.1: Slope of Horizontal Drainage",
+      url: "https://codes.iccsafe.org/content/IPC2021P1/chapter-7-sanitary-drainage",
+      note: "The 1/4 inch per foot minimum for pipe 2-1/2 inches and smaller",
+    },
+    {
+      name: "UPC 2021, Chapter 7: Sanitary Drainage",
+      url: "https://epubs.iapmo.org/2021/UPC/",
+      note: "The other major US code; some DFU values differ from the IPC",
+    },
+    {
+      name: "IPC 2021, Chapter 9: Vents",
+      url: "https://codes.iccsafe.org/content/IPC2021P1/chapter-9-vents",
+      note: "Every DFU table assumes vented traps; vent sizing lives here",
     },
   ],
 

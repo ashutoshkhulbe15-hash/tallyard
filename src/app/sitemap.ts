@@ -10,6 +10,8 @@ const REDESIGN_DATE = new Date("2026-07-09"); // sitewide Ledger redesign shippe
 const MODIFIED: Record<string, Date> = {
   // page-refinement series deploys
   "pool-chlorine-calculator": new Date("2026-08-08"),
+  "drain-pipe-calculator": new Date("2026-08-08"),
+  "countertop-calculator": new Date("2026-08-08"),
   "wallpaper-calculator": new Date("2026-07-13"),
   "lumber-calculator": new Date("2026-07-13"),
   "stud-spacing-calculator": new Date("2026-07-13"),

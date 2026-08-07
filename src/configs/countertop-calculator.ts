@@ -163,6 +163,34 @@ export const countertopCalculatorConfig: CalculatorConfig = {
     };
   },
 
+  howTo: {
+    name: "How to measure a countertop for a quote",
+    description:
+      "Measure square footage the way fabricators do: along the wall, times depth, island added, cutouts included, waste on top.",
+    steps: [
+      {
+        name: "Measure each run along the wall",
+        text: "Measure the cabinet run at the back wall in linear feet, one number per leg of the kitchen. Ignore the old countertop edges; they are often cut short.",
+      },
+      {
+        name: "Multiply by depth",
+        text: "Standard kitchen depth is 25.5 inches, which is 2.125 feet. A 16 linear foot kitchen is 16 x 2.125 = 34 square feet.",
+      },
+      {
+        name: "Add islands and overhangs",
+        text: "Island length times width, including any seating overhang. A 5 by 3 foot island adds 15 square feet; a 12 inch overhang on that island adds 5 more.",
+      },
+      {
+        name: "Do not subtract cutouts",
+        text: "Sink and cooktop openings are cut from your slab and discarded. Fabricators quote the gross rectangle, so your number should match theirs.",
+      },
+      {
+        name: "Add 10 percent waste",
+        text: "Seam placement, edge trimming, and slab layout consume material. Multiply the total by 1.10 and compare quotes on installed price for that footage.",
+      },
+    ],
+  },
+
   ContentExpansion: CountertopCalculatorExpansion,
 
   formulaDescription:
@@ -179,14 +207,29 @@ export const countertopCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "NKBA: Kitchen Planning Guidelines",
-      url: "https://www.nkba.org/",
-      note: "Standard counter depths and layout references",
+      name: "Natural Stone Institute: Installation Standards",
+      url: "https://www.naturalstoneinstitute.org/stoneprofessionals/technical-resources/",
+      note: "Fabrication and measurement conventions: gross rectangles, cutouts included, seam placement",
     },
     {
-      name: "HomeAdvisor: Countertop Cost Guide",
-      url: "https://www.homeadvisor.com/",
-      note: "Price ranges by material for installed countertops",
+      name: "Natural Stone Institute: Dimension Stone Design Manual",
+      url: "https://www.naturalstoneinstitute.org/designprofessionals/technical-resources/dsdm/",
+      note: "Thickness standards, overhang limits, and support requirements for stone tops",
+    },
+    {
+      name: "NKBA: Kitchen Planning Guidelines",
+      url: "https://nkba.org/guidelines/",
+      note: "Standard counter depths, island clearances, and seating overhang dimensions",
+    },
+    {
+      name: "ASTM C615: Standard Specification for Granite Dimension Stone",
+      url: "https://www.astm.org/c0615_c0615m-18e01.html",
+      note: "The material standard granite slabs are graded against",
+    },
+    {
+      name: "ISFA: Engineered Stone Fabrication Guidance",
+      url: "https://www.isfanow.org/",
+      note: "Quartz handling, seaming, and heat tolerance practice",
     },
   ],
 
