@@ -134,7 +134,7 @@ export function EgressWindowExpansion() {
 
       <p>The rest are one-line lessons. Bars, grilles, and storm covers over an egress window must open from inside without tools, same rule as the well cover. Furniture does not fix a 48 inch sill; a built platform might, but ask the inspector before building it. Call utility locate before the well excavation, because gas services love foundation walls. And enlarging an opening means a real header sized for the load above it, which is framing work, not window work; the <a href="/stud-spacing-calculator">stud spacing calculator</a> covers the king and jack studs around it.</p>
 
-      <p>Finishing the rest of the basement after the window is in? The <a href="/drywall-calculator">drywall calculator</a> and <a href="/insulation-calculator">insulation calculator</a> pick up where this page leaves off, and the insulation matters more than usual: you just installed a large hole in a below-grade wall, so the assembly around it should earn its keep.</p>
+      <p>Every R310 limit sits alongside the rest of the IRC dimensional rules in the <a href="/guides/residential-code-limits-reference">residential code limits reference</a>. Finishing the rest of the basement after the window is in? The <a href="/drywall-calculator">drywall calculator</a> and <a href="/insulation-calculator">insulation calculator</a> pick up where this page leaves off, and the insulation matters more than usual: you just installed a large hole in a below-grade wall, so the assembly around it should earn its keep.</p>
     </>
   );
 }

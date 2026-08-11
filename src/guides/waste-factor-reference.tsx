@@ -131,7 +131,7 @@ function WasteFactorContent() {
 
       <p>Defect and grading allowance is next, and it applies mostly to natural materials. A bundle of hardwood carries boards with knots, splits, or color that will not blend, and NWFA guidance treats a small percentage as normal and expected rather than a claim against the supplier. Lumber has the same issue in a cruder form: pull a cart of studs and a few will be crooked enough to reject.</p>
 
-      <p>Breakage is last and smallest, but concentrated in brittle materials. Tile chips at the corners, especially large-format and thin porcelain, and it happens during the cut as often as during transport.</p>
+      <p>Breakage is last and smallest, but concentrated in brittle materials. Tile chips at the corners, especially large-format and thin porcelain, and it happens during the cut as often as during transport. The <a href="/tile-calculator">tile calculator</a> applies the TCNA-based percentage before converting to boxes, which is where breakage allowance has to land to be useful.</p>
 
       <h2>When to go above the table</h2>
 
@@ -139,7 +139,7 @@ function WasteFactorContent() {
 
       <p>Push higher for a first-time installation of a cut-heavy material. Professional waste factors assume professional cutting, and the difference between a tile setter's offcut pile and a first-timer's is real. Adding five points to a first tile job is cheaper than a second trip and a second delivery fee.</p>
 
-      <p>Push higher when the shortfall would stop the job. A pallet of pavers arriving three days late is an inconvenience; a truck of concrete arriving short is a cold joint in a slab you cannot un-pour. Materials that must be placed in one continuous operation deserve the top of their range every time.</p>
+      <p>Push higher when the shortfall would stop the job. A pallet of pavers arriving three days late is an inconvenience; a truck of concrete arriving short is a cold joint in a slab you cannot un-pour. Materials that must be placed in one continuous operation deserve the top of their range every time, which is why the <a href="/concrete-calculator">concrete calculator</a> defaults to the high end of the range rather than the middle.</p>
 
       <h2>When to go below it</h2>
 
@@ -151,7 +151,7 @@ function WasteFactorContent() {
 
       <h2>Applying it correctly</h2>
 
-      <p>Apply the percentage to net measured area, then round up to whole purchase units. Both steps in that order. A 240 square foot floor at 10 percent is 264 square feet, which at 22.5 square feet per box is 11.7 boxes, so 12 boxes. Rounding to boxes first and adding waste after quietly changes the answer, usually downward.</p>
+      <p>Apply the percentage to net measured area, then round up to whole purchase units. Both steps in that order. A 240 square foot floor at 10 percent is 264 square feet, which at 22.5 square feet per box is 11.7 boxes, so 12 boxes. Rounding to boxes first and adding waste after quietly changes the answer, usually downward. The <a href="/flooring-calculator">flooring calculator</a> runs that sequence for you and shows both numbers, so you can see what the waste factor actually bought.</p>
 
       <p>Do not stack waste factors. If a calculator already applies one, adding your own on top double-counts, and on a large job that is real money sitting in a garage. Every Tallyard calculator states the waste factor it used in the receipt, so you can see whether it is already in the number.</p>
 

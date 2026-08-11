@@ -86,6 +86,8 @@ function CodeLimitsContent() {
         The 2024 IRC raises the maximum riser to 8-1/4 inches and lowers the minimum tread to 9 inches, the first change to residential stair geometry in decades. Very few jurisdictions enforce it yet: adoption typically lags publication by two to five years, and most of the country is still on the 2021 or 2018 edition. Build to whatever edition your jurisdiction has adopted, and if in doubt, build to the tighter 2021 numbers, which pass under both.
       </Callout>
 
+      <p>Riser geometry is the limit most flights miss, and it is missed by fractions rather than inches. The <a href="/stair-calculator">stair calculator</a> holds every riser identical and flags the 3/8 inch variation limit; deck flights run through the <a href="/deck-stair-calculator">deck stair calculator</a>, which applies the same R311.7 checks to an outdoor stringer.</p>
+
       <h2>Guards and handrails (R311.7.8, R312)</h2>
 
       <ComparisonTable
@@ -120,6 +122,8 @@ function CodeLimitsContent() {
         ]}
         caption="Required in every sleeping room and in basements with habitable space. The dimensional minimums do not multiply to a passing opening: 20 by 24 inches is only 3.3 square feet."
       />
+
+      <p>That last point catches people mid-remodel, because a window can satisfy every individual minimum and still fail the area requirement. The <a href="/egress-window-calculator">egress window calculator</a> checks a proposed opening against all four R310 limits at once and tells you which one it misses.</p>
 
       <h2>Rooms, ceilings, and access</h2>
 

@@ -48,6 +48,17 @@ export function getGuideSchema({
       "@type": "WebPage",
       "@id": pageUrl,
     },
+    // Machine-readable versions of the standards cited in the Sources section.
+    ...(config.sources.length > 0
+      ? {
+          citation: config.sources.map((src) => ({
+            "@type": "CreativeWork",
+            name: src.name,
+            ...(src.url ? { url: src.url } : {}),
+            ...(src.note ? { description: src.note } : {}),
+          })),
+        }
+      : {}),
   };
 
   const faqPage =

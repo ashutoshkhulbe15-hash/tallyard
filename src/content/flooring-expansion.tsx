@@ -260,8 +260,7 @@ export function FlooringCalculatorExpansion() {
         transition strips and spare box, small items that turn into a second trip to
         the store mid-project. None of these are hard. Measure carefully, add your
         waste, acclimate the material, prep the subfloor, and leave the gap, and the
-        floor you buy is the floor that lasts.
-      </p>
+        floor you buy is the floor that lasts. And when the layout is diagonal or the room is anything but a rectangle, the <a href="/guides/waste-factor-reference">waste factor reference</a> covers how far above 10 percent to order and why.</p>
     </>
   );
 }

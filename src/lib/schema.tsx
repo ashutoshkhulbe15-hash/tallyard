@@ -109,6 +109,27 @@ export function getCalculatorSchema({
           url: baseUrl,
         },
         mainEntityOfPage: pageUrl,
+        // Machine-readable versions of the standards cited in the Sources
+        // section. Lets search and answer engines see which published
+        // standard each page is built on, not just the visible link list.
+        ...(config.sources.length > 0
+          ? {
+              citation: config.sources.map((src) =>
+                src.url
+                  ? {
+                      "@type": "CreativeWork",
+                      name: src.name,
+                      url: src.url,
+                      ...(src.note ? { description: src.note } : {}),
+                    }
+                  : {
+                      "@type": "CreativeWork",
+                      name: src.name,
+                      ...(src.note ? { description: src.note } : {}),
+                    },
+              ),
+            }
+          : {}),
       }
     : null;
 

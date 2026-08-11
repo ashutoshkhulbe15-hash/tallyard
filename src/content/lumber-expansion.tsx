@@ -177,7 +177,7 @@ export function LumberCalculatorExpansion() {
 
       <p><strong>Ignoring moisture weight.</strong> People rent a trailer for the piece count, not the weight, and discover treated lumber is nearly double what they estimated. Check the weight before you load.</p>
 
-      <p>For framing projects, pair this calculator with the <a href="/stud-spacing-calculator">stud spacing calculator</a> for wall layouts and the <a href="/stair-calculator">stair calculator</a> for stringer sizing. For a <a href="/deck-calculator">deck</a>, the deck calculator handles joist and beam sizing directly, and the board-foot math here tells you what that framing costs.</p>
+      <p>For framing projects, pair this calculator with the <a href="/stud-spacing-calculator">stud spacing calculator</a> for wall layouts and the <a href="/stair-calculator">stair calculator</a> for stringer sizing. For a <a href="/deck-calculator">deck</a>, the deck calculator handles joist and beam sizing directly, and the board-foot math here tells you what that framing costs. Before the order is placed, check the sizes against the <a href="/guides/joist-span-reference">joist span reference</a>, since a joist a size short is a cheaper mistake to catch on paper than on the delivery.</p>
     </>
   );
 }

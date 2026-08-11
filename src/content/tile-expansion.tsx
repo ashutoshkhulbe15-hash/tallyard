@@ -233,8 +233,7 @@ export function TileCalculatorExpansion() {
       </p>
 
       <p>
-        One last thing. Lippage. When tiles are not pressed to equal depth in the mortar bed, one edge sits higher than its neighbor. On large format tiles (12×24 and bigger), even 1/32 of an inch of lippage catches socks and looks terrible in raking light. Use a leveling clip system (Raimondi, Spin Doctor, or similar) for any tile larger than 12×12. The clips cost $0.10 to $0.25 each and add $30 to $60 to a typical bathroom floor. They guarantee flat tile edges with zero guesswork. Professional tilers use them routinely. DIYers who skip them regret it the first time they walk across the floor barefoot.
-      </p>
+        One last thing. Lippage. When tiles are not pressed to equal depth in the mortar bed, one edge sits higher than its neighbor. On large format tiles (12×24 and bigger), even 1/32 of an inch of lippage catches socks and looks terrible in raking light. Use a leveling clip system (Raimondi, Spin Doctor, or similar) for any tile larger than 12×12. The clips cost $0.10 to $0.25 each and add $30 to $60 to a typical bathroom floor. They guarantee flat tile edges with zero guesswork. Professional tilers use them routinely. DIYers who skip them regret it the first time they walk across the floor barefoot. When you are deciding how far above the default 10 percent to order, the <a href="/guides/waste-factor-reference">waste factor reference</a> gives the TCNA-based number for each layout and tile size.</p>
     </>
   );
 }

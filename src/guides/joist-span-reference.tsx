@@ -109,7 +109,7 @@ function SpanContent() {
         caption="Conservative planning figures for pressure-treated southern pine deck joists under DCA 6 conditions. Cantilevers beyond the beam are limited to roughly a quarter of the backspan, and DCA 6 caps them by joist size."
       />
 
-      <p>Two deck-specific traps. First, the span is measured to the face of the beam, not to the end of the joist, so a cantilevered joist has a backspan and an overhang and both are limited. Second, composite decking often requires tighter joist spacing than the joists themselves need: many brands specify 16 inches on center for straight lay and 12 inches for a 45 degree lay, and stair treads tighter still. That requirement comes from the decking manufacturer, and it overrides the joist table.</p>
+      <p>Two deck-specific traps. First, the span is measured to the face of the beam, not to the end of the joist, so a cantilevered joist has a backspan and an overhang and both are limited. Second, composite decking often requires tighter joist spacing than the joists themselves need: many brands specify 16 inches on center for straight lay and 12 inches for a 45 degree lay, and stair treads tighter still. That requirement comes from the decking manufacturer, and it overrides the joist table. The <a href="/deck-calculator">deck calculator</a> counts joists at whatever spacing the decking demands, which is the number that actually goes on the order.</p>
 
       <h2>Headers over openings</h2>
 
@@ -147,13 +147,13 @@ function SpanContent() {
         caption="IRC R502.8.1 for sawn lumber joists. Engineered I-joists have entirely different and stricter rules set by the manufacturer, and a notched I-joist flange is usually unrepairable."
       />
 
-      <p>The practical version: bore holes near the middle of the depth and near the middle of the span, never notch the bottom edge anywhere in the middle third, and keep away from the top and bottom two inches. When a run has to cross joists in a bad place, the answer is a soffit or a rerouted line, not a bigger hole.</p>
+      <p>The practical version: bore holes near the middle of the depth and near the middle of the span, never notch the bottom edge anywhere in the middle third, and keep away from the top and bottom two inches. When a run has to cross joists in a bad place, the answer is a soffit or a rerouted line, not a bigger hole. Sizing that rerouted line is the <a href="/drain-pipe-calculator">drain pipe calculator</a>&apos;s job, since a larger pipe needs a deeper joist bay to keep its slope.</p>
 
       <h2>Reading a real span table</h2>
 
       <p>When you go to the AWC calculator or the IRC tables, four inputs decide the answer, and getting any of them wrong invalidates the result. Species and grade come off the grade stamp on the lumber itself, not off the shelf tag. Spacing is on-center, not clear distance. Live load is 40 psf for general living areas and 30 psf for sleeping rooms, which is why a bedroom floor can span slightly further than a living room floor of identical framing. And deflection is L/360 for floors with a plaster or drywall ceiling below, which is the case for most residential work.</p>
 
-      <p>Clear span is measured face of support to face of support, not stud to stud and not overall joist length. A 16 foot joist bearing 3 inches on each end has a clear span of about 15 feet 6 inches, and the table asks for the latter. People routinely check the wrong number and end up a size short.</p>
+      <p>Clear span is measured face of support to face of support, not stud to stud and not overall joist length. A 16 foot joist bearing 3 inches on each end has a clear span of about 15 feet 6 inches, and the table asks for the latter. People routinely check the wrong number and end up a size short. Once the size is settled, the <a href="/lumber-calculator">lumber calculator</a> converts the joist schedule into board feet and a delivered price.</p>
 
       <p>Finally, grade stamps matter more than people expect. Two 2x10s from the same aisle can carry different design values if one is No. 2 and the other Stud grade or a different species group. When the span is anywhere near the limit, buy the whole run from the same lift and read the stamp.</p>
     </>

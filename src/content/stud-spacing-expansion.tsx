@@ -183,7 +183,7 @@ export function StudSpacingCalculatorExpansion() {
 
       <p><strong>Skipping the spares.</strong> Framing lumber warps, splits, and shows up with unusable crowns. Order about 10 percent over your calculated count. A warped stud you can cull is cheaper than a framing day cut short.</p>
 
-      <p>Once the wall is stood and sheathed, the framing feeds directly into the next steps: the <a href="/drywall-calculator">drywall calculator</a> uses the same wall dimensions for sheet count, and the <a href="/insulation-calculator">insulation calculator</a> uses your stud size and spacing to figure how much batt goes in the cavities.</p>
+      <p>Once the wall is stood and sheathed, the framing feeds directly into the next steps: the <a href="/drywall-calculator">drywall calculator</a> uses the same wall dimensions for sheet count, and the <a href="/insulation-calculator">insulation calculator</a> uses your stud size and spacing to figure how much batt goes in the cavities. For the floor and header spans that frame into the same walls, the <a href="/guides/joist-span-reference">joist span reference</a> carries the AWC tables.</p>
     </>
   );
 }

@@ -369,7 +369,10 @@ export function StairCalculatorExpansion() {
         than the riser count, then coming up a board short. None of these are hard to
         avoid. They come down to getting the numbers right first, which is exactly
         what the calculator is for, and then checking the throat on the real board
-        before you commit the cuts to all of them.
+        before you commit the cuts to all of them. If you want every stair limit in
+        one place alongside the rest of the IRC dimensional rules, the{" "}
+        <a href="/guides/residential-code-limits-reference">residential code limits
+        reference</a> lists them with section numbers cited.
       </p>
     </>
   );
