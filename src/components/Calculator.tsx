@@ -130,7 +130,7 @@ export function Calculator({ slug, panelTitle }: CalculatorProps) {
       {/* Panel head */}
       <div
         className="flex justify-between items-center gap-3 px-6 py-4 border-b border-line"
-        style={{ background: "linear-gradient(#FCFDFB,#F6F8F4)" }}
+        style={{ background: "linear-gradient(#FFFFFF,#FAFCF9)" }}
       >
         <span className="text-sm font-semibold text-ink">
           {panelTitle || config.title}

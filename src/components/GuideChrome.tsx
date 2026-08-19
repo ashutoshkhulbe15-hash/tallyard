@@ -7,8 +7,8 @@ import { FigureLightbox } from "./FigureLightbox";
 
 export const GUIDE_SVG = {
   // Surface
-  bgWarm: "#F5F7F3",
-  bgSurface: "#FCFDFB",
+  bgWarm: "#F7F9F6",
+  bgSurface: "#FFFFFF",
   // Ink
   ink: "#0B100D",
   inkMuted: "#333330",

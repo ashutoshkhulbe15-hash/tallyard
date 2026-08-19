@@ -4,10 +4,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        bg: "#FCFDFB",
-        "bg-warm": "#F5F7F3",
+        bg: "#FFFFFF",
+        "bg-warm": "#F7F9F6",
         surface: "#FFFFFF",
-        "surface-alt": "#F9FAF7",
+        "surface-alt": "#FBFCFA",
         ink: {
           DEFAULT: "#0B100D",
           muted: "#333F39",

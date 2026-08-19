@@ -111,7 +111,7 @@ export default function PlannerIndexPage() {
             >
               <div
                 className="flex items-center justify-between gap-4 px-5 md:px-6 py-4 border-b border-line"
-                style={{ background: "linear-gradient(#FCFDFB,#F6F8F4)" }}
+                style={{ background: "linear-gradient(#FFFFFF,#FAFCF9)" }}
               >
                 <div className="flex items-baseline gap-3.5">
                   <span className="font-mono text-xs text-accent font-bold border border-line rounded-md px-2 py-1 bg-surface">

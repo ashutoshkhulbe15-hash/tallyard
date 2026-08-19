@@ -216,7 +216,7 @@ export default function HomePage() {
                 <div className="grid grid-cols-1 md:grid-cols-[230px_1fr]">
                   <div
                     className="p-6 md:border-r border-line border-b md:border-b-0"
-                    style={{ background: "linear-gradient(#FCFDFB,#F6F8F4)" }}
+                    style={{ background: "linear-gradient(#FFFFFF,#FAFCF9)" }}
                   >
                     <div className="font-mono text-[10px] tracking-[0.1em] text-accent mb-2">
                       {p.goal}

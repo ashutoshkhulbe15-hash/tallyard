@@ -111,7 +111,7 @@ export default function GuidesIndexPage() {
               >
                 <div
                   className="flex items-center gap-2.5 px-5 md:px-6 py-3.5 border-b border-line"
-                  style={{ background: "linear-gradient(#FCFDFB,#F6F8F4)" }}
+                  style={{ background: "linear-gradient(#FFFFFF,#FAFCF9)" }}
                 >
                   <span className="font-mono text-[10px] text-amber tracking-[0.06em]">
                     {guide.categoryLabel.toUpperCase()}
