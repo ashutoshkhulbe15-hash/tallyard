@@ -175,6 +175,34 @@ export const wireSizeCalculatorConfig: CalculatorConfig = {
     };
   },
 
+  howTo: {
+    name: "How to choose a wire size",
+    description:
+      "Size a conductor for both ampacity and voltage drop, then take whichever answer is larger.",
+    steps: [
+      {
+        name: "Find the circuit amperage",
+        text: "Use the breaker rating for a new circuit. For a continuous load such as an EV charger or electric heat, NEC 210.19 requires sizing at 125 percent of the load, so a 48 amp charger needs a 60 amp circuit.",
+      },
+      {
+        name: "Look up ampacity at the 60 degree column",
+        text: "Copper: 14 AWG is 15 amps, 12 AWG is 20, 10 AWG is 30, 8 AWG is 40, 6 AWG is 55. Aluminum runs about two sizes larger for the same current. NM-B cable uses the 60 degree column even though it is printed 90.",
+      },
+      {
+        name: "Measure the one-way run",
+        text: "From the panel to the device, following the actual cable path rather than a straight line. Voltage drop is calculated on the round trip, so the calculator doubles it.",
+      },
+      {
+        name: "Check voltage drop against 3 percent",
+        text: "At full load on copper, 12 AWG at 120 volts reaches about 46 feet and 6 AWG at 240 volts about 133 feet. Doubling the voltage roughly doubles the workable distance.",
+      },
+      {
+        name: "Take the larger size and derate if needed",
+        text: "Use whichever of the two answers is bigger. Then step up again if more than three current-carrying conductors share a raceway or the run passes through a hot attic.",
+      },
+    ],
+  },
+
   ContentExpansion: WireSizeCalculatorExpansion,
 
   formulaDescription:
@@ -190,14 +218,29 @@ export const wireSizeCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "NEC Table 310.16: Conductor Ampacity",
+      name: "NEC (NFPA 70) Table 310.16: Conductor Ampacity",
       url: "https://www.nfpa.org/codes-and-standards/all-codes-and-standards/list-of-codes-and-standards/detail?code=70",
-      note: "Official ampacity values for copper and aluminum conductors",
+      note: "The ampacity values for copper and aluminum at the 60, 75, and 90 degree columns",
     },
     {
-      name: "NEC Table 8: Conductor Resistance",
-      url: "https://www.nfpa.org/",
-      note: "DC resistance per 1000 ft for voltage drop calculation",
+      name: "NEC 240.4(D): Small Conductor Overcurrent Protection",
+      url: "https://www.nfpa.org/codes-and-standards/all-codes-and-standards/list-of-codes-and-standards/detail?code=70",
+      note: "Caps 14, 12, and 10 AWG copper at 15, 20, and 30 amps regardless of table ampacity",
+    },
+    {
+      name: "NEC 334.80: Ampacity of Nonmetallic-Sheathed Cable",
+      url: "https://www.nfpa.org/codes-and-standards/all-codes-and-standards/list-of-codes-and-standards/detail?code=70",
+      note: "Requires NM-B cable to be sized from the 60 degree column despite its 90 degree marking",
+    },
+    {
+      name: "NEC 310.12: Dwelling Unit Services and Feeders",
+      url: "https://www.nfpa.org/codes-and-standards/all-codes-and-standards/list-of-codes-and-standards/detail?code=70",
+      note: "The allowance that lets residential service conductors run smaller than general feeders",
+    },
+    {
+      name: "CPSC: Repairing Aluminum Wiring",
+      url: "https://www.cpsc.gov/s3fs-public/516.pdf",
+      note: "The federal safety guidance on 1960s and 70s solid aluminum branch circuits",
     },
   ],
 
@@ -205,7 +248,7 @@ export const wireSizeCalculatorConfig: CalculatorConfig = {
     { name: "Solar panel calculator", slug: "solar-calculator", description: "System sizing for your electricity use" },
     { name: "BTU calculator", slug: "btu-calculator", description: "Air conditioner amps and sizing" },
     { name: "Extension cord calculator", slug: "extension-cord-calculator", description: "Cord gauge for tools and appliances" },
-    { name: "Extension cord calculator", slug: "extension-cord-calculator", description: "AWG for any tool or appliance" },
+    { name: "Garage door calculator", slug: "garage-door-calculator", description: "Sizing and the opener circuit it needs" },
   ],
 
   faq: [

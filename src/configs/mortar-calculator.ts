@@ -123,7 +123,7 @@ export const mortarCalculatorConfig: CalculatorConfig = {
     { name: "Brick calculator", slug: "brick-calculator", description: "Brick count for the same wall" },
     { name: "Concrete calculator", slug: "concrete-calculator", description: "Footings under masonry walls" },
     { name: "Rebar calculator", slug: "rebar-calculator", description: "Reinforcement in block walls" },
-    { name: "Grout calculator", slug: "grout-calculator", description: "For tile joints (different from mortar)" },
+    { name: "Chimney calculator", slug: "chimney-calculator", description: "Flue size and height for a masonry chimney" },
   ],
 
   formulaDescription:

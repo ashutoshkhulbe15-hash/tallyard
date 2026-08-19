@@ -174,6 +174,34 @@ export const chimneyCalculatorConfig: CalculatorConfig = {
     };
   },
 
+  howTo: {
+    name: "How to size a chimney flue",
+    description:
+      "Size a flue from the fireplace opening or the appliance collar, then check the chimney height against the 3-2-10 rule.",
+    steps: [
+      {
+        name: "Measure the fireplace opening",
+        text: "Width times height of the finished firebox face, in square inches. A 36 by 30 inch opening is 1,080 square inches.",
+      },
+      {
+        name: "Apply the code ratio",
+        text: "Per IRC Table R1003.11.1, a round liner needs one twelfth of the opening area, a square or rectangular liner one tenth, and a rectangular liner with a side ratio of 2 or more needs one eighth.",
+      },
+      {
+        name: "Match to a real liner by net area",
+        text: "Use the net inside area, not the nominal size. A 12 by 12 clay liner is about 79 square inches and a 12 by 16 is about 108. When the answer falls between two sizes, go up.",
+      },
+      {
+        name: "For a wood stove, match the collar instead",
+        text: "Vent a stove to its own flue outlet diameter, usually 6 inches. Do not use the fireplace ratios, and do not vent a stove into an oversized masonry flue without an insulated stainless liner.",
+      },
+      {
+        name: "Check the height with the 3-2-10 rule",
+        text: "The chimney must extend at least 3 feet above where it passes through the roof, and at least 2 feet above any part of the building within 10 feet horizontally. Build to whichever is taller.",
+      },
+    ],
+  },
+
   ContentExpansion: ChimneyCalculatorExpansion,
 
   formulaDescription:
@@ -190,14 +218,29 @@ export const chimneyCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "IRC 2021 Chapter 10: Chimneys and Fireplaces",
+      name: "IRC 2021, Table R1003.11.1: Net Cross-Sectional Area of Flues",
       url: "https://codes.iccsafe.org/content/IRC2021P2/chapter-10-chimneys-and-fireplaces",
-      note: "Code requirements for flue sizing and chimney construction",
+      note: "The one-twelfth, one-tenth, and one-eighth ratios this calculator applies",
     },
     {
-      name: "Chimney Safety Institute of America (CSIA)",
-      url: "https://www.csia.org/",
-      note: "Industry reference for chimney and fireplace safety",
+      name: "IRC 2021, Section R1003.9: Chimney Termination",
+      url: "https://codes.iccsafe.org/content/IRC2021P2/chapter-10-chimneys-and-fireplaces",
+      note: "The 3-2-10 rule for how far a chimney must extend above the roof",
+    },
+    {
+      name: "NFPA 211: Chimneys, Fireplaces, Vents, and Solid Fuel Appliances",
+      url: "https://www.nfpa.org/codes-and-standards/all-codes-and-standards/list-of-codes-and-standards/detail?code=211",
+      note: "Appliance venting, liner requirements, and inspection frequency",
+    },
+    {
+      name: "CSIA: Chimney and Venting Homeowner Resources",
+      url: "https://www.csia.org/homeowner-resources/",
+      note: "Inspection levels, creosote formation, and relining practice",
+    },
+    {
+      name: "ASTM C315: Clay Flue Liners and Chimney Pots",
+      url: "https://www.astm.org/c0315-07r16.html",
+      note: "The specification behind the net inside areas of standard clay liners",
     },
   ],
 

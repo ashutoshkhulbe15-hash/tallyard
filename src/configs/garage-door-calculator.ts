@@ -169,6 +169,34 @@ export const garageDoorCalculatorConfig: CalculatorConfig = {
     };
   },
 
+  howTo: {
+    name: "How to size a garage door and check clearances",
+    description:
+      "Measure the opening and the three clearances around it, then match a standard door size, spring, and opener.",
+    steps: [
+      {
+        name: "Measure the finished opening",
+        text: "Width and height of the finished opening, not the old door panel. Standard sizes are 8x7 and 9x7 for singles, 10x8 for tall singles, and 16x7 for doubles.",
+      },
+      {
+        name: "Measure headroom",
+        text: "From the top of the opening to the lowest obstruction above it, including lights, pipes, and sprinkler heads. Standard track needs 12 inches; a low-headroom kit works down to about 4-1/2 inches.",
+      },
+      {
+        name: "Measure side room and backroom",
+        text: "Side room is at least 3-3/4 inches from each side of the opening to the wall. Backroom is the door height plus 18 inches, or roughly the door height plus 4 feet when a ceiling-mounted opener is used.",
+      },
+      {
+        name: "Pick the material and check the weight",
+        text: "A 16x7 steel door weighs about 155 pounds and an insulated one about 210. Springs are sized to that weight, so a heavier replacement door needs new springs.",
+      },
+      {
+        name: "Size the opener",
+        text: "Use 1/2 HP for a standard single, 3/4 HP for a 16 foot double, and 1 HP or more for insulated doubles, wood doors, or doors over 8 feet tall.",
+      },
+    ],
+  },
+
   ContentExpansion: GarageDoorCalculatorExpansion,
 
   formulaDescription:
@@ -185,14 +213,29 @@ export const garageDoorCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "DASMA: Door & Access Systems Manufacturers Association",
-      url: "https://www.dasma.com/",
-      note: "Industry standards for garage door specs and sizing",
+      name: "ANSI/DASMA 102: Residential Sectional Door Specification",
+      url: "https://www.dasma.com/standards/",
+      note: "The industry specification behind standard sizes, construction, and performance ratings",
     },
     {
-      name: "IRC 2021: Garage Openings",
-      url: "https://codes.iccsafe.org/",
-      note: "Code requirements for garage door headers and openings",
+      name: "DASMA Technical Data Sheets: Headroom and Backroom",
+      url: "https://www.dasma.com/technical-data-sheets/",
+      note: "Clearance requirements for standard, low-headroom, and high-lift track",
+    },
+    {
+      name: "ANSI/DASMA 108: Wind Load Testing",
+      url: "https://www.dasma.com/standards/",
+      note: "The design pressure standard required in coastal and high-wind jurisdictions",
+    },
+    {
+      name: "IRC 2021, Table R602.7(1): Girder and Header Spans",
+      url: "https://codes.iccsafe.org/content/IRC2021P1/chapter-6-wall-construction",
+      note: "Prescriptive header spans over garage openings in load-bearing walls",
+    },
+    {
+      name: "UL 325: Door, Drapery, Gate, and Window Operators",
+      url: "https://www.shopulstandards.com/ProductDetail.aspx?productId=UL325",
+      note: "The standard mandating photo-eye entrapment protection on residential openers since 1993",
     },
   ],
 

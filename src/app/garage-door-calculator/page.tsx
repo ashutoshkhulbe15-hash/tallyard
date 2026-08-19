@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "garage-door-calculator";
 
 export const metadata: Metadata = {
-  title: "Garage Door Calculator: Size And Opener HP",
+  title: "Garage Door Size Calculator: Sizes & Clearances",
   description:
-    "Right garage door size and opener power for any opening. Checks headroom, side room, and recommends material.",
+    "Standard garage door sizes with headroom, side room, and backroom clearances checked. Includes door weight, header spans, opener HP, and 2026 costs.",
   alternates: { canonical: "/garage-door-calculator" },
   openGraph: {
-    title: "Garage Door Calculator: Size And Opener HP",
+    title: "Garage Door Size Calculator: Sizes & Clearances",
     description: "Calculate garage door size, clearances, and opener HP.",
     url: "https://www.tallyard.com/garage-door-calculator",
     type: "website",

@@ -163,7 +163,7 @@ export const concreteCalculatorConfig: CalculatorConfig = {
 
   related: [
     { name: "Rebar calculator", slug: "rebar-calculator", description: "Bars, spacing, and laps for the slab you pour" },
-    { name: "Shed calculator", slug: "shed-calculator", description: "Framing for a shed on your slab" },
+    { name: "Garage door calculator", slug: "garage-door-calculator", description: "Sizing the door for the garage on that slab" },
     { name: "Gravel calculator", slug: "gravel-calculator", description: "Cubic yards of gravel base for slabs" },
     { name: "Drain pipe calculator", slug: "drain-pipe-calculator", description: "Size the line before cutting the slab for it" },
   ],

@@ -223,7 +223,7 @@ export const brickCalculatorConfig: CalculatorConfig = {
   ],
 
   related: [
-    { name: "Concrete calculator", slug: "concrete-calculator", description: "For footings under brick walls" },
+    { name: "Chimney calculator", slug: "chimney-calculator", description: "Flue sizing for a brick chimney stack" },
     { name: "Concrete calculator", slug: "concrete-calculator", description: "Cubic yards for footings and slabs" },
     { name: "Rebar calculator", slug: "rebar-calculator", description: "Reinforcement in brick walls" },
     { name: "Paint calculator", slug: "paint-calculator", description: "For painted brick" },

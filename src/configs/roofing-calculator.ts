@@ -174,8 +174,8 @@ export const roofingCalculatorConfig: CalculatorConfig = {
   related: [
     { name: "Solar panel calculator", slug: "solar-calculator", description: "Size a solar array for this roof" },
     { name: "Gutter calculator", slug: "gutter-calculator", description: "Linear feet of gutter for a house" },
-    { name: "Rainwater calculator", slug: "rainwater-calculator", description: "Gallons your roof can collect" },
-    { name: "Shed calculator", slug: "shed-calculator", description: "Roof, walls, and floor for a shed" },
+    { name: "Chimney calculator", slug: "chimney-calculator", description: "Chimney height above the roof, per the 3-2-10 rule" },
+    { name: "Garage door calculator", slug: "garage-door-calculator", description: "Door size, clearances, and opener sizing" },
   ],
 
   faq: [

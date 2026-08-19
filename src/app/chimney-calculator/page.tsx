@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "chimney-calculator";
 
 export const metadata: Metadata = {
-  title: "Chimney Calculator: Flue Size For Any Fireplace Or Stove",
+  title: "Chimney Flue Size Calculator: Chart & Height",
   description:
-    "Calculate flue size for fireplaces and wood stoves. Uses the 1/10 rule for masonry and manufacturer sizing for stoves.",
+    "Flue size for any fireplace or wood stove, with the chimney flue size chart, clay liner net areas, and the 3-2-10 height rule from the IRC.",
   alternates: { canonical: "/chimney-calculator" },
   openGraph: {
-    title: "Chimney Calculator: Flue Size For Any Fireplace Or Stove",
+    title: "Chimney Flue Size Calculator: Chart & Height",
     description: "Calculate flue size for fireplaces and wood stoves.",
     url: "https://www.tallyard.com/chimney-calculator",
     type: "website",
