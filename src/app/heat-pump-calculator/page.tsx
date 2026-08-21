@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "heat-pump-calculator";
 
 export const metadata: Metadata = {
-  title: "Heat Pump Calculator: Size In Tons",
+  title: "Heat Pump Sizing Calculator: Tons by Climate",
   description:
-    "Right-size a heat pump for your home. Accounts for climate, insulation, and both heating and cooling loads.",
+    "Heat pump size in tons from square footage, climate zone, and insulation. Covers SEER2 ratings, installation cost by size, and cold weather performance.",
   alternates: { canonical: "/heat-pump-calculator" },
   openGraph: {
-    title: "Heat Pump Calculator: Size In Tons",
+    title: "Heat Pump Sizing Calculator: Tons by Climate",
     description: "Calculate heat pump size for heating and cooling.",
     url: "https://www.tallyard.com/heat-pump-calculator",
     type: "website",

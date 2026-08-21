@@ -159,7 +159,7 @@ export const gravelCalculatorConfig: CalculatorConfig = {
     { name: "Mulch calculator", slug: "mulch-calculator", description: "Cubic yards or bags for garden beds" },
     { name: "Sod calculator", slug: "sod-calculator", description: "Sod for the lawn beside the gravel path" },
     { name: "Topsoil calculator", slug: "topsoil-calculator", description: "Cubic yards or bags of topsoil" },
-    { name: "Pool chlorine calculator", slug: "pool-chlorine-calculator", description: "Exact chlorine dose for any pool volume" },
+    { name: "Asphalt calculator", slug: "asphalt-calculator", description: "Tons of asphalt for a driveway over this base" },
   ],
 
   faq: [

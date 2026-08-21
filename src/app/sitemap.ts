@@ -27,6 +27,8 @@ const MODIFIED: Record<string, Date> = {
   "topsoil-calculator": new Date("2026-08-08"),
   "backsplash-calculator": new Date("2026-08-08"),
   "attic-ventilation-calculator": new Date("2026-08-08"),
+  "asphalt-calculator": new Date("2026-08-08"),
+  "heat-pump-calculator": new Date("2026-08-08"),
   "wallpaper-calculator": new Date("2026-07-13"),
   "lumber-calculator": new Date("2026-07-13"),
   "stud-spacing-calculator": new Date("2026-07-13"),

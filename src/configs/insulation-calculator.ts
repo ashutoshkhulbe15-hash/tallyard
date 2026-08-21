@@ -195,7 +195,7 @@ export const insulationCalculatorConfig: CalculatorConfig = {
   related: [
     { name: "Drywall calculator", slug: "drywall-calculator", description: "Sheets for walls and ceilings" },
     { name: "BTU calculator", slug: "btu-calculator", description: "AC size, less with better insulation" },
-    { name: "Snow load calculator", slug: "snow-load-calculator", description: "Ice damming starts as an insulation problem" },
+    { name: "Attic ventilation calculator", slug: "attic-ventilation-calculator", description: "Vent area and baffles to pair with attic R-value" },
     { name: "Garage door calculator", slug: "garage-door-calculator", description: "The largest uninsulated surface in most garages" },
   ],
 

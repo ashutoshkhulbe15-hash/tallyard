@@ -193,6 +193,34 @@ export const heatPumpCalculatorConfig: CalculatorConfig = {
     };
   },
 
+  howTo: {
+    name: "How to size a heat pump",
+    description:
+      "Estimate heat pump capacity in tons from home size, climate zone, and insulation, then convert to equipment size.",
+    steps: [
+      {
+        name: "Start with conditioned square footage",
+        text: "Measure the heated and cooled floor area only. Unfinished basements, garages, and attics are excluded unless they are conditioned.",
+      },
+      {
+        name: "Apply the climate zone",
+        text: "Colder zones need more capacity per square foot. A 2,000 square foot home needs roughly 3 tons in a Gulf Coast zone and closer to 5 in the upper Midwest.",
+      },
+      {
+        name: "Adjust for insulation and ceiling height",
+        text: "Better insulation lowers the load directly. Ceilings above 8 feet add conditioned volume the square footage alone does not capture.",
+      },
+      {
+        name: "Convert BTU to tons",
+        text: "One ton equals 12,000 BTU per hour. Equipment comes in half ton steps, so round to the nearest 2, 2.5, 3, 3.5, 4, or 5 ton size.",
+      },
+      {
+        name: "Have a Manual J done before buying",
+        text: "This estimate is for budgeting. Oversized heat pumps short cycle and fail to dehumidify, so the final size should come from an ACCA Manual J load calculation on your actual house.",
+      },
+    ],
+  },
+
   ContentExpansion: HeatPumpCalculatorExpansion,
 
   formulaDescription:
@@ -211,13 +239,28 @@ export const heatPumpCalculatorConfig: CalculatorConfig = {
   sources: [
     {
       name: "ACCA Manual J: Residential Load Calculation",
-      url: "https://www.acca.org/standards",
-      note: "Industry standard for HVAC load calculations",
+      url: "https://www.acca.org/standards/technical-manuals",
+      note: "The industry standard method for sizing by actual heat loss and gain, not square footage",
     },
     {
-      name: "Energy Star: Heat Pump Sizing",
-      url: "https://www.energystar.gov/products/heat_pumps",
-      note: "Baseline BTU per sq ft by climate zone",
+      name: "ENERGY STAR: Heat Pump Sizing and Selection",
+      url: "https://www.energystar.gov/products/heating_cooling/heat_pumps_air_source",
+      note: "Efficiency thresholds and sizing guidance for qualifying equipment",
+    },
+    {
+      name: "DOE: SEER2 and HSPF2 Efficiency Standards",
+      url: "https://www.energy.gov/eere/buildings/appliance-and-equipment-standards-program",
+      note: "The 2023 rating change and current regional minimum efficiencies",
+    },
+    {
+      name: "AHRI Directory of Certified Product Performance",
+      url: "https://www.ahridirectory.org/",
+      note: "Verified capacity and efficiency ratings for specific equipment models",
+    },
+    {
+      name: "IRS: Energy Efficient Home Improvement Credit (25C)",
+      url: "https://www.irs.gov/credits-deductions/energy-efficient-home-improvement-credit",
+      note: "The federal tax credit rules that change the net cost of a heat pump",
     },
   ],
 

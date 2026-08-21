@@ -141,6 +141,34 @@ export const asphaltCalculatorConfig: CalculatorConfig = {
     };
   },
 
+  howTo: {
+    name: "How to calculate asphalt tonnage",
+    description:
+      "Convert driveway area and compacted thickness into tons of hot mix asphalt.",
+    steps: [
+      {
+        name: "Measure the area",
+        text: "Length times width in square feet. For a circular or curved area, use the diameter and treat it as a circle rather than averaging a rectangle.",
+      },
+      {
+        name: "Choose the compacted thickness",
+        text: "Residential driveways use 3 inches of asphalt, heavy vehicle areas 4 inches, and parking lots 6. An overlay on sound pavement is 1.5 to 2 inches.",
+      },
+      {
+        name: "Convert to cubic feet",
+        text: "Area times thickness divided by 12. An 800 square foot driveway at 3 inches is 800 x 0.25 = 200 cubic feet.",
+      },
+      {
+        name: "Apply density and convert to tons",
+        text: "Multiply by 145 pounds per cubic foot for compacted hot mix, then divide by 2,000. That 200 cubic feet becomes 14.5 tons.",
+      },
+      {
+        name: "Add waste and confirm the base",
+        text: "Add 5 to 10 percent for waste and edges. Then confirm the aggregate base depth in the quote: 6 to 8 inches for a residential driveway, more over clay.",
+      },
+    ],
+  },
+
   ContentExpansion: AsphaltCalculatorExpansion,
 
   formulaDescription:
@@ -157,14 +185,29 @@ export const asphaltCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "National Asphalt Pavement Association (NAPA)",
-      url: "https://www.asphaltpavement.org/",
-      note: "Industry standards for asphalt density and compaction",
+      name: "Asphalt Institute MS-2: Asphalt Mix Design Methods",
+      url: "https://www.asphaltinstitute.org/engineering/publications/",
+      note: "Mix composition and compacted unit weight behind the 145 lb per cubic foot figure",
     },
     {
-      name: "Asphalt Institute: Pavement Design Guide",
-      url: "https://www.asphaltinstitute.org/",
-      note: "Thickness requirements by traffic loading",
+      name: "NAPA: Asphalt Pavement Construction",
+      url: "https://www.asphaltpavement.org/expertise/construction",
+      note: "Placement and compaction practice, including minimum paving temperatures",
+    },
+    {
+      name: "Asphalt Institute: Pavement Thickness Design",
+      url: "https://www.asphaltinstitute.org/engineering/",
+      note: "Surface and base thickness guidance by traffic loading",
+    },
+    {
+      name: "ASTM D6926: Preparation of Asphalt Mixture Specimens",
+      url: "https://www.astm.org/d6926-20.html",
+      note: "The density practice field compaction is verified against",
+    },
+    {
+      name: "FTC: Home Improvement Contractor Fraud",
+      url: "https://consumer.ftc.gov/articles/hiring-contractor",
+      note: "The driveway paving scam pattern and how to check a contractor",
     },
   ],
 

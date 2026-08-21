@@ -31,6 +31,8 @@ const REVIEWED: Record<string, string> = {
   "topsoil-calculator": "2026-08-08",
   "backsplash-calculator": "2026-08-08",
   "attic-ventilation-calculator": "2026-08-08",
+  "asphalt-calculator": "2026-08-08",
+  "heat-pump-calculator": "2026-08-08",
   "wallpaper-calculator": "2026-07-13",
   "lumber-calculator": "2026-07-13",
   "stud-spacing-calculator": "2026-07-13",

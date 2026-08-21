@@ -166,7 +166,7 @@ export const tileCalculatorConfig: CalculatorConfig = {
   related: [
     { name: "Grout calculator", slug: "grout-calculator", description: "Grout volume for tile projects" },
     { name: "Flooring calculator", slug: "flooring-calculator", description: "Hardwood, laminate, vinyl square footage" },
-    { name: "Concrete calculator", slug: "concrete-calculator", description: "For slab prep under tile" },
+    { name: "Shower tile calculator", slug: "shower-tile-calculator", description: "Walls and floor counted separately for a shower" },
     { name: "Hardwood flooring cost", slug: "hardwood-flooring-cost-calculator", description: "Installed price by wood species" },
   ],
 
