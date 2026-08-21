@@ -156,6 +156,34 @@ export const backsplashCalculatorConfig: CalculatorConfig = {
     };
   },
 
+  howTo: {
+    name: "How to calculate backsplash tile",
+    description:
+      "Convert counter linear feet and backsplash height into square feet, then add waste for the tile type.",
+    steps: [
+      {
+        name: "Measure each counter run in linear feet",
+        text: "Measure along the wall for every section that gets tile. Treat each run separately rather than totalling the kitchen.",
+      },
+      {
+        name: "Measure the real height",
+        text: "From the countertop surface to the bottom of the upper cabinets, checked at both ends. The standard is 18 inches, which works out to 1.5 square feet per linear foot.",
+      },
+      {
+        name: "Add the range wall separately",
+        text: "Tile behind a cooktop usually rises to the hood or to 30 inches. That extra height across the appliance width is its own area and often a different tile.",
+      },
+      {
+        name: "Do not subtract outlets",
+        text: "Openings turn whole tiles into cut pieces, so they raise consumption. Count them for cuts and buy a box extender for each one, since tile depth leaves boxes recessed.",
+      },
+      {
+        name: "Apply waste by tile type",
+        text: "Use 10 percent for subway in running bond, 12 for large format or mosaic sheets, 15 for diagonal or herringbone, and 20 for zellige and other handmade tile.",
+      },
+    ],
+  },
+
   ContentExpansion: BacksplashCalculatorExpansion,
 
   formulaDescription:
@@ -172,19 +200,34 @@ export const backsplashCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "Tile Council of North America",
-      url: "https://www.tcnatile.com/",
-      note: "Industry standards for kitchen tile waste",
+      name: "NKBA: Kitchen Planning Guidelines",
+      url: "https://nkba.org/guidelines/",
+      note: "The 18 inch counter to upper cabinet dimension and range wall clearances",
     },
     {
-      name: "Home Depot: Backsplash Buying Guide",
-      url: "https://www.homedepot.com/c/ah/backsplash-installation-guide/",
-      note: "Practical guide for backsplash measurement",
+      name: "TCNA Handbook: Interior Wall Tile Methods",
+      url: "https://www.tcnatile.com/products-and-services/publications/tcna-handbook/",
+      note: "Substrate preparation and setting methods for wall tile over drywall",
+    },
+    {
+      name: "NEC (NFPA 70) 314.20: Boxes in Non-Combustible Walls",
+      url: "https://www.nfpa.org/codes-and-standards/all-codes-and-standards/list-of-codes-and-standards/detail?code=70",
+      note: "Why tiling over an outlet requires a box extender to bring the box flush",
+    },
+    {
+      name: "TCNA Handbook EJ171: Movement Joints",
+      url: "https://www.tcnatile.com/products-and-services/publications/tcna-handbook/",
+      note: "The counter to backsplash junction takes flexible sealant, not grout",
+    },
+    {
+      name: "ANSI A108: Installation of Ceramic Tile",
+      url: "https://www.tcnatile.com/products-and-services/publications/ansi-standards/",
+      note: "Flatness tolerances that matter most with minimal-joint handmade tile",
     },
   ],
 
   related: [
-    { name: "Tile calculator", slug: "tile-calculator", description: "For floors and general tile installs" },
+    { name: "Vanity calculator", slug: "vanity-calculator", description: "Vanity width and clearances for a bath backsplash" },
     { name: "Grout calculator", slug: "grout-calculator", description: "Grout for tile projects" },
     { name: "Kitchen cabinet calculator", slug: "kitchen-cabinet-calculator", description: "Linear feet and cost for the cabinets below" },
     { name: "Countertop calculator", slug: "countertop-calculator", description: "Counter square footage" },

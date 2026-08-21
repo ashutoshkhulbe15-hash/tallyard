@@ -135,6 +135,34 @@ export const topsoilCalculatorConfig: CalculatorConfig = {
     };
   },
 
+  howTo: {
+    name: "How to calculate how much topsoil you need",
+    description:
+      "Convert an area and depth into cubic yards, then decide between bulk delivery and bags.",
+    steps: [
+      {
+        name: "Measure the area in square feet",
+        text: "Length times width for each section. Break irregular yards into rectangles and add them together.",
+      },
+      {
+        name: "Pick the depth",
+        text: "Topdressing an established lawn takes 1/4 to 1/2 inch, a new lawn 4 to 6 inches, garden beds 6 to 12 inches, and raised beds 10 to 12.",
+      },
+      {
+        name: "Convert to cubic yards",
+        text: "Square feet divided by 324, times depth in inches, equals cubic yards. One cubic yard covers 324 square feet at one inch deep.",
+      },
+      {
+        name: "Add for settling",
+        text: "Fresh topsoil settles 10 to 20 percent once watered and walked on, so order slightly above the calculated figure.",
+      },
+      {
+        name: "Choose bulk or bagged",
+        text: "One cubic yard equals about 36 bags at 40 pounds each and weighs roughly 2,200 pounds. Bulk is far cheaper above about half a yard; bags make sense only for very small quantities.",
+      },
+    ],
+  },
+
   ContentExpansion: TopsoilCalculatorExpansion,
 
   formulaDescription:
@@ -150,14 +178,29 @@ export const topsoilCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "Penn State Extension: Soil and Composting",
-      url: "https://extension.psu.edu/",
-      note: "Density values and application depths for garden soil",
+      name: "USDA NRCS: Soil Horizons and Profiles",
+      url: "https://www.nrcs.usda.gov/conservation-basics/natural-resource-concerns/soils",
+      note: "The A horizon definition behind what legitimately counts as topsoil",
     },
     {
-      name: "University of Minnesota Extension: Topsoil",
-      url: "https://extension.umn.edu/",
-      note: "Soil type differences and use recommendations",
+      name: "Penn State Extension: Soil Quality and Management",
+      url: "https://extension.psu.edu/soil-management",
+      note: "Soil testing, organic matter, and amendment guidance before buying material",
+    },
+    {
+      name: "University of Minnesota Extension: Improving Soil for Lawns",
+      url: "https://extension.umn.edu/planting-and-growing-guides/lawn-soil",
+      note: "Recommended topsoil depths for new lawns and topdressing limits",
+    },
+    {
+      name: "Colorado State Extension: Choosing a Soil Amendment",
+      url: "https://extension.colostate.edu/topic-areas/yard-garden/choosing-a-soil-amendment/",
+      note: "Compost blending ratios and why compost is not used alone as soil",
+    },
+    {
+      name: "USDA NRCS Web Soil Survey",
+      url: "https://websoilsurvey.nrcs.usda.gov/",
+      note: "What the native soil on your property already is, before you buy more",
     },
   ],
 

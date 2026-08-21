@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "topsoil-calculator";
 
 export const metadata: Metadata = {
-  title: "Topsoil Calculator: Yards, Bags, And Tons",
+  title: "Topsoil Calculator: Cubic Yards for Any Area",
   description:
-    "Calculate cubic yards of topsoil for garden beds, lawns, or fill. Converts to bags and tons for delivery.",
+    "Cubic yards of topsoil from your area and depth, with coverage per yard, what a yard of topsoil weighs, bags vs bulk pricing, and screened vs fill dirt.",
   alternates: { canonical: "/topsoil-calculator" },
   openGraph: {
-    title: "Topsoil Calculator: Yards, Bags, And Tons",
+    title: "Topsoil Calculator: Cubic Yards for Any Area",
     description: "Calculate cubic yards of topsoil for any garden or lawn project.",
     url: "https://www.tallyard.com/topsoil-calculator",
     type: "website",

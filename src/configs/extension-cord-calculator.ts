@@ -152,6 +152,34 @@ export const extensionCordCalculatorConfig: CalculatorConfig = {
     };
   },
 
+  howTo: {
+    name: "How to choose an extension cord gauge",
+    description:
+      "Match cord gauge to the load and the distance, then confirm the jacket rating for where it will be used.",
+    steps: [
+      {
+        name: "Find the load in amps",
+        text: "Read the nameplate on the tool or appliance. If only watts are listed, divide by 120 to get amps at standard household voltage.",
+      },
+      {
+        name: "Measure the real distance",
+        text: "Follow the path the cord will take rather than a straight line. Two cords joined to reach count as their combined length, not two separate runs.",
+      },
+      {
+        name: "Read the gauge from the chart",
+        text: "At 50 feet, 16 AWG carries 10 amps, 14 AWG carries 15, 12 AWG carries 20, and 10 AWG carries 30. At 100 feet each drops a step.",
+      },
+      {
+        name: "Check the jacket code",
+        text: "Outdoor use requires a W in the code, such as SJTW. Three conductors, written as 12/3, provides the ground that any tool with a metal housing needs.",
+      },
+      {
+        name: "Unwind before loading",
+        text: "A cord left coiled on a reel traps heat and is derated, often by half. Unwind the full length before drawing significant current.",
+      },
+    ],
+  },
+
   ContentExpansion: ExtensionCordCalculatorExpansion,
 
   formulaDescription:
@@ -168,14 +196,29 @@ export const extensionCordCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "OSHA: Extension Cord Safety",
-      url: "https://www.osha.gov/",
-      note: "Workplace safety standards for extension cord use",
+      name: "UL 817: Cord Sets and Power Supply Cords",
+      url: "https://www.shopulstandards.com/ProductDetail.aspx?productId=UL817",
+      note: "The safety standard cord sets are listed to, including jacket and rating requirements",
     },
     {
-      name: "UL Standards for Cord Sets",
-      url: "https://www.ul.com/",
-      note: "Industry standard for jacket ratings and ampacity",
+      name: "OSHA 1926.405: Temporary Wiring and Flexible Cords",
+      url: "https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.405",
+      note: "Jobsite rules on cord condition, grounding, and temporary versus permanent use",
+    },
+    {
+      name: "NEC (NFPA 70) Article 400: Flexible Cords and Cables",
+      url: "https://www.nfpa.org/codes-and-standards/all-codes-and-standards/list-of-codes-and-standards/detail?code=70",
+      note: "The jacket letter designations and the prohibition on cords as permanent wiring",
+    },
+    {
+      name: "ESFI: Extension Cord and Seasonal Decorating Safety",
+      url: "https://www.esfi.org/seasonal-safety/",
+      note: "Holiday light string limits, outdoor connections, and daisy chaining guidance",
+    },
+    {
+      name: "CPSC: Portable Generator Safety",
+      url: "https://www.cpsc.gov/Safety-Education/Safety-Education-Centers/Portable-Generators",
+      note: "Carbon monoxide siting rules and the prohibition on backfeeding through an outlet",
     },
   ],
 

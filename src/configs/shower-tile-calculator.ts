@@ -189,6 +189,34 @@ export const showerTileCalculatorConfig: CalculatorConfig = {
     };
   },
 
+  howTo: {
+    name: "How to calculate shower tile",
+    description:
+      "Measure the walls, floor, niche, and curb separately, then apply a waste factor matched to the layout.",
+    steps: [
+      {
+        name: "Measure each wall",
+        text: "Width times tile height for the back wall and each side wall. A 60 by 32 inch alcove tiled to 96 inches gives about 82 square feet of wall.",
+      },
+      {
+        name: "Measure the floor separately",
+        text: "Length times width of the shower base. Floor tile is a different product from wall tile, so keep the two quantities apart when ordering.",
+      },
+      {
+        name: "Add the niche and curb",
+        text: "A niche has a floor, back, two sides, and a top. A curb has three tiled faces. Together they are small in area and almost entirely cut pieces.",
+      },
+      {
+        name: "Apply waste by layout",
+        text: "Use 10 percent for straight or running bond, 12 for large format, 15 for diagonal, and 18 for herringbone. Add 5 more for directional or high shade variation tile.",
+      },
+      {
+        name: "Check the floor tile spec",
+        text: "Shower floors slope 1/4 inch per foot, so use mosaic at 2 inches or smaller, and confirm the published DCOF is 0.42 or higher per ANSI A137.1.",
+      },
+    ],
+  },
+
   ContentExpansion: ShowerTileCalculatorExpansion,
 
   formulaDescription:
@@ -205,19 +233,34 @@ export const showerTileCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "Tile Council of North America: Wet Area Installation",
-      url: "https://www.tcnatile.com/",
-      note: "Industry standards for shower tiling and waterproofing",
+      name: "TCNA Handbook: Wet Area Installation Methods",
+      url: "https://www.tcnatile.com/products-and-services/publications/tcna-handbook/",
+      note: "The B and W series methods governing shower walls, pans, and waterproofing assemblies",
+    },
+    {
+      name: "ANSI A118.10: Load Bearing Bonded Waterproof Membranes",
+      url: "https://www.tcnatile.com/products-and-services/publications/ansi-standards/",
+      note: "The specification a shower waterproofing membrane must meet",
+    },
+    {
+      name: "ANSI A137.1: Ceramic Tile Specification and DCOF",
+      url: "https://www.tcnatile.com/products-and-services/publications/ansi-standards/",
+      note: "Defines the 0.42 wet dynamic coefficient of friction threshold for wet floor tile",
+    },
+    {
+      name: "IRC 2021, Section P2708: Shower Compartments",
+      url: "https://codes.iccsafe.org/content/IRC2021P1/chapter-27-plumbing-fixtures",
+      note: "The 900 square inch minimum floor area and 30 inch circle requirement",
     },
     {
       name: "Schluter Systems: Shower Construction Guide",
-      url: "https://www.schluter.com/",
-      note: "Wet-area installation and niche design references",
+      url: "https://www.schluter.com/schluter-us/en_US/shower-systems",
+      note: "Bonded waterproofing and pre-sloped pan assembly practice",
     },
   ],
 
   related: [
-    { name: "Tile calculator", slug: "tile-calculator", description: "For floors and general tile installs" },
+    { name: "Vanity calculator", slug: "vanity-calculator", description: "Size the vanity in the same bathroom" },
     { name: "Grout calculator", slug: "grout-calculator", description: "Grout for tile projects" },
     { name: "Drain pipe calculator", slug: "drain-pipe-calculator", description: "Size the shower drain line by fixture units" },
     { name: "Drywall calculator", slug: "drywall-calculator", description: "Backer board for shower walls" },

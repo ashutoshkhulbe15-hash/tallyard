@@ -166,7 +166,7 @@ export const solarCalculatorConfig: CalculatorConfig = {
   related: [
     { name: "BTU calculator", slug: "btu-calculator", description: "AC size adjusted for climate and sun" },
     { name: "Wire size calculator", slug: "wire-size-calculator", description: "AWG for solar panel circuits" },
-    { name: "Roofing calculator", slug: "roofing-calculator", description: "Check the roof before panels go up" },
+    { name: "Extension cord calculator", slug: "extension-cord-calculator", description: "Cord gauge for generators and portable power" },
     { name: "Insulation calculator", slug: "insulation-calculator", description: "R-value for reducing electrical load" },
   ],
 

@@ -155,6 +155,34 @@ export const vanityCalculatorConfig: CalculatorConfig = {
     };
   },
 
+  howTo: {
+    name: "How to choose a bathroom vanity size",
+    description:
+      "Measure the usable wall, subtract required clearances, and match the result to a standard vanity width.",
+    steps: [
+      {
+        name: "Measure the vanity wall",
+        text: "Corner to corner at counter height and again at the floor, since old walls are rarely parallel. Note the baseboard thickness.",
+      },
+      {
+        name: "Subtract what intrudes",
+        text: "Door swing, toilet clearance, and any out-of-square corner. A door swinging into the space in front of the vanity removes usable wall even though it does not touch it.",
+      },
+      {
+        name: "Apply the clearance rules",
+        text: "IRC R307.1 requires 15 inches from the sink centerline to any side wall and 21 inches of clear floor in front. NKBA recommends 20 and 30 respectively.",
+      },
+      {
+        name: "Pick from the standard widths",
+        text: "Stock widths are 24, 30, 36, 48, 60, and 72 inches. Allow an extra inch or two for the top, which overhangs the cabinet on each exposed side.",
+      },
+      {
+        name: "Decide single or double",
+        text: "Two sinks need 30 inches between centerlines plus 15 inches to each wall, so 60 inches is the arithmetic minimum. Below 66 inches, a single sink with drawers usually serves better.",
+      },
+    ],
+  },
+
   ContentExpansion: VanityCalculatorExpansion,
 
   formulaDescription:
@@ -171,14 +199,29 @@ export const vanityCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "IRC 2021 Chapter 3: Plumbing Fixtures",
-      url: "https://codes.iccsafe.org/",
-      note: "Code-required clearances for bathroom fixtures",
+      name: "IRC 2021, Section R307.1: Fixture Clearances",
+      url: "https://codes.iccsafe.org/content/IRC2021P1/chapter-3-building-planning",
+      note: "The 15 inch centerline-to-sidewall and 21 inch clear floor requirements",
     },
     {
       name: "NKBA: Bathroom Planning Guidelines",
-      url: "https://www.nkba.org/",
-      note: "Industry standards for vanity sizing and placement",
+      url: "https://nkba.org/guidelines/",
+      note: "Recommended clearances and the 36 inch spacing between double sink centerlines",
+    },
+    {
+      name: "ICC A117.1: Accessible and Usable Buildings and Facilities",
+      url: "https://codes.iccsafe.org/content/ICCA1171-2017",
+      note: "Knee clearance, rim height, and clear floor space for accessible lavatories",
+    },
+    {
+      name: "KCMA/ANSI A161.1: Cabinet Performance Standard",
+      url: "https://www.kcma.org/certifications/ansi-kcma-a161-1-certification/",
+      note: "The construction and finish standard vanity cabinets are certified against",
+    },
+    {
+      name: "ASME A112.19.2: Ceramic Plumbing Fixtures",
+      url: "https://www.asme.org/codes-standards/find-codes-standards/a112-19-2-ceramic-plumbing-fixtures",
+      note: "The specification covering vitreous china lavatories and their mounting",
     },
   ],
 

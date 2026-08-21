@@ -248,7 +248,7 @@ export const kitchenCabinetCalculatorConfig: CalculatorConfig = {
   related: [
     { name: "Countertop calculator", slug: "countertop-calculator", description: "Square feet for counter surfaces" },
     { name: "Backsplash calculator", slug: "backsplash-calculator", description: "Kitchen tile above counter" },
-    { name: "Flooring calculator", slug: "flooring-calculator", description: "Hardwood, laminate, vinyl" },
+    { name: "Vanity calculator", slug: "vanity-calculator", description: "The bathroom version of the same sizing problem" },
     { name: "Paint calculator", slug: "paint-calculator", description: "Kitchen paint" },
   ],
 

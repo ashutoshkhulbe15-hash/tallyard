@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "snow-load-calculator";
 
 export const metadata: Metadata = {
-  title: "Snow Load Calculator: Roof Weight In PSF",
+  title: "Snow Load Calculator: Roof Snow Weight by Depth",
   description:
-    "Calculate roof snow load in psf. Compares actual load to design capacity and flags over-limit conditions.",
+    "Snow weight per square foot from depth and snow type, compared against your roof design load. Covers ground vs roof snow load and ASCE 7 conversion.",
   alternates: { canonical: "/snow-load-calculator" },
   openGraph: {
-    title: "Snow Load Calculator: Roof Weight In PSF",
+    title: "Snow Load Calculator: Roof Snow Weight by Depth",
     description: "Calculate roof snow load and compare to design capacity.",
     url: "https://www.tallyard.com/snow-load-calculator",
     type: "website",

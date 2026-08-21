@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "backsplash-calculator";
 
 export const metadata: Metadata = {
-  title: "Backsplash Calculator: Kitchen Tile Count",
+  title: "Backsplash Calculator: Tile Square Feet by Run",
   description:
-    "Calculate tiles and boxes for a kitchen backsplash. Handles subway, mosaic, and large-format tile with outlet and window cutouts.",
+    "Backsplash tile from counter linear feet and height. Covers the 18 inch standard, range walls, outlets, zellige waste, and peel and stick options.",
   alternates: { canonical: "/backsplash-calculator" },
   openGraph: {
-    title: "Backsplash Calculator: Kitchen Tile Count",
+    title: "Backsplash Calculator: Tile Square Feet by Run",
     description: "Calculate backsplash tile with outlet and window subtractions.",
     url: "https://www.tallyard.com/backsplash-calculator",
     type: "website",

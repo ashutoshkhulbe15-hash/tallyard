@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "extension-cord-calculator";
 
 export const metadata: Metadata = {
-  title: "Extension Cord Calculator: AWG For Any Load",
+  title: "Extension Cord Gauge Calculator: AWG by Length",
   description:
-    "Right extension cord gauge for your tool, appliance, or device. Accounts for amps, length, and indoor/outdoor use.",
+    "What gauge extension cord you need by amps and length. Full AWG chart for 16, 14, 12, and 10 gauge cords, plus jacket codes and generator cord rules.",
   alternates: { canonical: "/extension-cord-calculator" },
   openGraph: {
-    title: "Extension Cord Calculator: AWG For Any Load",
+    title: "Extension Cord Gauge Calculator: AWG by Length",
     description: "Extension cord gauge sizing for any tool or appliance.",
     url: "https://www.tallyard.com/extension-cord-calculator",
     type: "website",

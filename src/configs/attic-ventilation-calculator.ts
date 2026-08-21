@@ -155,6 +155,34 @@ export const atticVentilationCalculatorConfig: CalculatorConfig = {
     };
   },
 
+  howTo: {
+    name: "How to calculate attic ventilation",
+    description:
+      "Apply the code ratio to attic floor area, split it between intake and exhaust, and convert to vents using published net free area.",
+    steps: [
+      {
+        name: "Measure the attic floor area",
+        text: "Length times width of the attic footprint in square feet, which is usually the same as the floor below it.",
+      },
+      {
+        name: "Apply the ratio",
+        text: "Divide by 300 for a balanced system with a vapor retarder on the ceiling, per IRC R806.2. Divide by 150 if either condition is not met. The result is net free area in square feet.",
+      },
+      {
+        name: "Split intake and exhaust",
+        text: "Convert to square inches by multiplying by 144, then divide in half. A 1,500 square foot attic needs 720 square inches total, so 360 at the soffit and 360 at the ridge.",
+      },
+      {
+        name: "Convert to vents using published NFA",
+        text: "Use the manufacturer net free area, not the vent dimensions. Continuous soffit vent runs about 9 square inches per linear foot and ridge vent about 18, while a box vent is around 50 square inches each.",
+      },
+      {
+        name: "Check the eaves are actually open",
+        text: "Insulation packed into the soffit blocks intake regardless of how many vents are installed. Baffles hold the 1 inch airspace that IRC R806.3 requires.",
+      },
+    ],
+  },
+
   ContentExpansion: AtticVentilationCalculatorExpansion,
 
   formulaDescription:
@@ -171,14 +199,29 @@ export const atticVentilationCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "FHA Minimum Property Standards",
-      url: "https://www.hud.gov/",
-      note: "Source of the 1:300 / 1:150 attic ventilation rules",
+      name: "IRC 2021, Section R806: Roof Ventilation",
+      url: "https://codes.iccsafe.org/content/IRC2021P1/chapter-8-roof-ceiling-construction",
+      note: "The 1:300 and 1:150 ratios, the balance condition, and the 1 inch eave airspace",
     },
     {
-      name: "IRC 2021: Attic Ventilation",
-      url: "https://codes.iccsafe.org/",
-      note: "Code requirements for balanced intake and exhaust",
+      name: "IRC 2021, Section R806.5: Unvented Attic Assemblies",
+      url: "https://codes.iccsafe.org/content/IRC2021P1/chapter-8-roof-ceiling-construction",
+      note: "The conditions under which a roof assembly is designed with no ventilation at all",
+    },
+    {
+      name: "DOE Building America: Attic Ventilation and Moisture",
+      url: "https://www.energy.gov/eere/buildings/building-america",
+      note: "Research on airflow balance, powered vents, and attic moisture behavior",
+    },
+    {
+      name: "ASHRAE: Moisture Control in Buildings",
+      url: "https://www.ashrae.org/technical-resources",
+      note: "The building science behind condensation on roof sheathing",
+    },
+    {
+      name: "HUD Minimum Property Standards",
+      url: "https://www.hud.gov/program_offices/housing/sfh/mps",
+      note: "The historical basis for the 1:300 attic ventilation ratio in US practice",
     },
   ],
 
@@ -186,7 +229,7 @@ export const atticVentilationCalculatorConfig: CalculatorConfig = {
     { name: "Roofing calculator", slug: "roofing-calculator", description: "Shingle bundles for any pitch" },
     { name: "Insulation calculator", slug: "insulation-calculator", description: "R-value and bags for attic" },
     { name: "Gutter calculator", slug: "gutter-calculator", description: "Sized for your rainfall" },
-    { name: "Solar panel calculator", slug: "solar-calculator", description: "Cool attic = efficient solar" },
+    { name: "Snow load calculator", slug: "snow-load-calculator", description: "Roof snow load and ice dam weight" },
   ],
 
   faq: [

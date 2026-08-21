@@ -159,6 +159,34 @@ export const snowLoadCalculatorConfig: CalculatorConfig = {
     };
   },
 
+  howTo: {
+    name: "How to calculate snow load on a roof",
+    description:
+      "Convert measured snow depth and type into pounds per square foot, then compare it against the roof design load.",
+    steps: [
+      {
+        name: "Measure the depth safely",
+        text: "Measure from the ground with a pole, from a window, or from a deck. Do not climb onto a snow-covered roof to take a measurement.",
+      },
+      {
+        name: "Identify the snow type",
+        text: "Fresh powder is about 5 lb per cubic foot, settled snow 15, wet or melting snow 25, and ice 40 to 57. Density matters far more than depth.",
+      },
+      {
+        name: "Convert to pounds per square foot",
+        text: "Depth in feet times density gives psf. One inch of settled snow is about 1.25 psf; one inch of ice is about 4.7 psf. Add any ice layer separately.",
+      },
+      {
+        name: "Find your design load",
+        text: "Ask the building department for the adopted ground snow load. Flat roof design load is roughly 0.7 times that value for a heated house with ordinary exposure.",
+      },
+      {
+        name: "Compare and act",
+        text: "If the current load approaches the design load, or if doors stick, drywall cracks, or the ridge sags, leave the building and call a structural engineer.",
+      },
+    ],
+  },
+
   ContentExpansion: SnowLoadCalculatorExpansion,
 
   formulaDescription:
@@ -175,14 +203,29 @@ export const snowLoadCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "ASCE 7: Minimum Design Loads",
-      url: "https://www.asce.org/publications-and-news/civil-engineering-source/article/2022/03/01/asce-7-22",
-      note: "Standard for structural design loads including snow",
+      name: "ASCE 7-22, Chapter 7: Snow Loads",
+      url: "https://www.asce.org/publications-and-news/asce-7",
+      note: "The flat roof conversion pf = 0.7 Ce Ct Is pg and the slope factor Cs",
     },
     {
-      name: "FEMA: Snow Load Safety",
-      url: "https://www.fema.gov/",
-      note: "Public safety guide for roof snow assessment",
+      name: "ASCE 7 Hazard Tool: Snow Load by Location",
+      url: "https://ascehazardtool.org/",
+      note: "Returns a ground snow load for a specific latitude and longitude under ASCE 7-22",
+    },
+    {
+      name: "IRC 2021, Table R301.2(1): Climatic and Geographic Design Criteria",
+      url: "https://codes.iccsafe.org/content/IRC2021P1/chapter-3-building-planning",
+      note: "The table each jurisdiction fills in with its own adopted ground snow load",
+    },
+    {
+      name: "FEMA: Snow Load Safety Guide",
+      url: "https://www.fema.gov/emergency-managers/risk-management/building-science/publications",
+      note: "Snow density values, roof distress warning signs, and safe clearing practice",
+    },
+    {
+      name: "NRCA: Roof Snow Removal Guidance",
+      url: "https://www.nrca.net/technical",
+      note: "Industry practice for clearing snow without damaging roof coverings",
     },
   ],
 

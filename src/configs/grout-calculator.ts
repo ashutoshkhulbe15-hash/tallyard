@@ -170,6 +170,34 @@ export const groutCalculatorConfig: CalculatorConfig = {
     };
   },
 
+  howTo: {
+    name: "How to calculate how much grout you need",
+    description:
+      "Work out grout quantity from tile size, joint width, and tile thickness, then pick the right grout type for the joint.",
+    steps: [
+      {
+        name: "Measure the tiled area",
+        text: "Length times width in square feet. Walls and floors are usually different tile, so calculate them separately.",
+      },
+      {
+        name: "Note the tile size and thickness",
+        text: "Smaller tile creates far more joint per square foot. A 2 by 2 mosaic uses roughly six times the grout of a 24 by 24 tile over the same area, and thicker tile deepens every joint.",
+      },
+      {
+        name: "Set the joint width",
+        text: "Rectified porcelain is typically 1/16 inch, standard tile 1/8, and stone or rustic tile 3/16 to 3/8. The width drives both quantity and grout type.",
+      },
+      {
+        name: "Choose sanded or unsanded",
+        text: "Joints 1/8 inch and wider take sanded grout, since the sand resists shrinkage cracking. Joints narrower than 1/8 take unsanded, which also avoids scratching polished stone and glass.",
+      },
+      {
+        name: "Add a margin and buy whole bags",
+        text: "Round up to full bags and buy one extra. Grout colour varies between lots, so matching a later bag for repairs is difficult.",
+      },
+    ],
+  },
+
   ContentExpansion: GroutCalculatorExpansion,
 
   formulaDescription:
@@ -185,14 +213,29 @@ export const groutCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "Mapei: Grout Coverage Chart",
-      url: "https://www.mapei.com/us/en-us/",
-      note: "Industry standard coverage calculation for cement grouts",
+      name: "ANSI A118.6 and A118.7: Cementitious Grouts",
+      url: "https://www.tcnatile.com/products-and-services/publications/ansi-standards/",
+      note: "The standards covering standard and high performance cement grout",
     },
     {
-      name: "Custom Building Products: Grout Calculator",
-      url: "https://www.custombuildingproducts.com/",
-      note: "Reference for sanded vs unsanded selection and coverage",
+      name: "ANSI A118.3: Chemical Resistant Epoxy Grout",
+      url: "https://www.tcnatile.com/products-and-services/publications/ansi-standards/",
+      note: "The specification epoxy grouts are tested against",
+    },
+    {
+      name: "TCNA Handbook EJ171: Movement Joints",
+      url: "https://www.tcnatile.com/products-and-services/publications/tcna-handbook/",
+      note: "Where grout must stop and a flexible sealant is required instead",
+    },
+    {
+      name: "Mapei: Grout Coverage Charts",
+      url: "https://www.mapei.com/us/en-us/products-and-solutions/product-lines/tile-and-stone-installation-systems",
+      note: "Published coverage by tile size, joint width, and tile thickness",
+    },
+    {
+      name: "Custom Building Products: Grout Selection and Coverage",
+      url: "https://www.custombuildingproducts.com/products/grouts/",
+      note: "Sanded and unsanded selection guidance and per-bag coverage data",
     },
   ],
 

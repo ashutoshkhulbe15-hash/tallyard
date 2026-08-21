@@ -242,7 +242,7 @@ export const garageDoorCalculatorConfig: CalculatorConfig = {
   related: [
     { name: "Concrete calculator", slug: "concrete-calculator", description: "For garage slab or driveway" },
     { name: "Stud spacing calculator", slug: "stud-spacing-calculator", description: "Framing around openings" },
-    { name: "Insulation calculator", slug: "insulation-calculator", description: "R-value for attached garages" },
+    { name: "Extension cord calculator", slug: "extension-cord-calculator", description: "Gauge for shop tools on a long run" },
     { name: "Wire size calculator", slug: "wire-size-calculator", description: "Opener circuit wiring" },
   ],
 
