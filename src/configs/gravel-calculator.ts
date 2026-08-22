@@ -130,6 +130,34 @@ export const gravelCalculatorConfig: CalculatorConfig = {
     };
   },
 
+  howTo: {
+    name: "How to calculate gravel for a driveway or project",
+    description:
+      "Convert area and depth into cubic yards, then into tons, and pick the aggregate type that matches the job.",
+    steps: [
+      {
+        name: "Measure the area",
+        text: "Length times width in square feet. For a curved or irregular driveway, break it into rectangles and add them.",
+      },
+      {
+        name: "Choose the depth",
+        text: "Paths and patios take 2 to 3 inches. A driveway takes 4 to 6 inches total, usually as a base layer plus a top course.",
+      },
+      {
+        name: "Convert to cubic yards",
+        text: "Square feet divided by 324, times depth in inches. One cubic yard covers 324 square feet at one inch deep.",
+      },
+      {
+        name: "Convert cubic yards to tons",
+        text: "Crushed stone runs about 1.4 tons per cubic yard, so multiply yards by 1.4. Most suppliers price and deliver by the ton even when they quote in yards.",
+      },
+      {
+        name: "Match the aggregate to the layer",
+        text: "Use crusher run or crush and run for base, since the fines let it compact. Use #57 for drainage and for a driveway top course. Pea gravel is for paths and patios, not driveways.",
+      },
+    ],
+  },
+
   ContentExpansion: GravelCalculatorExpansion,
 
   formulaDescription:
@@ -144,14 +172,29 @@ export const gravelCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "Aggregate Research: Gravel Density Reference",
-      url: "https://www.aggregateresearch.com/",
-      note: "Industry density values for common aggregate types",
+      name: "ASTM D448: Standard Sizes of Coarse Aggregate",
+      url: "https://www.astm.org/d0448-12r17.html",
+      note: "The gradation numbering behind #57, #8, and the other size designations",
+    },
+    {
+      name: "AASHTO M43: Sizes of Aggregate for Road Construction",
+      url: "https://store.transportation.org/",
+      note: "The parallel highway specification most suppliers reference for base material",
+    },
+    {
+      name: "USDA NRCS: Gravel Road Construction and Maintenance",
+      url: "https://www.nrcs.usda.gov/resources/guides-and-instructions",
+      note: "Base depth, crowning, and compaction practice for unpaved surfaces",
     },
     {
       name: "University of Minnesota Extension: Driveway Base",
       url: "https://extension.umn.edu/",
-      note: "Depth recommendations for residential driveways",
+      note: "Residential driveway build-up and drainage recommendations",
+    },
+    {
+      name: "NCMA: Aggregate Base for Segmental Pavements",
+      url: "https://ncma.org/resource-library/",
+      note: "Compaction lift depth and geotextile use over weak subgrade",
     },
   ],
 

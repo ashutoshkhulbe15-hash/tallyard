@@ -19,7 +19,7 @@ function PitchMultiplierSVG() {
         return (
           <g key={p.label}>
             <text x="175" y={y + 14} textAnchor="end" fontSize="11" fontWeight="600" fill={GUIDE_SVG.ink}>{p.label}</text>
-            <rect x="185" y={y} width={p.w * 2.5} height="20" rx="3" fill={i >= 4 ? GUIDE_SVG.accent : GUIDE_SVG.slate} opacity="0.6" />
+            <rect x="185" y={y} width={p.w * 2.5} height="20" rx="3" fill={i >= 4 ? GUIDE_SVG.accent : GUIDE_SVG.slate} />
             <text x={193 + p.w * 2.5} y={y + 14} fontSize="12" fontWeight="700" fill={GUIDE_SVG.ink}>×{p.mult}</text>
           </g>
         );
@@ -34,15 +34,16 @@ function ShingleTypesSVG() {
     <svg viewBox="0 0 680 200" width="100%" height="auto" role="img" aria-label="Three shingle tiers: 3-tab at $1-2 per square foot lasting 15-20 years, architectural at $2-4 lasting 25-30 years, and premium/designer at $5-10 lasting 40-50 years.">
       <text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>Asphalt shingle tiers</text>
       {[
-        { label: "3-tab", price: "$1–2/ft²", life: "15–20 yr", note: "Flat, uniform, budget", x: 50, color: GUIDE_SVG.slate },
-        { label: "Architectural", price: "$2–4/ft²", life: "25–30 yr", note: "Dimensional, standard", x: 260, color: GUIDE_SVG.inkMuted },
-        { label: "Premium", price: "$5–10/ft²", life: "40–50 yr", note: "Designer, slate-look", x: 470, color: GUIDE_SVG.accent },
+        { label: "3-tab", price: "$1 to 2/ft²", life: "15 to 20 yr", note: "Flat, uniform, budget", x: 50, hl: false },
+        { label: "Architectural", price: "$2 to 4/ft²", life: "25 to 30 yr", note: "Dimensional, standard", x: 260, hl: false },
+        { label: "Premium", price: "$5 to 10/ft²", life: "40 to 50 yr", note: "Designer, slate-look", x: 470, hl: true },
       ].map((s) => (
         <g key={s.label}>
-          <rect x={s.x} y="55" width="180" height="110" rx="8" fill={s.label === "Premium" ? GUIDE_SVG.accentSoft : GUIDE_SVG.slateSoft} stroke={s.color} strokeWidth="1" />
-          <text x={s.x + 90} y="80" textAnchor="middle" fontSize="11" fontWeight="700" fill={s.color}>{s.label.toUpperCase()}</text>
+          <rect x={s.x} y="55" width="180" height="110" rx="8" fill={s.hl ? GUIDE_SVG.accentSoft : GUIDE_SVG.slateSoft} stroke={s.hl?GUIDE_SVG.accent:GUIDE_SVG.cool} strokeWidth="1.2" />
+          <text x={s.x + 90} y="80" textAnchor="middle" fontSize="11" fontWeight="700" fill={s.hl?GUIDE_SVG.accent:GUIDE_SVG.inkMuted}>{s.label.toUpperCase()}</text>
           <text x={s.x + 90} y="108" textAnchor="middle" fontSize="22" fontWeight="700" fill={GUIDE_SVG.ink}>{s.price}</text>
-          <text x={s.x + 90} y="130" textAnchor="middle" fontSize="10" fill={GUIDE_SVG.inkMuted}>{s.life} · {s.note}</text>
+          <text x={s.x + 90} y="130" textAnchor="middle" fontSize="10" fill={GUIDE_SVG.inkMuted}>{s.life}</text>
+          <text x={s.x + 90} y="147" textAnchor="middle" fontSize="9.5" fill={GUIDE_SVG.inkFaint}>{s.note}</text>
         </g>
       ))}
     </svg>
@@ -60,40 +61,6 @@ function SquareExplainerSVG() {
       <text x="240" y="78" fontSize="14" fontWeight="700" fill={GUIDE_SVG.ink}>1 square</text>
       <text x="240" y="98" fontSize="11" fill={GUIDE_SVG.inkMuted}>= 3 bundles (architectural)</text>
       <text x="240" y="115" fontSize="11" fill={GUIDE_SVG.inkFaint}>= 4 bundles (3-tab)</text>
-    </svg>
-  );
-}
-
-function RoofCostSVG() {
-  const sizes = [
-    { label: "1,000 ft²", sq: 10, cost3: "$3,500", costA: "$6,500", costP: "$12,000" },
-    { label: "1,500 ft²", sq: 15, cost3: "$5,200", costA: "$9,800", costP: "$18,000" },
-    { label: "2,000 ft²", sq: 20, cost3: "$7,000", costA: "$13,000", costP: "$24,000" },
-    { label: "2,500 ft²", sq: 25, cost3: "$8,800", costA: "$16,200", costP: "$30,000" },
-  ];
-  const headerY = 70;
-  const rowH = 30;
-  return (
-    <svg viewBox="0 0 680 240" width="100%" height="auto" role="img" aria-label="Roof replacement cost by size and shingle type, from $3,500 for a small 3-tab job to $30,000 for a large premium installation.">
-      <text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>Roof replacement cost (installed)</text>
-      <text x="20" y="43" fontSize="10" fill={GUIDE_SVG.inkFaint}>Including tear-off, underlayment, flashing, and labor</text>
-      <rect x="40" y={headerY - 18} width="600" height="26" rx="4" fill={GUIDE_SVG.bgWarm} />
-      {[{ l: "Roof size", x: 120 }, { l: "Squares", x: 240 }, { l: "3-tab", x: 350 }, { l: "Architectural", x: 470 }, { l: "Premium", x: 580 }].map((h) => (
-        <text key={h.l} x={h.x} y={headerY - 2} textAnchor="middle" fontSize="10" fontWeight="700" fill={GUIDE_SVG.inkMuted}>{h.l}</text>
-      ))}
-      {sizes.map((r, i) => {
-        const y = headerY + 10 + i * rowH;
-        return (
-          <g key={r.label}>
-            {i % 2 === 0 && <rect x="40" y={y - 4} width="600" height={rowH} fill={GUIDE_SVG.bgWarm} opacity="0.4" />}
-            <text x="120" y={y + 14} textAnchor="middle" fontSize="11" fontWeight="600" fill={GUIDE_SVG.ink}>{r.label}</text>
-            <text x="240" y={y + 14} textAnchor="middle" fontSize="11" fill={GUIDE_SVG.inkFaint}>{r.sq}</text>
-            <text x="350" y={y + 14} textAnchor="middle" fontSize="11" fill={GUIDE_SVG.inkMuted}>{r.cost3}</text>
-            <text x="470" y={y + 14} textAnchor="middle" fontSize="11" fill={GUIDE_SVG.accent} fontWeight="600">{r.costA}</text>
-            <text x="580" y={y + 14} textAnchor="middle" fontSize="11" fill={GUIDE_SVG.inkFaint}>{r.costP}</text>
-          </g>
-        );
-      })}
     </svg>
   );
 }
@@ -128,8 +95,8 @@ export function RoofingCalculatorExpansion() {
       <Figure number={2} caption="Roofing industry measures in 'squares.' One square = 100 sq ft = 3 bundles of architectural shingles. A 2,000 sq ft roof is 20 squares = 60 bundles before waste.">
         <SquareExplainerSVG />
       </Figure>
-      <p>When a roofer quotes &quot;20 squares,&quot; they mean 2,000 square feet of actual roof surface. Architectural shingles (the industry standard since roughly 2010) come 3 bundles per square. Older 3-tab shingles come 4 bundles per square. The bundles weigh 60–80 lbs each, which matters for staging and delivery: 60 bundles is about 2 tons of material going up the ladder.</p>
-      <Callout label="Waste factor for roofing">Standard residential roofs need 10–15% waste factor. Complex roofs with many hips, valleys, dormers, and skylights need 15–20%. The cuts at hips and valleys create short pieces that can&apos;t be reused elsewhere. Ridge cap shingles are ordered separately, roughly 35 linear feet per bundle.</Callout>
+      <p>When a roofer quotes &quot;20 squares,&quot; they mean 2,000 square feet of actual roof surface. Architectural shingles (the industry standard since roughly 2010) come 3 bundles per square. Older 3-tab shingles come 4 bundles per square. The bundles weigh 60 to 80 lbs each, which matters for staging and delivery: 60 bundles is about 2 tons of material going up the ladder.</p>
+      <Callout label="Waste factor for roofing">Standard residential roofs need 10 to 15% waste factor. Complex roofs with many hips, valleys, dormers, and skylights need 15 to 20%. The cuts at hips and valleys create short pieces that can&apos;t be reused elsewhere. Ridge cap shingles are ordered separately, roughly 35 linear feet per bundle.</Callout>
 
       <h2>Asphalt shingle tiers</h2>
       <Figure number={3} caption="Three tiers dominate the residential market. Architectural shingles account for 80%+ of new installations. 3-tab is the budget option; premium is for homes where curb appeal justifies the cost.">
@@ -138,8 +105,8 @@ export function RoofingCalculatorExpansion() {
       <ComparisonTable
         columns={[{ title: "3-tab" }, { title: "Architectural" }, { title: "Premium" }]}
         rows={[
-          { label: "Warranty", values: ["20–25 yr", "30–lifetime", "50 yr–lifetime"] },
-          { label: "Wind rating", values: ["60 mph", "110–130 mph", "130+ mph"] },
+          { label: "Warranty", values: ["20 to 25 yr", "30 to lifetime", "50 yr to lifetime"] },
+          { label: "Wind rating", values: ["60 mph", "110 to 130 mph", "130+ mph"] },
           { label: "Look", values: ["Flat, uniform strips", "Dimensional shadow lines", "Mimics slate, cedar, tile"] },
           { label: "Brands", values: ["GAF Royal Sovereign", "GAF Timberline, Owens Duration", "CertainTeed Grand Manor, GAF Camelot"] },
         ]}
@@ -147,11 +114,8 @@ export function RoofingCalculatorExpansion() {
       />
 
       <h2>What a new roof actually costs</h2>
-      <Figure number={4} caption="Total installed cost including tear-off, underlayment, flashing, and labor. The jump from 3-tab to architectural roughly doubles the cost, but the roof lasts 50-70% longer.">
-        <RoofCostSVG />
-      </Figure>
-      <p>Labor is typically 60% of a roofing job. Materials are 40%. A crew of 4–6 can tear off and reshingle a standard 2,000 sq ft roof in 2–3 days. The materials stage on the roof the morning of the tear-off, old shingles come off into a dumpster, underlayment and drip edge go down the same day, and shingling starts from the bottom working up.</p>
-      <p>Two cost items people forget: the dumpster rental ($300–600 for a 20-yard container) and the permit fee ($100–500 depending on municipality). Both are non-negotiable on a full replacement.</p>
+      <p>Labor is typically 60% of a roofing job. Materials are 40%. A crew of 4 to 6 can tear off and reshingle a standard 2,000 sq ft roof in 2 to 3 days. The materials stage on the roof the morning of the tear-off, old shingles come off into a dumpster, underlayment and drip edge go down the same day, and shingling starts from the bottom working up.</p>
+      <p>Two cost items people forget: the dumpster rental ($300 to 600 for a 20-yard container) and the permit fee ($100 to 500 depending on municipality). Both are non-negotiable on a full replacement.</p>
 
       <Scenario location="Minneapolis, MN">
         After a 2024 hailstorm, a homeowner got three roofing bids for
@@ -164,16 +128,92 @@ export function RoofingCalculatorExpansion() {
         + 10% waste = 22.2, rounded to 22).
       </Scenario>
 
+      <ComparisonTable
+        caption="Installed roof replacement cost by size and shingle tier, including tear-off, underlayment, flashing, and labour. Steep or complex roofs run above these figures because of access and waste."
+        columns={[
+          { title: "Squares" },
+          { title: "3-tab" },
+          { title: "Architectural", highlight: true },
+          { title: "Premium" },
+        ]}
+        rows={[
+          { label: "1,000 ft² roof", values: ["10", "$3,500", "$6,500", "$12,000"] },
+          { label: "1,500 ft² roof", values: ["15", "$5,200", "$9,800", "$18,000"] },
+          { label: "2,000 ft² roof", values: ["20", "$7,000", "$13,000", "$24,000"] },
+          { label: "2,500 ft² roof", values: ["25", "$8,800", "$16,200", "$30,000"] },
+        ]}
+      />
+
+      <h2>Roof shape changes the area and the waste</h2>
+      <p>
+        Pitch multiplies the footprint into actual surface area, but shape
+        decides how much of that surface gets cut into. A simple gable is
+        two rectangles and produces very little scrap. A hip roof covers
+        about the same area for the same footprint and pitch, yet consumes
+        noticeably more material, because every hip and valley means
+        angled cuts and the ridge caps run along four edges instead of one.
+      </p>
+
+      <ComparisonTable
+        caption="Waste factor by roof shape, applied after the pitch multiplier. Complexity, not size, is what drives the number: a small roof with three dormers wastes more than a large plain one."
+        columns={[
+          { title: "Waste factor", highlight: true },
+          { title: "Why" },
+        ]}
+        rows={[
+          { label: "Simple gable", values: ["10%", "Two planes, cuts only at the rake and ridge"] },
+          { label: "Hip roof", values: ["15%", "Four planes, angled cuts at every hip"] },
+          { label: "Gambrel roof", values: ["12 to 15%", "Two pitches per side, a break line to detail"] },
+          { label: "Mansard roof", values: ["15 to 18%", "Steep lower slope, often with dormers"] },
+          { label: "Multiple valleys or dormers", values: ["15 to 20%", "Every valley is a full-length angled cut"] },
+        ]}
+      />
+
+      <p>
+        A gambrel roof, the barn profile, has two pitches on each side: a
+        steep lower slope and a shallow upper one. Each has to be measured
+        and multiplied separately, because applying one pitch factor to the
+        whole side understates the steep portion badly. A mansard does the
+        same thing on all four sides, which is why mansard roofs carry both
+        the hip complexity and the two-pitch problem at once. In both
+        cases, measure each slope plane as its own rectangle and add them.
+      </p>
+
+      <h2>Metal roofing and low slope membranes</h2>
+      <p>
+        Metal roofing is not sold by the square the way shingles are. It
+        comes in panels, typically 3 feet of coverage width in lengths cut
+        to your rafter run, so the useful calculation is panel count rather
+        than squares: roof width divided by 3 feet of coverage, then panel
+        length matched to the rafter length plus overhang. Standing seam,
+        with concealed fasteners and raised seams, runs $10 to $18 per
+        square foot installed. Exposed-fastener corrugated or ribbed panels
+        run $5 to $10 and are the agricultural and outbuilding standard.
+      </p>
+      <p>
+        Below about 2:12 pitch, shingles stop being an option. Water moves
+        too slowly to shed reliably and the IRC restricts asphalt shingles
+        to 2:12 as an absolute minimum with doubled underlayment, with 4:12
+        the normal threshold. Low slope and flat roofs take a membrane
+        instead. TPO, a white single-ply sheet welded at the seams, is the
+        current commercial default at roughly $6 to $12 per square foot
+        installed and reflects heat well. EPDM, the black rubber
+        alternative, costs slightly less and absorbs heat. Modified bitumen
+        is the torch-applied option still common on residential flat
+        sections. All three are sold and quoted by the square foot rather
+        than by the roofing square.
+      </p>
+
       <h2>Beyond shingles: what else goes on the roof</h2>
       <ComparisonTable
         columns={[{ title: "Purpose" }, { title: "Cost" }]}
         rows={[
-          { label: "Underlayment", values: ["Synthetic felt (moisture barrier)", "$0.15–0.50/ft²"] },
-          { label: "Ice & water shield", values: ["Self-adhering membrane at eaves, valleys", "$1.50–3.00/ft²"] },
-          { label: "Drip edge", values: ["Metal flashing at roof edges", "$1–3 per linear foot"] },
-          { label: "Ridge vent", values: ["Continuous exhaust ventilation at peak", "$3–6 per linear foot"] },
-          { label: "Pipe boots", values: ["Flashing around plumbing vents", "$10–30 each"] },
-          { label: "Step flashing", values: ["Where roof meets a wall or chimney", "$5–10 per linear foot"] },
+          { label: "Underlayment", values: ["Synthetic felt (moisture barrier)", "$0.15 to 0.50/ft²"] },
+          { label: "Ice & water shield", values: ["Self-adhering membrane at eaves, valleys", "$1.50 to 3.00/ft²"] },
+          { label: "Drip edge", values: ["Metal flashing at roof edges", "$1 to 3 per linear foot"] },
+          { label: "Ridge vent", values: ["Continuous exhaust ventilation at peak", "$3 to 6 per linear foot"] },
+          { label: "Pipe boots", values: ["Flashing around plumbing vents", "$10 to 30 each"] },
+          { label: "Step flashing", values: ["Where roof meets a wall or chimney", "$5 to 10 per linear foot"] },
         ]}
         caption="These items are not optional. A shingle-only estimate that doesn't include underlayment and flashing is either incomplete or the roofer is cutting corners."
       />

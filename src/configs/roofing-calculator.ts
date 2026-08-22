@@ -145,6 +145,34 @@ export const roofingCalculatorConfig: CalculatorConfig = {
     };
   },
 
+  howTo: {
+    name: "How to calculate roofing squares",
+    description:
+      "Convert a building footprint into actual roof area using pitch, then into squares and bundles.",
+    steps: [
+      {
+        name: "Measure the footprint",
+        text: "Length times width of the area under the roof, including overhangs. Break an L-shaped house into rectangles and add them.",
+      },
+      {
+        name: "Find the roof pitch",
+        text: "Pitch is rise over 12 inches of run. Hold a level out 12 inches from the roof surface and measure down to it: a 6 inch drop is a 6:12 pitch.",
+      },
+      {
+        name: "Apply the pitch multiplier",
+        text: "Multiply footprint area by the factor for your pitch: 1.031 at 4:12, 1.118 at 6:12, 1.202 at 8:12, and 1.414 at 12:12. This converts flat area into actual sloped surface.",
+      },
+      {
+        name: "Convert to squares and bundles",
+        text: "Divide by 100 to get roofing squares. Architectural shingles run three bundles per square, so multiply squares by three.",
+      },
+      {
+        name: "Add waste for the roof shape",
+        text: "Use 10 percent on a simple gable, 15 on a hip roof, and 15 to 20 where there are multiple valleys or dormers. Add starter strip and ridge cap separately.",
+      },
+    ],
+  },
+
   ContentExpansion: RoofingCalculatorExpansion,
 
   formulaDescription:
@@ -160,14 +188,29 @@ export const roofingCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "GAF: Roofing Calculator Guide",
-      url: "https://www.gaf.com/en-us/for-homeowners/roofing-advice",
-      note: "Industry-standard slope factors and bundle counts",
+      name: "IRC 2021, Section R905: Requirements for Roof Coverings",
+      url: "https://codes.iccsafe.org/content/IRC2021P1/chapter-9-roof-assemblies",
+      note: "Minimum slope for each covering type and underlayment requirements",
+    },
+    {
+      name: "NRCA Roofing Manual",
+      url: "https://www.nrca.net/technical",
+      note: "Industry standard details for steep slope and low slope assemblies",
+    },
+    {
+      name: "ARMA: Asphalt Shingle Application",
+      url: "https://www.asphaltroofing.org/technical/",
+      note: "Shingle coverage, exposure, and waste guidance from the manufacturers association",
     },
     {
       name: "Owens Corning: Asphalt Shingle Installation",
-      url: "https://www.owenscorning.com/roofing",
-      note: "Reference for waste factors and ridge cap requirements",
+      url: "https://www.owenscorning.com/en-us/roofing/tools/installation-instructions",
+      note: "Bundle coverage, starter and ridge cap quantities per square",
+    },
+    {
+      name: "MCA: Metal Roofing Installation Guidance",
+      url: "https://www.metalconstruction.org/",
+      note: "Panel coverage widths and standing seam versus exposed fastener systems",
     },
   ],
 

@@ -3,11 +3,11 @@ import { ComparisonTable, Callout } from "@/components/GuideComponents";
 
 function TonsVsYardsSVG() {
   const materials = [
-    { label: "Pea gravel", density: 1.4, color: GUIDE_SVG.slate },
-    { label: "Crushed stone (#57)", density: 1.4, color: GUIDE_SVG.inkFaint },
-    { label: "Process/road base", density: 1.5, color: GUIDE_SVG.inkMuted },
-    { label: "River rock (3-5\")", density: 1.3, color: GUIDE_SVG.accent },
-    { label: "Decomposed granite", density: 1.5, color: GUIDE_SVG.accent },
+    { label: "Pea gravel", density: 1.4, hl: false },
+    { label: "Crushed stone (#57)", density: 1.4, hl: true },
+    { label: "Crusher run / road base", density: 1.5, hl: true },
+    { label: "River rock, 3 to 5 in", density: 1.3, hl: false },
+    { label: "Decomposed granite", density: 1.5, hl: false },
   ];
   return (
     <svg viewBox="0 0 680 230" width="100%" height="auto" role="img" aria-label="Gravel density: 1 cubic yard weighs 1.3 to 1.5 tons depending on type.">
@@ -18,9 +18,9 @@ function TonsVsYardsSVG() {
         const w = m.density * 220;
         return (
           <g key={m.label}>
-            <text x="185" y={y + 14} textAnchor="end" fontSize="11" fontWeight="600" fill={GUIDE_SVG.ink}>{m.label}</text>
-            <rect x="195" y={y} width={w} height="20" rx="3" fill={m.color} opacity="0.6" />
-            <text x={203 + w} y={y + 14} fontSize="11" fontWeight="700" fill={GUIDE_SVG.ink}>{m.density} tons/yd³</text>
+            <text x="185" y={y + 14} textAnchor="end" fontSize="11" fontWeight="700" fill={GUIDE_SVG.ink}>{m.label}</text>
+            <rect x="195" y={y} width={w} height="20" rx="3" fill={m.hl?GUIDE_SVG.accent:GUIDE_SVG.slate} />
+            <text x={203 + w} y={y + 14} fontSize="11" fontWeight="700" fill={m.hl?GUIDE_SVG.accent:GUIDE_SVG.inkMuted}>{m.density} tons/yd³</text>
           </g>
         );
       })}
@@ -44,9 +44,9 @@ function DepthCoverageSVG() {
         return (
           <g key={d.label}>
             <text x="45" y={y + 14} textAnchor="end" fontSize="12" fontWeight="700" fill={GUIDE_SVG.ink}>{d.label}</text>
-            <rect x="55" y={y} width={w} height="20" rx="3" fill={i >= 2 ? GUIDE_SVG.accent : GUIDE_SVG.slate} opacity="0.6" />
-            <text x={63 + w} y={y + 14} fontSize="11" fontWeight="600" fill={GUIDE_SVG.ink}>{d.sqft} ft²</text>
-            <text x={63 + w + 50} y={y + 14} fontSize="10" fill={GUIDE_SVG.inkFaint}>{d.use}</text>
+            <rect x="55" y={y} width={w} height="20" rx="3" fill={i >= 2 ? GUIDE_SVG.accent : GUIDE_SVG.slate} />
+            <text x={63 + w} y={y + 14} fontSize="11" fontWeight="700" fill={i >= 2 ? GUIDE_SVG.accent : GUIDE_SVG.inkMuted}>{d.sqft} ft²</text>
+            <text x="330" y={y + 14} fontSize="10" fill={GUIDE_SVG.inkFaint}>{d.use}</text>
           </g>
         );
       })}
@@ -54,44 +54,26 @@ function DepthCoverageSVG() {
   );
 }
 
-function GravelTypesSVG() {
-  const types = [
-    { label: "Pea gravel", cost: "$30–50/ton", best: "Paths, between pavers, drainage" },
-    { label: "#57 crushed stone", cost: "$25–45/ton", best: "Driveways, drainage, French drains" },
-    { label: "Road base / process", cost: "$20–35/ton", best: "Patio sub-base, driveway base" },
-    { label: "River rock (3–5\")", cost: "$60–120/ton", best: "Decorative, dry creek beds, erosion" },
-    { label: "Decomposed granite", cost: "$35–55/ton", best: "Paths, xeriscape, patio surface" },
-  ];
-  const headerY = 70; const rowH = 28;
-  return (
-    <svg viewBox="0 0 680 240" width="100%" height="auto" role="img" aria-label="Gravel types: pea gravel, crushed stone, road base, river rock, decomposed granite.">
-      <text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>Gravel types and what they cost</text>
-      <rect x="30" y={headerY-18} width="620" height="26" rx="4" fill={GUIDE_SVG.bgWarm} />
-      {[{l:"Type",x:130},{l:"Cost/ton",x:310},{l:"Best for",x:500}].map(h=>(
-        <text key={h.l} x={h.x} y={headerY-2} textAnchor="middle" fontSize="10" fontWeight="700" fill={GUIDE_SVG.inkMuted}>{h.l}</text>
-      ))}
-      {types.map((t,i)=>{const y=headerY+10+i*rowH;return(
-        <g key={t.label}>{i%2===0&&<rect x="30" y={y-4} width="620" height={rowH} fill={GUIDE_SVG.bgWarm} opacity="0.4"/>}
-          <text x="130" y={y+14} textAnchor="middle" fontSize="11" fontWeight="600" fill={GUIDE_SVG.ink}>{t.label}</text>
-          <text x="310" y={y+14} textAnchor="middle" fontSize="11" fill={GUIDE_SVG.accent} fontWeight="600">{t.cost}</text>
-          <text x="500" y={y+14} textAnchor="middle" fontSize="10" fill={GUIDE_SVG.inkFaint}>{t.best}</text>
-        </g>
-      )})}
-    </svg>
-  );
-}
-
 function CompactionSVG() {
   return (
-    <svg viewBox="0 0 680 130" width="100%" height="auto" role="img" aria-label="Gravel compacts 15-20%. Order 1.2 times the calculated volume.">
-      <text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>Compaction: why you need 20% more than the math says</text>
-      <rect x="60" y="50" width="200" height="55" rx="8" fill={GUIDE_SVG.slateSoft} stroke={GUIDE_SVG.slate} strokeWidth="1" />
-      <text x="160" y="72" textAnchor="middle" fontSize="11" fontWeight="600" fill={GUIDE_SVG.ink}>Loose volume</text>
-      <text x="160" y="90" textAnchor="middle" fontSize="10" fill={GUIDE_SVG.inkFaint}>What you order</text>
-      <text x="310" y="82" fontSize="18" fontWeight="700" fill={GUIDE_SVG.accent}>→ −20%</text>
-      <rect x="380" y="50" width="160" height="55" rx="8" fill={GUIDE_SVG.accentSoft} stroke={GUIDE_SVG.accent} strokeWidth="1" />
-      <text x="460" y="72" textAnchor="middle" fontSize="11" fontWeight="600" fill={GUIDE_SVG.ink}>Compacted volume</text>
-      <text x="460" y="90" textAnchor="middle" fontSize="10" fill={GUIDE_SVG.inkFaint}>What you end up with</text>
+    <svg viewBox="0 0 680 176" width="100%" height="auto" role="img" aria-label="Gravel compacts about 20 percent, so a project needing 10 compacted cubic yards requires ordering 12 loose cubic yards.">
+      <text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>Compaction: why you order more than the math says</text>
+      <text x="20" y="43" fontSize="10" fill={GUIDE_SVG.inkFaint}>Aggregate arrives loose and loses roughly a fifth of its volume once rolled</text>
+
+      <rect x="52" y="66" width="196" height="62" rx="8" fill={GUIDE_SVG.slateSoft} stroke={GUIDE_SVG.cool} strokeWidth="1.2" />
+      <text x="150" y="90" textAnchor="middle" fontSize="11.5" fontWeight="700" fill={GUIDE_SVG.ink}>12 yd&#179; ordered</text>
+      <text x="150" y="110" textAnchor="middle" fontSize="10" fill={GUIDE_SVG.inkMuted}>loose, as delivered</text>
+
+      <line x1="266" y1="97" x2="330" y2="97" stroke={GUIDE_SVG.accent} strokeWidth="2" />
+      <path d="M 338 97 L 326 91 L 326 103 Z" fill={GUIDE_SVG.accent} />
+      <text x="300" y="84" textAnchor="middle" fontSize="11" fontWeight="700" fill={GUIDE_SVG.accent}>compact</text>
+      <text x="300" y="118" textAnchor="middle" fontSize="10" fontWeight="700" fill={GUIDE_SVG.warm}>lose 20%</text>
+
+      <rect x="356" y="66" width="196" height="62" rx="8" fill={GUIDE_SVG.accentSoft} stroke={GUIDE_SVG.accent} strokeWidth="1.5" />
+      <text x="454" y="90" textAnchor="middle" fontSize="11.5" fontWeight="700" fill={GUIDE_SVG.accent}>10 yd&#179; in place</text>
+      <text x="454" y="110" textAnchor="middle" fontSize="10" fill={GUIDE_SVG.inkMuted}>what the project needs</text>
+
+      <text x="20" y="168" fontSize="9" fill={GUIDE_SVG.inkFaint}>Multiply the calculated volume by 1.2 for anything that gets compacted. Loose decorative gravel does not need the allowance.</text>
     </svg>
   );
 }
@@ -123,10 +105,6 @@ export function GravelCalculatorExpansion() {
 
       <h2>Picking the right gravel for the job</h2>
 
-      <Figure number={3} caption="Not all gravel is interchangeable. Angular crushed stone locks together under compaction. Round pea gravel and river rock shift under load and should never be used as structural base.">
-        <GravelTypesSVG />
-      </Figure>
-
       <Callout label="Never use round stone as base">Pea gravel and river rock are round. Round stones roll against each other under weight. If you use pea gravel as the base under a patio or walkway, it will shift and settle unevenly within one season. Structural base must be angular (crushed stone, process gravel, or decomposed granite) because the sharp edges lock together during compaction. Save the round stuff for decorative topping and drainage fill.</Callout>
 
       <ComparisonTable
@@ -136,10 +114,78 @@ export function GravelCalculatorExpansion() {
           {label:"Drainage",values:["Good through voids","Excellent through voids"]},
           {label:"Walkability",values:["Firm surface","Loose, sinks underfoot"]},
           {label:"Best for",values:["Base layers, driveways, under pavers","Decorative, drainage trenches, between flagstone"]},
-          {label:"Cost",values:["$20–45/ton","$30–120/ton"]},
+          {label:"Cost",values:["$20 to 45/ton","$30 to 120/ton"]},
         ]}
         caption="Most projects need angular crushed stone as the base layer. Round stone goes on top for appearance, or in drainage applications where compaction is not needed."
       />
+
+      <h2>Gravel types by number, and what each one does</h2>
+      <p>
+        Aggregate is graded by number, and the numbers describe size and
+        whether fines are present. That second part decides everything.
+        Gravel with fines compacts into a hard, load-bearing surface but
+        drains slowly. Gravel washed clean of fines drains freely but never
+        locks together, so it stays loose underfoot forever. Choosing the
+        wrong one is the single most common gravel mistake, and it is not
+        recoverable without digging it back out.
+      </p>
+
+      <ComparisonTable
+        caption="The aggregates you will actually be offered by name. Crusher run and crush and run are the same product; so are ABC and dense grade aggregate in most of the country."
+        columns={[
+          { title: "Size" },
+          { title: "Fines?", highlight: true },
+          { title: "What it is for" },
+        ]}
+        rows={[
+          { label: "Crusher run, crush and run", values: ['Dust to 1 in', "Yes, packed with them", "Base layers, compacts rock hard"] },
+          { label: "#57 gravel", values: ['3/4 in', "No, washed clean", "Drainage, French drains, driveway top"] },
+          { label: "#8 gravel", values: ['3/8 in', "No", "Finer top layer, paver bedding"] },
+          { label: "#3 or #4 gravel", values: ['1.5 to 2.5 in', "No", "Deep base under a new driveway"] },
+          { label: "Pea gravel", values: ['3/8 in, rounded', "No", "Patios, paths, playgrounds, dog runs"] },
+          { label: "Decomposed granite", values: ['Fines to 1/4 in', "Yes", "Paths that need a firm walking surface"] },
+        ]}
+      />
+
+      <p>
+        Two practical readings. Crush and run gravel, sold as crusher run,
+        ABC, or dense grade depending on where you are, is what goes down
+        first on a driveway because the fines act as a binder and the
+        angular pieces lock. It is the cheapest aggregate per ton and the
+        one most people should be buying more of. And #57 gravel is the
+        drainage workhorse: it is the standard fill for a French drain and
+        the usual top course on a gravel driveway, because water passes
+        straight through it rather than sitting on the surface.
+      </p>
+      <p>
+        Pea gravel is the exception that catches people. It is rounded
+        rather than crushed, which is why it is comfortable underfoot and
+        why it will not compact. On a patio or a path with edging it is
+        excellent. On a driveway it migrates under tyres, ruts, and ends up
+        in the lawn, which is why a pea gravel driveway is a maintenance
+        commitment rather than a surface. If you want the look, use it as a
+        thin top course over a compacted crusher run base and accept the
+        raking.
+      </p>
+
+      <h2>Building a gravel driveway in layers</h2>
+      <p>
+        A driveway that lasts is not one gravel, it is two or three in
+        sequence, each compacted before the next goes on. The usual build
+        over stable subgrade is 4 inches of #3 or crusher run as base, then
+        2 to 3 inches of #57 as the running surface. Over soft or clay soil
+        the base goes deeper and a woven geotextile fabric underneath keeps
+        the stone from disappearing into the mud, which is a $200 roll that
+        routinely saves several tons of aggregate.
+      </p>
+      <p>
+        Compaction is what separates a driveway from a gravel pile. Each
+        lift should be no more than 4 inches before rolling, because a
+        plate compactor cannot densify a deeper layer, and the surface
+        should crown slightly so water runs to the sides rather than down
+        the middle. Skipping compaction is why some gravel driveways rut in
+        their first wet season and others last a decade with a top-up.
+      </p>
 
       <h2>Order 20% more than the formula says</h2>
 

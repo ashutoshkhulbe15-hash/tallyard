@@ -150,6 +150,34 @@ export const sidingCalculatorConfig: CalculatorConfig = {
     };
   },
 
+  howTo: {
+    name: "How to calculate siding for a house",
+    description:
+      "Measure wall area in squares, then convert to the units your chosen siding is actually sold in.",
+    steps: [
+      {
+        name: "Measure each wall face",
+        text: "Width times height for each rectangular section. Gables are triangles: base times height divided by two.",
+      },
+      {
+        name: "Subtract only the large openings",
+        text: "Deduct doors and windows over about 10 square feet. Leave small openings in, since the offcuts around them are rarely reusable.",
+      },
+      {
+        name: "Convert to squares",
+        text: "Divide total square feet by 100. Siding is quoted and sold by the square, which is 100 square feet of wall coverage.",
+      },
+      {
+        name: "Convert to the actual product unit",
+        text: "Lap siding uses exposure: an 8-1/4 inch fiber cement board showing 7 inches covers 7 square feet per 12 foot length. Panel products like T1-11 and board and batten are sold as sheets at 32 square feet each.",
+      },
+      {
+        name: "Add waste by complexity",
+        text: "Use 10 percent for a simple rectangular house, and 15 percent where there are gables, dormers, or many openings. Panel siding waste runs higher than lap because offcuts cannot be reused.",
+      },
+    ],
+  },
+
   ContentExpansion: SidingCalculatorExpansion,
 
   formulaDescription:
@@ -166,14 +194,29 @@ export const sidingCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "James Hardie: Installation Guide",
-      url: "https://www.jameshardie.com/",
-      note: "Coverage and waste for fiber cement siding",
+      name: "Vinyl Siding Institute: Installation Manual",
+      url: "https://www.vinylsiding.org/installation/",
+      note: "Panel exposure, coverage per square, and expansion allowance requirements",
     },
     {
-      name: "Vinyl Siding Institute: Estimating",
-      url: "https://www.vinylsiding.org/",
-      note: "Industry standard coverage for vinyl lap siding",
+      name: "James Hardie: Installation Instructions",
+      url: "https://www.jameshardie.com/resources/installation",
+      note: "Fiber cement lap exposure, fastening, and clearance to grade",
+    },
+    {
+      name: "APA: Panel Siding Application",
+      url: "https://www.apawood.org/technical-guides",
+      note: "T1-11 and other plywood panel siding thickness, span, and edge sealing",
+    },
+    {
+      name: "IRC 2021, Section R703: Exterior Covering",
+      url: "https://codes.iccsafe.org/content/IRC2021P1/chapter-7-wall-covering",
+      note: "Water resistive barrier, flashing, and minimum clearance to grade",
+    },
+    {
+      name: "LP Building Solutions: Engineered Wood Siding",
+      url: "https://lpcorp.com/products/siding",
+      note: "Engineered wood substrate treatment and installation requirements",
     },
   ],
 

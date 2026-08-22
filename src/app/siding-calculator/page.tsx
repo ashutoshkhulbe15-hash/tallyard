@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "siding-calculator";
 
 export const metadata: Metadata = {
-  title: "Siding Calculator: Squares For Your House",
+  title: "Siding Calculator: Squares, Sheets & Cost",
   description:
-    "Calculate squares and linear feet of siding for any home. Accounts for gables, openings, and material type.",
+    "Siding for any house in squares or sheets. Covers vinyl, fiber cement, T1-11, board and batten, and cedar, with exposure math and installed cost per foot.",
   alternates: { canonical: "/siding-calculator" },
   openGraph: {
-    title: "Siding Calculator: Squares For Your House",
+    title: "Siding Calculator: Squares, Sheets & Cost",
     description: "Calculate siding squares and linear feet for any home.",
     url: "https://www.tallyard.com/siding-calculator",
     type: "website",

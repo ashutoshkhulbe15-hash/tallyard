@@ -3,56 +3,84 @@ import { ComparisonTable, Callout } from "@/components/GuideComponents";
 
 function SizingByZoneSVG() {
   const zones = [
-    { zone: "1 to 2", factor: "18 to 22", tons2k: "3.0 to 3.7", color: GUIDE_SVG.slate },
-    { zone: "3", factor: "22 to 25", tons2k: "3.7 to 4.2", color: GUIDE_SVG.inkFaint },
-    { zone: "4", factor: "25 to 30", tons2k: "4.2 to 5.0", color: GUIDE_SVG.inkMuted },
-    { zone: "5", factor: "28 to 35", tons2k: "4.7 to 5.8", color: GUIDE_SVG.accent },
-    { zone: "6 to 7", factor: "35 to 45", tons2k: "5.8 to 7.5", color: GUIDE_SVG.accent },
+    { zone: "Zone 1-2", lo: 18, hi: 22, city: "Houston, Miami" },
+    { zone: "Zone 3", lo: 22, hi: 25, city: "Atlanta, Phoenix" },
+    { zone: "Zone 4", lo: 25, hi: 30, city: "Richmond, St Louis" },
+    { zone: "Zone 5", lo: 28, hi: 35, city: "Chicago, Denver" },
+    { zone: "Zone 6-7", lo: 35, hi: 45, city: "Minneapolis, Burlington" },
   ];
-  const headerY = 70; const rowH = 28;
+  const maxV = 45;
   return (
-    <svg viewBox="0 0 680 230" width="100%" height="auto" role="img" aria-label="Heat pump sizing by climate zone: warmer zones need fewer BTU per square foot.">
-      <text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>Heat pump sizing by climate zone</text>
-      <text x="20" y="43" fontSize="10" fill={GUIDE_SVG.inkFaint}>BTU/ft² factor increases with colder climate. A 2,000 ft² home in zone 5 needs 4.7 to 5.8 tons.</text>
-      <rect x="50" y={headerY-18} width="580" height="26" rx="4" fill={GUIDE_SVG.bgWarm} />
-      {[{l:"Zone",x:120},{l:"BTU/ft²",x:270},{l:"Tons (2,000 ft² home)",x:460}].map(h=>(
-        <text key={h.l} x={h.x} y={headerY-2} textAnchor="middle" fontSize="10" fontWeight="700" fill={GUIDE_SVG.inkMuted}>{h.l}</text>
-      ))}
-      {zones.map((z,i)=>{const y=headerY+10+i*rowH;return(
-        <g key={z.zone}>{i%2===0&&<rect x="50" y={y-4} width="580" height={rowH} fill={GUIDE_SVG.bgWarm} opacity="0.4"/>}
-          <text x="120" y={y+14} textAnchor="middle" fontSize="12" fontWeight="700" fill={GUIDE_SVG.ink}>Zone {z.zone}</text>
-          <text x="270" y={y+14} textAnchor="middle" fontSize="11" fill={GUIDE_SVG.accent} fontWeight="600">{z.factor}</text>
-          <text x="460" y={y+14} textAnchor="middle" fontSize="11" fill={GUIDE_SVG.inkMuted}>{z.tons2k}</text>
-        </g>
-      )})}
+    <svg viewBox="0 0 680 262" width="100%" height="auto" role="img" aria-label="Heat pump capacity needed per square foot by climate zone: 18 to 22 BTU in zones 1 and 2, rising to 35 to 45 BTU in zones 6 and 7.">
+      <text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>Capacity needed per square foot, by climate zone</text>
+      <text x="20" y="43" fontSize="10" fill={GUIDE_SVG.inkFaint}>The same house needs roughly twice the capacity in Minneapolis that it needs in Houston</text>
+      {zones.map((z, i) => {
+        const y = 76 + i * 36;
+        const x1 = 190 + (z.lo / maxV) * 300;
+        const x2 = 190 + (z.hi / maxV) * 300;
+        return (
+          <g key={z.zone}>
+            <text x="182" y={y + 12} textAnchor="end" fontSize="11.5" fontWeight="700" fill={GUIDE_SVG.ink}>{z.zone}</text>
+            <line x1="190" y1={y + 8} x2="490" y2={y + 8} stroke={GUIDE_SVG.line} strokeWidth="1" />
+            <rect x={x1} y={y} width={Math.max(8, x2 - x1)} height="16" rx="8" fill={i >= 3 ? GUIDE_SVG.accent : GUIDE_SVG.slate} />
+            <text x="504" y={y + 12} fontSize="10.5" fontWeight="700" fill={i >= 3 ? GUIDE_SVG.accent : GUIDE_SVG.inkMuted}>{z.lo} to {z.hi}</text>
+            <text x="566" y={y + 12} fontSize="9" fill={GUIDE_SVG.inkFaint}>{z.city}</text>
+          </g>
+        );
+      })}
+      <text x="20" y="256" fontSize="9" fill={GUIDE_SVG.inkFaint}>BTU per hour per square foot. Multiply by conditioned area, then divide by 12,000 to get tons.</text>
     </svg>
   );
 }
 
 function COPCurveSVG() {
-  const temps = [
-    { temp: "47°F", cop: "3.5 to 4.0", eff: "350 to 400%", color: GUIDE_SVG.accent },
-    { temp: "35°F", cop: "2.5 to 3.0", eff: "250 to 300%", color: GUIDE_SVG.inkMuted },
-    { temp: "17°F", cop: "1.8 to 2.2", eff: "180 to 220%", color: GUIDE_SVG.slate },
-    { temp: "5°F", cop: "1.2 to 1.5", eff: "120 to 150%", color: GUIDE_SVG.inkFaint },
-    { temp: "-5°F (cold climate HP)", cop: "1.5 to 2.0", eff: "150 to 200%", color: GUIDE_SVG.accent },
+  const pts = [
+    { t: "47F", cop: 3.75, x: 90 },
+    { t: "35F", cop: 2.75, x: 200 },
+    { t: "17F", cop: 2.0, x: 310 },
+    { t: "5F", cop: 1.35, x: 420 },
   ];
-  const headerY = 70; const rowH = 28;
+  const cold = [
+    { t: "17F", cop: 2.6, x: 310 },
+    { t: "5F", cop: 2.1, x: 420 },
+    { t: "-5F", cop: 1.75, x: 530 },
+  ];
+  const yFor = (cop: number) => 200 - ((cop - 1) / 3) * 110;
   return (
-    <svg viewBox="0 0 680 230" width="100%" height="auto" role="img" aria-label="Heat pump COP drops as temperature falls. At 47°F COP is 3.5-4.0. At 5°F it drops to 1.2-1.5.">
-      <text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>How cold affects heat pump efficiency (COP)</text>
-      <text x="20" y="43" fontSize="10" fill={GUIDE_SVG.inkFaint}>COP = heat output ÷ electrical input. COP 3.0 means 300% efficient (3x the heat per watt vs resistance heat).</text>
-      <rect x="40" y={headerY-18} width="600" height="26" rx="4" fill={GUIDE_SVG.bgWarm} />
-      {[{l:"Outdoor temp",x:140},{l:"COP",x:310},{l:"Efficiency vs resistance",x:500}].map(h=>(
-        <text key={h.l} x={h.x} y={headerY-2} textAnchor="middle" fontSize="10" fontWeight="700" fill={GUIDE_SVG.inkMuted}>{h.l}</text>
-      ))}
-      {temps.map((t,i)=>{const y=headerY+10+i*rowH;return(
-        <g key={t.temp}>{i%2===0&&<rect x="40" y={y-4} width="600" height={rowH} fill={GUIDE_SVG.bgWarm} opacity="0.4"/>}
-          <text x="140" y={y+14} textAnchor="middle" fontSize="11" fontWeight="600" fill={GUIDE_SVG.ink}>{t.temp}</text>
-          <text x="310" y={y+14} textAnchor="middle" fontSize="11" fill={t.color} fontWeight="600">{t.cop}</text>
-          <text x="500" y={y+14} textAnchor="middle" fontSize="10" fill={GUIDE_SVG.inkFaint}>{t.eff}</text>
+    <svg viewBox="0 0 680 264" width="100%" height="auto" role="img" aria-label="Heat pump COP falls as outdoor temperature drops, from about 3.75 at 47F to 1.35 at 5F for a standard unit. A cold climate model holds above 1.75 down to minus 5F. Electric resistance heat is always COP 1.">
+      <text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>Efficiency falls with temperature, but never below resistance heat</text>
+      <text x="20" y="43" fontSize="10" fill={GUIDE_SVG.inkFaint}>COP is heat delivered divided by electricity used. COP 3.0 means three units of heat per unit of power.</text>
+
+      <line x1="70" y1="200" x2="600" y2="200" stroke={GUIDE_SVG.inkMuted} strokeWidth="1.5" />
+      <line x1="70" y1="72" x2="70" y2="200" stroke={GUIDE_SVG.inkMuted} strokeWidth="1.5" />
+      {[1, 2, 3, 4].map((c) => (
+        <g key={c}>
+          <line x1="70" y1={yFor(c)} x2="600" y2={yFor(c)} stroke={GUIDE_SVG.line} strokeWidth="1" strokeDasharray="3 4" />
+          <text x="62" y={yFor(c) + 4} textAnchor="end" fontSize="9.5" fill={GUIDE_SVG.inkFaint}>COP {c}</text>
         </g>
-      )})}
+      ))}
+
+      <line x1="70" y1={yFor(1)} x2="600" y2={yFor(1)} stroke={GUIDE_SVG.warm} strokeWidth="2" />
+      <text x="606" y={yFor(1) + 4} fontSize="9" fontWeight="700" fill={GUIDE_SVG.warm}>resistance</text>
+
+      <polyline points={pts.map((p) => `${p.x},${yFor(p.cop)}`).join(" ")} fill="none" stroke={GUIDE_SVG.slate} strokeWidth="3" strokeLinecap="round" />
+      <polyline points={cold.map((p) => `${p.x},${yFor(p.cop)}`).join(" ")} fill="none" stroke={GUIDE_SVG.accent} strokeWidth="3" strokeLinecap="round" strokeDasharray="7 4" />
+      {pts.map((p) => (
+        <g key={p.t}>
+          <circle cx={p.x} cy={yFor(p.cop)} r="4.5" fill={GUIDE_SVG.slate} />
+          <text x={p.x} y="218" textAnchor="middle" fontSize="10.5" fontWeight="700" fill={GUIDE_SVG.ink}>{p.t}</text>
+        </g>
+      ))}
+      <text x="530" y="218" textAnchor="middle" fontSize="10.5" fontWeight="700" fill={GUIDE_SVG.ink}>-5F</text>
+      {cold.map((p) => <circle key={p.t} cx={p.x} cy={yFor(p.cop)} r="4.5" fill={GUIDE_SVG.accent} />)}
+
+      <rect x="360" y="72" width="14" height="4" fill={GUIDE_SVG.slate} />
+      <text x="382" y="78" fontSize="9.5" fill={GUIDE_SVG.inkFaint}>standard heat pump</text>
+      <rect x="360" y="90" width="14" height="4" fill={GUIDE_SVG.accent} />
+      <text x="382" y="96" fontSize="9.5" fill={GUIDE_SVG.inkFaint}>cold climate model</text>
+
+      <text x="20" y="242" fontSize="9.5" fill={GUIDE_SVG.inkMuted}>Even at its worst, a heat pump delivers more heat per watt than an electric resistance heater, which sits at COP 1 by definition.</text>
+      <text x="20" y="258" fontSize="9" fill={GUIDE_SVG.inkFaint}>Outdoor temperature, left to right</text>
     </svg>
   );
 }
@@ -61,8 +89,8 @@ function CostWithCreditsSVG() {
   return (
     <svg viewBox="0 0 680 150" width="100%" height="auto" role="img" aria-label="Heat pump installed cost $12,000-20,000. After 30% ITC and HEEHRA rebate: $5,000-12,000 net.">
       <text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>Heat pump cost after incentives</text>
-      <rect x="40" y="50" width="180" height="70" rx="8" fill={GUIDE_SVG.slateSoft} stroke={GUIDE_SVG.slate} strokeWidth="1" />
-      <text x="130" y="74" textAnchor="middle" fontSize="11" fontWeight="600" fill={GUIDE_SVG.slate}>INSTALLED</text>
+      <rect x="40" y="50" width="180" height="70" rx="8" fill={GUIDE_SVG.slateSoft} stroke={GUIDE_SVG.cool} strokeWidth="1.2" />
+      <text x="130" y="74" textAnchor="middle" fontSize="11" fontWeight="700" fill={GUIDE_SVG.inkMuted}>INSTALLED</text>
       <text x="130" y="98" textAnchor="middle" fontSize="16" fontWeight="700" fill={GUIDE_SVG.ink}>$12,000 to 20,000</text>
       <text x="260" y="88" fontSize="16" fontWeight="700" fill={GUIDE_SVG.accent}>→</text>
       <rect x="300" y="50" width="160" height="70" rx="8" fill={GUIDE_SVG.accentSoft} stroke={GUIDE_SVG.accent} strokeWidth="1" />
@@ -72,35 +100,7 @@ function CostWithCreditsSVG() {
       <rect x="540" y="50" width="120" height="70" rx="8" fill={GUIDE_SVG.accentSoft} stroke={GUIDE_SVG.accent} strokeWidth="1.5" />
       <text x="600" y="74" textAnchor="middle" fontSize="10" fontWeight="600" fill={GUIDE_SVG.accent}>+ HEEHRA</text>
       <text x="600" y="98" textAnchor="middle" fontSize="16" fontWeight="700" fill={GUIDE_SVG.accent}>$5,000 to 12,000</text>
-      <text x="340" y="142" textAnchor="middle" fontSize="9" fill={GUIDE_SVG.inkFaint} fontStyle="italic">HEEHRA rebates ($2,000 to 8,000) depend on income level. Can stack with ITC for qualifying households.</text>
-    </svg>
-  );
-}
-
-function HPvsGasSVG() {
-  const zones = [
-    { zone: "1 to 3 (warm)", hp: "$800 to 1,200/yr", gas: "$1,200 to 1,800/yr", winner: "HP" },
-    { zone: "4 (moderate)", hp: "$1,000 to 1,500/yr", gas: "$1,000 to 1,500/yr", winner: "Tie" },
-    { zone: "5 (cold)", hp: "$1,400 to 2,000/yr", gas: "$1,000 to 1,400/yr", winner: "Gas*" },
-    { zone: "6 to 7 (very cold)", hp: "$1,800 to 2,800/yr", gas: "$1,200 to 1,600/yr", winner: "Gas*" },
-  ];
-  const headerY = 70; const rowH = 30;
-  return (
-    <svg viewBox="0 0 680 230" width="100%" height="auto" role="img" aria-label="Annual heating cost: heat pump wins in zones 1-3, gas wins in zones 5-7, tie in zone 4.">
-      <text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>Annual heating cost: heat pump vs gas furnace</text>
-      <text x="20" y="43" fontSize="10" fill={GUIDE_SVG.inkFaint}>*Cold climate heat pumps narrow the gap significantly in zones 5 to 6</text>
-      <rect x="30" y={headerY-18} width="620" height="26" rx="4" fill={GUIDE_SVG.bgWarm} />
-      {[{l:"Climate zone",x:120},{l:"Heat pump",x:300},{l:"Gas furnace",x:450},{l:"Winner",x:580}].map(h=>(
-        <text key={h.l} x={h.x} y={headerY-2} textAnchor="middle" fontSize="10" fontWeight="700" fill={GUIDE_SVG.inkMuted}>{h.l}</text>
-      ))}
-      {zones.map((z,i)=>{const y=headerY+10+i*rowH;return(
-        <g key={z.zone}>{i%2===0&&<rect x="30" y={y-4} width="620" height={rowH} fill={GUIDE_SVG.bgWarm} opacity="0.4"/>}
-          <text x="120" y={y+14} textAnchor="middle" fontSize="11" fontWeight="600" fill={GUIDE_SVG.ink}>{z.zone}</text>
-          <text x="300" y={y+14} textAnchor="middle" fontSize="11" fill={z.winner==="HP"?GUIDE_SVG.accent:GUIDE_SVG.inkMuted}>{z.hp}</text>
-          <text x="450" y={y+14} textAnchor="middle" fontSize="11" fill={z.winner.startsWith("Gas")?GUIDE_SVG.accent:GUIDE_SVG.inkMuted}>{z.gas}</text>
-          <text x="580" y={y+14} textAnchor="middle" fontSize="11" fontWeight="700" fill={GUIDE_SVG.accent}>{z.winner}</text>
-        </g>
-      )})}
+      <text x="340" y="142" textAnchor="middle" fontSize="9" fill={GUIDE_SVG.inkFaint} >HEEHRA rebates ($2,000 to 8,000) depend on income level. Can stack with ITC for qualifying households.</text>
     </svg>
   );
 }
@@ -114,7 +114,7 @@ export function HeatPumpCalculatorExpansion() {
 
       <p>A conventional home has two systems: an air conditioner for summer and a furnace for winter. A heat pump does both. In summer it moves heat out of your house (cooling). In winter it reverses and moves heat in (heating). This matters for sizing because you are sizing one machine to handle the larger of two loads, not two separate machines. In most US climates, the heating load is larger than the cooling load, so the heat pump is sized to heating.</p>
 
-      <Figure number={1} caption="Warmer zones need less capacity per square foot. A 2,000 ft² home in zone 2 (Houston) needs 3.0-3.7 tons. The same home in zone 5 (Chicago) needs 4.7-5.8 tons.">
+      <Figure number={1} caption="Capacity demand roughly doubles from the Gulf Coast to the upper Midwest. A 2,000 square foot home needs about 3 tons in Houston and closer to 5 in Chicago.">
         <SizingByZoneSVG />
       </Figure>
 
@@ -124,7 +124,7 @@ export function HeatPumpCalculatorExpansion() {
 
       <h2>Why heat pumps lose efficiency in cold weather (and why it matters less than you think)</h2>
 
-      <Figure number={2} caption="COP drops as outdoor temperature falls. But even at 17°F, a heat pump produces 180-220% as much heat per watt as electric resistance. It is always more efficient than a space heater.">
+      <Figure number={2} caption="The line that matters is the flat one at COP 1: electric resistance heat. A heat pump stays above it at every temperature, which is why the efficiency question is about how far above, not whether.">
         <COPCurveSVG />
       </Figure>
 
@@ -134,7 +134,7 @@ export function HeatPumpCalculatorExpansion() {
 
       <h2>What a heat pump costs after incentives</h2>
 
-      <Figure number={3} caption="Federal ITC (30%) plus HEEHRA rebates ($2,000-8,000 for qualifying households) can cut the net cost by 40-65%.">
+      <Figure number={3} caption="Federal ITC at 30 percent plus HEEHRA rebates for qualifying households can cut the net cost by 40 to 65 percent. Rebate availability varies by state and income.">
         <CostWithCreditsSVG />
       </Figure>
 
@@ -144,9 +144,20 @@ export function HeatPumpCalculatorExpansion() {
 
       <h2>Heat pump vs gas furnace: operating cost by climate</h2>
 
-      <Figure number={4} caption="Heat pumps win on operating cost in zones 1-3 where heating loads are light. Gas furnaces win in zones 5-7 with standard heat pumps, but cold-climate models narrow the gap.">
-        <HPvsGasSVG />
-      </Figure>
+      <ComparisonTable
+        caption="Annual heating cost by climate zone. Cold climate heat pumps narrow the gap considerably in zones 5 and 6, and dual fuel setups capture most of the advantage without the penalty."
+        columns={[
+          { title: "Heat pump" },
+          { title: "Gas furnace" },
+          { title: "Lower running cost", highlight: true },
+        ]}
+        rows={[
+          { label: "Zones 1 to 3, warm", values: ["$800 to 1,200/yr", "$1,200 to 1,800/yr", "Heat pump"] },
+          { label: "Zone 4, moderate", values: ["$1,000 to 1,500/yr", "$1,000 to 1,500/yr", "About even"] },
+          { label: "Zone 5, cold", values: ["$1,400 to 2,000/yr", "$1,000 to 1,400/yr", "Gas, unless cold climate model"] },
+          { label: "Zones 6 to 7, very cold", values: ["$1,800 to 2,800/yr", "$1,200 to 1,600/yr", "Gas, or dual fuel"] },
+        ]}
+      />
 
       <ComparisonTable
         columns={[{title:"Heat pump"},{title:"Gas furnace + AC"}]}

@@ -186,6 +186,34 @@ export const waterHeaterCalculatorConfig: CalculatorConfig = {
     };
   },
 
+  howTo: {
+    name: "How to size a water heater",
+    description:
+      "Size a tank by first hour rating or a tankless by flow rate at your actual temperature rise.",
+    steps: [
+      {
+        name: "Add up peak hour demand",
+        text: "Count the hot water draws in your busiest hour. A shower is about 16 gallons, a dishwasher 6, and a clothes washer 20 on a warm cycle.",
+      },
+      {
+        name: "Match the first hour rating, not the tank size",
+        text: "FHR is storage plus recovery during that hour and appears on the EnergyGuide label. Gas recovers roughly twice as fast as electric, so a 40 gallon gas tank matches a 50 gallon electric.",
+      },
+      {
+        name: "For tankless, find your temperature rise",
+        text: "Subtract incoming groundwater temperature from a 120F target. Northern states need about an 80 degree rise; the Gulf Coast needs closer to 50.",
+      },
+      {
+        name: "Add the simultaneous flow rates",
+        text: "A shower is 1.5 to 2.5 GPM and a kitchen faucet 1 to 2.2. Check the tankless rating at your rise rather than the headline GPM figure, which assumes a small rise.",
+      },
+      {
+        name: "Confirm venting and expansion",
+        text: "A gas unit needs an appropriate vent type for its location, and a closed plumbing system requires an expansion tank precharged to the house water pressure.",
+      },
+    ],
+  },
+
   ContentExpansion: WaterHeaterCalculatorExpansion,
 
   formulaDescription:
@@ -202,14 +230,29 @@ export const waterHeaterCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "US DOE: Water Heater Sizing",
+      name: "DOE: Sizing a New Water Heater",
       url: "https://www.energy.gov/energysaver/sizing-new-water-heater",
-      note: "Official guide to first-hour rating and tank sizing",
+      note: "The first hour rating methodology and peak hour demand worksheet this calculator applies",
     },
     {
-      name: "Rheem/Rinnai: Tankless Sizing Guides",
-      url: "https://www.rheem.com/",
-      note: "Industry reference for flow rate and temperature rise",
+      name: "ENERGY STAR: Water Heater Efficiency and Sizing",
+      url: "https://www.energystar.gov/products/water_heaters",
+      note: "Efficiency thresholds and heat pump water heater space and clearance requirements",
+    },
+    {
+      name: "IRC 2021, Section P2803: Relief Valves",
+      url: "https://codes.iccsafe.org/content/IRC2021P1/chapter-28-water-heaters",
+      note: "Temperature and pressure relief valve and discharge pipe requirements",
+    },
+    {
+      name: "IRC 2021, Section P2903.4: Thermal Expansion Control",
+      url: "https://codes.iccsafe.org/content/IRC2021P1/chapter-29-water-supply-and-distribution",
+      note: "When a closed system requires an expansion tank",
+    },
+    {
+      name: "AHRI Directory: Water Heater Certified Ratings",
+      url: "https://www.ahridirectory.org/",
+      note: "Verified first hour rating and recovery data for specific models",
     },
   ],
 

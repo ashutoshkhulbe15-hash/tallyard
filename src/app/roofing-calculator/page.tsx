@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "roofing-calculator";
 
 export const metadata: Metadata = {
-  title: "Roofing Calculator: How Many Bundles Of Shingles",
+  title: "Roofing Calculator: Squares, Pitch & Bundles",
   description:
-    "Calculate roof area, squares, and shingle bundles for any pitch. Includes waste factor and ridge caps.",
+    "Roofing squares and shingle bundles from footprint and pitch. Covers pitch multipliers, waste by roof shape, metal panels, and roof replacement cost.",
   alternates: { canonical: "/roofing-calculator" },
   openGraph: {
-    title: "Roofing Calculator: How Many Bundles Of Shingles",
+    title: "Roofing Calculator: Squares, Pitch & Bundles",
     description:
       "Calculate roof area, squares, and shingle bundles for any pitch and footprint.",
     url: "https://www.tallyard.com/roofing-calculator",
