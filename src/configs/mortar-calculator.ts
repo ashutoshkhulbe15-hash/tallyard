@@ -13,6 +13,34 @@ export const mortarCalculatorConfig: CalculatorConfig = {
   bannerHeadline: "Mix right.",
   bannerTags: ["Bags by wall area", "Joint width math", "Type S / N / M"],
 
+  howTo: {
+    name: "How to calculate mortar for brick or block",
+    description:
+      "Estimate bags of mortar from unit count, then pick the ASTM C270 type the job requires.",
+    steps: [
+      {
+        name: "Count the masonry units",
+        text: "Wall area times units per square foot: about 6.9 modular bricks or 1.125 standard 8x8x16 blocks per square foot.",
+      },
+      {
+        name: "Apply the coverage rate",
+        text: "One 80 pound bag of premixed mortar lays roughly 35 to 40 bricks or 12 to 15 blocks at a 3/8 inch joint. Wider joints and larger units consume more.",
+      },
+      {
+        name: "Adjust for joint width",
+        text: "A 1/2 inch joint uses roughly a third more mortar than a 3/8 inch joint over the same wall, since joint volume scales directly with width.",
+      },
+      {
+        name: "Choose the mortar type",
+        text: "Type N for general above-grade work, Type S at or near grade and for chimneys, Type M below grade, and Type O for repointing older masonry.",
+      },
+      {
+        name: "Add waste and buy whole bags",
+        text: "Add 10 percent for droppings and the board, then round up. Mortar must be used within about 2.5 hours of mixing, so mix in batches rather than all at once.",
+      },
+    ],
+  },
+
   ContentExpansion: MortarCalculatorExpansion,
 
   inputs: [
@@ -78,7 +106,7 @@ export const mortarCalculatorConfig: CalculatorConfig = {
     {
       question: "How many bags of mortar do I need per 1,000 bricks?",
       answer:
-        "With standard 3/8-inch joints, about 7 bags of 80-lb Type S mortar per 1,000 standard bricks. Wider 1/2-inch joints increase this to about 9 bags. The calculator accounts for brick size and joint width automatically.",
+        "About 30 bags of 80 lb mortar per 1,000 standard bricks at 3/8 inch joints, since one bag lays roughly 35 bricks. Half inch joints raise it to about 40 bags. Concrete block uses far more: roughly 77 bags per 1,000 units, because the joints are much longer."
     },
     {
       question: "What is the difference between Type S, Type N, and Type M mortar?",
@@ -93,30 +121,49 @@ export const mortarCalculatorConfig: CalculatorConfig = {
     {
       question: "How long does a bag of mortar last once opened?",
       answer:
-        "Unopened bags last 12 months in dry storage. Once opened, use within 1-2 months. Mixed mortar must be used within 90 minutes to 2 hours before it begins to set. Do not add water to mortar that has started to stiffen.",
+        "Unopened bags last about 12 months in dry storage and opened bags one to two months. ASTM C270 sets a 2.5 hour board life for mixed mortar. Retempering with a small amount of water to replace evaporation is acceptable within that window; adding water to mortar that has begun to stiffen from hydration is not, and permanently weakens the bond.",
     },
   ],
 
   sources: [
     {
-      name: "Brick Industry Association: Technical Note 8 (Mortar for Brick Masonry)",
+      name: "ASTM C270: Mortar for Unit Masonry",
+      url: "https://www.astm.org/c0270-19ae01.html",
+      note: "The specification defining Types M, S, N, O, and K and their proportions",
+    },
+    {
+      name: "BIA Technical Note 8: Mortars for Brickwork",
       url: "https://www.gobrick.com/resources/technical-notes",
+      note: "Mortar selection by exposure and the case against overly strong mortar",
     },
     {
-      name: "ASTM C270: Standard Specification for Mortar for Unit Masonry",
+      name: "Portland Cement Association: Masonry Mortar",
+      url: "https://www.cement.org/cement-concrete/products/masonry",
+      note: "Mixing practice, retempering limits, and cement to lime ratios",
     },
     {
-      name: "Portland Cement Association: Mortar Information",
-      url: "https://www.cement.org",
+      name: "NPS Preservation Brief 2: Repointing Mortar Joints",
+      url: "https://www.nps.gov/orgs/1739/upload/preservation-brief-02-repointing-mortar-joints.pdf",
+      note: "Why historic masonry requires soft mortar and how to match an existing mix",
+    },
+    {
+      name: "Quikrete and Sakrete: Mortar Mix Coverage Data",
+      url: "https://www.quikrete.com/productlines/mortarmix.asp",
+      note: "Published bag coverage of 37 to 40 bricks or about 13 blocks per 80 lb bag, which this calculator is calibrated to",
+    },
+    {
+      name: "ANSI A118.4: Modified Dry-Set Cement Mortar",
+      url: "https://www.tcnatile.com/products-and-services/publications/ansi-standards/",
+      note: "The separate standard governing thinset, which is tile adhesive rather than masonry mortar",
     },
   ],
 
   methodology: [
-    "Mortar volume per brick is calculated from the joint geometry: bed joint (length × width × depth) plus head joint (height × width × depth) for each brick face. Standard bricks with 3/8-inch joints use approximately 6.5 cubic inches of mortar per brick. Wider joints increase this proportionally.",
-    "An 80-lb bag of pre-mixed mortar yields approximately 450 cubic inches of mixed mortar, enough for about 30-40 standard bricks at 3/8-inch joints. Coverage varies with joint width: wider joints use more mortar per brick and reduce bags-per-1000 count.",
-    "A 10% waste factor covers mortar that drops during tooling, mortar that sets before use, and extra material needed for cap rows and tooling joints. Experienced masons waste less; first-time DIYers may waste 15-20%.",
+    "Mortar volume per unit is calibrated to manufacturer published coverage rather than to nominal joint geometry alone. Geometry alone suggests about 13 cubic inches per modular brick, but real masonry consumes closer to 30 once furrowed bed joints, generously buttered head joints, and board loss are counted, which is why Quikrete publishes 37 bricks per 80 lb bag and Sakrete about 40.",
+    "An 80 lb bag of premixed mortar yields about 0.6 cubic feet, or 1,037 cubic inches, which lays roughly 35 standard bricks or 13 concrete blocks at 3/8 inch joints. These are manufacturer published coverage rates and already account for the extra mortar real masonry consumes over nominal joint geometry.",
+    "A 5 percent margin is added on top. It is deliberately modest because the per-unit volumes already carry the waste built into manufacturer coverage figures; adding a further 10 to 15 percent would double count it.",
     "Mortar type (S, N, M) does not change the volume calculation. All three types yield the same volume per bag. The type affects bond strength, compressive strength, and weather resistance. Type S is the default for exterior residential masonry.",
-    "Concrete block (CMU) uses significantly more mortar per unit than brick because the face shells and web create longer joint lines per block. A standard 8×8×16 block uses approximately 22.5 cubic inches of mortar at 3/8-inch joints.",
+    "Concrete block uses far more mortar per unit than brick because each unit has much longer joint lines. A standard 8x8x16 block takes roughly 80 cubic inches at a 3/8 inch joint, so one 80 lb bag lays about 13 blocks against 35 bricks.",
   ],
 
   related: [
@@ -149,22 +196,27 @@ export const mortarCalculatorConfig: CalculatorConfig = {
       mortarPerBrick: number;
     }
 
+    // Mortar volume per unit in cubic inches, calibrated to manufacturer
+    // published coverage (Quikrete: 37 brick or 13 block per 80 lb bag;
+    // Sakrete: ~40 brick). These figures already include the extra mortar
+    // real masonry consumes over nominal joint geometry: furrowed beds,
+    // generously buttered heads, and board loss.
     const brickSpecs: Record<string, BrickSpec> = {
       standard: {
         bricksPerSqFt: jointWidth <= 0.375 ? 6.75 : jointWidth <= 0.5 ? 6.16 : 5.5,
-        mortarPerBrick: jointWidth <= 0.375 ? 6.5 : jointWidth <= 0.5 ? 9.2 : 14.8,
+        mortarPerBrick: jointWidth <= 0.375 ? 30.5 : jointWidth <= 0.5 ? 41.0 : 51.0,
       },
       modular: {
         bricksPerSqFt: jointWidth <= 0.375 ? 7.0 : jointWidth <= 0.5 ? 6.4 : 5.7,
-        mortarPerBrick: jointWidth <= 0.375 ? 6.0 : jointWidth <= 0.5 ? 8.5 : 13.8,
+        mortarPerBrick: jointWidth <= 0.375 ? 29.6 : jointWidth <= 0.5 ? 39.9 : 49.4,
       },
       king: {
         bricksPerSqFt: jointWidth <= 0.375 ? 5.0 : jointWidth <= 0.5 ? 4.6 : 4.1,
-        mortarPerBrick: jointWidth <= 0.375 ? 8.8 : jointWidth <= 0.5 ? 12.0 : 18.5,
+        mortarPerBrick: jointWidth <= 0.375 ? 31.7 : jointWidth <= 0.5 ? 42.5 : 53.0,
       },
       block: {
         bricksPerSqFt: 1.125,
-        mortarPerBrick: jointWidth <= 0.375 ? 22.5 : jointWidth <= 0.5 ? 30.0 : 45.0,
+        mortarPerBrick: jointWidth <= 0.375 ? 79.8 : jointWidth <= 0.5 ? 106.0 : 133.0,
       },
     };
 
@@ -172,11 +224,13 @@ export const mortarCalculatorConfig: CalculatorConfig = {
     const totalBricks = wallArea * spec.bricksPerSqFt;
     const totalMortarCuIn = totalBricks * spec.mortarPerBrick;
 
-    // 80-lb bag covers approximately 36-40 bricks (standard) in bed and head joints
-    // Using cubic inches: 1 bag of 80-lb mortar ≈ 450 cubic inches of mixed mortar
-    const cuInPerBag = 450;
+    // An 80 lb bag of premixed mortar yields about 0.6 cubic feet of mixed
+    // mortar, which is 1,037 cubic inches.
+    const cuInPerBag = 1037;
     const bagsExact = totalMortarCuIn / cuInPerBag;
-    const bags = Math.ceil(bagsExact * 1.1); // 10% waste
+    // 5% margin only: the per-unit volumes above already carry the waste
+    // built into manufacturer coverage figures.
+    const bags = Math.ceil(bagsExact * 1.05);
 
     const brickCount = Math.ceil(totalBricks * 1.05); // 5% brick waste
 

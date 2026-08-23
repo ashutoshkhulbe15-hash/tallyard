@@ -1,74 +1,30 @@
 import { Figure, GuideByline, MethodologyNote, Scenario, GUIDE_SVG } from "@/components/GuideChrome";
 import { ComparisonTable, Callout } from "@/components/GuideComponents";
 
-function BagsPerBricksSVG() {
-  const combos = [
-    { label: 'Standard brick, 3/8" joint', bags: "7 bags", per: "per 1,000 bricks", color: GUIDE_SVG.accent },
-    { label: 'Standard brick, 1/2" joint', bags: "9 bags", per: "per 1,000 bricks", color: GUIDE_SVG.inkMuted },
-    { label: 'King brick, 3/8" joint', bags: "5 bags", per: "per 1,000 bricks", color: GUIDE_SVG.slate },
-    { label: 'Concrete block, 3/8" joint', bags: "28 bags", per: "per 1,000 blocks", color: GUIDE_SVG.inkFaint },
+function BagsPerUnitSVG() {
+  const rows = [
+    { label: "Modular brick, 3/8 in joint", bags: 30, hl: true },
+    { label: "Modular brick, 1/2 in joint", bags: 40, hl: false },
+    { label: "King brick, 3/8 in joint", bags: 32, hl: false },
+    { label: "Concrete block, 3/8 in joint", bags: 81, hl: false },
   ];
+  const maxB = 81;
   return (
-    <svg viewBox="0 0 680 200" width="100%" height="auto" role="img" aria-label="Mortar bags per 1,000 bricks: 7 bags for standard with 3/8 joint, 9 for 1/2 joint, 28 for concrete block.">
-      <text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>80-lb bags of mortar per 1,000 units</text>
-      <text x="20" y="43" fontSize="10" fill={GUIDE_SVG.inkFaint}>Wider joints use dramatically more mortar. Block uses 4× more than brick because the joints are longer.</text>
-      {combos.map((c, i) => {
-        const y = 65 + i * 32;
-        const w = parseInt(c.bags) * 12;
+    <svg viewBox="0 0 680 232" width="100%" height="auto" role="img" aria-label="Eighty pound bags of mortar per 1,000 units: modular brick at 3/8 inch joints takes 30 bags, at 1/2 inch 40 bags, king brick 32 bags, and concrete block 81 bags.">
+      <text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>80 lb bags of mortar per 1,000 units</text>
+      <text x="20" y="43" fontSize="10" fill={GUIDE_SVG.inkFaint}>Block takes nearly three times the mortar of brick, because each unit has far more joint length</text>
+      {rows.map((r, i) => {
+        const y = 74 + i * 36;
+        const w = (r.bags / maxB) * 290;
         return (
-          <g key={c.label}>
-            <text x="240" y={y + 14} textAnchor="end" fontSize="11" fontWeight="600" fill={GUIDE_SVG.ink}>{c.label}</text>
-            <rect x="250" y={y} width={w} height="20" rx="3" fill={c.color} opacity="0.6" />
-            <text x={258 + w} y={y + 14} fontSize="11" fontWeight="700" fill={GUIDE_SVG.ink}>{c.bags}</text>
+          <g key={r.label}>
+            <text x="212" y={y + 13} textAnchor="end" fontSize="11" fontWeight="700" fill={GUIDE_SVG.ink}>{r.label}</text>
+            <rect x="224" y={y} width={w} height="18" rx="3" fill={r.hl ? GUIDE_SVG.accent : GUIDE_SVG.slate} />
+            <text x={224 + w + 10} y={y + 13} fontSize="11" fontWeight="700" fill={r.hl ? GUIDE_SVG.accent : GUIDE_SVG.inkMuted}>{r.bags} bags</text>
           </g>
         );
       })}
-    </svg>
-  );
-}
-
-function MortarTypesSVG() {
-  return (
-    <svg viewBox="0 0 680 140" width="100%" height="auto" role="img" aria-label="Mortar types: Type S for exterior and structural, Type N for interior, Type M for below-grade.">
-      <text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>Which mortar type to use</text>
-      {[
-        { type: "Type S", use: "Exterior walls, structural, chimneys", strength: "1,800 psi", x: 40, color: GUIDE_SVG.accent },
-        { type: "Type N", use: "Interior, above-grade, non-structural", strength: "750 psi", x: 260, color: GUIDE_SVG.inkMuted },
-        { type: "Type M", use: "Below-grade, retaining walls, foundations", strength: "2,500 psi", x: 470, color: GUIDE_SVG.slate },
-      ].map(t => (
-        <g key={t.type}>
-          <rect x={t.x} y="50" width="185" height="70" rx="8" fill={t.type === "Type S" ? GUIDE_SVG.accentSoft : GUIDE_SVG.slateSoft} stroke={t.color} strokeWidth="1" />
-          <text x={t.x + 92} y="72" textAnchor="middle" fontSize="12" fontWeight="700" fill={t.color}>{t.type}</text>
-          <text x={t.x + 92} y="90" textAnchor="middle" fontSize="9" fill={GUIDE_SVG.ink}>{t.use}</text>
-          <text x={t.x + 92} y="108" textAnchor="middle" fontSize="9" fill={GUIDE_SVG.inkFaint}>{t.strength} compressive</text>
-        </g>
-      ))}
-    </svg>
-  );
-}
-
-function CoverageSVG() {
-  const walls = [
-    { label: "Small garden wall (50 ft²)", bricks: "340", bags: "3" },
-    { label: "Fence-height wall (100 ft²)", bricks: "675", bags: "5" },
-    { label: "Garage wall (200 ft²)", bricks: "1,350", bags: "10" },
-    { label: "House wall (400 ft²)", bricks: "2,700", bags: "19" },
-  ];
-  const hY = 65; const rH = 28;
-  return (
-    <svg viewBox="0 0 680 210" width="100%" height="auto" role="img" aria-label="Mortar needed by wall size: 50 sq ft needs 3 bags, 400 sq ft needs 19 bags.">
-      <text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>Mortar bags by wall size (standard brick, 3/8&quot; joint)</text>
-      <rect x="30" y={hY - 18} width="620" height="26" rx="4" fill={GUIDE_SVG.bgWarm} />
-      {[{ l: "Wall", x: 150 }, { l: "Bricks", x: 370 }, { l: "80-lb bags", x: 530 }].map(h => (
-        <text key={h.l} x={h.x} y={hY - 2} textAnchor="middle" fontSize="10" fontWeight="700" fill={GUIDE_SVG.inkMuted}>{h.l}</text>
-      ))}
-      {walls.map((w, i) => { const y = hY + 10 + i * rH; return (
-        <g key={w.label}>{i % 2 === 0 && <rect x="30" y={y - 4} width="620" height={rH} fill={GUIDE_SVG.bgWarm} opacity="0.4" />}
-          <text x="150" y={y + 14} textAnchor="middle" fontSize="11" fontWeight="600" fill={GUIDE_SVG.ink}>{w.label}</text>
-          <text x="370" y={y + 14} textAnchor="middle" fontSize="11" fill={GUIDE_SVG.inkMuted}>{w.bricks}</text>
-          <text x="530" y={y + 14} textAnchor="middle" fontSize="11" fill={GUIDE_SVG.accent} fontWeight="700">{w.bags}</text>
-        </g>
-      ); })}
+      <text x="20" y="226" fontSize="9" fill={GUIDE_SVG.inkFaint}>Based on manufacturer coverage: one 80 lb bag lays about 35 bricks or 13 blocks at a 3/8 inch joint.</text>
     </svg>
   );
 }
@@ -77,11 +33,11 @@ function MixingTipsSVG() {
   const tips = [
     { icon: "✓", label: "Add water to the mixer first, then dry mix", sub: "Prevents clumps and dry pockets at the bottom" },
     { icon: "✓", label: "Mix for 3-5 minutes until uniform consistency", sub: "Undermixing leaves weak spots in the joint" },
-    { icon: "✗", label: "Never re-temper mortar that has started to set", sub: "Adding water to stiffening mortar weakens the bond permanently" },
-    { icon: "✗", label: "Never mix more than you can use in 90 minutes", sub: "Mortar begins to set after 90 min. Discard unused mix." },
+    { icon: "✗", label: "Retemper only for evaporation, never after stiffening", sub: "Adding water once hydration starts weakens the bond for good" },
+    { icon: "✗", label: "Mix only what you can place in 2.5 hours", sub: "ASTM C270 board life limit; discard anything older" },
   ];
   return (
-    <svg viewBox="0 0 680 200" width="100%" height="auto" role="img" aria-label="Mortar mixing tips: water first, mix 3-5 minutes, never re-temper, use within 90 minutes.">
+    <svg viewBox="0 0 680 200" width="100%" height="auto" role="img" aria-label="Mortar mixing rules: add water first, mix 3 to 5 minutes, retemper only for evaporation, and place within 2.5 hours.">
       <text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>Mixing rules that prevent weak joints</text>
       {tips.map((t, i) => {
         const y = 55 + i * 36;
@@ -128,26 +84,25 @@ export function MortarCalculatorExpansion() {
         involves bricks, blocks, or stone, you are in the right place.
       </p>
 
-      <Figure number={1} caption="Standard bricks with 3/8-inch joints need 7 bags per 1,000 bricks. Wider joints or concrete blocks need significantly more. This is the number one underestimation in masonry projects.">
-        <BagsPerBricksSVG />
+      <Figure number={1} caption="Coverage from manufacturer published rates. Underestimating mortar is the most common ordering error in masonry, and running out mid-wall means a cold joint.">
+        <BagsPerUnitSVG />
       </Figure>
 
       <MethodologyNote>
         <p>
-          Mortar volume per brick calculated from joint geometry: (bed
-          joint length × width × depth) + (head joint height × width ×
-          depth) per brick face. Coverage per 80-lb bag approximately 450
-          cubic inches of mixed mortar (BIA Technical Note 8). Waste
-          factor of 10% applied for drops, tooling, and cleanup. Mortar
-          type specifications per ASTM C270 (proportion specification).
+          Coverage is calibrated to manufacturer published rates rather
+          than to nominal joint geometry alone. Joint geometry suggests
+          roughly 13 cubic inches of mortar per modular brick, but real
+          masonry consumes closer to 30 once furrowed bed joints,
+          generously buttered head joints, and board loss are included,
+          which is why Quikrete publishes 37 bricks per 80 lb bag and
+          Sakrete about 40. This calculator uses 35 bricks or 13 concrete
+          blocks per 80 lb bag at a 3/8 inch joint, with a 5 percent
+          margin on top. Mortar type proportions follow ASTM C270.
         </p>
       </MethodologyNote>
 
       <h2>Choosing the right mortar type</h2>
-
-      <Figure number={2} caption="Type S is the default for anything exposed to weather. Type N for interior decorative work. Type M for anything below grade or under heavy load.">
-        <MortarTypesSVG />
-      </Figure>
 
       <p>
         The type designation is not a quality grade. Type M is not "better"
@@ -173,11 +128,78 @@ export function MortarCalculatorExpansion() {
         what the calculator estimates.
       </Callout>
 
-      <h2>How many bags for your wall</h2>
+      <h2>Type O, repointing, and the mnemonic worth knowing</h2>
+      <p>
+        There is a fourth type most tables leave out. Type O is a low
+        strength mortar at roughly 350 psi, soft enough to be sacrificial,
+        and it exists for one job: repointing old masonry. Historic brick
+        is softer than modern brick, and filling its joints with a hard
+        modern mortar transfers stress into the units themselves, which
+        then spall and crack. The mortar is supposed to be the weakest part
+        of the wall so that it fails first and can be replaced. Repointing
+        a nineteenth century wall with Type S is a common and expensive
+        mistake.
+      </p>
+      <p>
+        The order is easy to remember once you see it. Write out MASON
+        WORK and take every other letter: M, S, N, O, K. That is the
+        sequence from strongest to weakest, and Type K, softer still at
+        around 75 psi, is reserved for genuine historic restoration under
+        a conservator&apos;s direction.
+      </p>
 
-      <Figure number={3} caption="Quick reference for common wall sizes. A typical garden wall (4 feet tall, 25 feet long, 100 sq ft) needs about 675 bricks and 5 bags of mortar.">
-        <CoverageSVG />
-      </Figure>
+      <ComparisonTable
+        caption="ASTM C270 mortar types by strength and job. Proportions are cement to lime to sand by volume, which is what a site mix follows when premixed bags are not used."
+        columns={[
+          { title: "Strength" },
+          { title: "Proportions", highlight: true },
+          { title: "Where it belongs" },
+        ]}
+        rows={[
+          { label: "Type M", values: ["2,500 psi", "1 : 0.25 : 3.5", "Below grade, foundations, retaining walls"] },
+          { label: "Type S", values: ["1,800 psi", "1 : 0.5 : 4.5", "Exterior at or near grade, chimneys, patios"] },
+          { label: "Type N", values: ["750 psi", "1 : 1 : 6", "General above-grade exterior and interior"] },
+          { label: "Type O", values: ["350 psi", "1 : 2 : 9", "Repointing older masonry, interior non-load-bearing"] },
+        ]}
+      />
+
+      <h2>Thinset is tile mortar, not masonry mortar</h2>
+      <p>
+        Searches for thinset mortar and thinset tile mortar land on mortar
+        pages constantly, and the two products are not interchangeable.
+        Masonry mortar bonds brick and block into a wall and is specified
+        to ASTM C270. Thinset is a cement, sand, and polymer adhesive that
+        bonds tile to a substrate, specified to ANSI A118.1 for unmodified
+        and A118.4 for modified. It is applied in a thin notched layer
+        rather than a bed joint, and it will not build a wall.
+      </p>
+      <p>
+        Coverage is also calculated differently. Masonry mortar is
+        estimated per brick or block; thinset is estimated per square foot
+        by trowel notch size. A 50 pound bag covers roughly 90 square feet
+        at a 1/4 by 1/4 inch notch, about 45 at 1/2 by 1/2, and closer to
+        30 with large format tile where back-buttering is required. If you
+        are setting tile, the{" "}
+        <a href="/tile-calculator">tile calculator</a> and the{" "}
+        <a href="/grout-calculator">grout calculator</a> are the right
+        tools; this page is for the mortar that holds masonry units
+        together.
+      </p>
+
+      <h2>How many bags for your wall</h2>
+      <ComparisonTable
+        caption="Bags for common wall sizes in modular brick at 3/8 inch joints, including a 5 percent margin. Concrete block walls of the same area take roughly three times as many."
+        columns={[
+          { title: "Bricks" },
+          { title: "80 lb bags", highlight: true },
+        ]}
+        rows={[
+          { label: "Small garden wall, 50 ft²", values: ["350", "11"] },
+          { label: "Fence-height wall, 100 ft²", values: ["700", "21"] },
+          { label: "Garage wall, 200 ft²", values: ["1,400", "42"] },
+          { label: "House wall, 400 ft²", values: ["2,800", "84"] },
+        ]}
+      />
 
       <Scenario location="Cincinnati, OH">
         A homeowner built a 120 square foot brick mailbox surround and
@@ -190,12 +212,13 @@ export function MortarCalculatorExpansion() {
         calculator covers this, but he had been sloppy with mixing: 
         letting a half-batch set up before he could use it. He bought
         one more bag ($7.50) to finish. The lesson: do not let mixed
-        mortar sit. Mix only what you can lay in 90 minutes.
+        mortar sit. ASTM C270 sets the board life at 2.5 hours from initial
+        mixing, so mix only what you can lay in that window.
       </Scenario>
 
       <h2>Mixing mortar correctly</h2>
 
-      <Figure number={4} caption="Four rules. Water first. Mix thoroughly. Never re-temper. Use within 90 minutes. These prevent the most common mortar failures.">
+      <Figure number={4} caption="Four rules that prevent most mortar failures. The retempering one is the subtle case: replacing evaporated water is acceptable, adding water once hydration has begun is not.">
         <MixingTipsSVG />
       </Figure>
 
@@ -214,7 +237,7 @@ export function MortarCalculatorExpansion() {
       <ComparisonTable
         columns={[{ title: "Pre-mixed bags" }, { title: "Site-mixed" }]}
         rows={[
-          { label: "Cost per bag equiv.", values: ["$7–10", "$4–6"] },
+          { label: "Cost per bag equiv.", values: ["$7 to 10", "$4 to 6"] },
           { label: "Consistency", values: ["Reliable batch to batch", "Varies with proportioning"] },
           { label: "Best for", values: ["Under 500 bricks, DIY", "Large jobs, experienced masons"] },
           { label: "Mixing", values: ["Add water only", "Proportion cement + lime + sand"] },
