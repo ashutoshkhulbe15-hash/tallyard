@@ -9,12 +9,30 @@ const { convertCalculatorValues, validateCalculatorValues, validateCalculatorRes
 const root = path.resolve(__dirname, "..");
 
 test("release owns the strict lint configuration and dependencies used during build", () => {
-  const lint = JSON.parse(fs.readFileSync(path.join(root, ".eslintrc.json"), "utf8"));
+  const lint = fs.readFileSync(path.join(root, "eslint.config.mjs"), "utf8");
   const pkg = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"));
-  assert.equal(lint.root, true);
-  assert.deepEqual(lint.extends, ["next/core-web-vitals", "next/typescript"]);
+  assert.ok(lint.includes('eslint-config-next/core-web-vitals'));
+  assert.ok(lint.includes('eslint-config-next/typescript'));
+  assert.equal(pkg.scripts.lint, "eslint src --max-warnings=0");
+  assert.ok(pkg.scripts.prebuild.includes("npm run lint"));
   assert.equal(pkg.devDependencies["eslint-config-next"], pkg.dependencies.next);
   assert.ok(pkg.devDependencies.eslint);
+});
+
+test("framework migration keeps matched React versions, runtime requirement, and static feed", () => {
+  const pkg = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"));
+  const lock = JSON.parse(fs.readFileSync(path.join(root, "package-lock.json"), "utf8"));
+  assert.equal(pkg.engines.node, ">=20.9.0");
+  assert.equal(pkg.dependencies.react, pkg.dependencies["react-dom"]);
+  assert.equal(lock.packages["node_modules/next"].version, pkg.dependencies.next);
+  assert.equal(lock.packages["node_modules/react"].version, pkg.dependencies.react);
+  assert.equal(lock.packages["node_modules/react-dom"].version, pkg.dependencies["react-dom"]);
+  assert.equal(pkg.scripts.build, "next build --webpack");
+  const feed = fs.readFileSync(path.join(root, "src/app/feed.xml/route.ts"), "utf8");
+  assert.ok(feed.includes('export const dynamic = "force-static"'));
+  const embed = fs.readFileSync(path.join(root, "src/app/embed/[slug]/page.tsx"), "utf8");
+  assert.ok(embed.includes("params: Promise<{ slug: string }>"));
+  assert.equal((embed.match(/await params/g) || []).length, 2);
 });
 
 function exampleValues(config) {

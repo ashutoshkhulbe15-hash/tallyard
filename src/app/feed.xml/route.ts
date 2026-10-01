@@ -1,5 +1,8 @@
 import { configs } from "@/configs";
 
+// This feed is derived entirely from checked-in content; retain static output.
+export const dynamic = "force-static";
+
 const baseUrl = "https://www.tallyard.com";
 
 export async function GET() {

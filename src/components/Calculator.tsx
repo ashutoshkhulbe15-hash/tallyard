@@ -21,7 +21,6 @@ interface CalculatorProps {
  * so each page's client bundle only pulls its own calculator.
  */
 export function Calculator({ slug, panelTitle }: CalculatorProps) {
-  const { units, setUnits } = useUnits();
   const [config, setConfig] = useState<CalculatorConfig | null>(null);
 
   useEffect(() => {
@@ -46,61 +45,8 @@ export function Calculator({ slug, panelTitle }: CalculatorProps) {
     };
   }, [slug]);
 
-  const [values, setValues] = useState<Record<string, number | string>>({});
-  const [valuesInit, setValuesInit] = useState(false);
-  const [copied, setCopied] = useState(false);
-  const [valuesUnits, setValuesUnits] = useState(units);
-  const [copyFailed, setCopyFailed] = useState(false);
-
-  useEffect(() => {
-    if (!config || valuesInit) return;
-    const params = new URLSearchParams(window.location.search);
-    const sharedUnits = params.get("units");
-    if ((sharedUnits === "metric" || sharedUnits === "imperial") && sharedUnits !== units) {
-      setUnits(sharedUnits);
-      return;
-    }
-    const initial: Record<string, number | string> = {};
-    config.inputs.forEach((input) => {
-      const paramVal = params.get(input.id);
-      if (paramVal !== null) {
-        initial[input.id] =
-          input.type === "number" ? (paramVal === "" ? "" : Number(paramVal)) : paramVal;
-      } else {
-        initial[input.id] =
-          units === "metric" && input.defaultMetric !== undefined
-            ? input.defaultMetric
-            : input.defaultImperial;
-      }
-    });
-    setValues(initial);
-    setValuesUnits(units);
-    setValuesInit(true);
-  }, [config, units, valuesInit, setUnits]);
-
-  useEffect(() => {
-    if (!config || !valuesInit || valuesUnits === units) return;
-    setValues((previous) => convertCalculatorValues(config.inputs, previous, valuesUnits, units));
-    setValuesUnits(units);
-  }, [config, units, valuesInit, valuesUnits]);
-
-  const { result, error } = useMemo(() => {
-    if (!config || !valuesInit || valuesUnits !== units) return { result: null, error: null };
-    try {
-      validateCalculatorValues(config, values, units);
-      const calculated = config.calculate(values, units);
-      validateCalculatorResult(calculated);
-      return { result: calculated, error: null };
-    } catch (cause) {
-      return {
-        result: null,
-        error: cause instanceof Error ? cause.message : "Unable to calculate these inputs.",
-      };
-    }
-  }, [values, units, config, valuesInit, valuesUnits]);
-
   // Loading skeleton — same panel silhouette so the page doesn't jump.
-  if (!config) {
+  if (!config || config.slug !== slug) {
     return (
       <div className="bg-surface border border-line rounded-lg shadow-receipt overflow-hidden">
         <div className="flex justify-between items-center px-6 py-4 border-b border-line bg-surface-alt">
@@ -118,6 +64,44 @@ export function Calculator({ slug, panelTitle }: CalculatorProps) {
       </div>
     );
   }
+
+  return <CalculatorForm key={slug} config={config} panelTitle={panelTitle} />;
+}
+
+function CalculatorForm({ config, panelTitle }: { config: CalculatorConfig; panelTitle?: string }) {
+  const { units } = useUnits();
+  const [values, setValues] = useState<Record<string, number | string>>(() => {
+    const params = new URLSearchParams(window.location.search);
+    return Object.fromEntries(config.inputs.map((input) => {
+      const supplied = params.get(input.id);
+      const value = supplied !== null
+        ? input.type === "number" ? supplied === "" ? "" : Number(supplied) : supplied
+        : units === "metric" && input.defaultMetric !== undefined ? input.defaultMetric : input.defaultImperial;
+      return [input.id, value];
+    }));
+  });
+  const [valuesUnits, setValuesUnits] = useState(units);
+  const [copied, setCopied] = useState(false);
+  const [copyFailed, setCopyFailed] = useState(false);
+
+  // Adjust this component's state before committing a changed unit system.
+  // React retries this render, so no frame exposes reinterpreted measurements.
+  if (valuesUnits !== units) {
+    setValues(convertCalculatorValues(config.inputs, values, valuesUnits, units));
+    setValuesUnits(units);
+  }
+
+  const { result, error } = useMemo(() => {
+    if (valuesUnits !== units) return { result: null, error: null };
+    try {
+      validateCalculatorValues(config, values, units);
+      const calculated = config.calculate(values, units);
+      validateCalculatorResult(calculated);
+      return { result: calculated, error: null };
+    } catch (cause) {
+      return { result: null, error: cause instanceof Error ? cause.message : "Unable to calculate these inputs." };
+    }
+  }, [values, units, config, valuesUnits]);
 
   const updateValue = (id: string, value: string | number) => {
     setValues((prev) => ({ ...prev, [id]: value }));

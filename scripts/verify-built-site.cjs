@@ -11,7 +11,7 @@ const issues = [];
 for (const file of files) {
   const html = fs.readFileSync(file, "utf8");
   const route = path.relative(root, file).replace(/\.html$/, "");
-  const isError = route === "_not-found";
+  const isError = route === "_not-found" || route === "_global-error";
   const isEmbed = route.startsWith("embed/");
   const canonical = html.match(/<link rel="canonical" href="([^"]+)"/);
   if (!isError && !isEmbed && canonical?.[1] !== `https://www.tallyard.com${route === "index" ? "" : "/" + route}`) issues.push(`${route}: incorrect canonical ${canonical?.[1]}`);
