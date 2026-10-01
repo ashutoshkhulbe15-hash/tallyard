@@ -6,14 +6,13 @@ import { getConfig } from "@/configs";
 const SLUG = "stair-calculator";
 
 export const metadata: Metadata = {
-  title: "Stair Calculator: Stringers, Rise & Run with Diagram",
+  title: "Stair Geometry Estimator",
   description:
-    "Stair rise, run, and stringer layout with a cut diagram. Covers standard and max riser height (IRC 7-3/4 in), tread depth, and the 2R + T comfort rule.",
+    "Estimate equalized riser count and geometric rise/run from selected dimensions. Not a code check or construction cut sheet.",
   alternates: { canonical: "/stair-calculator" },
   openGraph: {
-    title: "Stair Calculator: Stringers, Rise & Run with Diagram",
-    description:
-      "Free stair calculator with diagram: steps, rise and run, and stringer length and count for any staircase. IRC code compliant.",
+    title: "Stair Geometry Estimator",
+    description: "Simple rise and run geometry from user-selected inputs; no compliance verdict.",
     url: "https://www.tallyard.com/stair-calculator",
     type: "website",
   },
@@ -24,7 +23,7 @@ export default function StairCalculatorPage() {
   return (
     <>
       {config && <SchemaScript config={config} />}
-      <CalculatorPage slug={SLUG} illustrationValue="14 RISERS" />
+      <CalculatorPage slug={SLUG} illustrationValue="RISERS" />
     </>
   );
 }

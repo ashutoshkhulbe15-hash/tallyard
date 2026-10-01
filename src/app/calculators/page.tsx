@@ -4,7 +4,7 @@ import { CalculatorIndex } from "./CalculatorIndex";
 export const metadata: Metadata = {
   title: "All 45 calculators: free home improvement tools",
   description:
-    "A master index of 45 free home improvement calculators - paint, concrete, roofing, HVAC, landscaping, electrical, and more. Every row shows its formula and source.",
+    "A master index of home-improvement calculators and worksheets for measurement, quantity planning, and quote comparisons. Review the inputs and limitations on each tool.",
   alternates: { canonical: "/calculators" },
 };
 

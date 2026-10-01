@@ -6,14 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "solar-calculator";
 
 export const metadata: Metadata = {
-  title: "Solar Panel Calculator: How Many Panels & Cost by State",
-  description:
-    "Free solar panel calculator: how many panels you need from your kWh and sun hours, plus 2026 cost per watt by state and real output per panel.",
+  title: "Solar Energy-Use Scenario Estimator",
+  description: "Explore panel-count arithmetic from entered usage and assumptions; not a production forecast, site assessment, or system design.",
   alternates: { canonical: "/solar-calculator" },
   openGraph: {
-    title: "Solar Panel Calculator: How Many Panels & Cost by State",
-    description:
-    "Free solar panel calculator: how many panels you need from your kWh and sun hours, plus 2026 cost per watt by state and real output per panel.",
+    title: "Solar Energy-Use Scenario Estimator",
+    description: "Explore panel-count arithmetic from entered assumptions; not a site assessment or system design.",
     url: "https://www.tallyard.com/solar-calculator",
     type: "website",
   },
@@ -24,7 +22,7 @@ export default function SolarCalculatorPage() {
   return (
     <>
       {config && <SchemaScript config={config} />}
-      <CalculatorPage slug={SLUG} illustrationValue="17 PANELS" />
+      <CalculatorPage slug={SLUG} illustrationValue="SCENARIO ONLY" />
     </>
   );
 }

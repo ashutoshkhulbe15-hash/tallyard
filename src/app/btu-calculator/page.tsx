@@ -6,14 +6,13 @@ import { getConfig } from "@/configs";
 const SLUG = "btu-calculator";
 
 export const metadata: Metadata = {
-  title: "BTU Calculator: Air Conditioner Size",
+  title: "Room Air Conditioner Capacity Guide",
   description:
-    "Calculate the right BTU size for your room or home. Accounts for climate, sun exposure, and occupancy.",
+    "Estimate room air-conditioner capacity using the ENERGY STAR area guide and its stated adjustments. Not whole-home HVAC sizing.",
   alternates: { canonical: "/btu-calculator" },
   openGraph: {
-    title: "BTU Calculator: Air Conditioner Size",
-    description:
-      "Calculate the right BTU size for your AC. Accounts for climate, sun, and occupancy.",
+    title: "Room Air Conditioner Capacity Guide",
+    description: "Estimate room AC capacity using the ENERGY STAR area guide and stated adjustments.",
     url: "https://www.tallyard.com/btu-calculator",
     type: "website",
   },
@@ -24,7 +23,7 @@ export default function BtuCalculatorPage() {
   return (
     <>
       {config && <SchemaScript config={config} />}
-      <CalculatorPage slug={SLUG} illustrationValue="8,000 BTU" />
+      <CalculatorPage slug={SLUG} illustrationValue="BTU/hr" />
     </>
   );
 }

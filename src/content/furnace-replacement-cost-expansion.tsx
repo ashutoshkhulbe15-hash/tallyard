@@ -1,5 +1,5 @@
 import { Figure, GuideByline, MethodologyNote, Scenario, GUIDE_SVG } from "@/components/GuideChrome";
-import { ComparisonTable, Callout } from "@/components/GuideComponents";
+import { ComparisonTable } from "@/components/GuideComponents";
 
 function FurnaceCostAnatomySVG() {
   return (
@@ -134,9 +134,9 @@ export function FurnaceReplacementCostExpansion() {
 
       <h2>Where furnace quotes go wrong</h2>
 
-      <p>Oversizing is the classic. An installer who sizes the new furnace by copying the old one, or worse by upsizing it "for comfort", is skipping the load calculation. An oversized furnace short cycles: blasts, shuts off, blasts again. It wears components faster, heats unevenly, and costs more up front for the privilege. Insist on a Manual J. If the quote does not mention one, that is your answer about the installer. Cross-check the size yourself with the <a href="/btu-calculator">BTU calculator</a>.</p>
+      <p>Oversizing is the classic. An installer who sizes the new furnace by copying the old one, or worse by upsizing it &quot;for comfort&quot;, is skipping the load calculation. An oversized furnace short cycles: blasts, shuts off, blasts again. It wears components faster, heats unevenly, and costs more up front for the privilege. Insist on a Manual J. If the quote does not mention one, that is your answer about the installer. Cross-check the size yourself with the <a href="/btu-calculator">BTU calculator</a>.</p>
 
-      <p>The other patterns are quieter. Quotes that bundle "miscellaneous materials" without itemizing venting. The permit that is not in the quote at all, which means it is not being pulled, which surfaces when you sell the house. And single-quote pricing: furnace installs have per-job spreads of $2,000 between reputable companies in the same city, so a single quote tells you nothing about the market. Three itemized quotes. Same rule as solar, same reason.</p>
+      <p>The other patterns are quieter. Quotes that bundle &quot;miscellaneous materials&quot; without itemizing venting. The permit that is not in the quote at all, which means it is not being pulled, which surfaces when you sell the house. And single-quote pricing: furnace installs have per-job spreads of $2,000 between reputable companies in the same city, so a single quote tells you nothing about the market. Three itemized quotes. Same rule as solar, same reason.</p>
 
       <p>Last one, and it deserves its own paragraph: before buying heating capacity, check whether you need less of it. Attic insulation is the cheapest heat you will ever buy, and a house that leaks less can sometimes drop a cabinet size. Price it with the <a href="/insulation-calculator">insulation calculator</a>. And if you are replacing both furnace and AC anyway, price a <a href="/heat-pump-calculator">heat pump</a> against the bundle: one system doing both jobs, increasingly viable in cold climates, and sometimes cheaper than furnace plus condenser once state electrification rebates land.</p>
     </>

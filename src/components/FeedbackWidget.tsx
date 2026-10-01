@@ -8,8 +8,11 @@ export function FeedbackWidget({ slug }: { slug: string }) {
   const handleClick = (helpful: boolean) => {
     setState(helpful ? "yes" : "no");
     // Fire-and-forget analytics event
-    if (typeof window !== "undefined" && (window as any).gtag) {
-      (window as any).gtag("event", "feedback", {
+    const analyticsWindow = window as Window & {
+      gtag?: (command: "event", name: string, params: { event_category: string; event_label: string; value: number }) => void;
+    };
+    if (analyticsWindow.gtag) {
+      analyticsWindow.gtag("event", "feedback", {
         event_category: "calculator",
         event_label: slug,
         value: helpful ? 1 : 0,

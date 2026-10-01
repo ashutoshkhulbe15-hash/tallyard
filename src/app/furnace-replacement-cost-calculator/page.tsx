@@ -6,14 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "furnace-replacement-cost-calculator";
 
 export const metadata: Metadata = {
-  title: "Furnace Replacement Cost Calculator: 2026 Gas, Oil & AC",
-  description:
-    "Free furnace and AC replacement cost calculator: 2026 installed prices by size and efficiency, repair vs replace guidance, and every cost itemized.",
+  title: "Furnace Replacement Quote Worksheet",
+  description: "Add line items from an itemized furnace-replacement quote; no equipment sizing or current-price estimate.",
   alternates: { canonical: "/furnace-replacement-cost-calculator" },
   openGraph: {
-    title: "Furnace Replacement Cost Calculator: 2026 Gas, Oil & AC",
-    description:
-      "Free furnace and AC replacement cost calculator: 2026 installed prices by size and efficiency, with repair vs replace guidance.",
+    title: "Furnace Replacement Quote Worksheet",
+    description: "Quote arithmetic only; no equipment sizing, repair advice, or market prices.",
     url: "https://www.tallyard.com/furnace-replacement-cost-calculator",
     type: "website",
   },
@@ -24,7 +22,7 @@ export default function FurnaceReplacementCostCalculatorPage() {
   return (
     <>
       {config && <SchemaScript config={config} />}
-      <CalculatorPage slug={SLUG} illustrationValue="$6,800" />
+      <CalculatorPage slug={SLUG} illustrationValue="QUOTE INPUTS" />
     </>
   );
 }

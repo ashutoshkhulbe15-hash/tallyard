@@ -1,18 +1,15 @@
-import { DeckCalculatorExpansion } from "@/content/deck-expansion";
 import type { CalculatorConfig } from "@/lib/types";
-import { round, roundUp, formatNumber } from "@/lib/format";
+import { round, formatNumber, ceilQuantity } from "@/lib/format";
 
 export const deckCalculatorConfig: CalculatorConfig = {
   slug: "deck-calculator",
-  title: "Deck Calculator",
+  title: "Decking Board Calculator",
   description:
-    "Deck boards, joists, beams, and fasteners for any size deck. Accounts for board width, joist spacing, and the support frame.",
+    "Estimate deck surface area and a rough decking-board quantity for a simple rectangle. This does not size or design the supporting structure.",
   categoryLabel: "Landscaping",
   category: "landscaping",
-
-  bannerHeadline: "Deck solidly.",
-  bannerTags: ["Boards + frame", "Any joist spacing", "Screws or hidden"],
-
+  bannerHeadline: "Estimate deck boards.",
+  bannerTags: ["Surface area", "Straight rectangular deck", "Planning estimate"],
   inputs: [
     {
       id: "length",
@@ -22,7 +19,7 @@ export const deckCalculatorConfig: CalculatorConfig = {
       unitMetric: "m",
       defaultImperial: 16,
       defaultMetric: 4.9,
-      min: 4,
+      min: 1,
       step: 1,
     },
     {
@@ -33,236 +30,131 @@ export const deckCalculatorConfig: CalculatorConfig = {
       unitMetric: "m",
       defaultImperial: 12,
       defaultMetric: 3.7,
-      min: 4,
+      min: 1,
       step: 1,
     },
     {
       id: "boardWidth",
-      label: "Decking board width",
-      type: "select",
+      label: "Actual decking-board face width",
+      type: "number",
+      unitImperial: "in",
+      unitMetric: "mm",
       defaultImperial: 5.5,
-      options: [
-        { label: "5.5\" (2×6 nominal)", value: 5.5 },
-        { label: "5.25\" (composite)", value: 5.25 },
-        { label: "3.5\" (2×4 nominal)", value: 3.5 },
-      ],
+      defaultMetric: 140,
+      min: 1,
+      step: 0.25,
+      help: "Use the product's actual face width, not its nominal lumber name.",
     },
     {
-      id: "joistSpacing",
-      label: "Joist spacing",
-      type: "select",
-      defaultImperial: 16,
-      options: [
-        { label: '12" OC (wood composite)', value: 12 },
-        { label: '16" OC (standard)', value: 16 },
-        { label: '24" OC (PT lumber only)', value: 24 },
-      ],
-      help: "Composite boards require 16\" or less; 12\" for diagonal layouts",
+      id: "gap",
+      label: "Gap between boards",
+      type: "number",
+      unitImperial: "in",
+      unitMetric: "mm",
+      defaultImperial: 0.125,
+      defaultMetric: 3,
+      min: 0,
+      step: 0.0625,
+      help: "Use the decking manufacturer's installation instructions for the required gap.",
     },
     {
-      id: "fastener",
-      label: "Fastener type",
+      id: "waste",
+      label: "Cut/waste allowance",
       type: "select",
-      defaultImperial: "screws",
+      defaultImperial: 10,
       options: [
-        { label: "Deck screws (visible)", value: "screws" },
-        { label: "Hidden fasteners", value: "hidden" },
+        { label: "0%", value: 0 },
+        { label: "5%", value: 5 },
+        { label: "10%", value: 10 },
+        { label: "15%", value: 15 },
       ],
     },
   ],
-
   calculate: (values, units) => {
-    const L = Number(values.length) || 0;
-    const W = Number(values.width) || 0;
-    const boardWidth = Number(values.boardWidth) || 5.5;
-    const joistSpacing = Number(values.joistSpacing) || 16;
-    const fastener = String(values.fastener || "screws");
-
-    // Convert to feet if metric
-    const lengthFt = units === "metric" ? L * 3.281 : L;
-    const widthFt = units === "metric" ? W * 3.281 : W;
-
-    // Area
-    const areaSqFt = lengthFt * widthFt;
-
-    // Boards: running perpendicular to joists, typically along the length
-    // Board coverage = board width in ft with 1/8" gap
-    const boardCoverageFt = (boardWidth + 0.125) / 12;
-    const rowsOfBoards = Math.ceil(widthFt / boardCoverageFt);
-    // Each row spans the length; boards sold in 8, 12, 16 ft lengths
-    // For simplicity: total linear feet of decking = rows × length
-    const linearFtBoards = rowsOfBoards * lengthFt;
-    // Number of 16-ft boards needed (with 10% waste)
-    const boards16ft = Math.ceil((linearFtBoards * 1.1) / 16);
-
-    // Joists: spaced at joistSpacing inches, running perpendicular to boards
-    // Number of joists = (length / spacing) + 1, each joist spans the width
-    const joistCount = Math.ceil((lengthFt * 12) / joistSpacing) + 1;
-    const linearFtJoists = joistCount * widthFt;
-    const joists16ft = Math.ceil(linearFtJoists / 16);
-
-    // Beams: typically 2, running full length, doubled 2×8 or 2×10
-    // Assume: 2 beams, each consisting of 2 plies
-    const beamPlies = 2 * 2; // 2 beams × 2 plies each
-    const linearFtBeams = beamPlies * lengthFt;
-    const beams16ft = Math.ceil(linearFtBeams / 16);
-
-    // Fasteners
-    // Screws: 4 per board per joist (~40-50 per 16 sq ft)
-    // Hidden: 1 clip per joist per board
-    let fastenerCount: number;
-    let fastenerLabel: string;
-    if (fastener === "screws") {
-      // 4 screws per board row × joist count × avg boards per row
-      fastenerCount = Math.ceil(rowsOfBoards * joistCount * 2);
-      fastenerLabel = "deck screws";
-    } else {
-      fastenerCount = Math.ceil(rowsOfBoards * joistCount);
-      fastenerLabel = "hidden clips";
-    }
-
-    // Posts: approximately 1 per 80 sq ft for basic spacing
-    const posts = Math.max(4, Math.ceil(areaSqFt / 80));
+    const lengthInput = Number(values.length) || 0;
+    const widthInput = Number(values.width) || 0;
+    const widthBoardInput = Number(values.boardWidth) || (units === "metric" ? 140 : 5.5);
+    const gapInput = Number(values.gap) || 0;
+    const waste = Number(values.waste) || 0;
+    const metric = units === "metric";
+    const lengthFt = metric ? lengthInput / 0.3048 : lengthInput;
+    const widthFt = metric ? widthInput / 0.3048 : widthInput;
+    const boardFaceIn = metric ? widthBoardInput / 25.4 : widthBoardInput;
+    const gapIn = metric ? gapInput / 25.4 : gapInput;
+    const areaFt2 = lengthFt * widthFt;
+    const rowCoverageIn = boardFaceIn + gapIn;
+    const rows = ceilQuantity((widthFt * 12) / rowCoverageIn);
+    const totalLinearFt = rows * lengthFt;
+    const totalWithAllowanceFt = totalLinearFt * (1 + waste / 100);
+    const nominal16FtPieces = ceilQuantity(totalWithAllowanceFt / 16);
+    const area = metric ? areaFt2 * 0.092903 : areaFt2;
+    const areaUnit = metric ? "m²" : "ft²";
+    const boardLength = metric ? round(16 * 0.3048, 2) : 16;
+    const boardLengthUnit = metric ? "m" : "ft";
+    const totalLinear = metric ? totalLinearFt * 0.3048 : totalLinearFt;
+    const linearUnit = metric ? "m" : "ft";
+    const faceWidth = metric ? widthBoardInput : boardFaceIn;
+    const gap = metric ? gapInput : gapIn;
+    const faceUnit = metric ? "mm" : "in";
 
     return {
-      value: boards16ft,
-      unit: boards16ft === 1 ? "16' board" : "16' boards",
-      valueRounded: boards16ft,
+      value: nominal16FtPieces,
+      unit: `nominal ${boardLength}${boardLengthUnit} board${nominal16FtPieces === 1 ? "" : "s"}`,
+      valueRounded: nominal16FtPieces,
       breakdown: [
-        { label: "area", value: `${formatNumber(round(areaSqFt, 0))} sq ft` },
-        { label: "deck boards", value: `${boards16ft} × 16'` },
-        { label: "joists", value: `${joists16ft} × 16'` },
-        { label: "beams", value: `${beams16ft} × 16'` },
-        { label: "posts", value: `${posts}` },
-        { label: fastenerLabel, value: `${fastenerCount}` },
+        { label: "deck surface area", value: `${formatNumber(round(area, 1))} ${areaUnit}` },
+        { label: "board rows across width", value: `${rows}` },
+        { label: "estimated linear decking before allowance", value: `${formatNumber(round(totalLinear, 1))} ${linearUnit}` },
+        { label: `nominal ${boardLength}${boardLengthUnit} pieces`, value: `${nominal16FtPieces} (before matching stock lengths and seams)` },
       ],
       formulaSteps: [
-        `area = ${lengthFt} × ${widthFt} = ${formatNumber(round(areaSqFt, 0))} sq ft`,
-        `board coverage = ${boardWidth}" + 1/8" gap = ${formatNumber(round(boardCoverageFt * 12, 3))}" per row`,
-        `rows of boards = ⌈${widthFt} ÷ ${formatNumber(round(boardCoverageFt, 3))}⌉ = ${rowsOfBoards}`,
-        `linear ft of decking = ${rowsOfBoards} × ${lengthFt} = ${formatNumber(round(linearFtBoards, 0))} ft`,
-        `16' boards = ⌈${formatNumber(round(linearFtBoards, 0))} × 1.1 ÷ 16⌉ = ${boards16ft} boards`,
-        `joists @ ${joistSpacing}" OC = ⌈${lengthFt * 12} ÷ ${joistSpacing}⌉ + 1 = ${joistCount} joists`,
-        `beams = 2 beams × 2 plies × ${lengthFt} ft = ${formatNumber(round(linearFtBeams, 0))} linear ft`,
-        `${fastenerLabel} = ${fastenerCount}`,
+        `area = ${lengthInput} × ${widthInput} = ${formatNumber(round(area, 1))} ${areaUnit}`,
+        `row coverage = ${faceWidth} ${faceUnit} board face + ${gap} ${faceUnit} gap`,
+        `rows = ceil(deck width ÷ row coverage) = ${rows}`,
+        `linear decking = rows × deck length = ${formatNumber(round(totalLinear, 1))} ${linearUnit}`,
+        `apply selected ${waste}% allowance, then divide by nominal ${boardLength}${boardLengthUnit} stock length = ${nominal16FtPieces} pieces`,
       ],
+      composition: {
+        unit: areaUnit,
+        total: round(area, 1),
+        segments: [{ label: "Rectangular deck area", amount: round(area, 1), shade: "primary" }],
+      },
     };
   },
-
-  ContentExpansion: DeckCalculatorExpansion,
-
   formulaDescription:
-    "boards = ⌈area ÷ board coverage × 1.1 ÷ 16⌉; joists = ⌈length ÷ spacing⌉ + 1",
-
+    "rows = ceiling(deck width ÷ (actual board face width + selected gap)); rough stock count = ceiling(rows × deck length × (1 + allowance) ÷ 16 ft)",
   methodology: [
-    "Deck boards: the calculator assumes boards run perpendicular to the joists (standard orientation). Board count is derived from deck width divided by effective board coverage (actual width plus a 1/8\" gap for expansion). Total linear feet converts to 16-foot board count with 10% waste, which is standard for straight-cut installations.",
-    "Joists: spaced at the specified on-center distance, running perpendicular to the decking. Joist count is the length of the deck divided by spacing, plus one for the closing joist. All joists span the full width. Composite decking requires 12-inch or 16-inch spacing; pressure-treated 2×6 decking can span 24 inches if solid (but not preferred).",
-    "Beams are the horizontal members running under the joists, transferring loads to the posts. Most residential decks use doubled (2-ply) 2×8 or 2×10 beams. The calculator assumes 2 beams at 2 plies each, running the full length: this covers typical deck framing but is approximate. Complex deck shapes require more beams.",
-    "Posts: rough estimate of one 4×4 or 6×6 post per 80 square feet of deck area. Actual post count depends on beam span capacity, which depends on beam size and wood species. For engineered accuracy, consult the International Residential Code (IRC) 2021 prescriptive tables or have a pro design.",
-    "Fasteners: visible deck screws at 2 per board per joist (front and back of board), or hidden fasteners at 1 clip per board per joist. Hidden fasteners cost 3-5× more and add an hour per 100 sq ft of install time but deliver a cleaner finished look.",
-    "Not included: ledger board (attaches deck to house), flashing (critical for ledger waterproofing), joist hangers (one per joist end), knee braces for lateral stability, railing posts and balusters (calculate separately), and stairs. These add significantly to material cost: budget 30-40% more than the calculator's output for a complete build.",
+    "This is a rough surface-board quantity for a simple rectangle, assuming boards run in the deck-length direction and each row covers the entered board face width plus gap. The nominal stock count assumes 16-foot (4.88 m) pieces; real stock lengths, layout, joints, border boards, picture framing, and cut optimization change the order quantity.",
+    "The selected cut/waste allowance is an editable scenario, not a universal standard. Confirm actual board dimensions, spacing/gap, fastening method, and installation details in the specific decking manufacturer's instructions.",
+    "This tool does not calculate joists, beams, posts, footings, ledgers, fasteners, stairs, guards, span capacity, permits, or code compliance. It is not a structural design or complete material list. Have the framing designed or reviewed for the site, loads, materials, and locally adopted code.",
   ],
-
   sources: [
     {
-      name: "AWC DCA 6: Prescriptive Residential Deck Construction Guide",
+      name: "American Wood Council: Prescriptive Residential Wood Deck Construction Guide",
       url: "https://awc.org/publications/dca6/",
-      note: "Free guide governing joist and beam spans, ledger attachment, and footing sizing",
-    },
-    {
-      name: "IRC Section R507 (Exterior Decks)",
-      url: "https://codes.iccsafe.org/content/IRC2021P2/chapter-5-floors",
-      note: "Adopted code provisions for deck framing, ledger connection, and lateral load",
-    },
-    {
-      name: "IRC Section R311.7 and R312 (Stairs and Guards)",
-      url: "https://codes.iccsafe.org/content/IRC2021P2/chapter-3-building-planning",
-      note: "Guard requirement above 30 inches and stair geometry for deck stairs",
-    },
-    {
-      name: "NADRA Deck Safety and Inspection Guidance",
-      url: "https://www.nadra.org/consumers/deck-safety/",
-      note: "Industry data on ledger and connection failures found in deck inspections",
-    },
-    {
-      name: "AWC Span Calculator",
-      url: "https://awc.org/codes-standards/calculators-software/spancalc/",
-      note: "Official tool for verifying joist and beam spans for a specific species and grade",
+      note: "Reference for structural design; this calculator does not perform those checks.",
     },
   ],
-
   related: [
-    { name: "Concrete calculator", slug: "concrete-calculator", description: "For deck footings" },
-    { name: "Deck stair calculator", slug: "deck-stair-calculator", description: "Stringer cut sheet with IRC checks" },
-    { name: "Shed calculator", slug: "shed-calculator", description: "Framing and sheathing for a shed" },
-    { name: "Lumber calculator", slug: "lumber-calculator", description: "Board feet for framing" },
+    { name: "Concrete calculator", slug: "concrete-calculator", description: "Estimate concrete volume for a separately designed project" },
+    { name: "Deck stair calculator", slug: "deck-stair-calculator", description: "Planning estimate for stair geometry; verify code and site conditions" },
   ],
-
-  howTo: {
-    name: "How to calculate deck materials",
-    description: "Work out decking boards, joists, beams, posts, and fasteners for a deck in five steps, starting from the surface material rather than the frame.",
-    steps: [
-      { name: "Choose the decking board first", text: "Pick the surface material before framing anything. Composite brands set their own maximum joist spacing, commonly 16 inches on center for straight lay and 12 inches for a 45 degree pattern, and that requirement drives the entire frame." },
-      { name: "Measure and set the frame layout", text: "Enter deck length and width along with the joist spacing your decking requires. Long shallow decks along the house cost less per square foot than square decks, because deeper decks need an intermediate beam and another row of footings." },
-      { name: "Count decking boards by length", text: "Divide deck width by the actual board coverage, including the gap between boards, then match board length to the deck run so full boards span without seams. Buying 16 foot boards for a 16 foot deck wastes far less than 12 foot boards." },
-      { name: "Add framing, footings, and fasteners", text: "Add joists at the required spacing, beams and posts per DCA 6 span tables, and footings below the local frost line. Use fasteners rated for the decking: stainless or coated screws for pressure-treated, hidden clips for grooved composite." },
-      { name: "Price stairs, railing, and permit separately", text: "Guards are required above a 30 inch drop and are quoted per linear foot. Stairs are their own calculation under IRC R311.7. Both are commonly missing from a deck quote, and both are required for a permit." },
-    ],
-  },
-
   faq: [
     {
-      question: "How much does it cost to build a deck in 2026?",
-      answer:
-        "$30-50 per square foot installed for pressure-treated and $50-80 for composite. A 12×16 deck runs about $5,800-9,600 in pressure-treated or $9,600-15,400 in composite. Railing ($25-60 per linear foot) and stairs ($800-2,200) are quoted separately and are the two items most often missing from a comparison.",
+      question: "Does this calculator size the deck frame?",
+      answer: "No. It estimates surface area and rough decking-board quantity only. Joists, beams, posts, footings, connections, guards, stairs, and code requirements need a separate site-specific design.",
     },
     {
-      question: "How is a deck ledger supposed to be attached?",
-      answer:
-        "With through-bolts or approved structural screws in a staggered pattern per IRC R507.9 and AWC DCA 6, never with nails, and with flashing above it to divert water out over the siding. Ledger failures account for a large share of reported deck collapses, and they are the first thing an inspector checks.",
+      question: "How accurate is the board count?",
+      answer: "Treat it as an initial planning estimate for a rectangular deck with straight rows. Board lengths, seams, edge details, obstructions, product dimensions, and cutting choices affect the order quantity.",
     },
     {
-      question: "How many deck boards do I need for a 12×16 deck?",
-      answer:
-        "For a 12×16 ft deck (192 sq ft) using 5.5\"-wide boards (2×6 nominal), you need about 28 boards at 16 feet long, or 42 boards at 12 feet long. Composite boards (5.25\" actual) need slightly more. Use the calculator above for exact numbers based on your board width.",
+      question: "What board gap should I enter?",
+      answer: "Use the gap specified by the decking manufacturer for that product and installation conditions. This calculator does not determine the correct gap.",
     },
     {
-      question: "What joist spacing should I use?",
-      answer:
-        "Standard pressure-treated 2×6 decking: 16\" on center for straight boards, 12\" for diagonal layouts. All composite decking: 16\" maximum (some require 12\"). Wider spacing causes bounce, long-term sag, and voids the composite warranty. Always check the composite manufacturer's spec: they vary.",
+      question: "Can I use this as a complete deck material list?",
+      answer: "No. It omits all structural framing, connections, fasteners, stairs, guards, and code or permit checks. Obtain a complete site-specific plan before construction.",
     },
-    {
-      question: "Do I need hidden fasteners?",
-      answer:
-        "Not required, but preferred for composite decking for a cleaner look (no screw heads visible). For pressure-treated lumber, standard deck screws are fine and significantly cheaper. Hidden fasteners cost $0.15-0.30 per clip vs $0.03 per screw. Labor is similar with modern systems.",
-    },
-    {
-      question: "How far can my beams span?",
-      answer:
-        "Depends on beam size and wood species. Typical residential: doubled 2×8 spans 8 feet, doubled 2×10 spans 10 feet, doubled 2×12 spans 12 feet. Longer spans require LVL or triple plies. The calculator assumes typical spacing but doesn't verify span, always cross-check with IRC tables.",
-    },
-    {
-      question: "What's the difference between 16' and 12' board lengths?",
-      answer:
-        "16-foot boards produce fewer end-to-end seams on long decks, which looks cleaner and is slightly stronger. 12-foot boards are easier to handle solo and cheaper per board. For a 16-foot-long deck, 16-foot boards have no butt joints at all, just one continuous board per row.",
-    },
-    {
-      question: "Do I need ledger flashing?",
-      answer:
-        "Critical and not optional for decks attached to the house. A proper ledger installation includes: house wrap cut and folded behind the ledger, metal Z-flashing over the top edge, rubber flashing at both ends. Poor flashing causes hidden water damage to house walls that can be $10,000+ to repair.",
-    },
-    {
-      question: "Can I calculate without the frame?",
-      answer:
-        "The calculator's boards-only count (ignoring joists and beams) is accurate for replacing existing decking where the frame is already in place. For new decks, you need the full materials list. For decks being resurfaced over old framing, inspect the joists and beams for rot: replace anything soft.",
-    },
-    {
-      question: "How many posts do I need?",
-      answer:
-        "Rough rule: one post per 80-100 sq ft of deck for basic spacing. Actual post count depends on beam capacity. Most decks have 4-6 posts on the outside perimeter (beam support) plus a ledger attachment to the house on the fourth side. Freestanding decks need posts on all four sides.",
-    },
-  ],
-  relatedGuides: [
-    { name: "Composite vs PT vs cedar decking", slug: "composite-vs-pressure-treated-vs-cedar-deck", description: "20-year cost breakdown for all three decking materials" },
   ],
 };

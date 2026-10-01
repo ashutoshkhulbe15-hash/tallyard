@@ -1,291 +1,75 @@
-import { GroutCalculatorExpansion } from "@/content/grout-expansion";
 import type { CalculatorConfig } from "@/lib/types";
-import { round, roundUp, formatNumber } from "@/lib/format";
+import { round, formatNumber, ceilQuantity } from "@/lib/format";
 
 export const groutCalculatorConfig: CalculatorConfig = {
   slug: "grout-calculator",
-  title: "Grout Calculator",
-  description:
-    "Pounds of grout for any tile installation. Accounts for tile size, joint width, and thickness so you buy the right bags.",
+  title: "Grout Package Estimator",
+  description: "Estimate grout packages from measured tiled area and coverage for the exact product and package. Does not calculate joint yield or select grout type.",
   categoryLabel: "Flooring",
   category: "flooring",
-
-  bannerHeadline: "Grout precisely.",
-  bannerTags: ["Any tile size", "Sanded or unsanded", "lb or kg"],
-
+  bannerHeadline: "Estimate grout packages.",
+  bannerTags: ["Measured tiled area", "Enter exact product coverage", "No grout selection advice"],
   inputs: [
+    { id: "area", label: "Measured tiled area", type: "number", unitImperial: "ft²", unitMetric: "m²", defaultImperial: 120, defaultMetric: 11.15, min: 0.01, step: 1 },
     {
-      id: "length",
-      label: "Area length",
-      type: "number",
-      unitImperial: "ft",
-      unitMetric: "m",
-      defaultImperial: 10,
-      defaultMetric: 3,
-      min: 0.5,
-      step: 0.5,
+      id: "coveragePerPackage", label: "Coverage per package (check product data)", type: "number",
+      unitImperial: "ft²", unitMetric: "m²", defaultImperial: "", defaultMetric: "", min: 0.01, step: 0.1,
+      help: "Enter coverage matching the exact grout product, package size, tile, and joint configuration.",
     },
     {
-      id: "width",
-      label: "Area width",
-      type: "number",
-      unitImperial: "ft",
-      unitMetric: "m",
-      defaultImperial: 12,
-      defaultMetric: 3.7,
-      min: 0.5,
-      step: 0.5,
-    },
-    {
-      id: "tileSize",
-      label: "Tile size",
-      type: "select",
-      defaultImperial: "12x12",
+      id: "allowance", label: "Planning allowance", type: "select", defaultImperial: 0.1,
       options: [
-        { label: "4 × 4 (small wall)", value: "4x4" },
-        { label: "6 × 6", value: "6x6" },
-        { label: "12 × 12 (standard)", value: "12x12" },
-        { label: "12 × 24", value: "12x24" },
-        { label: "18 × 18", value: "18x18" },
-        { label: "24 × 24 (large)", value: "24x24" },
+        { label: "0%", value: 0 }, { label: "5%", value: 0.05 },
+        { label: "10%", value: 0.1 }, { label: "15%", value: 0.15 },
       ],
-    },
-    {
-      id: "jointWidth",
-      label: "Grout joint width",
-      type: "select",
-      defaultImperial: 0.125,
-      options: [
-        { label: '1/16" / 1.5 mm (rectified)', value: 0.0625 },
-        { label: '1/8" / 3 mm (standard)', value: 0.125 },
-        { label: '3/16" / 5 mm', value: 0.1875 },
-        { label: '1/4" / 6 mm (rustic)', value: 0.25 },
-        { label: '3/8" / 10 mm (stone)', value: 0.375 },
-      ],
-      help: "1/16-1/8\" is typical for modern tile. 1/4\"+ for rustic or stone.",
-    },
-    {
-      id: "tileThickness",
-      label: "Tile thickness",
-      type: "select",
-      defaultImperial: 0.375,
-      options: [
-        { label: '1/4" / 6 mm (thin)', value: 0.25 },
-        { label: '3/8" / 10 mm (standard)', value: 0.375 },
-        { label: '1/2" / 12 mm (thick)', value: 0.5 },
-      ],
-    },
-    {
-      id: "waste",
-      label: "Waste factor",
-      type: "select",
-      defaultImperial: 15,
-      options: [
-        { label: "10%", value: 10 },
-        { label: "15% (standard)", value: 15 },
-        { label: "20%", value: 20 },
-      ],
+      help: "User-selected scenario, not a universal waste recommendation.",
     },
   ],
-
   calculate: (values, units) => {
-    const L = Number(values.length) || 0;
-    const W = Number(values.width) || 0;
-    const tileSize = String(values.tileSize || "12x12");
-    const jointWidthInches = Number(values.jointWidth) || 0.125;
-    const tileThicknessInches = Number(values.tileThickness) || 0.375;
-    const waste = Number(values.waste) || 15;
-
-    // Tile dimensions in inches (imperial) or cm (metric)
-    const tileMapImperial: Record<string, { l: number; w: number }> = {
-      "4x4": { l: 4, w: 4 },
-      "6x6": { l: 6, w: 6 },
-      "12x12": { l: 12, w: 12 },
-      "12x24": { l: 12, w: 24 },
-      "18x18": { l: 18, w: 18 },
-      "24x24": { l: 24, w: 24 },
-    };
-    const tile = tileMapImperial[tileSize] || tileMapImperial["12x12"];
-
-    // Coverage formula (industry standard, in sq ft per pound for imperial):
-    // coverage = (L × W × thickness × 2) / ((L + W) × joint_width × 2)
-    // Simplified: coverage_sqft_per_lb ≈ (tile_area × thickness) / (perimeter × joint × density)
-    //
-    // Standard approximation: grout coverage per pound varies by tile size + joint + thickness.
-    // Using Mapei/Custom Building Products formula:
-    // lb/sqft = (L+W) × joint × thickness × 150 / (L × W × 12)
-    // Where 150 is the density of cementitious grout in lb/ft³
-    // L, W, thickness, joint all in inches
-
-    // Calculate lb of grout per square foot of tile coverage
-    const lbPerSqFt =
-      ((tile.l + tile.w) * jointWidthInches * tileThicknessInches * 150) /
-      (tile.l * tile.w * 12);
-
-    // Floor area
-    const floorArea = L * W;
-    const floorAreaSqFt = units === "metric" ? floorArea * 10.764 : floorArea;
-
-    const rawPounds = lbPerSqFt * floorAreaSqFt;
-    const poundsWithWaste = rawPounds * (1 + waste / 100);
-
-    // Bag sizes: 10 lb (small) or 25 lb (standard)
-    const smallBags = Math.ceil(poundsWithWaste / 10);
-    const standardBags = Math.ceil(poundsWithWaste / 25);
-
-    const displayWeight =
-      units === "metric"
-        ? round(poundsWithWaste * 0.4536, 1)
-        : round(poundsWithWaste, 1);
-    const weightUnit = units === "metric" ? "kg" : "lb";
+    const area = Number(values.area);
+    const coverage = Number(values.coveragePerPackage);
+    const allowance = Number(values.allowance);
+    if (![area, coverage, allowance].every(Number.isFinite) || area <= 0 || coverage <= 0 ||
+        ![0, 0.05, 0.1, 0.15].includes(allowance)) {
+      throw new Error("Enter a positive tiled area, exact product-package coverage, and a listed planning allowance.");
+    }
+    const adjustedArea = area * (1 + allowance);
+    const packages = ceilQuantity(adjustedArea / coverage);
     const areaUnit = units === "metric" ? "m²" : "ft²";
-    const displayArea = units === "metric" ? floorArea : floorAreaSqFt;
-
-    // Recommend sanded vs unsanded
-    const sandedRecommended = jointWidthInches >= 0.125;
-
     return {
-      value: displayWeight,
-      unit: weightUnit,
-      valueRounded: units === "metric" ? round(displayWeight, 1) : roundUp(displayWeight, 0),
+      value: packages,
+      unit: packages === 1 ? "package" : "packages",
+      valueRounded: packages,
       breakdown: [
-        { label: "area", value: `${formatNumber(round(displayArea, 1))} ${areaUnit}` },
-        { label: "25 lb bags", value: `${standardBags}` },
-        {
-          label: "recommended",
-          value: sandedRecommended ? "sanded" : "unsanded",
-        },
+        { label: "measured tiled area", value: `${formatNumber(round(area, 2))} ${areaUnit}` },
+        { label: "selected allowance", value: `${round(allowance * 100, 0)}%` },
+        { label: "coverage per package", value: `${formatNumber(round(coverage, 2))} ${areaUnit}` },
+        { label: "estimated packages", value: `${formatNumber(packages)}` },
       ],
       formulaSteps: [
-        `tile size = ${tile.l}" × ${tile.w}"`,
-        `joint width = ${jointWidthInches}"`,
-        `tile thickness = ${tileThicknessInches}"`,
-        `lb per sq ft = (${tile.l + tile.w} × ${jointWidthInches} × ${tileThicknessInches} × 150) ÷ (${tile.l * tile.w} × 12) = ${formatNumber(round(lbPerSqFt, 3))}`,
-        `area = ${L} × ${W} = ${formatNumber(round(floorAreaSqFt, 0))} sq ft${units === "metric" ? ` (${formatNumber(round(floorArea, 2))} m²)` : ""}`,
-        `raw weight = ${formatNumber(round(lbPerSqFt, 3))} × ${formatNumber(round(floorAreaSqFt, 0))} = ${formatNumber(round(rawPounds, 1))} lb`,
-        `with ${waste}% waste = ${formatNumber(round(poundsWithWaste, 1))} lb${units === "metric" ? ` (${formatNumber(round(poundsWithWaste * 0.4536, 1))} kg)` : ""}`,
-        `standard 25-lb bags = ⌈${formatNumber(round(poundsWithWaste, 1))} ÷ 25⌉ = ${standardBags} bags`,
-        `small 10-lb bags = ⌈${formatNumber(round(poundsWithWaste, 1))} ÷ 10⌉ = ${smallBags} bags`,
+        `area with selected allowance = ${round(area, 3)} × (1 + ${round(allowance * 100, 0)}%) = ${round(adjustedArea, 3)} ${areaUnit}`,
+        `packages = ceil(${round(adjustedArea, 3)} ÷ ${coverage} ${areaUnit}/package) = ${packages}`,
+        "Coverage must apply to the selected product, tile, and joint configuration; no grout volume or type is inferred.",
       ],
     };
   },
-
-  howTo: {
-    name: "How to calculate how much grout you need",
-    description:
-      "Work out grout quantity from tile size, joint width, and tile thickness, then pick the right grout type for the joint.",
-    steps: [
-      {
-        name: "Measure the tiled area",
-        text: "Length times width in square feet. Walls and floors are usually different tile, so calculate them separately.",
-      },
-      {
-        name: "Note the tile size and thickness",
-        text: "Smaller tile creates far more joint per square foot. A 2 by 2 mosaic uses roughly six times the grout of a 24 by 24 tile over the same area, and thicker tile deepens every joint.",
-      },
-      {
-        name: "Set the joint width",
-        text: "Rectified porcelain is typically 1/16 inch, standard tile 1/8, and stone or rustic tile 3/16 to 3/8. The width drives both quantity and grout type.",
-      },
-      {
-        name: "Choose sanded or unsanded",
-        text: "Joints 1/8 inch and wider take sanded grout, since the sand resists shrinkage cracking. Joints narrower than 1/8 take unsanded, which also avoids scratching polished stone and glass.",
-      },
-      {
-        name: "Add a margin and buy whole bags",
-        text: "Round up to full bags and buy one extra. Grout colour varies between lots, so matching a later bag for repairs is difficult.",
-      },
-    ],
-  },
-
-  ContentExpansion: GroutCalculatorExpansion,
-
-  formulaDescription:
-    "lb = (tile perimeter × joint × thickness × 150) ÷ (tile area × 12) × floor area × (1 + waste)",
-
+  formulaDescription: "packages = ceil((measured tiled area × (1 + user-selected allowance)) ÷ exact package coverage)",
   methodology: [
-    "The grout needed per square foot depends on three tile characteristics: how much joint perimeter exists around each tile (smaller tiles = more joints = more grout), how wide the joints are, and how thick the tiles are (thicker tiles = deeper joints to fill). The calculator uses the industry standard formula from cement grout manufacturers like Mapei and Custom Building Products.",
-    "Small tiles (4×4, 6×6) need significantly more grout than large tiles at the same joint width, a mosaic or small subway tile installation can require 3-4x the grout of a 24×24 floor installation of equivalent area, because there are many more linear feet of joint per square foot of coverage.",
-    "Joint width is the other major driver. Modern rectified tiles allow 1/16\" joints, which use about half the grout of standard 1/8\" joints. Rustic installations with 1/4\" or wider joints use substantially more. Match the joint width to the tile: using a narrow joint on unrectified tile creates uneven lines.",
-    "Sanded grout is required for joints wider than 1/8\". The sand prevents the grout from shrinking and cracking in wider joints. Unsanded grout is for joints 1/8\" and narrower, especially on polished stone or soft tile that sanded grout would scratch.",
-    "The 15% waste factor covers the small amount that sticks to the mixing bucket, float, sponge, and tile surfaces during cleanup. For large complex installations with lots of cuts or multiple sessions, bump to 20%. Always mix grout in complete bag quantities: partial bags don't color-match reliably when mixed in different batches.",
+    "The estimator applies the selected planning allowance to your measured tiled area, divides by the coverage value you enter for the exact grout package and assembly, and rounds up to whole packages.",
+    "Coverage varies by grout product, package size, tile dimensions and thickness, joint width and depth, and application details. Use current manufacturer coverage data for the actual materials; if it does not provide an applicable yield, this tool cannot calculate a dependable quantity.",
+    "This tool does not calculate grout mass from assumed density, select cementitious or epoxy grout, recommend sanded/unsanded material, or advise installation, sealing, curing, or movement joints. Follow project specifications, product instructions, and qualified tile-setting guidance.",
   ],
-
   sources: [
-    {
-      name: "ANSI A118.6 and A118.7: Cementitious Grouts",
-      url: "https://www.tcnatile.com/products-and-services/publications/ansi-standards/",
-      note: "The standards covering standard and high performance cement grout",
-    },
-    {
-      name: "ANSI A118.3: Chemical Resistant Epoxy Grout",
-      url: "https://www.tcnatile.com/products-and-services/publications/ansi-standards/",
-      note: "The specification epoxy grouts are tested against",
-    },
-    {
-      name: "TCNA Handbook EJ171: Movement Joints",
-      url: "https://www.tcnatile.com/products-and-services/publications/tcna-handbook/",
-      note: "Where grout must stop and a flexible sealant is required instead",
-    },
-    {
-      name: "Mapei: Grout Coverage Charts",
-      url: "https://www.mapei.com/us/en-us/products-and-solutions/product-lines/tile-and-stone-installation-systems",
-      note: "Published coverage by tile size, joint width, and tile thickness",
-    },
-    {
-      name: "Custom Building Products: Grout Selection and Coverage",
-      url: "https://www.custombuildingproducts.com/products/grouts/",
-      note: "Sanded and unsanded selection guidance and per-bag coverage data",
-    },
+    { name: "Tile Council of North America: Tile Installation Resources", url: "https://www.tcnatile.com/", note: "Industry resources; use current manufacturer data for product-specific grout coverage and follow project requirements." },
   ],
-
   related: [
-    { name: "Tile calculator", slug: "tile-calculator", description: "Tiles and boxes for any floor" },
-    { name: "Paint calculator", slug: "paint-calculator", description: "Gallons of paint for any room" },
-    { name: "Flooring calculator", slug: "flooring-calculator", description: "Hardwood, laminate, vinyl" },
-    { name: "Floor refinishing cost", slug: "hardwood-floor-refinishing-cost-calculator", description: "Sand and refinish instead of replacing" },
+    { name: "Tile package calculator", slug: "tile-calculator", description: "Estimate tile packages using exact label coverage" },
+    { name: "Flooring package calculator", slug: "flooring-calculator", description: "Estimate flooring packages from area and product coverage" },
+    { name: "Shower tile package estimator", slug: "shower-tile-calculator", description: "Estimate packages from measured shower tile area" },
   ],
-
   faq: [
-    {
-      question: "How many bags of grout do I need?",
-      answer:
-        "For a typical 10×12 ft floor with 12×12 tiles and 1/8\" joints, you need about 2-3 standard 25-lb bags. Small tiles or wider joints need more. The calculator above gives you the exact pound and bag count for your specific installation.",
-    },
-    {
-      question: "Should I use sanded or unsanded grout?",
-      answer:
-        "Sanded: joints 1/8\" or wider, all floor installations. Unsanded: joints narrower than 1/8\", polished marble or other soft stone, glass tile. If you're unsure, 1/8\" is the breakpoint, at exactly 1/8\", either works but sanded is more common.",
-    },
-    {
-      question: "How long does grout take to dry?",
-      answer:
-        "Cement grout is walk-on ready in 24-48 hours but takes 7 days to fully cure. Don't seal, scrub, or wet-clean for at least 72 hours. Epoxy grout cures faster (24 hours) but is harder to work with and more expensive.",
-    },
-    {
-      question: "Do I need to seal grout?",
-      answer:
-        "Cement grout: yes: apply a penetrating sealer 48-72 hours after installation, then reapply every 1-3 years. This prevents stains and water penetration. Epoxy grout: no: it's already non-porous. Premium pre-mixed grouts (like TEC AccuColor) often have sealer built in.",
-    },
-    {
-      question: "Can I reduce grout use with wider tiles?",
-      answer:
-        "Yes: 12×24 or 24×24 tiles use much less grout per square foot than 4×4 or 6×6 because there's less total joint perimeter. Large tiles also show dirt in grout lines less, require less cleaning, and install faster. The tradeoff is subfloor flatness: larger tiles are less forgiving of uneven floors.",
-    },
-    {
-      question: "What if my tiles have different thicknesses?",
-      answer:
-        "Use the thickest tile's dimension for grout calculation: grout fills to the top of the thickest tile. For installations mixing thicknesses, use back-buttering or thicker thinset under thinner tiles to level the surface; grout doesn't fix large thickness differences.",
-    },
-    {
-      question: "How accurate is the coverage formula?",
-      answer:
-        "The formula is within 5-10% for standard installations. Real-world variability: some grout gets wasted in the bucket, some joints end up slightly wider than planned, some tiles absorb grout in their beveled edges. The 15% waste factor covers typical variance; add more for complex patterns or large cuts.",
-    },
-    {
-      question: "Can I mix different grout colors?",
-      answer:
-        "Don't mix colors in the same joint: they'll blotch. For different rooms or feature walls, use distinct colors but mix each separately with its own water-to-powder ratio. For color consistency, always mix full bags at a time and note the batch number when buying multiple bags.",
-    },
+    { question: "How many packages of grout do I need?", answer: "Enter the tiled area and coverage for the exact grout product, package size, tile, and joint configuration. Choose an allowance based on project guidance; the result rounds up to whole packages." },
+    { question: "Can this estimate grout from tile size and joint width?", answer: "No. It does not apply a generic grout density or yield formula. Use the selected manufacturer's coverage data for the tile and joint assembly." },
+    { question: "Does this choose sanded, unsanded, or epoxy grout?", answer: "No. Select material from project specifications and manufacturer guidance, accounting for tile, joint, substrate, exposure, and other project conditions." },
   ],
 };

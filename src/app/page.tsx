@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   openGraph: {
     title: "Tallyard: Free home improvement calculators that show their work",
-    description: "45 calculators for paint, concrete, roofing, decking, fencing, and more.",
+    description: "50 calculators and worksheets for paint, concrete, roofing, decking, fencing, and more.",
     url: "https://www.tallyard.com",
     images: [{ url: "/og-default.png", width: 1200, height: 630, alt: "Tallyard" }],
   },
@@ -17,12 +17,12 @@ const projectPaths = [
   {
     goal: "OUTDOOR BUILD",
     name: "Building a deck",
-    meta: "4 tools · 1 planner",
+    meta: "3 tools · 1 guide",
     steps: [
-      { n: "1", label: "Deck boards + joists", href: "/deck-calculator" },
+      { n: "1", label: "Deck surface boards", href: "/deck-calculator" },
       { n: "2", label: "Footings (concrete)", href: "/concrete-calculator" },
       { n: "3", label: "Stairs", href: "/stair-calculator" },
-      { n: "4", label: "Railing + fasteners", href: "/planner/build-a-deck" },
+      { n: "4", label: "Deck planning guide", href: "/planner/build-a-deck" },
     ],
   },
   {
@@ -50,9 +50,9 @@ const projectPaths = [
   {
     goal: "SYSTEMS",
     name: "Heating, cooling + power",
-    meta: "7 tools",
+    meta: "8 tools",
     steps: [
-      { n: "1", label: "BTU / heat pump size", href: "/heat-pump-calculator" },
+      { n: "1", label: "Heating/cooling load conversion", href: "/heat-pump-calculator" },
       { n: "2", label: "Water heater", href: "/water-heater-calculator" },
       { n: "3", label: "Wire gauge", href: "/wire-size-calculator" },
       { n: "", label: "Solar · Cords", href: "/calculators/electrical-solar" },
@@ -65,19 +65,19 @@ const proof = [
     fx: "832 sf ÷ 350 sf/gal = ",
     fxb: "2.38 gal",
     title: "Shows the formula",
-    body: "Every input, every intermediate step, every rounding rule is on the page. If the answer looks off, you can trace it.",
+    body: "Check each tool's stated inputs, assumptions, units, and calculation steps before applying an output to your project.",
   },
   {
     fx: "coverage: ",
-    fxb: "Sherwin-Williams TDS",
-    title: "Cites the source",
-    body: "Rates and code minimums come from manufacturer data, the IRC / IPC / NEC, and industry references, all linked.",
+    fxb: "check the label",
+    title: "Check product details",
+    body: "Use current coverage information for the exact product and application. Do not treat an example rate as a product specification.",
   },
   {
     fx: "2.38 gal → ",
-    fxb: "1 gal + 2 qt",
-    title: "Rounds to buyable",
-    body: "You can't buy 2.38 gallons. Results round up to real purchase units, with the raw number shown beside them.",
+    fxb: "2 gal + 2 qt",
+    title: "Planning arithmetic",
+    body: "Rounding and package sizes vary by tool and product. Confirm the purchase unit shown and verify it with the supplier before ordering.",
   },
 ];
 
@@ -85,23 +85,23 @@ const guides = [
   {
     slug: "vinyl-vs-fiber-cement-siding",
     title: "Vinyl vs fiber cement siding",
-    desc: "30-year total-cost math, fire ratings, and the repaint cycle nobody talks about.",
+    desc: "Compare product specifications, installation scope, maintenance, and local bids.",
     tag: "ROOFING",
-    time: "11 min",
+    time: "3 min",
   },
   {
     slug: "composite-vs-pressure-treated-vs-cedar-deck",
     title: "Composite vs PT vs cedar decking",
-    desc: "20-year cost breakdown: pressure-treated turns out to be the most expensive option.",
+    desc: "Compare exact products, maintenance instructions, warranties, and complete project quotes.",
     tag: "LANDSCAPING",
-    time: "12 min",
+    time: "4 min",
   },
   {
     slug: "heat-pump-vs-furnace",
     title: "Heat pump vs furnace + AC",
-    desc: "Climate-zone-by-zone operating costs, with the federal tax credit math worked through.",
+    desc: "Compare heating options by climate, local energy rates, and installed quotes.",
     tag: "HVAC",
-    time: "14 min",
+    time: "4 min",
   },
 ];
 
@@ -115,15 +115,14 @@ export default function HomePage() {
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.14em] text-accent mb-5 font-medium flex items-center gap-2.5">
               <span className="w-7 h-px bg-accent inline-block" aria-hidden="true" />
-              Free · Formulas public · Sources cited
+              Free · Inputs shown · Check each tool&apos;s limits
             </p>
             <h1 className="font-display text-4xl md:text-6xl font-extrabold tracking-tighter leading-[1.02] mb-6 max-w-3xl">
               Calculators that <span className="accent-italic">show their work.</span>
             </h1>
             <p className="text-base md:text-lg text-ink-muted max-w-xl leading-relaxed mb-8">
-              Free tools for home improvement projects. Every formula public,
-              every source cited, every number checkable against a published
-              standard.
+              Free tools for home improvement projects. See the formulas,
+              assumptions, and source references behind each estimate.
             </p>
             <div className="flex flex-wrap gap-3 mb-9">
               <Link
@@ -141,7 +140,7 @@ export default function HomePage() {
             </div>
             <div className="flex gap-8">
               {[
-                { value: "45", label: "calculators" },
+                { value: "50", label: "calculators" },
                 { value: "10", label: "cost guides" },
                 { value: "0", label: "signup forms" },
               ].map((stat) => (
@@ -156,42 +155,42 @@ export default function HomePage() {
           {/* Right: animated worked-calculation receipt */}
           <div className="relative bg-surface border border-line rounded-lg shadow-receipt overflow-hidden">
             <span className="absolute -top-[1px] right-6 bg-amber text-white font-mono text-[10.5px] tracking-[0.1em] px-2.5 py-1 rounded-b uppercase z-10">
-              Worked example
+              Illustrative worksheet example
             </span>
             <div className="flex justify-between items-center px-5 py-4 border-b border-line bg-surface-alt">
-              <span className="font-semibold text-sm">Paint calculator: 12 × 14 ft bedroom</span>
+              <span className="font-semibold text-sm">Paint worksheet: 12 × 14 ft room · 9 ft walls</span>
               <span className="font-mono text-[11px] text-accent bg-accent-soft px-2 py-1 rounded-full font-medium whitespace-nowrap ml-3">
                 ✓ formula shown
               </span>
             </div>
             <div className="p-5 font-mono text-[13.5px]">
               <div className="receipt-line flex justify-between py-2 border-b border-dashed border-line">
-                <span className="text-ink-muted">wall area (2 coats)</span>
-                <span className="font-medium">832 sq ft</span>
+                <span className="text-ink-muted">gross wall area</span>
+                <span className="font-medium">468 sq ft</span>
               </div>
               <div className="receipt-line flex justify-between py-2 border-b border-dashed border-line">
                 <span className="text-ink-muted">− doors &amp; windows</span>
-                <span className="font-medium">−62 sq ft</span>
+                <span className="font-medium">−51 sq ft</span>
               </div>
               <div className="receipt-line flex justify-between py-2 border-b border-dashed border-line">
                 <span className="text-ink-muted">÷ coverage rate</span>
                 <span className="font-medium">350 sq ft/gal</span>
               </div>
               <div className="receipt-line flex justify-between py-2 border-b border-dashed border-line">
-                <span className="text-ink-muted">raw result</span>
-                <span className="font-medium">2.20 gal</span>
+                <span className="text-ink-muted">net wall area · 2 coats</span>
+                <span className="font-medium">417 × 2 sq ft</span>
               </div>
               <div className="receipt-line flex justify-between py-2 border-b border-dashed border-line">
-                <span className="text-ink-muted">round to buyable</span>
-                <span className="font-medium">1 gal + 2 qt</span>
+                <span className="text-ink-muted">raw amount · 350 sq ft/gal</span>
+                <span className="font-medium">2.38 gal</span>
               </div>
               <div className="receipt-total flex justify-between pt-4 pb-1 font-bold text-base">
                 <span>You need</span>
-                <span className="text-accent">2.5 gallons</span>
+                <span className="text-accent">3 gallons*</span>
               </div>
               <div className="receipt-source mt-3.5 pt-3.5 border-t border-line text-[11.5px] text-ink-faint flex gap-2 items-center font-sans">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent flex-none" aria-hidden="true" />
-                Coverage rate: Sherwin-Williams technical data sheet, interior latex
+                *Illustrative whole-gallon rounding; check product coverage and package sizes
               </div>
             </div>
           </div>
@@ -262,10 +261,10 @@ export default function HomePage() {
         <div className="border border-line rounded-xl bg-surface overflow-hidden">
           <div className="flex justify-between items-center px-6 py-3.5 border-b border-line bg-surface-alt">
             <span className="font-semibold text-sm">
-              Why you can trust the number
+              Understand the worksheet
             </span>
             <span className="font-mono text-[11px] text-accent bg-accent-soft px-2.5 py-1 rounded-full whitespace-nowrap ml-3">
-              ✓ every tool, every time
+              Review inputs · assumptions · limits
             </span>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3">
@@ -294,13 +293,11 @@ export default function HomePage() {
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
             Or start typing your project
             <span className="font-mono text-[13px] text-accent font-medium ml-2.5 tracking-normal align-middle">
-              45 TOOLS · 8 CATEGORIES
+              50 TOOLS · 8 CATEGORIES
             </span>
           </h2>
           <div className="font-mono text-[11.5px] text-ink-muted">
-            EVERY TOOL:{" "}
-            <b className="text-accent font-medium">FORMULA + SOURCE</b> ·
-            CHECKABLE
+            <b className="text-accent font-medium">CHECK INPUTS + LIMITATIONS</b>
           </div>
         </div>
         <HomeDirectory />
@@ -309,7 +306,7 @@ export default function HomePage() {
       {/* ===== 5. GUIDES: decisions that need real math ===== */}
       <section className="container-wide pt-14 md:pt-16">
         <p className="font-mono text-[11px] tracking-[0.16em] uppercase text-ink-faint mb-2">
-          Before you buy · <span className="text-accent">decisions that need real math</span>
+          Before you buy · <span className="text-accent">compare the project details</span>
         </p>
         <div className="flex items-baseline justify-between mb-6">
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
@@ -352,14 +349,11 @@ export default function HomePage() {
           </div>
           <p className="text-base md:text-lg leading-[1.75] text-ink max-w-[74ch]">
             <b className="font-bold">
-              Every formula visible. Every figure traced to a published
-              standard.
+              Formulas and assumptions should be open to inspection.
             </b>{" "}
-            Each calculator shows the arithmetic it ran, names the code section
-            or trade standard behind each constant, and links the source so you
-            can check it yourself. Recommendations follow what the numbers say.
-            And if we can&apos;t show you how we got a number, we don&apos;t
-            publish the calculator:{" "}
+            Each calculator shows its arithmetic and relevant references.
+            Estimates depend on the inputs and stated limits; code-dependent
+            and safety-critical decisions need local professional review.{" "}
             <span className="accent-italic">
               transparency isn&apos;t a feature, it&apos;s the whole point.
             </span>

@@ -32,8 +32,6 @@ export function getGuideSchema({
         }
       : {}),
     url: pageUrl,
-    datePublished: config.publishedAt,
-    dateModified: config.publishedAt,
     author: {
       "@type": "Organization",
       name: "Tallyard",

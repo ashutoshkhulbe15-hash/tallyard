@@ -6,14 +6,13 @@ import { getConfig } from "@/configs";
 const SLUG = "roofing-calculator";
 
 export const metadata: Metadata = {
-  title: "Roofing Calculator: Squares, Pitch & Bundles",
+  title: "Roof Surface Area Calculator",
   description:
-    "Roofing squares and shingle bundles from footprint and pitch. Covers pitch multipliers, waste by roof shape, metal panels, and roof replacement cost.",
+    "Estimate planar roof surface area from a rectangular footprint and pitch. Does not calculate material quantities or roof suitability.",
   alternates: { canonical: "/roofing-calculator" },
   openGraph: {
-    title: "Roofing Calculator: Squares, Pitch & Bundles",
-    description:
-      "Calculate roof area, squares, and shingle bundles for any pitch and footprint.",
+    title: "Roof Surface Area Calculator",
+    description: "Estimate planar roof surface area from a rectangular footprint and pitch.",
     url: "https://www.tallyard.com/roofing-calculator",
     type: "website",
   },
@@ -24,7 +23,7 @@ export default function RoofingCalculatorPage() {
   return (
     <>
       {config && <SchemaScript config={config} />}
-      <CalculatorPage slug={SLUG} illustrationValue="46 BUNDLES" />
+      <CalculatorPage slug={SLUG} illustrationValue="AREA" />
     </>
   );
 }

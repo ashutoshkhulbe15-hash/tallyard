@@ -6,14 +6,13 @@ import { getConfig } from "@/configs";
 const SLUG = "deck-calculator";
 
 export const metadata: Metadata = {
-  title: "Deck Calculator: Boards, Joists, Framing & Cost",
+  title: "Decking Board Calculator",
   description:
-    "Free deck calculator: boards, joists, beams, posts, and fasteners for any deck size, plus 2026 build cost by size and material.",
+    "Estimate deck surface area and a rough decking-board quantity for a simple rectangular deck. Not a structural design tool.",
   alternates: { canonical: "/deck-calculator" },
   openGraph: {
-    title: "Deck Calculator: Boards, Joists, Framing & Cost",
-    description:
-      "Free deck calculator: boards, joists, and framing for any deck, plus 2026 build cost by size and material.",
+    title: "Decking Board Calculator",
+    description: "Estimate deck surface area and rough decking-board quantity for a simple rectangle.",
     url: "https://www.tallyard.com/deck-calculator",
     type: "website",
   },
@@ -24,7 +23,7 @@ export default function DeckCalculatorPage() {
   return (
     <>
       {config && <SchemaScript config={config} />}
-      <CalculatorPage slug={SLUG} illustrationValue="29 BOARDS" />
+      <CalculatorPage slug={SLUG} illustrationValue="BOARDS" />
     </>
   );
 }

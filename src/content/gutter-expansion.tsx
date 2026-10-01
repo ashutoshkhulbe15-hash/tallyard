@@ -223,7 +223,7 @@ export function GutterCalculatorExpansion() {
         Placement matters as much as count. Downspouts go at the low ends of each
         sloped run, which is where the water is heading anyway. Then the discharge
         has to go somewhere sensible. Never aim a downspout at the foundation, at a
-        walkway that sends the water back toward the house, or onto a neighbor's
+        walkway that sends the water back toward the house, or onto a neighbor&apos;s
         property. Get it 4 to 6 feet away from the foundation with an extension or
         a buried drain line. A downspout dumping against the foundation is one of
         the most common causes of a wet basement, and it is entirely avoidable.

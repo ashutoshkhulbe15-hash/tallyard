@@ -8,14 +8,14 @@ const SLUG = "paint-calculator";
 export const metadata: Metadata = {
   title: "Paint Calculator: How Much Paint Do I Need",
   description:
-    "Calculate how many gallons of paint you need for any room. Free. Shows the math and accounts for doors and windows.",
+    "Estimate wall and optional ceiling paint from rectangular room measurements, coats, assumed opening deductions, and coverage entered from the product label.",
   alternates: {
     canonical: "/paint-calculator",
   },
   openGraph: {
     title: "Paint Calculator: How Much Paint Do I Need",
     description:
-      "Calculate how many gallons of paint you need for any room. Shows the math.",
+      "Estimate paint from room measurements, coats, and entered product coverage. Review the opening-area assumptions.",
     url: "https://www.tallyard.com/paint-calculator",
     type: "website",
   },

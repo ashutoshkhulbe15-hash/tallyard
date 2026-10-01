@@ -1,12 +1,11 @@
-import { CountertopCalculatorExpansion } from "@/content/countertop-expansion";
 import type { CalculatorConfig } from "@/lib/types";
-import { round, formatNumber } from "@/lib/format";
+import { round, formatNumber, ceilQuantity } from "@/lib/format";
 
 export const countertopCalculatorConfig: CalculatorConfig = {
   slug: "countertop-calculator",
   title: "Countertop Calculator",
   description:
-    "Square feet and linear feet of countertop for any kitchen or bath. Accounts for standard depth, waste, and edge treatments.",
+    "Estimate countertop surface area and a separate island preset from simple measurements. This is not a fabrication or slab-order plan.",
   categoryLabel: "Flooring",
   category: "flooring",
 
@@ -24,7 +23,7 @@ export const countertopCalculatorConfig: CalculatorConfig = {
       defaultMetric: 5.5,
       min: 1,
       step: 0.5,
-      help: "Sum of all counter edges. Typical kitchen: 15-25 ft.",
+      help: "Enter the combined measured length of the counter sections being estimated.",
     },
     {
       id: "depth",
@@ -37,7 +36,7 @@ export const countertopCalculatorConfig: CalculatorConfig = {
         { label: '30" (deep kitchen)', value: 30 },
         { label: '42" (island with overhang)', value: 42 },
       ],
-      help: "Kitchen: 25.5\". Bath: 22\". Deeper for islands.",
+      help: "Choose the measured depth. Island dimensions can be entered as a separate preset below.",
     },
     {
       id: "island",
@@ -52,28 +51,14 @@ export const countertopCalculatorConfig: CalculatorConfig = {
       ],
     },
     {
-      id: "material",
-      label: "Material",
-      type: "select",
-      defaultImperial: "quartz",
-      options: [
-        { label: "Quartz (engineered)", value: "quartz" },
-        { label: "Granite", value: "granite" },
-        { label: "Marble", value: "marble" },
-        { label: "Butcher block", value: "butcher" },
-        { label: "Laminate", value: "laminate" },
-        { label: "Concrete", value: "concrete" },
-      ],
-    },
-    {
       id: "waste",
       label: "Waste factor",
       type: "select",
       defaultImperial: 10,
       options: [
-        { label: "10% (standard)", value: 10 },
-        { label: "15% (many cuts)", value: 15 },
-        { label: "20% (complex layout)", value: 20 },
+        { label: "10%", value: 10 },
+        { label: "15%", value: 15 },
+        { label: "20%", value: 20 },
       ],
     },
   ],
@@ -82,7 +67,6 @@ export const countertopCalculatorConfig: CalculatorConfig = {
     const linearFtInput = Number(values.linearFt) || 0;
     const depthIn = Number(values.depth) || 25.5;
     const islandSize = String(values.island || "no");
-    const material = String(values.material || "quartz");
     const waste = Number(values.waste) || 10;
 
     const linearFt = units === "metric" ? linearFtInput * 3.281 : linearFtInput;
@@ -110,30 +94,25 @@ export const countertopCalculatorConfig: CalculatorConfig = {
     // Simplified: edge = linearFt (front) + islandLinearEdge (full perimeter)
     const totalLinearEdge = linearFt + islandLinearEdge;
 
-    // Price range estimates (2025-2026 US installed)
-    const priceMap: Record<string, { low: number; high: number }> = {
-      quartz: { low: 60, high: 120 },
-      granite: { low: 50, high: 120 },
-      marble: { low: 80, high: 200 },
-      butcher: { low: 40, high: 100 },
-      laminate: { low: 20, high: 50 },
-      concrete: { low: 75, high: 150 },
-    };
-    const price = priceMap[material] || priceMap["quartz"];
-    const lowPrice = Math.round(areaWithWaste * price.low);
-    const highPrice = Math.round(areaWithWaste * price.high);
+    const areaFactor = units === "metric" ? 0.092903 : 1;
+    const lengthFactor = units === "metric" ? 0.3048 : 1;
+    const areaUnit = units === "metric" ? "m²" : "ft²";
+    const lengthUnit = units === "metric" ? "m" : "ft";
+    const displayArea = areaWithWaste * areaFactor;
+    const displayMainArea = mainArea * areaFactor;
+    const displayIslandArea = islandArea * areaFactor;
+    const displayEdge = totalLinearEdge * lengthFactor;
 
     return {
-      value: round(areaWithWaste, 1),
-      unit: "ft²",
-      valueRounded: Math.ceil(areaWithWaste),
+      value: round(displayArea, 1),
+      unit: areaUnit,
+      valueRounded: ceilQuantity(displayArea),
       breakdown: [
-        { label: "main counter", value: `${formatNumber(round(mainArea, 1))} ft²` },
+        { label: "main counter", value: `${formatNumber(round(displayMainArea, 1))} ${areaUnit}` },
         ...(islandArea > 0
-          ? [{ label: "island", value: `${formatNumber(round(islandArea, 1))} ft²` }]
+          ? [{ label: "island preset", value: `${formatNumber(round(displayIslandArea, 1))} ${areaUnit}` }]
           : []),
-        { label: "linear edge", value: `${formatNumber(round(totalLinearEdge, 1))} ft` },
-        { label: "estimated cost", value: `$${lowPrice.toLocaleString()}–$${highPrice.toLocaleString()}` },
+        { label: "linear edge", value: `${formatNumber(round(displayEdge, 1))} ${lengthUnit}` },
       ],
       formulaSteps: [
         `main area = ${formatNumber(round(linearFt, 1))} ft × ${depthIn}"/12 = ${formatNumber(round(mainArea, 1))} ft²`,
@@ -143,19 +122,18 @@ export const countertopCalculatorConfig: CalculatorConfig = {
         `raw area = ${formatNumber(round(mainArea, 1))} + ${islandArea} = ${formatNumber(round(rawArea, 1))} ft²`,
         `with ${waste}% waste = ${formatNumber(round(rawArea, 1))} × ${(1 + waste / 100).toFixed(2)} = ${formatNumber(round(areaWithWaste, 1))} ft²`,
         `linear edge = ${formatNumber(round(linearFt, 1))} (main front) + ${islandLinearEdge} (island) = ${formatNumber(round(totalLinearEdge, 1))} ft`,
-        `${material} estimated cost: $${price.low}–$${price.high}/ft² × ${formatNumber(round(areaWithWaste, 1))} = $${lowPrice.toLocaleString()}–$${highPrice.toLocaleString()}`,
       ],
       composition: {
-        unit: "ft²",
-        total: round(areaWithWaste, 1),
+        unit: areaUnit,
+        total: round(displayArea, 1),
         segments: [
-          { label: "Main counter", amount: round(mainArea, 1), shade: "primary" },
+          { label: "Main counter", amount: round(displayMainArea, 1), shade: "primary" },
           ...(islandArea > 0
-            ? [{ label: "Island", amount: islandArea, shade: "secondary" as const }]
+            ? [{ label: "Island preset", amount: round(displayIslandArea, 1), shade: "secondary" as const }]
             : []),
           {
             label: "Waste buffer",
-            amount: round(areaWithWaste - rawArea, 1),
+            amount: round((areaWithWaste - rawArea) * areaFactor, 1),
             shade: "tertiary",
           },
         ],
@@ -163,46 +141,14 @@ export const countertopCalculatorConfig: CalculatorConfig = {
     };
   },
 
-  howTo: {
-    name: "How to measure a countertop for a quote",
-    description:
-      "Measure square footage the way fabricators do: along the wall, times depth, island added, cutouts included, waste on top.",
-    steps: [
-      {
-        name: "Measure each run along the wall",
-        text: "Measure the cabinet run at the back wall in linear feet, one number per leg of the kitchen. Ignore the old countertop edges; they are often cut short.",
-      },
-      {
-        name: "Multiply by depth",
-        text: "Standard kitchen depth is 25.5 inches, which is 2.125 feet. A 16 linear foot kitchen is 16 x 2.125 = 34 square feet.",
-      },
-      {
-        name: "Add islands and overhangs",
-        text: "Island length times width, including any seating overhang. A 5 by 3 foot island adds 15 square feet; a 12 inch overhang on that island adds 5 more.",
-      },
-      {
-        name: "Do not subtract cutouts",
-        text: "Sink and cooktop openings are cut from your slab and discarded. Fabricators quote the gross rectangle, so your number should match theirs.",
-      },
-      {
-        name: "Add 10 percent waste",
-        text: "Seam placement, edge trimming, and slab layout consume material. Multiply the total by 1.10 and compare quotes on installed price for that footage.",
-      },
-    ],
-  },
-
-  ContentExpansion: CountertopCalculatorExpansion,
-
   formulaDescription:
     "area = (linear ft × depth) + island + waste; linear edge = main front + island perimeter",
 
   methodology: [
     "Kitchen counter area is linear feet (front edge) times depth. Standard kitchen counters are 25.5 inches deep, just under 2.125 linear feet. A 20-foot run of kitchen counter has 42.5 square feet of surface. Bathroom vanities use 22-inch depth typically.",
-    "Islands are handled as separate pieces because they have different edge geometry. A small island (4 × 2 ft) adds 8 sq ft but has all four edges exposed: 12 linear feet of edge. Compare to a 4-ft wall counter section that adds 8.5 sq ft but only 4 linear feet of exposed front edge. Islands cost more per square foot installed because of the extra edge treatment.",
-    "Linear edge matters for pricing: edge treatment (bullnose, ogee, eased, mitered) is typically priced per linear foot beyond the basic cut. A straight eased edge is often included; decorative edges cost $10-30 per linear foot extra. More exposed edge means more cost for fancy edges.",
-    "Waste factor for countertops is lower than tile because countertops are cut from slabs. Quartz and granite slabs are typically 55 × 120 inches (2×3 yards). A good fabricator lays out cuts to minimize waste, but seams, edge grain matching (for veined stone), and cutout offcuts (for sinks, cooktops) all contribute. 10% is standard for simple kitchens; 15-20% for complex layouts with many cutouts and short runs.",
-    "Price estimates are for installed countertops in 2025-2026 US market (per square foot): quartz $60-120 (engineered stone, low maintenance), granite $50-120 (natural stone, more variation), marble $80-200 (premium natural stone, stains), butcher block $40-100 (wood, requires oiling), laminate $20-50 (synthetic, most economical), concrete $75-150 (industrial look, custom). Prices vary regionally and with complexity.",
-    "Not included: sink cutouts (typically free with the slab), faucet holes, edge treatment upgrades, underlayment (usually just plywood for stone slabs), backsplash (see backsplash calculator), and removal of existing counters. These can add $500-2,000 to a total kitchen installation.",
+    "Island presets represent simplified rectangular surface-area assumptions. Enter the actual island dimensions and overhangs in a project plan; the preset is not a fabrication template.",
+    "The waste percentage is an editable planning allowance, not a universal fabrication standard. A fabricator should determine slab layout, seams, cutouts, edge details, and order quantity from a measured template.",
+    "This calculator does not estimate material costs, slab count, cutouts, edge treatments, or installation. Request a current itemized quote based on a final template.",
   ],
 
   sources: [
@@ -242,9 +188,9 @@ export const countertopCalculatorConfig: CalculatorConfig = {
 
   faq: [
     {
-      question: "How many square feet of countertop for a typical kitchen?",
+      question: "How do I estimate countertop surface area?",
       answer:
-        "A typical kitchen has 15-25 linear feet of counter at 25.5\" deep, which is 32-53 square feet of surface. Add an island: small adds 8 sq ft, medium 18, large 32. The calculator above handles any layout.",
+        "For a simple rectangular run, multiply its length by its depth, then add separate pieces such as islands. This is a planning estimate only; counters often have varying depths, cutouts, seams, and overhangs.",
     },
     {
       question: "How do I measure my kitchen counters?",
@@ -254,32 +200,22 @@ export const countertopCalculatorConfig: CalculatorConfig = {
     {
       question: "Why does the waste factor apply to countertops?",
       answer:
-        "Countertops are cut from slabs. A 120 × 55 inch granite slab is 45.8 sq ft. Your counter layout rarely fits perfectly on a slab, some waste is inevitable around the sink cutout, the stove cutout, and seams between pieces. 10% is typical; 15% for complex layouts with many short sections.",
-    },
-    {
-      question: "What's the difference between quartz and granite?",
-      answer:
-        "Quartz is engineered stone (90% natural quartz mixed with resin). More uniform pattern, non-porous, no sealing required, resistant to stains. Granite is natural stone, each slab unique, requires periodic sealing, can stain if not maintained. Prices overlap; quartz is taking market share because of lower maintenance.",
-    },
-    {
-      question: "How much does a new countertop cost?",
-      answer:
-        "For a typical 40 sq ft kitchen in quartz ($60-120/ft² installed): $2,400-4,800. Granite similar. Marble premium: $3,200-8,000. Laminate budget: $800-2,000. The calculator shows a cost range based on material; exact quotes require sending measurements to fabricators for stone/engineered options.",
+        "The selected percentage is only a user-controlled planning allowance. Actual material ordering depends on the material, dimensions, seam and cutout layout, and fabricator's nesting plan.",
     },
     {
       question: "What about an island overhang for seating?",
       answer:
-        "Standard island: 25.5\" wide (counter depth). For bar seating: add 12-15\" overhang on the seating side = 38-40\" total depth. Enter this wider depth in the calculator if your island has seating. Overhangs beyond 12 inches require support brackets for stone tops.",
+        "Use the actual island dimensions, including any seating overhang, in your measurements. Support requirements depend on material, thickness, span, and the fabricator or engineer's details.",
     },
     {
       question: "Do I need to account for the backsplash?",
       answer:
-        "Countertops often include a short 4\" integrated backsplash as part of the slab (adds slight material but usually negligible cost). Full 18\" or taller backsplashes in tile are a separate purchase: use the backsplash calculator. Stone-slab full-height backsplashes cost about the same per square foot as the counter itself.",
+        "A separate backsplash is not included in this estimate. Measure it independently; the backsplash calculator can help estimate its area.",
     },
     {
       question: "Can I install countertops myself?",
       answer:
-        "Laminate: yes: DIY-friendly, pre-formed sections from home centers. Butcher block: yes: hand-measurable and cuttable. Quartz/granite/marble: no: slabs weigh 15-22 lb/sq ft (a standard kitchen slab can weigh 700+ lb), require templating equipment, specialized cutting tools, and seam bonding. Fabrication + installation is always professional for stone.",
+        "Installation methods and handling risks depend on the material and product. Follow manufacturer instructions and use qualified fabricators/installers for heavy, cut-to-fit, or high-risk work.",
     },
   ],
 };

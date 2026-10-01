@@ -8,12 +8,12 @@ const SLUG = "wire-size-calculator";
 export const metadata: Metadata = {
   title: "Wire Size Calculator: AWG Chart & Voltage Drop",
   description:
-    "Wire gauge for any circuit by ampacity and voltage drop. NEC AWG chart for copper and aluminum, breaker sizes, and max run length by gauge.",
+    "Preliminary AWG estimate using 60°C ampacity and voltage drop. Limited inputs; not an installation or code approval.",
   alternates: { canonical: "/wire-size-calculator" },
   openGraph: {
     title: "Wire Size Calculator: AWG Chart & Voltage Drop",
     description:
-      "Calculate the right electrical wire gauge for your circuit, with voltage drop included.",
+      "Estimate a listed wire gauge by ampacity and voltage drop; an electrician must verify the installation.",
     url: "https://www.tallyard.com/wire-size-calculator",
     type: "website",
   },

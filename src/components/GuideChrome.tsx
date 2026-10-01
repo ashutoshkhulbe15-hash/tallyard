@@ -59,15 +59,13 @@ export function Figure({
 }
 
 /**
- * A small byline strip for guides. Displays author, date, and a
- * freshness signal (reviewed against what). Sits under the banner,
- * before the article body.
+ * A small byline strip for guides. Do not display unverified update dates
+ * supplied by older article modules.
  */
 export function GuideByline({
-  updated,
   reviewedAgainst,
 }: {
-  updated: string; // e.g. "April 18, 2026"
+  updated: string; // retained for compatibility until dates are verified
   reviewedAgainst?: string; // e.g. "DOE, EPA, and Energy Star data"
 }) {
   return (
@@ -75,12 +73,10 @@ export function GuideByline({
       <span className="font-semibold text-ink-muted">
         Tallyard Editorial
       </span>
-      <span aria-hidden="true">·</span>
-      <span>Updated {updated}</span>
       {reviewedAgainst && (
         <>
           <span aria-hidden="true">·</span>
-          <span>Reviewed against {reviewedAgainst}</span>
+          <span>Source references: {reviewedAgainst}</span>
         </>
       )}
     </div>
@@ -114,9 +110,7 @@ export function MethodologyNote({
 }
 
 /**
- * Scenario card — a short real-world vignette used to ground
- * recommendations in concrete situations. Offset visually from
- * body prose so readers can tell it's an example, not a claim.
+ * Scenario card for an explicitly hypothetical illustration.
  */
 export function Scenario({
   location,
@@ -128,11 +122,11 @@ export function Scenario({
   return (
     <div className="my-6 p-5 bg-bg-warm rounded-lg border border-line">
       <div className="text-[10px] uppercase tracking-[0.12em] text-accent font-bold mb-2">
-        Illustrative example · {location}
+        Hypothetical example · {location}
       </div>
       <div className="text-sm text-ink leading-relaxed">{children}</div>
       <p className="text-[10px] text-ink-faint mt-3 italic">
-        Composite illustration based on typical project dimensions, regional contractor pricing, and 2026 material costs. Not a specific real project.
+        Hypothetical illustration, not a documented project or verified quote. Check current local prices and requirements before using these figures.
       </p>
     </div>
   );

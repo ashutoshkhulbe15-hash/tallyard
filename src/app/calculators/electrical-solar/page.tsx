@@ -1,29 +1,33 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-export const metadata: Metadata = { title: "Solar, electrical, and wire calculators: Tallyard", description: "Calculators for solar panels, wire gauge, and extension cords with NEC references.", alternates: { canonical: "/calculators/electrical-solar" } };
+
+export const metadata: Metadata = {
+  title: "Solar and Electrical Planning Worksheets | Tallyard",
+  description: "Limited solar and electrical estimates. Outputs are not electrical designs, code checks, or equipment recommendations.",
+  alternates: { canonical: "/calculators/electrical-solar" },
+};
+
 const tools = [
-  { slug: "solar-calculator", name: "Solar calculator", desc: "System size, panel count, cost, and payback period." },
-  { slug: "wire-size-calculator", name: "Wire size calculator", desc: "AWG gauge by amperage and distance per NEC." },
-  { slug: "extension-cord-calculator", name: "Extension cord calculator", desc: "Correct gauge by tool amperage and cord length." },
+  { slug: "solar-calculator", name: "Solar energy-use scenario", desc: "Panel-count arithmetic from entered usage and assumptions; not a production forecast or system design." },
+  { slug: "wire-size-calculator", name: "Conductor voltage-drop worksheet", desc: "Limited lookup and voltage-drop estimate; not a conductor or circuit safety determination." },
+  { slug: "extension-cord-calculator", name: "Extension-cord voltage-drop estimator", desc: "Estimate voltage drop for selected inputs; does not rate a cord or load as safe." },
 ];
-export default function ElectricalSolarPillar() { return (<article>
-  <section className="container-wide pt-6 md:pt-8"><div className="pt-2 pb-8 md:pb-10 border-b border-line">
-    <nav aria-label="Breadcrumb" className="font-mono text-xs text-ink-muted mb-5"><Link href="/calculators" className="text-accent hover:text-accent-hover transition-colors">Calculators</Link><span className="mx-2">·</span><span>Electrical + solar</span></nav>
-    <h1 className="text-3xl md:text-5xl font-bold tracking-tighter leading-[1.05] mb-3 text-ink">Solar, wire sizing, and electrical</h1>
-    <p className="text-base md:text-lg text-ink-muted max-w-2xl leading-relaxed">Three tools for the most code-regulated category. Electrical sizing references NEC tables because the consequences of undersizing are severe.</p>
-  </div></section>
-  <section className="container-wide py-10"><div className="grid grid-cols-1 md:grid-cols-3 gap-5">{tools.map((t) => (<Link key={t.slug} href={`/${t.slug}`} className="block bg-surface border border-line rounded-lg p-6 hover:border-accent transition-colors group"><h2 className="text-lg font-bold text-ink group-hover:text-accent transition-colors mb-2">{t.name}</h2><p className="text-sm text-ink-muted leading-relaxed">{t.desc}</p></Link>))}</div></section>
-  <section className="container-content pb-16"><div className="guide-prose">
-    <h2>Electrical calculations are safety calculations</h2>
-    <p>Undersized wire overheats under load. Overheated wire melts insulation. Melted insulation starts fires. This is not hypothetical, the National Electrical Code (NEC) exists because the consequences of electrical undersizing are severe. Every wire gauge, every circuit breaker rating, and every extension cord capacity is specified by code because getting it wrong can burn down a house.</p>
-    <h2>Wire sizing: NEC Table 310.16</h2>
-    <p>The <Link href="/wire-size-calculator" className="text-accent hover:underline">wire size calculator</Link> looks up the correct AWG gauge for any circuit based on amperage, wire material (copper or aluminum), and run distance. It also checks voltage drop, which NEC recommends keeping below 3 percent on branch circuits and 5 percent total (feeder plus branch). Long wire runs over 50 feet often require upsizing by one or two gauges to stay within the voltage drop limit. The common residential gauges are 14 AWG (15-amp lighting circuits), 12 AWG (20-amp general outlets), 10 AWG (30-amp dryer and water heater), and 6 AWG (55-amp sub-panel feeders and EV chargers).</p>
-    <h2>Extension cords: temporary wiring with permanent consequences</h2>
-    <p>Extension cord fires cause an estimated 3,300 home fires per year in the US. Nearly all are caused by using an undersized cord for the load, daisy-chaining multiple cords, or running a cord under a rug where heat cannot dissipate. The <Link href="/extension-cord-calculator" className="text-accent hover:underline">extension cord calculator</Link> sizes the correct gauge based on your tool&apos;s amperage draw and the cord length. A 16 AWG cord is fine for a lamp but dangerous for a table saw. A 100-foot 16 AWG cord at full load drops voltage by 8 percent, enough to damage a motor permanently. The calculator flags these situations before you plug in.</p>
-    <h2>Solar: sizing starts with your electric bill</h2>
-    <p>The <Link href="/solar-calculator" className="text-accent hover:underline">solar calculator</Link> sizes a solar array based on your monthly kWh usage and your location&apos;s peak sun hours. Phoenix gets 6 to 7 peak sun hours per day. Seattle gets 3.5 to 4. The same house uses the same electricity, but Phoenix needs 40 percent fewer panels to produce the same energy. System cost runs $2.50 to $3.50 per watt installed before the federal Investment Tax Credit (ITC).</p>
-    <p>The 30 percent federal ITC applies to all solar installations through 2032, reducing net cost by nearly a third. A $18,000 system becomes $12,600 after the credit. Many states add their own rebates on top. Payback periods range from 4 to 6 years in high-electricity states (California, New York, Connecticut) to 10 to 14 years in low-rate regions (Idaho, Washington, Utah). After payback, solar electricity is essentially free for the remaining 15 to 20 years of panel warranty life. The <Link href="/cost-to-install-solar" className="text-accent hover:underline">cost to install solar</Link> guide breaks this down with regional payback calculations and buy vs lease comparison.</p>
-    <h2>How these tools connect</h2>
-    <p>A solar installation requires proper wire sizing from the inverter to the electrical panel. The <Link href="/wire-size-calculator" className="text-accent hover:underline">wire size calculator</Link> handles this: input the inverter&apos;s output amperage and the distance to the panel, and it tells you the correct gauge with voltage drop check. For homes adding an EV charger alongside solar, the same calculator sizes the dedicated 240V circuit the charger requires (typically 6 AWG copper on a 50-amp breaker for a 40-amp Level 2 charger).</p>
-  </div></section>
-</article>); }
+
+export default function ElectricalSolarPillar() {
+  return <article>
+    <section className="container-wide pt-6 md:pt-8"><div className="pt-2 pb-8 md:pb-10 border-b border-line">
+      <nav aria-label="Breadcrumb" className="font-mono text-xs text-ink-muted mb-5"><Link href="/calculators" className="text-accent hover:text-accent-hover transition-colors">Calculators</Link><span className="mx-2">·</span><span>Electrical + solar</span></nav>
+      <h1 className="text-3xl md:text-5xl font-bold tracking-tighter leading-[1.05] mb-3 text-ink">Solar and electrical planning estimates</h1>
+      <p className="text-base md:text-lg text-ink-muted max-w-2xl leading-relaxed">Electrical and photovoltaic work can create serious safety risks. These calculators are limited estimates only—not circuit design, code approval, product selection, or permission to perform electrical work.</p>
+    </div></section>
+    <section className="container-wide py-10"><div className="grid grid-cols-1 md:grid-cols-3 gap-5">{tools.map((t) => <Link key={t.slug} href={`/${t.slug}`} className="block bg-surface border border-line rounded-lg p-6 hover:border-accent transition-colors group"><h2 className="text-base font-bold text-ink group-hover:text-accent transition-colors mb-2">{t.name}</h2><p className="text-sm text-ink-muted leading-relaxed">{t.desc}</p></Link>)}</div></section>
+    <section className="container-content pb-16"><div className="guide-prose">
+      <h2>Do not use estimates as wiring instructions</h2>
+      <p>Permitted conductor ampacity depends on more than current and distance: conductor material and insulation, terminal temperature ratings, installation method, ambient conditions, bundling, overcurrent protection, equipment instructions, and locally adopted electrical code all matter. A voltage-drop calculation cannot establish ampacity or safety.</p>
+      <p>The <Link href="/wire-size-calculator" className="text-accent hover:underline">conductor worksheet</Link> does not replace a complete code-based circuit design. The <Link href="/extension-cord-calculator" className="text-accent hover:underline">extension-cord estimator</Link> only estimates voltage drop for selected values; it does not establish a cord&apos;s ampacity, listing, condition, suitability, or safe use. Use properly listed equipment and consult a licensed electrician for wiring and cord-selection questions.</p>
+      <h2>Solar calculations are site-specific</h2>
+      <p>The <Link href="/solar-calculator" className="text-accent hover:underline">solar estimator</Link> uses entered energy and solar-resource assumptions. It does not model roof orientation, shading, weather variation, equipment losses in detail, utility tariffs, export compensation, interconnection, storage, structural capacity, or fire/setback requirements. A qualified installer must assess the site and provide system design and production estimates.</p>
+      <p>Incentives, utility programs, and rules can change. Verify any potential incentive directly with the administering government agency or utility before relying on it. The <Link href="/cost-to-install-solar" className="text-accent hover:underline">solar cost guide</Link> is a bid-comparison aid, not a current quote, incentive determination, or payback guarantee.</p>
+    </div></section>
+  </article>;
+}

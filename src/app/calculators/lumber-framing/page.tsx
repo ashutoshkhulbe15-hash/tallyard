@@ -1,34 +1,35 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-export const metadata: Metadata = { title: "Lumber, framing, stair, and shed calculators: Tallyard", description: "Calculators for board feet, stair rise/run, stud spacing, window sizing, and shed materials with IRC references.", alternates: { canonical: "/calculators/lumber-framing" } };
+
+export const metadata: Metadata = {
+  title: "Lumber and Framing Estimators | Tallyard",
+  description: "Limited estimators for lumber quantities, stair geometry, stud counts, window openings, and shed surfaces. Not structural design or code approval.",
+  alternates: { canonical: "/calculators/lumber-framing" },
+};
+
 const tools = [
-  { slug: "lumber-calculator", name: "Lumber calculator", desc: "Board feet and linear feet by dimensions." },
-  { slug: "stair-calculator", name: "Stair calculator", desc: "Rise, run, and stringers per IRC R311.7." },
-  { slug: "stud-spacing-calculator", name: "Stud spacing calculator", desc: "Stud count including king, jack, and cripples." },
-  { slug: "window-sizing-calculator", name: "Window sizing calculator", desc: "Egress, light, and ventilation per IRC." },
-  { slug: "shed-calculator", name: "Shed calculator", desc: "Framing lumber, sheathing, and roofing." },
+  { slug: "lumber-calculator", name: "Lumber quantity worksheet", desc: "Nominal board-foot and lineal-length arithmetic; no structural takeoff, price, or weight." },
+  { slug: "stair-calculator", name: "Stair geometry estimator", desc: "Equal-rise and run geometry from user-selected dimensions; not a cut sheet or code check." },
+  { slug: "stud-spacing-calculator", name: "Straight-wall spacing count", desc: "Position count from length and selected interval; not a stud takeoff or framing design." },
+  { slug: "window-sizing-calculator", name: "Window rectangle area", desc: "Area arithmetic only; no egress, glazing, or code assessment." },
+  { slug: "shed-calculator", name: "Shed surface estimator", desc: "Limited surface and sheet estimates; not a framing plan or permit determination." },
 ];
-export default function LumberFramingPillar() { return (<article>
-  <section className="container-wide pt-6 md:pt-8"><div className="pt-2 pb-8 md:pb-10 border-b border-line">
-    <nav aria-label="Breadcrumb" className="font-mono text-xs text-ink-muted mb-5"><Link href="/calculators" className="text-accent hover:text-accent-hover transition-colors">Calculators</Link><span className="mx-2">·</span><span>Lumber + framing</span></nav>
-    <h1 className="text-3xl md:text-5xl font-bold tracking-tighter leading-[1.05] mb-3 text-ink">Lumber, framing, and structural</h1>
-    <p className="text-base md:text-lg text-ink-muted max-w-2xl leading-relaxed">Five tools for the skeleton of any building project. Every dimension is code-mandated by the IRC.</p>
-  </div></section>
-  <section className="container-wide py-10"><div className="grid grid-cols-1 md:grid-cols-3 gap-5">{tools.map((t) => (<Link key={t.slug} href={`/${t.slug}`} className="block bg-surface border border-line rounded-lg p-6 hover:border-accent transition-colors group"><h2 className="text-base font-bold text-ink group-hover:text-accent transition-colors mb-2">{t.name}</h2><p className="text-sm text-ink-muted leading-relaxed">{t.desc}</p></Link>))}</div></section>
-  <section className="container-content pb-16"><div className="guide-prose">
-    <h2>Framing is the one phase where every dimension is code-mandated</h2>
-    <p>Stud spacing, joist sizing, stair rise and run, header dimensions, window egress, all of these have exact minimums set by the International Residential Code (IRC). Unlike paint (where an extra gallon just sits in the garage) or mulch (where an extra inch is harmless), framing mistakes fail inspection and require rework. The calculators in this category reference specific IRC sections so you can verify that your project meets code before the inspector arrives.</p>
-    <h2>Stud spacing and stud count</h2>
-    <p>The basic stud count formula is wall length divided by spacing plus one. A 12-foot wall at 16 inches on center needs 10 studs. But that formula only counts the regular studs. Every door and window opening adds king studs (full-height, flanking the opening), jack studs (shortened, supporting the header), and cripple studs (short, filling above doors and above/below windows). A 20-foot wall with two windows and a door needs 10 to 12 more studs than the basic formula predicts. The <Link href="/stud-spacing-calculator" className="text-accent hover:underline">stud spacing calculator</Link> accounts for all of these per IRC R602.3, R602.7, and R602.9.</p>
-    <p>Standard load-bearing walls use 16-inch on center spacing. Non-bearing interior partitions can use 24-inch spacing per code. Some 2×6 exterior walls also allow 24-inch spacing with engineering approval. The calculator lets you select your spacing and wall type.</p>
-    <h2>Stairs: the tightest code requirements in residential construction</h2>
-    <p>The <Link href="/stair-calculator" className="text-accent hover:underline">stair calculator</Link> enforces IRC R311.7: maximum 7.75-inch rise, minimum 10-inch run, 36-inch minimum width, and maximum 3/8-inch variation between any two risers. These are not guidelines. Stairs that do not meet code fail inspection and must be rebuilt, which means tearing out and reframing. The calculator computes code-compliant rise and run from your total height and outputs the number of treads, total run distance, and stringer cut dimensions.</p>
-    <p>The stair riser rule creates a counterintuitive constraint: a total height of 9 feet (108 inches) with a 7.5-inch rise needs exactly 14.4 risers. You cannot build 14.4 steps. You build 15 steps at 7.2 inches each, or 14 steps at 7.71 inches each. Both are code-compliant. The calculator finds the combination that keeps the rise uniform and within the maximum.</p>
-    <h2>Window sizing: three code checks in one</h2>
-    <p>The <Link href="/window-sizing-calculator" className="text-accent hover:underline">window sizing calculator</Link> checks three IRC requirements simultaneously. Egress (IRC R310): every bedroom needs at least one window with 5.7 square feet of clear opening area, minimum 20 inches wide, minimum 24 inches tall, sill no higher than 44 inches above the floor. Natural light (IRC R303): total glazing area must be at least 8 percent of the room&apos;s floor area. Natural ventilation: operable window area must be at least 4 percent of floor area. Most standard windows pass all three, but basement bedrooms and small rooms are where one of these requirements often forces a larger window than the homeowner initially planned.</p>
-    <h2>Lumber pricing: board feet vs linear feet</h2>
-    <p>Lumber is priced two ways. Big-box stores price by the piece: a 2×4×8 costs $4.50. Lumber yards price by the board foot: one board foot equals 144 cubic inches (1 foot × 1 foot × 1 inch). A 2×4 that is 8 feet long contains 5.33 board feet. The <Link href="/lumber-calculator" className="text-accent hover:underline">lumber calculator</Link> converts between the two systems and estimates cost at your local price per board foot. This matters most when comparing quotes from different suppliers, since you need to be comparing the same unit.</p>
-    <h2>Shed: a small building with full framing</h2>
-    <p>The <Link href="/shed-calculator" className="text-accent hover:underline">shed calculator</Link> estimates framing lumber, sheathing, and roofing for backyard storage buildings. A shed uses the same construction principles as a house, floor joists, wall studs at 16 or 24 inches on center, roof rafters or trusses, sheathing, and shingles, just at a smaller scale. Most jurisdictions exempt sheds under 120 square feet and under 10 feet tall from building permits, but setback requirements (distance from property lines) usually apply regardless of size.</p>
-  </div></section>
-</article>); }
+
+export default function LumberFramingPillar() {
+  return <article>
+    <section className="container-wide pt-6 md:pt-8"><div className="pt-2 pb-8 md:pb-10 border-b border-line">
+      <nav aria-label="Breadcrumb" className="font-mono text-xs text-ink-muted mb-5"><Link href="/calculators" className="text-accent hover:text-accent-hover transition-colors">Calculators</Link><span className="mx-2">·</span><span>Lumber + framing</span></nav>
+      <h1 className="text-3xl md:text-5xl font-bold tracking-tighter leading-[1.05] mb-3 text-ink">Lumber, framing, and geometry</h1>
+      <p className="text-base md:text-lg text-ink-muted max-w-2xl leading-relaxed">These are limited quantity and geometry estimates. They do not size structural members, establish safe construction, or determine code or permit compliance.</p>
+    </div></section>
+    <section className="container-wide py-10"><div className="grid grid-cols-1 md:grid-cols-3 gap-5">{tools.map((t) => <Link key={t.slug} href={`/${t.slug}`} className="block bg-surface border border-line rounded-lg p-6 hover:border-accent transition-colors group"><h2 className="text-base font-bold text-ink group-hover:text-accent transition-colors mb-2">{t.name}</h2><p className="text-sm text-ink-muted leading-relaxed">{t.desc}</p></Link>)}</div></section>
+    <section className="container-content pb-16"><div className="guide-prose">
+      <h2>Structural work requires plans and local review</h2>
+      <p>Member sizing, connections, bracing, load paths, foundations, species and grade, spans, moisture exposure, and local code requirements cannot be resolved from a simple quantity calculator. Do not build stairs, walls, decks, sheds, or openings from these outputs alone. Obtain project-specific plans and qualified review, and confirm permits and requirements with the local authority.</p>
+      <p>The <Link href="/stud-spacing-calculator" className="text-accent hover:underline">spacing worksheet</Link> counts evenly spaced positions on a straight line only; it is not a count of studs and excludes openings and connections. The <Link href="/stair-calculator" className="text-accent hover:underline">stair geometry estimator</Link> reports simple rise/run arithmetic, not a construction-ready stringer cut or code check.</p>
+      <p>The <Link href="/window-sizing-calculator" className="text-accent hover:underline">window rectangle-area calculator</Link> performs area arithmetic only. It does not calculate glazing, rough openings, or emergency egress. A separate <Link href="/egress-window-calculator" className="text-accent hover:underline">net clear-opening area calculator</Link> also reports area only and cannot establish life-safety compliance. Consult the local authority and qualified professionals for a specific opening.</p>
+      <p>The <Link href="/lumber-calculator" className="text-accent hover:underline">lumber estimator</Link> performs quantity arithmetic from entered dimensions, not member selection. The <Link href="/shed-calculator" className="text-accent hover:underline">shed estimator</Link> covers limited surfaces and sheet quantities; it does not determine framing, roofing system, site conditions, setbacks, or permit exemptions. Confirm materials and approvals for the specific site before construction.</p>
+      <p>For installation costs, compare written bids with equivalent scope using the <Link href="/cost-to-build-a-deck" className="text-accent hover:underline">deck</Link> or <Link href="/cost-to-build-a-fence" className="text-accent hover:underline">fence cost guide</Link> as applicable. Those guides are not structural plans or local quotes.</p>
+    </div></section>
+  </article>;
+}

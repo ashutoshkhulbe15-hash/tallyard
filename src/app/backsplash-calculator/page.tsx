@@ -6,13 +6,13 @@ import { getConfig } from "@/configs";
 const SLUG = "backsplash-calculator";
 
 export const metadata: Metadata = {
-  title: "Backsplash Calculator: Tile Square Feet by Run",
+  title: "Backsplash Tile Package Estimator",
   description:
-    "Backsplash tile from counter linear feet and height. Covers the 18 inch standard, range walls, outlets, zellige waste, and peel and stick options.",
+    "Estimate backsplash tile packages from measured tile area, exact package coverage, and a user-selected allowance.",
   alternates: { canonical: "/backsplash-calculator" },
   openGraph: {
-    title: "Backsplash Calculator: Tile Square Feet by Run",
-    description: "Calculate backsplash tile with outlet and window subtractions.",
+    title: "Backsplash Tile Package Estimator",
+    description: "Estimate packages using measured tile area and exact label coverage.",
     url: "https://www.tallyard.com/backsplash-calculator",
     type: "website",
   },
@@ -23,7 +23,7 @@ export default function BacksplashCalculatorPage() {
   return (
     <>
       {config && <SchemaScript config={config} />}
-      <CalculatorPage slug={SLUG} illustrationValue="278 TILES" />
+      <CalculatorPage slug={SLUG} illustrationValue="PACKAGES" />
     </>
   );
 }

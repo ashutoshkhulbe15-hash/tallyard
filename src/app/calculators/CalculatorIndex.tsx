@@ -35,71 +35,76 @@ const CATS: { id: string; label: string; guide: string }[] = [
 
 const ROWS: Row[] = [
   // Paint + walls
-  { slug: "paint-calculator", name: "Paint", sub: "Gallons by room size, openings subtracted", f: "(2(L+W)×H − openings) × coats **÷ 350 sf/gal**", src: "MFR DATA", out: "gallons", cat: "paint", kw: "bedroom wall ceiling interior exterior gallon coat primer" },
-  { slug: "wallpaper-calculator", name: "Wallpaper", sub: "Rolls with pattern repeat", f: "wall area **÷ (roll sf × repeat factor)**", src: "MFR DATA", out: "rolls", cat: "paint", kw: "roll pattern repeat accent wall" },
-  { slug: "drywall-calculator", name: "Drywall", sub: "Sheets for walls and ceilings", f: "surface area **÷ 32 sf/sheet** × waste", src: "USG SPEC", out: "sheets", cat: "paint", kw: "sheetrock gypsum board mud tape screw basement" },
+  { slug: "paint-calculator", name: "Paint quantity", sub: "Estimate from entered surfaces and coverage assumptions", f: "entered surface area × entered coats ÷ assumed coverage", src: "Check product label", out: "quantity estimate", cat: "paint", kw: "bedroom wall ceiling interior exterior gallon coat primer" },
+  { slug: "wallpaper-calculator", name: "Wallpaper roll coverage", sub: "Roll count from net area and exact product-label coverage", f: "ceil(adjusted area ÷ label coverage)", src: "Product label", out: "roll estimate", cat: "paint", kw: "wallpaper rolls area coverage" },
+  { slug: "drywall-calculator", name: "Drywall panel area", sub: "Panel count from net area, nominal panel size, and selected allowance", f: "ceil(adjusted area ÷ selected panel area)", src: "Area arithmetic", out: "panel estimate", cat: "paint", kw: "sheetrock gypsum board panel area" },
   // Masonry
-  { slug: "concrete-calculator", name: "Concrete", sub: "Slabs, footings, round pours", f: "L × W × depth **÷ 27 = cu yd**, +10% spill", src: "ACI 318", out: "cu yd · bags", cat: "masonry", kw: "slab driveway footing sonotube cement bag pour patio yard" },
-  { slug: "mortar-calculator", name: "Mortar", sub: "Bags for brick, block, stone", f: "wall sf **× bags per 100 sf** by unit type", src: "ASTM C270", out: "bags", cat: "masonry", kw: "type s n cmu block stone joint mix" },
-  { slug: "asphalt-calculator", name: "Asphalt", sub: "Tons for driveways and lots", f: "L × W × depth × **145 lb/ft³ ÷ 2000**", src: "NAPA", out: "tons", cat: "masonry", kw: "blacktop hot mix driveway paving ton" },
-  { slug: "rebar-calculator", name: "Rebar", sub: "Grid layout for slabs", f: "(L÷spacing+1)×W + (W÷spacing+1)×L", src: "ACI 318", out: "20-ft sticks", cat: "masonry", kw: "reinforcement grid stick slab mesh" },
-  { slug: "brick-calculator", name: "Brick", sub: "Bricks + mortar by joint width", f: "wall sf × **~6.9 bricks/sf** (modular, ⅜\" joint)", src: "BIA TN10", out: "bricks · bags", cat: "masonry", kw: "veneer wall modular mortar joint" },
-  { slug: "chimney-calculator", name: "Chimney", sub: "Flue sizing for fireplaces", f: "flue area **≥ fireplace opening ÷ 10**", src: "IRC R1003", out: "flue size", cat: "masonry", kw: "flue fireplace stove liner draft" },
+  { slug: "concrete-calculator", name: "Concrete volume", sub: "Geometric volume from entered shape and dimensions", f: "area × thickness × (1 + selected allowance)", src: "Volume geometry", out: "yd³ · m³", cat: "masonry", kw: "slab driveway footing sonotube cement bag pour patio yard" },
+  { slug: "mortar-calculator", name: "Mortar packages", sub: "From unit count and exact package coverage", f: "ceil((units × (1 + selected allowance)) ÷ units per bag)", src: "Product label", out: "bags", cat: "masonry", kw: "masonry brick block stone mortar package coverage" },
+  { slug: "asphalt-calculator", name: "Asphalt volume/weight estimate", sub: "Entered thickness and stated density assumption", f: "rectangular area × entered depth; weight uses assumed density", src: "Assumption shown", out: "volume · approx. weight", cat: "masonry", kw: "blacktop hot mix driveway paving ton" },
+  { slug: "rebar-calculator", name: "Rebar grid geometry", sub: "Gross straight-run length at selected spacing", f: "run counts = ceil(perpendicular dimension ÷ spacing) + 1", src: "Geometry only", out: "lineal length", cat: "masonry", kw: "reinforcement grid layout geometry gross length" },
+  { slug: "brick-calculator", name: "Brick quantity", sub: "From net wall area and product/layout coverage", f: "ceil(net wall area × entered coverage × (1 + allowance))", src: "Product/layout input", out: "bricks", cat: "masonry", kw: "brick wall net area coverage unit count" },
+  { slug: "chimney-calculator", name: "Fireplace opening area", sub: "Rectangular opening area only—not flue sizing", f: "opening area = width × height", src: "Geometry only", out: "opening area", cat: "masonry", kw: "fireplace opening area width height" },
   // Flooring + kitchen
-  { slug: "tile-calculator", name: "Tile", sub: "Tiles and boxes with cut waste", f: "area ÷ tile sf × **(1 + 10–15% waste)**", src: "TCNA", out: "tiles · boxes", cat: "flooring", kw: "ceramic porcelain floor bathroom kitchen box waste" },
-  { slug: "grout-calculator", name: "Grout", sub: "Pounds by joint dimensions", f: "(L+W)÷(L×W) × joint w × d × **1.86**", src: "TCNA", out: "pounds", cat: "flooring", kw: "sanded unsanded joint tile pound bag" },
-  { slug: "flooring-calculator", name: "Flooring", sub: "Hardwood, laminate, vinyl plank", f: "area × (1+waste) **÷ box coverage**", src: "NWFA", out: "boxes", cat: "flooring", kw: "hardwood laminate lvp vinyl plank box room" },
-  { slug: "shower-tile-calculator", name: "Shower tile", sub: "Three walls, floor, niche", f: "Σ(wall areas) + floor + niche, **+15% waste**", src: "TCNA", out: "sq ft · boxes", cat: "flooring", kw: "bathroom surround niche wall" },
-  { slug: "backsplash-calculator", name: "Backsplash", sub: "Counter run minus outlets", f: "run × height − outlets, **+10% waste**", src: "TCNA", out: "sq ft", cat: "flooring", kw: "kitchen subway tile counter outlet" },
-  { slug: "vanity-calculator", name: "Vanity", sub: "Size with code clearances", f: "wall span − **clearances (15\" CL toilet, 21\" front)**", src: "IRC R307", out: "vanity width", cat: "flooring", kw: "bathroom sink cabinet clearance double" },
-  { slug: "countertop-calculator", name: "Countertop", sub: "Area with island + overhang", f: "(run × 25.5\" + island) **÷ 144**", src: "NKBA", out: "sq ft · $", cat: "flooring", kw: "granite quartz island kitchen overhang cost" },
-  { slug: "kitchen-cabinet-calculator", name: "Kitchen cabinets", sub: "Linear feet by layout", f: "Σ wall runs × **$/lf by grade**", src: "NKBA", out: "linear ft · $", cat: "flooring", kw: "stock semi custom layout linear cost remodel" },
+  { slug: "tile-calculator", name: "Tile packages", sub: "Packages from area and exact label coverage", f: "ceil((area × (1 + selected allowance)) ÷ label coverage)", src: "Product label", out: "packages", cat: "flooring", kw: "ceramic porcelain floor bathroom kitchen box quantity" },
+  { slug: "grout-calculator", name: "Grout packages", sub: "From measured area and exact product coverage", f: "ceil((area × (1 + selected allowance)) ÷ package coverage)", src: "Product label", out: "packages", cat: "flooring", kw: "grout tile area package coverage quantity" },
+  { slug: "flooring-calculator", name: "Flooring packages", sub: "Packages from area and exact label coverage", f: "ceil((area × (1 + selected allowance)) ÷ label coverage)", src: "Product label", out: "packages", cat: "flooring", kw: "hardwood laminate lvp vinyl plank box room" },
+  { slug: "shower-tile-calculator", name: "Shower tile packages", sub: "Packages from measured tiled area and label coverage", f: "ceil((measured area × (1 + selected allowance)) ÷ label coverage)", src: "Product label", out: "packages", cat: "flooring", kw: "bathroom surround shower niche wall" },
+  { slug: "backsplash-calculator", name: "Backsplash packages", sub: "From measured tile area and exact label coverage", f: "ceil((net area × (1 + selected allowance)) ÷ package coverage)", src: "Product label", out: "packages", cat: "flooring", kw: "kitchen backsplash tile package area coverage" },
+  { slug: "vanity-calculator", name: "Vanity wall-width worksheet", sub: "Remaining width after entered clearances; no product or code assessment", f: "wall width − left and right clearances", src: "User inputs", out: "remaining width", cat: "flooring", kw: "vanity wall width measurement" },
+  { slug: "countertop-calculator", name: "Countertop surface area", sub: "Surface estimate from entered dimensions", f: "entered rectangular surfaces × dimensions", src: "User inputs", out: "area estimate", cat: "flooring", kw: "granite quartz island kitchen overhang cost" },
+  { slug: "kitchen-cabinet-calculator", name: "Kitchen cabinets", sub: "Layout-based estimate; verify scope and pricing", f: "entered wall runs × selected assumptions", src: "Assumptions shown", out: "estimate", cat: "flooring", kw: "stock semi custom layout linear cost remodel" },
+  { slug: "hardwood-flooring-cost-calculator", name: "Hardwood flooring quote", sub: "Subtotal from area and quoted rates", f: "area × entered rates + fixed extras", src: "Written quote inputs", out: "USD subtotal", cat: "flooring", kw: "hardwood floor installation quote cost" },
+  { slug: "hardwood-floor-refinishing-cost-calculator", name: "Floor refinishing quote", sub: "Subtotal from area and quoted rates", f: "area × quoted rate + fixed extras", src: "Written quote inputs", out: "USD subtotal", cat: "flooring", kw: "hardwood floor sanding refinishing quote cost" },
   // Landscaping
-  { slug: "mulch-calculator", name: "Mulch", sub: "Beds at any depth", f: "sf × depth(in) **÷ 324 = cu yd**", src: "VOLUME", out: "cu yd · bags", cat: "landscaping", kw: "bed garden bag yard depth wood chip" },
-  { slug: "gravel-calculator", name: "Gravel", sub: "Driveways and base layers", f: "sf × depth ÷ 324 × **1.4 tons/yd**", src: "AGG SPEC", out: "cu yd · tons", cat: "landscaping", kw: "crushed stone driveway base ton pea" },
-  { slug: "fence-calculator", name: "Fence", sub: "Posts, rails, pickets, concrete", f: "posts = L **÷ 8-ft spacing + 1**; pickets = L ÷ (w+gap)", src: "IRC", out: "full list", cat: "landscaping", kw: "post picket rail privacy wood yard gate" },
-  { slug: "paver-calculator", name: "Paver", sub: "Pavers, base gravel, sand", f: "area ÷ paver sf ×1.05; base = sf×4\" ÷324", src: "ICPI", out: "pavers · yd", cat: "landscaping", kw: "patio walkway base sand brick stone" },
-  { slug: "deck-calculator", name: "Deck", sub: "Boards, joists, beams, fasteners", f: "boards = area÷(w×L); joists = **W÷16\" o.c. +1**", src: "NADRA · IRC", out: "full list", cat: "landscaping", kw: "board joist beam composite trex footing screw" },
-  { slug: "topsoil-calculator", name: "Topsoil", sub: "Beds and lawn leveling", f: "sf × depth(in) **÷ 324 = cu yd**", src: "VOLUME", out: "cu yd · bags", cat: "landscaping", kw: "dirt fill lawn garden yard bag" },
-  { slug: "sod-calculator", name: "Sod", sub: "Slabs, rolls, pallets", f: "lawn sf ÷ **slab/roll coverage**, +5% cuts", src: "TPI", out: "pallets", cat: "landscaping", kw: "grass lawn pallet roll turf" },
-  { slug: "pool-chlorine-calculator", name: "Pool chlorine", sub: "Dose by volume and chemical", f: "gal × Δppm × **0.00013 ÷ strength**", src: "CDC MAHC", out: "oz · lb", cat: "landscaping", kw: "shock ppm swimming chemical dose" },
-  { slug: "rainwater-calculator", name: "Rainwater", sub: "Harvest from roof area", f: "roof sf × rainfall(in) × **0.623 gal**", src: "EPA", out: "gallons", cat: "landscaping", kw: "harvest barrel collection roof gallon" },
+  { slug: "deck-stair-calculator", name: "Deck stair geometry", sub: "Equal-rise geometry from entered dimensions", f: "riser count = round(total rise ÷ target rise)", src: "Geometry only", out: "geometry estimate", cat: "landscaping", kw: "deck stairs riser tread rise run" },
+  { slug: "mulch-calculator", name: "Mulch", sub: "Volume or nominal bag count", f: "area × selected depth", src: "Volume geometry", out: "yd³/m³ · bags", cat: "landscaping", kw: "bed garden bag yard depth wood chip" },
+  { slug: "gravel-calculator", name: "Gravel", sub: "Aggregate volume and approximate weight", f: "volume = area × selected depth", src: "Density is approximate", out: "volume · weight estimate", cat: "landscaping", kw: "aggregate crushed stone gravel volume weight" },
+  { slug: "fence-calculator", name: "Fence quantity estimate", sub: "Straight-run quantities from entered assumptions", f: "quantity depends on entered layout and spacing", src: "User inputs", out: "limited quantities", cat: "landscaping", kw: "post picket rail privacy wood yard gate" },
+  { slug: "paver-calculator", name: "Paver", sub: "Count from area and nominal paver size", f: "ceil(area ÷ nominal face area × (1 + selected allowance))", src: "", out: "pavers", cat: "landscaping", kw: "patio walkway paver count brick stone" },
+  { slug: "deck-calculator", name: "Deck", sub: "Surface area and rough board count", f: "rows = width÷(board face + selected gap)", src: "Geometry only", out: "board estimate", cat: "landscaping", kw: "deck board decking area material quantity" },
+  { slug: "topsoil-calculator", name: "Soil volume", sub: "Rectangular area and selected depth", f: "area × selected depth", src: "Volume geometry", out: "yd³/m³ · bag estimate", cat: "landscaping", kw: "soil fill lawn garden volume bag" },
+  { slug: "sod-calculator", name: "Sod area and pieces", sub: "Selected package format and allowance", f: "area × (1 + allowance) ÷ coverage", src: "Supplier coverage required", out: "area · pieces", cat: "landscaping", kw: "grass lawn sod slabs rolls coverage" },
+  { slug: "pool-chlorine-calculator", name: "Pool chlorine mass", sub: "Theoretical mass from measured values and label strength", f: "volume(L) × ppm gap ÷ 1000 ÷ label mass fraction", src: "User-entered label value", out: "g · kg", cat: "landscaping", kw: "pool chlorine mass ppm label strength" },
+  { slug: "rainwater-calculator", name: "Rainfall runoff", sub: "Event runoff volume estimate", f: "area(m²) × rainfall(mm) × selected factor", src: "", out: "liters · gallons", cat: "landscaping", kw: "rainfall runoff roof catchment volume" },
   // Roofing + exterior
-  { slug: "roofing-calculator", name: "Roofing", sub: "Bundles by pitch and footprint", f: "footprint × **pitch factor** ÷ 100 = squares ×3", src: "GAF · ARMA", out: "bundles", cat: "roofing", kw: "shingle square bundle pitch slope replace" },
-  { slug: "siding-calculator", name: "Siding", sub: "Squares for any exterior", f: "Σ wall areas − openings **÷ 100 = squares**", src: "VSI · MFR", out: "squares", cat: "roofing", kw: "vinyl hardie fiber cement square house" },
-  { slug: "gutter-calculator", name: "Gutter", sub: "Runs, downspouts, hangers", f: "eave lf; downspouts = **1 per 35 ft**; hangers @24\"", src: "SMACNA", out: "lf · pieces", cat: "roofing", kw: "downspout hanger eave k-style rain" },
-  { slug: "attic-ventilation-calculator", name: "Attic ventilation", sub: "NFVA intake + exhaust", f: "attic sf **÷ 300**, split 50/50 intake/exhaust", src: "IRC R806", out: "sq in NFVA", cat: "roofing", kw: "soffit ridge vent nfva intake exhaust" },
-  { slug: "snow-load-calculator", name: "Snow load", sub: "Load vs design capacity", f: "depth × **density (psf/in by snow type)**", src: "ASCE 7", out: "psf", cat: "roofing", kw: "roof psf winter weight structural" },
-  { slug: "garage-door-calculator", name: "Garage door", sub: "Size, headroom, opener HP", f: "opening + headroom req; **HP by door weight**", src: "DASMA", out: "size · HP", cat: "roofing", kw: "opener headroom torsion spring single double" },
+  { slug: "roofing-calculator", name: "Roof area", sub: "Planar area for a simple footprint and pitch", f: "footprint × √(1 + pitch²)", src: "Geometry only", out: "area estimate", cat: "roofing", kw: "roof surface area pitch footprint" },
+  { slug: "siding-calculator", name: "Siding area worksheet", sub: "Net measured area with a user-selected allowance; no material takeoff", f: "entered area × (1 + selected allowance)", src: "User inputs", out: "area and square equivalents", cat: "roofing", kw: "cladding siding area measured wall surfaces" },
+  { slug: "gutter-calculator", name: "Gutter-run length worksheet", sub: "Sum measured runs with a user-selected allowance; no drainage sizing", f: "sum of entered runs × (1 + allowance)", src: "User inputs", out: "length estimate", cat: "roofing", kw: "gutter run length measured eave" },
+  { slug: "attic-ventilation-calculator", name: "Attic area-ratio worksheet", sub: "Illustrative arithmetic; not net-free-area or design", f: "entered attic area ÷ selected ratio scenario", src: "Scenario only", out: "area scenario", cat: "roofing", kw: "attic ventilation area ratio scenario" },
+  { slug: "snow-load-calculator", name: "Snow/ice weight estimate", sub: "Entered depth and assumed density; not capacity", f: "depth × selected density assumption", src: "Assumption shown", out: "weight estimate", cat: "roofing", kw: "roof psf winter weight structural" },
+  { slug: "garage-door-calculator", name: "Garage door opening", sub: "Dimensions from user-entered opening", f: "entered opening and clearance dimensions", src: "Verify manufacturer", out: "dimensions", cat: "roofing", kw: "opener headroom torsion spring single double" },
   // HVAC + plumbing
-  { slug: "btu-calculator", name: "BTU", sub: "AC sizing with adjustments", f: "sf × **20–25 BTU** × sun · occupancy · kitchen", src: "ACCA MAN-J", out: "BTU/hr", cat: "hvac", kw: "ac air conditioner window unit cooling size room" },
-  { slug: "heat-pump-calculator", name: "Heat pump", sub: "Tonnage by climate zone", f: "sf × **BTU/sf (zone 1–7)** ÷ 12,000", src: "ACCA · DOE", out: "tons", cat: "hvac", kw: "ton mini split climate zone heating cooling" },
-  { slug: "water-heater-calculator", name: "Water heater", sub: "Tank gallons or tankless GPM", f: "**peak-hour demand** Σ fixture gallons", src: "DOE · IPC", out: "gal · GPM", cat: "hvac", kw: "tank tankless gpm gallon shower hot" },
-  { slug: "drain-pipe-calculator", name: "Drain pipe", sub: "Size by DFU loading", f: "Σ DFU → pipe size per **IPC table 710.1**", src: "IPC · UPC", out: "pipe dia.", cat: "hvac", kw: "dfu waste plumbing fixture sewer size" },
+  { slug: "btu-calculator", name: "Room AC capacity", sub: "ENERGY STAR area guide and adjustments", f: "area band + sun · occupants · kitchen", src: "ENERGY STAR", out: "BTU/hr guide", cat: "hvac", kw: "room air conditioner AC cooling capacity BTU size" },
+  { slug: "heat-pump-calculator", name: "Heating/cooling load conversion", sub: "Converts documented loads; does not calculate loads or select equipment", f: "entered BTU/h ÷ 12,000", src: "Arithmetic only", out: "ton-equivalent", cat: "hvac", kw: "heat pump heating cooling load ton conversion" },
+  { slug: "water-heater-calculator", name: "Water-heating rate conversion", sub: "Theoretical rate from entered flow and temperature rise", f: "flow × temperature rise × water heat-capacity factor", src: "Idealized arithmetic", out: "heat-transfer rate", cat: "hvac", kw: "water heater flow temperature rise heat rate" },
+  { slug: "drain-pipe-calculator", name: "Fixture-unit worksheet", sub: "Illustrative IPC 2021 DFU subtotal—not pipe sizing", f: "Σ fixture count × selected DFU value", src: "IPC 2021 examples", out: "DFU subtotal", cat: "hvac", kw: "dfu drainage fixture unit subtotal plumbing" },
+  { slug: "furnace-replacement-cost-calculator", name: "Furnace replacement quote", sub: "Sum itemized quote amounts", f: "sum of entered quote line items", src: "Written quote inputs", out: "USD subtotal", cat: "hvac", kw: "furnace replacement installation quote cost" },
   // Electrical + solar
-  { slug: "solar-calculator", name: "Solar", sub: "System size from usage", f: "kWh/mo ÷ (30 × sun-hrs × **0.8 derate**)", src: "NREL", out: "kW · panels", cat: "electrical", kw: "panel kwh system offset sun roof" },
-  { slug: "wire-size-calculator", name: "Wire size", sub: "AWG with voltage drop", f: "VD = **2 × K × I × L ÷ CM**, cap 3%", src: "NEC 310", out: "AWG", cat: "electrical", kw: "awg gauge voltage drop subpanel circuit amp copper" },
-  { slug: "extension-cord-calculator", name: "Extension cord", sub: "Gauge for any tool", f: "amps + length → AWG per **ampacity table**", src: "NEC · UL", out: "AWG", cat: "electrical", kw: "gauge awg tool outdoor amp length" },
+  { slug: "solar-calculator", name: "Solar energy-use scenario", sub: "Panel-count arithmetic from entered usage and assumptions; not a forecast or design", f: "usage ÷ (days × entered sun-hours × entered derate)", src: "User assumptions", out: "scenario only", cat: "electrical", kw: "solar panel energy usage scenario arithmetic" },
+  { slug: "wire-size-calculator", name: "Conductor voltage-drop worksheet", sub: "Limited lookup and drop calculation—not circuit design", f: "voltage-drop calculation for entered conductor assumptions", src: "Not code approval", out: "estimate", cat: "electrical", kw: "awg gauge voltage drop subpanel circuit amp copper" },
+  { slug: "extension-cord-calculator", name: "Extension cord voltage drop", sub: "Estimate drop for a selected conductor size—not a safety rating", f: "2 × I × R × one-way length", src: "Resistive estimate", out: "voltage drop", cat: "electrical", kw: "extension cord voltage drop length wire gauge" },
   // Lumber + framing
-  { slug: "insulation-calculator", name: "Insulation", sub: "R-value + bags needed", f: "area ÷ **bag coverage @ target R**", src: "IECC · MFR", out: "bags · R", cat: "lumber", kw: "r-value batt blown attic wall fiberglass" },
-  { slug: "lumber-calculator", name: "Lumber", sub: "Board feet + lineal feet", f: "t × w × L **÷ 12 = BF**, × qty + waste", src: "WWPA", out: "BF · lineal", cat: "lumber", kw: "board feet lineal 2x4 2x6 framing order wood" },
-  { slug: "stair-calculator", name: "Stair", sub: "IRC-compliant rise/run", f: "risers = height ÷ **7¾\" max**; run ≥ 10\"", src: "IRC R311", out: "stringer cut", cat: "lumber", kw: "riser tread stringer rise run deck basement" },
-  { slug: "stud-spacing-calculator", name: "Stud spacing", sub: "Studs, headers, jacks, kings", f: "L ÷ **16\" o.c. + 1**, + opening framing", src: "IRC R602", out: "stud count", cat: "lumber", kw: "16 oc wall framing header jack king cripple" },
-  { slug: "window-sizing-calculator", name: "Window sizing", sub: "Egress + rough opening", f: "egress ≥ **5.7 sf clear**; light ≥ 8% floor", src: "IRC R310", out: "min size · RO", cat: "lumber", kw: "egress rough opening bedroom light basement" },
-  { slug: "shed-calculator", name: "Shed", sub: "Full material takeoff", f: "framing + sheathing + roofing **from footprint**", src: "IRC", out: "full list", cat: "lumber", kw: "framing sheathing shingles backyard takeoff material list" },
+  { slug: "insulation-calculator", name: "Insulation package coverage", sub: "Package count from measured area and exact product-label coverage", f: "ceil(adjusted area ÷ entered package coverage)", src: "Product label", out: "package estimate", cat: "lumber", kw: "insulation area package product coverage" },
+  { slug: "lumber-calculator", name: "Lumber quantity worksheet", sub: "Nominal board-foot and lineal length arithmetic; no weight or price", f: "nominal thickness × width × length ÷ 12", src: "Arithmetic only", out: "board feet · lineal feet", cat: "lumber", kw: "board feet lineal length nominal lumber" },
+  { slug: "stair-calculator", name: "Stair geometry estimate", sub: "User-selected rise/run arithmetic; not a cut sheet", f: "riser count = round(total rise ÷ selected target)", src: "Geometry only", out: "geometry estimate", cat: "lumber", kw: "riser tread rise run stair geometry" },
+  { slug: "stud-spacing-calculator", name: "Straight-wall spacing count", sub: "Position count only; not stud or framing takeoff", f: "ceil(length ÷ selected interval) + 1", src: "Arithmetic only", out: "positions", cat: "lumber", kw: "wall length spacing positions" },
+  { slug: "window-sizing-calculator", name: "Window rectangle area", sub: "Area arithmetic only; no egress or code assessment", f: "entered width × entered height", src: "Geometry only", out: "area", cat: "lumber", kw: "window rectangle area dimensions" },
+  { slug: "egress-window-calculator", name: "Clear-opening area", sub: "Area from user-entered clear dimensions; not an egress verdict", f: "entered clear width × entered clear height", src: "Geometry only", out: "area", cat: "lumber", kw: "clear opening area window dimensions" },
+  { slug: "shed-calculator", name: "Shed surface estimate", sub: "Limited area and sheet estimates; not material takeoff", f: "entered floor and wall geometry", src: "Geometry only", out: "area estimate", cat: "lumber", kw: "framing sheathing shingles backyard takeoff material list" },
 ];
 
 const COST_GUIDES = [
-  { slug: "cost-to-build-a-deck", name: "Cost to build a deck", r: "$4.4K–11.2K" },
-  { slug: "cost-to-replace-a-roof", name: "Cost to replace a roof", r: "$6.7K–12.5K" },
-  { slug: "cost-to-build-a-fence", name: "Cost to build a fence", r: "$1.9K–4.5K" },
-  { slug: "cost-to-paint-a-house", name: "Cost to paint a house", r: "$1.8K–4.4K" },
-  { slug: "cost-to-install-flooring", name: "Cost to install flooring", r: "$3–22/sf" },
-  { slug: "cost-to-remodel-a-bathroom", name: "Cost to remodel a bathroom", r: "$6.6K–17.5K" },
-  { slug: "cost-to-pour-concrete", name: "Cost to pour concrete", r: "$4–8/sf" },
-  { slug: "cost-to-install-siding", name: "Cost to install siding", r: "$5.6K–17K" },
-  { slug: "cost-to-install-solar", name: "Cost to install solar", r: "$15K–25K" },
-  { slug: "cost-to-replace-hvac", name: "Cost to replace HVAC", r: "$5K–12.5K" },
+  { slug: "cost-to-build-a-deck", name: "Cost to build a deck", r: "Scope + bids" },
+  { slug: "cost-to-replace-a-roof", name: "Cost to replace a roof", r: "Measure + bids" },
+  { slug: "cost-to-build-a-fence", name: "Cost to build a fence", r: "Measure + bids" },
+  { slug: "cost-to-paint-a-house", name: "Cost to paint a house", r: "Scope + bids" },
+  { slug: "cost-to-install-flooring", name: "Cost to install flooring", r: "Measure + bids" },
+  { slug: "cost-to-remodel-a-bathroom", name: "Cost to remodel a bathroom", r: "Scope + bids" },
+  { slug: "cost-to-pour-concrete", name: "Cost to pour concrete", r: "Volume + bids" },
+  { slug: "cost-to-install-siding", name: "Cost to install siding", r: "Measure + bids" },
+  { slug: "cost-to-install-solar", name: "Cost to install solar", r: "Compare quotes" },
+  { slug: "cost-to-replace-hvac", name: "Cost to replace HVAC", r: "Compare quotes" },
 ];
 
 /** Renders a formula string, bolding **wrapped** segments in verify green. */
@@ -152,7 +157,6 @@ export function CalculatorIndex() {
     });
   }, [q, cat]);
 
-  const visibleSlugs = new Set(visible.map((r) => r.slug));
   const shownCats = CATS.filter((c) =>
     visible.some((r) => r.cat === c.id)
   ).map((c) => c.id);
@@ -165,12 +169,11 @@ export function CalculatorIndex() {
           <h1 className="text-2xl md:text-[26px] font-bold tracking-tight">
             Calculator index
             <span className="font-mono text-[13px] text-accent font-medium ml-2.5 tracking-normal">
-              45 TOOLS · ALL FREE
+              {ROWS.length} TOOLS · ALL FREE
             </span>
           </h1>
           <div className="font-mono text-[11.5px] text-ink-muted">
-            EVERY ROW: <b className="text-accent font-medium">FORMULA + SOURCE</b>{" "}
-            · CHECKABLE
+            REVIEW EACH TOOL&apos;S INPUTS + LIMITATIONS
           </div>
         </div>
         <div className="mt-4 flex items-center bg-surface border-[1.5px] border-ink rounded-md overflow-hidden shadow-[0_10px_30px_-18px_rgba(17,24,20,0.3)]">
@@ -195,7 +198,7 @@ export function CalculatorIndex() {
           </span>
         </div>
         <div className="font-mono text-xs text-ink-muted mt-3 ml-0.5">
-          Showing <b className="text-ink font-medium">{visible.length}</b> of 45
+          Showing <b className="text-ink font-medium">{visible.length}</b> of {ROWS.length}
           calculators
         </div>
       </div>
@@ -218,7 +221,7 @@ export function CalculatorIndex() {
             <span
               className={`font-mono text-[11px] ${cat === "all" ? "text-accent" : "text-ink-faint"}`}
             >
-              45
+              {ROWS.length}
             </span>
           </button>
           {CATS.map((c) => {
@@ -247,7 +250,7 @@ export function CalculatorIndex() {
             <b className="text-accent font-semibold">
               Why formulas are on this page:
             </b>{" "}
-            if we can't show the math at the index level, we don't publish the
+            if we can&apos;t show the math at the index level, we don&apos;t publish the
             tool. Open any row for the full worked method.
           </div>
         </aside>
@@ -340,7 +343,7 @@ export function CalculatorIndex() {
               <h2 className="text-[13.5px] font-bold tracking-normal flex items-baseline gap-2.5">
                 Cost guides
                 <span className="font-mono text-[10px] font-normal tracking-[0.1em] text-ink-faint">
-                  MATERIAL + LABOR · 2026 AVERAGES
+                  PROJECT SCOPE · QUOTE COMPARISON
                 </span>
               </h2>
               <span className="font-mono text-[10px] tracking-[0.1em] text-ink-faint">
@@ -365,20 +368,19 @@ export function CalculatorIndex() {
             </div>
           </div>
           <p className="mt-7 text-[13px] text-ink-muted max-w-[70ch] leading-relaxed">
-            <b className="text-ink">About this index.</b> Every calculator is
-            free to use with no usage limits. Estimates land
-            within 5–10% for standard residential projects; formulas come from
-            the IRC, NEC, IPC, ASHRAE, ACI, TCNA, and manufacturer data sheets,
-            cited on each page: see our{" "}
+            <b className="text-ink">About this index.</b> These tools provide
+            limited planning calculations from the inputs shown. Accuracy and
+            scope vary by tool, and no universal error range is promised. Review
+            its assumptions and references, then verify project quantities and
+            requirements independently: see our{" "}
             <Link
               href="/methodology"
               className="text-accent hover:underline font-medium"
             >
               methodology
             </Link>
-            . Every tool has a Copy-link button that encodes your inputs in the
-            URL, so you can bookmark a calculation or send it to your
-            contractor.
+            . Some tools offer shareable links; check the individual page for
+            that option before saving or sending a calculation.
           </p>
         </div>
       </div>

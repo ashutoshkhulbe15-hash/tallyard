@@ -6,14 +6,14 @@ import { getConfig } from "@/configs";
 const SLUG = "paver-calculator";
 
 export const metadata: Metadata = {
-  title: "Paver Calculator: Pavers, Base, And Sand",
+  title: "Paver Area and Count Calculator",
   description:
-    "Calculate pavers, base gravel, bedding sand, and joint sand for any patio or walkway.",
+    "Estimate paver count for a rectangular area using nominal paver dimensions and a user-selected planning allowance.",
   alternates: { canonical: "/paver-calculator" },
   openGraph: {
-    title: "Paver Calculator: Pavers, Base, And Sand",
+    title: "Paver Area and Count Calculator",
     description:
-      "Calculate pavers, base gravel, and sand for any patio or path.",
+      "Estimate paver quantity from area and selected nominal paver dimensions.",
     url: "https://www.tallyard.com/paver-calculator",
     type: "website",
   },
@@ -24,7 +24,7 @@ export default function PaverCalculatorPage() {
   return (
     <>
       {config && <SchemaScript config={config} />}
-      <CalculatorPage slug={SLUG} illustrationValue="567 PAVERS" />
+      <CalculatorPage slug={SLUG} illustrationValue="PAVERS" />
     </>
   );
 }

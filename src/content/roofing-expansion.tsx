@@ -74,7 +74,7 @@ export function RoofingCalculatorExpansion() {
       />
 
       <h2>Your roof has more surface area than your house. Here is why that matters.</h2>
-      <p>A roofer in Connecticut described the most common estimation mistake he sees: homeowners measure their house footprint, multiply by a pitch factor they found online, and come up with a number that&apos;s 15% too low because they forgot the eaves, rake overhangs, and hips. On a 2,000 sq ft footprint, that&apos;s 300 square feet of missing roof: 3 squares, 9 bundles, about $450 in shingles that aren&apos;t on the truck when the crew shows up.</p>
+      <p>A roof takeoff needs the pitched surface area, overhangs, and waste from cuts at hips and valleys. A hypothetical 2,000 sq ft footprint underestimated by 15% would miss 300 sq ft, or 3 roofing squares, before accounting for the selected shingle&apos;s bundle coverage. This is a calculation example, not a reported contractor job.</p>
 
       <MethodologyNote>
         <p>
@@ -117,15 +117,13 @@ export function RoofingCalculatorExpansion() {
       <p>Labor is typically 60% of a roofing job. Materials are 40%. A crew of 4 to 6 can tear off and reshingle a standard 2,000 sq ft roof in 2 to 3 days. The materials stage on the roof the morning of the tear-off, old shingles come off into a dumpster, underlayment and drip edge go down the same day, and shingling starts from the bottom working up.</p>
       <p>Two cost items people forget: the dumpster rental ($300 to 600 for a 20-yard container) and the permit fee ($100 to 500 depending on municipality). Both are non-negotiable on a full replacement.</p>
 
-      <Scenario location="Minneapolis, MN">
-        After a 2024 hailstorm, a homeowner got three roofing bids for
-        a 1,800 sq ft hip roof (6/12 pitch). Actual roof surface: 2,016
-        sq ft (1,800 × 1.12). The cheapest bid quoted 18 squares. The
-        middle bid quoted 22 squares. The most expensive quoted 24. The
-        difference? The cheapest contractor forgot the pitch multiplier
-        and didn&apos;t account for waste on the hips. He would have run
-        out 4 squares short. The 22-square bid was correct (20.2 squares
-        + 10% waste = 22.2, rounded to 22).
+      <Scenario location="1,800 ft² footprint, 6/12 pitch">
+        For a hypothetical roof with a 1,800 ft² footprint and a 6/12 pitch,
+        the simple pitch factor is about 1.118, giving about 2,012 ft²
+        before overhangs and waste. With an illustrative 10% waste allowance,
+        the estimate is about 2,213 ft², or 22.13 roofing squares. Round the
+        purchase quantity according to the actual product coverage and roof
+        geometry; no real bids or completed job are represented here.
       </Scenario>
 
       <ComparisonTable

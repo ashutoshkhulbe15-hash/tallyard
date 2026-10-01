@@ -3,19 +3,19 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Flooring, tile, and kitchen calculators: Tallyard",
-  description: "Calculators for flooring, tile, grout, backsplash, countertop, vanity, and kitchen cabinets. Free tools with waste factors and cost estimates.",
+  description: "Area and package estimators for flooring and tile, plus separate kitchen and bathroom planning tools with stated scope limits.",
   alternates: { canonical: "/calculators/flooring-kitchen" },
 };
 
 const tools = [
-  { slug: "flooring-calculator", name: "Flooring calculator", desc: "Square footage with waste factor by material type and pattern." },
-  { slug: "tile-calculator", name: "Tile calculator", desc: "Tile count by size, pattern, and waste factor. Handles diagonal and herringbone." },
-  { slug: "grout-calculator", name: "Grout calculator", desc: "Pounds of grout by tile size and joint width. Sanded vs unsanded." },
-  { slug: "shower-tile-calculator", name: "Shower tile calculator", desc: "Three-wall layout with niche openings. Includes waterproofing area." },
-  { slug: "backsplash-calculator", name: "Backsplash calculator", desc: "Kitchen backsplash area minus outlets and windows." },
+  { slug: "flooring-calculator", name: "Flooring package calculator", desc: "Package count from room area, label coverage, and selected allowance." },
+  { slug: "tile-calculator", name: "Tile package calculator", desc: "Package count from area, label coverage, and selected allowance." },
+  { slug: "grout-calculator", name: "Grout package estimator", desc: "Package count from measured tiled area and coverage for the exact product." },
+  { slug: "shower-tile-calculator", name: "Shower tile package calculator", desc: "Package count from user-measured tiled area and label coverage; no waterproofing design." },
+  { slug: "backsplash-calculator", name: "Backsplash tile package estimator", desc: "Package count from measured tile area and exact label coverage." },
   { slug: "countertop-calculator", name: "Countertop calculator", desc: "Square footage for quartz, granite, or laminate. Edge profile costs." },
   { slug: "kitchen-cabinet-calculator", name: "Kitchen cabinet calculator", desc: "Linear feet by layout type. Stock vs semi-custom vs custom pricing." },
-  { slug: "vanity-calculator", name: "Vanity calculator", desc: "Bathroom vanity sizing with clearance checking." },
+  { slug: "vanity-calculator", name: "Vanity wall-width worksheet", desc: "Remaining wall width after user-entered clearances; no code or product assessment." },
 ];
 
 export default function FlooringKitchenPillar() {
@@ -47,29 +47,29 @@ export default function FlooringKitchenPillar() {
         <div className="guide-prose">
           <h2>Kitchens and bathrooms have the highest material density per square foot</h2>
 
-          <p>A bedroom renovation involves paint and maybe flooring. A kitchen renovation involves flooring, tile (backsplash and possibly floor), countertops, cabinets, and sometimes a vanity in the adjacent bathroom. Each material has its own measurement method, waste factor, and ordering unit. The eight calculators above cover every surface in a kitchen or bathroom project.</p>
+          <p>A remodel involves materials with different measurement and ordering units. These tools provide separate estimates from the inputs shown; they are not a coordinated project takeoff, and not every product or installation material is covered.</p>
 
-          <h2>Flooring: waste factor is the number one mistake</h2>
+          <h2>Flooring and tile: begin with area and product coverage</h2>
 
-          <p>Every flooring material has waste, but the amount depends on the material and the pattern. Straight-lay LVP in a rectangular room wastes 5 to 7 percent. Diagonal tile wastes 15 percent. Herringbone hardwood wastes 18 to 20 percent. The <Link href="/flooring-calculator" className="text-accent hover:underline">flooring calculator</Link> applies the correct waste factor by material type. For tile specifically, the <Link href="/tile-calculator" className="text-accent hover:underline">tile calculator</Link> adjusts waste by both tile size and pattern: large format tiles create bigger offcuts at walls, increasing waste even in straight layouts.</p>
+          <p>The <Link href="/flooring-calculator" className="text-accent hover:underline">flooring package calculator</Link> and <Link href="/tile-calculator" className="text-accent hover:underline">tile package calculator</Link> use rectangular area, package coverage copied from the exact product label, and an allowance selected by the user. Neither chooses a waste factor by material or pattern, models a cut plan, nor guarantees a purchase quantity. Measure irregular rooms as separate non-overlapping sections and ask the installer to review the layout.</p>
 
           <h2>Tile projects need three calculations, not one</h2>
 
-          <p>Tile, grout, and substrate. The <Link href="/tile-calculator" className="text-accent hover:underline">tile calculator</Link> gives you tile count. The <Link href="/grout-calculator" className="text-accent hover:underline">grout calculator</Link> gives you pounds of grout (surprisingly sensitive to joint width: doubling the joint nearly triples the grout). And you need cement backer board under any tile floor (about $0.50 to $1.00 per square foot). For showers, the <Link href="/shower-tile-calculator" className="text-accent hover:underline">shower tile calculator</Link> handles the three-wall geometry and includes waterproofing membrane in the material list.</p>
+          <p>Tile quantity, grout, and the substrate or waterproofing system are separate planning questions. The <Link href="/tile-calculator" className="text-accent hover:underline">tile package calculator</Link> estimates packages from entered area and label coverage. The <Link href="/grout-calculator" className="text-accent hover:underline">grout package estimator</Link> also requires coverage for the exact grout product and package; it does not infer joint yield or select a grout type. The <Link href="/shower-tile-calculator" className="text-accent hover:underline">shower tile package calculator</Link> uses total tiled area entered by the user and does not design waterproofing, a shower pan, drainage, or substrate. Follow the selected system&apos;s instructions and get qualified project-specific advice.</p>
 
           <h2>Kitchen surfaces: counter, cabinet, backsplash</h2>
 
-          <p>These three are measured differently but specified together. <Link href="/kitchen-cabinet-calculator" className="text-accent hover:underline">Cabinets</Link> are measured in linear feet. <Link href="/countertop-calculator" className="text-accent hover:underline">Countertops</Link> are measured in square feet (length times depth, typically 25.5 inches). <Link href="/backsplash-calculator" className="text-accent hover:underline">Backsplash</Link> is measured in square feet (counter length times the 18-inch gap between counter and upper cabinets). The three measurements interact: cabinet linear footage determines countertop length, which determines backsplash length. Change one and the others change.</p>
+          <p>These measurements should come from the actual room plan and product specifications. <Link href="/kitchen-cabinet-calculator" className="text-accent hover:underline">Cabinets</Link>, <Link href="/countertop-calculator" className="text-accent hover:underline">countertops</Link>, and <Link href="/backsplash-calculator" className="text-accent hover:underline">backsplash</Link> have different dimensions and exclusions; none of these separate estimators is a coordinated fabrication or installation drawing. Verify dimensions, overhangs, openings, and clearances with the supplier or installer.</p>
 
-          <p>For a full kitchen remodel, the <Link href="/planner/remodel-a-bathroom" className="text-accent hover:underline">bathroom planner</Link> chains the tile, vanity, and paint calculations for bathrooms. A kitchen-specific planner is on our roadmap.</p>
+          <p>The site also has a separate <Link href="/planner/remodel-a-bathroom" className="text-accent hover:underline">bathroom planner</Link>; it is not a kitchen-planning tool.</p>
 
           <h2>Bathroom: vanity sizing and clearance</h2>
 
-          <p>The <Link href="/vanity-calculator" className="text-accent hover:underline">vanity calculator</Link> checks not just whether the cabinet fits but whether NKBA clearance requirements are met (21 inches minimum in front, 15 inches from sink center to wall). In small bathrooms (5 × 8 feet), the largest vanity that physically fits often violates clearance guidelines, making the room feel cramped and failing to meet accessibility standards.</p>
+          <p>The <Link href="/vanity-calculator" className="text-accent hover:underline">vanity calculator</Link> subtracts user-entered left and right clearances from a wall measurement. Confirm product dimensions, plumbing, door swing, accessibility, and local requirements separately.</p>
 
           <h2>How these tools chain together in a kitchen remodel</h2>
 
-          <p>Start with cabinets (they determine the room layout). Then countertops (they sit on the cabinets). Then backsplash (it fills the gap between counter and uppers). Then flooring (it goes under the cabinets in most installations, or up to the cabinet toe kicks in others). Finally, paint for the non-tiled walls. Each calculator handles one surface; together they cover the entire room.</p>
+          <p>There is no fixed calculation sequence or universal floor/cabinet installation order. These are independent estimates only: enter measurements from the actual plan, verify overlap and exclusions, and coordinate dimensions and sequencing with the designer, supplier, and installer.</p>
         </div>
       </section>
     </article>

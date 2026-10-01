@@ -109,8 +109,8 @@ export function Footer() {
             className="text-sm leading-relaxed max-w-sm"
             style={{ color: "rgba(255,255,255,0.45)" }}
           >
-            Free, transparent calculators and buying guides for home
-            improvement. Every formula public, every source cited.
+            Free calculators, measurement worksheets, and buying guides for
+            home-improvement planning. Review each tool&apos;s inputs and limits.
           </p>
         </div>
 
@@ -244,7 +244,7 @@ export function Footer() {
         {/* Copyright */}
         <div className="pt-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
           <p className="text-xs" style={{ color: "rgba(255,255,255,0.25)" }}>
-            © {new Date().getFullYear()} Tallyard · All formulas public and cited
+            © {new Date().getFullYear()} Tallyard · Planning tools; verify project requirements
           </p>
           <p className="text-xs" style={{ color: "rgba(255,255,255,0.25)" }}>
             Built by{" "}

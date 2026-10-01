@@ -1,125 +1,73 @@
 # Tallyard
 
-> Free, transparent calculators and buying guides for home improvement. Every formula public, every source cited. No signup, no email capture, no affiliate links, no lead generation.
+> Free calculators and guides for home-improvement planning. Each page describes its own inputs, assumptions, and limits.
 
-Tallyard is a home improvement calculator site built by Ash K. It covers 45 calculators, 3 in-depth buying guides, and 6 project planners across 8 project categories. The site targets US homeowners planning DIY or contractor projects.
+Site: https://www.tallyard.com
 
-## Editorial policy
+There are 50 calculators and worksheets, 6 reference and buying guides, and 10 project-cost guides. Tools vary in scope. Verify product coverage, project conditions, and local requirements before relying on an estimate.
 
-- Every calculator shows its full formula step by step
-- Coverage rates and sizing factors come from manufacturer specs, building codes (IRC, IPC, NEC), and industry standards (ACCA, NADRA, APA, TCNA)
-- Results round up to practical purchase quantities
-- No affiliate links, no contractor lead capture, no email gates
-- Corrections within 48 hours of report
-- Author is not a licensed contractor; formulas derive from published standards, cited on each page
+## Calculators and worksheets
 
-## Calculators (45 total)
+- [Paint Calculator](https://www.tallyard.com/paint-calculator): Estimate wall paint from room dimensions, coats, and coverage. Optionally include the ceiling and check the selected product label before buying.
+- [Concrete Calculator](https://www.tallyard.com/concrete-calculator): Estimate geometric concrete volume for rectangular or round shapes from entered dimensions and a user-selected planning allowance. Not a structural design or supplier order guarantee.
+- [Tile Package Calculator](https://www.tallyard.com/tile-calculator): Estimate tile packages from rectangular area, the coverage printed on the package, and a user-selected planning allowance.
+- [Mulch Calculator](https://www.tallyard.com/mulch-calculator): Estimate mulch volume from a rectangular area and user-selected depth, with an optional count for nominal 2 ft³ bags.
+- [Drywall Panel Area Estimator](https://www.tallyard.com/drywall-calculator): Estimate panel count from net measured surface area and a selected nominal panel size. Does not create a layout or finishing-material takeoff.
+- [Roof Surface Area Calculator](https://www.tallyard.com/roofing-calculator): Estimate sloped surface area for a simple rectangular roof plane from its horizontal footprint and pitch. Does not calculate a roof material order.
+- [Room Air Conditioner Capacity Guide](https://www.tallyard.com/btu-calculator): Estimate room air-conditioner capacity from room area using the ENERGY STAR sizing guide and its stated adjustments. Not a whole-home HVAC load calculation.
+- [Gravel Calculator](https://www.tallyard.com/gravel-calculator): Estimate aggregate volume from area and selected depth, with an approximate weight based on a stated material-density assumption. Not a site or pavement design.
+- [Solar Energy-Use Scenario Estimator](https://www.tallyard.com/solar-calculator): Explore a panel-count scenario from entered electricity use and explicitly selected assumptions. Not a site assessment, production forecast, or system design.
+- [Wire Size Calculator](https://www.tallyard.com/wire-size-calculator): Preliminary AWG estimate from ampacity and voltage drop for a limited range of inputs. Installation conditions and local code require an electrician's review.
+- [Insulation Package Coverage Estimator](https://www.tallyard.com/insulation-calculator): Estimate package count from measured area, exact product-label coverage, and a user-selected allowance. Does not recommend R-value or insulation type.
+- [Fence Calculator](https://www.tallyard.com/fence-calculator): Preliminary posts, rails, and pickets for one straight fence run. Gates, corners, and post-hole concrete require a site-specific layout.
+- [Grout Package Estimator](https://www.tallyard.com/grout-calculator): Estimate grout packages from measured tiled area and coverage for the exact product and package. Does not calculate joint yield or select grout type.
+- [Paver Area and Count Calculator](https://www.tallyard.com/paver-calculator): Estimate paver count for a rectangular area using selected nominal dimensions and a user-selected planning allowance.
+- [Decking Board Calculator](https://www.tallyard.com/deck-calculator): Estimate deck surface area and a rough decking-board quantity for a simple rectangle. This does not size or design the supporting structure.
+- [Flooring Package Calculator](https://www.tallyard.com/flooring-calculator): Estimate flooring package count from rectangular area, package coverage printed on the label, and an allowance you select.
+- [Soil Volume Calculator](https://www.tallyard.com/topsoil-calculator): Estimate soil volume from a rectangular area and user-selected depth, with an optional package-count estimate for a selected bag size.
+- [Sod Area and Piece Calculator](https://www.tallyard.com/sod-calculator): Estimate lawn area and piece count from a rectangular measurement, selected package format, and user-set planning allowance.
+- [Asphalt Calculator](https://www.tallyard.com/asphalt-calculator): Estimate asphalt volume and approximate weight from area, selected compacted thickness, and an explicit density assumption. Not a pavement design.
+- [Lumber Board-Foot and Lineal-Length Worksheet](https://www.tallyard.com/lumber-calculator): Calculate nominal board-foot and lineal-foot totals from a selected size, length, quantity, and optional user-selected allowance. No price or weight estimate.
+- [Stair Geometry Estimator](https://www.tallyard.com/stair-calculator): Estimate equalized riser count and geometric rise/run from user-selected dimensions. Not a code check or construction cut sheet.
+- [Reinforcing Bar Grid Geometry Estimator](https://www.tallyard.com/rebar-calculator): Estimate the number and gross length of grid runs from a rectangular footprint and user-selected maximum spacing. Not reinforcement design or a bar order list.
+- [Brick Quantity Estimator](https://www.tallyard.com/brick-calculator): Estimate brick count from net wall area, product-specific unit coverage, and a user-selected allowance. Does not estimate mortar or design a wall.
+- [Wallpaper Roll-Coverage Estimator](https://www.tallyard.com/wallpaper-calculator): Estimate roll count from net measured wall area, exact product-label coverage, and a user-selected allowance. Does not account for pattern or installation layout.
+- [Shower Tile Package Calculator](https://www.tallyard.com/shower-tile-calculator): Estimate tile packages from a user-measured total tiled area, exact package coverage, and a selected planning allowance.
+- [Backsplash Tile Package Estimator](https://www.tallyard.com/backsplash-calculator): Estimate backsplash tile packages from measured tiled area, exact package coverage, and a user-selected allowance.
+- [Vanity Wall-Width Worksheet](https://www.tallyard.com/vanity-calculator): Calculate the wall width remaining after the clearances you enter. Does not recommend a vanity or check bathroom-code clearances.
+- [Countertop Calculator](https://www.tallyard.com/countertop-calculator): Estimate countertop surface area and a separate island preset from simple measurements. This is not a fabrication or slab-order plan.
+- [Siding Area Worksheet](https://www.tallyard.com/siding-calculator): Estimate cladding area from user-measured net wall surfaces and a chosen planning allowance. Does not estimate siding packages, trim, cost, or installation requirements.
+- [Gutter-Run Length Worksheet](https://www.tallyard.com/gutter-calculator): Sum user-measured gutter runs and apply a chosen planning allowance. Does not size gutters, downspouts, or drainage systems.
+- [Heating and Cooling Load Conversion Worksheet](https://www.tallyard.com/heat-pump-calculator): Convert user-provided heating and cooling loads to ton-equivalent arithmetic. This worksheet does not calculate building loads or select equipment.
+- [Water-Heating Rate Conversion Worksheet](https://www.tallyard.com/water-heater-calculator): Convert user-entered water flow and temperature rise to a theoretical heat-transfer rate. Does not size or select a water heater.
+- [Extension Cord Voltage-Drop Estimator](https://www.tallyard.com/extension-cord-calculator): Estimate resistive voltage drop for a user-selected copper conductor gauge, current, length, and voltage. Does not recommend or certify a cord's safe load.
+- [Attic Ventilation Ratio Worksheet](https://www.tallyard.com/attic-ventilation-calculator): Illustrative arithmetic for a user-selected attic-area ratio. Does not design a ventilation system or recommend vent products or quantities.
+- [Pool Chlorine Mass Estimator](https://www.tallyard.com/pool-chlorine-calculator): Estimate available-chlorine mass from a measured ppm gap, then estimate product mass only when the label gives available chlorine by weight. Not a dosing recommendation.
+- [Shed Surface Area Calculator](https://www.tallyard.com/shed-calculator): Estimate floor, wall, and simple gable-roof sheathing quantities from dimensions. This is an area takeoff, not a framing plan or structural design.
+- [Rainfall Runoff Volume Estimator](https://www.tallyard.com/rainwater-calculator): Estimate a rainfall-event runoff volume from a horizontal catchment area, rainfall depth, and user-selected capture factor.
+- [Snow Load Calculator](https://www.tallyard.com/snow-load-calculator): Approximate weight of a uniform snow and ice layer. This does not determine a roof's structural capacity or whether it is safe.
+- [Straight-Wall Spacing Count Estimator](https://www.tallyard.com/stud-spacing-calculator): Estimate evenly spaced points along a straight wall length from user-selected spacing. Does not design framing or count openings and connections.
+- [Drainage Fixture-Unit Worksheet](https://www.tallyard.com/drain-pipe-calculator): Add illustrative drainage fixture-unit loads using selected IPC 2021 residential fixture assumptions. Does not size drain, branch, stack, sewer, or vent piping.
+- [Kitchen Cabinet Run Calculator](https://www.tallyard.com/kitchen-cabinet-calculator): Estimate cabinet run length and rough module count from wall measurements. Confirm openings, corners, fillers, and cabinet sizes in a final plan.
+- [Garage Door Opening Measurement Worksheet](https://www.tallyard.com/garage-door-calculator): Record entered opening and clearance dimensions and calculate rectangular opening area. Does not select a door, track, spring, opener, or price.
+- [Window Rectangle Area Calculator](https://www.tallyard.com/window-sizing-calculator): Calculate the area of a user-entered rectangular window dimension pair. Does not determine egress, glazing, ventilation, rough openings, or code compliance.
+- [Fireplace Opening Area Calculator](https://www.tallyard.com/chimney-calculator): Calculate the geometric area of a rectangular fireplace opening. This tool does not size a flue, chimney, liner, or vent system.
+- [Mortar Bag Estimator](https://www.tallyard.com/mortar-calculator): Estimate mortar bags from masonry unit count, exact package coverage, and a user-selected allowance. Does not select mortar type or give installation advice.
+- [Furnace Replacement Quote Worksheet](https://www.tallyard.com/furnace-replacement-cost-calculator): Add line items entered from a written furnace-replacement quote. Does not size equipment or estimate current prices.
+- [Net Clear Opening Area Calculator](https://www.tallyard.com/egress-window-calculator): Calculate area from user-entered net clear opening dimensions. Does not determine egress compliance or suitability as an emergency exit.
+- [Stair Geometry Calculator](https://www.tallyard.com/deck-stair-calculator): Explore equal-rise stair geometry from total rise, a user-selected target riser height, and tread run. Does not provide code checks or construction plans.
+- [Hardwood Flooring Quote Worksheet](https://www.tallyard.com/hardwood-flooring-cost-calculator): Calculate a subtotal from measured area and per-square-foot rates copied from a written quote. Tallyard does not supply current material or labor prices.
+- [Hardwood Refinishing Quote Worksheet](https://www.tallyard.com/hardwood-floor-refinishing-cost-calculator): Calculate a subtotal from measured floor area and a per-area rate and extras copied from a written refinishing quote. No current market prices are assumed.
 
-For complete methodology on every calculator, see /llms-full.txt.
+## Guides
 
-Each entry is: name — formula — source standard — URL.
+- [Vinyl vs fiber-cement siding: compare products and bids](https://www.tallyard.com/guides/vinyl-vs-fiber-cement-siding): Compare exact siding products, installation scope, maintenance instructions, and local written quotes for your home.
+- [Composite vs pressure-treated vs cedar decking](https://www.tallyard.com/guides/composite-vs-pressure-treated-vs-cedar-deck): Compare exact decking products, maintenance instructions, warranty scope, and complete project quotes without a generic lifecycle-cost verdict.
+- [Heat pump vs furnace + AC: comparing project-specific costs](https://www.tallyard.com/guides/heat-pump-vs-furnace): Compare system designs, complete installation scope, local energy prices, and current incentives for your home.
+- [Construction Material Allowance: Plan Waste by Project](https://www.tallyard.com/guides/waste-factor-reference): How to set and verify a project-specific material allowance using product coverage, layout, and supplier terms.
+- [Residential Code Reference: Verify Local Requirements](https://www.tallyard.com/guides/residential-code-limits-reference): A practical checklist for identifying the code edition, local amendments, and project-specific rules that apply to residential work.
+- [Joist Span Reference: Inputs to Verify Before Building](https://www.tallyard.com/guides/joist-span-reference): Learn which project details determine joist spans and where to verify structural requirements for your location.
 
-### Drywall
-
-- Drywall: sheets = ⌈((wall area + ceiling area) ÷ sheet area) × (1 + waste)⌉. Source: US Gypsum Company — Drywall Installation Guide. [Drywall](/drywall-calculator)
-
-### Electrical
-
-- Drain Pipe: total DFU = sum(fixtures × DFU rating); pipe size per IPC/UPC tables (toilet line ≥ 3\. Source: IPC 2021 — Drainage Fixture Units. [Drain Pipe](/drain-pipe-calculator)
-- Extension Cord: smallest AWG where ampacity at given length ≥ load; voltage drop = 2 × I × R × L / 1000. Source: OSHA — Extension Cord Safety. [Extension Cord](/extension-cord-calculator)
-- Wire Size: smallest AWG where ampacity ≥ load AND voltage drop ≤ limit (VD = 2 × I × R × L / 1000). Source: NEC Table 310.16 — Conductor Ampacity. [Wire Size](/wire-size-calculator)
-
-### Flooring
-
-- Backsplash: tiles = ⌈((linear ft × height − outlets − window) × 1.15) ÷ tile area⌉. Source: Tile Council of North America. [Backsplash](/backsplash-calculator)
-- Countertop: area = (linear ft × depth) + island + waste; linear edge = main front + island perimeter. Source: NKBA — Kitchen Planning Guidelines. [Countertop](/countertop-calculator)
-- Flooring: boxes = ⌈(area × (1 + waste)) ÷ sq ft per box⌉. Source: National Wood Flooring Association (NWFA). [Flooring](/flooring-calculator)
-- Grout: lb = (tile perimeter × joint × thickness × 150) ÷ (tile area × 12) × floor area × (1 + waste). Source: Mapei — Grout Coverage Chart. [Grout](/grout-calculator)
-- Kitchen Cabinet: base ft = perimeter − appliances; upper ft = perimeter × 70-75%; cabinets = ⌈ft × 12 ÷ 24⌉. Source: NKBA — Kitchen Planning Guidelines. [Kitchen Cabinet](/kitchen-cabinet-calculator)
-- Shower Tile: tiles = ⌈((3 walls + niche + floor) × 1.15) ÷ tile area⌉. Source: Tile Council of North America — Wet Area Installation. [Shower Tile](/shower-tile-calculator)
-- Tile: tiles = ⌈(area ÷ tile size) × (1 + waste)⌉, boxes = ⌈tiles ÷ per box⌉. Source: Tile Council of North America — Installation Handbook. [Tile](/tile-calculator)
-- Vanity: recommended = largest standard width (18-84\. Source: IRC 2021 Chapter 3 — Plumbing Fixtures. [Vanity](/vanity-calculator)
-
-### HVAC
-
-- BTU: BTU = area × 20 × height × climate × sun + occupancy adjustment. Source: Energy Star — Room Air Conditioners. [BTU](/btu-calculator)
-- Heat Pump: BTU = sqft × climate factor × insulation × ceiling × windows; tons = BTU ÷ 12,000. Source: ACCA Manual J — Residential Load Calculation. [Heat Pump](/heat-pump-calculator)
-- Water Heater: tank: size = peak hour demand ÷ 1.3; tankless: GPM = peak simultaneous, BTU = GPM × temp rise × 500. Source: US DOE — Water Heater Sizing. [Water Heater](/water-heater-calculator)
-
-### Insulation
-
-- Insulation: bags = ⌈(area × (1 + waste)) ÷ bag coverage⌉ at R-value for climate zone. Source: US DOE — Insulation R-Value Recommendations. [Insulation](/insulation-calculator)
-
-### Landscaping
-
-- Deck: boards = ⌈area ÷ board coverage × 1.1 ÷ 16⌉; joists = ⌈length ÷ spacing⌉ + 1. Source: IRC 2021 — Deck Design Provisions. [Deck](/deck-calculator)
-- Fence: posts = ⌈length ÷ spacing⌉ + 1 + gates × 2 + corners, pickets = length × 12 ÷ picket width. Source: This Old House — Fence Installation Guide. [Fence](/fence-calculator)
-- Gravel: volume = area × depth, weight = volume × density (tons per yd³ or tonnes per m³). Source: Aggregate Research — Gravel Density Reference. [Gravel](/gravel-calculator)
-- Mulch: volume = area × depth, converted to cubic yards or meters (or bags). Source: University of Maryland Extension — Mulch Basics. [Mulch](/mulch-calculator)
-- Paver: pavers = ⌈area ÷ paver area × (1 + pattern waste)⌉; includes base gravel and bedding sand. Source: ICPI — Interlocking Concrete Pavement Institute. [Paver](/paver-calculator)
-- Pool Chlorine: dose = (volume ÷ 10,000) × ppm needed × product factor (oz per 10k gal per ppm). Source: Pool & Hot Tub Alliance (PHTA). [Pool Chlorine](/pool-chlorine-calculator)
-- Rainwater Harvesting: gallons = roof ft² × rainfall inches × 0.623 × efficiency. Source: American Rainwater Catchment Systems Association. [Rainwater Harvesting](/rainwater-calculator)
-- Sod: pieces = ⌈(area × (1 + shape waste)) ÷ coverage per piece⌉. Source: Turfgrass Producers International. [Sod](/sod-calculator)
-- Topsoil: volume = area × depth, converted to cubic yards/meters (plus tons and bags). Source: Penn State Extension — Soil and Composting. [Topsoil](/topsoil-calculator)
-
-### Lumber
-
-- Lumber: board feet = (thickness × width × length_ft) ÷ 12, per board × quantity with waste. Source: American Lumber Standards Committee. [Lumber](/lumber-calculator)
-- Shed: floor + walls + roof framing + sheathing for any shed footprint and wall height. Source: IRC 2021 — Detached Accessory Structures. [Shed](/shed-calculator)
-- Stair: risers = round(total rise ÷ ideal riser); treads = risers − 1; stringer = √(rise² + run²). Source: IRC 2021 Chapter 3 — Stairways. [Stair](/stair-calculator)
-- Stud Spacing: studs = ⌈length × 12 ÷ spacing⌉ + 1 + corners × 2 + doors × 6 + windows × 8. Source: IRC 2021 — Wood Wall Framing. [Stud Spacing](/stud-spacing-calculator)
-- Window Sizing: openable = glass × window type factor; egress = 5.7 ft² min + 20\. Source: IRC 2021 Section R310 — Emergency Escape and Rescue Openings. [Window Sizing](/window-sizing-calculator)
-
-### Masonry
-
-- Asphalt: tons = area × thickness × density × (1 + waste), where density = 145 lb/ft³. Source: National Asphalt Pavement Association (NAPA). [Asphalt](/asphalt-calculator)
-- Brick: bricks = area × (144 ÷ ((brick L + joint) × (brick H + joint))) × wythe × (1 + waste). Source: Brick Industry Association — Technical Notes. [Brick](/brick-calculator)
-- Chimney: masonry fireplace: flue area = opening area ÷ 10 (or ÷ 8 if < 15 ft tall); wood stove: match outlet diameter. Source: IRC 2021 Chapter 10 — Chimneys and Fireplaces. [Chimney](/chimney-calculator)
-- Concrete: volume = area × thickness × (1 + waste), converted to cubic yards or meters. Source: Portland Cement Association — Concrete Basics. [Concrete](/concrete-calculator)
-- Mortar: bags = (wall_area_ft² × bricks_per_ft² × joint_volume_per_brick) ÷ coverage_per_bag. Source: Brick Industry Association — Technical Note 8 (Mortar for Brick Masonry). [Mortar](/mortar-calculator)
-- Rebar: bars = ⌈dimension ÷ spacing⌉ + 1 per direction; total = (long × long length) + (trans × trans length) + perimeter. Source: CRSI — Concrete Reinforcing Steel Institute. [Rebar](/rebar-calculator)
-
-### Paint
-
-- Paint: paint = (perimeter × height − doors − windows) × coats ÷ coverage. Source: Benjamin Moore — Paint Coverage Chart. [Paint](/paint-calculator)
-- Wallpaper: rolls = ⌈((perimeter × height − openings) × (1 + pattern waste)) ÷ roll coverage⌉. Source: Wallcoverings Association — Estimating Guide. [Wallpaper](/wallpaper-calculator)
-
-### Roofing
-
-- Attic Ventilation: NFVA = attic area ÷ ratio (1:300 or 1:150), split 50/50 between intake and exhaust. Source: FHA Minimum Property Standards. [Attic Ventilation](/attic-ventilation-calculator)
-- Garage Door: door ≤ 10ft = single, ≤ 18ft = double; opener HP by area × material weight factor. Source: DASMA — Door & Access Systems Manufacturers Association. [Garage Door](/garage-door-calculator)
-- Gutter: gutter = roof edge ft; downspouts = ⌈effective area ÷ (600-1200 ft² per DS)⌉; size = 5\. Source: SMACNA — Architectural Sheet Metal Manual. [Gutter](/gutter-calculator)
-- Roofing: bundles = ⌈(footprint × slope × (1 + waste)) ÷ square size × 3⌉ + ridge caps. Source: GAF — Roofing Calculator Guide. [Roofing](/roofing-calculator)
-- Siding: squares = ((perimeter × height + gables − openings) × (1 + waste)) ÷ 100. Source: James Hardie — Installation Guide. [Siding](/siding-calculator)
-- Snow Load: load (psf) = snow depth × density + ice × 57; compare vs design load (code-specified). Source: ASCE 7 — Minimum Design Loads. [Snow Load](/snow-load-calculator)
-
-### Solar
-
-- Solar Panel: panels = ⌈(daily kWh ÷ (sun hours × efficiency) × 1000) ÷ panel watts⌉. Source: NREL PVWatts Calculator. [Solar Panel](/solar-calculator)
-
-## Buying guides
-
-- Vinyl vs fiber cement siding: 30-year total-cost-of-ownership comparison. Fiber cement lasts 50+ years vs vinyl 20-40 and wins on 30-year cost and fire rating; vinyl wins on upfront cost. URL: /guides/vinyl-vs-fiber-cement-siding
-- Composite vs pressure-treated vs cedar decking: 20-year cost analysis. Pressure-treated is cheapest installed but most expensive over 20 years because its surface boards need replacing around year 15. URL: /guides/composite-vs-pressure-treated-vs-cedar-deck
-- Heat pump vs furnace + AC: climate-zone operating-cost comparison with federal tax-credit math. Heat pumps save \$300-500/yr in zones 1-4, break even in zone 5, and lose to gas furnaces in zones 6-7. URL: /guides/heat-pump-vs-furnace
-
-## Project planners
-
-Multi-calculator tools that generate a complete material list from one set of inputs.
-
-- Remodel a bathroom (5 calculators): /planner/remodel-a-bathroom
-- Build a deck (4 calculators): /planner/build-a-deck
-- Replace a roof (3 calculators): /planner/replace-a-roof
-- Build a patio (3 calculators): /planner/build-a-patio
-- Install a fence (2 calculators): /planner/install-a-fence
-- Paint a room (2 calculators): /planner/paint-a-room
-
-## Cost guides
-
-Material + labor cost ranges (2026 US averages): deck, roof replacement, fence, house painting, flooring, bathroom remodel, concrete, siding, solar, HVAC replacement. Index: /guides
-
-## Contact
-
-- Website: https://www.tallyard.com
-- Email: hello@tallyard.com
-- Author: Ash K. (founder)
+Project-cost guides: https://www.tallyard.com/guides
+Methodology and limitations: https://www.tallyard.com/methodology
+Detailed calculator descriptions: https://www.tallyard.com/llms-full.txt

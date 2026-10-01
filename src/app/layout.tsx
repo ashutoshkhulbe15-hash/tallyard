@@ -53,11 +53,11 @@ export const metadata: Metadata = {
     template: "%s | Tallyard",
   },
   description:
-    "Transparent calculators for home improvement and DIY. Every formula public, every source cited, every figure checked against published standards.",
+    "Free home-improvement calculators and worksheets for measurements, quantities, and quote comparisons. Review each tool's inputs and assumptions.",
   openGraph: {
     title: "Tallyard: Calculators that show their work",
     description:
-      "Transparent calculators for home improvement and DIY. Every formula public, every source cited.",
+      "Free home-improvement calculators and worksheets for measurements, quantities, and quote comparisons.",
     url: "https://www.tallyard.com",
     siteName: "Tallyard",
     type: "website",
@@ -87,7 +87,7 @@ const orgSchema = {
         height: 630,
       },
       description:
-        "Free home improvement calculators that show their work. Every formula public, every source cited against published standards (IRC, NEC, AWC, TCNA).",
+        "Free home-improvement calculators and worksheets for measurements, quantities, and quote comparisons.",
       founder: {
         "@type": "Person",
         name: "Ash K.",

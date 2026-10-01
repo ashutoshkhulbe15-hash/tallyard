@@ -6,14 +6,13 @@ import { getConfig } from "@/configs";
 const SLUG = "flooring-calculator";
 
 export const metadata: Metadata = {
-  title: "Flooring Calculator: Square Footage & Installation Cost",
+  title: "Flooring Package Calculator",
   description:
-    "Free flooring calculator: figure square footage, waste, and installation cost per sq ft for hardwood, laminate, vinyl, and tile.",
+    "Estimate flooring packages from rectangular room area, exact package coverage, and a planning allowance you choose.",
   alternates: { canonical: "/flooring-calculator" },
   openGraph: {
-    title: "Flooring Calculator: Square Footage & Installation Cost",
-    description:
-      "Free flooring calculator: square footage, waste, and installation cost per sq ft for hardwood, laminate, vinyl, and tile.",
+    title: "Flooring Package Calculator",
+    description: "Estimate flooring package count from area and product-label coverage; cost and installation are not included.",
     url: "https://www.tallyard.com/flooring-calculator",
     type: "website",
   },
@@ -24,7 +23,7 @@ export default function FlooringCalculatorPage() {
   return (
     <>
       {config && <SchemaScript config={config} />}
-      <CalculatorPage slug={SLUG} illustrationValue="10 BOXES" />
+      <CalculatorPage slug={SLUG} illustrationValue="BOXES" />
     </>
   );
 }

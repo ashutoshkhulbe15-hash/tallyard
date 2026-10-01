@@ -6,14 +6,13 @@ import { getConfig } from "@/configs";
 const SLUG = "tile-calculator";
 
 export const metadata: Metadata = {
-  title: "Tile Calculator: How Many Tiles Do I Need",
+  title: "Tile Package Calculator",
   description:
-    "Calculate tiles and boxes needed for any floor or wall. Accounts for cuts, waste, and patterns.",
+    "Estimate tile packages from rectangular area, package-label coverage, and a user-selected planning allowance.",
   alternates: { canonical: "/tile-calculator" },
   openGraph: {
-    title: "Tile Calculator: How Many Tiles Do I Need",
-    description:
-      "Calculate tiles and boxes needed for any floor or wall. Accounts for cuts, waste, and patterns.",
+    title: "Tile Package Calculator",
+    description: "Estimate tile packages from area and product-label coverage; individual tile count and layout are not included.",
     url: "https://www.tallyard.com/tile-calculator",
     type: "website",
   },
@@ -24,7 +23,7 @@ export default function TileCalculatorPage() {
   return (
     <>
       {config && <SchemaScript config={config} />}
-      <CalculatorPage slug={SLUG} illustrationValue="132 TILES" />
+      <CalculatorPage slug={SLUG} illustrationValue="TILE BOXES" />
     </>
   );
 }

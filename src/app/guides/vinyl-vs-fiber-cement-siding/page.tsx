@@ -15,7 +15,6 @@ export const metadata: Metadata = {
     description: config.description,
     url: `https://www.tallyard.com/guides/${SLUG}`,
     type: "article",
-    publishedTime: config.publishedAt,
   },
 };
 

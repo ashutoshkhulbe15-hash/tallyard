@@ -8,11 +8,11 @@ const SLUG = "snow-load-calculator";
 export const metadata: Metadata = {
   title: "Snow Load Calculator: Roof Snow Weight by Depth",
   description:
-    "Snow weight per square foot from depth and snow type, compared against your roof design load. Covers ground vs roof snow load and ASCE 7 conversion.",
+    "Estimate the weight of a uniform snow and ice layer from depth and roof area. Does not determine roof capacity or safety.",
   alternates: { canonical: "/snow-load-calculator" },
   openGraph: {
     title: "Snow Load Calculator: Roof Snow Weight by Depth",
-    description: "Calculate roof snow load and compare to design capacity.",
+    description: "Estimate snow and ice weight; structural capacity is not calculated.",
     url: "https://www.tallyard.com/snow-load-calculator",
     type: "website",
   },

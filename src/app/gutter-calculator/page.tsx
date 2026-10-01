@@ -6,14 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "gutter-calculator";
 
 export const metadata: Metadata = {
-  title: "Gutter Calculator: Size, Downspouts & Cost Estimate",
-  description:
-    "Free gutter calculator: linear feet, downspouts, and 5-inch vs 6-inch sizing for any roof. Includes slope, material costs, and how to measure.",
+  title: "Gutter-Run Length Worksheet",
+  description: "Sum measured gutter runs and apply a user-selected allowance; no drainage sizing or component takeoff.",
   alternates: { canonical: "/gutter-calculator" },
   openGraph: {
-    title: "Gutter Calculator: Size, Downspouts & Cost Estimate",
-    description:
-      "Free gutter calculator: linear feet, downspouts, and 5-inch vs 6-inch sizing for any roof. Includes slope, material costs, and how to measure.",
+    title: "Gutter-Run Length Worksheet",
+    description: "Measured run arithmetic only; no hydraulic sizing or drainage design.",
     url: "https://www.tallyard.com/gutter-calculator",
     type: "website",
   },
@@ -24,7 +22,7 @@ export default function GutterCalculatorPage() {
   return (
     <>
       {config && <SchemaScript config={config} />}
-      <CalculatorPage slug={SLUG} illustrationValue="168 LF" />
+      <CalculatorPage slug={SLUG} illustrationValue="RUN LENGTH" />
     </>
   );
 }

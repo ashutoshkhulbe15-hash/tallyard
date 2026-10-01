@@ -49,8 +49,6 @@ export interface GuideConfig {
   category: GuideCategory;
   /** Optional value label overlaid on the banner illustration */
   heroValue?: string;
-  /** ISO date (for schema + display) */
-  publishedAt: string;
   /** Human-readable read time */
   readTime: string;
   /** One-sentence verdict — the answer the reader came for. Rendered as a

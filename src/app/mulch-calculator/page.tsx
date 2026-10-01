@@ -6,14 +6,13 @@ import { getConfig } from "@/configs";
 const SLUG = "mulch-calculator";
 
 export const metadata: Metadata = {
-  title: "Mulch Calculator: How Many Yards Of Mulch",
+  title: "Mulch Volume Calculator",
   description:
-    "Calculate cubic yards of mulch for any garden bed. Bulk or bags, any depth, with clear math.",
+    "Estimate mulch volume from rectangular area and selected depth, with an optional count for nominal 2 ft³ bags.",
   alternates: { canonical: "/mulch-calculator" },
   openGraph: {
-    title: "Mulch Calculator: How Many Yards Of Mulch",
-    description:
-      "Calculate cubic yards of mulch for any garden bed. Bulk or bags.",
+    title: "Mulch Volume Calculator",
+    description: "Estimate mulch volume or nominal bag count from area and selected depth.",
     url: "https://www.tallyard.com/mulch-calculator",
     type: "website",
   },
@@ -24,7 +23,7 @@ export default function MulchCalculatorPage() {
   return (
     <>
       {config && <SchemaScript config={config} />}
-      <CalculatorPage slug={SLUG} illustrationValue="0.75 YD³" />
+      <CalculatorPage slug={SLUG} illustrationValue="VOLUME" />
     </>
   );
 }

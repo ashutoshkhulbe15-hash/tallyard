@@ -1,274 +1,75 @@
-import { BrickCalculatorExpansion } from "@/content/brick-expansion";
 import type { CalculatorConfig } from "@/lib/types";
-import { round, roundUp, formatNumber } from "@/lib/format";
+import { round, formatNumber, ceilQuantity } from "@/lib/format";
 
 export const brickCalculatorConfig: CalculatorConfig = {
   slug: "brick-calculator",
-  title: "Brick Calculator",
-  description:
-    "Bricks and mortar bags for any wall or project. Accounts for brick size, mortar joint width, and typical 10% cut waste.",
+  title: "Brick Quantity Estimator",
+  description: "Estimate brick count from net wall area, product-specific unit coverage, and a user-selected allowance. Does not estimate mortar or design a wall.",
   categoryLabel: "Masonry",
   category: "concrete",
-
-  bannerHeadline: "Build sturdy.",
-  bannerTags: ["Bricks + mortar", "All common sizes", "Cuts and waste"],
-
+  bannerHeadline: "Estimate brick quantity.",
+  bannerTags: ["Net wall area", "Enter product coverage", "Not structural design"],
   inputs: [
+    { id: "wallArea", label: "Net wall area (openings removed)", type: "number", unitImperial: "ft²", unitMetric: "m²", defaultImperial: 160, defaultMetric: 14.8645, min: 0.01, step: 1 },
     {
-      id: "length",
-      label: "Wall length",
-      type: "number",
-      unitImperial: "ft",
-      unitMetric: "m",
-      defaultImperial: 20,
-      defaultMetric: 6,
-      min: 1,
-      step: 0.5,
+      id: "unitsPerArea", label: "Units per area (confirm layout/supplier data)", type: "number",
+      unitImperial: "bricks/ft²", unitMetric: "bricks/m²", defaultImperial: "", defaultMetric: "", min: 0.01, step: 0.01,
+      help: "Enter coverage matching the exact brick, joint, bond, and wall configuration.",
     },
     {
-      id: "height",
-      label: "Wall height",
-      type: "number",
-      unitImperial: "ft",
-      unitMetric: "m",
-      defaultImperial: 8,
-      defaultMetric: 2.4,
-      min: 1,
-      step: 0.5,
-    },
-    {
-      id: "brickType",
-      label: "Brick size",
-      type: "select",
-      defaultImperial: "modular",
+      id: "allowance", label: "Planning allowance", type: "select", defaultImperial: 0.1,
       options: [
-        { label: 'Modular (3.625 × 2.25 × 7.625")', value: "modular" },
-        { label: 'Standard (3.625 × 2.25 × 8")', value: "standard" },
-        { label: 'Queen (3.125 × 2.75 × 9.625")', value: "queen" },
-        { label: 'Jumbo (3.625 × 2.75 × 8")', value: "jumbo" },
+        { label: "0%", value: 0 }, { label: "5%", value: 0.05 },
+        { label: "10%", value: 0.1 }, { label: "15%", value: 0.15 },
       ],
-    },
-    {
-      id: "jointWidth",
-      label: "Mortar joint width",
-      type: "select",
-      defaultImperial: 0.375,
-      options: [
-        { label: '3/8" / 10 mm (standard)', value: 0.375 },
-        { label: '1/2" / 13 mm (wide)', value: 0.5 },
-        { label: '1/4" / 6 mm (narrow)', value: 0.25 },
-      ],
-    },
-    {
-      id: "thickness",
-      label: "Wall thickness",
-      type: "select",
-      defaultImperial: "single",
-      options: [
-        { label: "Single wythe (veneer)", value: "single" },
-        { label: "Double wythe (structural)", value: "double" },
-      ],
-      help: "Most modern brick is single-wythe veneer on a framed wall",
-    },
-    {
-      id: "waste",
-      label: "Waste factor",
-      type: "select",
-      defaultImperial: 10,
-      options: [
-        { label: "5%", value: 5 },
-        { label: "10%", value: 10 },
-        { label: "15%", value: 15 },
-      ],
+      help: "User-selected scenario, not an industry or pattern recommendation.",
     },
   ],
-
   calculate: (values, units) => {
-    const L = Number(values.length) || 0;
-    const H = Number(values.height) || 0;
-    const brickType = String(values.brickType || "modular");
-    const jointWidth = Number(values.jointWidth) || 0.375;
-    const thickness = String(values.thickness || "single");
-    const waste = Number(values.waste) || 10;
-
-    // Brick dimensions in inches (height × length)
-    const brickMap: Record<string, { h: number; l: number; perSqFt: number }> = {
-      modular: { h: 2.25, l: 7.625, perSqFt: 6.86 },
-      standard: { h: 2.25, l: 8, perSqFt: 6.55 },
-      queen: { h: 2.75, l: 9.625, perSqFt: 4.71 },
-      jumbo: { h: 2.75, l: 8, perSqFt: 5.49 },
-    };
-    const brick = brickMap[brickType] || brickMap["modular"];
-
-    // Adjust bricks per sq ft based on joint width
-    // Standard table values assume 3/8" joints. Wider joints = fewer bricks per sq ft.
-    // Formula: bricks per sqft = 144 / ((brick.l + joint) × (brick.h + joint))
-    const bricksPerSqFtWithJoint =
-      144 / ((brick.l + jointWidth) * (brick.h + jointWidth));
-
-    // Wall area
-    const area = L * H;
-    const areaSqFt = units === "metric" ? area * 10.764 : area;
-
-    // Wythe multiplier
-    const wytheMultiplier = thickness === "double" ? 2 : 1;
-
-    // Raw brick count
-    const rawBricks = areaSqFt * bricksPerSqFtWithJoint * wytheMultiplier;
-    const bricksNeeded = Math.ceil(rawBricks * (1 + waste / 100));
-
-    // Mortar: approximately 1 cubic foot per 30 bricks for 3/8" joints
-    // Adjusts with joint width
-    const mortarFactor = 0.375 / jointWidth; // bricks per cubic foot at different joint widths
-    const mortarBricksPerCuFt = 30 * mortarFactor;
-    const mortarCuFt = bricksNeeded / mortarBricksPerCuFt;
-    // A standard 80-lb bag of mortar yields about 0.75 cu ft
-    const mortarBags = Math.ceil(mortarCuFt / 0.75);
-
+    const wallArea = Number(values.wallArea);
+    const unitsPerArea = Number(values.unitsPerArea);
+    const allowance = Number(values.allowance);
+    if (![wallArea, unitsPerArea, allowance].every(Number.isFinite) || wallArea <= 0 || unitsPerArea <= 0 ||
+        ![0, 0.05, 0.1, 0.15].includes(allowance)) {
+      throw new Error("Enter a positive net wall area, product- and layout-specific unit coverage, and a listed planning allowance.");
+    }
+    const grossUnits = wallArea * unitsPerArea;
+    const count = ceilQuantity(grossUnits * (1 + allowance));
     const areaUnit = units === "metric" ? "m²" : "ft²";
-    const displayArea = units === "metric" ? area : areaSqFt;
-
     return {
-      value: bricksNeeded,
-      unit: bricksNeeded === 1 ? "brick" : "bricks",
-      valueRounded: bricksNeeded,
+      value: count,
+      unit: count === 1 ? "brick" : "bricks",
+      valueRounded: count,
       breakdown: [
-        { label: "area", value: `${formatNumber(round(displayArea, 1))} ${areaUnit}` },
-        { label: "wythe", value: thickness === "double" ? "double" : "single" },
-        { label: "mortar bags (80 lb)", value: `${mortarBags}` },
-        { label: "bricks per ft²", value: `${formatNumber(round(bricksPerSqFtWithJoint, 2))}` },
+        { label: "net wall area", value: `${formatNumber(round(wallArea, 2))} ${areaUnit}` },
+        { label: "entered product coverage", value: `${formatNumber(round(unitsPerArea, 2))} bricks/${areaUnit}` },
+        { label: "selected allowance", value: `${round(allowance * 100, 0)}%` },
+        { label: "estimated brick quantity", value: `${formatNumber(count)} bricks` },
       ],
       formulaSteps: [
-        `wall area = ${L} × ${H} = ${formatNumber(round(areaSqFt, 1))} ft²${units === "metric" ? ` (${formatNumber(round(area, 2))} m²)` : ""}`,
-        `brick size = ${brick.l}" × ${brick.h}" (${brickType})`,
-        `joint = ${jointWidth}"`,
-        `bricks per ft² = 144 ÷ ((${brick.l} + ${jointWidth}) × (${brick.h} + ${jointWidth})) = ${formatNumber(round(bricksPerSqFtWithJoint, 2))}`,
-        `wythe = ${thickness}, multiplier = ${wytheMultiplier}×`,
-        `raw bricks = ${formatNumber(round(areaSqFt, 1))} × ${formatNumber(round(bricksPerSqFtWithJoint, 2))} × ${wytheMultiplier} = ${formatNumber(round(rawBricks, 0))}`,
-        `with ${waste}% waste = ${bricksNeeded} bricks`,
-        `mortar ≈ ${bricksNeeded} ÷ ${formatNumber(round(mortarBricksPerCuFt, 1))} bricks/ft³ = ${formatNumber(round(mortarCuFt, 1))} ft³`,
-        `mortar bags (80 lb, ~0.75 ft³/bag) = ⌈${formatNumber(round(mortarCuFt, 1))} ÷ 0.75⌉ = ${mortarBags} bags`,
+        `net wall area = ${round(wallArea, 3)} ${areaUnit}`,
+        `base unit estimate = ${round(wallArea, 3)} × ${round(unitsPerArea, 3)} = ${round(grossUnits, 2)} bricks`,
+        `quantity = ceil(${round(grossUnits, 2)} × (1 + ${round(allowance * 100, 0)}%)) = ${count} bricks`,
+        "Coverage must match actual openings, bond, joint, brick format, and wythe/layout; no mortar quantity is calculated.",
       ],
     };
   },
-
-  howTo: {
-    name: "How to calculate how many bricks you need",
-    description:
-      "Convert wall dimensions to a brick order using modular coverage and a waste factor.",
-    steps: [
-      {
-        name: "Measure the wall area",
-        text: "Length times height per wall section in square feet. Subtract window and door openings.",
-      },
-      {
-        name: "Multiply by bricks per square foot",
-        text: "Modular brick with a 3/8 inch joint covers at 6.9 bricks per square foot of single-wythe wall. Other sizes are in the chart: standard 6.6, queen 5.8, king 4.8.",
-      },
-      {
-        name: "Double for double wythe",
-        text: "An 8 inch solid brick wall is two wythes, so double the count. A veneer over frame is single wythe.",
-      },
-      {
-        name: "Add waste",
-        text: "Use 5 percent for a clean rectangular wall and 10 percent where there are arches, angles, or several openings, since every cut wastes part of a brick.",
-      },
-      {
-        name: "Order the whole job at once",
-        text: "Brick color varies by kiln run and a later top-up order will not match. Compare supplier quotes per thousand bricks, not per cube, since cube counts vary from 400 to 530.",
-      },
-    ],
-  },
-
-  ContentExpansion: BrickCalculatorExpansion,
-
-  formulaDescription:
-    "bricks = area × (144 ÷ ((brick L + joint) × (brick H + joint))) × wythe × (1 + waste)",
-
+  formulaDescription: "bricks = ceil(net wall area × supplier/layout unit coverage × (1 + user-selected allowance))",
   methodology: [
-    "Brick count is calculated from the wall area, the brick size, and the mortar joint width. The formula accounts for the effective area each brick covers (brick dimensions plus joint width on two sides). Smaller bricks mean more per square foot; wider joints reduce the count slightly because each brick covers more total area with the mortar included.",
-    "Brick sizes vary by manufacturer and region. Modular brick (3.625 × 2.25 × 7.625 inches) is the US standard: 6.86 bricks per square foot with 3/8-inch joints. Standard brick is slightly longer (8 inches). Queen and jumbo are larger formats that reduce brick count and labor but cost more per brick.",
-    "Wythe refers to the thickness of the wall in brick layers. Single-wythe (one brick thick) is used for modern veneer, the brick is decorative, with a framed wall behind providing structural support. Double-wythe (two bricks thick, bonded together) was common before 1960 and is still used for structural masonry, garden walls, and chimneys. Double-wythe uses twice as many bricks.",
-    "Mortar calculation is approximate. A cubic foot of mortar typically sets about 30 bricks at 3/8\" joints. Wider joints use proportionally more mortar per brick. Standard 80-pound bags of pre-mixed mortar yield about 0.75 cubic feet each. The calculator adjusts the mortar estimate based on your joint width.",
-    "Waste factor of 10% covers typical cuts at corners, around openings, and breakage during handling. Use 15% for complex masonry with many openings, arches, or decorative patterns; 5% for long straight walls with minimal cuts.",
-    "Not included in this calculator: flashing, weep holes, wall ties (1 per 2.67 sq ft of veneer), expansion joints, lintels over openings, and cleaning materials. For structural walls, also factor in rebar (see rebar calculator) and grout for reinforced cells.",
+    "Enter net wall area after subtracting openings, then provide unit coverage for the exact brick and wall layout. The calculator multiplies those inputs, applies the selected allowance, and rounds up to whole units.",
+    "Coverage can depend on actual unit dimensions, joint width, bond, corners, returns, openings, and wall construction. This tool does not infer a standard brick format or wythe count; confirm the rate with the product supplier, masonry drawings, or installer.",
+    "This is not a wall-design or code check. It does not estimate mortar, lintels, flashing, ties, reinforcement, grout, or firebox/chimney components. Obtain project-specific structural and detailing advice where required.",
   ],
-
   sources: [
-    {
-      name: "BIA Technical Note 10: Dimensioning and Estimating Brick Masonry",
-      url: "https://www.gobrick.com/resources/technical-notes",
-      note: "The modular sizing system and per-square-foot coverage this calculator applies",
-    },
-    {
-      name: "BIA Technical Note 10B: Brick Sizes and Related Information",
-      url: "https://www.gobrick.com/resources/technical-notes",
-      note: "The size chart: modular, queen, king, engineer, and utility dimensions",
-    },
-    {
-      name: "ASTM C216: Facing Brick Specification",
-      url: "https://www.astm.org/c0216-23.html",
-      note: "The quality standard facing brick is graded against",
-    },
-    {
-      name: "ASTM C62: Building Brick Specification",
-      url: "https://www.astm.org/c0062-17.html",
-      note: "The standard for structural common brick",
-    },
-    {
-      name: "Portland Cement Association: Masonry Mortar",
-      url: "https://www.cement.org/cement-concrete/products/masonry",
-      note: "Mortar types and coverage per brick count",
-    },
+    { name: "Brick Industry Association: Technical Notes", url: "https://www.gobrick.com/resources/technical-notes", note: "Brick dimensions and masonry estimating references; confirm unit coverage for the selected product and assembly." },
   ],
-
   related: [
-    { name: "Chimney calculator", slug: "chimney-calculator", description: "Flue sizing for a brick chimney stack" },
-    { name: "Concrete calculator", slug: "concrete-calculator", description: "Cubic yards for footings and slabs" },
-    { name: "Rebar calculator", slug: "rebar-calculator", description: "Reinforcement in brick walls" },
-    { name: "Mortar calculator", slug: "mortar-calculator", description: "Bags and sand for the joints between them" },
+    { name: "Mortar package estimator", slug: "mortar-calculator", description: "Estimate bags from unit count and manufacturer coverage" },
+    { name: "Concrete volume calculator", slug: "concrete-calculator", description: "Geometric concrete volume estimate" },
   ],
-
   faq: [
-    {
-      question: "How many bricks do I need for a 20×8 foot wall?",
-      answer:
-        "For a 20×8 ft single-wythe veneer wall using modular brick with 3/8\" joints and 10% waste, you need about 1,208 bricks plus 45 bags of mortar. Double-wythe structural walls need twice that. Use the calculator with your specific brick type.",
-    },
-    {
-      question: "What's the difference between modular and standard brick?",
-      answer:
-        "Modular brick is 7.625\" long (designed so 4 bricks plus joints = 32\"). Standard brick is 8\" long. Modular is now the most common US brick; standard is older/regional. Both are 2.25\" high and 3.625\" deep. Modular gives you 6.86 bricks per sq ft; standard gives 6.55 per sq ft.",
-    },
-    {
-      question: "How much mortar do I need?",
-      answer:
-        "Approximately 1 cubic foot of mortar per 30 bricks at 3/8\" joints. An 80-lb bag of pre-mixed mortar yields 0.75 cubic feet. For 1,000 bricks, plan on about 45 bags. Buy extra: running out mid-wall means joints that set before you can finish a course.",
-    },
-    {
-      question: "Single-wythe or double-wythe, which do I need?",
-      answer:
-        "Single-wythe (brick veneer over frame or CMU) is standard for modern construction, the brick is decorative cladding, the structure is behind it. Double-wythe is for standalone structural walls: garden walls, chimneys, retaining walls, or older construction methods. Double-wythe uses twice the brick and twice the labor.",
-    },
-    {
-      question: "What's the best mortar joint width?",
-      answer:
-        "3/8 inch is the US standard: sized to make brick coursing dimensions work out nicely. 1/2 inch is used for rougher bricks like handmade or reclaimed. 1/4 inch is used for thin brick veneer and tight modern styles. Wider joints look more traditional; narrower joints look more contemporary.",
-    },
-    {
-      question: "How much do bricks cost?",
-      answer:
-        "Typical range: $0.50-1.50 per brick for standard face brick. Premium or handmade brick: $2-5 per brick. A 1,000-brick wall costs $500-5,000 in bricks alone. Plus mortar ($7-10 per 80-lb bag × 45 bags = $315-450). Plus labor if not DIY.",
-    },
-    {
-      question: "Can I buy partial pallets of brick?",
-      answer:
-        "Usually yes at retail: home centers and masonry yards often sell by the piece or by bundle (500 bricks). Full pallets (typically 500-525 bricks) are cheaper per piece. For large orders, ordering by the pallet is 10-20% cheaper.",
-    },
-    {
-      question: "How do I calculate bricks for a chimney or fireplace?",
-      answer:
-        "Calculate each wall surface separately: front, back, sides. For chimneys with flue liners, the inside wythe counts separately from the outside wythe. A typical residential chimney uses 800-1,500 bricks. For fireplaces, the firebox uses firebrick (different product, different refractory mortar): calculate that separately.",
-    },
+    { question: "How many bricks do I need?", answer: "Enter net wall area and the supplier or layout-specific number of bricks per area for your exact brick, joint, and construction. Select an allowance based on the actual project and round to the supplier's selling unit." },
+    { question: "Does this calculate mortar or structural wall thickness?", answer: "No. It estimates brick count only. Mortar yield, wall thickness, ties, lintels, flashing, reinforcement, and structural suitability need project- and product-specific details." },
+    { question: "Why does the calculator require product coverage?", answer: "Brick formats, joints, bonds, openings, and wall layouts vary. A supplier or masonry takeoff for the selected assembly is more appropriate than assuming one universal bricks-per-area rate." },
   ],
 };

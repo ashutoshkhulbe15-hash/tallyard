@@ -6,13 +6,13 @@ import { getConfig } from "@/configs";
 const SLUG = "drain-pipe-calculator";
 
 export const metadata: Metadata = {
-  title: "Drain Pipe Size Calculator: DFU Chart & Slope",
+  title: "Drainage Fixture-Unit Worksheet",
   description:
-    "Size any drain line with the IPC DFU chart. Fixture unit values, pipe capacity tables, and the 1/4 inch per foot slope rule, all in one calculator.",
+    "Add an illustrative subset of IPC 2021 residential fixture-unit loads. This worksheet does not calculate drain or vent pipe sizes.",
   alternates: { canonical: "/drain-pipe-calculator" },
   openGraph: {
-    title: "Drain Pipe Size Calculator: DFU Chart & Slope",
-    description: "Calculate drain pipe size for any bathroom or kitchen.",
+    title: "Drainage Fixture-Unit Worksheet",
+    description: "Add illustrative IPC 2021 fixture-unit loads; not a pipe-sizing tool.",
     url: "https://www.tallyard.com/drain-pipe-calculator",
     type: "website",
   },
@@ -23,7 +23,7 @@ export default function DrainPipeCalculatorPage() {
   return (
     <>
       {config && <SchemaScript config={config} />}
-      <CalculatorPage slug={SLUG} illustrationValue={`3"`} />
+      <CalculatorPage slug={SLUG} illustrationValue="DFU" />
     </>
   );
 }

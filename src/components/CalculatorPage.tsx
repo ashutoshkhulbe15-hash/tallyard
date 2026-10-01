@@ -5,7 +5,6 @@ import { FeedbackWidget } from "./FeedbackWidget";
 import { PageRail } from "./PageRail";
 import { StickyCalc } from "./StickyCalc";
 import { getConfig } from "@/configs";
-import { getReviewedDate } from "@/lib/schema";
 
 interface CalculatorPageProps {
   slug: string;
@@ -31,14 +30,14 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
       <div className="container-content py-20">
         <h1 className="text-3xl font-bold mb-4">Calculator not found</h1>
         <p className="text-ink-muted">
-          This calculator hasn't been built yet. Check{" "}
+          This calculator hasn&apos;t been built yet. Check{" "}
           <Link
             href="/calculators"
             className="text-accent hover:underline font-medium"
           >
             all calculators
           </Link>{" "}
-          for what's available.
+          for what&apos;s available.
         </p>
       </div>
     );
@@ -48,6 +47,10 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
     .slice(0, 2)
     .map((s) => s.name)
     .join(" and ");
+  const relatedTools = config.related.map((related) => {
+    const target = getConfig(related.slug);
+    return target ? { ...related, name: target.title, description: target.description } : related;
+  });
 
   const railNav = [
     { href: "#calculator", label: "The calculator" },
@@ -70,7 +73,7 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
       ? [
           {
             heading: "Related tools",
-            tools: config.related.slice(0, 4).map((r) => ({
+            tools: relatedTools.slice(0, 4).map((r) => ({
               href: `/${r.slug}`,
               name: r.name,
             })),
@@ -84,7 +87,7 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
         navHeading="On this page"
         nav={railNav}
         toolGroups={railToolGroups}
-        footLines={["✓ FORMULA SHOWN", "SOURCE CITED", "FREE TO USE"]}
+        footLines={["✓ FORMULA SHOWN", config.sources.length ? "SOURCE CITED" : "ENTERED ASSUMPTIONS", "FREE TO USE"]}
       />
 
       <article className="page-main">
@@ -132,11 +135,8 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
                     aria-hidden
                   />
                   <span>
-                    <b className="text-ink font-semibold">Reviewed against</b>{" "}
-                    {reviewedNames}. Formula and sources published below.
-                    <span className="block mt-1.5 font-mono text-[11px] text-ink-faint">
-                      Last reviewed {getReviewedDate(slug).display}
-                    </span>
+                    <b className="text-ink font-semibold">Source references</b>{" "}
+                    include {reviewedNames}. These are not a professional review or approval.
                   </span>
                 </div>
               )}
@@ -265,7 +265,7 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
               Related calculators
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-              {config.related.map((rel) => (
+              {relatedTools.map((rel) => (
                 <Link
                   key={rel.slug}
                   href={`/${rel.slug}`}
@@ -296,7 +296,7 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
               {config.relatedGuides.map((guide) => (
                 <Link
                   key={guide.slug}
-                  href={`/guides/${guide.slug}`}
+                  href={guide.slug.startsWith("cost-to-") ? `/${guide.slug}` : `/guides/${guide.slug}`}
                   className="block p-5 bg-surface border border-line rounded-md hover:border-accent transition-colors"
                 >
                   <p className="font-mono text-[10px] uppercase tracking-[0.1em] text-accent mb-1.5">

@@ -69,7 +69,7 @@ export function SidingCalculatorExpansion() {
 
       <h2>Siding is measured in squares, but priced per square foot</h2>
 
-      <p>The siding industry uses "squares" the same way roofing does: one square equals 100 square feet of wall coverage. A 2,000 square foot house exterior needs 20 squares. But when you shop for siding at a supply yard or big-box store, prices are listed per square foot. This creates a translation step that trips people up. A fiber cement siding priced at $8 per square foot costs $800 per square. If you need 20 squares, your material bill is $16,000 before labor or trim.</p>
+      <p>The siding industry uses &quot;squares&quot; the same way roofing does: one square equals 100 square feet of wall coverage. A 2,000 square foot house exterior needs 20 squares. But when you shop for siding at a supply yard or big-box store, prices are listed per square foot. This creates a translation step that trips people up. A fiber cement siding priced at $8 per square foot costs $800 per square. If you need 20 squares, your material bill is $16,000 before labor or trim.</p>
 
       <Figure number={1} caption="One square = 100 sq ft. When comparing quotes, make sure both contractors are quoting the same unit.">
         <SquareExplainerSVG />

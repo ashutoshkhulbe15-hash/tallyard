@@ -1,235 +1,152 @@
-import { SodCalculatorExpansion } from "@/content/sod-expansion";
 import type { CalculatorConfig } from "@/lib/types";
-import { round, roundUp, formatNumber } from "@/lib/format";
+import { round, formatNumber, ceilQuantity } from "@/lib/format";
+
+const packageFormats = {
+  slab: { coverageSqFt: 16 * 24 / 144, label: "16 × 24 in slab" },
+  smallRoll: { coverageSqFt: 2 * 5, label: "2 × 5 ft roll" },
+  largeRoll: { coverageSqFt: 3.3 * 6, label: "3.3 × 6 ft roll" },
+};
 
 export const sodCalculatorConfig: CalculatorConfig = {
   slug: "sod-calculator",
-  title: "Sod Calculator",
+  title: "Sod Area and Piece Calculator",
   description:
-    "Square footage, rolls, and pallets of sod for any lawn. Accounts for cuts and waste so you can finish installation in one day.",
+    "Estimate lawn area and piece count from a rectangular measurement, selected package format, and user-set planning allowance.",
   categoryLabel: "Landscaping",
   category: "landscaping",
-
-  bannerHeadline: "Sod evenly.",
-  bannerTags: ["Rolls · slabs · pallets", "Accounts for cuts", "ft² or m²"],
-
+  bannerHeadline: "Estimate sod quantity.",
+  bannerTags: ["Rectangular area", "Selected package format", "Planning allowance"],
   inputs: [
     {
       id: "length",
-      label: "Lawn length",
+      label: "Lawn section length",
       type: "number",
       unitImperial: "ft",
       unitMetric: "m",
       defaultImperial: 40,
       defaultMetric: 12,
-      min: 1,
+      min: 0.1,
       step: 1,
     },
     {
       id: "width",
-      label: "Lawn width",
+      label: "Lawn section width",
       type: "number",
       unitImperial: "ft",
       unitMetric: "m",
       defaultImperial: 25,
       defaultMetric: 7.5,
-      min: 1,
+      min: 0.1,
       step: 1,
     },
     {
-      id: "shape",
-      label: "Lawn shape",
+      id: "allowance",
+      label: "Planning allowance",
       type: "select",
-      defaultImperial: "rectangular",
+      defaultImperial: 5,
       options: [
-        { label: "Rectangular", value: "rectangular" },
-        { label: "Irregular (+15% waste)", value: "irregular" },
-        { label: "Heavy curves (+25% waste)", value: "curved" },
+        { label: "0%", value: 0 },
+        { label: "5%", value: 5 },
+        { label: "10%", value: 10 },
+        { label: "15%", value: 15 },
       ],
+      help: "This is a user-selected scenario, not a shape-specific recommendation.",
     },
     {
-      id: "sodSize",
-      label: "Sod format",
+      id: "packageFormat",
+      label: "Example piece format",
       type: "select",
       defaultImperial: "slab",
       options: [
-        { label: "Slab (16×24\" · 2.67 ft²)", value: "slab" },
-        { label: "Small roll (2×5' · 10 ft²)", value: "smallRoll" },
-        { label: "Big roll (3.3×6' · 20 ft²)", value: "bigRoll" },
+        { label: "16 × 24 in slab (2.67 ft² / 0.248 m²)", value: "slab" },
+        { label: "2 × 5 ft roll (10 ft² / 0.929 m²)", value: "smallRoll" },
+        { label: "3.3 × 6 ft roll (19.8 ft² / 1.84 m²)", value: "largeRoll" },
       ],
-      help: "Slabs are typical residential; big rolls for large installs",
+      help: "Example dimensions only. Confirm the actual coverage on the supplier's product listing.",
     },
   ],
-
   calculate: (values, units) => {
-    const L = Number(values.length) || 0;
-    const W = Number(values.width) || 0;
-    const shape = String(values.shape || "rectangular");
-    const sodSize = String(values.sodSize || "slab");
-
-    const area = L * W;
-    const areaSqFt = units === "metric" ? area * 10.764 : area;
-
-    // Waste factor by shape
-    const wastePct = shape === "curved" ? 25 : shape === "irregular" ? 15 : 5;
-    const areaWithWaste = areaSqFt * (1 + wastePct / 100);
-
-    // Sod piece coverage (in sq ft)
-    const pieceCoverage: Record<string, number> = {
-      slab: 2.67,
-      smallRoll: 10,
-      bigRoll: 20,
-    };
-    const coverage = pieceCoverage[sodSize] || 2.67;
-    const pieces = Math.ceil(areaWithWaste / coverage);
-
-    // Pallet counts: standard pallet = 500 sq ft
-    const pallets = Math.ceil(areaWithWaste / 500);
-
-    const areaUnit = units === "metric" ? "m²" : "ft²";
-    const displayArea = units === "metric" ? area : areaSqFt;
-    const displayWithWaste =
-      units === "metric" ? areaWithWaste / 10.764 : areaWithWaste;
-
-    const pieceLabel =
-      sodSize === "slab"
-        ? "slabs"
-        : sodSize === "smallRoll"
-          ? "small rolls"
-          : "big rolls";
+    const length = Math.max(0, Number(values.length) || 0);
+    const width = Math.max(0, Number(values.width) || 0);
+    const allowance = Math.max(0, Number(values.allowance) || 0);
+    const packageFormat = String(values.packageFormat || "slab") as keyof typeof packageFormats;
+    const format = packageFormats[packageFormat] ?? packageFormats.slab;
+    const metric = units === "metric";
+    const areaInput = length * width;
+    const areaSqFt = metric ? areaInput / 0.09290304 : areaInput;
+    const withAllowanceSqFt = areaSqFt * (1 + allowance / 100);
+    const pieces = ceilQuantity(withAllowanceSqFt / format.coverageSqFt);
+    const areaUnit = metric ? "m²" : "ft²";
+    const area = metric ? areaInput : areaSqFt;
+    const withAllowance = metric ? withAllowanceSqFt * 0.09290304 : withAllowanceSqFt;
+    const packageCoverage = metric ? format.coverageSqFt * 0.09290304 : format.coverageSqFt;
 
     return {
       value: pieces,
-      unit: pieceLabel,
+      unit: `example ${format.label}${pieces === 1 ? " piece" : " pieces"}`,
       valueRounded: pieces,
       breakdown: [
-        { label: "area", value: `${formatNumber(round(displayArea, 1))} ${areaUnit}` },
-        { label: "with waste", value: `${formatNumber(round(displayWithWaste, 1))} ${areaUnit}` },
-        { label: "pallets (500 ft²)", value: `${pallets}` },
-        { label: "shape waste", value: `${wastePct}%` },
+        { label: "measured rectangular area", value: `${formatNumber(round(area, 2))} ${areaUnit}` },
+        { label: "area with selected allowance", value: `${formatNumber(round(withAllowance, 2))} ${areaUnit}` },
+        { label: "selected example coverage", value: `${formatNumber(round(packageCoverage, 3))} ${areaUnit} per piece` },
+        { label: "estimated pieces", value: `${pieces} (verify supplier format and coverage)` },
       ],
       formulaSteps: [
-        `area = ${L} × ${W} = ${formatNumber(round(areaSqFt, 0))} ft²${units === "metric" ? ` (${formatNumber(round(area, 1))} m²)` : ""}`,
-        `shape = ${shape}, waste = ${wastePct}%`,
-        `with waste = ${formatNumber(round(areaSqFt, 0))} × ${(1 + wastePct / 100).toFixed(2)} = ${formatNumber(round(areaWithWaste, 0))} ft²`,
-        `piece coverage = ${coverage} ft² per ${sodSize === "slab" ? "slab" : sodSize === "smallRoll" ? "small roll" : "big roll"}`,
-        `${pieceLabel} = ⌈${formatNumber(round(areaWithWaste, 0))} ÷ ${coverage}⌉ = ${pieces}`,
-        `pallets = ⌈${formatNumber(round(areaWithWaste, 0))} ÷ 500⌉ = ${pallets}`,
+        `rectangular area = ${formatNumber(length)} × ${formatNumber(width)} = ${formatNumber(round(area, 2))} ${areaUnit}`,
+        `selected allowance = ${allowance}%`,
+        `area with allowance = ${formatNumber(round(area, 2))} × ${(1 + allowance / 100).toFixed(2)} = ${formatNumber(round(withAllowance, 2))} ${areaUnit}`,
+        `piece coverage = ${format.label} = ${formatNumber(round(packageCoverage, 3))} ${areaUnit}`,
+        `piece estimate = ceil(${formatNumber(round(withAllowance, 2))} ÷ ${formatNumber(round(packageCoverage, 3))}) = ${pieces}`,
       ],
+      composition: {
+        unit: areaUnit,
+        total: round(withAllowance, 2),
+        segments: [
+          { label: "Measured lawn area", amount: round(area, 2), shade: "primary" },
+          ...(allowance > 0 ? [{ label: "Selected planning allowance", amount: round(withAllowance - area, 2), shade: "secondary" as const }] : []),
+        ],
+      },
     };
   },
-
-  howTo: {
-    name: "How to measure and order sod",
-    description:
-      "Convert yard measurements to square feet, pallets, and a delivery plan that keeps the sod alive.",
-    steps: [
-      {
-        name: "Measure by section",
-        text: "Length times width for each rectangle of lawn; treat curves as rectangles and let waste cover the trimming.",
-      },
-      {
-        name: "Add waste",
-        text: "5 percent for a rectangular yard, 8 to 10 percent where beds curve or trees interrupt the runs.",
-      },
-      {
-        name: "Convert to pallets",
-        text: "Divide by your farm's pallet coverage. 450 to 500 square feet is typical, but it ranges 400 to 700 by region, so confirm the number on the quote.",
-      },
-      {
-        name: "Prepare the ground first",
-        text: "Strip old grass, grade away from the house, add topsoil where the soil is poor, rake smooth, and dampen the ground the morning of delivery.",
-      },
-      {
-        name: "Schedule delivery for laying day",
-        text: "Farms cut to order; sod composts itself on the pallet within a day in summer. Lay within 24 hours, stagger joints, roll, and water daily for two weeks.",
-      },
-    ],
-  },
-
-  ContentExpansion: SodCalculatorExpansion,
-
-  formulaDescription:
-    "pieces = ⌈(area × (1 + shape waste)) ÷ coverage per piece⌉",
-
+  formulaDescription: "piece estimate = ceil(rectangular area × (1 + selected allowance) ÷ selected package coverage)",
   methodology: [
-    "The calculator multiplies lawn area by a shape-dependent waste factor. Rectangular lawns need only 5% waste: sod lays in straight rows with minimal end cuts. Irregular lawns (curves, trees, flower beds to work around) need 15% because every edge piece requires a cut. Heavily curved lawns with lots of obstacles need 25%, every cut produces scrap that rarely fits elsewhere.",
-    "Sod is sold in three main formats: individual slabs (16\" × 24\" ≈ 2.67 sq ft each, most common at garden centers and small farms), small rolls (2 × 5 ft ≈ 10 sq ft, used for residential installs where workers can carry rolls), and big rolls (3.3 × 6 ft ≈ 20 sq ft, used for commercial and large residential installs with equipment).",
-    "Pallet counts are for logistics planning: a standard pallet of slabs holds about 500 square feet. Suppliers charge by the pallet delivery plus a per-square-foot rate. Ordering in partial pallets is possible at some suppliers but usually adds a surcharge.",
-    "The calculator rounds piece counts and pallet counts up: you can't buy half a slab or half a pallet. Because sod lives only 8-24 hours off the farm before it starts degrading, order conservatively. Install within one day of delivery; leftover pieces become compost or fill for future bare spots.",
-    "For accurate estimates with oddly-shaped lawns, break the area into rectangles (a driveway strip + a backyard rectangle + a front curve), calculate each separately, and add the piece counts. This gives more accurate results than applying one waste factor to an awkward total.",
+    "The calculator measures a rectangular section, applies the user's selected planning allowance, and divides by the selected example piece area. For irregular lawns, divide the plan into rectangles and add the measured areas; this tool does not infer shape-related waste.",
+    "The package formats are example dimensions, not universal retail standards. Actual sod products and pallet coverage vary by supplier and region. Confirm the coverage, piece count, and pallet packaging on the current supplier quote or product information.",
+    "This is a quantity estimate only. It does not advise on grass variety, soil preparation, planting season, installation, watering, transport, weight, pallet count, or price.",
   ],
-
   sources: [
     {
-      name: "Turfgrass Producers International: Buying and Installing Sod",
+      name: "Turfgrass Producers International: Consumer Resources",
       url: "https://www.turfgrasssod.org/consumers/",
-      note: "Industry guidance on pallet handling, timing, and establishment",
+      note: "General sod information; package dimensions and availability should be confirmed with the supplier.",
     },
     {
-      name: "UF/IFAS Extension: St. Augustinegrass",
-      url: "https://edis.ifas.ufl.edu/entity/topic/st_augustinegrass",
-      note: "The reference for the Gulf-state shade variety, including establishment watering",
-    },
-    {
-      name: "Clemson HGIC: Sodding a Lawn",
+      name: "Clemson Cooperative Extension: Sodding a Lawn",
       url: "https://hgic.clemson.edu/factsheet/sodding-a-lawn/",
-      note: "Extension establishment sequence: prep, laying, rolling, and the watering taper",
-    },
-    {
-      name: "University of Maryland Extension: Lawn Establishment",
-      url: "https://extension.umd.edu/resource/lawn-establishment-overseeding-and-renovation",
-      note: "Cool-season variety guidance for northern lawns",
+      note: "Extension resource for project-specific lawn establishment guidance.",
     },
   ],
-
   related: [
-    { name: "Topsoil calculator", slug: "topsoil-calculator", description: "Cubic yards for lawn base prep" },
-    { name: "Mulch calculator", slug: "mulch-calculator", description: "For beds around your sodded lawn" },
-    { name: "Gravel calculator", slug: "gravel-calculator", description: "Base material for paths and drives" },
-    { name: "Fence calculator", slug: "fence-calculator", description: "Posts, rails, and pickets" },
+    { name: "Topsoil calculator", slug: "topsoil-calculator", description: "Estimate soil volume from area and selected depth" },
+    { name: "Mulch calculator", slug: "mulch-calculator", description: "Estimate mulch volume or nominal bag count" },
+    { name: "Gravel calculator", slug: "gravel-calculator", description: "Estimate aggregate volume and approximate weight" },
   ],
-
   faq: [
     {
-      question: "How much sod do I need for a 1,000 sq ft lawn?",
-      answer:
-        "For a 1,000 sq ft rectangular lawn, you need about 1,050 sq ft of sod (5% waste): that's 394 slabs, 2 pallets. An irregular lawn of the same size needs 1,150 sq ft, about 3 pallets. The calculator above adjusts for your specific lawn shape.",
+      question: "How many sod pieces do I need?",
+      answer: "Measure each rectangular section, choose a planning allowance and an example package format, and the calculator divides adjusted area by the selected coverage. Verify actual product dimensions with the supplier.",
     },
     {
-      question: "What's the difference between slabs and rolls?",
-      answer:
-        "Slabs (16 × 24 inches) are the standard format at garden centers: easy to handle solo, good for residential areas up to about 1,000 sq ft. Small rolls (2 × 5 ft) speed up installation but need two people. Big rolls (3.3 × 6 ft) require a sod cutter and tractor attachment, for commercial and large residential installs.",
+      question: "Does this calculator estimate pallet quantities?",
+      answer: "No. Pallet quantities and coverage vary by sod supplier. Use the piece/area estimate to request a current pallet and delivery quote.",
     },
     {
-      question: "How long can sod sit before installation?",
-      answer:
-        "12-24 hours maximum from farm to ground. Longer in hot weather is worse: sod stacked on a pallet in summer sun can die in 6-8 hours. Always schedule delivery for the morning of installation. If you can't install immediately, keep pallets shaded and water them lightly.",
+      question: "Does this recommend sod variety, installation, or watering?",
+      answer: "No. Grass suitability and establishment depend on local conditions and species. Consult local extension guidance and the sod supplier for those decisions.",
     },
     {
-      question: "How much sod fits in a pickup truck?",
-      answer:
-        "A full-size pickup can carry one pallet of sod (500 sq ft, about 3,000 lbs). That's near the legal GVW limit: drive carefully. Compact trucks are rated for half a pallet max. For multiple pallets, hire delivery: sod suppliers typically charge $50-150 per delivery plus a per-square-foot rate.",
-    },
-    {
-      question: "Do I need to prep the ground first?",
-      answer:
-        "Yes: this is where most DIY installations fail. Remove all existing turf and weeds. Till to loosen compacted soil. Add 2-4 inches of topsoil if existing soil is poor. Rake level, compact lightly with a lawn roller, and water. Only then install sod.",
-    },
-    {
-      question: "How much does sod cost?",
-      answer:
-        "Sod retail: $0.35-0.80 per square foot for common cool-season grass (fescue, Kentucky bluegrass); $0.50-1.00 for warm-season (Bermuda, zoysia, St. Augustine). Delivery is $75-200 per trip. Total installed cost (DIY): $0.50-1.00/sq ft; professional installation: $1.50-3.00/sq ft.",
-    },
-    {
-      question: "When is the best time to install sod?",
-      answer:
-        "Spring and early fall for cool-season grasses (60-75°F air temperature during establishment). Late spring through summer for warm-season grasses (70°F+ soil temperature). Avoid extreme summer heat: newly laid sod transpires water faster than roots can absorb it. Avoid winter: dormant sod doesn't root.",
-    },
-    {
-      question: "How much do I water new sod?",
-      answer:
-        "First week: 1-2 inches of water per day, split into 2-3 sessions (not all at once). Second week: daily, once a day. Third week onward: 1-1.5 inches per week total. Sod dies fast from under-watering in the first 10 days. It's one of the highest water-demand landscape projects during establishment.",
+      question: "Does the planning allowance have to match my lawn shape?",
+      answer: "No. It is a user-selected scenario. For a more precise estimate, divide an irregular lawn into rectangles and account for cuts and unusable offcuts based on your layout and supplier advice.",
     },
   ],
 };

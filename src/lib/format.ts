@@ -9,10 +9,17 @@ export function round(value: number, decimals: number = 2): number {
   return Math.round(value * factor) / factor;
 }
 
+/** Suppress floating-point noise at whole-package boundaries, not real fractions. */
+export function ceilQuantity(value: number): number {
+  const nearest = Math.round(value);
+  const tolerance = Math.min(1e-7, 1e-10 * Math.max(1, Math.abs(value)));
+  return Math.abs(value - nearest) <= tolerance ? nearest : Math.ceil(value);
+}
+
 /** Round up to the nearest practical purchase unit. */
 export function roundUp(value: number, decimals: number = 1): number {
   const factor = Math.pow(10, decimals);
-  return Math.ceil(value * factor) / factor;
+  return ceilQuantity(value * factor) / factor;
 }
 
 /** Format a number with thousand separators. */

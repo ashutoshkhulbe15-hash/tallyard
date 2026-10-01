@@ -1,33 +1,37 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-export const metadata: Metadata = { title: "HVAC, heat pump, and plumbing calculators: Tallyard", description: "Calculators for BTU sizing, heat pump, water heater, insulation, and drain pipe.", alternates: { canonical: "/calculators/hvac-plumbing" } };
+
+export const metadata: Metadata = {
+  title: "HVAC, Insulation, and Plumbing Worksheets | Tallyard",
+  description: "Limited planning worksheets for room cooling, heat-pump context, hot water, insulation, and fixture-unit examples.",
+  alternates: { canonical: "/calculators/hvac-plumbing" },
+};
+
 const tools = [
-  { slug: "btu-calculator", name: "BTU calculator", desc: "Cooling capacity by room size and conditions." },
-  { slug: "heat-pump-calculator", name: "Heat pump calculator", desc: "System sizing by climate zone with cost comparison." },
-  { slug: "water-heater-calculator", name: "Water heater calculator", desc: "Tank or tankless sizing by household size." },
-  { slug: "insulation-calculator", name: "Insulation calculator", desc: "R-value by climate zone with material comparison." },
-  { slug: "drain-pipe-calculator", name: "Drain pipe calculator", desc: "Pipe diameter by DFU load per IPC." },
+  { slug: "btu-calculator", name: "Room air-conditioner capacity guide", desc: "Area-based room guide with stated adjustments; not a whole-home load calculation." },
+  { slug: "heat-pump-calculator", name: "Heating/cooling load conversion", desc: "Converts documented loads to ton-equivalents; does not calculate loads or select equipment." },
+  { slug: "water-heater-calculator", name: "Water-heating rate conversion", desc: "Idealized heat-rate arithmetic from entered flow and temperature rise; not equipment sizing." },
+  { slug: "insulation-calculator", name: "Insulation package estimator", desc: "Package count from measured area and exact product-label coverage; no R-value recommendation." },
+  { slug: "drain-pipe-calculator", name: "Fixture-unit worksheet", desc: "Illustrative IPC 2021 example DFU subtotal; not pipe sizing or code approval." },
 ];
-export default function HVACPlumbingPillar() { return (<article>
-  <section className="container-wide pt-6 md:pt-8"><div className="pt-2 pb-8 md:pb-10 border-b border-line">
-    <nav aria-label="Breadcrumb" className="font-mono text-xs text-ink-muted mb-5"><Link href="/calculators" className="text-accent hover:text-accent-hover transition-colors">Calculators</Link><span className="mx-2">·</span><span>HVAC + plumbing</span></nav>
-    <h1 className="text-3xl md:text-5xl font-bold tracking-tighter leading-[1.05] mb-3 text-ink">HVAC, insulation, and plumbing</h1>
-    <p className="text-base md:text-lg text-ink-muted max-w-2xl leading-relaxed">Five tools for the systems you pay for monthly. Heating, cooling, hot water, insulation, and drainage determine your utility bills.</p>
-  </div></section>
-  <section className="container-wide py-10"><div className="grid grid-cols-1 md:grid-cols-3 gap-5">{tools.map((t) => (<Link key={t.slug} href={`/${t.slug}`} className="block bg-surface border border-line rounded-lg p-6 hover:border-accent transition-colors group"><h2 className="text-base font-bold text-ink group-hover:text-accent transition-colors mb-2">{t.name}</h2><p className="text-sm text-ink-muted leading-relaxed">{t.desc}</p></Link>))}</div></section>
-  <section className="container-content pb-16"><div className="guide-prose">
-    <h2>Sizing HVAC equipment is the highest-stakes calculation in home improvement</h2>
-    <p>An oversized air conditioner costs $3,000 more than the correct size and makes the house less comfortable. It short-cycles: reaching the thermostat setpoint too quickly, shutting off before it has removed humidity from the air, then restarting 6 minutes later. The house sits at 72 degrees and feels clammy. The compressor wears out in 8 years instead of 15. An undersized system runs continuously on the hottest days and cannot maintain the setpoint. Both mistakes cost thousands and last a decade.</p>
-    <p>The <Link href="/btu-calculator" className="text-accent hover:underline">BTU calculator</Link> sizes cooling capacity from room dimensions, sun exposure, insulation quality, and occupancy. The baseline is 25 BTU per square foot, adjusted up or down by 10 to 20 percent for each factor. A 2,000 square foot house needs roughly 50,000 BTU (about 4 tons) as a starting point. The calculator applies the adjustments automatically so you get a number you can compare against a contractor&apos;s recommendation.</p>
-    <h2>Heat pump vs furnace: a $3,000 decision</h2>
-    <p>The <Link href="/heat-pump-calculator" className="text-accent hover:underline">heat pump calculator</Link> sizes heat pumps by climate zone and compares operating cost against gas furnaces. A heat pump replaces both your furnace and your air conditioner in one unit. After the 30 percent federal tax credit (IRA, through 2032), a heat pump often costs less than buying a furnace and AC separately. The <Link href="/guides/heat-pump-vs-furnace" className="text-accent hover:underline">heat pump vs furnace buying guide</Link> covers the full comparison with operating cost numbers by climate zone. The <Link href="/cost-to-replace-hvac" className="text-accent hover:underline">cost to replace HVAC</Link> guide breaks down installed pricing for both options.</p>
-    <h2>Insulation: the upgrade that makes everything else smaller</h2>
-    <p>Better insulation directly reduces the heating and cooling load your HVAC system handles. Upgrading attic insulation from R-19 to R-49 (the current code minimum in climate zone 5) can drop your required system size by half a ton and cut annual heating and cooling costs by $500 to $1,000. The <Link href="/insulation-calculator" className="text-accent hover:underline">insulation calculator</Link> tells you what R-value your climate zone requires (per IECC 2021) and how much material you need. Attic insulation is the single highest-ROI home improvement: $400 to $600 in materials, DIY in one Saturday, payback in 2 to 4 years.</p>
-    <h2>Water heater sizing</h2>
-    <p>The <Link href="/water-heater-calculator" className="text-accent hover:underline">water heater calculator</Link> sizes tank or tankless systems by household size and peak demand. A family of four with two bathrooms needs a different system than a couple in a one-bathroom apartment. Undersizing a tank water heater means running out of hot water mid-shower. Undersizing a tankless unit means the water temperature drops when two fixtures run simultaneously.</p>
-    <h2>Plumbing: drain pipe sizing is code-driven</h2>
-    <p>The <Link href="/drain-pipe-calculator" className="text-accent hover:underline">drain pipe calculator</Link> sizes drain pipes by Drain Fixture Unit (DFU) loading per the International Plumbing Code (IPC). Every fixture has a fixed DFU value: a toilet is 4, a bathtub is 2, a lavatory is 1. The total DFU on any pipe determines its minimum diameter. A toilet always requires a minimum 3-inch drain regardless of total loading. Undersizing causes slow drainage and frequent clogs. Oversizing wastes money on larger pipe and fittings but is not a code violation.</p>
-    <h2>How these tools work together</h2>
-    <p>The typical HVAC project sequence: first, calculate insulation needs and upgrade the attic (cheapest, highest ROI). Then recalculate the BTU load with the improved insulation. Then size the heat pump or furnace to the reduced load. This sequence can drop a 4-ton system to 3 tons, saving $1,500 to $2,500 in equipment cost on top of the ongoing energy savings.</p>
-  </div></section>
-</article>); }
+
+export default function HVACPlumbingPillar() {
+  return <article>
+    <section className="container-wide pt-6 md:pt-8"><div className="pt-2 pb-8 md:pb-10 border-b border-line">
+      <nav aria-label="Breadcrumb" className="font-mono text-xs text-ink-muted mb-5"><Link href="/calculators" className="text-accent hover:text-accent-hover transition-colors">Calculators</Link><span className="mx-2">·</span><span>HVAC + plumbing</span></nav>
+      <h1 className="text-3xl md:text-5xl font-bold tracking-tighter leading-[1.05] mb-3 text-ink">HVAC, insulation, and plumbing worksheets</h1>
+      <p className="text-base md:text-lg text-ink-muted max-w-2xl leading-relaxed">These tools offer limited planning estimates. They are not substitutes for load calculations, equipment submittals, code review, or site-specific design.</p>
+    </div></section>
+    <section className="container-wide py-10"><div className="grid grid-cols-1 md:grid-cols-3 gap-5">{tools.map((t) => <Link key={t.slug} href={`/${t.slug}`} className="block bg-surface border border-line rounded-lg p-6 hover:border-accent transition-colors group"><h2 className="text-base font-bold text-ink group-hover:text-accent transition-colors mb-2">{t.name}</h2><p className="text-sm text-ink-muted leading-relaxed">{t.desc}</p></Link>)}</div></section>
+    <section className="container-content pb-16"><div className="guide-prose">
+      <h2>Equipment selection needs project-specific analysis</h2>
+      <p>Heating and cooling loads depend on climate, building enclosure, windows, air leakage, occupancy, ventilation, and equipment performance. A simple area guide cannot account for all of these. Do not use a room or area estimate to select whole-home equipment; ask a qualified HVAC professional for the appropriate load calculation and equipment selection.</p>
+      <p>The <Link href="/btu-calculator" className="text-accent hover:underline">room air-conditioner guide</Link> is limited to its stated area chart and adjustments; it is not central-air sizing. The <Link href="/heat-pump-calculator" className="text-accent hover:underline">heat-pump estimator</Link> is not a Manual J calculation, site survey, or guarantee of capacity, efficiency, operating cost, or comfort. Compare equipment submittals and itemized local bids rather than treating a calculator result as a recommendation.</p>
+      <h2>Insulation and water heating</h2>
+      <p>The <Link href="/insulation-calculator" className="text-accent hover:underline">insulation estimator</Link> does not determine a code-required R-value or diagnose moisture, air leakage, thermal bridging, or assembly compatibility. Requirements vary by location and assembly; confirm them with current local rules and product documentation. The <Link href="/water-heater-calculator" className="text-accent hover:underline">water-heater worksheet</Link> is not a product selection or plumbing design. Actual hot-water demand, recovery, temperature rise, fuel, flow, and installation requirements must be evaluated for the household and exact equipment.</p>
+      <h2>Drainage examples are not pipe sizing</h2>
+      <p>The <Link href="/drain-pipe-calculator" className="text-accent hover:underline">fixture-unit worksheet</Link> totals selected illustrative fixture-unit values only. It does not determine drainage or vent pipe diameter, slope, developed length, branch limits, permitted connections, or local-code compliance. Plumbing requirements depend on the adopted code and complete system; have the design reviewed by a qualified plumbing professional and authority having jurisdiction.</p>
+      <p>For installed project costs, use the <Link href="/cost-to-replace-hvac" className="text-accent hover:underline">HVAC bid-comparison guide</Link> to compare equivalent written scope. Its benchmarks are not quotes or savings guarantees.</p>
+    </div></section>
+  </article>;
+}

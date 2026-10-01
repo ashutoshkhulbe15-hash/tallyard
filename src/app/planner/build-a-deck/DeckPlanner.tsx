@@ -164,7 +164,6 @@ function calculateResults(
   const width = Number(values.width) || 16;
   const height = Number(values.height) || 3;
   const material = String(values.deckMaterial || "pt");
-  const boardW = Number(values.boardWidth) || 5.5;
   const joistOC = Number(values.joistSpacing) || 16;
   const needStairs = values.needStairs === "yes";
   const stairWidth = Number(values.stairWidth) || 36;
@@ -175,8 +174,6 @@ function calculateResults(
   const area = length * width;
 
   // --- Decking boards ---
-  const boardsPerRow = Math.ceil((width * 12) / boardW);
-  const rowsNeeded = Math.ceil(length / 1); // 1-ft increments
   const deckingBF = Math.ceil(area * 1.1); // 10% waste
   const materialCostPerSqFt =
     material === "pt" ? 4.5 : material === "cedar" ? 6 : 9.5;
@@ -185,7 +182,6 @@ function calculateResults(
   // --- Frame ---
   const joistCount = Math.ceil((length * 12) / joistOC) + 1;
   const joistLength = width; // each joist spans the width
-  const joistBF = joistCount * joistLength; // lineal feet of 2×8 or 2×10
 
   // Beams: typically 2 beams for decks under 16ft wide, 3 for wider
   const beamCount = width <= 12 ? 1 : width <= 16 ? 2 : 3;

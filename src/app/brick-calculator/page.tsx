@@ -6,13 +6,13 @@ import { getConfig } from "@/configs";
 const SLUG = "brick-calculator";
 
 export const metadata: Metadata = {
-  title: "Brick Calculator: Count, Sizes & Cost Per Brick",
+  title: "Brick Quantity Estimator",
   description:
-    "How many bricks you need from wall size, with the standard brick size chart, bricks per square foot, and 2026 cost per brick and per thousand.",
+    "Estimate brick count from net wall area, product-specific units-per-area coverage, and a user-selected planning allowance. Does not estimate mortar or wall design.",
   alternates: { canonical: "/brick-calculator" },
   openGraph: {
-    title: "Brick Calculator: Count, Sizes & Cost Per Brick",
-    description: "Calculate bricks and mortar bags for any wall project.",
+    title: "Brick Quantity Estimator",
+    description: "Estimate brick count from net wall area and product-specific coverage; no mortar or cost estimate.",
     url: "https://www.tallyard.com/brick-calculator",
     type: "website",
   },
@@ -23,7 +23,7 @@ export default function BrickCalculatorPage() {
   return (
     <>
       {config && <SchemaScript config={config} />}
-      <CalculatorPage slug={SLUG} illustrationValue="1,208 BRICKS" />
+      <CalculatorPage slug={SLUG} illustrationValue="BRICKS" />
     </>
   );
 }

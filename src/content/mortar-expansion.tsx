@@ -66,7 +66,7 @@ export function MortarCalculatorExpansion() {
       <h2>Mortar is not grout, and the difference matters</h2>
 
       <p>
-        People search for "mortar calculator" and land on grout calculators.
+        People search for &quot;mortar calculator&quot; and land on grout calculators.
         The two products are not interchangeable. Mortar bonds bricks,
         blocks, or stones together. It contains Portland cement, lime, and
         sand in a ratio that gives it body and adhesion. Grout fills the
@@ -105,7 +105,7 @@ export function MortarCalculatorExpansion() {
       <h2>Choosing the right mortar type</h2>
 
       <p>
-        The type designation is not a quality grade. Type M is not "better"
+        The type designation is not a quality grade. Type M is not &quot;better&quot;
         than Type S. Each is formulated for a specific application. Type S
         has the best balance of bond strength and flexibility, making it
         the default for exterior walls, chimneys, and any structural
@@ -223,7 +223,7 @@ export function MortarCalculatorExpansion() {
       </Figure>
 
       <p>
-        The consistency you want is often described as "peanut butter": 
+        The consistency you want is often described as &quot;peanut butter&quot;:
         thick enough to hold its shape on the trowel when you flip it
         upside down, but wet enough to spread easily into a bed joint.
         Too dry and the mortar will not bond to the brick surface. Too

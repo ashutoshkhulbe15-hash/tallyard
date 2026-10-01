@@ -6,13 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "vanity-calculator";
 
 export const metadata: Metadata = {
-  title: "Vanity Size Calculator: Widths & Clearances",
-  description:
-    "Bathroom vanity size for any wall, with the standard width chart from 24 to 72 inches, IRC clearances, and why a double sink needs 60 inches.",
+  title: "Vanity Wall-Width Worksheet",
+  description: "Calculate remaining wall width after user-entered clearances; no product recommendation or code check.",
   alternates: { canonical: "/vanity-calculator" },
   openGraph: {
-    title: "Vanity Size Calculator: Widths & Clearances",
-    description: "Calculate bathroom vanity size with clearances and code checks.",
+    title: "Vanity Wall-Width Worksheet",
+    description: "Dimension arithmetic only; does not assess fixture suitability or compliance.",
     url: "https://www.tallyard.com/vanity-calculator",
     type: "website",
   },
@@ -23,7 +22,7 @@ export default function VanityCalculatorPage() {
   return (
     <>
       {config && <SchemaScript config={config} />}
-      <CalculatorPage slug={SLUG} illustrationValue={`66"`} />
+      <CalculatorPage slug={SLUG} illustrationValue="WIDTH ONLY" />
     </>
   );
 }

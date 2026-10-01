@@ -199,7 +199,7 @@ export function FlooringCalculatorExpansion() {
         First, acclimate the flooring. Bring the boxes into the actual room where
         they will be installed, open or loosely stack them, and leave them for the
         time the manufacturer specifies, usually 48 to 72 hours for wood and
-        laminate. This lets the material reach the room's normal temperature and
+        laminate. This lets the material reach the room&apos;s normal temperature and
         humidity before it is locked down, so it is not going to make a big move
         after installation. Skipping this step is the single most common cause of a
         floor that fails.

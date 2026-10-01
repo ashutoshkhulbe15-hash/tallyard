@@ -1,5 +1,5 @@
 import { Figure, GuideByline, MethodologyNote, Scenario, GUIDE_SVG } from "@/components/GuideChrome";
-import { ComparisonTable, Callout } from "@/components/GuideComponents";
+import { ComparisonTable } from "@/components/GuideComponents";
 
 function EgressCodeSVG() {
   return (
@@ -75,7 +75,7 @@ export function EgressWindowExpansion() {
 
       <p>Every sleeping room, full stop. Not just bedrooms on paper: any room used for sleeping needs its own escape opening, and a door to the hallway does not substitute, because the hallway is where the smoke is. Basements containing habitable space need one too, even without a bedroom down there, and every basement bedroom needs its own opening inside the room itself. One well in the laundry area does not cover a bedroom behind two doors.</p>
 
-      <p>The enforcement mechanism is not a code officer knocking on your door. It is the appraisal. A basement room without compliant egress is not legally a bedroom no matter how nice the carpet is, so the "4 bedroom" house sells as a 3 bedroom, and the difference is usually tens of thousands of dollars. This is why the egress window is the first invoice in any serious basement finishing project, not the last: it is the one that makes the rest of the money real.</p>
+      <p>The enforcement mechanism is not a code officer knocking on your door. It is the appraisal. A basement room without compliant egress is not legally a bedroom no matter how nice the carpet is, so the &quot;4 bedroom&quot; house sells as a 3 bedroom, and the difference is usually tens of thousands of dollars. This is why the egress window is the first invoice in any serious basement finishing project, not the last: it is the one that makes the rest of the money real.</p>
 
       <p>Existing homes get some grace. A house built to an older code is generally not forced to upgrade windows that met the rules when built, until you renovate. Convert an office to a bedroom, finish a basement, or pull a permit that touches the room, and current R310 applies to it. The renovation is the trigger. Plan for it in the budget rather than discovering it at final inspection.</p>
 

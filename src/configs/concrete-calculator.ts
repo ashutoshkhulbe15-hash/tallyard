@@ -1,4 +1,3 @@
-import { ConcreteCalculatorExpansion } from "@/content/concrete-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, roundUp, formatNumber } from "@/lib/format";
 
@@ -6,12 +5,12 @@ export const concreteCalculatorConfig: CalculatorConfig = {
   slug: "concrete-calculator",
   title: "Concrete Calculator",
   description:
-    "Cubic yards of concrete for slabs, footings, and round pours. Waste factor included so your order matches your project.",
+    "Estimate geometric concrete volume for rectangular or round shapes from entered dimensions and a user-selected planning allowance. Not a structural design or supplier order guarantee.",
   categoryLabel: "Masonry",
   category: "concrete",
 
   bannerHeadline: "Pour confidently.",
-  bannerTags: ["Accounts for waste", "Slabs or footings", "yd³ or m³"],
+  bannerTags: ["Entered geometry", "Selected planning allowance", "yd³ or m³"],
 
   inputs: [
     {
@@ -56,11 +55,11 @@ export const concreteCalculatorConfig: CalculatorConfig = {
       defaultMetric: 10,
       min: 1,
       step: 0.5,
-      help: "Typical slab: 4 in / 10 cm. Footings: 8-12 in / 20-30 cm.",
+      help: "Enter the formed thickness/depth from your project specification; the calculator does not recommend it.",
     },
     {
       id: "waste",
-      label: "Waste factor",
+      label: "Planning allowance",
       type: "select",
       defaultImperial: 10,
       options: [
@@ -76,7 +75,13 @@ export const concreteCalculatorConfig: CalculatorConfig = {
     const L = Number(values.length) || 0;
     const W = Number(values.width) || 0;
     const T = Number(values.thickness) || 0;
-    const waste = Number(values.waste) || 10;
+    const waste = Number(values.waste);
+
+    if (!["rectangular", "round"].includes(shape) || ![L, T, waste].every(Number.isFinite) ||
+        L <= 0 || T <= 0 || (shape === "rectangular" && (!Number.isFinite(W) || W <= 0)) ||
+        ![5, 10, 15].includes(waste)) {
+      throw new Error("Enter positive dimensions and thickness, choose a supported shape, and select a 5%, 10%, or 15% planning allowance.");
+    }
 
     const thicknessInLinearUnit =
       units === "metric" ? T / 100 : T / 12;
@@ -136,16 +141,14 @@ export const concreteCalculatorConfig: CalculatorConfig = {
     };
   },
 
-  ContentExpansion: ConcreteCalculatorExpansion,
-
   formulaDescription:
     "volume = area × thickness × (1 + waste), converted to cubic yards or meters",
 
   methodology: [
-    "For rectangular pours, the calculator multiplies length by width by thickness to get raw volume. For round pours, it uses π × radius² × thickness. Thickness is entered in inches (or centimeters) and converted to the same unit as length and width before the multiplication.",
-    "Imperial results convert from cubic feet to cubic yards by dividing by 27 (since 1 cubic yard = 27 cubic feet). Metric results stay in cubic meters directly. Yards and meters are how concrete is sold, so this is what you'll actually order.",
-    "A waste factor of 10% is standard for most slab pours: it covers spillage, uneven subgrade, over-excavation, and the practical reality that concrete trucks don't come back for tiny shortages. Use 5% for very flat, well-prepared sites; 15% for irregular shapes or rough subgrade.",
-    "The final number is rounded up to the nearest 0.01 cubic yards or meters because concrete suppliers typically sell in increments of 0.25 yards. When you order, round up again to the nearest quarter-yard to account for truck minimums.",
+    "For rectangular shapes, the estimate multiplies entered length, width, and thickness. For round shapes, it treats the length input as diameter and uses π × radius² × depth. It assumes uniform thickness and the geometric shape entered.",
+    "Imperial results convert cubic feet to cubic yards by dividing by 27. Metric results are calculated in cubic metres. The result excludes unentered features such as thickened edges, steps, grade beams, over-excavation, and irregular subgrade.",
+    "The selected percentage is a user-chosen planning allowance, not a universal waste standard or guarantee of sufficiency. Check forms and project drawings, then confirm ordering quantity and increments with the supplier or contractor.",
+    "The displayed quantity is rounded for readability; the underlying geometric estimate can differ from actual placed quantity and supplier load sizing.",
   ],
 
   sources: [
@@ -155,17 +158,17 @@ export const concreteCalculatorConfig: CalculatorConfig = {
       note: "Industry reference for concrete volume calculation",
     },
     {
-      name: "Concrete Network: How Much Concrete Do I Need",
-      url: "https://www.concretenetwork.com/concrete/howmuch/calculator.htm",
-      note: "Waste factor recommendations for residential pours",
+      name: "National Ready Mixed Concrete Association: Concrete in Practice",
+      url: "https://www.nrmca.org/association-resources/research-and-engineering/concrete-in-practice/",
+      note: "Industry education; project mix, design, and placement requirements should come from qualified project sources.",
     },
   ],
 
   related: [
-    { name: "Rebar calculator", slug: "rebar-calculator", description: "Bars, spacing, and laps for the slab you pour" },
-    { name: "Mortar calculator", slug: "mortar-calculator", description: "Bags and sand for block and brick joints" },
-    { name: "Gravel calculator", slug: "gravel-calculator", description: "Cubic yards of gravel base for slabs" },
-    { name: "Drain pipe calculator", slug: "drain-pipe-calculator", description: "Size the line before cutting the slab for it" },
+    { name: "Rebar calculator", slug: "rebar-calculator", description: "Preliminary bar quantity for a user-selected grid; not reinforcement design" },
+    { name: "Mortar package estimator", slug: "mortar-calculator", description: "Bag count from masonry unit count and exact package coverage" },
+    { name: "Gravel calculator", slug: "gravel-calculator", description: "Estimate aggregate volume and approximate weight" },
+    { name: "Drain pipe calculator", slug: "drain-pipe-calculator", description: "Illustrative fixture-unit worksheet; not pipe sizing" },
   ],
 
   faq: [
@@ -177,22 +180,22 @@ export const concreteCalculatorConfig: CalculatorConfig = {
     {
       question: "Why do I need to add a waste factor?",
       answer:
-        "Real-world pours always use more than theoretical volume. Subgrade settles, forms bulge, concrete spills during placement, and finishers prefer working with a slight excess. 10% waste is standard; anything less risks running out mid-pour, which is expensive because another truck delivery incurs a minimum charge.",
+        "The selected allowance helps plan for differences between nominal and actual form dimensions, uneven subgrade, or placement loss. It is not a guarantee that the order will be sufficient. Measure the formed dimensions and confirm the order with the supplier or concrete contractor.",
     },
     {
       question: "What's the minimum concrete truck order?",
       answer:
-        "Most ready-mix suppliers have a 1 cubic yard minimum, and charge a short-load fee for anything under 3-5 yards. For pours under 1 yard, bagged concrete (80 lb bags ≈ 0.02 yards each) is often cheaper even accounting for mixing time.",
+        "Minimum loads, short-load fees, delivery access, and bag-versus-ready-mix economics vary by supplier and location. Request local quotes for both options; there is no universal one-yard cutoff.",
     },
     {
       question: "How many bags of concrete equal a cubic yard?",
       answer:
-        "A cubic yard of concrete is roughly 60 bags of 50-lb premix, 45 bags of 60-lb, or 40 bags of 80-lb. Bagged concrete is practical for pours under half a yard; above that, ready-mix is more cost-effective.",
+        "Using the stated yields of about 0.45 ft³ per 60-lb bag and 0.6 ft³ per 80-lb bag, one cubic yard (27 ft³) takes about 60 or 45 bags respectively. Check the actual yield printed on your chosen product; bag counts vary by mix.",
     },
     {
       question: "What thickness should my slab be?",
       answer:
-        "Sidewalks and patios: 4 inches. Driveways for passenger cars: 4 inches. Driveways for trucks or RVs: 6 inches. Garage floors: 4-6 inches. Footings: 8-12 inches or deeper in cold climates. Check local code: frost depth requirements vary.",
+        "Required thickness depends on loads, base conditions, concrete design, exposure, and local requirements. The calculator uses the thickness you enter; it does not determine a structurally adequate slab or footing. Confirm specifications with a qualified professional.",
     },
     {
       question: "How is round concrete calculated differently?",
@@ -202,7 +205,7 @@ export const concreteCalculatorConfig: CalculatorConfig = {
     {
       question: "Does this include aggregate, cement, and water?",
       answer:
-        "The cubic yardage is for mixed concrete (what you order from a truck or buy in bags). It already includes all components. You don't need to calculate cement, sand, gravel, and water separately unless you're mixing from scratch.",
+        "The result is a geometric volume estimate for mixed concrete. It does not select a mix design or calculate constituent quantities for site mixing; use product instructions or a qualified mix designer for those needs.",
     },
     {
       question: "What's the difference between cubic yards and yards of concrete?",
@@ -211,6 +214,6 @@ export const concreteCalculatorConfig: CalculatorConfig = {
     },
   ],
   relatedGuides: [
-    { name: "Composite vs PT vs cedar decking", slug: "composite-vs-pressure-treated-vs-cedar-deck", description: "20-year cost breakdown for all three decking materials" },
+    { name: "Cost to pour concrete", slug: "cost-to-pour-concrete", description: "Scope and bid-comparison checklist for a concrete project" },
   ],
 };

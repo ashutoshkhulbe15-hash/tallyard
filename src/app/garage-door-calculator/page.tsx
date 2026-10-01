@@ -6,13 +6,13 @@ import { getConfig } from "@/configs";
 const SLUG = "garage-door-calculator";
 
 export const metadata: Metadata = {
-  title: "Garage Door Size Calculator: Sizes & Clearances",
+  title: "Garage Door Opening Measurement Worksheet",
   description:
-    "Standard garage door sizes with headroom, side room, and backroom clearances checked. Includes door weight, header spans, opener HP, and 2026 costs.",
+    "Record opening and clearance dimensions and calculate rectangular area. Does not select hardware, check compatibility, or estimate price.",
   alternates: { canonical: "/garage-door-calculator" },
   openGraph: {
-    title: "Garage Door Size Calculator: Sizes & Clearances",
-    description: "Calculate garage door size, clearances, and opener HP.",
+    title: "Garage Door Opening Measurement Worksheet",
+    description: "Opening area arithmetic and entered clearances only; verify fit with the manufacturer.",
     url: "https://www.tallyard.com/garage-door-calculator",
     type: "website",
   },
@@ -23,7 +23,7 @@ export default function GarageDoorCalculatorPage() {
   return (
     <>
       {config && <SchemaScript config={config} />}
-      <CalculatorPage slug={SLUG} illustrationValue="16 × 7 FT" />
+      <CalculatorPage slug={SLUG} illustrationValue="OPENING" />
     </>
   );
 }

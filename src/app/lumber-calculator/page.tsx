@@ -6,14 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "lumber-calculator";
 
 export const metadata: Metadata = {
-  title: "Board Foot & Lumber Calculator: Cost + Weight",
-  description:
-    "Free board foot calculator: board feet, linear feet, weight, and cost for any lumber. Nominal sizes, conversions, and species guide.",
+  title: "Lumber Board-Foot and Lineal-Length Worksheet",
+  description: "Calculate nominal board-foot and lineal totals from size, length, quantity, and a user-selected allowance. No price or weight estimate.",
   alternates: { canonical: "/lumber-calculator" },
   openGraph: {
-    title: "Board Foot & Lumber Calculator: Cost + Weight",
-    description:
-      "Free board foot and lumber calculator: board feet, linear feet, weight, and cost for any board. Plus conversions.",
+    title: "Lumber Board-Foot and Lineal-Length Worksheet",
+    description: "Nominal board-foot and lineal-length arithmetic only; no price, weight, or design output.",
     url: "https://www.tallyard.com/lumber-calculator",
     type: "website",
   },
@@ -24,7 +22,7 @@ export default function LumberCalculatorPage() {
   return (
     <>
       {config && <SchemaScript config={config} />}
-      <CalculatorPage slug={SLUG} illustrationValue="267 BF" />
+      <CalculatorPage slug={SLUG} illustrationValue="BOARD FEET" />
     </>
   );
 }

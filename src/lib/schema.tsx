@@ -6,70 +6,6 @@ interface SchemaProps {
 }
 
 /**
- * Deterministic per-calculator "last reviewed" date, derived from the slug.
- * Used by both the JSON-LD dateModified and the visible byline so the two
- * never drift. Staggered across April 2026 to avoid a burst-publish signal.
- */
-// Refined pages carry their true refresh date. Must stay in sync with the
-// sitemap MODIFIED map: when a page is refined, update BOTH in the same commit.
-const REVIEWED: Record<string, string> = {
-  "pool-chlorine-calculator": "2026-08-08",
-  "drain-pipe-calculator": "2026-08-08",
-  "countertop-calculator": "2026-08-08",
-  "brick-calculator": "2026-08-08",
-  "rebar-calculator": "2026-08-08",
-  "sod-calculator": "2026-08-08",
-  "kitchen-cabinet-calculator": "2026-08-08",
-  "garage-door-calculator": "2026-08-08",
-  "wire-size-calculator": "2026-08-08",
-  "chimney-calculator": "2026-08-08",
-  "vanity-calculator": "2026-08-08",
-  "snow-load-calculator": "2026-08-08",
-  "extension-cord-calculator": "2026-08-08",
-  "shower-tile-calculator": "2026-08-08",
-  "grout-calculator": "2026-08-08",
-  "topsoil-calculator": "2026-08-08",
-  "backsplash-calculator": "2026-08-08",
-  "attic-ventilation-calculator": "2026-08-08",
-  "asphalt-calculator": "2026-08-08",
-  "heat-pump-calculator": "2026-08-08",
-  "water-heater-calculator": "2026-08-09",
-  "siding-calculator": "2026-08-09",
-  "gravel-calculator": "2026-08-09",
-  "roofing-calculator": "2026-08-09",
-  "mortar-calculator": "2026-08-09",
-  "wallpaper-calculator": "2026-07-13",
-  "lumber-calculator": "2026-07-13",
-  "stud-spacing-calculator": "2026-07-13",
-  "drywall-calculator": "2026-07-29",
-  "flooring-calculator": "2026-07-29",
-  "solar-calculator": "2026-07-29",
-  "furnace-replacement-cost-calculator": "2026-07-29",
-  "egress-window-calculator": "2026-07-29",
-  "deck-stair-calculator": "2026-07-29",
-  "deck-calculator": "2026-07-29",
-  "hardwood-flooring-cost-calculator": "2026-07-29",
-  "hardwood-floor-refinishing-cost-calculator": "2026-07-29",
-  "shed-calculator": "2026-07-10",
-  "gutter-calculator": "2026-07-11",
-  "stair-calculator": "2026-08-08",
-  "rainwater-calculator": "2026-07-11",
-  "window-sizing-calculator": "2026-07-11",
-};
-
-export function getReviewedDate(slug: string): { iso: string; display: string } {
-  const slugHash = slug.split("").reduce((a, c) => a + c.charCodeAt(0), 0);
-  const modDay = 15 + (slugHash % 6); // April 15-20
-  const iso = REVIEWED[slug] ?? `2026-04-${modDay.toString().padStart(2, "0")}`;
-  const display = new Date(iso + "T00:00:00").toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-  return { iso, display };
-}
-
-/**
  * Generate the full JSON-LD schema bundle for a calculator page:
  * - WebApplication (for the tool itself)
  * - FAQPage (for the FAQ section)
@@ -101,12 +37,6 @@ export function getCalculatorSchema({
     },
   };
 
-  // Stagger dates across pages to avoid burst-publishing signal
-  const slugHash = config.slug.split("").reduce((a, c) => a + c.charCodeAt(0), 0);
-  const pubDay = 10 + (slugHash % 10); // April 10-19
-  const datePub = `2026-04-${pubDay.toString().padStart(2, "0")}`;
-  const dateMod = getReviewedDate(config.slug).iso;
-
   const article = config.ContentExpansion
     ? {
         "@context": "https://schema.org",
@@ -114,8 +44,6 @@ export function getCalculatorSchema({
         headline: config.title,
         description: config.description,
         url: pageUrl,
-        datePublished: datePub,
-        dateModified: dateMod,
         author: {
           "@type": "Person",
           name: "Ash K.",

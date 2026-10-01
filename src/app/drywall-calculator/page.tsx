@@ -6,14 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "drywall-calculator";
 
 export const metadata: Metadata = {
-  title: "Drywall & Sheetrock Calculator: Sheets, Mud & Cost",
-  description:
-    "Free drywall calculator: sheets, joint compound, tape, and screws for any room. Covers installation cost, repair cost, and finish levels.",
+  title: "Drywall Panel Area Estimator",
+  description: "Estimate panel count from net measured surface area, nominal panel size, and a user-selected allowance.",
   alternates: { canonical: "/drywall-calculator" },
   openGraph: {
-    title: "Drywall & Sheetrock Calculator: Sheets, Mud & Cost",
-    description:
-      "Free drywall calculator: sheets, mud, tape, and screws. Covers installation cost, repair cost, and finish levels.",
+    title: "Drywall Panel Area Estimator",
+    description: "Panel area arithmetic only; no layout, finishing-material takeoff, or installation advice.",
     url: "https://www.tallyard.com/drywall-calculator",
     type: "website",
   },
@@ -24,7 +22,7 @@ export default function DrywallCalculatorPage() {
   return (
     <>
       {config && <SchemaScript config={config} />}
-      <CalculatorPage slug={SLUG} illustrationValue="14 SHEETS" />
+      <CalculatorPage slug={SLUG} illustrationValue="AREA ÷ PANEL AREA" />
     </>
   );
 }

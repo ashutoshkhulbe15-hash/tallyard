@@ -6,13 +6,13 @@ import { getConfig } from "@/configs";
 const SLUG = "attic-ventilation-calculator";
 
 export const metadata: Metadata = {
-  title: "Attic Ventilation Calculator: 1:300 Rule & NFA",
+  title: "Attic Ventilation Ratio Worksheet",
   description:
-    "Attic vent area from floor size using the IRC 1:300 rule, split into intake and exhaust. Covers net free area, soffit baffles, and mixing vent types.",
+    "Illustrative area-ratio arithmetic only. Does not calculate net-free area or design a ventilation system.",
   alternates: { canonical: "/attic-ventilation-calculator" },
   openGraph: {
-    title: "Attic Ventilation Calculator: 1:300 Rule & NFA",
-    description: "Calculate attic ventilation with the 1:300 rule.",
+    title: "Attic Ventilation Ratio Worksheet",
+    description: "Explore a user-selected area-ratio scenario; not ventilation design.",
     url: "https://www.tallyard.com/attic-ventilation-calculator",
     type: "website",
   },
@@ -23,7 +23,7 @@ export default function AtticVentilationCalculatorPage() {
   return (
     <>
       {config && <SchemaScript config={config} />}
-      <CalculatorPage slug={SLUG} illustrationValue="720 IN²" />
+      <CalculatorPage slug={SLUG} illustrationValue="SCENARIO" />
     </>
   );
 }

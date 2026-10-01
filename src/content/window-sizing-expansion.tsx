@@ -211,14 +211,14 @@ export function WindowSizingCalculatorExpansion() {
       <p>
         Beyond egress, the code wants habitable rooms to have daylight and fresh
         air, and it states both as a percentage of the floor. The glass area has to
-        equal at least 8 percent of the room's floor area, and the operable opening,
+        equal at least 8 percent of the room&apos;s floor area, and the operable opening,
         the part that actually opens, has to equal at least 4 percent. A 150 square
         foot bedroom needs at least 12 square feet of glass and at least 6 square
         feet that opens.
       </p>
       <p>
         One catch worth knowing: the 8 percent is glass area, not window size. The
-        frame and sash eat 15 to 25 percent of a window's overall dimensions, so a
+        frame and sash eat 15 to 25 percent of a window&apos;s overall dimensions, so a
         window has to be noticeably bigger than 12 square feet to deliver 12 square
         feet of actual glass. The calculator works in glass area to keep you honest.
         If mechanical ventilation is present, some jurisdictions relax the operable
@@ -267,7 +267,7 @@ export function WindowSizingCalculatorExpansion() {
       <h2>Where window jobs go wrong</h2>
       <p>
         The failures are almost all measuring and ordering mistakes. Sizing egress
-        off the window's catalog dimensions instead of the clear opening tops the
+        off the window&apos;s catalog dimensions instead of the clear opening tops the
         list, and it fails inspection because the actual gap is always smaller than
         the nominal size. Measuring the old window instead of the opening is next,
         and it produces a replacement that binds or rattles. Ordering to the widest

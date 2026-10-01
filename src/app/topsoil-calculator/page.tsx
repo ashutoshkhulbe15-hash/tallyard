@@ -6,13 +6,13 @@ import { getConfig } from "@/configs";
 const SLUG = "topsoil-calculator";
 
 export const metadata: Metadata = {
-  title: "Topsoil Calculator: Cubic Yards for Any Area",
+  title: "Soil Volume Calculator",
   description:
-    "Cubic yards of topsoil from your area and depth, with coverage per yard, what a yard of topsoil weighs, bags vs bulk pricing, and screened vs fill dirt.",
+    "Estimate soil volume from a rectangular area and selected depth, with an optional bag estimate using a selected package volume.",
   alternates: { canonical: "/topsoil-calculator" },
   openGraph: {
-    title: "Topsoil Calculator: Cubic Yards for Any Area",
-    description: "Calculate cubic yards of topsoil for any garden or lawn project.",
+    title: "Soil Volume Calculator",
+    description: "Estimate soil volume and package count from area, selected depth, and bag size.",
     url: "https://www.tallyard.com/topsoil-calculator",
     type: "website",
   },
@@ -23,7 +23,7 @@ export default function TopsoilCalculatorPage() {
   return (
     <>
       {config && <SchemaScript config={config} />}
-      <CalculatorPage slug={SLUG} illustrationValue="3.7 YD³" />
+      <CalculatorPage slug={SLUG} illustrationValue="VOLUME" />
     </>
   );
 }

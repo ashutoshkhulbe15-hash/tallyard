@@ -13,6 +13,12 @@ const navLinks = [
 ];
 
 const searchablePages = [
+  { slug: "mortar-calculator", label: "Mortar quantity calculator" },
+  { slug: "furnace-replacement-cost-calculator", label: "Furnace quote calculator" },
+  { slug: "egress-window-calculator", label: "Window clear-opening area" },
+  { slug: "deck-stair-calculator", label: "Deck stair geometry" },
+  { slug: "hardwood-flooring-cost-calculator", label: "Hardwood installation quote" },
+  { slug: "hardwood-floor-refinishing-cost-calculator", label: "Hardwood refinishing quote" },
   { slug: "paint-calculator", label: "Paint calculator" },
   { slug: "concrete-calculator", label: "Concrete calculator" },
   { slug: "tile-calculator", label: "Tile calculator" },
@@ -23,7 +29,7 @@ const searchablePages = [
   { slug: "mulch-calculator", label: "Mulch calculator" },
   { slug: "gravel-calculator", label: "Gravel calculator" },
   { slug: "insulation-calculator", label: "Insulation calculator" },
-  { slug: "btu-calculator", label: "BTU / AC sizing calculator" },
+  { slug: "btu-calculator", label: "Room air conditioner reference" },
   { slug: "heat-pump-calculator", label: "Heat pump calculator" },
   { slug: "solar-calculator", label: "Solar panel calculator" },
   { slug: "drywall-calculator", label: "Drywall calculator" },

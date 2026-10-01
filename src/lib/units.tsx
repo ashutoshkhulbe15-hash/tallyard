@@ -19,6 +19,11 @@ export function UnitProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     try {
+      const shared = new URLSearchParams(window.location.search).get("units");
+      if (shared === "metric" || shared === "imperial") {
+        setUnitsState(shared);
+        return;
+      }
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored === "metric" || stored === "imperial") {
         setUnitsState(stored);

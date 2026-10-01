@@ -6,14 +6,13 @@ import { getConfig } from "@/configs";
 const SLUG = "egress-window-calculator";
 
 export const metadata: Metadata = {
-  title: "Egress Window Calculator: Size, Code & Cost (IRC R310)",
+  title: "Net Clear Opening Area Calculator",
   description:
-    "Free egress window calculator: check net clear opening against IRC R310, plus window well rules and the cost to add a basement egress window.",
+    "Calculate area from entered net clear opening dimensions. Does not determine egress compliance or emergency-exit suitability.",
   alternates: { canonical: "/egress-window-calculator" },
   openGraph: {
-    title: "Egress Window Calculator: Size, Code & Cost (IRC R310)",
-    description:
-      "Free egress window calculator: check net clear opening against IRC R310, plus window well rules and basement egress costs.",
+    title: "Net Clear Opening Area Calculator",
+    description: "Area arithmetic from user-measured clear-opening dimensions only; no egress verdict.",
     url: "https://www.tallyard.com/egress-window-calculator",
     type: "website",
   },
@@ -24,7 +23,7 @@ export default function EgressWindowCalculatorPage() {
   return (
     <>
       {config && <SchemaScript config={config} />}
-      <CalculatorPage slug={SLUG} illustrationValue="5.87 SQ FT" />
+      <CalculatorPage slug={SLUG} illustrationValue="AREA" />
     </>
   );
 }

@@ -73,19 +73,17 @@ export default function AboutPage() {
 
         <div className="space-y-6 text-base text-ink-muted leading-relaxed max-w-prose">
           <p>
-            Tallyard builds free calculators and buying guides for home
-            improvement projects. Every tool shows its formula, every
-            guide shows its math, and nothing on this site asks for your
-            email, phone number, or credit card.
+            Tallyard builds free calculators, measurement worksheets, and
+            buying guides for home improvement projects. Tools vary in scope;
+            review each page&apos;s inputs, assumptions, references, and
+            limitations. The site does not require an email, phone number, or
+            credit card to use its calculators.
           </p>
 
           <p>
-            That sounds like an obvious approach, but it&apos;s not how
-            most of the internet works. Most online calculators exist to
-            collect your contact information and sell it to contractors.
-            Most comparison articles exist to send you to a lead form.
-            Tallyard exists because somebody needed to just show the math
-            and get out of the way.
+            That is the approach I wanted for project planning: make the
+            inputs and limitations easier to inspect, without requiring a
+            lead form to use the calculators.
           </p>
         </div>
 
@@ -120,23 +118,21 @@ export default function AboutPage() {
           <div className="space-y-4 text-base text-ink-muted leading-relaxed max-w-prose mt-6">
             <p>
               I build data-driven web tools. Tallyard started because I
-              needed a concrete calculator that showed its formula and
+              needed a concrete calculator that showed its working and
               could not find one. Every result on every other site was a
               black box: enter your numbers, get an answer, no idea how
-              it was calculated or whether it was right. So I built one
-              that shows the math. Then I built 43 more.
+              it was calculated or what assumptions it used. So I built one
+              that showed its working. The tools have since expanded to
+              cover other planning questions.
             </p>
             <p>
               I am not a contractor, an electrician, or an HVAC technician.
-              The formulas on this site do not come from my personal trade
-              experience. They come from the people and organizations who
-              set the standards: the International Residential Code (IRC),
-              ACCA Manual J, the Tile Council of North America (TCNA),
-              manufacturer product specifications from companies like GAF,
-              Trex, Owens Corning, and James Hardie, and industry
-              associations like NADRA, NWFA, and APA. Every calculator
-              cites its sources in a methodology section so you can verify
-              the math independently.
+              These tools are not professional designs or trade advice. Some
+              pages link to product or industry references; coverage and
+              citations vary by tool, so use each page&apos;s references as a
+              starting point and confirm current requirements with the
+              relevant manufacturer, local authority, or qualified
+              professional.
             </p>
             <p>
               Before Tallyard, I built JaankariHub and other reference
@@ -163,12 +159,11 @@ export default function AboutPage() {
                 Calculator formulas
               </h3>
               <p>
-                Every formula is derived from manufacturer specifications,
-                industry standards, or building codes. Coverage rates (how
-                much a gallon of paint covers, how many bricks per square
-                foot) are sourced from product data sheets, not guesswork.
-                Each calculator&apos;s methodology section cites specific
-                sources so you can check our work.
+                Calculator pages show the formulas and assumptions used for
+                their estimates. Source references are listed where relevant;
+                some values vary by product, location, and code edition. Check
+                the actual product data and local requirements before buying
+                materials or making safety-critical decisions.
               </p>
             </div>
             <div>

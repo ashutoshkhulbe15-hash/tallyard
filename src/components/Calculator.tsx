@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useUnits } from "@/lib/units";
 import { formatNumber } from "@/lib/format";
+import { convertCalculatorValues, getCalculatorInputBounds, validateCalculatorValues, validateCalculatorResult } from "@/lib/calculator-values";
 import type { CalculatorConfig } from "@/lib/types";
 
 interface CalculatorProps {
@@ -20,7 +21,7 @@ interface CalculatorProps {
  * so each page's client bundle only pulls its own calculator.
  */
 export function Calculator({ slug, panelTitle }: CalculatorProps) {
-  const { units } = useUnits();
+  const { units, setUnits } = useUnits();
   const [config, setConfig] = useState<CalculatorConfig | null>(null);
 
   useEffect(() => {
@@ -48,16 +49,23 @@ export function Calculator({ slug, panelTitle }: CalculatorProps) {
   const [values, setValues] = useState<Record<string, number | string>>({});
   const [valuesInit, setValuesInit] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [valuesUnits, setValuesUnits] = useState(units);
+  const [copyFailed, setCopyFailed] = useState(false);
 
   useEffect(() => {
     if (!config || valuesInit) return;
     const params = new URLSearchParams(window.location.search);
+    const sharedUnits = params.get("units");
+    if ((sharedUnits === "metric" || sharedUnits === "imperial") && sharedUnits !== units) {
+      setUnits(sharedUnits);
+      return;
+    }
     const initial: Record<string, number | string> = {};
     config.inputs.forEach((input) => {
       const paramVal = params.get(input.id);
       if (paramVal !== null) {
         initial[input.id] =
-          input.type === "number" ? Number(paramVal) || input.defaultImperial : paramVal;
+          input.type === "number" ? (paramVal === "" ? "" : Number(paramVal)) : paramVal;
       } else {
         initial[input.id] =
           units === "metric" && input.defaultMetric !== undefined
@@ -66,34 +74,30 @@ export function Calculator({ slug, panelTitle }: CalculatorProps) {
       }
     });
     setValues(initial);
+    setValuesUnits(units);
     setValuesInit(true);
-  }, [config, units, valuesInit]);
+  }, [config, units, valuesInit, setUnits]);
 
-  const [prevUnits, setPrevUnits] = useState(units);
-  if (prevUnits !== units && config && valuesInit) {
-    const updated: Record<string, number | string> = { ...values };
-    config.inputs.forEach((input) => {
-      if (input.type === "number" && input.defaultMetric !== undefined) {
-        const prevDefault =
-          prevUnits === "metric" ? input.defaultMetric : input.defaultImperial;
-        if (values[input.id] === prevDefault) {
-          updated[input.id] =
-            units === "metric" ? input.defaultMetric : input.defaultImperial;
-        }
-      }
-    });
-    setValues(updated);
-    setPrevUnits(units);
-  }
+  useEffect(() => {
+    if (!config || !valuesInit || valuesUnits === units) return;
+    setValues((previous) => convertCalculatorValues(config.inputs, previous, valuesUnits, units));
+    setValuesUnits(units);
+  }, [config, units, valuesInit, valuesUnits]);
 
-  const result = useMemo(() => {
-    if (!config || !valuesInit) return null;
+  const { result, error } = useMemo(() => {
+    if (!config || !valuesInit || valuesUnits !== units) return { result: null, error: null };
     try {
-      return config.calculate(values, units);
-    } catch {
-      return null;
+      validateCalculatorValues(config, values, units);
+      const calculated = config.calculate(values, units);
+      validateCalculatorResult(calculated);
+      return { result: calculated, error: null };
+    } catch (cause) {
+      return {
+        result: null,
+        error: cause instanceof Error ? cause.message : "Unable to calculate these inputs.",
+      };
     }
-  }, [values, units, config, valuesInit]);
+  }, [values, units, config, valuesInit, valuesUnits]);
 
   // Loading skeleton — same panel silhouette so the page doesn't jump.
   if (!config) {
@@ -166,8 +170,8 @@ export function Calculator({ slug, panelTitle }: CalculatorProps) {
                       type="number"
                       id={input.id}
                       value={values[input.id] as number}
-                      min={input.min}
-                      max={input.max}
+                      min={getCalculatorInputBounds(input, units).min}
+                      max={getCalculatorInputBounds(input, units).max}
                       step={input.step || "any"}
                       onChange={(e) => {
                         const val =
@@ -202,6 +206,12 @@ export function Calculator({ slug, panelTitle }: CalculatorProps) {
             );
           })}
         </div>
+
+        {error && (
+          <p role="alert" className="mt-6 rounded border border-amber-300 bg-amber-50 p-3 text-sm text-ink">
+            {error}
+          </p>
+        )}
 
         {/* The receipt */}
         {result && (
@@ -257,13 +267,15 @@ export function Calculator({ slug, panelTitle }: CalculatorProps) {
                 You need
               </span>
               <span className="text-2xl md:text-3xl font-bold text-ink tracking-tight text-right">
-                {formatNumber(result.valueRounded)}{" "}
-                <span className="text-base font-medium text-ink-muted">
-                  {result.unit}
-                </span>
+                {result.displayValue ?? formatNumber(result.valueRounded)}{" "}
+                {!result.displayValue && (
+                  <span className="text-base font-medium text-ink-muted">
+                    {result.unit}
+                  </span>
+                )}
               </span>
             </div>
-            {result.value !== result.valueRounded && (
+            {!result.displayValue && result.value !== result.valueRounded && (
               <div className="flex justify-end pb-1 text-xs text-ink-faint">
                 exact: {formatNumber(result.value, 3)} {result.unit}
               </div>
@@ -301,16 +313,20 @@ export function Calculator({ slug, panelTitle }: CalculatorProps) {
         <button
           onClick={() => {
             const params = new URLSearchParams();
+            params.set("units", units);
             Object.entries(values).forEach(([k, v]) => params.set(k, String(v)));
             const shareUrl = `${window.location.origin}${window.location.pathname}?${params.toString()}`;
+            setCopyFailed(false);
             navigator.clipboard.writeText(shareUrl).then(() => {
               setCopied(true);
               setTimeout(() => setCopied(false), 2000);
+            }).catch(() => {
+              setCopyFailed(true);
             });
           }}
           className="flex-1 bg-ink text-bg text-sm font-semibold py-3 rounded hover:bg-walnut-soft transition-colors"
         >
-          {copied ? "✓ Copied!" : "Copy link with my inputs"}
+          {copied ? "✓ Copied!" : copyFailed ? "Clipboard unavailable" : "Copy link with my inputs"}
         </button>
         <button
           onClick={() => window.print()}

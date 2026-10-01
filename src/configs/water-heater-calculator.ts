@@ -1,311 +1,56 @@
-import { WaterHeaterCalculatorExpansion } from "@/content/water-heater-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
 export const waterHeaterCalculatorConfig: CalculatorConfig = {
   slug: "water-heater-calculator",
-  title: "Water Heater Calculator",
-  description:
-    "Right-size a tank or tankless water heater for your household. Based on peak-hour demand, fixture count, and household size.",
+  title: "Water-Heating Rate Conversion Worksheet",
+  description: "Convert user-entered water flow and temperature rise to a theoretical heat-transfer rate. Does not size or select a water heater.",
   categoryLabel: "HVAC",
   category: "hvac",
-
-  bannerHeadline: "Heat steadily.",
-  bannerTags: ["Tank or tankless", "Peak hour demand", "GPH or GPM"],
-
+  bannerHeadline: "Convert a known rate.",
+  bannerTags: ["Enter flow and rise", "Theoretical heat rate", "No equipment selection"],
   inputs: [
-    {
-      id: "type",
-      label: "Water heater type",
-      type: "select",
-      defaultImperial: "tank",
-      options: [
-        { label: "Tank (gas or electric)", value: "tank" },
-        { label: "Tankless (on-demand)", value: "tankless" },
-      ],
-    },
-    {
-      id: "adults",
-      label: "Adults in household",
-      type: "number",
-      defaultImperial: 2,
-      min: 0,
-      step: 1,
-    },
-    {
-      id: "teens",
-      label: "Teens / kids",
-      type: "number",
-      defaultImperial: 2,
-      min: 0,
-      step: 1,
-      help: "School-age children through teens use adult-level hot water",
-    },
-    {
-      id: "bathrooms",
-      label: "Number of bathrooms",
-      type: "number",
-      defaultImperial: 2,
-      min: 1,
-      step: 1,
-    },
-    {
-      id: "simultaneous",
-      label: "Peak simultaneous uses",
-      type: "select",
-      defaultImperial: "2",
-      options: [
-        { label: "1 (shower only)", value: "1" },
-        { label: "2 (shower + sink/dishwasher)", value: "2" },
-        { label: "3 (two showers + sink)", value: "3" },
-        { label: "4+ (large household morning rush)", value: "4" },
-      ],
-      help: "How many hot-water fixtures run at once during peak",
-    },
-    {
-      id: "climate",
-      label: "Incoming water temperature",
-      type: "select",
-      defaultImperial: 55,
-      options: [
-        { label: "Warm (70°F: Gulf, FL)", value: 70 },
-        { label: "Moderate (55°F: mid-US)", value: 55 },
-        { label: "Cold (45°F: N. US, Canada)", value: 45 },
-        { label: "Very cold (35°F: winter, N. Plains)", value: 35 },
-      ],
-      help: "Tankless sizing depends heavily on incoming water temp",
-    },
+    { id: "flow", label: "User-measured flow rate", type: "number", unitImperial: "GPM", unitMetric: "L/min", defaultImperial: 3, defaultMetric: 11.36, min: 0.01, step: 0.1 },
+    { id: "rise", label: "Required temperature rise", type: "number", unitImperial: "°F", unitMetric: "°C", defaultImperial: 60, defaultMetric: 33.33, min: 0.01, step: 0.1, help: "Enter the difference between incoming and target water temperatures." },
   ],
-
-  calculate: (values) => {
-    const type = String(values.type || "tank");
-    const adults = Number(values.adults) || 0;
-    const teens = Number(values.teens) || 0;
-    const bathrooms = Number(values.bathrooms) || 1;
-    const simultaneous = Number(values.simultaneous) || 2;
-    const incomingTempF = Number(values.climate) || 55;
-
-    const totalPeople = adults + teens;
-
-    // TANK SIZING: based on first-hour rating (FHR) requirements
-    // Peak hour demand (gallons per hour):
-    // - Shower: 20 gallons per 10-minute shower
-    // - Bath: 20 gallons
-    // - Dishwasher: 8 gallons per cycle
-    // - Washing machine: 14 gallons
-    // - Sink use: 3 gallons
-    // Peak hour for a typical morning: 1 shower per occupant + 1 sink use
-    const peakShowers = Math.max(1, Math.min(totalPeople, simultaneous * 2));
-    const peakHourDemand = peakShowers * 20 + totalPeople * 3 + (simultaneous >= 3 ? 14 : 0);
-
-    // Tank size rule: tank should be about 70% of peak hour demand
-    // (since tank heats more while you use it — the FHR, not just capacity)
-    const tankSizeRaw = peakHourDemand / 1.3;
-
-    // Standard tank sizes (gallons)
-    const tankSizes = [30, 40, 50, 65, 75, 80, 100];
-    let recommendedTank = tankSizes[tankSizes.length - 1];
-    for (const size of tankSizes) {
-      if (size >= tankSizeRaw) {
-        recommendedTank = size;
-        break;
-      }
+  calculate: (values, units) => {
+    const flow = Number(values.flow);
+    const rise = Number(values.rise);
+    if (![flow, rise].every(Number.isFinite) || flow <= 0 || rise <= 0) {
+      throw new Error("Enter a positive flow rate and temperature rise.");
     }
-
-    // TANKLESS SIZING: flow rate (GPM) needed × temp rise
-    // Peak flow rate based on simultaneous fixtures:
-    // - Shower: 2.5 GPM
-    // - Sink: 1.5 GPM
-    // - Dishwasher: 1.5 GPM
-    const peakGpmMap: Record<number, number> = {
-      1: 2.5,
-      2: 4.0,
-      3: 6.5,
-      4: 8.5,
-    };
-    const peakGpm = peakGpmMap[simultaneous] || 4.0;
-
-    // Temp rise needed (output 120°F − incoming)
-    const tempRise = 120 - incomingTempF;
-
-    // Tankless BTU = GPM × temp rise × 8.33 (lb/gal) × 60 (min/hr) × 1 (BTU/lb°F)
-    // Simplified for installed units: electric = kW; gas = BTU/hr
-    // Standard gas tankless: 120,000-199,000 BTU/hr
-    // Recommended tankless BTU:
-    const tanklessBtu = Math.round(peakGpm * tempRise * 500);
-
-    // Recommended standard tankless size bracket
-    let tanklessSize: string;
-    if (tanklessBtu <= 120000) tanklessSize = "120,000 BTU (small)";
-    else if (tanklessBtu <= 160000) tanklessSize = "160,000 BTU (medium)";
-    else if (tanklessBtu <= 199000) tanklessSize = "199,000 BTU (large)";
-    else tanklessSize = "Multiple units or commercial unit required";
-
-    if (type === "tankless") {
-      return {
-        value: peakGpm,
-        unit: "GPM needed",
-        valueRounded: round(peakGpm, 1),
-        breakdown: [
-          { label: "recommended unit", value: tanklessSize },
-          { label: "peak flow", value: `${peakGpm} GPM` },
-          { label: "temp rise", value: `${tempRise}°F` },
-          { label: "BTU/hr needed", value: `${formatNumber(tanklessBtu)}` },
-          { label: "simultaneous uses", value: `${simultaneous}` },
-        ],
-        formulaSteps: [
-          `peak simultaneous = ${simultaneous} fixtures`,
-          `peak flow rate = ${peakGpm} GPM`,
-          `incoming water = ${incomingTempF}°F, output = 120°F`,
-          `temp rise = 120 − ${incomingTempF} = ${tempRise}°F`,
-          `BTU needed = ${peakGpm} GPM × ${tempRise}°F × 500 = ${formatNumber(tanklessBtu)} BTU/hr`,
-          `recommended: ${tanklessSize}`,
-        ],
-      };
-    }
-
-    // Tank type
+    const rate = units === "metric" ? flow * rise * 69.8 : flow * rise * 500;
+    const rounded = units === "metric" ? round(rate / 1000, 3) : Math.round(rate);
     return {
-      value: recommendedTank,
-      unit: "gallon tank",
-      valueRounded: recommendedTank,
+      value: units === "metric" ? rate / 1000 : rate,
+      unit: units === "metric" ? "theoretical kW" : "theoretical BTU/h",
+      valueRounded: rounded,
       breakdown: [
-        { label: "household size", value: `${totalPeople} people` },
-        { label: "peak hour demand", value: `${formatNumber(peakHourDemand)} gallons` },
-        { label: "bathrooms", value: `${bathrooms}` },
-        { label: "first-hour rating target", value: `${formatNumber(peakHourDemand)} GPH` },
+        { label: "entered flow", value: `${formatNumber(round(flow, 2))} ${units === "metric" ? "L/min" : "GPM"}` },
+        { label: "entered temperature rise", value: `${formatNumber(round(rise, 2))} ${units === "metric" ? "°C" : "°F"}` },
+        { label: "theoretical heat-transfer rate", value: `${formatNumber(rounded)} ${units === "metric" ? "kW" : "BTU/h"}` },
+        { label: "equipment selection", value: "not calculated" },
       ],
       formulaSteps: [
-        `household = ${adults} adults + ${teens} teens = ${totalPeople} people`,
-        `peak showers = min(${totalPeople}, ${simultaneous * 2}) = ${peakShowers}`,
-        `peak hour demand = ${peakShowers} × 20 (shower) + ${totalPeople} × 3 (sinks)${simultaneous >= 3 ? " + 14 (washer)" : ""} = ${formatNumber(peakHourDemand)} gallons`,
-        `raw tank size = ${formatNumber(peakHourDemand)} ÷ 1.3 = ${formatNumber(round(tankSizeRaw, 0))} gallons`,
-        `recommended = ${recommendedTank} gallons (next standard size)`,
-        `first-hour rating (FHR) target = ${formatNumber(peakHourDemand)} GPH`,
+        units === "metric"
+          ? `theoretical rate = ${flow} L/min × ${rise} °C × 69.8 W/(L/min·°C) = ${round(rate / 1000, 3)} kW`
+          : `theoretical rate = ${flow} GPM × ${rise} °F × 500 = ${Math.round(rate)} BTU/h`,
+        "This idealized water-heating conversion does not include equipment efficiency, recovery, storage, rated performance, distribution losses, fuel or electrical supply, or installation conditions.",
       ],
     };
   },
-
-  howTo: {
-    name: "How to size a water heater",
-    description:
-      "Size a tank by first hour rating or a tankless by flow rate at your actual temperature rise.",
-    steps: [
-      {
-        name: "Add up peak hour demand",
-        text: "Count the hot water draws in your busiest hour. A shower is about 16 gallons, a dishwasher 6, and a clothes washer 20 on a warm cycle.",
-      },
-      {
-        name: "Match the first hour rating, not the tank size",
-        text: "FHR is storage plus recovery during that hour and appears on the EnergyGuide label. Gas recovers roughly twice as fast as electric, so a 40 gallon gas tank matches a 50 gallon electric.",
-      },
-      {
-        name: "For tankless, find your temperature rise",
-        text: "Subtract incoming groundwater temperature from a 120F target. Northern states need about an 80 degree rise; the Gulf Coast needs closer to 50.",
-      },
-      {
-        name: "Add the simultaneous flow rates",
-        text: "A shower is 1.5 to 2.5 GPM and a kitchen faucet 1 to 2.2. Check the tankless rating at your rise rather than the headline GPM figure, which assumes a small rise.",
-      },
-      {
-        name: "Confirm venting and expansion",
-        text: "A gas unit needs an appropriate vent type for its location, and a closed plumbing system requires an expansion tank precharged to the house water pressure.",
-      },
-    ],
-  },
-
-  ContentExpansion: WaterHeaterCalculatorExpansion,
-
-  formulaDescription:
-    "tank: size = peak hour demand ÷ 1.3; tankless: GPM = peak simultaneous, BTU = GPM × temp rise × 500",
-
+  formulaDescription: "theoretical heat rate from user-entered flow × temperature rise using a water heat-capacity approximation",
   methodology: [
-    "Tank water heaters are sized by the First-Hour Rating (FHR): how many gallons of hot water the unit can deliver in the first hour, starting with a full tank. The tank size itself is usually smaller than FHR because the heater continues to heat water as you use it. A 50-gallon tank with an FHR of 65-75 gallons is typical.",
-    "Tank peak-hour demand is the total hot water you use during your busiest hour. The calculator estimates 20 gallons per shower, 3 gallons per person for sinks (hand washing, shaving), and adds 14 gallons if 3+ simultaneous uses suggest a washing machine is running too. Morning rush in a 4-person household is typically 80-100 gallons.",
-    "Standard tank sizes are 30, 40, 50, 65, 75, and 80 gallons for residential. 50-gallon is the most common size for typical 3-4 person homes. 40-gallon works for 1-2 person households. 65-80 gallon for 5+ person homes or homes with large soaking tubs.",
-    "Tankless water heaters are sized completely differently: by flow rate (GPM) and temperature rise. The heater must deliver hot water at your peak simultaneous flow, raising the incoming water temperature to 120°F. In cold climates with 35°F incoming water, the temp rise is 85°F, a huge demand. In warm climates with 70°F incoming water, only a 50°F rise is needed.",
-    "Tankless BTU calculation: BTU/hr = GPM × temp rise × 500. A family that wants 2 simultaneous showers (5 GPM) in a cold climate (85°F rise) needs 212,500 BTU/hr, more than residential tankless can provide. They'd need two units or a large commercial unit. The same family in Florida (40°F rise) only needs 100,000 BTU, which any standard tankless handles easily.",
-    "Not covered: vent sizing (gas units), electrical panel capacity (electric tankless needs large 240V circuits, a 27 kW tankless pulls 113 amps), gas line size (tankless units need ¾\" gas lines, tank heaters typically use ½\"), or water treatment (tankless is sensitive to hard water, sediment causes scale buildup requiring annual flushing).",
+    "This worksheet converts a user-entered flow and temperature difference into an idealized heat-transfer rate. It uses approximately 500 BTU/h per GPM per °F in customary units, or 69.8 W per L/min per °C in metric units.",
+    "The result is not a water-heater capacity recommendation. It does not assess first-hour rating, draw profile, recovery, equipment efficiency, rated output at the entered conditions, fuel supply, venting, electrical service, plumbing, or local requirements. Verify exact product performance and have installation and system selection reviewed by qualified professionals.",
   ],
-
-  sources: [
-    {
-      name: "DOE: Sizing a New Water Heater",
-      url: "https://www.energy.gov/energysaver/sizing-new-water-heater",
-      note: "The first hour rating methodology and peak hour demand worksheet this calculator applies",
-    },
-    {
-      name: "ENERGY STAR: Water Heater Efficiency and Sizing",
-      url: "https://www.energystar.gov/products/water_heaters",
-      note: "Efficiency thresholds and heat pump water heater space and clearance requirements",
-    },
-    {
-      name: "IRC 2021, Section P2803: Relief Valves",
-      url: "https://codes.iccsafe.org/content/IRC2021P1/chapter-28-water-heaters",
-      note: "Temperature and pressure relief valve and discharge pipe requirements",
-    },
-    {
-      name: "IRC 2021, Section P2903.4: Thermal Expansion Control",
-      url: "https://codes.iccsafe.org/content/IRC2021P1/chapter-29-water-supply-and-distribution",
-      note: "When a closed system requires an expansion tank",
-    },
-    {
-      name: "AHRI Directory: Water Heater Certified Ratings",
-      url: "https://www.ahridirectory.org/",
-      note: "Verified first hour rating and recovery data for specific models",
-    },
-  ],
-
+  sources: [],
   related: [
-    { name: "Drain pipe calculator", slug: "drain-pipe-calculator", description: "DFU sizing for the drain lines in the same wall" },
-    { name: "Heat pump calculator", slug: "heat-pump-calculator", description: "Home heating and cooling size" },
-    { name: "Wire size calculator", slug: "wire-size-calculator", description: "Circuit wiring for electric water heaters" },
-    { name: "Chimney calculator", slug: "chimney-calculator", description: "Sizing the flue a gas appliance vents into" },
+    { name: "Heat pump load conversion", slug: "heat-pump-calculator", description: "Convert known heating and cooling loads to ton-equivalents" },
+    { name: "Drain fixture-unit worksheet", slug: "drain-pipe-calculator", description: "Limited fixture-unit subtotal, not pipe sizing" },
   ],
-
   faq: [
-    {
-      question: "What size water heater do I need for a family of 4?",
-      answer:
-        "A 50-gallon tank handles most 4-person families comfortably. Upgrade to 65-75 gallons if you have 3+ bathrooms with frequent simultaneous use, a large soaking tub, or teenagers who take long showers. For tankless, 160,000-199,000 BTU gas or 27 kW electric handles 2 simultaneous showers in cold climates.",
-    },
-    {
-      question: "Tank or tankless, which is better?",
-      answer:
-        "Tankless: lasts 20+ years, endless hot water, 30% more efficient, takes less space. Tank: cheaper upfront ($400-1,000 vs $1,500-3,500), simpler install, no flow-rate limit. Tankless pays back in 8-15 years via energy savings. For homes where gas line and venting are already set up for tank, a tank is the easier swap. New construction or cold climates: tankless is increasingly the default.",
-    },
-    {
-      question: "What's first-hour rating (FHR)?",
-      answer:
-        "FHR is the gallons of hot water a tank water heater can deliver in the first hour of use, starting with a full tank. More important than tank capacity when comparing heaters. A 50-gallon tank with a high-output burner might have an FHR of 80 gallons, better for busy mornings than a 75-gallon tank with a smaller burner (FHR 70 gallons).",
-    },
-    {
-      question: "How do I calculate tankless size?",
-      answer:
-        "Start with peak simultaneous GPM (shower = 2.5, sink = 1.5, dishwasher = 1.5). Then determine temperature rise (120°F output − your incoming water temp). Multiply: GPM × temp rise × 500 = BTU/hr needed. For a 2-shower family in cold water: 5 GPM × 85°F × 500 = 212,500 BTU/hr, which requires two units or a commercial tankless.",
-    },
-    {
-      question: "How long do water heaters last?",
-      answer:
-        "Tank water heaters: 8-12 years typical, up to 15-20 with anode rod maintenance. Tankless: 20-25 years with annual flushing. Gas tank heaters often outlast electric because the pilot/burner cycle doesn't corrode the tank lining as quickly. Hard water significantly shortens tank heater life.",
-    },
-    {
-      question: "How much does a new water heater cost?",
-      answer:
-        "40-50 gallon gas tank installed: $1,200-2,500. 40-50 gallon electric tank: $900-2,000. Gas tankless: $2,500-4,500 installed (includes venting). Electric tankless: $1,500-3,500 installed (often needs panel upgrade). Heat pump water heater: $2,500-4,500 (Energy Star rebates and tax credits often available).",
-    },
-    {
-      question: "Should I consider a heat pump water heater?",
-      answer:
-        "Yes if you have space (they need 1,000 cu ft of room air), don't mind unit cost ($1,500-3,000 vs $500 for a standard electric), and want lowest operating cost. Heat pump water heaters use 70% less electricity than standard electric. Pay back in 3-7 years in most climates. Don't install in unheated garages where the unit can freeze.",
-    },
-    {
-      question: "What if I run out of hot water?",
-      answer:
-        "Tank: heater is undersized, OR the dip tube is broken, OR the bottom heating element (electric) is failed. For sizing issues: upgrade tank or switch to tankless. Tankless: flow exceeds capacity, OR incoming water is colder than spec, OR gas line is undersized. Verify specs match usage; larger unit may be needed.",
-    },
-  ],
-  relatedGuides: [
-    { name: "Heat pump vs furnace + AC", slug: "heat-pump-vs-furnace", description: "Climate-zone comparison of heat pump vs gas furnace operating costs" },
+    { question: "Does this tell me which water heater to buy?", answer: "No. It calculates only a theoretical heat-transfer rate from flow and temperature rise. Compare exact product ratings and obtain project-specific selection advice." },
+    { question: "What is temperature rise?", answer: "It is the target water temperature minus incoming water temperature. This worksheet does not choose either temperature for your project." },
   ],
 };

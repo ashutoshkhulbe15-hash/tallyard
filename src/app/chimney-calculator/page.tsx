@@ -6,13 +6,13 @@ import { getConfig } from "@/configs";
 const SLUG = "chimney-calculator";
 
 export const metadata: Metadata = {
-  title: "Chimney Flue Size Calculator: Chart & Height",
+  title: "Fireplace Opening Area Calculator",
   description:
-    "Flue size for any fireplace or wood stove, with the chimney flue size chart, clay liner net areas, and the 3-2-10 height rule from the IRC.",
+    "Calculate rectangular fireplace opening area only. This tool does not size a flue, liner, chimney, or vent system.",
   alternates: { canonical: "/chimney-calculator" },
   openGraph: {
-    title: "Chimney Flue Size Calculator: Chart & Height",
-    description: "Calculate flue size for fireplaces and wood stoves.",
+    title: "Fireplace Opening Area Calculator",
+    description: "Calculate rectangular fireplace opening area only; not a flue-sizing tool.",
     url: "https://www.tallyard.com/chimney-calculator",
     type: "website",
   },
@@ -23,7 +23,7 @@ export default function ChimneyCalculatorPage() {
   return (
     <>
       {config && <SchemaScript config={config} />}
-      <CalculatorPage slug={SLUG} illustrationValue="112 IN²" />
+      <CalculatorPage slug={SLUG} illustrationValue="AREA" />
     </>
   );
 }

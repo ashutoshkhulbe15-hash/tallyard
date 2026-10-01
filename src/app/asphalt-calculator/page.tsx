@@ -6,13 +6,13 @@ import { getConfig } from "@/configs";
 const SLUG = "asphalt-calculator";
 
 export const metadata: Metadata = {
-  title: "Asphalt Calculator: Tons for Any Driveway",
+  title: "Asphalt Volume and Weight Calculator",
   description:
-    "Tons of asphalt from area and compacted thickness at 145 lb density. Covers base depth, driveway cost, overlay vs replacement, and recycled millings.",
+    "Estimate asphalt volume and approximate weight from area and selected thickness. Not a pavement design or price quote.",
   alternates: { canonical: "/asphalt-calculator" },
   openGraph: {
-    title: "Asphalt Calculator: Tons for Any Driveway",
-    description: "Calculate tons of asphalt for any driveway or parking project.",
+    title: "Asphalt Volume and Weight Calculator",
+    description: "Estimate asphalt volume and approximate weight from area and selected thickness.",
     url: "https://www.tallyard.com/asphalt-calculator",
     type: "website",
   },

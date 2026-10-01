@@ -42,6 +42,8 @@ export interface CalculatorResult {
   unit: string;
   /** Rounded-up for practical purchasing */
   valueRounded: number;
+  /** Optional nonnumeric primary result, for sizes such as 1/0 AWG. */
+  displayValue?: string;
   /** Supporting stat rows (wall area, coverage, etc.) */
   breakdown: Array<{ label: string; value: string }>;
   /** Human-readable formula trace, step by step */

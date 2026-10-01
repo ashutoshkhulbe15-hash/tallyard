@@ -6,14 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "insulation-calculator";
 
 export const metadata: Metadata = {
-  title: "Insulation Calculator: R-Value And Bags Needed",
-  description:
-    "Calculate insulation coverage and R-value for any wall, attic, or floor. Climate-appropriate targets included.",
+  title: "Insulation Package Coverage Estimator",
+  description: "Estimate package count from measured area, exact product-label coverage, and a user-selected allowance.",
   alternates: { canonical: "/insulation-calculator" },
   openGraph: {
-    title: "Insulation Calculator: R-Value And Bags Needed",
-    description:
-      "Calculate insulation coverage for any wall, attic, or floor with climate-specific R-values.",
+    title: "Insulation Package Coverage Estimator",
+    description: "Estimate packages using entered area and exact product-label coverage.",
     url: "https://www.tallyard.com/insulation-calculator",
     type: "website",
   },
@@ -24,7 +22,7 @@ export default function InsulationCalculatorPage() {
   return (
     <>
       {config && <SchemaScript config={config} />}
-      <CalculatorPage slug={SLUG} illustrationValue="R-49" />
+      <CalculatorPage slug={SLUG} illustrationValue="AREA ÷ LABEL COVERAGE" />
     </>
   );
 }

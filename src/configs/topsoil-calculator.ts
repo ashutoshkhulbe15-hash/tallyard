@@ -1,18 +1,15 @@
-import { TopsoilCalculatorExpansion } from "@/content/topsoil-expansion";
 import type { CalculatorConfig } from "@/lib/types";
-import { round, roundUp, formatNumber } from "@/lib/format";
+import { round, roundUp, formatNumber, ceilQuantity } from "@/lib/format";
 
 export const topsoilCalculatorConfig: CalculatorConfig = {
   slug: "topsoil-calculator",
-  title: "Topsoil Calculator",
+  title: "Soil Volume Calculator",
   description:
-    "Cubic yards of topsoil or fill dirt for any garden bed, lawn, or fill project. Converts to bags for small jobs and tons for delivery.",
+    "Estimate soil volume from a rectangular area and user-selected depth, with an optional package-count estimate for a selected bag size.",
   categoryLabel: "Landscaping",
   category: "landscaping",
-
-  bannerHeadline: "Fill correctly.",
-  bannerTags: ["Yards · bags · tons", "Any depth", "Garden · lawn · fill"],
-
+  bannerHeadline: "Estimate soil volume.",
+  bannerTags: ["Rectangular area", "User-selected depth", "Optional bag estimate"],
   inputs: [
     {
       id: "length",
@@ -22,7 +19,7 @@ export const topsoilCalculatorConfig: CalculatorConfig = {
       unitMetric: "m",
       defaultImperial: 20,
       defaultMetric: 6,
-      min: 1,
+      min: 0.1,
       step: 0.5,
     },
     {
@@ -33,224 +30,112 @@ export const topsoilCalculatorConfig: CalculatorConfig = {
       unitMetric: "m",
       defaultImperial: 10,
       defaultMetric: 3,
-      min: 0.5,
+      min: 0.1,
       step: 0.5,
     },
     {
       id: "depth",
-      label: "Depth",
+      label: "Selected depth",
       type: "select",
       defaultImperial: 6,
+      defaultMetric: 6,
       options: [
-        { label: '2" / 5 cm (overseeding)', value: 2 },
-        { label: '4" / 10 cm (lawn repair)', value: 4 },
-        { label: '6" / 15 cm (garden bed)', value: 6 },
-        { label: '8" / 20 cm (raised bed)', value: 8 },
-        { label: '12" / 30 cm (deep fill)', value: 12 },
+        { label: '2 in (5.08 cm)', value: 2 },
+        { label: '4 in (10.16 cm)', value: 4 },
+        { label: '6 in (15.24 cm)', value: 6 },
+        { label: '8 in (20.32 cm)', value: 8 },
+        { label: '12 in (30.48 cm)', value: 12 },
       ],
-      help: "2-4\" for lawns, 6-8\" for garden beds, 12\"+ for raised beds",
+      help: "Values are fixed inch-based presets shown in both unit modes; depth is an input, not a recommendation.",
     },
     {
-      id: "type",
-      label: "Soil type",
+      id: "bagSize",
+      label: "Bag volume for package estimate",
       type: "select",
-      defaultImperial: "topsoil",
+      defaultImperial: 0.75,
+      defaultMetric: 0.75,
       options: [
-        { label: "Topsoil (1.1 t/yd³)", value: "topsoil" },
-        { label: "Fill dirt (1.25 t/yd³)", value: "fill" },
-        { label: "Compost (0.75 t/yd³)", value: "compost" },
-        { label: "Garden mix (1.0 t/yd³)", value: "garden" },
+        { label: "0.5 ft³ bag", value: 0.5 },
+        { label: "0.75 ft³ bag", value: 0.75 },
+        { label: "1 ft³ bag", value: 1 },
       ],
+      help: "Select a listed example size, then confirm the actual bag volume on the product label.",
     },
   ],
-
   calculate: (values, units) => {
-    const L = Number(values.length) || 0;
-    const W = Number(values.width) || 0;
-    const depthInches = Number(values.depth) || 6;
-    const type = String(values.type || "topsoil");
-
-    const depthInLinear =
-      units === "metric" ? (depthInches * 2.5) / 100 : depthInches / 12;
-
-    const area = L * W;
-    const volumeInLinearCubed = area * depthInLinear;
-
-    const volumeInYardsOrMeters =
-      units === "metric"
-        ? volumeInLinearCubed
-        : volumeInLinearCubed / 27;
-
-    // Density tons per cubic yard (or metric tonnes per cubic meter — similar range)
-    const densities: Record<string, number> = {
-      topsoil: 1.1,
-      fill: 1.25,
-      compost: 0.75,
-      garden: 1.0,
-    };
-    const density = densities[type] || 1.1;
-    const tonsOrTonnes = volumeInYardsOrMeters * density;
-
-    // Bag equivalent: standard topsoil bag is 0.75 cu ft (some are 1 cu ft, some 40 lb)
-    // Using 0.75 cu ft bags (most common at Home Depot, Lowe's)
-    const bagCuFt = 0.75;
-    const bagSize =
-      units === "metric" ? bagCuFt * 0.02832 : bagCuFt / 27;
-    const bagsNeeded = Math.ceil(volumeInYardsOrMeters / bagSize);
-
-    const unitShort = units === "metric" ? "m³" : "yd³";
-    const weightUnit = units === "metric" ? "tonnes" : "tons";
+    const length = Math.max(0, Number(values.length) || 0);
+    const width = Math.max(0, Number(values.width) || 0);
+    const depthIn = Number(values.depth) || 6;
+    const bagSizeFt3 = Number(values.bagSize) || 0.75;
+    const metric = units === "metric";
+    const area = length * width;
+    const depth = metric ? depthIn * 0.0254 : depthIn / 12;
+    const cubicFeet = metric ? (area / 0.09290304) * (depthIn / 12) : area * depth;
+    const volume = metric ? cubicFeet * 0.028316846592 : cubicFeet / 27;
+    const areaUnit = metric ? "m²" : "ft²";
+    const volumeUnit = metric ? "m³" : "yd³";
+    const depthDisplay = metric ? depthIn * 2.54 : depthIn;
+    const depthUnit = metric ? "cm" : "in";
+    const bagSize = metric ? bagSizeFt3 * 0.028316846592 : bagSizeFt3;
+    const bags = ceilQuantity(volume / bagSize);
+    const roundedVolume = round(volume, metric ? 3 : 2);
 
     return {
-      value: round(volumeInYardsOrMeters, 3),
-      unit: units === "metric" ? "cubic meters" : "cubic yards",
-      valueRounded: roundUp(volumeInYardsOrMeters, 2),
+      value: volume,
+      unit: metric ? "cubic meters" : "cubic yards",
+      valueRounded: roundUp(volume, metric ? 3 : 2),
       breakdown: [
-        {
-          label: "area",
-          value: `${formatNumber(round(area, 1))} ${units === "metric" ? "m²" : "ft²"}`,
-        },
-        {
-          label: "depth",
-          value: units === "metric" ? `${depthInches * 2.5} cm` : `${depthInches}"`,
-        },
-        {
-          label: "weight",
-          value: `${formatNumber(round(tonsOrTonnes, 2))} ${weightUnit}`,
-        },
-        { label: "bags (0.75 cu ft)", value: `${bagsNeeded}` },
+        { label: "rectangular area", value: `${formatNumber(round(area, 2))} ${areaUnit}` },
+        { label: "selected depth", value: `${formatNumber(depthDisplay)} ${depthUnit}` },
+        { label: "estimated volume", value: `${formatNumber(roundedVolume)} ${volumeUnit}` },
+        { label: `bags at ${formatNumber(bagSizeFt3)} ft³ each`, value: `${bags} (package estimate; check label)` },
       ],
       formulaSteps: [
-        `area = ${L} × ${W} = ${formatNumber(round(area, 2))} ${units === "metric" ? "m²" : "ft²"}`,
-        units === "metric"
-          ? `depth = ${depthInches * 2.5} cm = ${formatNumber(round(depthInLinear, 3))} m`
-          : `depth = ${depthInches}" = ${formatNumber(round(depthInLinear, 3))} ft`,
-        units === "metric"
-          ? `volume = ${formatNumber(round(area, 2))} × ${formatNumber(round(depthInLinear, 3))} = ${formatNumber(round(volumeInYardsOrMeters, 3))} m³`
-          : `volume = ${formatNumber(round(area, 2))} × ${formatNumber(round(depthInLinear, 3))} = ${formatNumber(round(volumeInLinearCubed, 2))} ft³ ÷ 27 = ${formatNumber(round(volumeInYardsOrMeters, 3))} yd³`,
-        `weight = ${formatNumber(round(volumeInYardsOrMeters, 3))} × ${density} = ${formatNumber(round(tonsOrTonnes, 2))} ${weightUnit}`,
-        `bags = ⌈${formatNumber(round(volumeInYardsOrMeters, 3))} ÷ ${bagSize.toFixed(4)}⌉ = ${bagsNeeded} bags`,
-        `rounded up to ${formatNumber(roundUp(volumeInYardsOrMeters, 2))} ${unitShort}`,
+        `area = ${formatNumber(length)} × ${formatNumber(width)} = ${formatNumber(round(area, 2))} ${areaUnit}`,
+        `depth = ${formatNumber(depthDisplay)} ${depthUnit} = ${formatNumber(round(depth, metric ? 4 : 3))} ${metric ? "m" : "ft"}`,
+        metric
+          ? `volume = ${formatNumber(round(area, 2))} × ${formatNumber(round(depth, 4))} = ${formatNumber(roundedVolume)} m³`
+          : `volume = ${formatNumber(round(cubicFeet, 2))} ft³ ÷ 27 = ${formatNumber(roundedVolume)} yd³`,
+        `bag equivalent = ceil(${formatNumber(roundedVolume)} ${volumeUnit} ÷ ${formatNumber(round(bagSize, 5))} ${volumeUnit} per bag) = ${bags}`,
+        "No soil weight or delivery quantity adjustment is estimated.",
       ],
     };
   },
-
-  howTo: {
-    name: "How to calculate how much topsoil you need",
-    description:
-      "Convert an area and depth into cubic yards, then decide between bulk delivery and bags.",
-    steps: [
-      {
-        name: "Measure the area in square feet",
-        text: "Length times width for each section. Break irregular yards into rectangles and add them together.",
-      },
-      {
-        name: "Pick the depth",
-        text: "Topdressing an established lawn takes 1/4 to 1/2 inch, a new lawn 4 to 6 inches, garden beds 6 to 12 inches, and raised beds 10 to 12.",
-      },
-      {
-        name: "Convert to cubic yards",
-        text: "Square feet divided by 324, times depth in inches, equals cubic yards. One cubic yard covers 324 square feet at one inch deep.",
-      },
-      {
-        name: "Add for settling",
-        text: "Fresh topsoil settles 10 to 20 percent once watered and walked on, so order slightly above the calculated figure.",
-      },
-      {
-        name: "Choose bulk or bagged",
-        text: "One cubic yard equals about 36 bags at 40 pounds each and weighs roughly 2,200 pounds. Bulk is far cheaper above about half a yard; bags make sense only for very small quantities.",
-      },
-    ],
-  },
-
-  ContentExpansion: TopsoilCalculatorExpansion,
-
-  formulaDescription:
-    "volume = area × depth, converted to cubic yards/meters (plus tons and bags)",
-
+  formulaDescription: "volume = rectangular area × user-selected depth; bag estimate = volume ÷ labeled package volume",
   methodology: [
-    "The calculator multiplies bed area (length × width) by depth to compute total volume. Depth is entered in inches or centimeters and converted to feet or meters before the multiplication. Imperial volume in cubic feet is divided by 27 to convert to cubic yards (the bulk purchase unit). Metric stays in cubic meters.",
-    "Weight is calculated from density. Topsoil is typically 1.1 tons per cubic yard; fill dirt is heavier (1.25 t/yd³) because it contains more clay and minerals; compost is lighter (0.75 t/yd³) because it's full of air and organic matter. Garden mix (blended topsoil and compost) sits in between at 1.0 t/yd³.",
-    "Bag equivalent assumes standard 0.75 cubic foot bags, which is what most home centers carry. At that size, a cubic yard is 36 bags. Some suppliers sell 1 cu ft or 40 lb bags: 40-lb bags of topsoil are roughly 0.5 cu ft, so you'd need 54 bags per cubic yard.",
-    "Proper depth depends on use: 2 inches for overseeding existing lawn, 4 inches for lawn repair or grading small areas, 6 inches for establishing new garden beds, 8 inches for raised vegetable beds (deeper root vegetables need more), 12+ inches for deep fill or drainage correction. Deeper than 12 inches typically means you're doing structural fill, not just planting soil.",
-    "Bulk delivery is much cheaper than bags above about 1 cubic yard. Bulk topsoil is typically $25-50 per cubic yard plus delivery ($75-150). Bagged topsoil is $3-5 per 0.75 cu ft bag, so a yard in bags is $100-150. For jobs over 1 yard, order bulk. For small patching, bags are practical.",
+    "The calculator multiplies a rectangular area by the selected depth and converts the volume to cubic yards or cubic metres. For irregular areas or varying depths, measure separate rectangles and add their volumes outside this simple calculator.",
+    "The package estimate assumes the selected nominal bag volume is accurate. Actual products, settling, moisture, loose fill, grade changes, and supplier delivery quantities may differ; verify the product label and confirm bulk orders with the supplier.",
+    "This tool does not recommend soil depth, evaluate soil quality, estimate mass, or advise on fill, drainage, planting, or structural use. Follow project-specific horticultural or geotechnical guidance as applicable.",
   ],
-
   sources: [
     {
-      name: "USDA NRCS: Soil Horizons and Profiles",
+      name: "USDA NRCS: Soils",
       url: "https://www.nrcs.usda.gov/conservation-basics/natural-resource-concerns/soils",
-      note: "The A horizon definition behind what legitimately counts as topsoil",
+      note: "Background on soil properties; no generic soil density is assumed by this calculator.",
     },
     {
-      name: "Penn State Extension: Soil Quality and Management",
+      name: "Penn State Extension: Soil Management",
       url: "https://extension.psu.edu/soil-management",
-      note: "Soil testing, organic matter, and amendment guidance before buying material",
-    },
-    {
-      name: "University of Minnesota Extension: Improving Soil for Lawns",
-      url: "https://extension.umn.edu/planting-and-growing-guides/lawn-soil",
-      note: "Recommended topsoil depths for new lawns and topdressing limits",
-    },
-    {
-      name: "Colorado State Extension: Choosing a Soil Amendment",
-      url: "https://extension.colostate.edu/topic-areas/yard-garden/choosing-a-soil-amendment/",
-      note: "Compost blending ratios and why compost is not used alone as soil",
-    },
-    {
-      name: "USDA NRCS Web Soil Survey",
-      url: "https://websoilsurvey.nrcs.usda.gov/",
-      note: "What the native soil on your property already is, before you buy more",
+      note: "Soil quality, testing, and management guidance.",
     },
   ],
-
   related: [
-    { name: "Mulch calculator", slug: "mulch-calculator", description: "Cubic yards or bags for garden beds" },
-    { name: "Gravel calculator", slug: "gravel-calculator", description: "Cubic yards for driveways and paths" },
-    { name: "Sod calculator", slug: "sod-calculator", description: "Square footage of sod for any yard" },
-    { name: "Concrete calculator", slug: "concrete-calculator", description: "Cubic yards for slabs and footings" },
+    { name: "Mulch calculator", slug: "mulch-calculator", description: "Estimate mulch volume or bags from area and depth" },
+    { name: "Gravel calculator", slug: "gravel-calculator", description: "Estimate aggregate volume and approximate weight" },
+    { name: "Sod calculator", slug: "sod-calculator", description: "Estimate sod area and piece quantity" },
   ],
-
   faq: [
     {
-      question: "How much topsoil do I need for a 20×10 garden bed?",
-      answer:
-        "For a 20×10 ft bed at 6 inches deep, you need about 3.7 cubic yards (4 tons). At 8 inches deep, 4.9 yards. The calculator above handles different depths and soil types. For a bag equivalent: ~134 × 0.75 cu ft bags.",
+      question: "How is soil volume estimated?",
+      answer: "The tool multiplies the entered rectangular area by the selected depth. Split irregular areas or areas with different depths into separate rectangles and add their volumes.",
     },
     {
-      question: "What's the difference between topsoil, fill dirt, and compost?",
-      answer:
-        "Topsoil is the top 4-12 inches of natural soil: good mineral content, some organic matter, supports plant growth. Fill dirt is subsoil from deeper layers: heavier clay, used for structural fill and grading but not for planting. Compost is decomposed organic matter: rich in nutrients, too loose for structural use, used as a soil amendment. Garden mix is usually 50/50 topsoil and compost.",
+      question: "How many bags should I buy?",
+      answer: "The optional estimate divides volume by the selected bag size. Bag fill and labeled volumes differ by product, so check the actual package before buying.",
     },
     {
-      question: "How deep should topsoil be for grass?",
-      answer:
-        "For overseeding existing lawn: 1/4 to 1/2 inch of compost or fine topsoil over the seed. For new lawn establishment: 4-6 inches of quality topsoil graded over the subsoil before seeding or sodding. Less than 4 inches leads to thin, shallow-rooted grass that struggles in drought.",
-    },
-    {
-      question: "How many cubic yards in a pickup truck?",
-      answer:
-        "A standard full-size pickup (F-150 / Silverado bed) holds about 2 cubic yards of topsoil, but the gross weight often exceeds the truck's payload capacity. 1.5 cubic yards is a safer maximum. Small trucks (Tacoma/Ranger) top out at 1 yard. Dump trucks deliver 5-10 yards at a time.",
-    },
-    {
-      question: "Is screened topsoil worth the extra cost?",
-      answer:
-        "Screened topsoil has been run through a mesh to remove rocks, clay chunks, and roots: producing a uniform, plantable product. Unscreened ('pulverized') topsoil has more debris and is ~30% cheaper. For vegetable gardens or raised beds: screened. For rough grading or lawn base: unscreened is fine.",
-    },
-    {
-      question: "How many bags of topsoil make a cubic yard?",
-      answer:
-        "About 36 bags of 0.75 cu ft topsoil make one cubic yard. At $3-5 per bag that's $108-180, compared to $25-50 for bulk plus delivery. Bulk is much cheaper above about 1 cubic yard but requires truck access and somewhere to dump it.",
-    },
-    {
-      question: "When should I add topsoil vs compost?",
-      answer:
-        "Add topsoil to build structure (bulk, depth, basic soil body). Add compost to improve what you already have (nutrients, microbes, water retention). For poor soil: 4-6 inches of topsoil blended with 1-2 inches of compost tilled in. For decent existing soil: just top-dress with 1-2 inches of compost annually.",
-    },
-    {
-      question: "Does this work for raised beds?",
-      answer:
-        "Yes: enter the interior dimensions of the bed and the fill depth. A typical 4×8 ft raised bed at 12 inches deep needs 1.2 cubic yards of soil (about 44 × 0.75 cu ft bags). For a cheaper fill, do the bottom half in soil/fill dirt and top with garden mix: plants root in the top 8-10 inches mostly.",
+      question: "Does this estimate weight or tell me what kind of soil to use?",
+      answer: "No. Soil weight varies with composition and moisture, and the right material and depth depend on the project. Ask the supplier or a qualified soil/landscape professional.",
     },
   ],
 };

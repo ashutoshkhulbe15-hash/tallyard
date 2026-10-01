@@ -6,13 +6,13 @@ import { getConfig } from "@/configs";
 const SLUG = "shower-tile-calculator";
 
 export const metadata: Metadata = {
-  title: "Shower Tile Calculator: Wall & Floor Square Feet",
+  title: "Shower Tile Package Calculator",
   description:
-    "Tile for any shower, with wall and floor counted separately. Covers niche and curb, waste by pattern, shower pan options, and floor tile slip ratings.",
+    "Estimate shower tile packages from measured total area, exact package coverage, and a user-selected allowance. Waterproofing design is not included.",
   alternates: { canonical: "/shower-tile-calculator" },
   openGraph: {
-    title: "Shower Tile Calculator: Wall & Floor Square Feet",
-    description: "Calculate shower tile with niche and floor options.",
+    title: "Shower Tile Package Calculator",
+    description: "Estimate packages from measured tiled area and exact label coverage; not a shower-system or waterproofing design.",
     url: "https://www.tallyard.com/shower-tile-calculator",
     type: "website",
   },
@@ -23,7 +23,7 @@ export default function ShowerTileCalculatorPage() {
   return (
     <>
       {config && <SchemaScript config={config} />}
-      <CalculatorPage slug={SLUG} illustrationValue="60 TILES" />
+      <CalculatorPage slug={SLUG} illustrationValue="TILE BOXES" />
     </>
   );
 }

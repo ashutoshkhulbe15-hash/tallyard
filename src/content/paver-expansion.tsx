@@ -1,5 +1,5 @@
 import { Figure, GuideByline, MethodologyNote, Scenario, GUIDE_SVG } from "@/components/GuideChrome";
-import { ComparisonTable, Callout } from "@/components/GuideComponents";
+import { ComparisonTable } from "@/components/GuideComponents";
 
 function PatternWasteSVG() {
   const patterns = [

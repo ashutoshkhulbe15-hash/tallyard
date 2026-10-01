@@ -1,26 +1,79 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Figure, GuideByline, MethodologyNote, Scenario, GUIDE_SVG } from "@/components/GuideChrome";
-import { ComparisonTable, Callout } from "@/components/GuideComponents";
-export const metadata: Metadata = { title: "How much does it cost to install solar panels? (2026 prices)", description: "Average 6 kW system: $15,000-21,000 before credits, $10,500-14,700 after the 30% federal ITC. Payback in 5-10 years.", alternates: { canonical: "/cost-to-install-solar" } };
-function BeforeAfterSVG() { return (<svg viewBox="0 0 680 130" width="100%" height="auto" role="img" aria-label="Solar cost: $15,000-21,000 before ITC, $10,500-14,700 after 30% credit."><text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>6 kW system cost (average US home)</text><rect x="60" y="50" width="230" height="55" rx="8" fill={GUIDE_SVG.slateSoft} stroke={GUIDE_SVG.slate} strokeWidth="1"/><text x="175" y="72" textAnchor="middle" fontSize="10" fontWeight="700" fill={GUIDE_SVG.slate}>BEFORE TAX CREDIT</text><text x="175" y="92" textAnchor="middle" fontSize="16" fontWeight="700" fill={GUIDE_SVG.ink}>$15,000–21,000</text><text x="330" y="82" fontSize="18" fontWeight="700" fill={GUIDE_SVG.accent}>−30%</text><rect x="390" y="50" width="230" height="55" rx="8" fill={GUIDE_SVG.accentSoft} stroke={GUIDE_SVG.accent} strokeWidth="1"/><text x="505" y="72" textAnchor="middle" fontSize="10" fontWeight="700" fill={GUIDE_SVG.accent}>AFTER 30% ITC</text><text x="505" y="92" textAnchor="middle" fontSize="16" fontWeight="700" fill={GUIDE_SVG.accent}>$10,500–14,700</text></svg>); }
-function PerWattSVG() { return (<svg viewBox="0 0 680 100" width="100%" height="auto" role="img" aria-label="Solar cost per watt: $2.50-3.50 installed before credits."><text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>Cost per watt is the standard comparison metric</text><text x="20" y="55" fontSize="11" fill={GUIDE_SVG.inkMuted}>National average: $2.50–3.50 per watt installed (before ITC). A 6 kW system = 6,000 watts.</text><text x="20" y="75" fontSize="11" fill={GUIDE_SVG.inkMuted}>Lower per-watt cost in the Sun Belt ($2.50–2.80). Higher in the Northeast ($3.00–3.50).</text><text x="20" y="95" fontSize="10" fill={GUIDE_SVG.inkFaint}>Compare quotes on per-watt basis. It normalizes system size differences between bids.</text></svg>); }
-function PaybackSVG() { const regions=[{label:"California ($0.30/kWh)",years:"4–6",w:100},{label:"Northeast ($0.25/kWh)",years:"6–9",w:150},{label:"Southwest ($0.14/kWh)",years:"6–8",w:140},{label:"Southeast ($0.13/kWh)",years:"8–12",w:200},{label:"Midwest ($0.12/kWh)",years:"10–14",w:240}]; return (<svg viewBox="0 0 680 220" width="100%" height="auto" role="img" aria-label="Solar payback: 4-6 years California, 10-14 Midwest."><text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>Payback period by region</text><text x="20" y="43" fontSize="10" fill={GUIDE_SVG.inkFaint}>Higher electricity rates = faster payback. After payback, solar electricity is essentially free.</text>{regions.map((r,i)=>{const y=65+i*28;return(<g key={r.label}><text x="225" y={y+14} textAnchor="end" fontSize="11" fontWeight="600" fill={GUIDE_SVG.ink}>{r.label}</text><rect x="235" y={y} width={r.w} height="18" rx="3" fill={i<=1?GUIDE_SVG.accent:GUIDE_SVG.slate} opacity="0.6"/><text x={243+r.w} y={y+13} fontSize="11" fontWeight="700" fill={GUIDE_SVG.ink}>{r.years} yr</text></g>)})}</svg>); }
-function BuyVsLeaseSVG() { const rows=[{label:"Upfront cost",buy:"$10,500–14,700 (after ITC)",lease:"$0"},{label:"Monthly savings",buy:"80–100% of bill",lease:"10–30% of bill"},{label:"Own system?",buy:"Yes",lease:"No (company owns)"},{label:"Home value impact",buy:"+$15,000–25,000",lease:"Minimal (lien)"}]; const hY=65;const rH=28; return (<svg viewBox="0 0 680 190" width="100%" height="auto" role="img" aria-label="Buy vs lease: buying captures full savings and home value; leasing is zero down but lower savings."><text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>Buy vs lease</text><rect x="60" y={hY-18} width="560" height="26" rx="4" fill={GUIDE_SVG.bgWarm}/>{[{l:"",x:160},{l:"Buy (cash or loan)",x:360},{l:"Lease / PPA",x:530}].map(h=>(<text key={h.l+h.x} x={h.x} y={hY-2} textAnchor="middle" fontSize="10" fontWeight="700" fill={GUIDE_SVG.inkMuted}>{h.l}</text>))}{rows.map((r,i)=>{const y=hY+10+i*rH;return(<g key={r.label}>{i%2===0&&<rect x="60" y={y-4} width="560" height={rH} fill={GUIDE_SVG.bgWarm} opacity="0.4"/>}<text x="160" y={y+14} textAnchor="middle" fontSize="10" fontWeight="600" fill={GUIDE_SVG.ink}>{r.label}</text><text x="360" y={y+14} textAnchor="middle" fontSize="10" fill={GUIDE_SVG.accent} fontWeight="600">{r.buy}</text><text x="530" y={y+14} textAnchor="middle" fontSize="10" fill={GUIDE_SVG.inkMuted}>{r.lease}</text></g>)})}</svg>); }
-export default function CostToInstallSolar() { return (<article>
-  <section className="container-wide pt-6 md:pt-8"><div className="pt-2 pb-8 md:pb-10 border-b border-line"><nav aria-label="Breadcrumb" className="font-mono text-xs text-ink-muted mb-5"><Link href="/" className="hover:text-accent transition-colors">Home</Link><span className="mx-2">·</span><span>Cost guides</span></nav><h1 className="text-4xl md:text-5xl font-bold tracking-tighter leading-[1.03] mb-4 text-ink">How much does it cost to install solar panels?</h1><p className="text-base md:text-lg text-ink-muted max-w-2xl leading-relaxed">After the 30% federal tax credit, a typical 6 kW system costs $10,500 to $14,700. It pays for itself in 5 to 10 years and then produces free electricity for another 15 to 20.</p></div></section>
-  <section className="container-content py-10 md:py-14"><div className="guide-prose">
-    <GuideByline updated="April 20, 2026" reviewedAgainst="EnergySage market data, NREL PVWatts, and IRS Section 25D" />
-    <h2>Start with the number after the tax credit, not before</h2>
-    <p>Every solar cost article leads with the gross price because it is more dramatic. A $18,000 system sounds expensive. But no homeowner pays $18,000. The federal Investment Tax Credit (ITC) reduces your federal tax bill by 30% of the system cost. That $18,000 system costs $12,600 after the credit. Many states add their own rebates ($500 to $5,000 depending on state), and some utilities offer performance-based incentives on top. The net cost is always significantly lower than the sticker price.</p>
-    <Figure number={1} caption="The 30% ITC applies to the full installed cost including equipment, labor, and permitting. It is a dollar-for-dollar tax credit, not a deduction."><BeforeAfterSVG /></Figure>
-    <MethodologyNote><p>System pricing from EnergySage 2025-2026 Solar Marketplace Report ($2.50-3.50/watt national average). ITC per IRS Section 25D as amended by the Inflation Reduction Act. Payback calculations use EIA residential electricity rates by state and NREL PVWatts production estimates by location.</p></MethodologyNote>
-    <Figure number={2} caption="Compare quotes in dollars per watt. This normalizes for system size differences. A $3.00/W quote for an 8 kW system is a better deal than a $3.50/W quote for a 6 kW system."><PerWattSVG /></Figure>
-    <Figure number={3} caption="States with high electricity rates pay back fastest. California at $0.30/kWh pays back in 4-6 years. Midwest at $0.12/kWh takes 10-14."><PaybackSVG /></Figure>
-    <Scenario location="San Diego, CA">A homeowner installed a 7.2 kW system for $21,600 ($3.00/W). After the 30% ITC ($6,480) and a California state rebate ($1,000), net cost was $14,120. Their previous electricity bill averaged $220/month. The solar system covers 95% of usage. Monthly savings: $209. Annual savings: $2,508. Payback: 5.6 years. Remaining panel warranty after payback: 19.4 years of essentially free electricity.</Scenario>
-    <Figure number={4} caption="Buying captures the full financial benefit. Leasing costs nothing up front but gives most of the savings to the leasing company."><BuyVsLeaseSVG /></Figure>
-    <Callout label="Tax credit rollover">If your federal tax liability is less than the ITC amount in the installation year, the unused credit rolls forward to the next tax year. You do not lose it. But you need enough tax liability to use it eventually. If your annual federal tax bill is very low, consult a tax professional before committing.</Callout>
-    <p>For system sizing based on your electricity usage, use the <Link href="/solar-calculator" className="text-accent hover:underline">solar calculator</Link>. For wire sizing from the inverter to your panel, the <Link href="/wire-size-calculator" className="text-accent hover:underline">wire size calculator</Link> handles NEC requirements.</p>
-  </div></section>
-  <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify({"@context":"https://schema.org","@type":"Article",headline:"How much does it cost to install solar panels? (2026)",datePublished:"2026-04-18",dateModified:"2026-04-20",author:{"@type":"Person",name:"Ash K.",url:"https://www.tallyard.com/about"},publisher:{"@type":"Organization",name:"Tallyard",url:"https://www.tallyard.com"},mainEntityOfPage:"https://www.tallyard.com/cost-to-install-solar"})}}/><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify({"@context":"https://schema.org","@type":"Dataset",name:"Solar installation cost (2026 US average)",description:"2026 US average typical installed system before incentives cost range, materials and labor, compiled by Tallyard from industry cost data.",url:"https://www.tallyard.com/cost-to-install-solar",license:"https://www.tallyard.com/about",creator:{"@type":"Organization",name:"Tallyard",url:"https://www.tallyard.com"},variableMeasured:[{"@type":"PropertyValue",name:"Low estimate",value:15000,unitText:"USD",description:"typical installed system before incentives"},{"@type":"PropertyValue",name:"High estimate",value:25000,unitText:"USD",description:"typical installed system before incentives"}]})}}/>
-</article>); }
+
+export const metadata: Metadata = {
+  title: "How much does it cost to install solar panels?",
+  description:
+    "Compare solar installation quotes, estimate production and payback, and check which incentives actually apply to a new installation.",
+  alternates: { canonical: "/cost-to-install-solar" },
+};
+
+export default function CostToInstallSolar() {
+  return (
+    <article>
+      <section className="container-wide pt-6 md:pt-8">
+        <div className="pt-2 pb-8 md:pb-10 border-b border-line">
+          <nav aria-label="Breadcrumb" className="font-mono text-xs text-ink-muted mb-5">
+            <Link href="/" className="hover:text-accent transition-colors">Home</Link>
+            <span className="mx-2">·</span>Cost guides
+          </nav>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tighter leading-[1.03] mb-4 text-ink">
+            How much does it cost to install solar panels?
+          </h1>
+          <p className="text-base md:text-lg text-ink-muted max-w-2xl leading-relaxed">
+            The useful price is the installed quote for your roof, equipment, and utility rules—not a national after-credit estimate.
+          </p>
+        </div>
+      </section>
+      <section className="container-content py-10 md:py-14">
+        <div className="guide-prose">
+          <h2>Start with comparable installed quotes</h2>
+          <p>
+            Ask at least three installers for an itemized cash price, system size in DC watts, annual production estimate,
+            equipment models, roof and electrical work, warranties, and a separate financing offer. Divide the installed
+            cash price by DC watts to compare dollars per watt. A battery, roof repair, or panel upgrade can make two
+            otherwise similar proposals very different; compare those items separately.
+          </p>
+          <p>
+            For an illustration of the arithmetic only, a $18,000 quote for a 6,000-watt array is $3.00 per watt.
+            That is not a claim that this is the current average price, nor a quote for your home. Marketplace averages
+            change with geography, system size, and the period sampled. Check the source and date before using any
+            published benchmark.
+          </p>
+          <h2>Do not subtract an expired federal credit</h2>
+          <p>
+            The IRS says the Section 25D residential clean-energy credit is not available for expenditures after
+            December 31, 2025. For this purpose, the IRS generally treats the expenditure as made when the original
+            installation is completed. A new residential installation completed in 2026 should not be priced as though
+            it receives the former 30% credit. See the <a href="https://www.irs.gov/newsroom/faqs-for-modification-of-sections-25c-25d-25e-30c-30d-45l-45w-and-179d-under-public-law-119-21-139-stat-72-july-4-2025-commonly-known-as-the-one-big-beautiful-bill-obbb">IRS guidance on the expiration and timing rule</a>.
+          </p>
+          <p>
+            State, utility, and local incentives vary. Verify availability, eligibility, funding, and application timing
+            with the administering program before subtracting any amount from a quote. An installer&apos;s projected
+            incentive is not a guarantee.
+          </p>
+          <h2>Estimate payback from your own bill and tariff</h2>
+          <p>
+            Use <a href="https://pvwatts.nrel.gov/">NREL PVWatts</a> to estimate annual generation for your location
+            and array. Apply your utility&apos;s current import rate, export-credit or net-metering rules, fixed charges,
+            and any time-of-use rates. Then account for financing cost, maintenance, and likely equipment replacement.
+            Simple payback is the net installed cost divided by estimated annual bill savings; it is not a guarantee
+            of future savings or a substitute for a lifetime cash-flow comparison.
+          </p>
+          <p>
+            The <Link href="/solar-calculator" className="text-accent hover:underline">solar calculator</Link> can
+            illustrate panel-count arithmetic from entered assumptions; it does not size or forecast a solar array. Obtain a site-specific shade, roof, and electrical assessment
+            before signing a contract.
+          </p>
+          <h2>Sources and scope</h2>
+          <p>
+            The federal-credit timing above comes from the IRS. For a dated marketplace price benchmark, see
+            <a href="https://www.energysage.com/data/"> EnergySage&apos;s published marketplace reports</a>.
+            Those samples are not a substitute for current local bids. Production estimates depend on the assumptions
+            entered in PVWatts. This guide does not provide tax advice.
+          </p>
+        </div>
+      </section>
+    </article>
+  );
+}

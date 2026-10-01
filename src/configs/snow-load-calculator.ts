@@ -1,17 +1,16 @@
-import { SnowLoadCalculatorExpansion } from "@/content/snow-load-expansion";
 import type { CalculatorConfig } from "@/lib/types";
-import { round, formatNumber } from "@/lib/format";
+import { round, formatNumber, ceilQuantity } from "@/lib/format";
 
 export const snowLoadCalculatorConfig: CalculatorConfig = {
   slug: "snow-load-calculator",
   title: "Snow Load Calculator",
   description:
-    "Roof snow load in pounds per square foot. Compares your actual snow against design load capacity: flags when roof is over-stressed.",
+    "Approximate weight of a uniform snow and ice layer. This does not determine a roof's structural capacity or whether it is safe.",
   categoryLabel: "Roofing",
   category: "roofing",
 
-  bannerHeadline: "Load safely.",
-  bannerTags: ["psf + total lb", "ASCE 7 based", "Flags over-limit"],
+  bannerHeadline: "Estimate snow weight.",
+  bannerTags: ["psf + total lb", "Uniform-load estimate", "Not a safety verdict"],
 
   inputs: [
     {
@@ -61,28 +60,18 @@ export const snowLoadCalculatorConfig: CalculatorConfig = {
       min: 100,
       step: 50,
     },
-    {
-      id: "designLoad",
-      label: "Design snow load",
-      type: "select",
-      defaultImperial: 30,
-      options: [
-        { label: "20 psf (mild: S. US)", value: 20 },
-        { label: "30 psf (moderate: mid-US)", value: 30 },
-        { label: "40 psf (heavy: NE, Midwest)", value: 40 },
-        { label: "60 psf (very heavy: N. NE, UP)", value: 60 },
-        { label: "80 psf (extreme: mountains)", value: 80 },
-      ],
-      help: "Code-specified ground snow load for your area",
-    },
   ],
 
   calculate: (values, units) => {
-    const snowDepthInput = Number(values.snowDepth) || 0;
-    const snowType = String(values.snowType || "packed");
-    const iceInput = Number(values.iceThickness) || 0;
-    const roofAreaInput = Number(values.roofArea) || 0;
-    const designLoad = Number(values.designLoad) || 30;
+    const snowDepthInput = Number(values.snowDepth);
+    const snowType = String(values.snowType);
+    const iceInput = Number(values.iceThickness);
+    const roofAreaInput = Number(values.roofArea);
+    if (![snowDepthInput, iceInput, roofAreaInput].every(Number.isFinite) ||
+        snowDepthInput < 0 || iceInput < 0 || roofAreaInput <= 0 ||
+        !["powder", "packed", "wet", "ice"].includes(snowType)) {
+      throw new Error("Enter nonnegative snow and ice depths, a positive roof area, and a listed snow type.");
+    }
 
     const snowDepthFt = units === "metric" ? snowDepthInput / (2.54 * 12) : snowDepthInput / 12;
     const iceFt = units === "metric" ? iceInput / (2.54 * 12) : iceInput / 12;
@@ -101,37 +90,17 @@ export const snowLoadCalculatorConfig: CalculatorConfig = {
     const totalPsf = snowLoadPsf + iceLoadPsf;
     const totalLb = totalPsf * roofAreaSqFt;
 
-    const overLimit = totalPsf > designLoad;
-    const pctOfDesign = (totalPsf / designLoad) * 100;
-
-    const status = overLimit
-      ? `EXCEEDS design load (${round(pctOfDesign, 0)}% of capacity)`
-      : pctOfDesign > 80
-        ? `CAUTION, ${round(pctOfDesign, 0)}% of capacity`
-        : `within capacity, ${round(pctOfDesign, 0)}%`;
-
-    // IRC checks. R301.6 sets the minimum roof live load; ground snow load
-    // for the site comes from IRC Table R301.2 as adopted locally, and the
-    // governing calculation method is ASCE 7 Chapter 7.
-    const meetsMinimumLiveLoad = designLoad >= 20;
-    const headroomPsf = round(designLoad - totalPsf, 1);
-
     return {
       value: round(totalLb, 0),
       unit: "lb total weight on roof",
-      valueRounded: Math.ceil(totalLb),
+      valueRounded: ceilQuantity(totalLb),
       breakdown: [
         { label: "snow load", value: `${round(snowLoadPsf, 1)} psf` },
         { label: "ice load", value: `${round(iceLoadPsf, 1)} psf` },
         { label: "total pressure", value: `${round(totalPsf, 1)} psf` },
         { label: "roof area", value: `${formatNumber(round(roofAreaSqFt, 0))} ft²` },
         { label: "total weight", value: `${formatNumber(round(totalLb, 0))} lb (${formatNumber(round(totalLb / 2000, 1))} tons)` },
-        { label: "design limit (R301.6)", value: `${designLoad} psf${meetsMinimumLiveLoad ? "" : ", below the 20 psf IRC minimum"}` },
-        {
-          label: "remaining capacity",
-          value: overLimit ? `over by ${Math.abs(headroomPsf)} psf` : `${headroomPsf} psf to spare`,
-        },
-        { label: "verdict", value: status },
+        { label: "structural capacity", value: "not calculated" },
       ],
       formulaSteps: [
         `snow depth = ${snowDepthInput} ${units === "metric" ? "cm" : "in"} = ${round(snowDepthFt, 2)} ft`,
@@ -142,11 +111,9 @@ export const snowLoadCalculatorConfig: CalculatorConfig = {
           : "no ice layer",
         `total psf = ${round(snowLoadPsf, 1)} + ${round(iceLoadPsf, 1)} = ${round(totalPsf, 1)} psf`,
         `total weight = ${round(totalPsf, 1)} psf × ${formatNumber(round(roofAreaSqFt, 0))} ft² = ${formatNumber(round(totalLb, 0))} lb`,
-        `design capacity (IRC R301.6, min 20 psf) = ${designLoad} psf`,
-        `${round(totalPsf, 1)} psf vs ${designLoad} psf → ${status}`,
-        `site ground snow load comes from IRC Table R301.2 as adopted locally; ASCE 7 Ch. 7 governs the full calculation`,
+        "This weight estimate does not account for drifting, roof geometry, structural condition, or the site-specific design roof load.",
       ],
-      composition: {
+      ...(totalPsf > 0 ? { composition: {
         unit: "psf",
         total: round(totalPsf, 1),
         segments: [
@@ -155,48 +122,17 @@ export const snowLoadCalculatorConfig: CalculatorConfig = {
             ? [{ label: "Ice", amount: round(iceLoadPsf, 1), shade: "secondary" as const }]
             : []),
         ],
-      },
+      } } : {}),
     };
   },
 
-  howTo: {
-    name: "How to calculate snow load on a roof",
-    description:
-      "Convert measured snow depth and type into pounds per square foot, then compare it against the roof design load.",
-    steps: [
-      {
-        name: "Measure the depth safely",
-        text: "Measure from the ground with a pole, from a window, or from a deck. Do not climb onto a snow-covered roof to take a measurement.",
-      },
-      {
-        name: "Identify the snow type",
-        text: "Fresh powder is about 5 lb per cubic foot, settled snow 15, wet or melting snow 25, and ice 40 to 57. Density matters far more than depth.",
-      },
-      {
-        name: "Convert to pounds per square foot",
-        text: "Depth in feet times density gives psf. One inch of settled snow is about 1.25 psf; one inch of ice is about 4.7 psf. Add any ice layer separately.",
-      },
-      {
-        name: "Find your design load",
-        text: "Ask the building department for the adopted ground snow load. Flat roof design load is roughly 0.7 times that value for a heated house with ordinary exposure.",
-      },
-      {
-        name: "Compare and act",
-        text: "If the current load approaches the design load, or if doors stick, drywall cracks, or the ridge sags, leave the building and call a structural engineer.",
-      },
-    ],
-  },
-
-  ContentExpansion: SnowLoadCalculatorExpansion,
-
   formulaDescription:
-    "load (psf) = snow depth × density + ice × 57; compare vs design load (code-specified)",
+    "estimated uniform load (psf) = snow depth (ft) × assumed density + ice depth (ft) × 57",
 
   methodology: [
     "Snow weight varies hugely by type. Fresh powder is only about 5 pounds per cubic foot. Settled snow after a few days is 15 lb/ft³. Wet, partially melted snow is 25 lb/ft³. Old compacted snow or ice-crusted snow approaches 35 lb/ft³. Solid ice is the heaviest at 57 lb/ft³.",
     "Roof snow load in pounds per square foot (psf) is snow depth times density. A 2-foot accumulation of packed snow at 15 lb/ft³ = 30 psf. Same depth of wet snow = 50 psf. Same depth with a 1-inch ice glaze adds another 4-5 psf. Multiply by roof area to get total pounds of load the structure carries.",
-    "Compare actual load against your region's design snow load, the code-specified ground snow load your roof was engineered to handle. Southern US typically 20 psf. Mid-Atlantic and central US 30-40 psf. Northeast, Great Lakes, and Rockies 50-70 psf. Mountain resort areas and Upper Peninsula can require 80+ psf design loads.",
-    "When actual load approaches 80% of design, consider removing snow: heavy drifts, ice dams, or prolonged accumulation can exceed design capacity even in normal storms. When actual load exceeds design, immediate action: clear the roof (professional service in heavy loads), and consult a structural engineer to inspect for damage.",
+    "This estimates only the weight of an assumed uniform layer. A ground snow load is not the same as a roof design load, and neither can be inferred from this calculator. Do not use the number as a capacity or safety threshold.",
     "Important caveats: these calculations use uniform snow distribution. Drifting concentrates snow on leeward sides, behind dormers, and in roof valleys: local loads in these areas can be 2-3× the uniform load. Flat roofs retain more snow than pitched. Unheated structures accumulate more than heated (melt from below). In doubt, call a structural engineer, not this calculator.",
     "Not captured: dynamic loads from wind+snow combinations, seismic considerations for heavy snow regions, non-uniform drift loading per ASCE 7 section 7.7, or rain-on-snow load increases. For engineering purposes, use a professional per ASCE 7-22 chapter 7 rather than this educational tool.",
   ],
@@ -245,12 +181,12 @@ export const snowLoadCalculatorConfig: CalculatorConfig = {
     {
       question: "How do I know my design snow load?",
       answer:
-        "Check your original building permit or plans (typically labeled 'roof snow load' in psf). If unavailable, contact your local building department: design snow loads are mapped by ZIP code per ASCE 7. Quick reference: southern US 20 psf, mid-US 30-40 psf, northern US 50+ psf, mountain areas 60-100+ psf.",
+        "Check the building plans or ask your local building department and a structural engineer. Ground and design roof snow loads are different values; this calculator does not determine either one.",
     },
     {
       question: "When should I clear snow off my roof?",
       answer:
-        "When actual load exceeds about 80% of design load. For a standard 30 psf design: clear if packed snow exceeds 22 inches or wet snow exceeds 14 inches. If ice dams form, address those first (usually a separate issue from structural load). Don't wait until you see sagging: by then, damage is already happening.",
+        "This weight estimate cannot establish a safe removal threshold. If you see sagging, unusual cracking sounds, or sticking doors, leave the building and seek professional help. Do not climb onto a snow-covered roof.",
     },
     {
       question: "How do I measure roof snow depth safely?",
@@ -260,7 +196,7 @@ export const snowLoadCalculatorConfig: CalculatorConfig = {
     {
       question: "What's the difference between ground and roof snow load?",
       answer:
-        "Ground snow load (pg) is measured on flat terrain. Roof snow load is typically 70% of ground snow load due to wind scour and thermal effects on the roof. The design values in this calculator are roof loads. The heavier ground load is the input to ASCE 7 calculations; code converts it to roof load automatically.",
+        "Ground snow load is a location-based design input. Design roof load depends on additional roof and site factors, including exposure, thermal conditions, slope, and drifting. The weight estimated here is neither of those design values.",
     },
     {
       question: "Why does wet snow weigh more?",
