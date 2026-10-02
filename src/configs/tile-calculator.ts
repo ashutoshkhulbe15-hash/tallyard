@@ -1,9 +1,11 @@
+import { TileCalculatorExpansion } from "@/content/tile-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber, ceilQuantity } from "@/lib/format";
 
 export const tileCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: TileCalculatorExpansion,
   slug: "tile-calculator",
-  title: "Tile Package Calculator",
+  title: "Tile Calculator",
   description: "Estimate tile packages from rectangular area, the coverage printed on the package, and a user-selected planning allowance.",
   categoryLabel: "Flooring",
   category: "flooring",

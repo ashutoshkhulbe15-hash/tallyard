@@ -1,9 +1,11 @@
+import { WindowSizingCalculatorExpansion } from "@/content/window-sizing-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
 export const windowSizingCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: WindowSizingCalculatorExpansion,
   slug: "window-sizing-calculator",
-  title: "Window Rectangle Area Calculator",
+  title: "Window Sizing Calculator",
   description: "Calculate the area of a user-entered rectangular window dimension pair. Does not determine egress, glazing, ventilation, rough openings, or code compliance.",
   categoryLabel: "Lumber",
   category: "drywall",

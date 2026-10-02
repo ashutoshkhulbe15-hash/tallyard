@@ -1,7 +1,9 @@
+import { CountertopCalculatorExpansion } from "@/content/countertop-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber, ceilQuantity } from "@/lib/format";
 
 export const countertopCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: CountertopCalculatorExpansion,
   slug: "countertop-calculator",
   title: "Countertop Calculator",
   description:

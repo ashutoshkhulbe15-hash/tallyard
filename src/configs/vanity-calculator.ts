@@ -1,9 +1,11 @@
+import { VanityCalculatorExpansion } from "@/content/vanity-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { formatNumber, round } from "@/lib/format";
 
 export const vanityCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: VanityCalculatorExpansion,
   slug: "vanity-calculator",
-  title: "Vanity Wall-Width Worksheet",
+  title: "Vanity Calculator",
   description: "Calculate the wall width remaining after the clearances you enter. Does not recommend a vanity or check bathroom-code clearances.",
   categoryLabel: "Flooring",
   category: "flooring",

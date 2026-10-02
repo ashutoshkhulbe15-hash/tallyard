@@ -1,9 +1,11 @@
+import { TopsoilCalculatorExpansion } from "@/content/topsoil-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, roundUp, formatNumber, ceilQuantity } from "@/lib/format";
 
 export const topsoilCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: TopsoilCalculatorExpansion,
   slug: "topsoil-calculator",
-  title: "Soil Volume Calculator",
+  title: "Topsoil Calculator",
   description:
     "Estimate soil volume from a rectangular area and user-selected depth, with an optional package-count estimate for a selected bag size.",
   categoryLabel: "Landscaping",

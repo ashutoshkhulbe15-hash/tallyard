@@ -1,9 +1,11 @@
+import { WallpaperCalculatorExpansion } from "@/content/wallpaper-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { formatNumber, round, ceilQuantity } from "@/lib/format";
 
 export const wallpaperCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: WallpaperCalculatorExpansion,
   slug: "wallpaper-calculator",
-  title: "Wallpaper Roll-Coverage Estimator",
+  title: "Wallpaper Calculator",
   description: "Estimate roll count from net measured wall area, exact product-label coverage, and a user-selected allowance. Does not account for pattern or installation layout.",
   categoryLabel: "Paint & Walls",
   category: "drywall",

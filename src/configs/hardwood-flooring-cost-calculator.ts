@@ -1,9 +1,11 @@
+import { HardwoodFlooringCostExpansion } from "@/content/hardwood-flooring-cost-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { formatNumber, round } from "@/lib/format";
 
 export const hardwoodFlooringCostCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: HardwoodFlooringCostExpansion,
   slug: "hardwood-flooring-cost-calculator",
-  title: "Hardwood Flooring Quote Worksheet",
+  title: "Hardwood Flooring Cost Calculator",
   description: "Calculate a subtotal from measured area and per-square-foot rates copied from a written quote. Tallyard does not supply current material or labor prices.",
   categoryLabel: "Flooring",
   category: "flooring",

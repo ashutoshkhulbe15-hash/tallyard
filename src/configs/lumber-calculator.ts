@@ -1,3 +1,4 @@
+import { LumberCalculatorExpansion } from "@/content/lumber-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { formatNumber, round, ceilQuantity } from "@/lib/format";
 
@@ -8,8 +9,9 @@ const sizes: Record<string, { thickness: number; width: number }> = {
 };
 
 export const lumberCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: LumberCalculatorExpansion,
   slug: "lumber-calculator",
-  title: "Lumber Board-Foot and Lineal-Length Worksheet",
+  title: "Lumber Calculator",
   description: "Calculate nominal board-foot and lineal-foot totals from a selected size, length, quantity, and optional user-selected allowance. No price or weight estimate.",
   categoryLabel: "Lumber",
   category: "drywall",

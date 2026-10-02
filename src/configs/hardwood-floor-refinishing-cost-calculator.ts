@@ -1,9 +1,11 @@
+import { FloorRefinishingCostExpansion } from "@/content/floor-refinishing-cost-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { formatNumber, round } from "@/lib/format";
 
 export const floorRefinishingCostCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: FloorRefinishingCostExpansion,
   slug: "hardwood-floor-refinishing-cost-calculator",
-  title: "Hardwood Refinishing Quote Worksheet",
+  title: "Hardwood Floor Refinishing Cost Calculator",
   description: "Calculate a subtotal from measured floor area and a per-area rate and extras copied from a written refinishing quote. No current market prices are assumed.",
   categoryLabel: "Flooring",
   category: "flooring",

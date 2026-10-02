@@ -1,9 +1,11 @@
+import { KitchenCabinetCalculatorExpansion } from "@/content/kitchen-cabinet-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { formatNumber, round, ceilQuantity } from "@/lib/format";
 
 export const kitchenCabinetCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: KitchenCabinetCalculatorExpansion,
   slug: "kitchen-cabinet-calculator",
-  title: "Kitchen Cabinet Run Calculator",
+  title: "Kitchen Cabinet Calculator",
   description:
     "Estimate cabinet run length and rough module count from wall measurements. Confirm openings, corners, fillers, and cabinet sizes in a final plan.",
   categoryLabel: "Kitchen",

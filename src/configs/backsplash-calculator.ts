@@ -1,9 +1,11 @@
+import { BacksplashCalculatorExpansion } from "@/content/backsplash-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber, ceilQuantity } from "@/lib/format";
 
 export const backsplashCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: BacksplashCalculatorExpansion,
   slug: "backsplash-calculator",
-  title: "Backsplash Tile Package Estimator",
+  title: "Backsplash Calculator",
   description: "Estimate backsplash tile packages from measured tiled area, exact package coverage, and a user-selected allowance.",
   categoryLabel: "Flooring",
   category: "flooring",

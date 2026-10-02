@@ -1,3 +1,4 @@
+import { ShedCalculatorExpansion } from "@/content/shed-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber, ceilQuantity } from "@/lib/format";
 
@@ -6,8 +7,9 @@ const SQ_M_PER_SHEET = SQ_FT_PER_SHEET * 0.092903;
 const PITCH_FACTOR_6_12 = Math.sqrt(1 + (6 / 12) ** 2);
 
 export const shedCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: ShedCalculatorExpansion,
   slug: "shed-calculator",
-  title: "Shed Surface Area Calculator",
+  title: "Shed Calculator",
   description:
     "Estimate floor, wall, and simple gable-roof sheathing quantities from dimensions. This is an area takeoff, not a framing plan or structural design.",
   categoryLabel: "Lumber",

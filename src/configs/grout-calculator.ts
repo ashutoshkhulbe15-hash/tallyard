@@ -1,9 +1,11 @@
+import { GroutCalculatorExpansion } from "@/content/grout-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber, ceilQuantity } from "@/lib/format";
 
 export const groutCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: GroutCalculatorExpansion,
   slug: "grout-calculator",
-  title: "Grout Package Estimator",
+  title: "Grout Calculator",
   description: "Estimate grout packages from measured tiled area and coverage for the exact product and package. Does not calculate joint yield or select grout type.",
   categoryLabel: "Flooring",
   category: "flooring",

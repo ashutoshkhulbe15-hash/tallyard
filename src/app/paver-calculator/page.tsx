@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "paver-calculator";
 
 export const metadata: Metadata = {
-  title: "Paver Area and Count Calculator",
+  title: "Paver Calculator",
   description:
     "Estimate paver count for a rectangular area using nominal paver dimensions and a user-selected planning allowance.",
   alternates: { canonical: "/paver-calculator" },
   openGraph: {
-    title: "Paver Area and Count Calculator",
+    title: "Paver Calculator",
     description:
       "Estimate paver quantity from area and selected nominal paver dimensions.",
     url: "https://www.tallyard.com/paver-calculator",

@@ -1,7 +1,9 @@
+import { WireSizeCalculatorExpansion } from "@/content/wire-size-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
 export const wireSizeCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: WireSizeCalculatorExpansion,
   slug: "wire-size-calculator",
   title: "Wire Size Calculator",
   description:

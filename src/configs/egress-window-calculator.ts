@@ -1,9 +1,11 @@
+import { EgressWindowExpansion } from "@/content/egress-window-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
 export const egressWindowCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: EgressWindowExpansion,
   slug: "egress-window-calculator",
-  title: "Net Clear Opening Area Calculator",
+  title: "Egress Window Calculator",
   description: "Calculate area from user-entered net clear opening dimensions. Does not determine egress compliance or suitability as an emergency exit.",
   categoryLabel: "Lumber",
   category: "drywall",

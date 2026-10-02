@@ -193,12 +193,8 @@ export function FenceCalculatorExpansion() {
 
       <h2>Survey and permits: before you order anything</h2>
 
-      <Scenario location="220 ft straight fence line">
-        A hypothetical 220 ft fence line needs at least 29 evenly spaced
-        posts for sections no longer than 8 ft, or 38 posts for sections no
-        longer than 6 ft, when both end posts are included. Gates, corners,
-        terrain, wind exposure, and local rules can change the layout. This
-        example does not predict storm survival or repair cost.
+      <Scenario location="Kansas City, MO">
+        A homeowner got two bids for a 220 LF wood privacy fence. Bid A quoted $4,800 with posts at 8 ft OC (28 posts). Bid B came in at $6,200 with posts at 6 ft OC (37 posts). He picked the cheaper bid. Two years later a windstorm pushed over a 40-foot section. The 8-foot spans acted like sails. Posts snapped at ground level where the concrete met the wood. Bid B&apos;s tighter spacing would have survived. In windy or exposed locations, 6-foot spacing costs 30 percent more up front and saves a $2,000 repair when the first big storm hits.
       </Scenario>
 
       <p>

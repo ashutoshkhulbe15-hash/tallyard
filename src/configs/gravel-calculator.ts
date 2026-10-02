@@ -1,7 +1,9 @@
+import { GravelCalculatorExpansion } from "@/content/gravel-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, roundUp, formatNumber } from "@/lib/format";
 
 export const gravelCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: GravelCalculatorExpansion,
   slug: "gravel-calculator",
   title: "Gravel Calculator",
   description:

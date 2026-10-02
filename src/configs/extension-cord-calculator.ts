@@ -1,3 +1,4 @@
+import { ExtensionCordCalculatorExpansion } from "@/content/extension-cord-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
@@ -10,8 +11,9 @@ const conductorResistanceOhmsPerKft: Record<string, number> = {
 };
 
 export const extensionCordCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: ExtensionCordCalculatorExpansion,
   slug: "extension-cord-calculator",
-  title: "Extension Cord Voltage-Drop Estimator",
+  title: "Extension Cord Calculator",
   description:
     "Estimate resistive voltage drop for a user-selected copper conductor gauge, current, length, and voltage. Does not recommend or certify a cord's safe load.",
   categoryLabel: "Electrical",

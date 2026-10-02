@@ -6,11 +6,11 @@ import { getConfig } from "@/configs";
 const SLUG = "siding-calculator";
 
 export const metadata: Metadata = {
-  title: "Siding Area Worksheet",
+  title: "Siding Calculator",
   description: "Estimate area from measured net wall surfaces and a user-selected allowance; no product, trim, cost, or installation takeoff.",
   alternates: { canonical: "/siding-calculator" },
   openGraph: {
-    title: "Siding Area Worksheet",
+    title: "Siding Calculator",
     description: "Measured wall-area arithmetic only; no package or trim quantities.",
     url: "https://www.tallyard.com/siding-calculator",
     type: "website",

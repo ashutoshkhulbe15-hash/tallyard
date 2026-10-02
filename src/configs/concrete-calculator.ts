@@ -1,7 +1,9 @@
+import { ConcreteCalculatorExpansion } from "@/content/concrete-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, roundUp, formatNumber } from "@/lib/format";
 
 export const concreteCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: ConcreteCalculatorExpansion,
   slug: "concrete-calculator",
   title: "Concrete Calculator",
   description:

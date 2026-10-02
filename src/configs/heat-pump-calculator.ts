@@ -1,9 +1,11 @@
+import { HeatPumpCalculatorExpansion } from "@/content/heat-pump-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { formatNumber, round } from "@/lib/format";
 
 export const heatPumpCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: HeatPumpCalculatorExpansion,
   slug: "heat-pump-calculator",
-  title: "Heating and Cooling Load Conversion Worksheet",
+  title: "Heat Pump Calculator",
   description: "Convert user-provided heating and cooling loads to ton-equivalent arithmetic. This worksheet does not calculate building loads or select equipment.",
   categoryLabel: "HVAC",
   category: "hvac",

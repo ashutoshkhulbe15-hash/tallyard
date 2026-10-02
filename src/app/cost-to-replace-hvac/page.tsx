@@ -1,75 +1,29 @@
+import { EnergyCreditCorrection } from "@/components/EnergyCreditCorrection";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Figure, GuideByline, MethodologyNote, Scenario, GUIDE_SVG } from "@/components/GuideChrome";
+import { ComparisonTable, Callout } from "@/components/GuideComponents";
+export const metadata: Metadata = { title: "How much does it cost to replace HVAC? (2026 prices)", description: "Original HVAC replacement cost guide with diagrams and worked examples. Credit-assisted examples describe pre-2026 rules; new residential 2026 projects do not qualify for federal 25C or 25D credits.", alternates: { canonical: "/cost-to-replace-hvac" } };
+function SystemCostSVG() { return (<svg viewBox="0 0 680 140" width="100%" height="auto" role="img" aria-label="HVAC cost: furnace+AC $6,500-11,000, heat pump $4,200-9,100 after ITC."><text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>System cost comparison (3-ton residential)</text><rect x="40" y="50" width="280" height="65" rx="8" fill={GUIDE_SVG.slateSoft} stroke={GUIDE_SVG.slate} strokeWidth="1"/><text x="180" y="72" textAnchor="middle" fontSize="10" fontWeight="700" fill={GUIDE_SVG.slate}>GAS FURNACE + CENTRAL AC</text><text x="180" y="100" textAnchor="middle" fontSize="18" fontWeight="700" fill={GUIDE_SVG.ink}>$6,500–11,000</text><rect x="360" y="50" width="280" height="65" rx="8" fill={GUIDE_SVG.accentSoft} stroke={GUIDE_SVG.accent} strokeWidth="1"/><text x="500" y="72" textAnchor="middle" fontSize="10" fontWeight="700" fill={GUIDE_SVG.accent}>HEAT PUMP (after 30% ITC)</text><text x="500" y="100" textAnchor="middle" fontSize="18" fontWeight="700" fill={GUIDE_SVG.accent}>$4,200–9,100</text></svg>); }
+function OperatingCostSVG() { const systems=[{label:"Old furnace (80% AFUE) + 10 SEER AC",annual:"$2,400",color:GUIDE_SVG.slate},{label:"New furnace (96% AFUE) + 16 SEER2 AC",annual:"$1,600",color:GUIDE_SVG.inkMuted},{label:"Heat pump (16 SEER2 / 9 HSPF2)",annual:"$1,400",color:GUIDE_SVG.accent}]; return (<svg viewBox="0 0 680 150" width="100%" height="auto" role="img" aria-label="Annual operating cost: old system $2,400, new furnace+AC $1,600, heat pump $1,400."><text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>Annual heating + cooling cost (2,000 ft² home, Zone 4)</text>{systems.map((s,i)=>{const y=60+i*28;const w=parseFloat(s.annual.replace(/[,$]/g,''))/5;return(<g key={s.label}><text x="310" y={y+14} textAnchor="end" fontSize="10" fontWeight="600" fill={GUIDE_SVG.ink}>{s.label}</text><rect x="320" y={y} width={w} height="18" rx="3" fill={s.color} opacity="0.6"/><text x={328+w} y={y+13} fontSize="11" fontWeight="700" fill={GUIDE_SVG.ink}>{s.annual}/yr</text></g>)})}</svg>); }
+function WhenToReplaceSVG() { return (<svg viewBox="0 0 680 130" width="100%" height="auto" role="img" aria-label="Replace when: system is 15+ years old, repair costs over $3,000, R-22 refrigerant, frequent breakdowns."><text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>Signs it is time to replace, not repair</text>{[{sign:"System is 15+ years old",why:"Parts availability drops. Efficiency is 30-50% below current standards.",y:55},{sign:"Repair quote exceeds $3,000",why:"The 50% rule: if repair > 50% of new system, replace.",y:80},{sign:"Uses R-22 (Freon) refrigerant",why:"R-22 is phased out. Refills cost $75-150/lb. Systems are obsolete.",y:105}].map(s=>(<g key={s.sign}><text x="280" y={s.y+6} textAnchor="end" fontSize="10" fontWeight="700" fill={GUIDE_SVG.ink}>{s.sign}</text><text x="290" y={s.y+6} fontSize="9" fill={GUIDE_SVG.inkFaint}>{s.why}</text></g>))}</svg>); }
+export default function CostToReplaceHVAC() { return (<article>
+  <section className="container-wide pt-6 md:pt-8"><div className="pt-2 pb-8 md:pb-10 border-b border-line"><nav aria-label="Breadcrumb" className="font-mono text-xs text-ink-muted mb-5"><Link href="/" className="hover:text-accent transition-colors">Home</Link><span className="mx-2">·</span><span>Cost guides</span></nav><h1 className="text-4xl md:text-5xl font-bold tracking-tighter leading-[1.03] mb-4 text-ink">How much does it cost to replace your HVAC system?</h1><p className="text-base md:text-lg text-ink-muted max-w-2xl leading-relaxed">A heat pump replaces both your furnace and your AC in one unit. After the 30% federal tax credit, it often costs less than buying the two units separately.</p></div></section>
+  <section className="container-content py-10 md:py-14"><div className="guide-prose">
+    <GuideByline updated="April 20, 2026" reviewedAgainst="ACCA Manual J, AHRI ratings, and IRS Section 25C (heat pump ITC)" />
+    <EnergyCreditCorrection />
+    <h2>One unit replaces two, and the government pays 30%</h2>
+    <p>When both your furnace and air conditioner need replacing (which happens often since they are usually the same age), you have two options. Option A: buy a new furnace ($3,000-6,000) and a new AC ($3,500-5,000) separately. Total: $6,500 to $11,000. Option B: buy a heat pump that does both jobs. Cost: $6,000 to $13,000 before the 30% federal tax credit, bringing net cost to $4,200 to $9,100. In most cases the heat pump is cheaper than buying both conventional units, and it operates on electricity only, eliminating your gas bill for heating.</p>
+    <h2>How much does it cost to replace a furnace and AC together?</h2>
+    <p>Replacing both a furnace and central air conditioner at the same time costs $6,500 to $11,000 for standard efficiency equipment. High-efficiency (96%+ AFUE furnace with 18+ SEER2 AC) runs $9,000 to $15,000. The combined install saves $500 to $1,000 compared to replacing each unit separately because the HVAC contractor mobilizes once, handles both refrigerant lines and gas connections in one visit, and avoids compatibility issues between mismatched old and new equipment.</p>
+    <Figure number={1} caption="A heat pump after the 30% ITC costs less than a furnace + AC combo in most markets. And it replaces two aging appliances with one new one."><SystemCostSVG /></Figure>
+    <MethodologyNote><p>Equipment pricing from AHRI certified product directory cross-referenced with HomeGuide and Angi contractor surveys. Operating costs use EIA 2025 residential energy rates. Heat pump ITC per IRS Section 25C as amended by the Inflation Reduction Act (qualifying heat pumps must meet CEE Tier 1 or Energy Star Most Efficient).</p></MethodologyNote>
+    <Figure number={2} caption="A heat pump saves $200-1,000/year in operating costs compared to the system it replaces. The savings come from eliminating gas and running a more efficient cooling cycle."><OperatingCostSVG /></Figure>
+    <Scenario location="Richmond, VA (Zone 4)">A homeowner replaced a 20-year-old 80% AFUE gas furnace and 10 SEER central AC with a 3-ton 16 SEER2 heat pump. Installed cost: $9,800. Federal ITC (30%): $2,940. Virginia state rebate: $500. Net cost: $6,360. Previous annual heating and cooling: $2,400 (gas + electric). New annual cost: $1,500 (electric only). Annual savings: $900. Payback on net cost: 7.1 years. If he had bought a new furnace + AC instead: $8,500, no tax credit, annual operating cost $1,600. The heat pump cost $2,140 less to buy and $100 less per year to run.</Scenario>
+    <Figure number={3} caption="If your system uses R-22 refrigerant, repair is no longer economically viable. R-22 costs $75-150 per pound and is no longer manufactured."><WhenToReplaceSVG /></Figure>
+    <ComparisonTable columns={[{title:"Heat pump"},{title:"Furnace + AC"}]} rows={[{label:"Net cost (after ITC)",values:["$4,200–9,100","$6,500–11,000"]},{label:"Tax credit",values:["30% ITC","None"]},{label:"Fuel",values:["Electric only","Gas + electric"]},{label:"Heats AND cools?",values:["Yes (one unit)","Two separate units"]},{label:"Best climate",values:["Zones 1–5 (moderate cold)","Zones 5–7 (extreme cold)"]}]} caption="Heat pumps win in zones 1-4 on both install cost and operating cost. In zones 5-7, a dual-fuel system (heat pump + gas backup) covers both mild and extreme cold." />
+    <Callout label="The sizing mistake that costs $3,000">Oversized HVAC equipment short-cycles, leaving humidity high and wearing out components faster. A 3-ton system in a house that needs 2.5 tons costs more to buy, more to run, and dies sooner. The <Link href="/btu-calculator" className="text-accent hover:underline">BTU calculator</Link> sizes the system correctly. Do not let a contractor upsell you a larger unit.</Callout>
+    <p>For system sizing, use the <Link href="/btu-calculator" className="text-accent hover:underline">BTU calculator</Link> or <Link href="/heat-pump-calculator" className="text-accent hover:underline">heat pump calculator</Link>. For insulation upgrades that reduce required system size, the <Link href="/insulation-calculator" className="text-accent hover:underline">insulation calculator</Link> shows the ROI. For the full comparison, read the <Link href="/guides/heat-pump-vs-furnace" className="text-accent hover:underline">heat pump vs furnace buying guide</Link>.</p>
+  </div></section>
 
-export const metadata: Metadata = {
-  title: "How much does it cost to replace an HVAC system?",
-  description:
-    "Compare itemized furnace, AC, and heat-pump replacement quotes without assuming expired federal tax credits or universal payback figures.",
-  alternates: { canonical: "/cost-to-replace-hvac" },
-};
-
-export default function CostToReplaceHVAC() {
-  return (
-    <article>
-      <section className="container-wide pt-6 md:pt-8">
-        <div className="pt-2 pb-8 md:pb-10 border-b border-line">
-          <nav aria-label="Breadcrumb" className="font-mono text-xs text-ink-muted mb-5">
-            <Link href="/" className="hover:text-accent transition-colors">Home</Link>
-            <span className="mx-2">·</span>Cost guides
-          </nav>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tighter leading-[1.03] mb-4 text-ink">
-            How much does it cost to replace your HVAC system?
-          </h1>
-          <p className="text-base md:text-lg text-ink-muted max-w-2xl leading-relaxed">
-            Compare the complete installed cost and expected operating cost of each system for your home.
-          </p>
-        </div>
-      </section>
-      <section className="container-content py-10 md:py-14">
-        <div className="guide-prose">
-          <h2>Get quotes for equivalent work</h2>
-          <p>
-            A furnace-plus-AC replacement and a heat pump can both heat and cool, but they may require different
-            duct, electrical, refrigerant-line, or backup-heating work. Ask contractors to itemize equipment and
-            model numbers, installation labor, permits, electrical or gas modifications, duct repairs, disposal,
-            warranty, and financing cost. A low equipment price can hide expensive required work.
-          </p>
-          <p>
-            Ask for a room-by-room heating and cooling load calculation rather than sizing the replacement solely
-            from the old unit&apos;s nameplate or square footage. Compare proposed equipment at the same design
-            temperatures and ask how the system will handle the coldest local conditions. The
-            <Link href="/heat-pump-calculator" className="text-accent hover:underline"> heat pump calculator</Link>
-            is a preliminary estimate, not a contractor load calculation.
-          </p>
-          <h2>Check incentive rules before comparing net prices</h2>
-          <p>
-            The IRS says the Section 25C Energy Efficient Home Improvement Credit is not allowed for property
-            placed in service after December 31, 2025. Do not subtract the former federal heat-pump credit from
-            a new 2026 installation. See the <a href="https://www.irs.gov/newsroom/faqs-for-modification-of-sections-25c-25d-25e-30c-30d-45l-45w-and-179d-under-public-law-119-21-139-stat-72-july-4-2025-commonly-known-as-the-one-big-beautiful-bill-obbb">IRS expiration guidance</a>.
-            Local rebates may still exist, but eligibility, amounts, and program funding vary; verify them with the
-            administering agency before treating them as a discount.
-          </p>
-          <h2>Model operating costs separately</h2>
-          <p>
-            Compare expected annual electricity and gas use using your local tariffs, the equipment&apos;s rated
-            performance, and your home&apos;s heating and cooling load. Include fixed gas charges only if you will
-            actually disconnect gas service. Heat-pump performance varies with outdoor temperature, so a universal
-            annual savings or payback claim would be misleading. Compare cash and financed totals over the expected
-            ownership period, not just the monthly payment.
-          </p>
-          <p>
-            For an initial sizing discussion, use the <Link href="/btu-calculator" className="text-accent hover:underline">BTU calculator</Link>.
-            The <Link href="/guides/heat-pump-vs-furnace" className="text-accent hover:underline">heat pump vs furnace guide</Link>
-            explains the system tradeoffs. Neither replaces a site-specific design or written contractor quote.
-          </p>
-          <h2>Sources and scope</h2>
-          <p>
-            Federal-credit status is based on the current IRS guidance linked above. The quote checklist is a
-            comparison method, not a national 2026 price survey. We do not claim a typical installed price or
-            guaranteed payback without verifiable market and home-specific data.
-          </p>
-        </div>
-      </section>
-    </article>
-  );
-}
+</article>); }

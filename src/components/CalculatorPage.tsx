@@ -5,6 +5,8 @@ import { FeedbackWidget } from "./FeedbackWidget";
 import { PageRail } from "./PageRail";
 import { StickyCalc } from "./StickyCalc";
 import { getConfig } from "@/configs";
+import { EnergyCreditCorrection } from "./EnergyCreditCorrection";
+import { OriginalCalculatorNotes } from "./OriginalCalculatorNotes";
 
 interface CalculatorPageProps {
   slug: string;
@@ -54,6 +56,7 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
 
   const railNav = [
     { href: "#calculator", label: "The calculator" },
+    ...(config.ContentExpansion ? [{ href: "#guide", label: "The full guide" }] : []),
     ...(config.methodology.length > 0
       ? [{ href: "#methodology", label: "How we calculated" }]
       : []),
@@ -192,7 +195,9 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
       {config.ContentExpansion && (
         <section id="guide" className="scroll-mt-20 max-w-[900px]">
           <div className="pt-10 border-t border-line guide-prose">
+            {["heat-pump-calculator", "water-heater-calculator", "solar-calculator", "insulation-calculator"].includes(slug) && <EnergyCreditCorrection />}
             <config.ContentExpansion />
+            <OriginalCalculatorNotes slug={slug} />
           </div>
         </section>
       )}

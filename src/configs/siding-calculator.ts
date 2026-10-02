@@ -1,9 +1,11 @@
+import { SidingCalculatorExpansion } from "@/content/siding-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { formatNumber, round } from "@/lib/format";
 
 export const sidingCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: SidingCalculatorExpansion,
   slug: "siding-calculator",
-  title: "Siding Area Worksheet",
+  title: "Siding Calculator",
   description: "Estimate cladding area from user-measured net wall surfaces and a chosen planning allowance. Does not estimate siding packages, trim, cost, or installation requirements.",
   categoryLabel: "Roofing",
   category: "roofing",

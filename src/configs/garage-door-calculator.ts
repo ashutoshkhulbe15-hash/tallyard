@@ -1,9 +1,11 @@
+import { GarageDoorCalculatorExpansion } from "@/content/garage-door-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
 export const garageDoorCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: GarageDoorCalculatorExpansion,
   slug: "garage-door-calculator",
-  title: "Garage Door Opening Measurement Worksheet",
+  title: "Garage Door Calculator",
   description: "Record entered opening and clearance dimensions and calculate rectangular opening area. Does not select a door, track, spring, opener, or price.",
   categoryLabel: "Roofing",
   category: "roofing",

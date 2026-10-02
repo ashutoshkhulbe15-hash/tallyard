@@ -1,9 +1,11 @@
+import { StudSpacingCalculatorExpansion } from "@/content/stud-spacing-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber, ceilQuantity } from "@/lib/format";
 
 export const studSpacingCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: StudSpacingCalculatorExpansion,
   slug: "stud-spacing-calculator",
-  title: "Straight-Wall Spacing Count Estimator",
+  title: "Stud Spacing Calculator",
   description: "Estimate evenly spaced points along a straight wall length from user-selected spacing. Does not design framing or count openings and connections.",
   categoryLabel: "Lumber",
   category: "drywall",

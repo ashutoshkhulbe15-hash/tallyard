@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "shed-calculator";
 
 export const metadata: Metadata = {
-  title: "Shed Surface Area Estimator",
+  title: "Shed Calculator",
   description:
     "Estimate surface areas and nominal sheathing sheets for a simple rectangular shed with the stated roof assumption. Does not produce a framing plan, cost, or complete material list.",
   alternates: { canonical: "/shed-calculator" },
   openGraph: {
-    title: "Shed Surface Area Estimator",
+    title: "Shed Calculator",
     description:
       "Estimate shed surface areas and nominal sheet counts using the stated geometry assumptions.",
     url: "https://www.tallyard.com/shed-calculator",

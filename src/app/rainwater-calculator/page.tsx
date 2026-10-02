@@ -6,11 +6,11 @@ import { getConfig } from "@/configs";
 const SLUG = "rainwater-calculator";
 
 export const metadata: Metadata = {
-  title: "Rainfall Runoff Volume Estimator",
+  title: "Rainwater Harvesting Calculator",
   description: "Estimate event runoff volume from horizontal catchment area, rainfall depth, and a user-selected capture factor. Does not size storage.",
   alternates: { canonical: "/rainwater-calculator" },
   openGraph: {
-    title: "Rainfall Runoff Volume Estimator",
+    title: "Rainwater Harvesting Calculator",
     description: "Estimate rainfall runoff volume; tank sizing and water-use planning are outside scope.",
     url: "https://www.tallyard.com/rainwater-calculator",
     type: "website",

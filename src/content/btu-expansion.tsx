@@ -126,14 +126,14 @@ export function BTUCalculatorExpansion() {
         reviewedAgainst="ACCA Manual J methodology, Energy Star sizing guidance, and AHRI certified product data"
       />
 
-      <h2>Why an oversized system can cause comfort problems</h2>
+      <h2>The most common HVAC mistake costs $3,000 and makes your house less comfortable</h2>
 
       <p>
-        An oversized air conditioner may reach its thermostat setpoint quickly and shut off before it removes enough humidity. A hypothetical comparison between a 4-ton system and a properly sized 3-ton system illustrates why equipment size should come from a room-by-room load calculation, not floor area alone.
+        An HVAC technician in Houston described the service call he gets more than any other. A homeowner bought a new air conditioner two summers ago. The contractor installed a 4-ton unit in a house that needs 3 tons, because the contractor said it would cool faster, and the homeowner figured bigger is better. The system does cool fast. Too fast. It reaches the thermostat setpoint in 8 minutes, shuts off, and the indoor humidity is still at 62 percent because the coil did not run long enough to condense moisture out of the air. Six minutes later, the temperature drifts up 2 degrees and the system restarts. This cycle repeats 6 to 8 times per hour, all summer.
       </p>
 
       <p>
-        Short cycling can reduce comfort and place extra wear on equipment. Actual run time, humidity, costs, and service life depend on the house, climate, controls, and installation. Ask a qualified HVAC professional for a Manual J load calculation before selecting equipment.
+        The house is 72 degrees and feels clammy. The compressor, rated for 100,000 start-stop cycles over its lifetime, burns through that number in 8 years instead of 15. The homeowner paid $3,000 more for the bigger unit and got worse comfort and a shorter equipment lifespan. Correct sizing is not a nice-to-have. It is the single most important HVAC decision.
       </p>
 
       <Figure number={1} caption="An oversized AC system creates four compounding problems. Each one makes the house less comfortable and more expensive to run.">

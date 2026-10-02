@@ -1,9 +1,11 @@
+import { StairCalculatorExpansion } from "@/content/stair-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
 export const stairCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: StairCalculatorExpansion,
   slug: "stair-calculator",
-  title: "Stair Geometry Estimator",
+  title: "Stair Calculator",
   description: "Estimate equalized riser count and geometric rise/run from user-selected dimensions. Not a code check or construction cut sheet.",
   categoryLabel: "Lumber",
   category: "drywall",

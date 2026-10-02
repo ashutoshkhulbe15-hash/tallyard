@@ -1,7 +1,9 @@
+import { PaintCalculatorExpansion } from "@/content/paint-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, roundUp, formatNumber } from "@/lib/format";
 
 export const paintCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: PaintCalculatorExpansion,
   slug: "paint-calculator",
   title: "Paint Calculator",
   description:

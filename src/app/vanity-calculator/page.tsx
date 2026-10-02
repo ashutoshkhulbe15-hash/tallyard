@@ -6,11 +6,11 @@ import { getConfig } from "@/configs";
 const SLUG = "vanity-calculator";
 
 export const metadata: Metadata = {
-  title: "Vanity Wall-Width Worksheet",
+  title: "Vanity Calculator",
   description: "Calculate remaining wall width after user-entered clearances; no product recommendation or code check.",
   alternates: { canonical: "/vanity-calculator" },
   openGraph: {
-    title: "Vanity Wall-Width Worksheet",
+    title: "Vanity Calculator",
     description: "Dimension arithmetic only; does not assess fixture suitability or compliance.",
     url: "https://www.tallyard.com/vanity-calculator",
     type: "website",

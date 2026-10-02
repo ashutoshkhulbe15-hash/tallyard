@@ -1,39 +1,38 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-
-export const metadata: Metadata = {
-  title: "Roofing and Exterior Measurement Tools | Tallyard",
-  description: "Limited measurement estimators for roof area, siding, gutters, attic ventilation, snow weight, and garage-door openings.",
-  alternates: { canonical: "/calculators/roofing-exterior" },
-};
-
+export const metadata: Metadata = { title: "Roofing, siding, gutter, and exterior calculators: Tallyard", description: "Calculators for roofing, siding, gutters, attic ventilation, snow load, and garage doors.", alternates: { canonical: "/calculators/roofing-exterior" } };
 const tools = [
-  { slug: "roofing-calculator", name: "Roof area estimator", desc: "Planar area from a simple footprint and entered pitch; not a complete roof takeoff." },
-  { slug: "siding-calculator", name: "Siding area worksheet", desc: "Net measured area with a user-selected allowance; no material or trim takeoff." },
-  { slug: "gutter-calculator", name: "Gutter-run length worksheet", desc: "Measured run-length arithmetic only; no drainage or component sizing." },
-  { slug: "attic-ventilation-calculator", name: "Attic ventilation worksheet", desc: "Illustrative net-free-area calculation; not a ventilation design." },
-  { slug: "snow-load-calculator", name: "Snow weight estimator", desc: "Weight estimate from entered snow/ice values; not a structural safety check." },
-  { slug: "garage-door-calculator", name: "Garage door opening estimator", desc: "Dimensions from entered opening; confirm hardware compatibility with manufacturer." },
+  { slug: "roofing-calculator", name: "Roofing calculator", desc: "Squares of shingles by footprint and pitch." },
+  { slug: "siding-calculator", name: "Siding calculator", desc: "Squares of siding by wall area with deductions." },
+  { slug: "gutter-calculator", name: "Gutter calculator", desc: "Linear feet and downspout count." },
+  { slug: "attic-ventilation-calculator", name: "Attic ventilation calculator", desc: "Net free vent area per IRC R806." },
+  { slug: "snow-load-calculator", name: "Snow load calculator", desc: "Roof snow load per ASCE 7." },
+  { slug: "garage-door-calculator", name: "Garage door calculator", desc: "Door sizing and headroom check." },
 ];
-
-export default function RoofingExteriorPillar() {
-  return <article>
-    <section className="container-wide pt-6 md:pt-8"><div className="pt-2 pb-8 md:pb-10 border-b border-line">
-      <nav aria-label="Breadcrumb" className="font-mono text-xs text-ink-muted mb-5"><Link href="/calculators" className="text-accent hover:text-accent-hover transition-colors">Calculators</Link><span className="mx-2">·</span><span>Roofing + exterior</span></nav>
-      <h1 className="text-3xl md:text-5xl font-bold tracking-tighter leading-[1.05] mb-3 text-ink">Roofing, siding, and exterior measurements</h1>
-      <p className="text-base md:text-lg text-ink-muted max-w-2xl leading-relaxed">Six limited estimators for surface area, entered dimensions, or illustrative calculations. None is a coordinated construction takeoff or code/design determination.</p>
-    </div></section>
-    <section className="container-wide py-10"><div className="grid grid-cols-1 md:grid-cols-3 gap-5">{tools.map((t) => <Link key={t.slug} href={`/${t.slug}`} className="block bg-surface border border-line rounded-lg p-6 hover:border-accent transition-colors group"><h2 className="text-base font-bold text-ink group-hover:text-accent transition-colors mb-2">{t.name}</h2><p className="text-sm text-ink-muted leading-relaxed">{t.desc}</p></Link>)}</div></section>
-    <section className="container-content pb-16"><div className="guide-prose">
-      <h2>Measurement estimates are not assembly design</h2>
-      <p>Roof planes, cladding, drainage, ventilation, snow loading, and garage-door hardware are related building systems but require different measurements and specifications. These separate tools do not combine into a coordinated takeoff or establish code compliance, structural capacity, water management, or product compatibility.</p>
-      <p>The <Link href="/roofing-calculator" className="text-accent hover:underline">roof area estimator</Link> covers simple planar geometry only; it does not model multiple planes, valleys, dormers, overhangs, or material ordering. The <Link href="/siding-calculator" className="text-accent hover:underline">siding estimator</Link> uses entered dimensions and does not determine a cladding system or trim/flashing quantities. Verify actual surfaces and product coverage against the project plan and supplier data.</p>
-      <p>The <Link href="/gutter-calculator" className="text-accent hover:underline">gutter estimator</Link> is not hydraulic sizing. Runoff capacity depends on roof catchment, rainfall intensity, slope, outlets, and product details. The <Link href="/attic-ventilation-calculator" className="text-accent hover:underline">attic ventilation worksheet</Link> is not a ventilation design; net-free-area needs, distribution, air barriers, and moisture control depend on the assembly and applicable requirements.</p>
-      <p>The <Link href="/snow-load-calculator" className="text-accent hover:underline">snow estimator</Link> does not assess structural capacity or say whether a roof is safe. For a particular structure, visible distress, or snow-removal decision, contact a qualified professional. The <Link href="/garage-door-calculator" className="text-accent hover:underline">garage-door estimator</Link> does not verify track, spring, opener, or framing compatibility; check manufacturer specifications and use a qualified installer.</p>
-      <h2>Take measurements from the correct reference surface</h2>
-      <p>For roof area, use the roof planes and entered pitch—not just the building footprint—and treat each separate plane or addition distinctly. For siding, measure the exterior wall faces that will actually receive cladding; openings and trim affect net material, but this worksheet does not create a siding-panel or trim layout. For gutters, record each run and corner separately: a length total says nothing about slope, outlet locations, downspout routing, or rainfall capacity.</p>
-      <p>For attic ventilation, distinguish product net-free area from the opening’s physical dimensions and follow the adopted assembly requirements. For snow, the entered depth and density are assumptions only; changing snow type, water content, or ice changes weight substantially. Garage-door measurements should be checked against the door and track manufacturer’s required opening and headroom dimensions before purchase.</p>
-      <p>For project scoping, see the <Link href="/cost-to-replace-a-roof" className="text-accent hover:underline">roof replacement</Link> and <Link href="/cost-to-install-siding" className="text-accent hover:underline">siding bid-comparison guides</Link>. Their benchmarks are not quotes; compare the same written scope with local contractors.</p>
-    </div></section>
-  </article>;
-}
+export default function RoofingExteriorPillar() { return (<article>
+  <section className="container-wide pt-6 md:pt-8"><div className="pt-2 pb-8 md:pb-10 border-b border-line">
+    <nav aria-label="Breadcrumb" className="font-mono text-xs text-ink-muted mb-5"><Link href="/calculators" className="text-accent hover:text-accent-hover transition-colors">Calculators</Link><span className="mx-2">·</span><span>Roofing + exterior</span></nav>
+    <h1 className="text-3xl md:text-5xl font-bold tracking-tighter leading-[1.05] mb-3 text-ink">Roofing, siding, and exterior</h1>
+    <p className="text-base md:text-lg text-ink-muted max-w-2xl leading-relaxed">Six calculators for the building envelope. Roof, walls, gutters, and ventilation work as one system.</p>
+  </div></section>
+  <section className="container-wide py-10"><div className="grid grid-cols-1 md:grid-cols-3 gap-5">{tools.map((t) => (<Link key={t.slug} href={`/${t.slug}`} className="block bg-surface border border-line rounded-lg p-6 hover:border-accent transition-colors group"><h2 className="text-base font-bold text-ink group-hover:text-accent transition-colors mb-2">{t.name}</h2><p className="text-sm text-ink-muted leading-relaxed">{t.desc}</p></Link>))}</div></section>
+  <section className="container-content pb-16"><div className="guide-prose">
+    <h2>The building envelope is one system, not four separate projects</h2>
+    <p>Roof, siding, gutters, and attic ventilation work together as a single weather-protection system. Replace the roof without upgrading ventilation and the new shingles bake from underneath, shortening their life by 5 to 10 years. Replace siding without fixing deteriorated gutters and water runs behind the new cladding, rotting the sheathing you just paid to protect. These calculators cover each component individually, but the best results come from addressing all of them during the same renovation when scaffolding and access are already in place.</p>
+    <h2>Roofing: pitch changes everything</h2>
+    <p>The single most important variable in roofing material estimation is roof pitch. A 6/12 pitch (the most common residential pitch) adds 12 percent more surface area than the house footprint. A steep 12/12 pitch adds 41 percent. That difference translates directly into shingles, underlayment, and labor hours. A homeowner who measures their house footprint at 2,000 square feet and orders 20 squares of shingles will be short by 2 to 8 squares depending on pitch. The <Link href="/roofing-calculator" className="text-accent hover:underline">roofing calculator</Link> applies the correct pitch multiplier automatically and adds a 10 percent waste factor for hips, valleys, and starter strips.</p>
+    <p>Shingles come in three quality tiers. 3-tab shingles cost less per square but last only 15 to 20 years. Architectural shingles cost 30 to 50 percent more and last 25 to 30 years. Over 30 years, one architectural roof costs less than two 3-tab roofs. The <Link href="/cost-to-replace-a-roof" className="text-accent hover:underline">cost to replace a roof</Link> guide breaks this down with line-item pricing for shingles, underlayment, tear-off, and accessories.</p>
+    <h2>Siding: squares again, measured differently</h2>
+    <p>Siding uses the same &quot;square&quot; unit as roofing (1 square = 100 square feet), but the measurement is wall area, not roof area. The <Link href="/siding-calculator" className="text-accent hover:underline">siding calculator</Link> starts with house perimeter times wall height, adds gable triangle areas, and subtracts doors and windows. For material selection, the <Link href="/guides/vinyl-vs-fiber-cement-siding" className="text-accent hover:underline">vinyl vs fiber cement buying guide</Link> compares 30-year total cost of ownership including the repaint cycles that fiber cement and wood require. The <Link href="/cost-to-install-siding" className="text-accent hover:underline">cost to install siding</Link> guide covers installed pricing by material type.</p>
+    <h2>Gutters and downspouts</h2>
+    <p>The <Link href="/gutter-calculator" className="text-accent hover:underline">gutter calculator</Link> sizes linear footage and downspout count based on roof line length and local rainfall intensity. The general rule is one downspout per 30 to 40 linear feet of gutter. In high-rainfall regions (Pacific Northwest, Gulf Coast), tighter downspout spacing prevents overflow during heavy storms. Replacing gutters during a roof job saves the cost of a second mobilization, which typically runs $800 to $1,500 just for scaffolding setup.</p>
+    <h2>Attic ventilation</h2>
+    <p>The <Link href="/attic-ventilation-calculator" className="text-accent hover:underline">attic ventilation calculator</Link> sizes the required net free vent area per IRC R806.2. The code requires 1 square foot of venting per 150 square feet of attic floor area, split evenly between intake (soffit vents) and exhaust (ridge vent). Balanced ventilation keeps the attic temperature close to outside temperature year-round, preventing ice dams in winter and reducing cooling load in summer. A new roof is the cheapest time to add or upgrade ridge vent because the labor is already on the roof.</p>
+    <h2>Snow load</h2>
+    <p>The <Link href="/snow-load-calculator" className="text-accent hover:underline">snow load calculator</Link> compares actual snow weight on your roof against its structural design capacity. Ground snow loads range from 10 pounds per square foot in the southern tier to 300+ in high mountain regions. Roof load is typically 70 percent of ground load for standard residential roofs. If your home was built before current snow load codes were adopted, the design capacity may be lower than what modern winters deliver. The calculator helps identify this gap before a heavy snow season.</p>
+    <h2>Garage doors</h2>
+    <p>The <Link href="/garage-door-calculator" className="text-accent hover:underline">garage door calculator</Link> handles sizing (width, height, headroom clearance) and opener HP recommendations. Standard single doors are 8 or 9 feet wide; double doors are 16 feet. The measurement most people miss is headroom: the space between the top of the door opening and the ceiling, which must be at least 12 inches for standard track or 3.5 inches for low-headroom hardware.</p>
+    <h2>Project planner</h2>
+    <p>The <Link href="/planner/replace-a-roof" className="text-accent hover:underline">roof replacement planner</Link> chains shingles, ventilation, and gutter calculations into a single material list from your house footprint and pitch. It includes tear-off cost estimation and a quote comparison tool.</p>
+  </div></section>
+</article>); }

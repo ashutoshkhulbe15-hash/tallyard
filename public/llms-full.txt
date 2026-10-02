@@ -148,7 +148,7 @@ Q: What's the difference between cubic yards and yards of concrete?
 
 A: They're the same thing: 'yards' of concrete is shorthand for cubic yards. A 'yard' of concrete means one cubic yard (3 ft × 3 ft × 3 ft = 27 cubic feet).
 
-## Tile Package Calculator
+## Tile Calculator
 
 URL: https://www.tallyard.com/tile-calculator
 
@@ -238,7 +238,7 @@ Q: Does this estimate current bulk or bag prices?
 
 A: No. Prices, delivery minimums, and package volumes vary by supplier and location; request a current quote and check product labels.
 
-## Drywall Panel Area Estimator
+## Drywall Calculator
 
 URL: https://www.tallyard.com/drywall-calculator
 
@@ -268,7 +268,7 @@ Q: Does this calculate compound, tape, or screws?
 
 A: No. Those quantities depend on product, layout, substrate, specification, and installation details not included here.
 
-## Roof Surface Area Calculator
+## Roofing Calculator
 
 URL: https://www.tallyard.com/roofing-calculator
 
@@ -310,7 +310,7 @@ Q: Does a 0/12 result mean a roof covering is suitable?
 
 A: No. Zero pitch is included only as a geometric case. Material suitability, drainage, membrane details, and code requirements depend on the specific assembly and local rules.
 
-## Room Air Conditioner Capacity Guide
+## BTU Calculator
 
 URL: https://www.tallyard.com/btu-calculator
 
@@ -410,7 +410,7 @@ Q: Does this calculate current aggregate prices?
 
 A: No. Pricing, minimum loads, and delivery fees vary by supplier and location. Request a current quote for the specified material and quantity.
 
-## Solar Energy-Use Scenario Estimator
+## Solar Panel Calculator
 
 URL: https://www.tallyard.com/solar-calculator
 
@@ -514,7 +514,7 @@ Q: Should I oversize wire?
 
 A: For long runs or continuous loads (EV chargers, AC condensers), yes, one gauge larger than the minimum provides headroom for future load increases and reduces voltage drop. For standard outlets and lighting in short runs, minimum code is fine. The cost difference between sizes is modest, so erring larger is cheap insurance.
 
-## Insulation Package Coverage Estimator
+## Insulation Calculator
 
 URL: https://www.tallyard.com/insulation-calculator
 
@@ -610,7 +610,7 @@ Q: Does the calculator work for chain-link or vinyl?
 
 A: No. This estimator assumes a simple wood-style straight run and generic pickets and rails. Chain-link and vinyl systems have product-specific terminal posts, panels, spacing, and hardware. Use the manufacturer's layout instructions and a site-specific quote.
 
-## Grout Package Estimator
+## Grout Calculator
 
 URL: https://www.tallyard.com/grout-calculator
 
@@ -650,7 +650,7 @@ Q: Does this choose sanded, unsanded, or epoxy grout?
 
 A: No. Select material from project specifications and manufacturer guidance, accounting for tile, joint, substrate, exposure, and other project conditions.
 
-## Paver Area and Count Calculator
+## Paver Calculator
 
 URL: https://www.tallyard.com/paver-calculator
 
@@ -692,7 +692,7 @@ Q: Does the allowance account for my pattern or cuts?
 
 A: No. It is a user-selected scenario and does not model the bond pattern, borders, cut plan, or reusable offcuts.
 
-## Decking Board Calculator
+## Deck Calculator
 
 URL: https://www.tallyard.com/deck-calculator
 
@@ -740,7 +740,7 @@ Q: Can I use this as a complete deck material list?
 
 A: No. It omits all structural framing, connections, fasteners, stairs, guards, and code or permit checks. Obtain a complete site-specific plan before construction.
 
-## Flooring Package Calculator
+## Flooring Calculator
 
 URL: https://www.tallyard.com/flooring-calculator
 
@@ -782,7 +782,7 @@ Q: Does this calculate installation cost or underlayment?
 
 A: No. It estimates product package count only; installation and additional materials require separate product and project details.
 
-## Soil Volume Calculator
+## Topsoil Calculator
 
 URL: https://www.tallyard.com/topsoil-calculator
 
@@ -826,7 +826,7 @@ Q: Does this estimate weight or tell me what kind of soil to use?
 
 A: No. Soil weight varies with composition and moisture, and the right material and depth depend on the project. Ask the supplier or a qualified soil/landscape professional.
 
-## Sod Area and Piece Calculator
+## Sod Calculator
 
 URL: https://www.tallyard.com/sod-calculator
 
@@ -928,7 +928,7 @@ Q: Is this an exact order quantity or price quote?
 
 A: No. It does not model mix-specific density, construction tolerances, delivery constraints, or local pricing. Confirm quantity and current pricing with a supplier or contractor.
 
-## Lumber Board-Foot and Lineal-Length Worksheet
+## Lumber Calculator
 
 URL: https://www.tallyard.com/lumber-calculator
 
@@ -960,7 +960,7 @@ Q: Are board feet based on actual or nominal dimensions?
 
 A: The displayed board-foot arithmetic uses the selected nominal size. Actual surfaced dimensions can differ.
 
-## Stair Geometry Estimator
+## Stair Calculator
 
 URL: https://www.tallyard.com/stair-calculator
 
@@ -996,7 +996,7 @@ Q: What values should I enter?
 
 A: Use dimensions and targets from approved project documents or a qualified designer. This estimator does not recommend riser or tread dimensions.
 
-## Reinforcing Bar Grid Geometry Estimator
+## Rebar Calculator
 
 URL: https://www.tallyard.com/rebar-calculator
 
@@ -1036,7 +1036,7 @@ Q: Why can the estimate differ from my bar schedule?
 
 A: The simple rectangle does not include edge offsets, openings, laps, hooks, development length, support details, or placement requirements. The project drawings and qualified bar-detailing review govern.
 
-## Brick Quantity Estimator
+## Brick Calculator
 
 URL: https://www.tallyard.com/brick-calculator
 
@@ -1076,7 +1076,7 @@ Q: Why does the calculator require product coverage?
 
 A: Brick formats, joints, bonds, openings, and wall layouts vary. A supplier or masonry takeoff for the selected assembly is more appropriate than assuming one universal bricks-per-area rate.
 
-## Wallpaper Roll-Coverage Estimator
+## Wallpaper Calculator
 
 URL: https://www.tallyard.com/wallpaper-calculator
 
@@ -1106,7 +1106,7 @@ Q: Where does the coverage value come from?
 
 A: Use the exact coverage information for the product and roll format being purchased.
 
-## Shower Tile Package Calculator
+## Shower Tile Calculator
 
 URL: https://www.tallyard.com/shower-tile-calculator
 
@@ -1146,7 +1146,7 @@ Q: Does this plan the shower waterproofing?
 
 A: No. Tile is not a waterproofing system. Follow the complete instructions for a compatible shower system and applicable local requirements; consult a qualified professional.
 
-## Backsplash Tile Package Estimator
+## Backsplash Calculator
 
 URL: https://www.tallyard.com/backsplash-calculator
 
@@ -1186,7 +1186,7 @@ Q: Does this calculate tile pieces or installation materials?
 
 A: No. It estimates packages using label coverage only. Individual pieces, setting materials, grout, electrical box adjustments, substrate, and installation details require project- and product-specific review.
 
-## Vanity Wall-Width Worksheet
+## Vanity Calculator
 
 URL: https://www.tallyard.com/vanity-calculator
 
@@ -1280,7 +1280,7 @@ Q: Can I install countertops myself?
 
 A: Installation methods and handling risks depend on the material and product. Follow manufacturer instructions and use qualified fabricators/installers for heavy, cut-to-fit, or high-risk work.
 
-## Siding Area Worksheet
+## Siding Calculator
 
 URL: https://www.tallyard.com/siding-calculator
 
@@ -1308,7 +1308,7 @@ Q: What is a siding square?
 
 A: This page uses a square only as an area equivalent of 100 square feet. It does not mean every product package covers one square.
 
-## Gutter-Run Length Worksheet
+## Gutter Calculator
 
 URL: https://www.tallyard.com/gutter-calculator
 
@@ -1342,7 +1342,7 @@ Q: Does this include downspouts or hangers?
 
 A: No. Use the chosen product's instructions and a project-specific layout for component quantities.
 
-## Heating and Cooling Load Conversion Worksheet
+## Heat Pump Calculator
 
 URL: https://www.tallyard.com/heat-pump-calculator
 
@@ -1370,7 +1370,7 @@ Q: Where should the inputs come from?
 
 A: Use project-specific load calculations from a qualified HVAC professional, not a square-foot rule or this worksheet.
 
-## Water-Heating Rate Conversion Worksheet
+## Water Heater Calculator
 
 URL: https://www.tallyard.com/water-heater-calculator
 
@@ -1398,7 +1398,7 @@ Q: What is temperature rise?
 
 A: It is the target water temperature minus incoming water temperature. This worksheet does not choose either temperature for your project.
 
-## Extension Cord Voltage-Drop Estimator
+## Extension Cord Calculator
 
 URL: https://www.tallyard.com/extension-cord-calculator
 
@@ -1450,7 +1450,7 @@ Q: Can I use this for permanent wiring or a generator installation?
 
 A: No. This is not a wiring design or generator connection guide. Follow the equipment manufacturer's instructions and applicable electrical requirements; use a qualified electrician for installations.
 
-## Attic Ventilation Ratio Worksheet
+## Attic Ventilation Calculator
 
 URL: https://www.tallyard.com/attic-ventilation-calculator
 
@@ -1482,7 +1482,7 @@ Q: Can this diagnose attic moisture or ice dams?
 
 A: No. Those conditions can have several causes and require a building-specific assessment.
 
-## Pool Chlorine Mass Estimator
+## Pool Chlorine Calculator
 
 URL: https://www.tallyard.com/pool-chlorine-calculator
 
@@ -1532,7 +1532,7 @@ Q: Why doesn't the result include tablets or shock advice?
 
 A: Products and labels differ in concentration, application method, and use conditions. The estimator does not select products, diagnose water conditions, or provide shock-treatment advice.
 
-## Shed Surface Area Calculator
+## Shed Calculator
 
 URL: https://www.tallyard.com/shed-calculator
 
@@ -1576,7 +1576,7 @@ Q: Do I need a permit to build a shed?
 
 A: Permit, zoning, setback, and association rules vary by location and project. Confirm current requirements with your local building department before construction.
 
-## Rainfall Runoff Volume Estimator
+## Rainwater Harvesting Calculator
 
 URL: https://www.tallyard.com/rainwater-calculator
 
@@ -1692,7 +1692,7 @@ Q: Can my roof collapse from snow?
 
 A: Yes: it happens every winter in storm-affected regions. Warning signs: cracking sounds, ceiling sag, doors/windows jamming, drywall cracks, water leaking at unusual spots. If you see warning signs, evacuate and call a professional immediately. Do NOT continue using the structure: collapses progress from initial failure to total collapse quickly.
 
-## Straight-Wall Spacing Count Estimator
+## Stud Spacing Calculator
 
 URL: https://www.tallyard.com/stud-spacing-calculator
 
@@ -1722,7 +1722,7 @@ Q: Which spacing should I use?
 
 A: Enter an interval specified by the project drawings or qualified designer. This estimator does not recommend spacing or assess structural adequacy.
 
-## Drainage Fixture-Unit Worksheet
+## Drain Pipe Calculator
 
 URL: https://www.tallyard.com/drain-pipe-calculator
 
@@ -1770,7 +1770,7 @@ Q: Can this be used for permit or construction plans?
 
 A: No. It omits the layout, slope, lengths, venting, fittings, local amendments, and other design checks. Have a licensed plumbing professional or local authority verify the design.
 
-## Kitchen Cabinet Run Calculator
+## Kitchen Cabinet Calculator
 
 URL: https://www.tallyard.com/kitchen-cabinet-calculator
 
@@ -1814,7 +1814,7 @@ Q: How should I measure a kitchen?
 
 A: Measure each planned cabinet run separately, including the island if present. Note openings, appliance locations, windows, corners, and obstructions for the cabinet designer; this calculator only sums the gross lengths.
 
-## Garage Door Opening Measurement Worksheet
+## Garage Door Calculator
 
 URL: https://www.tallyard.com/garage-door-calculator
 
@@ -1846,7 +1846,7 @@ Q: Does this size the header?
 
 A: No. Header selection is structural design and is not calculated here.
 
-## Window Rectangle Area Calculator
+## Window Sizing Calculator
 
 URL: https://www.tallyard.com/window-sizing-calculator
 
@@ -1874,7 +1874,7 @@ Q: Is this the glass area or rough opening?
 
 A: Not necessarily. The result is only the area of the dimensions you entered. Consult the window manufacturer and project documents for the intended measurement.
 
-## Fireplace Opening Area Calculator
+## Chimney Calculator
 
 URL: https://www.tallyard.com/chimney-calculator
 
@@ -1914,7 +1914,7 @@ Q: What should I do if smoke enters the room or I suspect a venting problem?
 
 A: This calculator cannot diagnose draft or carbon-monoxide risks. Stop using the appliance and arrange a qualified inspection; follow emergency guidance if anyone may be exposed to carbon monoxide.
 
-## Mortar Bag Estimator
+## Mortar Calculator
 
 URL: https://www.tallyard.com/mortar-calculator
 
@@ -1956,7 +1956,7 @@ Q: Can I use this if my bag label has no coverage?
 
 A: Not reliably. Obtain a product-specific yield from the manufacturer or supplier for the unit and joint configuration. Do not substitute a generic bags-per-brick assumption.
 
-## Furnace Replacement Quote Worksheet
+## Furnace Replacement Cost Calculator
 
 URL: https://www.tallyard.com/furnace-replacement-cost-calculator
 
@@ -1988,7 +1988,7 @@ Q: Does this tell me whether to repair or replace?
 
 A: No. That decision depends on equipment condition, safety, repair scope, and project-specific costs.
 
-## Net Clear Opening Area Calculator
+## Egress Window Calculator
 
 URL: https://www.tallyard.com/egress-window-calculator
 
@@ -2016,7 +2016,7 @@ Q: What dimensions should I enter?
 
 A: Use verified net clear opening measurements from the exact window and project. Nominal, frame, glass, and clear-opening dimensions are not interchangeable.
 
-## Stair Geometry Calculator
+## Deck Stair Calculator
 
 URL: https://www.tallyard.com/deck-stair-calculator
 
@@ -2056,7 +2056,7 @@ Q: How are the number of risers chosen?
 
 A: The calculator rounds up total rise divided by the target riser height entered by the user, then divides total rise evenly by that count. The target is not a code recommendation.
 
-## Hardwood Flooring Quote Worksheet
+## Hardwood Flooring Cost Calculator
 
 URL: https://www.tallyard.com/hardwood-flooring-cost-calculator
 
@@ -2090,7 +2090,7 @@ Q: Can I compare contractors?
 
 A: Yes, as arithmetic, if you enter each quote's rates and fixed charges using the same measured area and scope. The tool cannot identify missing or non-equivalent work.
 
-## Hardwood Refinishing Quote Worksheet
+## Hardwood Floor Refinishing Cost Calculator
 
 URL: https://www.tallyard.com/hardwood-floor-refinishing-cost-calculator
 
@@ -2122,50 +2122,50 @@ A: No. Condition and remaining wear layer require an on-site assessment of the s
 
 ## Guides
 
-### Vinyl vs fiber-cement siding: compare products and bids
+### Vinyl vs fiber cement siding: the real 30-year cost
 
 URL: https://www.tallyard.com/guides/vinyl-vs-fiber-cement-siding
 
-Compare exact siding products, installation scope, maintenance instructions, and local written quotes for your home.
+Honest comparison of vinyl and fiber cement siding with 30-year TCO math, fire performance data, and installation guidance.
 
-Choose using exact product documentation, the required wall assembly, maintenance needs, and equivalent local bids—not a generic cost or lifespan ranking.
+Fiber cement siding lasts 50+ years to vinyl's 20–40 and wins on 30-year total cost and fire rating, but only if you stay long enough to bank the difference; vinyl wins on upfront cost and is the better pick for shorter ownership horizons.
 
-### Composite vs pressure-treated vs cedar decking
+### Composite vs pressure-treated vs cedar decking: 20-year cost breakdown
 
 URL: https://www.tallyard.com/guides/composite-vs-pressure-treated-vs-cedar-deck
 
-Compare exact decking products, maintenance instructions, warranty scope, and complete project quotes without a generic lifecycle-cost verdict.
+Real 20-year total cost of ownership for composite, pressure-treated, and cedar decking. Maintenance cycles, climate suitability, and when each material wins.
 
-Compare the specific product, site requirements, maintenance instructions, and complete local bids; no material is a universal winner.
+Over 20 years, pressure-treated decking ends up the most expensive of the three because its surface boards need replacing around year 15; composite costs the most upfront but the least to own long-term, and cedar sits in between.
 
-### Heat pump vs furnace + AC: comparing project-specific costs
+### Heat pump vs furnace + AC: which wins in your climate?
 
 URL: https://www.tallyard.com/guides/heat-pump-vs-furnace
 
-Compare system designs, complete installation scope, local energy prices, and current incentives for your home.
+Climate-zone-by-zone comparison of heat pump vs gas furnace + AC. Install cost, 15-year operating cost, federal tax credits, cold-climate performance data.
 
-Neither system wins everywhere: compare project-specific designs, installed scope, and operating costs using your local energy rates.
+A heat pump saves roughly $300–500 per year versus a gas furnace plus AC in climate zones 1–4, breaks about even in zone 5, and loses to gas in the coldest zones 6–7, where a dual-fuel hybrid closes most of the gap.
 
-### Construction Material Allowance: Plan Waste by Project
+### Construction Waste Factor Reference: Every Material, One Table
 
 URL: https://www.tallyard.com/guides/waste-factor-reference
 
-How to set and verify a project-specific material allowance using product coverage, layout, and supplier terms.
+Waste factor percentages for tile, flooring, drywall, roofing, siding, concrete, and more, with the reason behind each number and when to go higher or lower.
 
-Use product-specific coverage and project layout to set an editable allowance; no single percentage fits every material or job.
+Order 10 percent extra for most materials, 15 percent for diagonal layouts, patterned repeats, or irregular rooms, and 5 percent for materials that are not cut much such as paint, concrete, and bulk fill.
 
-### Residential Code Reference: Verify Local Requirements
+### Residential Building Code Limits: IRC Quick Reference Table
 
 URL: https://www.tallyard.com/guides/residential-code-limits-reference
 
-A practical checklist for identifying the code edition, local amendments, and project-specific rules that apply to residential work.
+Every IRC dimensional limit builders check: stair risers and treads, guards, handrails, egress openings, ceiling heights, and attic access, each with its code section.
 
-Verify requirements against the edition and amendments adopted by your local building department; model-code summaries are not universal approval.
+Under the 2021 IRC, stair risers max at 7-3/4 inches with treads at least 10 inches, guards are required above a 30 inch drop and must be 36 inches tall, emergency escape openings need 5.7 square feet of net clear opening, and habitable rooms need 7 foot ceilings.
 
-### Joist Span Reference: Inputs to Verify Before Building
+### Joist Span Reference: Floor, Deck, and Header Planning Spans
 
 URL: https://www.tallyard.com/guides/joist-span-reference
 
-Learn which project details determine joist spans and where to verify structural requirements for your location.
+Conservative planning spans for floor joists, deck joists, and headers, plus the five variables that set any span and the IRC notching limits that void one.
 
-Use the applicable span table or manufacturer chart with verified project inputs; a generic online span is not a structural approval.
+As a conservative planning figure, a No. 2 grade 2x8 floor joist at 16 inches on center spans about 11 feet, a 2x10 about 14 feet, and a 2x12 about 16 feet under a 40 psf live load, but species, grade, spacing, load, and deflection limit all change the answer, so verify against the AWC span calculator before buying.

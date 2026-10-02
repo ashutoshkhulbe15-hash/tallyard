@@ -1,9 +1,11 @@
+import { InsulationCalculatorExpansion } from "@/content/insulation-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber, ceilQuantity } from "@/lib/format";
 
 export const insulationCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: InsulationCalculatorExpansion,
   slug: "insulation-calculator",
-  title: "Insulation Package Coverage Estimator",
+  title: "Insulation Calculator",
   description: "Estimate package count from measured area, exact product-label coverage, and a user-selected allowance. Does not recommend R-value or insulation type.",
   categoryLabel: "Insulation",
   category: "drywall",

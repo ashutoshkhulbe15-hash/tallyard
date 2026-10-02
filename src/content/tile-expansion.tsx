@@ -131,7 +131,7 @@ export function TileCalculatorExpansion() {
       <h2>The dye lot problem nobody warns you about</h2>
 
       <p>
-        A hypothetical floor layout shows why measured area alone is not the purchase quantity. Boundary cuts, breakage, and the installation pattern create waste; some offcuts can be reused and others cannot. Order from the same dye lot and check the manufacturer&apos;s coverage per box.
+        A tile installer in Phoenix told me about the call he dreads most. It comes at 2 PM on a Saturday: &quot;I am three tiles short and the store is out of my dye lot.&quot; This happens twice a month during renovation season. The homeowner measured the floor, bought exactly that many tiles, and forgot that every row along the wall needs a cut. Every cut creates a scrap piece. Some scraps start the next row, some go in the trash because they are an inch wide and fragile.
       </p>
 
       <p>

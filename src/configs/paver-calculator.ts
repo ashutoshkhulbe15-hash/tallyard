@@ -1,9 +1,11 @@
+import { PaverCalculatorExpansion } from "@/content/paver-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber, ceilQuantity } from "@/lib/format";
 
 export const paverCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: PaverCalculatorExpansion,
   slug: "paver-calculator",
-  title: "Paver Area and Count Calculator",
+  title: "Paver Calculator",
   description: "Estimate paver count for a rectangular area using selected nominal dimensions and a user-selected planning allowance.",
   categoryLabel: "Landscaping",
   category: "landscaping",

@@ -6,11 +6,11 @@ import { getConfig } from "@/configs";
 const SLUG = "hardwood-flooring-cost-calculator";
 
 export const metadata: Metadata = {
-  title: "Hardwood Flooring Quote Worksheet",
+  title: "Hardwood Flooring Cost Calculator",
   description: "Calculate a subtotal from measured area and rates copied from a current written quote; no market prices are assumed.",
   alternates: { canonical: "/hardwood-flooring-cost-calculator" },
   openGraph: {
-    title: "Hardwood Flooring Quote Worksheet",
+    title: "Hardwood Flooring Cost Calculator",
     description: "Quote arithmetic from user-entered scope and rates; no market-price estimate.",
     url: "https://www.tallyard.com/hardwood-flooring-cost-calculator",
     type: "website",

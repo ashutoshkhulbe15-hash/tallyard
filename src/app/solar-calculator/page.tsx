@@ -6,11 +6,11 @@ import { getConfig } from "@/configs";
 const SLUG = "solar-calculator";
 
 export const metadata: Metadata = {
-  title: "Solar Energy-Use Scenario Estimator",
+  title: "Solar Panel Calculator",
   description: "Explore panel-count arithmetic from entered usage and assumptions; not a production forecast, site assessment, or system design.",
   alternates: { canonical: "/solar-calculator" },
   openGraph: {
-    title: "Solar Energy-Use Scenario Estimator",
+    title: "Solar Panel Calculator",
     description: "Explore panel-count arithmetic from entered assumptions; not a site assessment or system design.",
     url: "https://www.tallyard.com/solar-calculator",
     type: "website",

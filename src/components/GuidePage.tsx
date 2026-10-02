@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BannerHeadline } from "./BannerHeadline";
 import { PageRail } from "./PageRail";
+import { EnergyCreditCorrection } from "./EnergyCreditCorrection";
 
 import type { GuideConfig } from "@/lib/guides-types";
 
@@ -107,6 +108,7 @@ export function GuidePage({ config }: GuidePageProps) {
             </div>
           )}
           <div className="guide-prose">
+            {config.slug === "heat-pump-vs-furnace" && <EnergyCreditCorrection />}
             <Content />
           </div>
         </section>

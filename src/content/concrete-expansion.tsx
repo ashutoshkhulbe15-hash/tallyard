@@ -118,8 +118,8 @@ export function ConcreteCalculatorExpansion() {
         reviewedAgainst="Quikrete product specs, ASTM C94, and ready-mix industry standards"
       />
 
-      <h2>Measure every section before ordering concrete</h2>
-      <p>A driveway apron or thickened edge needs its own volume calculation when it has a different depth from the main slab. For example, an 18 × 8 foot section that is 2 inches thicker adds about 0.89 cubic yards (18 × 8 × 2 ÷ 12 ÷ 27). This is a hypothetical calculation, not a report of a completed project.</p>
+      <h2>One quarter-yard short: why concrete estimation has zero margin for error</h2>
+      <p>A contractor in Ohio told me about a driveway pour that went sideways in 2024. The homeowner measured his driveway at 18 × 50 feet, plugged it into a calculator online, and ordered 11 cubic yards. What he forgot was that the apron near the garage was 6 inches thick, not 4. That two-inch difference across 18 × 8 feet added 0.9 yards he didn&apos;t order. The truck ran dry 6 feet from the end. The batch plant couldn&apos;t send another truck for 3 hours. The cold joint where the two pours met cracked through by the following spring.</p>
       <p>Concrete estimation comes down to three decisions: how thick, how much waste to add, and whether to use bags or call a truck. The volume formula itself, length times width times thickness divided by 27, is the easy part.</p>
 
       <MethodologyNote>

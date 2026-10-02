@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "egress-window-calculator";
 
 export const metadata: Metadata = {
-  title: "Net Clear Opening Area Calculator",
+  title: "Egress Window Calculator",
   description:
     "Calculate area from entered net clear opening dimensions. Does not determine egress compliance or emergency-exit suitability.",
   alternates: { canonical: "/egress-window-calculator" },
   openGraph: {
-    title: "Net Clear Opening Area Calculator",
+    title: "Egress Window Calculator",
     description: "Area arithmetic from user-measured clear-opening dimensions only; no egress verdict.",
     url: "https://www.tallyard.com/egress-window-calculator",
     type: "website",

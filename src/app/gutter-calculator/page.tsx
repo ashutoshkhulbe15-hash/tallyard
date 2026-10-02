@@ -6,11 +6,11 @@ import { getConfig } from "@/configs";
 const SLUG = "gutter-calculator";
 
 export const metadata: Metadata = {
-  title: "Gutter-Run Length Worksheet",
+  title: "Gutter Calculator",
   description: "Sum measured gutter runs and apply a user-selected allowance; no drainage sizing or component takeoff.",
   alternates: { canonical: "/gutter-calculator" },
   openGraph: {
-    title: "Gutter-Run Length Worksheet",
+    title: "Gutter Calculator",
     description: "Measured run arithmetic only; no hydraulic sizing or drainage design.",
     url: "https://www.tallyard.com/gutter-calculator",
     type: "website",

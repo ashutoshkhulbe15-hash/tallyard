@@ -3,17 +3,17 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Concrete, brick, rebar, and asphalt calculators: Tallyard",
-  description: "Masonry and paving quantity estimators for concrete, brick, rebar, and asphalt. Confirm structural and local-code requirements separately.",
+  description: "Masonry and paving calculators: concrete yards, brick counts, rebar grids, and asphalt tonnage. Free tools with code-compliant specifications.",
   alternates: { canonical: "/calculators/masonry" },
 };
 
 const tools = [
-  { slug: "concrete-calculator", name: "Concrete volume calculator", desc: "Geometric volume from a simple shape, entered dimensions, and selected allowance." },
-  { slug: "brick-calculator", name: "Brick quantity estimate", desc: "Unit count from net wall area and entered product/layout coverage." },
-  { slug: "rebar-calculator", name: "Rebar grid geometry", desc: "Gross straight-run length from a rectangle and user-selected spacing; not reinforcement design." },
-  { slug: "asphalt-calculator", name: "Asphalt volume estimate", desc: "Approximate volume and weight from entered area, depth, and a stated density assumption." },
-  { slug: "chimney-calculator", name: "Fireplace opening area", desc: "Rectangular opening area only; not flue or vent sizing." },
-  { slug: "mortar-calculator", name: "Mortar package estimate", desc: "Bag count from unit count and coverage for the exact product and assembly." },
+  { slug: "concrete-calculator", name: "Concrete calculator", desc: "Cubic yards for slabs, footings, and columns. Bags vs ready-mix breakpoint." },
+  { slug: "brick-calculator", name: "Brick calculator", desc: "Brick count by wall area, mortar joint width, and bond pattern." },
+  { slug: "rebar-calculator", name: "Rebar calculator", desc: "Bar count, total length, and sticks for grid reinforcement in slabs and footings." },
+  { slug: "asphalt-calculator", name: "Asphalt calculator", desc: "Tons of hot-mix by area and thickness. Driveway and parking area sizing." },
+  { slug: "chimney-calculator", name: "Chimney calculator", desc: "Flue sizing by fireplace opening area. Height requirements per IRC R1003." },
+  { slug: "mortar-calculator", name: "Mortar calculator", desc: "Bags of mortar mix by wall area, brick size, and joint width. Type S, N, and M." },
 ];
 
 export default function MasonryPillar() {
@@ -26,7 +26,7 @@ export default function MasonryPillar() {
             <span className="mx-2">·</span><span>Masonry</span>
           </nav>
           <h1 className="text-3xl md:text-5xl font-bold tracking-tighter leading-[1.05] mb-3 text-ink">Concrete, brick, rebar, and asphalt</h1>
-          <p className="text-base md:text-lg text-ink-muted max-w-2xl leading-relaxed">Six limited quantity and geometry estimators for masonry and exterior projects. They do not replace structural design, product specifications, or supplier confirmation.</p>
+          <p className="text-base md:text-lg text-ink-muted max-w-2xl leading-relaxed">Five tools for projects where getting the quantity wrong means an expensive second delivery or a structural problem. Masonry does not forgive mistakes the way paint does.</p>
         </div>
       </section>
 
@@ -43,35 +43,35 @@ export default function MasonryPillar() {
 
       <section className="container-content pb-16">
         <div className="guide-prose">
-          <h2>Use these quantity estimates alongside the project specifications</h2>
+          <h2>Masonry projects share one unforgiving trait: you cannot undo them</h2>
 
-          <p>These calculators perform bounded quantity or geometry estimates from the inputs shown; they do not replace drawings, product specifications, engineering, local code review, or supplier confirmation. Actual work depends on site conditions and the specified assembly. Do not use an estimate here to make structural, fire-safety, or life-safety decisions.</p>
+          <p>Paint washes off. Flooring pulls up. Drywall patches. Concrete cures permanently. Once a slab is poured, a wall is laid, or asphalt is rolled, the material is committed. This makes quantity accuracy more important for masonry than any other category of home improvement. Ordering a quarter-yard short of concrete means a cold joint in the middle of your driveway (a crack waiting to happen). Ordering 200 bricks short means a second delivery with a potentially different dye lot. Skipping rebar in a slab means accepting that it will crack within two years.</p>
 
-          <h2>Concrete: convert dimensions before ordering</h2>
+          <h2>Concrete: the foundation of everything else</h2>
 
-          <p>Geometric concrete volume is area times thickness; cubic feet convert to cubic yards by dividing by 27. A 20 × 24 foot rectangle at an entered 4-inch thickness has a geometric volume of about 5.93 cubic yards before any user-selected allowance. The <Link href="/concrete-calculator" className="text-accent hover:underline">concrete volume calculator</Link> performs this arithmetic for rectangular or round shapes. Confirm actual dimensions, thickened sections, subgrade, mix specification, and supplier ordering quantities separately.</p>
+          <p>Concrete is measured in cubic yards (27 cubic feet per yard). The formula is area times thickness divided by 324 for inches, or divided by 27 for feet. A 20 × 24 foot driveway at 4 inches thick needs 5.9 cubic yards. The <Link href="/concrete-calculator" className="text-accent hover:underline">concrete calculator</Link> handles the unit conversion and tells you the breakpoint between bags and ready-mix delivery (usually around 1.5 yards: below that, bags are practical; above that, a delivery truck saves hours of mixing).</p>
 
-          <p>This calculator does not recommend slab or footing thickness, reinforcement, mix design, or excavation depth. Those requirements depend on loads, use, soil, climate, design, and local rules; follow the construction documents and consult a qualified professional.</p>
+          <p>The thickness decision is structural, not budgetary. A 4-inch slab is code minimum for residential. Driveways that park heavy vehicles (trucks, RVs) should be 5 to 6 inches. Footings under posts and columns have minimum depth requirements set by local code (usually 12 × 12 × 12 inches minimum for deck footings, deeper in cold climates where frost line drives the depth).</p>
 
           <h2>Reinforcement: rebar and wire mesh</h2>
 
-          <p>Whether a slab needs reinforcement, what type, and how it is placed depend on its design, loads, exposure, and local requirements. The <Link href="/rebar-calculator" className="text-accent hover:underline">rebar grid estimator</Link> calculates gross straight-run length for a rectangular footprint at spacing you select from project documents. It excludes cover, laps, hooks, bends, openings, and cut planning; it does not determine reinforcement adequacy or provide an order list.</p>
+          <p>Every concrete slab benefits from reinforcement, and many are required to have it by code. The <Link href="/rebar-calculator" className="text-accent hover:underline">rebar calculator</Link> estimates bars for a grid layout at your chosen spacing (16 inches on center is standard residential). Two critical details: rebar must sit in the middle third of the slab (on chairs, not lying on the ground), and lap splices where bars overlap must be at least 30 bar diameters long. Both of these requirements exist because rebar that is not properly positioned does not resist cracking.</p>
 
-          <h2>Brick and mortar: use the actual unit and package data</h2>
+          <h2>Brick: count, mortar, and the dye lot trap</h2>
 
-          <p>Brick counts depend on actual unit dimensions, joints, openings, bond, wall construction, and breakage. The <Link href="/brick-calculator" className="text-accent hover:underline">brick estimator</Link> multiplies net wall area by coverage that you enter for the exact product and layout. The separate <Link href="/mortar-calculator" className="text-accent hover:underline">mortar package estimator</Link> uses unit count and exact package coverage; neither tool selects materials or estimates structural details. Confirm quantities against project drawings and current manufacturer or supplier data.</p>
+          <p>Brick projects are measured in two units: bricks per square foot (6.75 for standard size with 3/8-inch mortar joints) and bags of mortar per thousand bricks (about 7 bags of 80-lb Type S for standard joints). The <Link href="/brick-calculator" className="text-accent hover:underline">brick calculator</Link> handles both. The detail that catches people is dye lot variation: bricks are manufactured in batches, and color varies between batches. Order all your brick from one batch. If you run short mid-project, the replacement batch may be visibly different on the finished wall.</p>
 
-          <h2>Asphalt: estimate the entered layer only</h2>
+          <h2>Asphalt: tonnage, base prep, and the sealcoat schedule</h2>
 
-          <p>The <Link href="/asphalt-calculator" className="text-accent hover:underline">asphalt calculator</Link> estimates material volume and approximate weight from entered area and thickness using its stated density assumption. It does not design pavement, specify a base section, assess compaction, or predict service life. Obtain pavement and base specifications from a qualified designer or contractor.</p>
+          <p>Asphalt is measured in tons (not yards) because it is sold by weight. A standard 2 to 3 inch residential driveway uses about 0.17 tons per square foot. The <Link href="/asphalt-calculator" className="text-accent hover:underline">asphalt calculator</Link> converts your area and thickness to tons. The material is only half the equation, the gravel base underneath determines whether the asphalt lasts 8 years or 20. Four to six inches of compacted process stone is the standard residential base. Use the <Link href="/gravel-calculator" className="text-accent hover:underline">gravel calculator</Link> for the base layer tonnage.</p>
 
           <h2>Chimneys: fire safety sizing</h2>
 
-          <p>The <Link href="/chimney-calculator" className="text-accent hover:underline">fireplace opening-area calculator</Link> computes only rectangular opening area. It does not size a chimney, liner, flue, or vent and makes no draft or code-compliance determination. Have venting systems assessed by a qualified professional; leave and seek emergency help if a carbon-monoxide alarm sounds or occupants have symptoms.</p>
+          <p>The <Link href="/chimney-calculator" className="text-accent hover:underline">chimney calculator</Link> sizes flue diameter based on fireplace opening area. This is a fire safety calculation, not an aesthetic choice. An undersized flue allows combustion gases (including carbon monoxide) to spill into the room. The minimum height requirement (3 feet above the roof penetration, 2 feet above anything within 10 horizontal feet) ensures adequate draft.</p>
 
-          <h2>Keep surface quantities separate</h2>
+          <h2>How these tools work together</h2>
 
-          <p>These tools provide separate quantity estimates, not a coordinated patio design. The <Link href="/gravel-calculator" className="text-accent hover:underline">gravel calculator</Link> estimates aggregate volume and approximate weight from area and selected depth; the <Link href="/concrete-calculator" className="text-accent hover:underline">concrete calculator</Link> estimates concrete volume; and the <Link href="/paver-calculator" className="text-accent hover:underline">paver calculator</Link> estimates paver count from area and nominal face dimensions. The <Link href="/rebar-calculator" className="text-accent hover:underline">rebar calculator</Link> is a separate preliminary estimate, not reinforcement design. The <Link href="/planner/build-a-patio" className="text-accent hover:underline">paver area and count planner</Link> estimates only rectangular area and nominal paver quantity. Verify project-specific design, materials, and local requirements with a qualified professional.</p>
+          <p>A typical patio project chains three masonry calculators. First, the <Link href="/gravel-calculator" className="text-accent hover:underline">gravel calculator</Link> for the compacted base layer. Then the <Link href="/concrete-calculator" className="text-accent hover:underline">concrete calculator</Link> for the slab (if poured concrete) or the <Link href="/paver-calculator" className="text-accent hover:underline">paver calculator</Link> for pavers on sand. Finally, the <Link href="/rebar-calculator" className="text-accent hover:underline">rebar calculator</Link> for slab reinforcement. The <Link href="/planner/build-a-patio" className="text-accent hover:underline">patio project planner</Link> chains these calculations automatically from a single set of dimensions.</p>
         </div>
       </section>
     </article>

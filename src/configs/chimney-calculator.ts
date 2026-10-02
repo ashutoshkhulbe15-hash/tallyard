@@ -1,9 +1,11 @@
+import { ChimneyCalculatorExpansion } from "@/content/chimney-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
 export const chimneyCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: ChimneyCalculatorExpansion,
   slug: "chimney-calculator",
-  title: "Fireplace Opening Area Calculator",
+  title: "Chimney Calculator",
   description:
     "Calculate the geometric area of a rectangular fireplace opening. This tool does not size a flue, chimney, liner, or vent system.",
   categoryLabel: "Masonry",

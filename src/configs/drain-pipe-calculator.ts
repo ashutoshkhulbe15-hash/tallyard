@@ -1,9 +1,11 @@
+import { DrainPipeCalculatorExpansion } from "@/content/drain-pipe-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
 export const drainPipeCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: DrainPipeCalculatorExpansion,
   slug: "drain-pipe-calculator",
-  title: "Drainage Fixture-Unit Worksheet",
+  title: "Drain Pipe Calculator",
   description:
     "Add illustrative drainage fixture-unit loads using selected IPC 2021 residential fixture assumptions. Does not size drain, branch, stack, sewer, or vent piping.",
   categoryLabel: "Plumbing",

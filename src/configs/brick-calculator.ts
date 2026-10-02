@@ -1,9 +1,11 @@
+import { BrickCalculatorExpansion } from "@/content/brick-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber, ceilQuantity } from "@/lib/format";
 
 export const brickCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: BrickCalculatorExpansion,
   slug: "brick-calculator",
-  title: "Brick Quantity Estimator",
+  title: "Brick Calculator",
   description: "Estimate brick count from net wall area, product-specific unit coverage, and a user-selected allowance. Does not estimate mortar or design a wall.",
   categoryLabel: "Masonry",
   category: "concrete",

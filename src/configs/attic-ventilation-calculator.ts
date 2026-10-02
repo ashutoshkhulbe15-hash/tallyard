@@ -1,9 +1,11 @@
+import { AtticVentilationCalculatorExpansion } from "@/content/attic-ventilation-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
 export const atticVentilationCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: AtticVentilationCalculatorExpansion,
   slug: "attic-ventilation-calculator",
-  title: "Attic Ventilation Ratio Worksheet",
+  title: "Attic Ventilation Calculator",
   description: "Illustrative arithmetic for a user-selected attic-area ratio. Does not design a ventilation system or recommend vent products or quantities.",
   categoryLabel: "Roofing",
   category: "roofing",

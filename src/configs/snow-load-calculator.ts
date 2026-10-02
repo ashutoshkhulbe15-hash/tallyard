@@ -1,7 +1,9 @@
+import { SnowLoadCalculatorExpansion } from "@/content/snow-load-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber, ceilQuantity } from "@/lib/format";
 
 export const snowLoadCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: SnowLoadCalculatorExpansion,
   slug: "snow-load-calculator",
   title: "Snow Load Calculator",
   description:

@@ -1,9 +1,11 @@
+import { DeckStairExpansion } from "@/content/deck-stair-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber, ceilQuantity } from "@/lib/format";
 
 export const deckStairCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: DeckStairExpansion,
   slug: "deck-stair-calculator",
-  title: "Stair Geometry Calculator",
+  title: "Deck Stair Calculator",
   description:
     "Explore equal-rise stair geometry from total rise, a user-selected target riser height, and tread run. Does not provide code checks or construction plans.",
   categoryLabel: "Decking",

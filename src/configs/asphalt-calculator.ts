@@ -1,7 +1,9 @@
+import { AsphaltCalculatorExpansion } from "@/content/asphalt-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, roundUp, formatNumber } from "@/lib/format";
 
 export const asphaltCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: AsphaltCalculatorExpansion,
   slug: "asphalt-calculator",
   title: "Asphalt Calculator",
   description:

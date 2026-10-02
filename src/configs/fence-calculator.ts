@@ -1,7 +1,9 @@
+import { FenceCalculatorExpansion } from "@/content/fence-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber, ceilQuantity } from "@/lib/format";
 
 export const fenceCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: FenceCalculatorExpansion,
   slug: "fence-calculator",
   title: "Fence Calculator",
   description:

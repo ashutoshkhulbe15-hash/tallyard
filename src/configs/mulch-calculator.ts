@@ -1,7 +1,9 @@
+import { MulchCalculatorExpansion } from "@/content/mulch-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, roundUp, formatNumber, ceilQuantity } from "@/lib/format";
 
 export const mulchCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: MulchCalculatorExpansion,
   slug: "mulch-calculator",
   title: "Mulch Calculator",
   description:

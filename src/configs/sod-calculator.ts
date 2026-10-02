@@ -1,3 +1,4 @@
+import { SodCalculatorExpansion } from "@/content/sod-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber, ceilQuantity } from "@/lib/format";
 
@@ -8,8 +9,9 @@ const packageFormats = {
 };
 
 export const sodCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: SodCalculatorExpansion,
   slug: "sod-calculator",
-  title: "Sod Area and Piece Calculator",
+  title: "Sod Calculator",
   description:
     "Estimate lawn area and piece count from a rectangular measurement, selected package format, and user-set planning allowance.",
   categoryLabel: "Landscaping",

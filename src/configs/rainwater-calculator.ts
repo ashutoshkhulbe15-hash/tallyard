@@ -1,9 +1,11 @@
+import { RainwaterCalculatorExpansion } from "@/content/rainwater-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
 export const rainwaterCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: RainwaterCalculatorExpansion,
   slug: "rainwater-calculator",
-  title: "Rainfall Runoff Volume Estimator",
+  title: "Rainwater Harvesting Calculator",
   description: "Estimate a rainfall-event runoff volume from a horizontal catchment area, rainfall depth, and user-selected capture factor.",
   categoryLabel: "Landscaping",
   category: "landscaping",

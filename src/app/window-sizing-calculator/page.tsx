@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "window-sizing-calculator";
 
 export const metadata: Metadata = {
-  title: "Window Rectangle Area Calculator",
+  title: "Window Sizing Calculator",
   description:
     "Calculate area from entered rectangular dimensions only. Does not determine egress, glazing, rough opening, or code compliance.",
   alternates: { canonical: "/window-sizing-calculator" },
   openGraph: {
-    title: "Window Rectangle Area Calculator",
+    title: "Window Sizing Calculator",
     description: "Rectangular area arithmetic from user-entered window dimensions only.",
     url: "https://www.tallyard.com/window-sizing-calculator",
     type: "website",

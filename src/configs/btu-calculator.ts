@@ -1,3 +1,4 @@
+import { BTUCalculatorExpansion } from "@/content/btu-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
@@ -19,8 +20,9 @@ const roomCoolingGuide = [
 ];
 
 export const btuCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: BTUCalculatorExpansion,
   slug: "btu-calculator",
-  title: "Room Air Conditioner Capacity Guide",
+  title: "BTU Calculator",
   description:
     "Estimate room air-conditioner capacity from room area using the ENERGY STAR sizing guide and its stated adjustments. Not a whole-home HVAC load calculation.",
   categoryLabel: "HVAC",

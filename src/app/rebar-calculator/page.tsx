@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "rebar-calculator";
 
 export const metadata: Metadata = {
-  title: "Reinforcing Bar Grid Geometry Estimator",
+  title: "Rebar Calculator",
   description:
     "Estimate gross straight grid runs from a rectangular footprint and user-selected spacing. Does not choose reinforcement or provide a purchase list.",
   alternates: { canonical: "/rebar-calculator" },
   openGraph: {
-    title: "Reinforcing Bar Grid Geometry Estimator",
+    title: "Rebar Calculator",
     description: "Estimate gross grid geometry from entered dimensions and spacing; not structural design.",
     url: "https://www.tallyard.com/rebar-calculator",
     type: "website",

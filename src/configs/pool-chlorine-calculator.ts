@@ -1,9 +1,11 @@
+import { PoolChlorineCalculatorExpansion } from "@/content/pool-chlorine-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
 export const poolChlorineCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: PoolChlorineCalculatorExpansion,
   slug: "pool-chlorine-calculator",
-  title: "Pool Chlorine Mass Estimator",
+  title: "Pool Chlorine Calculator",
   description: "Estimate available-chlorine mass from a measured ppm gap, then estimate product mass only when the label gives available chlorine by weight. Not a dosing recommendation.",
   categoryLabel: "Landscaping",
   category: "landscaping",

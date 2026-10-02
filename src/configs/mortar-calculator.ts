@@ -1,9 +1,11 @@
+import { MortarCalculatorExpansion } from "@/content/mortar-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber, ceilQuantity } from "@/lib/format";
 
 export const mortarCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: MortarCalculatorExpansion,
   slug: "mortar-calculator",
-  title: "Mortar Bag Estimator",
+  title: "Mortar Calculator",
   description: "Estimate mortar bags from masonry unit count, exact package coverage, and a user-selected allowance. Does not select mortar type or give installation advice.",
   categoryLabel: "Masonry",
   category: "concrete",

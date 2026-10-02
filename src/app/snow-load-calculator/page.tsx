@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "snow-load-calculator";
 
 export const metadata: Metadata = {
-  title: "Snow Load Calculator: Roof Snow Weight by Depth",
+  title: "Snow Load Calculator",
   description:
     "Estimate the weight of a uniform snow and ice layer from depth and roof area. Does not determine roof capacity or safety.",
   alternates: { canonical: "/snow-load-calculator" },
   openGraph: {
-    title: "Snow Load Calculator: Roof Snow Weight by Depth",
+    title: "Snow Load Calculator",
     description: "Estimate snow and ice weight; structural capacity is not calculated.",
     url: "https://www.tallyard.com/snow-load-calculator",
     type: "website",

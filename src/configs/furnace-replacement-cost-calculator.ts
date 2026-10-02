@@ -1,9 +1,11 @@
+import { FurnaceReplacementCostExpansion } from "@/content/furnace-replacement-cost-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { formatNumber, round } from "@/lib/format";
 
 export const furnaceReplacementCostCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: FurnaceReplacementCostExpansion,
   slug: "furnace-replacement-cost-calculator",
-  title: "Furnace Replacement Quote Worksheet",
+  title: "Furnace Replacement Cost Calculator",
   description: "Add line items entered from a written furnace-replacement quote. Does not size equipment or estimate current prices.",
   categoryLabel: "HVAC",
   category: "hvac",

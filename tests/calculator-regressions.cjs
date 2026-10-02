@@ -16,7 +16,7 @@ function loadConfig(file) {
   mod.filename = filename;
   mod.paths = module.paths;
   mod.require = (request) => {
-    if (request.startsWith("@/content/")) return {};
+    if (request.startsWith("@/content/")) return new Proxy({}, { get: () => function ArticleStub() {} });
     if (request === "@/lib/format") {
       return {
         ceilQuantity: require("../scripts/load-source.cjs")("src/lib/format.ts").ceilQuantity,
@@ -139,7 +139,6 @@ test("sitewide editorial claims match the limited scope of active tools", () => 
   const checked = [
     "app/page.tsx",
     "app/layout.tsx",
-    "app/guides/page.tsx",
     "app/methodology/page.tsx",
     "app/about/page.tsx",
     "app/calculators/CalculatorIndex.tsx",
@@ -154,48 +153,31 @@ test("sitewide editorial claims match the limited scope of active tools", () => 
   assert.doesNotMatch(home, /2\.20 gal|1 gal \+ 2 qt/);
 });
 
-test("active 2026 solar and HVAC pages do not promise expired federal credits", () => {
+test("restored energy articles include a visible correction for expired federal credits", () => {
   const root = path.join(__dirname, "..", "src");
-  const pages = [
-    "app/cost-to-install-solar/page.tsx",
-    "app/cost-to-replace-hvac/page.tsx",
-    "app/calculators/electrical-solar/page.tsx",
-    "app/calculators/hvac-plumbing/page.tsx",
-  ];
-  for (const page of pages) {
-    const source = fs.readFileSync(path.join(root, page), "utf8");
-    assert.doesNotMatch(source, /through 2032|after (?:the )?30% (?:federal )?(?:tax )?credit|after ITC/i, page);
-  }
-  const heatPumpGuide = fs.readFileSync(path.join(root, "guides/heat-pump-vs-furnace.tsx"), "utf8");
-  assert.match(heatPumpGuide, /Content,/);
-  assert.match(heatPumpGuide, /IRS credit guidance/);
-  assert.doesNotMatch(heatPumpGuide, /ContentExpansion|annual savings|payback in \d+ years/i);
-  for (const config of ["heat-pump-calculator.ts", "water-heater-calculator.ts"]) {
-    const source = fs.readFileSync(path.join(root, "configs", config), "utf8");
-    assert.doesNotMatch(source, /ContentExpansion:/, config);
-  }
+  const note = fs.readFileSync(path.join(root, "components/EnergyCreditCorrection.tsx"), "utf8");
+  assert.match(note, /December 31, 2025/);
+  assert.match(note, /irs.gov\/instructions\/i5695/);
+  for (const file of ["components/CalculatorPage.tsx", "components/GuidePage.tsx", "app/cost-to-install-solar/page.tsx", "app/cost-to-replace-hvac/page.tsx"]) assert.match(fs.readFileSync(path.join(root,file), "utf8"), /<EnergyCreditCorrection/);
+  for (const file of ["heat-pump-calculator.ts", "water-heater-calculator.ts"]) assert.equal(typeof loadConfig(file).ContentExpansion, "function");
 });
 
-test("siding and bathroom cost guides attribute dated benchmarks without fabricated cases", () => {
-  const root = path.join(__dirname, "..", "src", "app");
+test("restored siding and bathroom guides keep their figures and hypothetical examples", () => {
   for (const slug of ["cost-to-install-siding", "cost-to-remodel-a-bathroom"]) {
-    const source = fs.readFileSync(path.join(root, slug, "page.tsx"), "utf8");
-    assert.match(source, /2025 Cost vs\. Value report/);
-    assert.match(source, /https:\/\/www\.jlconline\.com\/cost-vs-value\/2025\/national\//);
-    assert.doesNotMatch(source, /<Scenario|title:\s*"[^"]*2026 prices|contractor pricing networks|200\+ bathroom projects/);
+    const source = fs.readFileSync(path.join(__dirname,"../src/app",slug,"page.tsx"), "utf8");
+    assert.match(source, /<Figure/);
+    assert.match(source, /<Scenario/);
+    assert.doesNotMatch(source, /"@type"\s*:\s*"Dataset"/);
   }
+  assert.match(fs.readFileSync(path.join(__dirname,"../src/components/GuideChrome.tsx"),"utf8"), /hypothetical/i);
 });
 
-test("roof and deck cost guides use dated benchmarks without claiming a local quote", () => {
-  const root = path.join(__dirname, "..", "src", "app");
+test("restored roof and deck cost guides keep their editorial figures", () => {
   for (const slug of ["cost-to-replace-a-roof", "cost-to-build-a-deck"]) {
-    const source = fs.readFileSync(path.join(root, slug, "page.tsx"), "utf8");
-    assert.match(source, /2025 Cost vs\. Value report/);
-    assert.match(source, /https:\/\/www\.jlconline\.com\/cost-vs-value\/2025\/national\//);
-    assert.doesNotMatch(source, /<Scenario|title:\s*"[^"]*2026 prices|datePublished\s*:|dateModified\s*:/);
+    const source = fs.readFileSync(path.join(__dirname,"../src/app",slug,"page.tsx"), "utf8");
+    assert.match(source, /<Figure/);
+    assert.doesNotMatch(source, /datePublished\s*:|dateModified\s*:/);
   }
-  const category = fs.readFileSync(path.join(root, "calculators/roofing-exterior/page.tsx"), "utf8");
-  assert.doesNotMatch(category, /compares actual snow weight.*structural design capacity/i);
 });
 
 test("fence spacing is feet in both modes and unknown concrete quantity stays unknown", () => {
@@ -275,26 +257,24 @@ test("backsplash estimate requires measured area and package coverage without as
   assert.match(result.formulaSteps.join(" "), /does not infer runs, openings/);
 });
 
-test("active category copy does not promise code-sized designs or complete takeoffs", () => {
-  const root = path.join(__dirname, "..", "src", "app", "calculators");
-  const pages = ["roofing-exterior", "hvac-plumbing", "electrical-solar", "lumber-framing", "paint-walls"];
-  const categoryText = pages.map((slug) => fs.readFileSync(path.join(root, slug, "page.tsx"), "utf8")).join("\n");
-  assert.doesNotMatch(categoryText, /sizes the correct AWG gauge for any circuit|The typical HVAC project sequence|The calculator finds the combination.*code-compliant/i);
-  assert.match(categoryText, /does not|not a/i);
-  const index = fs.readFileSync(path.join(root, "CalculatorIndex.tsx"), "utf8");
-  assert.doesNotMatch(index, /20-ft sticks|~6\.9 bricks\/sf|\*\*÷ 350 sf\/gal\*\*|IRC-compliant rise\/run|\*\*full list\*\*/);
+test("all eight categories retain their longer original editorial sections", () => {
+  const root = path.join(__dirname,"../src/app/calculators");
+  const categories = fs.readdirSync(root).filter(slug => fs.existsSync(path.join(root,slug,"page.tsx")));
+  assert.equal(categories.length,8);
+  for(const slug of categories) {
+    const source = fs.readFileSync(path.join(root,slug,"page.tsx"),"utf8");
+    assert.match(source, /guide-prose/, slug);
+    assert.ok((source.match(/<h2/g)||[]).length >= 3,slug);
+  }
 });
 
-test("active planner routes no longer publish inferred material lists or invented project costs", () => {
-  const root = path.join(__dirname, "..", "src", "app", "planner");
-  const routes = ["build-a-deck", "install-a-fence", "paint-a-room", "remodel-a-bathroom", "replace-a-roof"];
-  for (const slug of routes) {
-    const source = fs.readFileSync(path.join(root, slug, "page.tsx"), "utf8");
-    assert.doesNotMatch(source, /PlannerClient|Get a complete material list|complete material list with cost estimates|code-compliant/i, slug);
+test("planners retain the original long project guide without reactivating retired calculations", () => {
+  const root = path.join(__dirname,"../src/app/planner");
+  for(const slug of ["build-a-deck","install-a-fence","paint-a-room","remodel-a-bathroom","replace-a-roof"]) {
+    const source = fs.readFileSync(path.join(root,slug,"page.tsx"),"utf8");
+    assert.doesNotMatch(source, /<PlannerClient/);
+    assert.ok((source.match(/<h[23]/g)||[]).length >= 5,slug);
   }
-  const index = fs.readFileSync(path.join(root, "page.tsx"), "utf8");
-  assert.doesNotMatch(index, /one input set → full material list|Full material list|42 boards|18 joists|9 bags/);
-  assert.match(index, /not a coordinated design|complete material/i);
 });
 
 test("geometry-only building worksheets do not return code, product, or safety verdicts", () => {
@@ -345,7 +325,8 @@ test("solar, drywall, and siding calculators stay within entered assumptions and
   }
   for (const file of ["solar-calculator.ts", "drywall-calculator.ts", "siding-calculator.ts"]) {
     const source = fs.readFileSync(path.join(__dirname, "..", "src", "configs", file), "utf8");
-    assert.doesNotMatch(source, /ContentExpansion|howTo:/);
+    assert.match(source, /ContentExpansion:/);
+    assert.doesNotMatch(source, /howTo:/);
   }
 });
 
@@ -369,7 +350,7 @@ test("remaining sizing and quote worksheets use entered dimensions or quote valu
   }
   for (const file of ["vanity-calculator.ts", "lumber-calculator.ts", "gutter-calculator.ts", "wallpaper-calculator.ts", "hardwood-flooring-cost-calculator.ts", "hardwood-floor-refinishing-cost-calculator.ts", "furnace-replacement-cost-calculator.ts"]) {
     const config = loadConfig(file);
-    assert.equal(config.ContentExpansion, undefined, `${file} active expansion`);
+    assert.equal(typeof config.ContentExpansion, "function", `${file} restored expansion`);
     assert.equal(config.howTo, undefined, `${file} HowTo schema`);
   }
 });

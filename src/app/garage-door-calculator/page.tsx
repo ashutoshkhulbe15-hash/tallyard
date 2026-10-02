@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "garage-door-calculator";
 
 export const metadata: Metadata = {
-  title: "Garage Door Opening Measurement Worksheet",
+  title: "Garage Door Calculator",
   description:
     "Record opening and clearance dimensions and calculate rectangular area. Does not select hardware, check compatibility, or estimate price.",
   alternates: { canonical: "/garage-door-calculator" },
   openGraph: {
-    title: "Garage Door Opening Measurement Worksheet",
+    title: "Garage Door Calculator",
     description: "Opening area arithmetic and entered clearances only; verify fit with the manufacturer.",
     url: "https://www.tallyard.com/garage-door-calculator",
     type: "website",

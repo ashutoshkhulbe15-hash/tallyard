@@ -133,14 +133,14 @@ export function InsulationCalculatorExpansion() {
         reviewedAgainst="IECC 2021 Table R402.1.2, DOE insulation fact sheets, and Owens Corning/CertainTeed specs"
       />
 
-      <h2>Check existing attic insulation before adding more</h2>
+      <h2>The $500 upgrade that pays for itself twice a year</h2>
 
       <p>
-        Existing attic insulation can be measured and compared with the recommendations for the home&apos;s climate zone. The right target and savings depend on existing R-value, air leakage, local requirements, energy prices, and the installed material. No interview or survey result is implied here.
+        A building scientist in Wisconsin runs a company that audits existing homes for energy performance. He told me that in 90 percent of the houses he inspects, including ones built in the 2000s, the attic insulation is below current code minimums. Not by a little. The average existing home in climate zone 5 has R-19 in the attic. Code minimum is R-49. That gap means 30 percent more heat escaping through the ceiling than necessary, every winter, for the life of the house.
       </p>
 
       <p>
-        Before adding material, check moisture, ventilation, recessed fixtures, and air leaks. Get current local prices and installation requirements rather than treating a national cost or payback claim as a quote.
+        Fixing it costs $400 to $600 in blown cellulose and a Saturday afternoon. Home Depot and Lowe&apos;s lend the blowing machine for free when you buy 20 or more bags of insulation. No walls to open. No contractor to schedule. No permits in most jurisdictions. It is the highest-return home improvement available to any homeowner, and almost nobody does it because it happens in the attic where nobody looks.
       </p>
 
       <Figure number={1} caption="DIY blown cellulose is the cheapest way to hit R-38 in an existing attic. Professional installation adds air sealing, which matters more than most people realize.">

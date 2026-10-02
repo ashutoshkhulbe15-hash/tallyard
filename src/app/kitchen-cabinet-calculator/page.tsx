@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "kitchen-cabinet-calculator";
 
 export const metadata: Metadata = {
-  title: "Kitchen Cabinet Run Calculator",
+  title: "Kitchen Cabinet Calculator",
   description:
     "Estimate cabinet run length and rough cabinet module count from your kitchen layout and wall measurements.",
   alternates: { canonical: "/kitchen-cabinet-calculator" },
   openGraph: {
-    title: "Kitchen Cabinet Run Calculator",
+    title: "Kitchen Cabinet Calculator",
     description: "Estimate kitchen cabinet run lengths from wall measurements.",
     url: "https://www.tallyard.com/kitchen-cabinet-calculator",
     type: "website",

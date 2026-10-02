@@ -1,9 +1,11 @@
+import { DrywallCalculatorExpansion } from "@/content/drywall-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { formatNumber, round, ceilQuantity } from "@/lib/format";
 
 export const drywallCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: DrywallCalculatorExpansion,
   slug: "drywall-calculator",
-  title: "Drywall Panel Area Estimator",
+  title: "Drywall Calculator",
   description: "Estimate panel count from net measured surface area and a selected nominal panel size. Does not create a layout or finishing-material takeoff.",
   categoryLabel: "Drywall",
   category: "drywall",

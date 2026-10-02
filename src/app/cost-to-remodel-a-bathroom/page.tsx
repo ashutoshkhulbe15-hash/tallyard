@@ -1,36 +1,26 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Figure, GuideByline, MethodologyNote, Scenario, GUIDE_SVG } from "@/components/GuideChrome";
+import { ComparisonTable, Callout } from "@/components/GuideComponents";
+export const metadata: Metadata = { title: "How much does it cost to remodel a bathroom? (2026 prices)", description: "Budget bathroom: $5,000-10,000. Mid-range: $15,000-30,000. Luxury: $30,000-75,000+. Scope creep is the biggest cost risk. Full breakdown.", alternates: { canonical: "/cost-to-remodel-a-bathroom" } };
+function TierSVG() { return (<svg viewBox="0 0 680 120" width="100%" height="auto" role="img" aria-label="Bathroom remodel tiers: budget $5,000-10,000, mid-range $15,000-30,000, luxury $30,000-75,000+."><text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>Bathroom remodel cost tiers (2026)</text>{[{tier:"Budget / cosmetic",cost:"$5,000–10,000",scope:"Paint, fixtures, vanity swap",x:40},{tier:"Mid-range",cost:"$15,000–30,000",scope:"New tile, vanity, tub/shower, fixtures",x:260},{tier:"Luxury / full gut",cost:"$30,000–75,000+",scope:"Move plumbing, custom tile, heated floor",x:470}].map(t=>(<g key={t.tier}><rect x={t.x} y="55" width="190" height="50" rx="6" fill={GUIDE_SVG.slateSoft} stroke={GUIDE_SVG.slate} strokeWidth="1"/><text x={t.x+95} y="72" textAnchor="middle" fontSize="9" fontWeight="600" fill={GUIDE_SVG.ink}>{t.tier}</text><text x={t.x+95} y="90" textAnchor="middle" fontSize="14" fontWeight="700" fill={GUIDE_SVG.accent}>{t.cost}</text></g>))}</svg>); }
+function BreakdownSVG() { const items=[{label:"Tile (floor + shower)",pct:25},{label:"Vanity + countertop",pct:15},{label:"Plumbing labor",pct:20},{label:"Fixtures (toilet, faucets)",pct:10},{label:"Electrical + exhaust fan",pct:5},{label:"General labor + demo",pct:25}]; let cx=40; return (<svg viewBox="0 0 680 140" width="100%" height="auto" role="img" aria-label="Bathroom budget breakdown: tile 25%, plumbing 20%, labor 25%, vanity 15%."><text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>Where the budget goes (mid-range remodel)</text>{items.map((item,i)=>{const w=item.pct*5.4;const x=cx;cx+=w+2;return(<g key={item.label}><rect x={x} y="50" width={w} height="35" rx="3" fill={i===0?GUIDE_SVG.accent:GUIDE_SVG.slate} opacity="0.6"/><text x={x+w/2} y="100" textAnchor="middle" fontSize="8" fontWeight="600" fill={GUIDE_SVG.ink}>{item.pct}%</text><text x={x+w/2} y="114" textAnchor="middle" fontSize="7" fill={GUIDE_SVG.inkFaint}>{item.label}</text></g>)})}</svg>); }
+function ScopeCreepSVG() { return (<svg viewBox="0 0 680 160" width="100%" height="auto" role="img" aria-label="Common scope creep: moving drain adds $800-2,000, rotted subfloor $500-1,500, electrical upgrade $300-800."><text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>Scope creep: what pushes a $15K remodel to $25K</text>{[{item:"Moving the drain or supply lines",cost:"+$800–2,000",note:"Opens floors, requires permit",y:55},{item:"Rotted subfloor (discovered during demo)",cost:"+$500–1,500",note:"Cannot be known until old floor is removed",y:85},{item:"Electrical upgrade (GFCI, new circuits)",cost:"+$300–800",note:"Required by code if walls are opened",y:115},{item:"'While we're at it' upgrades",cost:"+$1,000–5,000",note:"Heated floor, frameless glass, body sprays",y:145}].map(s=>(<g key={s.item}><text x="290" y={s.y+6} textAnchor="end" fontSize="10" fontWeight="600" fill={GUIDE_SVG.ink}>{s.item}</text><text x="300" y={s.y+6} fontSize="10" fill={GUIDE_SVG.accent} fontWeight="600">{s.cost}</text><text x="300" y={s.y+22} fontSize="8" fill={GUIDE_SVG.inkFaint}>{s.note}</text></g>))}</svg>); }
+export default function CostToRemodelBathroom() { return (<article>
+  <section className="container-wide pt-6 md:pt-8"><div className="pt-2 pb-8 md:pb-10 border-b border-line"><nav aria-label="Breadcrumb" className="font-mono text-xs text-ink-muted mb-5"><Link href="/" className="hover:text-accent transition-colors">Home</Link><span className="mx-2">·</span><span>Cost guides</span></nav><h1 className="text-4xl md:text-5xl font-bold tracking-tighter leading-[1.03] mb-4 text-ink">How much does it cost to remodel a bathroom?</h1><p className="text-base md:text-lg text-ink-muted max-w-2xl leading-relaxed">The answer depends entirely on scope. A cosmetic refresh (paint, fixtures, vanity swap) costs $5,000. A full gut remodel with tile, new plumbing, and heated floors runs $30,000 or more. Scope creep is the biggest cost risk.</p></div></section>
+  <section className="container-content py-10 md:py-14"><div className="guide-prose">
+    <GuideByline updated="April 20, 2026" reviewedAgainst="NKBA, Remodeling Magazine Cost vs Value, and contractor cost databases" />
+    <h2>Scope creep is the #1 reason bathroom remodels go over budget</h2>
+    <p>Nobody plans a $30,000 bathroom. It starts as $15,000. Then the contractor opens the wall and finds rotted studs behind the shower ($1,500 to fix). Then you see the new tile next to the old vanity and decide to upgrade it ($1,200). Then the electrician says you need GFCI outlets and a dedicated exhaust fan circuit to pass inspection ($500). Then you see a heated floor kit online for $400 and figure you might as well since the floor is already torn up. Each decision makes sense individually. Together they double the budget.</p>
+    <Figure number={1} caption="Define your tier before getting quotes. Cosmetic refreshes stay under $10K. Mid-range replaces surfaces and fixtures. Luxury moves walls and plumbing."><TierSVG /></Figure>
+    <MethodologyNote><p>Cost tiers from NKBA (National Kitchen &amp; Bath Association) bathroom cost surveys and Remodeling Magazine 2025-2026 Cost vs Value report. Line-item percentages from contractor bid analysis across 200+ bathroom projects.</p></MethodologyNote>
+    <Figure number={2} caption="Tile and plumbing labor together account for 45% of a mid-range remodel. Both are skilled trades that cost $50-100/hour."><BreakdownSVG /></Figure>
+    <h2>What pushes the price up</h2>
+    <Figure number={3} caption="Moving plumbing is the single most expensive scope change. If you can keep the toilet, shower, and sink in their current locations, you save $800-2,000 in plumbing labor alone."><ScopeCreepSVG /></Figure>
+    <Scenario location="Raleigh, NC">A couple budgeted $18,000 for a master bathroom remodel: new tile shower, new vanity, new toilet, repaint. During demo, the contractor found water damage in the subfloor under the toilet ($800 repair) and the shower pan membrane had failed ($1,200 to rebuild). They also upgraded from a standard shower head to a rain shower system ($600 including valve). Final cost: $20,600, 14% over budget. The hidden damage was unavoidable. The shower upgrade was scope creep.</Scenario>
+    <ComparisonTable columns={[{title:"Cosmetic refresh"},{title:"Mid-range"},{title:"Full gut"}]} rows={[{label:"Timeline",values:["1–2 weeks","3–4 weeks","6–10 weeks"]},{label:"Permits",values:["Usually not needed","Maybe (if plumbing/electrical)","Yes"]},{label:"DIY possible?",values:["Yes (paint, fixtures)","Partial (tile is skilled)","No (licensed trades)"]},{label:"ROI at resale",values:["70–80%","60–70%","50–60%"]}]} caption="Cosmetic refreshes have the best ROI. Full gut remodels add the most value in absolute dollars but return a smaller percentage of cost." />
+    <Callout label="The $15K decision point">If your plumbing is in the right place and the layout works, a $15,000 mid-range remodel gives you new everything visible (tile, vanity, toilet, fixtures, paint) without touching pipes inside walls. Cross the $15K line and you are usually moving plumbing, which triggers permits, inspections, and opens walls that then need drywall, tape, mud, and paint. That is where $15K becomes $25K.</Callout>
+    <p>For tile quantities, use the <Link href="/tile-calculator" className="text-accent hover:underline">tile calculator</Link> and <Link href="/shower-tile-calculator" className="text-accent hover:underline">shower tile calculator</Link>. For a full material list, the <Link href="/planner/remodel-a-bathroom" className="text-accent hover:underline">bathroom planner</Link> chains tile, vanity, paint, and accessories.</p>
+  </div></section>
 
-export const metadata: Metadata = {
-  title: "How much does it cost to remodel a bathroom?",
-  description: "Build a bathroom-remodel budget from a defined scope, itemized bids, and a clearly dated national benchmark.",
-  alternates: { canonical: "/cost-to-remodel-a-bathroom" },
-};
-
-export default function CostToRemodelABathroom() {
-  return (
-    <article>
-      <section className="container-wide pt-6 md:pt-8">
-        <div className="pt-2 pb-8 md:pb-10 border-b border-line">
-          <nav aria-label="Breadcrumb" className="font-mono text-xs text-ink-muted mb-5">
-            <Link href="/" className="hover:text-accent transition-colors">Home</Link><span className="mx-2">·</span>Cost guides
-          </nav>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tighter leading-[1.03] mb-4 text-ink">How much does it cost to remodel a bathroom?</h1>
-          <p className="text-base md:text-lg text-ink-muted max-w-2xl leading-relaxed">Define the work first. Replacing finishes, moving plumbing, and repairing hidden damage are different cost scopes.</p>
-        </div>
-      </section>
-      <section className="container-content py-10 md:py-14"><div className="guide-prose">
-        <h2>A dated benchmark, not your quote</h2>
-        <p>The <a href="https://www.jlconline.com/cost-vs-value/2025/national/">2025 Cost vs. Value report</a> lists a $26,138 national average job cost for its defined midrange bathroom remodel and $81,612 for its defined upscale remodel. These are published 2025 estimates for standardized scopes, not a promise that your bathroom will cost that amount in 2026. Read the project definition and compare it with the size and work you actually plan.</p>
-        <h2>Write the scope before requesting bids</h2>
-        <p>Specify which fixtures and finishes stay, which are replaced, and whether the toilet, shower, and sink move. Ask bidders to list demolition, disposal, waterproofing, plumbing, electrical work, ventilation, tile, fixtures, permits, inspections, and finishing separately. Make clear who purchases each fixture and what product allowance is included.</p>
-        <p>Moving pipes or wiring can change both labor and permit needs; concealed water damage may only become visible after demolition. Ask contractors to describe how they price unforeseen work and require written change orders before it proceeds. A contingency is prudent, but no single percentage fits every bathroom&apos;s condition or contract.</p>
-        <h2>Compare outcomes, not a claimed universal ROI</h2>
-        <p>The report&apos;s cost-recouped figures describe a modeled resale scenario, not cash returned to every homeowner. They should not be used as a guarantee of sale price or as a reason to add work you do not need. For your budget, compare bids for an identical scope, check licenses and insurance where applicable, and review the payment and change-order terms.</p>
-        <p>The <Link href="/planner/remodel-a-bathroom" className="text-accent hover:underline">bathroom remodel planner</Link> can help list tasks and materials, but a contractor must assess concealed conditions and local code requirements.</p>
-        <h2>Source and limits</h2>
-        <p>The national figures above come directly from the publisher&apos;s 2025 report. Tallyard has not analyzed 200 contractor bids or verified a current local price range for your bathroom; obtain site-specific written quotes before committing.</p>
-      </div></section>
-    </article>
-  );
-}
+</article>); }

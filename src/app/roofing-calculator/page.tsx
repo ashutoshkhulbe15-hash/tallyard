@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "roofing-calculator";
 
 export const metadata: Metadata = {
-  title: "Roof Surface Area Calculator",
+  title: "Roofing Calculator",
   description:
     "Estimate planar roof surface area from a rectangular footprint and pitch. Does not calculate material quantities or roof suitability.",
   alternates: { canonical: "/roofing-calculator" },
   openGraph: {
-    title: "Roof Surface Area Calculator",
+    title: "Roofing Calculator",
     description: "Estimate planar roof surface area from a rectangular footprint and pitch.",
     url: "https://www.tallyard.com/roofing-calculator",
     type: "website",

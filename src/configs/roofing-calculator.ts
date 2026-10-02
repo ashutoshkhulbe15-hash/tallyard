@@ -1,3 +1,4 @@
+import { RoofingCalculatorExpansion } from "@/content/roofing-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, roundUp, formatNumber } from "@/lib/format";
 
@@ -12,8 +13,9 @@ const roofPitches: Record<string, number> = {
 };
 
 export const roofingCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: RoofingCalculatorExpansion,
   slug: "roofing-calculator",
-  title: "Roof Surface Area Calculator",
+  title: "Roofing Calculator",
   description:
     "Estimate sloped surface area for a simple rectangular roof plane from its horizontal footprint and pitch. Does not calculate a roof material order.",
   categoryLabel: "Roofing",

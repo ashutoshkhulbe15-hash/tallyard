@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { getAllGuides } from "@/guides";
 
 export const metadata: Metadata = {
-  title: "Buying guides for home improvement decisions",
+  title: "Buying guides: real cost math for home improvement decisions",
   description:
-    "Buying guides for home improvement: compare materials, equipment, project scope, and local quotes.",
+    "In-depth buying guides for home improvement: vinyl vs fiber cement siding, composite vs pressure-treated decking, heat pump vs furnace. Real total cost of ownership math.",
   alternates: { canonical: "/guides" },
 };
 
@@ -18,32 +18,32 @@ const guideMeta: Record<
 > = {
   "vinyl-vs-fiber-cement-siding": {
     verdict:
-      "Compare siding by **measured wall area**, installation scope, upkeep, and local bids.",
+      "Fiber cement lasts **50+ years** to vinyl's 20–40 and wins on 30-year cost, if you're staying long enough to bank it.",
     uses: ["Siding calculator", "Cost to install siding"],
   },
   "composite-vs-pressure-treated-vs-cedar-deck": {
     verdict:
-      "Compare **installed scope, maintenance, warranties, and local bids** for the specific products.",
+      "Over 20 years **pressure-treated ends up most expensive**: its boards need replacing around year 15.",
     uses: ["Deck calculator", "Cost to build a deck"],
   },
   "heat-pump-vs-furnace": {
     verdict:
-      "Compare a heat pump with furnace plus AC using **complete local bids** and your energy rates.",
+      "Heat pumps save **$300–500/yr in zones 1–4**, break even in zone 5, and lose to gas in zones 6–7.",
     uses: ["Heat pump calculator", "Cost to replace HVAC"],
   },
 };
 
 const costGuides = [
-  { slug: "cost-to-build-a-deck", name: "Cost to build a deck", r: "Scope + bids" },
-  { slug: "cost-to-replace-a-roof", name: "Cost to replace a roof", r: "Measure + bids" },
-  { slug: "cost-to-build-a-fence", name: "Cost to build a fence", r: "Measure + bids" },
-  { slug: "cost-to-paint-a-house", name: "Cost to paint a house", r: "Scope + bids" },
-  { slug: "cost-to-install-flooring", name: "Cost to install flooring", r: "Measure + bids" },
-  { slug: "cost-to-remodel-a-bathroom", name: "Cost to remodel a bathroom", r: "Scope + bids" },
-  { slug: "cost-to-pour-concrete", name: "Cost to pour concrete", r: "Volume + bids" },
-  { slug: "cost-to-install-siding", name: "Cost to install siding", r: "Measure + bids" },
-  { slug: "cost-to-install-solar", name: "Cost to install solar", r: "Compare quotes" },
-  { slug: "cost-to-replace-hvac", name: "Cost to replace HVAC", r: "Compare quotes" },
+  { slug: "cost-to-build-a-deck", name: "Cost to build a deck", r: "$4.4K–11.2K" },
+  { slug: "cost-to-replace-a-roof", name: "Cost to replace a roof", r: "$6.7K–12.5K" },
+  { slug: "cost-to-build-a-fence", name: "Cost to build a fence", r: "$1.9K–4.5K" },
+  { slug: "cost-to-paint-a-house", name: "Cost to paint a house", r: "$1.8K–4.4K" },
+  { slug: "cost-to-install-flooring", name: "Cost to install flooring", r: "$3–22/sf" },
+  { slug: "cost-to-remodel-a-bathroom", name: "Cost to remodel a bathroom", r: "$6.6K–17.5K" },
+  { slug: "cost-to-pour-concrete", name: "Cost to pour concrete", r: "$4–8/sf" },
+  { slug: "cost-to-install-siding", name: "Cost to install siding", r: "$5.6K–17K" },
+  { slug: "cost-to-install-solar", name: "Cost to install solar", r: "$15K–25K" },
+  { slug: "cost-to-replace-hvac", name: "Cost to replace HVAC", r: "$5K–12.5K" },
 ];
 
 /** Renders verdict text, bolding **wrapped** spans in verify green. */
@@ -80,15 +80,16 @@ export default function GuidesIndexPage() {
         </nav>
         <p className="font-mono text-[11px] tracking-[0.16em] uppercase text-ink-faint mb-4 flex items-center gap-2.5">
           Buying guides ·{" "}
-          <span className="text-accent">assumptions made visible</span>
+          <span className="text-accent">the answer, then the math</span>
         </p>
         <h1 className="text-4xl md:text-5xl font-bold tracking-tighter leading-[1.04] mb-4 text-ink">
-          Compare projects with <span className="accent-italic">clear inputs.</span>
+          Decisions that need <span className="accent-italic">real math.</span>
         </h1>
         <p className="text-base md:text-lg text-ink-muted max-w-2xl leading-relaxed">
-          Practical comparisons and project-cost guides. Check each page’s
-          scope and assumptions, then use the worksheets to organize dimensions
-          and compare local quotes for your project.
+          For the choices where the wrong pick costs thousands over the
+          ownership period. We lead with the verdict, then show the 20–30 year
+          total-cost math behind it, and link the calculators to run it for
+          your project.
         </p>
       </section>
 
@@ -96,7 +97,7 @@ export default function GuidesIndexPage() {
       <section className="container-content pt-10 md:pt-12">
         <div className="font-mono text-[11px] tracking-[0.16em] uppercase text-ink-faint mb-5 flex items-center gap-3">
           Buying guides ·{" "}
-          <span className="text-accent">what to compare</span>
+          <span className="text-accent">which option wins</span>
           <span className="flex-1 h-px bg-line" />
         </div>
         <div className="flex flex-col gap-4">
@@ -155,7 +156,7 @@ export default function GuidesIndexPage() {
                       </span>
                     ))}
                     <span className="ml-auto text-accent font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-                      Read the guide →
+                      Read the math →
                     </span>
                   </div>
                 )}
@@ -169,7 +170,7 @@ export default function GuidesIndexPage() {
       <section className="container-content pt-12 md:pt-14">
         <div className="font-mono text-[11px] tracking-[0.16em] uppercase text-ink-faint mb-5 flex items-center gap-3">
           Cost guides ·{" "}
-          <span className="text-accent">scope and local quotes</span>
+          <span className="text-accent">what a project actually costs</span>
           <span className="flex-1 h-px bg-line" />
         </div>
         <div className="border border-line rounded-xl bg-surface overflow-hidden">
@@ -179,7 +180,7 @@ export default function GuidesIndexPage() {
           >
             <h3 className="text-[15px] font-bold">Cost guides</h3>
             <span className="font-mono text-[10px] text-ink-faint tracking-[0.1em]">
-              PROJECT SCOPE · QUOTE COMPARISON
+              MATERIAL + LABOR · 2026 AVERAGES
             </span>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2">
@@ -207,18 +208,18 @@ export default function GuidesIndexPage() {
           {[
             {
               n: "01",
-              title: "Check the assumptions",
-              body: "Project scope, local conditions, product specifications, and labor affect costs. Review the assumptions on each page before applying it to your project.",
+              title: "Real ownership cost",
+              body: "Most comparisons stop at installed price. We run 15-, 20-, or 30-year totals including the maintenance cycles that dominate real spending.",
             },
             {
               n: "02",
-              title: "Compare complete bids",
-              body: "Ask contractors to quote the same scope, products, exclusions, and cleanup so the totals can be compared fairly.",
+              title: "Recommendations follow the numbers",
+              body: "No sponsored placements and no paid inclusion. Where a guide names a product, it is because the math or the standard points there.",
             },
             {
               n: "03",
-              title: "Worksheets, not approvals",
-              body: "Calculators help organize measurements and entered values. They do not replace product instructions, professional design, or permit review.",
+              title: "Paired with tools",
+              body: "Every guide links the calculators you need to run the math for your own project. The guide picks the option; the tool sizes it.",
             },
           ].map((p, i) => (
             <div

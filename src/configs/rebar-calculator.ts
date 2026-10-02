@@ -1,9 +1,11 @@
+import { RebarCalculatorExpansion } from "@/content/rebar-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber, ceilQuantity } from "@/lib/format";
 
 export const rebarCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: RebarCalculatorExpansion,
   slug: "rebar-calculator",
-  title: "Reinforcing Bar Grid Geometry Estimator",
+  title: "Rebar Calculator",
   description: "Estimate the number and gross length of grid runs from a rectangular footprint and user-selected maximum spacing. Not reinforcement design or a bar order list.",
   categoryLabel: "Masonry",
   category: "concrete",

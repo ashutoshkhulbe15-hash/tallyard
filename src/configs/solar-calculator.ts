@@ -1,9 +1,11 @@
+import { SolarCalculatorExpansion } from "@/content/solar-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber, ceilQuantity } from "@/lib/format";
 
 export const solarCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: SolarCalculatorExpansion,
   slug: "solar-calculator",
-  title: "Solar Energy-Use Scenario Estimator",
+  title: "Solar Panel Calculator",
   description: "Explore a panel-count scenario from entered electricity use and explicitly selected assumptions. Not a site assessment, production forecast, or system design.",
   categoryLabel: "Solar",
   category: "solar",

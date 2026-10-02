@@ -1,9 +1,11 @@
+import { GutterCalculatorExpansion } from "@/content/gutter-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { formatNumber, round } from "@/lib/format";
 
 export const gutterCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: GutterCalculatorExpansion,
   slug: "gutter-calculator",
-  title: "Gutter-Run Length Worksheet",
+  title: "Gutter Calculator",
   description: "Sum user-measured gutter runs and apply a chosen planning allowance. Does not size gutters, downspouts, or drainage systems.",
   categoryLabel: "Roofing",
   category: "roofing",

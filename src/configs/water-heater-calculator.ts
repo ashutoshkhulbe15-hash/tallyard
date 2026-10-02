@@ -1,9 +1,11 @@
+import { WaterHeaterCalculatorExpansion } from "@/content/water-heater-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
 export const waterHeaterCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: WaterHeaterCalculatorExpansion,
   slug: "water-heater-calculator",
-  title: "Water-Heating Rate Conversion Worksheet",
+  title: "Water Heater Calculator",
   description: "Convert user-entered water flow and temperature rise to a theoretical heat-transfer rate. Does not size or select a water heater.",
   categoryLabel: "HVAC",
   category: "hvac",

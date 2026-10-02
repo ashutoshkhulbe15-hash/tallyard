@@ -6,11 +6,11 @@ import { getConfig } from "@/configs";
 const SLUG = "hardwood-floor-refinishing-cost-calculator";
 
 export const metadata: Metadata = {
-  title: "Hardwood Refinishing Quote Worksheet",
+  title: "Hardwood Floor Refinishing Cost Calculator",
   description: "Calculate a subtotal from area, rate, and extras copied from a written refinishing quote; no market prices are assumed.",
   alternates: { canonical: "/hardwood-floor-refinishing-cost-calculator" },
   openGraph: {
-    title: "Hardwood Refinishing Quote Worksheet",
+    title: "Hardwood Floor Refinishing Cost Calculator",
     description: "Quote arithmetic from user-entered scope and rates; no market-price or repair recommendation.",
     url: "https://www.tallyard.com/hardwood-floor-refinishing-cost-calculator",
     type: "website",

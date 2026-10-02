@@ -1,9 +1,11 @@
+import { DeckCalculatorExpansion } from "@/content/deck-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber, ceilQuantity } from "@/lib/format";
 
 export const deckCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: DeckCalculatorExpansion,
   slug: "deck-calculator",
-  title: "Decking Board Calculator",
+  title: "Deck Calculator",
   description:
     "Estimate deck surface area and a rough decking-board quantity for a simple rectangle. This does not size or design the supporting structure.",
   categoryLabel: "Landscaping",

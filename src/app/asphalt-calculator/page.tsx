@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "asphalt-calculator";
 
 export const metadata: Metadata = {
-  title: "Asphalt Volume and Weight Calculator",
+  title: "Asphalt Calculator",
   description:
     "Estimate asphalt volume and approximate weight from area and selected thickness. Not a pavement design or price quote.",
   alternates: { canonical: "/asphalt-calculator" },
   openGraph: {
-    title: "Asphalt Volume and Weight Calculator",
+    title: "Asphalt Calculator",
     description: "Estimate asphalt volume and approximate weight from area and selected thickness.",
     url: "https://www.tallyard.com/asphalt-calculator",
     type: "website",

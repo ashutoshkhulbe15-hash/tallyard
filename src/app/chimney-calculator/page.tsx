@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "chimney-calculator";
 
 export const metadata: Metadata = {
-  title: "Fireplace Opening Area Calculator",
+  title: "Chimney Calculator",
   description:
     "Calculate rectangular fireplace opening area only. This tool does not size a flue, liner, chimney, or vent system.",
   alternates: { canonical: "/chimney-calculator" },
   openGraph: {
-    title: "Fireplace Opening Area Calculator",
+    title: "Chimney Calculator",
     description: "Calculate rectangular fireplace opening area only; not a flue-sizing tool.",
     url: "https://www.tallyard.com/chimney-calculator",
     type: "website",

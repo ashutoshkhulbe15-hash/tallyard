@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "countertop-calculator";
 
 export const metadata: Metadata = {
-  title: "Countertop Surface Area Calculator",
+  title: "Countertop Calculator",
   description:
     "Estimate rectangular countertop and island surface area from entered dimensions. Confirm fabrication and ordering quantities with the fabricator.",
   alternates: { canonical: "/countertop-calculator" },
   openGraph: {
-    title: "Countertop Surface Area Calculator",
+    title: "Countertop Calculator",
     description: "Estimate countertop surface area from entered dimensions. No installed-price estimate.",
     url: "https://www.tallyard.com/countertop-calculator",
     type: "website",

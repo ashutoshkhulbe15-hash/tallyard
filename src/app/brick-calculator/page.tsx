@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "brick-calculator";
 
 export const metadata: Metadata = {
-  title: "Brick Quantity Estimator",
+  title: "Brick Calculator",
   description:
     "Estimate brick count from net wall area, product-specific units-per-area coverage, and a user-selected planning allowance. Does not estimate mortar or wall design.",
   alternates: { canonical: "/brick-calculator" },
   openGraph: {
-    title: "Brick Quantity Estimator",
+    title: "Brick Calculator",
     description: "Estimate brick count from net wall area and product-specific coverage; no mortar or cost estimate.",
     url: "https://www.tallyard.com/brick-calculator",
     type: "website",

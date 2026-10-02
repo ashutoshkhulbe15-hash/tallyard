@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "tile-calculator";
 
 export const metadata: Metadata = {
-  title: "Tile Package Calculator",
+  title: "Tile Calculator",
   description:
     "Estimate tile packages from rectangular area, package-label coverage, and a user-selected planning allowance.",
   alternates: { canonical: "/tile-calculator" },
   openGraph: {
-    title: "Tile Package Calculator",
+    title: "Tile Calculator",
     description: "Estimate tile packages from area and product-label coverage; individual tile count and layout are not included.",
     url: "https://www.tallyard.com/tile-calculator",
     type: "website",

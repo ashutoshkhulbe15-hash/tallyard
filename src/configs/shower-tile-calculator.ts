@@ -1,9 +1,11 @@
+import { ShowerTileCalculatorExpansion } from "@/content/shower-tile-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber, ceilQuantity } from "@/lib/format";
 
 export const showerTileCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: ShowerTileCalculatorExpansion,
   slug: "shower-tile-calculator",
-  title: "Shower Tile Package Calculator",
+  title: "Shower Tile Calculator",
   description: "Estimate tile packages from a user-measured total tiled area, exact package coverage, and a selected planning allowance.",
   categoryLabel: "Flooring",
   category: "flooring",

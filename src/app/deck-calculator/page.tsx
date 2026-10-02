@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "deck-calculator";
 
 export const metadata: Metadata = {
-  title: "Decking Board Calculator",
+  title: "Deck Calculator",
   description:
     "Estimate deck surface area and a rough decking-board quantity for a simple rectangular deck. Not a structural design tool.",
   alternates: { canonical: "/deck-calculator" },
   openGraph: {
-    title: "Decking Board Calculator",
+    title: "Deck Calculator",
     description: "Estimate deck surface area and rough decking-board quantity for a simple rectangle.",
     url: "https://www.tallyard.com/deck-calculator",
     type: "website",

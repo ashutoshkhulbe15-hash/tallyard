@@ -6,12 +6,12 @@ import { getConfig } from "@/configs";
 const SLUG = "pool-chlorine-calculator";
 
 export const metadata: Metadata = {
-  title: "Pool Chlorine Mass Estimator",
+  title: "Pool Chlorine Calculator",
   description:
     "Estimate theoretical available-chlorine and product mass from measured free chlorine, a user-entered target, and label strength. Not a dosing recommendation.",
   alternates: { canonical: "/pool-chlorine-calculator" },
   openGraph: {
-    title: "Pool Chlorine Mass Estimator",
+    title: "Pool Chlorine Calculator",
     description: "Mass-balance estimate only; use measured values and follow the exact product label.",
     url: "https://www.tallyard.com/pool-chlorine-calculator",
     type: "website",

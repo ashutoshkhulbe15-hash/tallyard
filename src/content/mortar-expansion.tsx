@@ -209,7 +209,7 @@ export function MortarCalculatorExpansion() {
         on the wall and had nothing left for the cap row. Mortar for
         cap stones uses more material per unit because the joint is wider
         (the full top surface of the brick). The 10% waste factor in the
-        calculator covers this, but he had been sloppy with mixing: 
+        calculator covers this, but he had been sloppy with mixing:
         letting a half-batch set up before he could use it. He bought
         one more bag ($7.50) to finish. The lesson: do not let mixed
         mortar sit. ASTM C270 sets the board life at 2.5 hours from initial

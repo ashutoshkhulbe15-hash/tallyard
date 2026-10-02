@@ -1,9 +1,11 @@
+import { FlooringCalculatorExpansion } from "@/content/flooring-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber, ceilQuantity } from "@/lib/format";
 
 export const flooringCalculatorConfig: CalculatorConfig = {
+  ContentExpansion: FlooringCalculatorExpansion,
   slug: "flooring-calculator",
-  title: "Flooring Package Calculator",
+  title: "Flooring Calculator",
   description: "Estimate flooring package count from rectangular area, package coverage printed on the label, and an allowance you select.",
   categoryLabel: "Flooring",
   category: "flooring",
