@@ -16,14 +16,14 @@ export default function FencePlannerPage() {
       <p className="text-[17px] md:text-lg text-ink-muted max-w-2xl leading-relaxed">Fence layout and footing requirements depend on property boundaries, grade, soil, exposure, height, gates, materials, and local rules. These links support preliminary measurements, not installation design or a complete order list.</p>
     </div></section>
     <section className="container-content py-10"><div className="guide-prose">
-      <h2>Verify the site and specifications first</h2>
-      <p>The former combined planner inferred post sizes, footing depths and concrete, rails, pickets, gate hardware, and current material prices from a few dimensions. Those assumptions cannot account for corners, slopes, soil, wind, gates, site boundaries, or product systems, so that takeoff is no longer offered.</p>
+      <h2>Map the actual fence line before estimating quantities</h2>
+      <p>Sketch each straight segment between endpoints and corners, and mark every gate and grade change. Record segment lengths separately rather than treating a perimeter as one uninterrupted run. Select the fence height and product first; rail and picket dimensions, post spacing, gate assemblies, and slope transitions differ by system. The estimator below is a preliminary straight-run calculation, not a final order.</p>
       <ul>
         <li><Link href="/fence-calculator" className="text-accent hover:underline">Fence quantity estimator</Link> — limited straight-run counts from entered assumptions; not structural design.</li>
         <li><Link href="/concrete-calculator" className="text-accent hover:underline">Concrete volume calculator</Link> — volume from entered geometry; not footing sizing.</li>
         <li><Link href="/cost-to-build-a-fence" className="text-accent hover:underline">Fence bid-comparison guide</Link> — scope checklist, not a local quote.</li>
       </ul>
-      <p>Confirm property lines with reliable survey information, locate underground utilities before digging, and check permit, setback, height, and neighborhood requirements with the relevant local authorities. Ask a qualified installer to specify the fence system and quantities for your site.</p>
+      <p>Confirm the boundary from reliable survey information before placing a fence. Check permit, setback, height, and neighborhood requirements with the relevant local authorities, and contact the local utility-location service before digging. Ask an installer to account for corners, gates, slopes, soil, exposure, and the selected system in the final material list.</p>
     </div></section>
   </>;
 }

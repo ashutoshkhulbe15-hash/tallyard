@@ -16,8 +16,8 @@ export default function BathroomPlannerPage() {
       <p className="text-[17px] md:text-lg text-ink-muted max-w-2xl leading-relaxed">Use separate measurement estimators for individual surfaces. They do not create a coordinated remodel takeoff, construction sequence, installation plan, or project quote.</p>
     </div></section>
     <section className="container-content py-10"><div className="guide-prose">
-      <h2>Keep quantity estimates separate from system design</h2>
-      <p>The previous planner inferred tile, grout, waterproofing, vanity, paint, accessories, quantities, installation steps, and prices from a small set of room dimensions. Those outputs depended on unverified assumptions and could not specify a compatible waterproofing assembly, plumbing, electrical work, clearances, or a complete bill of materials, so the combined takeoff is no longer offered.</p>
+      <h2>Build a surface-by-surface measurement sheet</h2>
+      <p>Measure the floor, each wall planned for tile, the shower surfaces, and the backsplash separately. For a rectangular wall, record width and tiled height; subtract openings only when the measurement and tool inputs support that treatment. Add returns or niches as their own measured areas. Keep the tile, grout, paint, and counter/vanity quantities separate because each depends on different product data.</p>
       <ul>
         <li><Link href="/tile-calculator" className="text-accent hover:underline">Tile package estimator</Link> — area and exact package coverage.</li>
         <li><Link href="/shower-tile-calculator" className="text-accent hover:underline">Shower tile package estimator</Link> — user-measured tiled area and product coverage; no waterproofing design.</li>
@@ -25,7 +25,7 @@ export default function BathroomPlannerPage() {
         <li><Link href="/vanity-calculator" className="text-accent hover:underline">Vanity size estimator</Link> — preliminary dimensions only; not code or accessibility approval.</li>
         <li><Link href="/paint-calculator" className="text-accent hover:underline">Paint estimator</Link> — confirm product coverage and surface conditions.</li>
       </ul>
-      <p>Bathroom construction involves waterproofing, drainage, plumbing, electrical safety, ventilation, substrate compatibility, and accessibility requirements. Follow the specified manufacturer system and approved plans; obtain qualified trades and local review for work that requires it. Compare current local bids using an equivalent written scope.</p>
+      <p>Before pricing the job, record the fixtures to retain or move, known water damage, ventilation, and the intended tile/waterproofing system. Bathroom construction also involves drainage, plumbing, electrical safety, substrate compatibility, and clearances. Follow the specified manufacturer system and approved plans; use qualified trades and local review where required. Compare bids using the same written scope.</p>
       <p>For cost scoping, see the <Link href="/cost-to-remodel-a-bathroom" className="text-accent hover:underline">bathroom bid-comparison guide</Link>; it is not an estimate for your specific project.</p>
     </div></section>
   </>;

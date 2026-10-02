@@ -164,8 +164,9 @@ export default function PlannerIndexPage() {
 
       <section className="container-content py-12 md:py-16">
         <div className="guide-prose border-t border-line pt-8">
-          <h2>How to use these estimates</h2>
-          <p>Measure the actual area or dimensions requested by each calculator, confirm unit consistency, and copy product coverage from current labeling. Do not combine independent estimates as if they were a coordinated design. For structural, electrical, plumbing, waterproofing, fire-safety, or other regulated work, use approved project documents and qualified professionals.</p>
+          <h2>What to gather before you start</h2>
+          <p>Have a sketch or photos, dimensions with units, the exact product label or package coverage, and any project drawings ready. For a renovation, note what stays, what moves, and which surfaces are included. For outdoor work, record boundaries, slopes, gates, and access for delivery. These details help you choose the right calculator inputs and make estimates easier to review with a supplier or contractor.</p>
+          <p>Measure the actual area or dimensions requested by each calculator, confirm unit consistency, and keep separate materials in separate calculations. A surface estimate is not a coordinated design or complete bill of materials. For structural, electrical, plumbing, waterproofing, fire-safety, or other regulated work, rely on approved project documents and qualified professionals.</p>
         </div>
       </section>
     </>

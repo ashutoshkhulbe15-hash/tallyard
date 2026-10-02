@@ -16,9 +16,9 @@ export default function PaintPlannerPage() {
       <p className="text-[17px] md:text-lg text-ink-muted max-w-2xl leading-relaxed">Estimate paint with measured surfaces, the exact product&apos;s stated coverage, and coat count. Actual use depends on substrate, preparation, application, and product instructions.</p>
     </div></section>
     <section className="container-content py-10"><div className="guide-prose">
-      <h2>Use product coverage, not a universal price or yield</h2>
-      <p>The previous planner assigned generic paint grades, prices, primer and ceiling quantities, and supplies from room dimensions. It could not verify the selected product, surface condition, openings, preparation, application rate, or current local price, so those outputs are no longer presented as a project takeoff or quote.</p>
-      <p>Measure each wall and ceiling surface you intend to coat and account for openings and non-painted areas. Check the chosen paint and primer labels for coverage and recoat instructions, and ask the supplier or painter to review the quantity. Primer choice depends on the surface and product system; follow manufacturer and project guidance.</p>
+      <h2>Measure only the surfaces you plan to coat</h2>
+      <p>Record each wall’s width and height, then add the ceiling or other surfaces only if they will be painted. Note doors, windows, built-ins, and areas with a different finish; use the calculator’s displayed opening assumptions and review large or unusual openings yourself. Keep the number of coats separate from the area measurement.</p>
+      <p>Enter coverage from the exact paint label, not a generic “gallons per room” rule. Coverage can change with texture, porosity, color change, preparation, application method, and the product. Primer is a separate product decision: follow the substrate and coating manufacturer’s instructions and include it only where specified. The result is a planning quantity, not a guaranteed purchase amount or quote.</p>
       <ul>
         <li><Link href="/paint-calculator" className="text-accent hover:underline">Paint quantity estimator</Link> — use its displayed coverage assumptions and confirm them against the product label.</li>
         <li><Link href="/drywall-calculator" className="text-accent hover:underline">Drywall estimator</Link> — separate sheet/finish-material estimates, not installation specification.</li>
