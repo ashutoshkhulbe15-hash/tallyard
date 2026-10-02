@@ -114,8 +114,8 @@ export const topsoilCalculatorConfig: CalculatorConfig = {
       note: "Background on soil properties; no generic soil density is assumed by this calculator.",
     },
     {
-      name: "Penn State Extension: Soil Management",
-      url: "https://extension.psu.edu/soil-management",
+      name: "Penn State Extension: Soil Testing",
+      url: "https://extension.psu.edu/soil-testing",
       note: "Soil quality, testing, and management guidance.",
     },
   ],

@@ -8,7 +8,6 @@ interface GuideSchemaProps {
 /**
  * Build the JSON-LD bundle for a guide page:
  * - Article (so Google treats it as an editorial piece, not a tool)
- * - FAQPage (for the FAQ section)
  * - BreadcrumbList (Home > Guides > {guide title})
  */
 export function getGuideSchema({
@@ -59,22 +58,6 @@ export function getGuideSchema({
       : {}),
   };
 
-  const faqPage =
-    config.faq.length > 0
-      ? {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: config.faq.map((item) => ({
-            "@type": "Question",
-            name: item.question,
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: item.answer,
-            },
-          })),
-        }
-      : null;
-
   const breadcrumbs = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -100,7 +83,7 @@ export function getGuideSchema({
     ],
   };
 
-  return faqPage ? [article, faqPage, breadcrumbs] : [article, breadcrumbs];
+  return [article, breadcrumbs];
 }
 
 export function GuideSchemaScript({ config }: { config: GuideConfig }) {

@@ -121,8 +121,8 @@ export const sodCalculatorConfig: CalculatorConfig = {
       note: "General sod information; package dimensions and availability should be confirmed with the supplier.",
     },
     {
-      name: "Clemson Cooperative Extension: Sodding a Lawn",
-      url: "https://hgic.clemson.edu/factsheet/sodding-a-lawn/",
+      name: "Clemson Cooperative Extension: Lawn Establishment",
+      url: "https://hgic.clemson.edu/factsheet/lawn-establishment/",
       note: "Extension resource for project-specific lawn establishment guidance.",
     },
   ],

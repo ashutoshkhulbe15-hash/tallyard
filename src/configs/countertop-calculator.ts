@@ -153,18 +153,18 @@ export const countertopCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "Natural Stone Institute: Installation Standards",
-      url: "https://www.naturalstoneinstitute.org/stoneprofessionals/technical-resources/",
-      note: "Fabrication and measurement conventions: gross rectangles, cutouts included, seam placement",
+      name: "Natural Stone Institute: DSDM Chapter 17 — Stone Counter and Lavatory Tops",
+      url: "https://pubs.naturalstoneinstitute.org/resources/library/?cat1=25&event=getAdvancedSearch&gosearch=1&mode=advancedSearch",
+      note: "Industry reference covering field measurements, countertop details, cutouts, seams, and support; this calculator does not create a fabrication template.",
     },
     {
       name: "Natural Stone Institute: Dimension Stone Design Manual",
-      url: "https://www.naturalstoneinstitute.org/designprofessionals/technical-resources/dsdm/",
+      url: "https://pubs.naturalstoneinstitute.org/resources/library/",
       note: "Thickness standards, overhang limits, and support requirements for stone tops",
     },
     {
       name: "NKBA: Kitchen Planning Guidelines",
-      url: "https://nkba.org/guidelines/",
+      url: "https://kb.nkba.org/info/kitchen-bath-planning-guidelines/",
       note: "Standard counter depths, island clearances, and seating overhang dimensions",
     },
     {

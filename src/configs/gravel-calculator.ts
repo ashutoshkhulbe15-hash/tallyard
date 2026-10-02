@@ -146,23 +146,13 @@ export const gravelCalculatorConfig: CalculatorConfig = {
     },
     {
       name: "AASHTO M43: Sizes of Aggregate for Road Construction",
-      url: "https://store.transportation.org/",
-      note: "The parallel highway specification most suppliers reference for base material",
+      url: "https://store.transportation.org/Common/DownloadContentFiles?id=2374",
+      note: "AASHTO Materials Book contents identify M 43; confirm the current specification and locally available aggregate with the supplier.",
     },
     {
-      name: "USDA NRCS: Gravel Road Construction and Maintenance",
-      url: "https://www.nrcs.usda.gov/resources/guides-and-instructions",
-      note: "Base depth, crowning, and compaction practice for unpaved surfaces",
-    },
-    {
-      name: "University of Minnesota Extension: Driveway Base",
-      url: "https://extension.umn.edu/",
-      note: "Residential driveway build-up and drainage recommendations",
-    },
-    {
-      name: "NCMA: Aggregate Base for Segmental Pavements",
-      url: "https://ncma.org/resource-library/",
-      note: "Compaction lift depth and geotextile use over weak subgrade",
+      name: "USDA NRCS: Earth and Aggregate Surfacing Design Guide",
+      url: "https://www.nrcs.usda.gov/sites/default/files/2022-11/TN%20210-AEN-04%20%20%20%20%20Earth%20and%20Aggregate%20Surfacing%20Design%20Guide%20%288-2017%29.pdf",
+      note: "Engineering guidance for aggregate-surfaced low-volume roads; residential site conditions still require project-specific judgment.",
     },
   ],
 

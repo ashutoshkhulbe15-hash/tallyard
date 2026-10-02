@@ -144,8 +144,8 @@ export const mulchCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "University of Maryland Extension: Mulch Basics",
-      url: "https://extension.umd.edu/resource/mulching-landscape",
+      name: "University of Maryland Extension: Mulching Trees and Shrubs",
+      url: "https://extension.umd.edu/resource/mulching-trees-and-shrubs",
       note: "Horticultural background; the calculator does not make a depth recommendation.",
     },
     {

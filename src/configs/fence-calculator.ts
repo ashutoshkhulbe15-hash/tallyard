@@ -137,14 +137,9 @@ export const fenceCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "This Old House: Fence Installation Guide",
-      url: "https://www.thisoldhouse.com/fences",
+      name: "This Old House: How to Choose and Put Up a Fence",
+      url: "https://www.thisoldhouse.com/fences/fencing-lessons",
       note: "Standard post spacing and rail count recommendations",
-    },
-    {
-      name: "Family Handyman: Build a Privacy Fence",
-      url: "https://www.familyhandyman.com/",
-      note: "General fencing installation reference; concrete quantity is not inferred from height alone",
     },
   ],
 

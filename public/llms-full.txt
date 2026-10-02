@@ -112,9 +112,9 @@ Methodology and limits:
 
 References:
 
-- Portland Cement Association: Concrete Basics: https://www.cement.org/learn/concrete-technology/concrete-construction — Industry reference for concrete volume calculation
+- NRMCA CIP 8: Discrepancies in Yield: https://www.nrmca.org/wp-content/uploads/2021/01/08pr.pdf — Explains why measured geometric volume and delivered concrete yield can differ; the calculator is a planning estimate, not a guaranteed order quantity.
 
-- National Ready Mixed Concrete Association: Concrete in Practice: https://www.nrmca.org/association-resources/research-and-engineering/concrete-in-practice/ — Industry education; project mix, design, and placement requirements should come from qualified project sources.
+- NRMCA CIP 31: Ordering Ready Mixed Concrete: https://www.nrmca.org/wp-content/uploads/2021/01/31pr.pdf — Ready-mix ordering guidance; confirm project specifications and order details with the supplier or contractor.
 
 Q: How much concrete do I need for a 10×10 slab?
 
@@ -218,7 +218,7 @@ Methodology and limits:
 
 References:
 
-- University of Maryland Extension: Mulch Basics: https://extension.umd.edu/resource/mulching-landscape — Horticultural background; the calculator does not make a depth recommendation.
+- University of Maryland Extension: Mulching Trees and Shrubs: https://extension.umd.edu/resource/mulching-trees-and-shrubs — Horticultural background; the calculator does not make a depth recommendation.
 
 - Sunset Magazine: Mulch Guide: https://www.sunset.com/garden/landscaping-design/mulch-basics — General background; verify plant-specific guidance for an actual landscape.
 
@@ -390,13 +390,9 @@ References:
 
 - ASTM D448: Standard Sizes of Coarse Aggregate: https://www.astm.org/d0448-12r17.html — The gradation numbering behind #57, #8, and the other size designations
 
-- AASHTO M43: Sizes of Aggregate for Road Construction: https://store.transportation.org/ — The parallel highway specification most suppliers reference for base material
+- AASHTO M43: Sizes of Aggregate for Road Construction: https://store.transportation.org/Common/DownloadContentFiles?id=2374 — AASHTO Materials Book contents identify M 43; confirm the current specification and locally available aggregate with the supplier.
 
-- USDA NRCS: Gravel Road Construction and Maintenance: https://www.nrcs.usda.gov/resources/guides-and-instructions — Base depth, crowning, and compaction practice for unpaved surfaces
-
-- University of Minnesota Extension: Driveway Base: https://extension.umn.edu/ — Residential driveway build-up and drainage recommendations
-
-- NCMA: Aggregate Base for Segmental Pavements: https://ncma.org/resource-library/ — Compaction lift depth and geotextile use over weak subgrade
+- USDA NRCS: Earth and Aggregate Surfacing Design Guide: https://www.nrcs.usda.gov/sites/default/files/2022-11/TN%20210-AEN-04%20%20%20%20%20Earth%20and%20Aggregate%20Surfacing%20Design%20Guide%20%288-2017%29.pdf — Engineering guidance for aggregate-surfaced low-volume roads; residential site conditions still require project-specific judgment.
 
 Q: How is aggregate volume calculated?
 
@@ -580,9 +576,7 @@ Methodology and limits:
 
 References:
 
-- This Old House: Fence Installation Guide: https://www.thisoldhouse.com/fences — Standard post spacing and rail count recommendations
-
-- Family Handyman: Build a Privacy Fence: https://www.familyhandyman.com/ — General fencing installation reference; concrete quantity is not inferred from height alone
+- This Old House: How to Choose and Put Up a Fence: https://www.thisoldhouse.com/fences/fencing-lessons — Standard post spacing and rail count recommendations
 
 Q: How many fence posts do I need for 100 feet of fence?
 
@@ -818,7 +812,7 @@ References:
 
 - USDA NRCS: Soils: https://www.nrcs.usda.gov/conservation-basics/natural-resource-concerns/soils — Background on soil properties; no generic soil density is assumed by this calculator.
 
-- Penn State Extension: Soil Management: https://extension.psu.edu/soil-management — Soil quality, testing, and management guidance.
+- Penn State Extension: Soil Testing: https://extension.psu.edu/soil-testing — Soil quality, testing, and management guidance.
 
 Q: How is soil volume estimated?
 
@@ -862,7 +856,7 @@ References:
 
 - Turfgrass Producers International: Consumer Resources: https://www.turfgrasssod.org/consumers/ — General sod information; package dimensions and availability should be confirmed with the supplier.
 
-- Clemson Cooperative Extension: Sodding a Lawn: https://hgic.clemson.edu/factsheet/sodding-a-lawn/ — Extension resource for project-specific lawn establishment guidance.
+- Clemson Cooperative Extension: Lawn Establishment: https://hgic.clemson.edu/factsheet/lawn-establishment/ — Extension resource for project-specific lawn establishment guidance.
 
 Q: How many sod pieces do I need?
 
@@ -920,7 +914,7 @@ References:
 
 - ASTM D6926: Preparation of Asphalt Mixture Specimens: https://www.astm.org/d6926-20.html — The density practice field compaction is verified against
 
-- FTC: Home Improvement Contractor Fraud: https://consumer.ftc.gov/articles/hiring-contractor — The driveway paving scam pattern and how to check a contractor
+- FTC: Home Improvement Contractor Fraud: https://consumer.ftc.gov/articles/how-avoid-home-improvement-scam — The driveway paving scam pattern and how to check a contractor
 
 Q: How is the weight estimate calculated?
 
@@ -1252,11 +1246,11 @@ Methodology and limits:
 
 References:
 
-- Natural Stone Institute: Installation Standards: https://www.naturalstoneinstitute.org/stoneprofessionals/technical-resources/ — Fabrication and measurement conventions: gross rectangles, cutouts included, seam placement
+- Natural Stone Institute: DSDM Chapter 17 — Stone Counter and Lavatory Tops: https://pubs.naturalstoneinstitute.org/resources/library/?cat1=25&event=getAdvancedSearch&gosearch=1&mode=advancedSearch — Industry reference covering field measurements, countertop details, cutouts, seams, and support; this calculator does not create a fabrication template.
 
-- Natural Stone Institute: Dimension Stone Design Manual: https://www.naturalstoneinstitute.org/designprofessionals/technical-resources/dsdm/ — Thickness standards, overhang limits, and support requirements for stone tops
+- Natural Stone Institute: Dimension Stone Design Manual: https://pubs.naturalstoneinstitute.org/resources/library/ — Thickness standards, overhang limits, and support requirements for stone tops
 
-- NKBA: Kitchen Planning Guidelines: https://nkba.org/guidelines/ — Standard counter depths, island clearances, and seating overhang dimensions
+- NKBA: Kitchen Planning Guidelines: https://kb.nkba.org/info/kitchen-bath-planning-guidelines/ — Standard counter depths, island clearances, and seating overhang dimensions
 
 - ASTM C615: Standard Specification for Granite Dimension Stone: https://www.astm.org/c0615_c0615m-18e01.html — The material standard granite slabs are graded against
 
@@ -1662,9 +1656,9 @@ References:
 
 - IRC 2021, Table R301.2(1): Climatic and Geographic Design Criteria: https://codes.iccsafe.org/content/IRC2021P1/chapter-3-building-planning — The table each jurisdiction fills in with its own adopted ground snow load
 
-- FEMA: Snow Load Safety Guide: https://www.fema.gov/emergency-managers/risk-management/building-science/publications — Snow density values, roof distress warning signs, and safe clearing practice
+- FEMA P-957: Snow Load Safety Guide: https://www.fema.gov/sites/default/files/documents/fema957_snowload_guide.pdf — Snow density values, roof distress warning signs, and safe clearing practice
 
-- NRCA: Roof Snow Removal Guidance: https://www.nrca.net/technical — Industry practice for clearing snow without damaging roof coverings
+- NRCA: Roof Snow Removal Guidance: https://www.nrca.net/roofing-guidelines/resources — Industry practice for clearing snow without damaging roof coverings
 
 Q: How much does roof snow weigh?
 

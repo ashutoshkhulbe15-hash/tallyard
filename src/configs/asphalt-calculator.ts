@@ -173,7 +173,7 @@ export const asphaltCalculatorConfig: CalculatorConfig = {
     },
     {
       name: "FTC: Home Improvement Contractor Fraud",
-      url: "https://consumer.ftc.gov/articles/hiring-contractor",
+      url: "https://consumer.ftc.gov/articles/how-avoid-home-improvement-scam",
       note: "The driveway paving scam pattern and how to check a contractor",
     },
   ],

@@ -110,7 +110,7 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
                 <span>{config.categoryLabel}</span>
               </nav>
               <h1 className="text-4xl md:text-5xl font-bold tracking-tighter leading-[1.03] mb-4 text-ink">
-                <BannerHeadline text={config.bannerHeadline} />
+                <BannerHeadline text={config.title} />
               </h1>
               <p className="text-[17px] md:text-lg text-ink-muted max-w-md leading-relaxed">
                 {config.description}

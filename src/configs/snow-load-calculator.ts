@@ -154,13 +154,13 @@ export const snowLoadCalculatorConfig: CalculatorConfig = {
       note: "The table each jurisdiction fills in with its own adopted ground snow load",
     },
     {
-      name: "FEMA: Snow Load Safety Guide",
-      url: "https://www.fema.gov/emergency-managers/risk-management/building-science/publications",
+      name: "FEMA P-957: Snow Load Safety Guide",
+      url: "https://www.fema.gov/sites/default/files/documents/fema957_snowload_guide.pdf",
       note: "Snow density values, roof distress warning signs, and safe clearing practice",
     },
     {
       name: "NRCA: Roof Snow Removal Guidance",
-      url: "https://www.nrca.net/technical",
+      url: "https://www.nrca.net/roofing-guidelines/resources",
       note: "Industry practice for clearing snow without damaging roof coverings",
     },
   ],

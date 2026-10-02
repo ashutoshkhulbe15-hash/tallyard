@@ -8,7 +8,6 @@ interface SchemaProps {
 /**
  * Generate the full JSON-LD schema bundle for a calculator page:
  * - WebApplication (for the tool itself)
- * - FAQPage (for the FAQ section)
  * - BreadcrumbList (for navigation context)
  */
 export function getCalculatorSchema({
@@ -79,22 +78,6 @@ export function getCalculatorSchema({
       }
     : null;
 
-  const faqPage =
-    config.faq.length > 0
-      ? {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: config.faq.map((item) => ({
-            "@type": "Question",
-            name: item.question,
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: item.answer,
-            },
-          })),
-        }
-      : null;
-
   const breadcrumbs = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -141,7 +124,6 @@ export function getCalculatorSchema({
 
   const schemas: object[] = [webApplication, breadcrumbs];
   if (article) schemas.push(article);
-  if (faqPage) schemas.push(faqPage);
   if (howTo) schemas.push(howTo);
   return schemas;
 }

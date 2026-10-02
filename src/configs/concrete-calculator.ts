@@ -153,14 +153,14 @@ export const concreteCalculatorConfig: CalculatorConfig = {
 
   sources: [
     {
-      name: "Portland Cement Association: Concrete Basics",
-      url: "https://www.cement.org/learn/concrete-technology/concrete-construction",
-      note: "Industry reference for concrete volume calculation",
+      name: "NRMCA CIP 8: Discrepancies in Yield",
+      url: "https://www.nrmca.org/wp-content/uploads/2021/01/08pr.pdf",
+      note: "Explains why measured geometric volume and delivered concrete yield can differ; the calculator is a planning estimate, not a guaranteed order quantity.",
     },
     {
-      name: "National Ready Mixed Concrete Association: Concrete in Practice",
-      url: "https://www.nrmca.org/association-resources/research-and-engineering/concrete-in-practice/",
-      note: "Industry education; project mix, design, and placement requirements should come from qualified project sources.",
+      name: "NRMCA CIP 31: Ordering Ready Mixed Concrete",
+      url: "https://www.nrmca.org/wp-content/uploads/2021/01/31pr.pdf",
+      note: "Ready-mix ordering guidance; confirm project specifications and order details with the supplier or contractor.",
     },
   ],
 
