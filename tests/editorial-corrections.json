@@ -1,0 +1,135 @@
+[
+  {
+    "route": "/paint-calculator",
+    "oldText": "paint=(perimeter×height−doors−windows)×coats÷coverage",
+    "newText": "paint=(perimeter×height−doors−windows+optionalceilingarea)×coats÷coverage",
+    "reason": "Corrected formula/unit scope; original article retained"
+  },
+  {
+    "route": "/solar-calculator",
+    "oldText": "No,notforpurchasedresidentialsystems.The30%residentialcleanenergycreditendedforexpendituresafterDecember31,2025.Third-party-ownedsystems(leasesandPPAs)maystillbenefitfromaseparatecommercialcreditpassedthroughbytheinstaller,andmanystateandutilityincentivesremain.Checkyourstateenergyofficeforcurrentprograms.",
+    "newText": "No,notforpurchasedresidentialsystems.Third-party-ownedsystems(leasesandPPAs)maystillbenefitfromaseparatecommercialcreditpassedthroughbytheinstaller,andmanystateandutilityincentivesremain.Checkyourstateenergyofficeforcurrentprograms.Fornew2026residentialwork,donotassumefederal25C/25Dcredits:therelevanteligibilityendedafterDecember31,2025.VerifycurrentIRSrulesandseparatestate/utilityprograms.",
+    "reason": "Specific expired-credit, arithmetic or incomplete safety-claim correction; question retained"
+  },
+  {
+    "route": "/stair-calculator",
+    "oldText": "Yes,downto10\"(IRCminimum).Belowthatisnotcode-compliant.Ifyou'retrulytightonhorizontalspace,considerawinderstair(wedge-shapedtreadsturningatacorner)oraspiralstair-bothconsumelesshorizontalspacethanastraightrunbutarehardertonavigatewithfurniture.",
+    "newText": "Yes,downto10\"(IRCminimum).Belowthatisnotcode-compliant.Ifyou'retrulytightonhorizontalspace,considerawinderstair(wedge-shapedtreadsturningatacorner)oraspiralstair-bothconsumelesshorizontalspacethanastraightrunbutarehardertonavigatewithfurniture.Thiscalculatorchecksonlythestatedassumptionsorreferencedimensions,notcompleteprojectcomplianceorsafety.",
+    "reason": "Specific expired-credit, arithmetic or incomplete safety-claim correction; question retained"
+  },
+  {
+    "route": "/heat-pump-calculator",
+    "oldText": "Right-sizeaheatpumpforyourhome.Sizesbothheatingandcoolingloadsbasedonsquarefootage,climatezone,andinsulationquality.",
+    "newText": "Exploreanillustrativeheat-pumploadestimatefromhomearea,climateandinsulationassumptions.Thisrule-of-thumbscenarioisnotManualJoranequipmentselection.",
+    "reason": "Scope correction; preserves article and calculator controls"
+  },
+  {
+    "route": "/heat-pump-calculator",
+    "oldText": "HeatpumpsizingismorecomplexthanpureACsizingbecauseitmusthandlebothcoolinginsummerANDheatinginwinter.HeatpumpsaresizedbytheLARGERofthetwoloads,incoldclimates,heatingdrivesthesize;inwarmclimates,coolingdoes.Thecalculatorcomputesbothandpicksthelarger.",
+    "newText": "Thisillustrativecalculatorcomparesheatingandcoolingscenariosusingtheexplicitsquare-footfactorsbelow.Thesearerule-of-thumbassumptions,notanACCAManualJcalculationorarecommendationtobuyaparticularsystem.Obtainaqualifiedproject-specificloadcalculationandequipmentperformanceselection.",
+    "reason": "Scoped heat-pump assumptions or exact pool-product handling; article retained"
+  },
+  {
+    "route": "/heat-pump-calculator",
+    "oldText": "InamildZone4climatewithaverageinsulation:a3-tonheatpump.ColdZone5-6:4tons.HotZone2:4tons(cooling-driven).VerycoldZone7:5tons.Alwayssizetothelargerofheatingorcooling.Thecalculatorabovedoesthisautomaticallybasedonyourspecificinputs.",
+    "newText": "Theresultdependsontheenteredscenariofactors.Thedefault2,000ft²Zone5caseyields80,000BTU/h(6.67ton-equivalent)undertheseillustrativeassumptions,outsidethelistedexamplesizes.Itdoesnotselectequipment;obtainaproject-specificloadcalculationandexactequipmentperformancedata.",
+    "reason": "Specific expired-credit, arithmetic or incomplete safety-claim correction; question retained"
+  },
+  {
+    "route": "/heat-pump-calculator",
+    "oldText": "3-toncentralheatpumpinstalled:$7,000-15,000in2025-2026USpricing.Cold-climatemodels(Mitsubishi,Fujitsu):$10,000-20,000.Ductlessmini-split(singlezone):$3,000-7,000perzone.Federaltaxcreditofupto$2,000availablethrough2032forqualifyingefficientmodels.",
+    "newText": "3-toncentralheatpumpinstalled:$7,000-15,000in2025-2026USpricing.Cold-climatemodels(Mitsubishi,Fujitsu):$10,000-20,000.Ductlessmini-split(singlezone):$3,000-7,000perzone.Fornew2026residentialwork,donotassumefederal25C/25Dcredits:therelevanteligibilityendedafterDecember31,2025.VerifycurrentIRSrulesandseparatestate/utilityprograms.",
+    "reason": "Specific expired-credit, arithmetic or incomplete safety-claim correction; question retained"
+  },
+  {
+    "route": "/water-heater-calculator",
+    "oldText": "40-50gallongastankinstalled:$1,200-2,500.40-50gallonelectrictank:$900-2,000.Gastankless:$2,500-4,500installed(includesventing).Electrictankless:$1,500-3,500installed(oftenneedspanelupgrade).Heatpumpwaterheater:$2,500-4,500(EnergyStarrebatesandtaxcreditsoftenavailable).",
+    "newText": "40-50gallongastankinstalled:$1,200-2,500.40-50gallonelectrictank:$900-2,000.Gastankless:$2,500-4,500installed(includesventing).Electrictankless:$1,500-3,500installed(oftenneedspanelupgrade).Fornew2026residentialwork,donotassumefederal25C/25Dcredits:therelevanteligibilityendedafterDecember31,2025.VerifycurrentIRSrulesandseparatestate/utilityprograms.",
+    "reason": "Specific expired-credit, arithmetic or incomplete safety-claim correction; question retained"
+  },
+  {
+    "route": "/pool-chlorine-calculator",
+    "oldText": "Chlorinedoseforanypoolsizeandstartinglevel.Handlesshock,dailymaintenance,andliquidortabletmath.",
+    "newText": "Estimatechlorineproductmassfrompoolvolume,measuredfreechlorine,anenteredtargetandexactlabelstrength.Optionalliquidvolumeusesenteredproductdensity;notatreatmentrecommendation.",
+    "reason": "Scope correction; preserves article and calculator controls"
+  },
+  {
+    "route": "/pool-chlorine-calculator",
+    "oldText": "dose=(volume÷10,000)×ppmneeded×productfactor(ozper10kgalperppm)",
+    "newText": "productmass=watervolume(L)×enteredppmgap÷1000÷labelavailable-chlorinefraction;liquidvolumeonlyfromexactentereddensity",
+    "reason": "Corrected formula/unit scope; original article retained"
+  },
+  {
+    "route": "/pool-chlorine-calculator",
+    "oldText": "Standarddosingfactors(ouncesofproductper10,000gallonsper1ppmincrease):liquid10%sodiumhypochlorite=10.5oz;calciumhypochlorite65%granular=1.8oz;trichlor90%(stabilizedtablets)=1.3oz;dichlor55%(stabilizedgranular)=2.1oz.Trichloristhemostconcentratedbyweight,butalsothemostacidic;regularusedropspH.",
+    "newText": "Usetheexactproductlabel'savailable-chlorinepercentagebyweight.Genericproductcategoriesdonotestablishlabelstrengthordensity.Thetoolestimatesmassbymassbalanceandconvertsliquidmasstovolumeonlywhenexactdensityisentered.",
+    "reason": "Scoped heat-pump assumptions or exact pool-product handling; article retained"
+  },
+  {
+    "route": "/pool-chlorine-calculator",
+    "oldText": "Targetlevelsdependonuse:1-3ppmisnormalmaintenanceforaresidentialpool.3-5ppmduringheavyuseorwarmweather.10ppmisshocktreatmentafteralgae,cloudywater,oraheavyswimday.Levelsabove5ppmshoulddropto3ppmbeforeswimming(take4-8hoursforchlorinetobreakdownnaturally).",
+    "newText": "Thetooldoesnotprescribeatargetorshock-treatmentschedule,ordeterminesafeswimmingconditions.Followapplicablepublic-healthguidanceandtheexactproductlabel;pH,stabilizerandtestlimitsaffectinterpretation.",
+    "reason": "Scoped heat-pump assumptions or exact pool-product handling; article retained"
+  },
+  {
+    "route": "/pool-chlorine-calculator",
+    "oldText": "Liquidchlorineisthemostcommonforpoolmaintenance:directpourintothepoolwiththepumprunning.Granularproductsdissolvefasterandarestrongerpervolumebutaddcalcium(cal-hypo)orcyanuricacid(dichlor)thataccumulatesovertime.Trichlortabletsgoinfloatingdispensersorinlinefeedersforslow,continuousdosing.",
+    "newText": "Followtheexactproduct'sapplicationinstructions.Donotmixchemicals.Pre-dissolveonlyiftheproductlabelexplicitlydirectsit;followitsorderofadditionandrequiredprecautions.",
+    "reason": "Scoped heat-pump assumptions or exact pool-product handling; article retained"
+  },
+  {
+    "route": "/snow-load-calculator",
+    "oldText": "Roofsnowloadinpoundspersquarefoot.Comparesyouractualsnowagainstdesignloadcapacity:flagswhenroofisover-stressed.",
+    "newText": "Estimatesnowandiceweightfromdepth,roofareaandillustrativedensityassumptions.Aselectedreferencepressureisnotyourroof'sverifiedstructuralcapacity.",
+    "reason": "Scope correction; preserves article and calculator controls"
+  },
+  {
+    "route": "/stud-spacing-calculator",
+    "oldText": "Studsneededforanywall,includingheadersforopenings.IRC-compliantspacingwithkingstuds,jackstuds,andcripples.",
+    "newText": "Estimatelinestudsandillustrativeextrastudsforenteredcorners,doorsandwindows.Headerdesignandcompletestructural/codecompliancearenotassessed.",
+    "reason": "Scope correction; preserves article and calculator controls"
+  },
+  {
+    "route": "/stud-spacing-calculator",
+    "oldText": "Headersizing:non-bearingwalls(interiorpartitionsnotsupportingrooforfloorloads)canuse2×4flat-plateheadersforopeningsunder4feet.Bearingwalls(mostexteriorwalls,load-bearinginteriorwalls)requireheavierheadersperIRC2021TableR602.7:2×6upto4-ftspans,2×8upto6-ftspans,2×10upto8-ftspans,2×12upto10-ftspans.Thecalculatorrecommendsaminimum,andyoushouldalwaysverifywithactualspancalculations.",
+    "newText": "Headersizingdependsonactualopeningspan,lumberspeciesandgrade,supportedloads,buildinggeometryandthelocallyadoptedcode.Thestud-countworksheetdoesnotselectaheaderorestablishapermissiblespan.Usetheapplicableapprovedspantablesoraproject-specificengineereddesign.",
+    "reason": "Scoped heat-pump assumptions or exact pool-product handling; article retained"
+  },
+  {
+    "route": "/stud-spacing-calculator",
+    "oldText": "Non-bearingwallswithopeningsunder4ft:2×4flatheaderOK.Bearingwalls:2×6headerforupto4-ftspan,2×8forupto6ft,2×10forupto8ft,2×12forupto10ft.Spansover10fttypicallyneedengineeredlumber(LVL,glulam).AlwaysverifywithIRCTableR602.7foryourspecificloadandspan.",
+    "newText": "Thereisnouniversalheadersizeforanopeningwidth.Species,grade,supportedloadsandbuildinggeometryaffecttheapplicablespantableorengineereddesign.Thisworksheetcountsillustrativeframingextrasonly;itdoesnotselectaheader.Obtaintheproject-specificdesignandverifythelocallyadoptedrequirements.",
+    "reason": "Specific expired-credit, arithmetic or incomplete safety-claim correction; question retained"
+  },
+  {
+    "route": "/egress-window-calculator",
+    "oldText": "CheckawindowagainstIRCR310egressrequirements:netclearopening,minimumwidthandheight,andsillheight,withapassorfailverdictandthefixifitfallsshort.",
+    "newText": "Compareenterednet-clearwidth,height,openingareaandsillheightwiththelistedIRCreferencedimensions.Thispartialcomparisonisnotcompletecodecomplianceoraninstallationapproval.",
+    "reason": "Scope correction; preserves article and calculator controls"
+  },
+  {
+    "route": "/pool-chlorine-calculator",
+    "oldText": "Granularpouredstraightin.Cal-hyposcattereddryacrossthesurfacecloudsthewaterandcanbleachvinyllinerswherethegrainssettle.Pre-dissolveitinabucketofpoolwater,stirwithastickthatisnotyourhand,andpourtheslurryaroundtheperimeter.Alwayschemicalintowater,neverwaterintochemical.",
+    "newText": "Granularpouredstraightin.Cal-hyposcattereddryacrossthesurfacecloudsthewaterandcanbleachvinyllinerswherethegrainssettle.Followtheexactproductlabelforapplication;pre-dissolveonlywhenthatlabelexplicitlydirectsit.Nevermixchemicals,andfollowthelabel'sorderofadditionandprotectiveequipmentrequirements.",
+    "reason": "CDC: pre-dissolve only when the exact product label directs it; no blanket mixing procedure",
+    "source": "https://www.cdc.gov/healthy-swimming/media/pdfs/Pool-Chemical-Safety-USE-poster-p.pdf"
+  },
+  {
+    "route": "/pool-chlorine-calculator",
+    "oldText": "Fast,pre-dissolve",
+    "newText": "Followexactlabelfordissolution",
+    "reason": "Exact product label controls dissolution/application; original comparison table retained"
+  },
+  {
+    "route": "/pool-chlorine-calculator",
+    "oldText": "Pre-dissolvedcal-hypoordichlor",
+    "newText": "Cal-hypoordichlorusedperexactlabel",
+    "reason": "Exact product label controls dissolution/application; original comparison table retained"
+  },
+  {
+    "route": "/pool-chlorine-calculator",
+    "oldText": "Workingrulesforresidentialpools.Whenindoubt,test:swimwhenfreechlorineisatorbelow4ppmandthewaterisclear.",
+    "newText": "Illustrativetimingexamples,notclearancetoswim.Exactproductinstructions,applicablewater-qualityguidanceandmeasuredconditionscontrolreopening;elapsedtimeorchlorinealonedoesnotestablishsafety.",
+    "reason": "A single chlorine ceiling or elapsed time is not a swimming-safety clearance; original timing table remains as illustrative examples"
+  }
+]

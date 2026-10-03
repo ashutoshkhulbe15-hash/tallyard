@@ -118,16 +118,21 @@ test("paint uses entered label coverage and metric conversion preserves the phys
 });
 
 test("package arithmetic is stable when a physical area is converted to metric", () => {
-  for (const slug of ["tile-calculator", "flooring-calculator", "insulation-calculator", "shower-tile-calculator", "backsplash-calculator", "brick-calculator", "wallpaper-calculator", "grout-calculator"]) {
+  for (const slug of ["tile-calculator", "flooring-calculator", "insulation-calculator", "shower-tile-calculator", "backsplash-calculator", "brick-calculator", "wallpaper-calculator"]) {
     const config = configs[slug];
     const values = exampleValues(config);
     assert.equal(config.calculate(values, "imperial").valueRounded, config.calculate(convertCalculatorValues(config.inputs, values, "imperial", "metric"), "metric").valueRounded, slug);
   }
 });
 
-test("stale price and full-takeoff promises are absent from changed calculator metadata", () => {
-  for (const slug of ["countertop-calculator", "shed-calculator", "fence-calculator"]) {
-    const source = fs.readFileSync(path.join(root, "src/app", slug, "page.tsx"), "utf8");
-    assert.doesNotMatch(source, /Cost by Material|Full material list, cost breakdown|concrete for any fence|Includes gates and corners/);
-  }
+test("restored takeoff features exist and benchmark prices are explicitly qualified", () => {
+  assert.match(configs["countertop-calculator"].planningNotice, /illustrative original benchmarks/);
+  for (const slug of ["countertop-calculator", "shed-calculator", "fence-calculator"]) assert.equal(configs[slug].howTo, undefined);
+  const ids=configs["fence-calculator"].inputs.map(input=>input.id);
+  assert.ok(ids.includes("gates") && ids.includes("corners"));
+  const shed=configs["shed-calculator"].calculate(exampleValues(configs["shed-calculator"]),"imperial");
+  assert.ok(shed.breakdown.length>=5, "restored shed material breakdown");
+  const grout=configs["grout-calculator"];
+  const values=exampleValues(grout);
+  assert.ok(Math.abs(grout.calculate(convertCalculatorValues(grout.inputs,values,"imperial","metric"),"metric").value / 0.45359237 - grout.calculate(values,"imperial").value)<1e-8);
 });

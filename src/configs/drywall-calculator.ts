@@ -1,71 +1,288 @@
+import { reconcileCalculator } from "@/lib/reconcile-calculator";
 import { DrywallCalculatorExpansion } from "@/content/drywall-expansion";
 import type { CalculatorConfig } from "@/lib/types";
-import { formatNumber, round, ceilQuantity } from "@/lib/format";
+import { round, formatNumber , ceilQuantity } from "@/lib/format";
 
 export const drywallCalculatorConfig: CalculatorConfig = {
-  ContentExpansion: DrywallCalculatorExpansion,
   slug: "drywall-calculator",
   title: "Drywall Calculator",
-  description: "Estimate panel count from net measured surface area and a selected nominal panel size. Does not create a layout or finishing-material takeoff.",
+  description:
+    "Sheets of drywall needed for any room or wall. Accounts for waste, cuts, and standard sheet sizes so you buy once.",
   categoryLabel: "Drywall",
   category: "drywall",
-  bannerHeadline: "Estimate panel area.",
-  bannerTags: ["Net measured area", "Nominal panel size", "No installation advice"],
+
+  bannerHeadline: "Sheet smarter.",
+  bannerTags: ["Walls and ceilings", "Accounts for waste", "4×8 or 4×12"],
+
   inputs: [
-    { id: "area", label: "Net surface area to cover", type: "number", unitImperial: "ft²", unitMetric: "m²", defaultImperial: 800, defaultMetric: 74.3, min: 0.01, step: 1 },
-    { id: "panelSize", label: "Nominal panel-size scenario", type: "select", defaultImperial: "4x8", options: [
-      { label: "4 × 8 ft (32 ft²)", value: "4x8" },
-      { label: "4 × 10 ft (40 ft²)", value: "4x10" },
-      { label: "4 × 12 ft (48 ft²)", value: "4x12" },
-    ] },
-    { id: "allowance", label: "User-selected planning allowance", type: "select", defaultImperial: "0", options: [
-      { label: "0%", value: "0" }, { label: "5%", value: "5" }, { label: "10%", value: "10" }, { label: "15%", value: "15" },
-    ] },
+    {
+      id: "length",
+      label: "Room length",
+      type: "number",
+      unitImperial: "ft",
+      unitMetric: "m",
+      defaultImperial: 14,
+      defaultMetric: 4.3,
+      min: 1,
+      step: 0.5,
+    },
+    {
+      id: "width",
+      label: "Room width",
+      type: "number",
+      unitImperial: "ft",
+      unitMetric: "m",
+      defaultImperial: 12,
+      defaultMetric: 3.7,
+      min: 1,
+      step: 0.5,
+    },
+    {
+      id: "height",
+      label: "Ceiling height",
+      type: "number",
+      unitImperial: "ft",
+      unitMetric: "m",
+      defaultImperial: 9,
+      defaultMetric: 2.7,
+      min: 1,
+      step: 0.5,
+    },
+    {
+      id: "sheetSize",
+      label: "Sheet size",
+      type: "select",
+      defaultImperial: "4x8",
+      options: [
+        { label: "4 × 8 ft", value: "4x8" },
+        { label: "4 × 10 ft", value: "4x10" },
+        { label: "4 × 12 ft", value: "4x12" },
+      ],
+    },
+    {
+      id: "includeCeiling",
+      label: "Include ceiling",
+      type: "select",
+      defaultImperial: "yes",
+      options: [
+        { label: "Yes", value: "yes" },
+        { label: "No (walls only)", value: "no" },
+      ],
+    },
+    {
+      id: "waste",
+      label: "Waste factor",
+      type: "select",
+      defaultImperial: 10,
+      options: [
+        { label: "10%", value: 10 },
+        { label: "15%", value: 15 },
+        { label: "20%", value: 20 },
+      ],
+      help: "Bump up for rooms with many windows, doors, or angles",
+    },
   ],
+
   calculate: (values, units) => {
-    const area = Number(values.area);
-    const allowance = Number(values.allowance);
-    const panelKey = String(values.panelSize);
-    const panelAreas = units === "metric"
-      ? { "4x8": 32 * 0.09290304, "4x10": 40 * 0.09290304, "4x12": 48 * 0.09290304 }
-      : { "4x8": 4 * 8, "4x10": 4 * 10, "4x12": 4 * 12 };
-    const panelArea = panelAreas[panelKey as keyof typeof panelAreas];
-    if (!Number.isFinite(area) || area <= 0 || !Number.isFinite(allowance) || ![0, 5, 10, 15].includes(allowance) || !panelArea) {
-      throw new Error("Enter positive net area and select a listed panel-size scenario and allowance.");
-    }
-    const adjustedArea = area * (1 + allowance / 100);
-    const count = ceilQuantity(adjustedArea / panelArea);
+    const L = Number(values.length) || 0;
+    const W = Number(values.width) || 0;
+    const H = Number(values.height) || 0;
+    const sheetSize = String(values.sheetSize || "4x8");
+    const includeCeiling = String(values.includeCeiling || "yes") === "yes";
+    const waste = Number(values.waste) || 10;
+
+    // Sheet area in sq ft (or converted for metric)
+    const sheetDimensions: Record<string, { wImp: number; hImp: number }> = {
+      "4x8": { wImp: 4, hImp: 8 },
+      "4x10": { wImp: 4, hImp: 10 },
+      "4x12": { wImp: 4, hImp: 12 },
+    };
+    const sheet = sheetDimensions[sheetSize] || sheetDimensions["4x8"];
+
+    // For metric: convert input dimensions to feet internally since sheets are sold in feet
+    // globally. Alternative: metric dimensions treated as meters and sheets also in meters.
+    // We'll be consistent: if user is in metric, we assume they're in a market with metric
+    // sheets (1.2m × 2.4m / 3.0m / 3.6m ≈ 4×8, 4×10, 4×12)
+    const metricSheetSizes: Record<string, { wMet: number; hMet: number }> = {
+      "4x8": { wMet: 1.2, hMet: 2.4 },
+      "4x10": { wMet: 1.2, hMet: 3.0 },
+      "4x12": { wMet: 1.2, hMet: 3.6 },
+    };
+    const metricSheet = metricSheetSizes[sheetSize] || metricSheetSizes["4x8"];
+
+    const sheetArea =
+      units === "metric"
+        ? metricSheet.wMet * metricSheet.hMet
+        : sheet.wImp * sheet.hImp;
     const areaUnit = units === "metric" ? "m²" : "ft²";
+
+    // Walls: perimeter × height
+    const perimeter = 2 * (L + W);
+    const wallArea = perimeter * H;
+
+    // Ceiling (if included): L × W
+    const ceilingArea = includeCeiling ? L * W : 0;
+
+    const totalArea = wallArea + ceilingArea;
+    const rawSheets = totalArea / sheetArea;
+    const sheetsWithWaste = rawSheets * (1 + waste / 100);
+    const sheetsNeeded = ceilQuantity(sheetsWithWaste);
+
     return {
-      value: count,
-      unit: count === 1 ? "panel estimate" : "panels estimate",
-      valueRounded: count,
+      value: sheetsNeeded,
+      unit: sheetsNeeded === 1 ? "sheet" : "sheets",
+      valueRounded: sheetsNeeded,
       breakdown: [
-        { label: "entered net area", value: `${formatNumber(round(area, 2))} ${areaUnit}` },
-        { label: "selected nominal panel area", value: `${formatNumber(round(panelArea, 2))} ${areaUnit}` },
-        { label: "selected allowance", value: `${allowance}%` },
-        { label: "panel count estimate", value: `${count}` },
-        { label: "layout, fasteners, and finishing materials", value: "not calculated" },
+        { label: "total area", value: `${formatNumber(round(totalArea, 1))} ${areaUnit}` },
+        { label: "sheet size", value: sheetSize.replace("x", " × ") },
+        { label: "waste", value: `${waste}%` },
       ],
       formulaSteps: [
-        `adjusted area = ${formatNumber(round(area, 2))} ${areaUnit} × (1 + ${allowance}%) = ${formatNumber(round(adjustedArea, 2))} ${areaUnit}`,
-        `panels = ceil(${formatNumber(round(adjustedArea, 2))} ${areaUnit} ÷ ${formatNumber(round(panelArea, 2))} ${areaUnit}/panel) = ${count}`,
-        "Area division does not account for sheet layout, framing, openings, damage, handling, or product dimensions. Verify measurements and local product availability.",
+        `walls = 2 × (${L} + ${W}) × ${H} = ${formatNumber(round(wallArea, 1))} ${areaUnit}`,
+        includeCeiling
+          ? `ceiling = ${L} × ${W} = ${formatNumber(round(ceilingArea, 1))} ${areaUnit}`
+          : `ceiling = not included`,
+        `total area = ${formatNumber(round(totalArea, 1))} ${areaUnit}`,
+        `sheet area = ${units === "metric" ? `${metricSheet.wMet} × ${metricSheet.hMet}` : `${sheet.wImp} × ${sheet.hImp}`} = ${formatNumber(round(sheetArea, 2))} ${areaUnit}`,
+        `raw sheets = ${formatNumber(round(totalArea, 1))} ÷ ${formatNumber(round(sheetArea, 2))} = ${formatNumber(round(rawSheets, 1))}`,
+        `with ${waste}% waste = ${formatNumber(round(rawSheets, 1))} × ${(1 + waste / 100).toFixed(2)} = ${formatNumber(round(sheetsWithWaste, 1))}`,
+        `rounded up to ${sheetsNeeded} sheets`,
       ],
+      composition: {
+        unit: areaUnit,
+        total: round(totalArea, 1),
+        segments: [
+          { label: "Walls", amount: round(wallArea, 1), shade: "primary" },
+          ...(includeCeiling
+            ? ([{ label: "Ceiling", amount: round(ceilingArea, 1), shade: "secondary" as const }])
+            : []),
+        ],
+      },
     };
   },
-  formulaDescription: "panels = ceil((entered net area × (1 + selected allowance)) ÷ selected nominal panel area)",
+
+  ContentExpansion: DrywallCalculatorExpansion,
+
+  howTo: {
+    name: "How to calculate drywall for a room",
+    description:
+      "Estimate the sheets of drywall plus the joint compound, tape, and screws needed to finish any room from its dimensions.",
+    steps: [
+      {
+        name: "Measure the square footage",
+        text: "Multiply the room perimeter (all four wall lengths added together) by the ceiling height for wall area. Add length times width if you are drywalling the ceiling. Do not subtract standard doors and windows.",
+      },
+      {
+        name: "Divide by sheet size",
+        text: "Divide total square footage by 32 for 4x8 sheets or 48 for 4x12 sheets to get the raw sheet count.",
+      },
+      {
+        name: "Add a waste factor",
+        text: "Add 10 percent for square rooms, 15 percent for typical rooms, or 20 percent for rooms with many openings or angles. Round up to the next whole sheet.",
+      },
+      {
+        name: "Add finishing materials",
+        text: "Plan roughly 1 gallon of joint compound per 100 square feet per coat over three coats, one 500-foot roll of tape per 500 square feet, and about 1 pound of screws per 300 square feet.",
+      },
+      {
+        name: "Pick the thickness and finish level",
+        text: "Use 1/2 inch for walls and 5/8 inch for ceilings and garage separations. Finish to Level 4 for normal painted rooms, or Level 5 for gloss paint and raking-light walls.",
+      },
+    ],
+  },
+
+  formulaDescription:
+    "sheets = ⌈((wall area + ceiling area) ÷ sheet area) × (1 + waste)⌉",
+
   methodology: [
-    "Enter net surface area after accounting for openings and select a nominal panel-area scenario. The estimator multiplies area by the allowance you choose, divides by panel area, and rounds up to a whole panel.",
-    "This is area arithmetic, not a sheet layout, material takeoff, or installation guide. It does not determine panel type, thickness, fire or moisture performance, fastener schedule, framing layout, joint finish, compound, tape, or local code requirements. Verify the exact product dimensions and project specifications.",
+    "Wall area is calculated as perimeter (2 × length + 2 × width) times ceiling height. If 'include ceiling' is selected, the ceiling area (length × width) is added. No subtraction is made for doors and windows, because drywall cuts leave unusable scrap, and the waste factor covers those small openings better than exact subtraction does.",
+    "Sheet sizes are the three standard options sold at lumber yards in North America: 4×8 (most common, easiest to carry), 4×10 (reduces seams on 10-ft ceilings), and 4×12 (fewest seams, hardest to handle). Metric markets use the equivalent 1.2 × 2.4 m, 1.2 × 3.0 m, and 1.2 × 3.6 m panels.",
+    "Waste factor of 10% is standard for square rooms with few openings. Use 15% for most typical rooms; 20% for rooms with lots of windows, doors, angled walls, or vaulted ceilings where cut scraps can't be reused.",
+    "The result is rounded up to the next whole sheet because you can't buy half a sheet. For larger projects, round up to the next even number, since damaged sheets and miscounts during install are common, and a spare pair saves a return trip.",
   ],
-  sources: [],
+
+  sources: [
+    {
+      name: "Gypsum Association GA-216: Application and Finishing of Gypsum Panel Products",
+      url: "https://gypsum.org/technical/ga-216-application-and-finishing-of-gypsum-panel-products/",
+      note: "Industry standard for fastener spacing, joint compound coverage, and tape application",
+    },
+    {
+      name: "Gypsum Association GA-214: Recommended Levels of Finish",
+      url: "https://gypsum.org/technical/ga-214-recommended-levels-of-finish-for-gypsum-panel-products/",
+      note: "Defines the Level 0 through Level 5 finish scale referenced in this guide",
+    },
+    {
+      name: "IRC Section R702: Interior Covering",
+      url: "https://codes.iccsafe.org/content/IRC2021P2/chapter-7-wall-covering",
+      note: "Thickness and fire-rating requirements, including 5/8 Type X at garage separations",
+    },
+    {
+      name: "ASTM C1396: Standard Specification for Gypsum Board",
+      url: "https://www.astm.org/c1396_c1396m-17.html",
+      note: "Material specification governing standard drywall panel dimensions and grades",
+    },
+    {
+      name: "USG Sheetrock Brand Gypsum Panels Installation Guide",
+      url: "https://www.usg.com/content/usgcom/en/tools-resources/installation-guides.html",
+      note: "Manufacturer installation guidance for sheet handling, hanging order, and finishing",
+    },
+  ],
+
   related: [
-    { name: "Paint area estimator", slug: "paint-calculator", description: "Estimate coating quantity from entered surfaces and product coverage" },
-    { name: "Insulation package estimator", slug: "insulation-calculator", description: "Package count from measured area and product-label coverage" },
+    { name: "Paint calculator", slug: "paint-calculator", description: "Gallons of paint after drywall is up" },
+    { name: "Insulation calculator", slug: "insulation-calculator", description: "R-value and square footage for walls" },
+    { name: "Stud spacing calculator", slug: "stud-spacing-calculator", description: "Framing layout so sheet edges land on studs" },
+    { name: "Shower tile calculator", slug: "shower-tile-calculator", description: "Tile over the backer board in a wet area" },
   ],
+
   faq: [
-    { question: "Does this provide an installation layout?", answer: "No. It divides entered net area by nominal panel area. Layout, cuts, framing, fastening, and finishing are not assessed." },
-    { question: "Does this calculate compound, tape, or screws?", answer: "No. Those quantities depend on product, layout, substrate, specification, and installation details not included here." },
+    {
+      question: "Is sheetrock the same as drywall?",
+      answer:
+        "Yes. Sheetrock is US Gypsum's brand name for drywall, the way Kleenex is a brand of tissue. Drywall, sheetrock, gypsum board, and wallboard are the same product, and this calculator works identically for all of them.",
+    },
+    {
+      question: "How many sheets of drywall do I need for a 12×14 room?",
+      answer:
+        "For a 12×14 room with 9-foot ceilings including the ceiling, you need about 8 sheets of 4×8 drywall at 10% waste. Walls only: 6 sheets. The calculator above gives you the exact number for your dimensions.",
+    },
+    {
+      question: "Should I use 4×8 or 4×12 sheets?",
+      answer:
+        "4×8 sheets (32 sq ft) are the easiest to handle; one person can install them alone. 4×12 sheets (48 sq ft) have fewer horizontal seams on 12-foot-wide walls, which means less taping and a smoother finish. Use 4×12 for long unbroken walls; 4×8 for tight rooms or solo installation.",
+    },
+    {
+      question: "Do I subtract doors and windows?",
+      answer:
+        "No. Drywall cuts leave scrap that can rarely be reused around openings. The waste factor accounts for cuts around doors and windows better than subtracting their area directly. Subtracting would actually leave you short.",
+    },
+    {
+      question: "What thickness of drywall should I buy?",
+      answer:
+        "1/2 inch is standard for walls. 5/8 inch is code-required for ceilings (prevents sag) and for fire-rated walls between garages and living space. 1/4 inch is for curved walls or overlays. The calculator assumes standard thickness, and thicker sheets don't change area math.",
+    },
+    {
+      question: "How much joint compound and tape do I need?",
+      answer:
+        "As a rule of thumb: 1 gallon of joint compound per 100 sq ft of drywall, and 1 roll of tape (500 ft) per 5-6 sheets. So for 10 sheets of 4×8, plan on about 3 gallons of mud and 2 rolls of tape.",
+    },
+    {
+      question: "Is moisture-resistant drywall necessary for bathrooms?",
+      answer:
+        "Green board (moisture-resistant) is recommended for bathroom walls except inside the shower enclosure, where cement board or a waterproof substrate is required. Quantity calculation is the same; green board just costs 20-30% more.",
+    },
+    {
+      question: "How long does drywall take to install?",
+      answer:
+        "A solo DIYer averages 1-2 sheets per hour for hanging only. Add another 50-100% for taping, mudding, and sanding. A 12×14 room (8 sheets) typically takes a weekend from bare studs to paint-ready.",
+    },
+    {
+      question: "Can I use this for garage or basement?",
+      answer:
+        "Yes. The math is identical for any room. For basements, use moisture-resistant drywall on exterior walls. For garages, check local code, since many require 5/8 inch fire-rated drywall on shared walls with the house.",
+    },
   ],
 };
+
+reconcileCalculator(drywallCalculatorConfig);

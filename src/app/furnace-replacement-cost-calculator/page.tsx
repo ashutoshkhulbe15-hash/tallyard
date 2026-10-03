@@ -6,12 +6,14 @@ import { getConfig } from "@/configs";
 const SLUG = "furnace-replacement-cost-calculator";
 
 export const metadata: Metadata = {
-  title: "Furnace Replacement Cost Calculator",
-  description: "Add line items from an itemized furnace-replacement quote; no equipment sizing or current-price estimate.",
+  title: "Furnace Replacement Cost Calculator: 2026 Gas, Oil & AC",
+  description:
+    "Free furnace and AC replacement cost calculator: 2026 installed prices by size and efficiency, repair vs replace guidance, and every cost itemized.",
   alternates: { canonical: "/furnace-replacement-cost-calculator" },
   openGraph: {
-    title: "Furnace Replacement Cost Calculator",
-    description: "Quote arithmetic only; no equipment sizing, repair advice, or market prices.",
+    title: "Furnace Replacement Cost Calculator: 2026 Gas, Oil & AC",
+    description:
+      "Free furnace and AC replacement cost calculator: 2026 installed prices by size and efficiency, with repair vs replace guidance.",
     url: "https://www.tallyard.com/furnace-replacement-cost-calculator",
     type: "website",
   },

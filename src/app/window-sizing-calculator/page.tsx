@@ -6,13 +6,14 @@ import { getConfig } from "@/configs";
 const SLUG = "window-sizing-calculator";
 
 export const metadata: Metadata = {
-  title: "Window Sizing Calculator",
+  title: "Window Size Calculator: Egress, Rough Opening & Measuring",
   description:
-    "Calculate area from entered rectangular dimensions only. Does not determine egress, glazing, rough opening, or code compliance.",
+    "Free window calculator: egress size, rough opening, and light and vent minimums to code. Plus how to measure a window for replacement.",
   alternates: { canonical: "/window-sizing-calculator" },
   openGraph: {
-    title: "Window Sizing Calculator",
-    description: "Rectangular area arithmetic from user-entered window dimensions only.",
+    title: "Window Size Calculator: Egress, Rough Opening & Measuring",
+    description:
+      "Free window calculator: egress size, rough opening, and code minimums. Plus how to measure a window for replacement.",
     url: "https://www.tallyard.com/window-sizing-calculator",
     type: "website",
   },

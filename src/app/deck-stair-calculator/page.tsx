@@ -6,13 +6,14 @@ import { getConfig } from "@/configs";
 const SLUG = "deck-stair-calculator";
 
 export const metadata: Metadata = {
-  title: "Deck Stair Calculator",
+  title: "Deck Stair Calculator: Stringer Layout, Code & Cost",
   description:
-    "Explore equal-rise stair geometry from total rise and user-selected dimensions. Not a code check, stringer layout, or construction plan.",
+    "Free deck stair calculator: riser height, tread run, stringer length and board counts, checked against IRC R311.7, with a printable dimensioned cut sheet.",
   alternates: { canonical: "/deck-stair-calculator" },
   openGraph: {
-    title: "Deck Stair Calculator",
-    description: "Explore equal-rise stair geometry. Not a code check or construction plan.",
+    title: "Deck Stair Calculator: Stringer Layout, Code & Cost",
+    description:
+      "Free deck stair calculator with a printable stringer cut sheet and IRC R311.7 pass/fail checks.",
     url: "https://www.tallyard.com/deck-stair-calculator",
     type: "website",
   },

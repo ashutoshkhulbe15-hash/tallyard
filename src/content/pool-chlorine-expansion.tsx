@@ -215,7 +215,7 @@ export function PoolChlorineCalculatorExpansion() {
           },
           {
             label: "Speed",
-            values: ["Immediate", "Fast, pre-dissolve", "Slow release over days", "Fast dissolve"],
+            values: ["Immediate", "Follow exact label for dissolution", "Slow release over days", "Fast dissolve"],
           },
           {
             label: "What it adds",
@@ -344,14 +344,15 @@ export function PoolChlorineCalculatorExpansion() {
       <p>
         <strong>Granular poured straight in.</strong> Cal-hypo scattered dry
         across the surface clouds the water and can bleach vinyl liners where
-        the grains settle. Pre-dissolve it in a bucket of pool water, stir
-        with a stick that is not your hand, and pour the slurry around the
-        perimeter. Always chemical into water, never water into chemical.
+        the grains settle. Follow the exact product label for application;
+        pre-dissolve only when that label explicitly directs it. Never mix
+        chemicals, and follow the label&apos;s order of addition and protective
+        equipment requirements.
       </p>
 
       <h2>How long before you can swim</h2>
       <ComparisonTable
-        caption="Working rules for residential pools. When in doubt, test: swim when free chlorine is at or below 4 ppm and the water is clear."
+        caption="Illustrative timing examples, not clearance to swim. Exact product instructions, applicable water-quality guidance and measured conditions control reopening; elapsed time or chlorine alone does not establish safety."
         columns={[
           { title: "After this dose" },
           { title: "Wait", highlight: true },
@@ -364,7 +365,7 @@ export function PoolChlorineCalculatorExpansion() {
           },
           {
             label: "Granular",
-            values: ["Pre-dissolved cal-hypo or dichlor", "2 to 4 hours", "Undissolved grains bleach suits and skin"],
+            values: ["Cal-hypo or dichlor used per exact label", "2 to 4 hours", "Undissolved grains bleach suits and skin"],
           },
           {
             label: "Shock",

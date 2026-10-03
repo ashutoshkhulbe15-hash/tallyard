@@ -23,6 +23,8 @@ function inventory(html) {
 }
 function verify() {
   const baseline=JSON.parse(fs.readFileSync(path.join(root,"tests/editorial-baseline.json"),"utf8"));
+  const corrections=JSON.parse(fs.readFileSync(path.join(root,"tests/editorial-corrections.json"),"utf8"));
+  const originalNotes=JSON.parse(fs.readFileSync(path.join(root,"src/content/original-calculator-editorial.json"),"utf8"));
   const results=[];
   let blocks=0, links=0;
   for(const page of baseline.pages) {
@@ -30,14 +32,19 @@ function verify() {
     assert.ok(fs.existsSync(file),`${page.route}: missing built page`);
     const html=fs.readFileSync(file,"utf8");
     const text=normalize(html);
-    for(const chunk of page.chunks)assert.ok(text.includes(chunk.text),`${page.route}: missing original ${chunk.tag}: ${chunk.text.slice(0,110)}`);
+    for(const chunk of page.chunks) {
+      const correction=corrections.find(item=>item.route===page.route && item.oldText===chunk.text);
+      const source=(originalNotes[page.route.slice(1)]?.sources || []).find(item=>normalize(item.name+"—"+item.note)===chunk.text);
+      const sourceRetained=source && text.includes(normalize(source.name)) && text.includes(normalize(source.note));
+      assert.ok(text.includes(chunk.text) || (correction && text.includes(correction.newText)) || sourceRetained,`${page.route}: missing original ${chunk.tag}: ${chunk.text.slice(0,110)}`);
+    }
     for(const link of page.links)assert.ok(html.includes(`href="${link}"`),`${page.route}: missing original link ${link}`);
     blocks+=page.chunks.length; links+=page.links.length;
     results.push({route:page.route,originalWords:page.originalWords,originalBlocks:page.chunks.length,retained:true});
   }
-  console.log(`Verified original editorial content on ${results.length} routes: ${blocks} text/diagram/table blocks and ${links} links retained in built HTML.`);
+  console.log(`Verified original editorial content on ${results.length} routes: ${blocks} text/diagram/table blocks and ${links} links retained, allowing only the explicit correction ledger and source punctuation changes.`);
   const heat=results.find(page=>page.route==='/heat-pump-calculator');
-  console.log(`Heat pump article: ${heat.originalWords} original words; every original text/diagram/table block retained.`);
+  console.log(`Heat pump article: ${heat.originalWords} original words; article blocks retained, with scoped intro/method/FAQ corrections recorded separately.`);
   return results;
 }
 module.exports={normalize,inventory,verify};

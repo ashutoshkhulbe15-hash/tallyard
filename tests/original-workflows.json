@@ -1,0 +1,4490 @@
+[
+  {
+    "slug": "paint-calculator",
+    "inputs": [
+      "length",
+      "width",
+      "height",
+      "coats",
+      "doors",
+      "windows"
+    ],
+    "faqQuestions": [
+      "How many gallons of paint do I need for an average room?",
+      "Should I buy one or two coats' worth?",
+      "How much extra paint should I buy?",
+      "Does this calculator include the ceiling?",
+      "Why does paint cover less than the can says?",
+      "What if my walls have a heavy texture?",
+      "How accurate is the 350 sq ft per gallon number?",
+      "Do I need primer? Does the calculator include it?"
+    ],
+    "sourceUrls": [
+      "https://www.benjaminmoore.com/en-us/paint-colors/paint-coverage",
+      "https://www.sherwin-williams.com/homeowners/color/painting-tips/how-much-paint-do-i-need"
+    ],
+    "metadata": {
+      "title": "Paint Calculator: How Much Paint Do I Need",
+      "description": "Calculate how many gallons of paint you need for any room. Free. Shows the math and accounts for doors and windows.",
+      "alternates": {
+        "canonical": "/paint-calculator"
+      },
+      "openGraph": {
+        "title": "Paint Calculator: How Much Paint Do I Need",
+        "description": "Calculate how many gallons of paint you need for any room. Shows the math.",
+        "url": "https://www.tallyard.com/paint-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "length": 14,
+        "width": 12,
+        "height": 9,
+        "coats": 2,
+        "doors": 1,
+        "windows": 2
+      },
+      "primary": {
+        "value": 2.383,
+        "rounded": 2.4,
+        "unit": "gallons"
+      },
+      "breakdown": [
+        {
+          "label": "wall area",
+          "value": "417 sq ft"
+        },
+        {
+          "label": "coats",
+          "value": "2"
+        },
+        {
+          "label": "coverage",
+          "value": "350 sq ft/gal"
+        }
+      ],
+      "formulaSteps": [
+        "perimeter = 2 × (14 + 12) = 52 ft",
+        "gross wall area = 52 × 9 = 468 sq ft",
+        "subtractions = (1 × 21) + (2 × 15) = 51 sq ft",
+        "net wall area = 468 − 51 = 417 sq ft",
+        "paint = (417 × 2) ÷ 350 = 2.38 gallons",
+        "rounded up to 2.4 gallons"
+      ],
+      "composition": {
+        "unit": "sq ft",
+        "total": 468,
+        "segments": [
+          {
+            "label": "Walls",
+            "amount": 417,
+            "shade": "primary"
+          },
+          {
+            "label": "Doors",
+            "amount": 21,
+            "shade": "secondary"
+          },
+          {
+            "label": "Windows",
+            "amount": 30,
+            "shade": "tertiary"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "slug": "concrete-calculator",
+    "inputs": [
+      "shape",
+      "length",
+      "width",
+      "thickness",
+      "waste"
+    ],
+    "faqQuestions": [
+      "How much concrete do I need for a 10×10 slab?",
+      "Why do I need to add a waste factor?",
+      "What's the minimum concrete truck order?",
+      "How many bags of concrete equal a cubic yard?",
+      "What thickness should my slab be?",
+      "How is round concrete calculated differently?",
+      "Does this include aggregate, cement, and water?",
+      "What's the difference between cubic yards and yards of concrete?"
+    ],
+    "sourceUrls": [
+      "https://www.cement.org/learn/concrete-technology/concrete-construction",
+      "https://www.concretenetwork.com/concrete/howmuch/calculator.htm"
+    ],
+    "metadata": {
+      "title": "Concrete Calculator: How Many Yards Of Concrete",
+      "description": "Calculate cubic yards of concrete for any slab, footing, or round pour. Free. Waste factor and formula shown.",
+      "alternates": {
+        "canonical": "/concrete-calculator"
+      },
+      "openGraph": {
+        "title": "Concrete Calculator: How Many Yards Of Concrete",
+        "description": "Calculate cubic yards of concrete for any slab, footing, or round pour.",
+        "url": "https://www.tallyard.com/concrete-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "shape": "rectangular",
+        "length": 10,
+        "width": 10,
+        "thickness": 4,
+        "waste": 10
+      },
+      "primary": {
+        "value": 1.358,
+        "rounded": 1.36,
+        "unit": "cubic yards"
+      },
+      "breakdown": [
+        {
+          "label": "shape",
+          "value": "rectangular"
+        },
+        {
+          "label": "base volume",
+          "value": "1.23 yd³"
+        },
+        {
+          "label": "waste",
+          "value": "10%"
+        }
+      ],
+      "formulaSteps": [
+        "area = 10 × 10 = 100 ft²",
+        "thickness = 4 in = 0.33 ft",
+        "base volume = 100 × 0.33 = 33.33 ft³ ÷ 27 = 1.24 yd³",
+        "waste = 1.24 × 0.1 = 0.12 yd³",
+        "total = 1.24 + 0.12 = 1.36 yd³",
+        "rounded up to 1.36 yd³"
+      ],
+      "composition": {
+        "unit": "yd³",
+        "total": 1.358,
+        "segments": [
+          {
+            "label": "Base volume",
+            "amount": 1.235,
+            "shade": "primary"
+          },
+          {
+            "label": "Waste buffer",
+            "amount": 0.123,
+            "shade": "secondary"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "slug": "tile-calculator",
+    "inputs": [
+      "length",
+      "width",
+      "tileSize",
+      "waste",
+      "tilesPerBox"
+    ],
+    "faqQuestions": [
+      "How much extra tile should I buy?",
+      "Why do I need to buy all tile at once?",
+      "How many tiles are in a typical box?",
+      "Does this include the grout?",
+      "How much waste should I expect with 24×24 tiles?",
+      "Do I calculate wall tile the same way?",
+      "What about diagonal or herringbone layouts?",
+      "Can I use this for subway tile or large-format tile?"
+    ],
+    "sourceUrls": [
+      "https://www.tcnatile.com/",
+      "https://www.homedepot.com/c/ah/how-to-estimate-tile-needed-for-your-project/"
+    ],
+    "metadata": {
+      "title": "Tile Calculator: How Many Tiles Do I Need",
+      "description": "Calculate tiles and boxes needed for any floor or wall. Accounts for cuts, waste, and patterns.",
+      "alternates": {
+        "canonical": "/tile-calculator"
+      },
+      "openGraph": {
+        "title": "Tile Calculator: How Many Tiles Do I Need",
+        "description": "Calculate tiles and boxes needed for any floor or wall. Accounts for cuts, waste, and patterns.",
+        "url": "https://www.tallyard.com/tile-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "length": 10,
+        "width": 12,
+        "tileSize": "12x12",
+        "waste": 10,
+        "tilesPerBox": 10
+      },
+      "primary": {
+        "value": 132,
+        "rounded": 132,
+        "unit": "tiles"
+      },
+      "breakdown": [
+        {
+          "label": "floor area",
+          "value": "120 ft²"
+        },
+        {
+          "label": "tile size",
+          "value": "12 × 12 in"
+        },
+        {
+          "label": "boxes",
+          "value": "14"
+        }
+      ],
+      "formulaSteps": [
+        "floor area = 10 × 12 = 120 ft²",
+        "tile area = 12 × 12 in = 1 ft²",
+        "raw tiles = 120 ÷ 1 = 120",
+        "with 10% waste = 120 × 1.10 = 132",
+        "rounded up to 132 tiles",
+        "boxes = ⌈132 ÷ 10⌉ = 14 boxes"
+      ],
+      "composition": {
+        "unit": "tiles",
+        "total": 132,
+        "segments": [
+          {
+            "label": "Coverage",
+            "amount": 120,
+            "shade": "primary"
+          },
+          {
+            "label": "Waste buffer",
+            "amount": 12,
+            "shade": "secondary"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "slug": "mulch-calculator",
+    "inputs": [
+      "length",
+      "width",
+      "depth",
+      "form"
+    ],
+    "faqQuestions": [
+      "How much mulch do I need?",
+      "How deep should I apply mulch?",
+      "Is bulk mulch cheaper than bagged?",
+      "How many bags of mulch are in a cubic yard?",
+      "What's the difference between a cubic yard and a regular yard?",
+      "When is the best time to mulch?",
+      "Does the calculator work for gravel or stone?",
+      "How much area does 1 cubic yard of mulch cover?"
+    ],
+    "sourceUrls": [
+      "https://extension.umd.edu/resource/mulching-landscape",
+      "https://www.sunset.com/garden/landscaping-design/mulch-basics"
+    ],
+    "metadata": {
+      "title": "Mulch Calculator: How Many Yards Of Mulch",
+      "description": "Calculate cubic yards of mulch for any garden bed. Bulk or bags, any depth, with clear math.",
+      "alternates": {
+        "canonical": "/mulch-calculator"
+      },
+      "openGraph": {
+        "title": "Mulch Calculator: How Many Yards Of Mulch",
+        "description": "Calculate cubic yards of mulch for any garden bed. Bulk or bags.",
+        "url": "https://www.tallyard.com/mulch-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "length": 20,
+        "width": 4,
+        "depth": 3,
+        "form": "bulk"
+      },
+      "primary": {
+        "value": 0.741,
+        "rounded": 0.75,
+        "unit": "cubic yards"
+      },
+      "breakdown": [
+        {
+          "label": "area",
+          "value": "80 ft²"
+        },
+        {
+          "label": "depth",
+          "value": "3\""
+        },
+        {
+          "label": "bag equivalent",
+          "value": "10 bags"
+        }
+      ],
+      "formulaSteps": [
+        "area = 20 × 4 = 80 ft²",
+        "depth = 3\" = 0.25 ft",
+        "volume = 80 × 0.25 = 20 ft³ ÷ 27 = 0.74 yd³",
+        "rounded up to 0.75 yd³"
+      ]
+    }
+  },
+  {
+    "slug": "drywall-calculator",
+    "inputs": [
+      "length",
+      "width",
+      "height",
+      "sheetSize",
+      "includeCeiling",
+      "waste"
+    ],
+    "faqQuestions": [
+      "Is sheetrock the same as drywall?",
+      "How many sheets of drywall do I need for a 12×14 room?",
+      "Should I use 4×8 or 4×12 sheets?",
+      "Do I subtract doors and windows?",
+      "What thickness of drywall should I buy?",
+      "How much joint compound and tape do I need?",
+      "Is moisture-resistant drywall necessary for bathrooms?",
+      "How long does drywall take to install?",
+      "Can I use this for garage or basement?"
+    ],
+    "sourceUrls": [
+      "https://gypsum.org/technical/ga-216-application-and-finishing-of-gypsum-panel-products/",
+      "https://gypsum.org/technical/ga-214-recommended-levels-of-finish-for-gypsum-panel-products/",
+      "https://codes.iccsafe.org/content/IRC2021P2/chapter-7-wall-covering",
+      "https://www.astm.org/c1396_c1396m-17.html",
+      "https://www.usg.com/content/usgcom/en/tools-resources/installation-guides.html"
+    ],
+    "metadata": {
+      "title": "Drywall & Sheetrock Calculator: Sheets, Mud & Cost",
+      "description": "Free drywall calculator: sheets, joint compound, tape, and screws for any room. Covers installation cost, repair cost, and finish levels.",
+      "alternates": {
+        "canonical": "/drywall-calculator"
+      },
+      "openGraph": {
+        "title": "Drywall & Sheetrock Calculator: Sheets, Mud & Cost",
+        "description": "Free drywall calculator: sheets, mud, tape, and screws. Covers installation cost, repair cost, and finish levels.",
+        "url": "https://www.tallyard.com/drywall-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "length": 14,
+        "width": 12,
+        "height": 9,
+        "sheetSize": "4x8",
+        "includeCeiling": "yes",
+        "waste": 10
+      },
+      "primary": {
+        "value": 22,
+        "rounded": 22,
+        "unit": "sheets"
+      },
+      "breakdown": [
+        {
+          "label": "total area",
+          "value": "636 ft²"
+        },
+        {
+          "label": "sheet size",
+          "value": "4 × 8"
+        },
+        {
+          "label": "waste",
+          "value": "10%"
+        }
+      ],
+      "formulaSteps": [
+        "walls = 2 × (14 + 12) × 9 = 468 ft²",
+        "ceiling = 14 × 12 = 168 ft²",
+        "total area = 636 ft²",
+        "sheet area = 4 × 8 = 32 ft²",
+        "raw sheets = 636 ÷ 32 = 19.9",
+        "with 10% waste = 19.9 × 1.10 = 21.9",
+        "rounded up to 22 sheets"
+      ],
+      "composition": {
+        "unit": "ft²",
+        "total": 636,
+        "segments": [
+          {
+            "label": "Walls",
+            "amount": 468,
+            "shade": "primary"
+          },
+          {
+            "label": "Ceiling",
+            "amount": 168,
+            "shade": "secondary"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "slug": "roofing-calculator",
+    "inputs": [
+      "length",
+      "width",
+      "pitch",
+      "waste"
+    ],
+    "faqQuestions": [
+      "How many bundles of shingles do I need for a 1,200 sq ft roof?",
+      "What does 'roofing square' mean?",
+      "How do I find my roof pitch without climbing up?",
+      "Why is roofing more than my footprint?",
+      "What's the right waste factor for my roof?",
+      "Does this include ridge caps?",
+      "Is this calculator for asphalt shingles only?",
+      "Do I need underlayment and nails separately?"
+    ],
+    "sourceUrls": [
+      "https://codes.iccsafe.org/content/IRC2021P1/chapter-9-roof-assemblies",
+      "https://www.nrca.net/technical",
+      "https://www.asphaltroofing.org/technical/",
+      "https://www.owenscorning.com/en-us/roofing/tools/installation-instructions",
+      "https://www.metalconstruction.org/"
+    ],
+    "metadata": {
+      "title": "Roofing Calculator: Squares, Pitch & Bundles",
+      "description": "Roofing squares and shingle bundles from footprint and pitch. Covers pitch multipliers, waste by roof shape, metal panels, and roof replacement cost.",
+      "alternates": {
+        "canonical": "/roofing-calculator"
+      },
+      "openGraph": {
+        "title": "Roofing Calculator: Squares, Pitch & Bundles",
+        "description": "Calculate roof area, squares, and shingle bundles for any pitch and footprint.",
+        "url": "https://www.tallyard.com/roofing-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "length": 40,
+        "width": 30,
+        "pitch": "6/12",
+        "waste": 10
+      },
+      "primary": {
+        "value": 47,
+        "rounded": 47,
+        "unit": "bundles"
+      },
+      "breakdown": [
+        {
+          "label": "footprint",
+          "value": "1,200 ft²"
+        },
+        {
+          "label": "roof area",
+          "value": "1,476 ft² · 14.8 sq"
+        },
+        {
+          "label": "ridge caps",
+          "value": "2 bundles"
+        }
+      ],
+      "formulaSteps": [
+        "footprint = 40 × 30 = 1,200 ft²",
+        "slope factor for 6/12 pitch = 1.118",
+        "roof area = 1,200 × 1.118 = 1,342 ft²",
+        "with 10% waste = 1,342 × 1.10 = 1,476 ft²",
+        "squares = 1,476 ÷ 100 = 14.76 squares",
+        "field bundles = ⌈14.76 × 3⌉ = 45 bundles",
+        "ridge cap bundles = ⌈40 ÷ 35⌉ = 2",
+        "total = 45 + 2 = 47 bundles"
+      ],
+      "composition": {
+        "unit": "bundles",
+        "total": 47,
+        "segments": [
+          {
+            "label": "Field shingles",
+            "amount": 45,
+            "shade": "primary"
+          },
+          {
+            "label": "Ridge caps",
+            "amount": 2,
+            "shade": "secondary"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "slug": "btu-calculator",
+    "inputs": [
+      "length",
+      "width",
+      "height",
+      "climate",
+      "sun",
+      "occupancy"
+    ],
+    "faqQuestions": [
+      "What size AC do I need for a 200 sq ft bedroom?",
+      "What happens if my AC is too big?",
+      "What happens if my AC is too small?",
+      "Does this work for mini-split systems?",
+      "Does this work for central air?",
+      "How does climate affect sizing?",
+      "Does the calculator cover heating BTU?",
+      "Should I size for worst-case or average?"
+    ],
+    "sourceUrls": [
+      "https://www.energystar.gov/products/room_air_conditioners",
+      "https://www.acca.org/standards"
+    ],
+    "metadata": {
+      "title": "BTU Calculator: Air Conditioner Size",
+      "description": "Calculate the right BTU size for your room or home. Accounts for climate, sun exposure, and occupancy.",
+      "alternates": {
+        "canonical": "/btu-calculator"
+      },
+      "openGraph": {
+        "title": "BTU Calculator: Air Conditioner Size",
+        "description": "Calculate the right BTU size for your AC. Accounts for climate, sun, and occupancy.",
+        "url": "https://www.tallyard.com/btu-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "length": 14,
+        "width": 12,
+        "height": 9,
+        "climate": "moderate",
+        "sun": "moderate",
+        "occupancy": 2
+      },
+      "primary": {
+        "value": 3528,
+        "rounded": 4000,
+        "unit": "BTU/hr"
+      },
+      "breakdown": [
+        {
+          "label": "area",
+          "value": "168 ft²"
+        },
+        {
+          "label": "climate",
+          "value": "moderate"
+        },
+        {
+          "label": "sun",
+          "value": "moderate"
+        }
+      ],
+      "formulaSteps": [
+        "area = 14 × 12 = 168 ft²",
+        "base BTU = area × 20 = 168 × 20 = 3,360 BTU",
+        "height adjustment (9ft tall) ×1.05 = 3,528 BTU",
+        "climate ×1 = 3,528 BTU",
+        "sun: average, no adjustment",
+        "occupancy: 2 people or fewer, no addition",
+        "total = 3,528 BTU",
+        "rounded up to nearest 500: 4,000 BTU"
+      ],
+      "composition": {
+        "unit": "BTU",
+        "total": 3528,
+        "segments": [
+          {
+            "label": "Base cooling",
+            "amount": 3528,
+            "shade": "primary"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "slug": "gravel-calculator",
+    "inputs": [
+      "length",
+      "width",
+      "depth",
+      "type"
+    ],
+    "faqQuestions": [
+      "How many cubic yards of gravel for a 20×10 driveway?",
+      "How many tons of gravel in a cubic yard?",
+      "How deep should gravel be for a driveway?",
+      "How many bags of gravel equal a cubic yard?",
+      "What's the difference between gravel types?",
+      "Do I need landscape fabric under gravel?",
+      "How much does gravel cost?",
+      "Can I use this for sand or stone dust?"
+    ],
+    "sourceUrls": [
+      "https://www.astm.org/d0448-12r17.html",
+      "https://store.transportation.org/",
+      "https://www.nrcs.usda.gov/resources/guides-and-instructions",
+      "https://extension.umn.edu/",
+      "https://ncma.org/resource-library/"
+    ],
+    "metadata": {
+      "title": "Gravel Calculator: Cubic Yards and Tons",
+      "description": "Gravel in cubic yards and tons from area and depth. Covers crusher run, #57, pea gravel, driveway layer depths, and how much a yard of gravel weighs.",
+      "alternates": {
+        "canonical": "/gravel-calculator"
+      },
+      "openGraph": {
+        "title": "Gravel Calculator: Cubic Yards and Tons",
+        "description": "Calculate cubic yards and tons of gravel for driveways, paths, or base layers.",
+        "url": "https://www.tallyard.com/gravel-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "length": 20,
+        "width": 10,
+        "depth": 4,
+        "type": "crushed"
+      },
+      "primary": {
+        "value": 2.469,
+        "rounded": 2.47,
+        "unit": "cubic yards"
+      },
+      "breakdown": [
+        {
+          "label": "area",
+          "value": "200 ft²"
+        },
+        {
+          "label": "depth",
+          "value": "4\""
+        },
+        {
+          "label": "weight",
+          "value": "3.46 tons"
+        }
+      ],
+      "formulaSteps": [
+        "area = 20 × 10 = 200 ft²",
+        "depth = 4\" = 0.33 ft",
+        "volume = 200 × 0.33 = 66.67 ft³ ÷ 27 = 2.47 yd³",
+        "weight = 2.47 × 1.4 = 3.46 tons",
+        "rounded up to 2.47 yd³"
+      ]
+    }
+  },
+  {
+    "slug": "solar-calculator",
+    "inputs": [
+      "monthlyKwh",
+      "sunHours",
+      "panelWatts",
+      "efficiency"
+    ],
+    "faqQuestions": [
+      "How many solar panels do I need for a 2,000 sq ft house?",
+      "What are peak sun hours?",
+      "Should I size for 100% of my usage?",
+      "Will the system produce exactly what the calculator shows?",
+      "Can I install solar myself?",
+      "How long until solar pays for itself?",
+      "How much do solar panels cost in 2026?",
+      "Is the federal solar tax credit still available?",
+      "Do I need a battery?",
+      "What roof works best for solar?"
+    ],
+    "sourceUrls": [
+      "https://pvwatts.nrel.gov/",
+      "https://www.energy.gov/eere/solar/homeowners-guide-going-solar",
+      "https://www.eia.gov/energyexplained/use-of-energy/electricity-use-in-homes.php",
+      "https://www.nfpa.org/codes-and-standards/nfpa-70-standard-development/70",
+      "https://seia.org/states-map"
+    ],
+    "metadata": {
+      "title": "Solar Panel Calculator: How Many Panels & Cost by State",
+      "description": "Free solar panel calculator: how many panels you need from your kWh and sun hours, plus 2026 cost per watt by state and real output per panel.",
+      "alternates": {
+        "canonical": "/solar-calculator"
+      },
+      "openGraph": {
+        "title": "Solar Panel Calculator: How Many Panels & Cost by State",
+        "description": "Free solar panel calculator: how many panels you need from your kWh and sun hours, plus 2026 cost per watt by state and real output per panel.",
+        "url": "https://www.tallyard.com/solar-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "monthlyKwh": 900,
+        "sunHours": 4.5,
+        "panelWatts": 400,
+        "efficiency": 80
+      },
+      "primary": {
+        "value": 21,
+        "rounded": 21,
+        "unit": "panels"
+      },
+      "breakdown": [
+        {
+          "label": "system size",
+          "value": "8.4 kW DC"
+        },
+        {
+          "label": "daily production",
+          "value": "30.2 kWh"
+        },
+        {
+          "label": "roof area",
+          "value": "~420 sq ft"
+        }
+      ],
+      "formulaSteps": [
+        "daily use = 900 ÷ 30 = 30 kWh/day",
+        "system size = 30 ÷ (4.5 × 0.8) = 8.33 kW",
+        "panels = ⌈8.33 × 1000 ÷ 400⌉ = 21 panels",
+        "actual system = 21 × 400W = 8.4 kW DC",
+        "roof area ≈ 21 × 20 sq ft = 420 sq ft"
+      ],
+      "composition": {
+        "unit": "W",
+        "total": 8400,
+        "segments": [
+          {
+            "label": "Production",
+            "amount": 8333,
+            "shade": "primary"
+          },
+          {
+            "label": "Buffer",
+            "amount": 67,
+            "shade": "secondary"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "slug": "wire-size-calculator",
+    "inputs": [
+      "amps",
+      "voltage",
+      "distance",
+      "material",
+      "voltageDropLimit"
+    ],
+    "faqQuestions": [
+      "What gauge wire do I need for a 20 amp circuit?",
+      "What's the difference between ampacity and voltage drop?",
+      "Can I use aluminum wire for branch circuits?",
+      "What happens if the wire is too small?",
+      "Do long runs really need bigger wire?",
+      "What about DC wiring for solar and automotive?",
+      "Is this calculator NEC-compliant?",
+      "Should I oversize wire?"
+    ],
+    "sourceUrls": [
+      "https://www.nfpa.org/codes-and-standards/all-codes-and-standards/list-of-codes-and-standards/detail?code=70",
+      "https://www.nfpa.org/codes-and-standards/all-codes-and-standards/list-of-codes-and-standards/detail?code=70",
+      "https://www.nfpa.org/codes-and-standards/all-codes-and-standards/list-of-codes-and-standards/detail?code=70",
+      "https://www.nfpa.org/codes-and-standards/all-codes-and-standards/list-of-codes-and-standards/detail?code=70",
+      "https://www.cpsc.gov/s3fs-public/516.pdf"
+    ],
+    "metadata": {
+      "title": "Wire Size Calculator: AWG Chart & Voltage Drop",
+      "description": "Wire gauge for any circuit by ampacity and voltage drop. NEC AWG chart for copper and aluminum, breaker sizes, and max run length by gauge.",
+      "alternates": {
+        "canonical": "/wire-size-calculator"
+      },
+      "openGraph": {
+        "title": "Wire Size Calculator: AWG Chart & Voltage Drop",
+        "description": "Calculate the right electrical wire gauge for your circuit, with voltage drop included.",
+        "url": "https://www.tallyard.com/wire-size-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "amps": 20,
+        "voltage": 120,
+        "distance": 50,
+        "material": "copper",
+        "voltageDropLimit": 3
+      },
+      "primary": {
+        "value": 10,
+        "rounded": 10,
+        "unit": "AWG 10"
+      },
+      "breakdown": [
+        {
+          "label": "recommended",
+          "value": "10 AWG copper"
+        },
+        {
+          "label": "ampacity",
+          "value": "30A"
+        },
+        {
+          "label": "voltage drop",
+          "value": "2.02% (2.42V)"
+        }
+      ],
+      "formulaSteps": [
+        "distance = 50 ft",
+        "max allowed drop = 120V × 3% = 3.6V",
+        "selected: 10 AWG copper",
+        "ampacity check: 30A ≥ 20A ✓",
+        "voltage drop = 2 × 20A × (1.21Ω/1000ft) × 50ft / 1000 = 2.42V",
+        "drop as %: 2.02% ≤ 3% ✓",
+        "constraint: limited by voltage drop (long run)"
+      ]
+    }
+  },
+  {
+    "slug": "insulation-calculator",
+    "inputs": [
+      "application",
+      "length",
+      "width",
+      "climateZone",
+      "studSpacing",
+      "wastePercent"
+    ],
+    "faqQuestions": [
+      "How much insulation do I need in my attic?",
+      "What's the difference between batts, rolls, and blown insulation?",
+      "Is R-60 in the attic worth it over R-38?",
+      "Can I add new insulation on top of old?",
+      "What about rim joists and band joists?",
+      "Does R-value include air sealing?",
+      "What's my climate zone?",
+      "Can I install insulation myself?"
+    ],
+    "sourceUrls": [
+      "https://www.energy.gov/energysaver/insulation",
+      "https://www.energystar.gov/saveathome/seal_insulate"
+    ],
+    "metadata": {
+      "title": "Insulation Calculator: R-Value And Bags Needed",
+      "description": "Calculate insulation coverage and R-value for any wall, attic, or floor. Climate-appropriate targets included.",
+      "alternates": {
+        "canonical": "/insulation-calculator"
+      },
+      "openGraph": {
+        "title": "Insulation Calculator: R-Value And Bags Needed",
+        "description": "Calculate insulation coverage for any wall, attic, or floor with climate-specific R-values.",
+        "url": "https://www.tallyard.com/insulation-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "application": "attic",
+        "length": 40,
+        "width": 30,
+        "climateZone": "5",
+        "studSpacing": 16,
+        "wastePercent": 10
+      },
+      "primary": {
+        "value": 63,
+        "rounded": 63,
+        "unit": "bags"
+      },
+      "breakdown": [
+        {
+          "label": "target R-value",
+          "value": "R-49"
+        },
+        {
+          "label": "area",
+          "value": "1,320 sq ft"
+        },
+        {
+          "label": "batts",
+          "value": "~142 batts"
+        }
+      ],
+      "formulaSteps": [
+        "area = 40 × 30 = 1,200 ft²",
+        "with 10% waste = 1,320 ft²",
+        "target R-value for Zone 5 attic = R-49",
+        "batt coverage (16\" OC) = 9.36 sq ft per batt",
+        "batts = ⌈1,320 ÷ 9.36⌉ = 142 batts",
+        "bag coverage for R-49 ≈ 21 sq ft per bag",
+        "bags = ⌈1,320 ÷ 21⌉ = 63 bags"
+      ]
+    }
+  },
+  {
+    "slug": "fence-calculator",
+    "inputs": [
+      "length",
+      "postSpacing",
+      "height",
+      "pickets",
+      "gates",
+      "corners"
+    ],
+    "faqQuestions": [
+      "How many fence posts do I need for 100 feet of fence?",
+      "What's the best post spacing?",
+      "How deep should fence posts go?",
+      "How much concrete per fence post?",
+      "Can I skip concrete and just use dirt?",
+      "How do I handle a slope?",
+      "What about gates?",
+      "Does the calculator work for chain-link or vinyl?"
+    ],
+    "sourceUrls": [
+      "https://www.thisoldhouse.com/fences",
+      "https://www.familyhandyman.com/"
+    ],
+    "metadata": {
+      "title": "Fence Calculator: Posts, Rails, And Pickets",
+      "description": "Calculate posts, rails, pickets, and concrete for any fence. Includes gates and corners.",
+      "alternates": {
+        "canonical": "/fence-calculator"
+      },
+      "openGraph": {
+        "title": "Fence Calculator: Posts, Rails, And Pickets",
+        "description": "Calculate posts, rails, pickets, and concrete for any fence length.",
+        "url": "https://www.tallyard.com/fence-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "length": 100,
+        "postSpacing": 8,
+        "height": 6,
+        "pickets": "yes",
+        "gates": 1,
+        "corners": 2
+      },
+      "primary": {
+        "value": 209,
+        "rounded": 209,
+        "unit": "pickets"
+      },
+      "breakdown": [
+        {
+          "label": "posts",
+          "value": "17"
+        },
+        {
+          "label": "rails",
+          "value": "39"
+        },
+        {
+          "label": "pickets",
+          "value": "209"
+        },
+        {
+          "label": "concrete bags",
+          "value": "34 × 60 lb"
+        }
+      ],
+      "formulaSteps": [
+        "length = 100 ft",
+        "sections = ⌈100 ÷ 8⌉ = 13 sections",
+        "section posts = 13 + 1 = 14",
+        "total posts = 14 + 1 gate posts × 2 + 2 corners = 17",
+        "rails = 13 sections × 3 rails = 39",
+        "pickets = ⌈(100 × 12) ÷ 5.75⌉ = 209",
+        "concrete = 17 posts × 2 bags = 34 × 60 lb bags"
+      ],
+      "composition": {
+        "unit": "items",
+        "total": 265,
+        "segments": [
+          {
+            "label": "Pickets",
+            "amount": 209,
+            "shade": "primary"
+          },
+          {
+            "label": "Rails",
+            "amount": 39,
+            "shade": "secondary"
+          },
+          {
+            "label": "Posts",
+            "amount": 17,
+            "shade": "tertiary"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "slug": "grout-calculator",
+    "inputs": [
+      "length",
+      "width",
+      "tileSize",
+      "jointWidth",
+      "tileThickness",
+      "waste"
+    ],
+    "faqQuestions": [
+      "How many bags of grout do I need?",
+      "Should I use sanded or unsanded grout?",
+      "How long does grout take to dry?",
+      "Do I need to seal grout?",
+      "Can I reduce grout use with wider tiles?",
+      "What if my tiles have different thicknesses?",
+      "How accurate is the coverage formula?",
+      "Can I mix different grout colors?"
+    ],
+    "sourceUrls": [
+      "https://www.tcnatile.com/products-and-services/publications/ansi-standards/",
+      "https://www.tcnatile.com/products-and-services/publications/ansi-standards/",
+      "https://www.tcnatile.com/products-and-services/publications/tcna-handbook/",
+      "https://www.mapei.com/us/en-us/products-and-solutions/product-lines/tile-and-stone-installation-systems",
+      "https://www.custombuildingproducts.com/products/grouts/"
+    ],
+    "metadata": {
+      "title": "Grout Calculator: How Much Grout Do You Need",
+      "description": "Pounds of grout from tile size, joint width, and thickness. Covers sanded vs unsanded, epoxy grout, sealing, drying time, and where caulk goes instead.",
+      "alternates": {
+        "canonical": "/grout-calculator"
+      },
+      "openGraph": {
+        "title": "Grout Calculator: How Much Grout Do You Need",
+        "description": "Calculate pounds of grout for any tile installation.",
+        "url": "https://www.tallyard.com/grout-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "length": 10,
+        "width": 12,
+        "tileSize": "12x12",
+        "jointWidth": 0.125,
+        "tileThickness": 0.375,
+        "waste": 15
+      },
+      "primary": {
+        "value": 13.5,
+        "rounded": 14,
+        "unit": "lb"
+      },
+      "breakdown": [
+        {
+          "label": "area",
+          "value": "120 ft²"
+        },
+        {
+          "label": "25 lb bags",
+          "value": "1"
+        },
+        {
+          "label": "recommended",
+          "value": "sanded"
+        }
+      ],
+      "formulaSteps": [
+        "tile size = 12\" × 12\"",
+        "joint width = 0.125\"",
+        "tile thickness = 0.375\"",
+        "lb per sq ft = (24 × 0.125 × 0.375 × 150) ÷ (144 × 12) = 0.1",
+        "area = 10 × 12 = 120 sq ft",
+        "raw weight = 0.1 × 120 = 11.7 lb",
+        "with 15% waste = 13.5 lb",
+        "standard 25-lb bags = ⌈13.5 ÷ 25⌉ = 1 bags",
+        "small 10-lb bags = ⌈13.5 ÷ 10⌉ = 2 bags"
+      ]
+    }
+  },
+  {
+    "slug": "paver-calculator",
+    "inputs": [
+      "length",
+      "width",
+      "paverSize",
+      "pattern",
+      "use"
+    ],
+    "faqQuestions": [
+      "How many pavers do I need for a 10×12 patio?",
+      "How deep should the base be?",
+      "What's the difference between base and bedding sand?",
+      "Do I need polymeric sand?",
+      "What pattern uses the least pavers?",
+      "Can I install pavers over existing concrete?",
+      "How long do pavers take to install?",
+      "Do I need an edge restraint?"
+    ],
+    "sourceUrls": [
+      "https://icpi.org/",
+      "https://www.belgard.com/"
+    ],
+    "metadata": {
+      "title": "Paver Calculator: Pavers, Base, And Sand",
+      "description": "Calculate pavers, base gravel, bedding sand, and joint sand for any patio or walkway.",
+      "alternates": {
+        "canonical": "/paver-calculator"
+      },
+      "openGraph": {
+        "title": "Paver Calculator: Pavers, Base, And Sand",
+        "description": "Calculate pavers, base gravel, and sand for any patio or path.",
+        "url": "https://www.tallyard.com/paver-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "length": 12,
+        "width": 10,
+        "paverSize": "4x8",
+        "pattern": "running",
+        "use": "patio"
+      },
+      "primary": {
+        "value": 567,
+        "rounded": 567,
+        "unit": "pavers"
+      },
+      "breakdown": [
+        {
+          "label": "area",
+          "value": "120 ft²"
+        },
+        {
+          "label": "base (5\" deep)",
+          "value": "1.85 yd³ · 2.6 tons"
+        },
+        {
+          "label": "bedding sand (1\")",
+          "value": "0.37 yd³"
+        },
+        {
+          "label": "joint sand",
+          "value": "120 lb"
+        }
+      ],
+      "formulaSteps": [
+        "area = 12 × 10 = 120 sq ft",
+        "paver size = 4\" × 8\" = 0.22 sq ft per paver",
+        "raw pavers = 120 ÷ 0.22 = 540",
+        "with 5% running waste = 567 pavers",
+        "base gravel: 120 × 5\"/12 ÷ 27 = 1.85 yd³ ≈ 2.6 tons",
+        "bedding sand: 120 × 1\"/12 ÷ 27 = 0.37 yd³",
+        "joint sand ≈ 1 lb/sq ft × 120 = 120 lb"
+      ]
+    }
+  },
+  {
+    "slug": "deck-calculator",
+    "inputs": [
+      "length",
+      "width",
+      "boardWidth",
+      "joistSpacing",
+      "fastener"
+    ],
+    "faqQuestions": [
+      "How much does it cost to build a deck in 2026?",
+      "How is a deck ledger supposed to be attached?",
+      "How many deck boards do I need for a 12×16 deck?",
+      "What joist spacing should I use?",
+      "Do I need hidden fasteners?",
+      "How far can my beams span?",
+      "What's the difference between 16' and 12' board lengths?",
+      "Do I need ledger flashing?",
+      "Can I calculate without the frame?",
+      "How many posts do I need?"
+    ],
+    "sourceUrls": [
+      "https://awc.org/publications/dca6/",
+      "https://codes.iccsafe.org/content/IRC2021P2/chapter-5-floors",
+      "https://codes.iccsafe.org/content/IRC2021P2/chapter-3-building-planning",
+      "https://www.nadra.org/consumers/deck-safety/",
+      "https://awc.org/codes-standards/calculators-software/spancalc/"
+    ],
+    "metadata": {
+      "title": "Deck Calculator: Boards, Joists, Framing & Cost",
+      "description": "Free deck calculator: boards, joists, beams, posts, and fasteners for any deck size, plus 2026 build cost by size and material.",
+      "alternates": {
+        "canonical": "/deck-calculator"
+      },
+      "openGraph": {
+        "title": "Deck Calculator: Boards, Joists, Framing & Cost",
+        "description": "Free deck calculator: boards, joists, and framing for any deck, plus 2026 build cost by size and material.",
+        "url": "https://www.tallyard.com/deck-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "length": 16,
+        "width": 12,
+        "boardWidth": 5.5,
+        "joistSpacing": 16,
+        "fastener": "screws"
+      },
+      "primary": {
+        "value": 29,
+        "rounded": 29,
+        "unit": "16' boards"
+      },
+      "breakdown": [
+        {
+          "label": "area",
+          "value": "192 sq ft"
+        },
+        {
+          "label": "deck boards",
+          "value": "29 × 16'"
+        },
+        {
+          "label": "joists",
+          "value": "10 × 16'"
+        },
+        {
+          "label": "beams",
+          "value": "4 × 16'"
+        },
+        {
+          "label": "posts",
+          "value": "4"
+        },
+        {
+          "label": "deck screws",
+          "value": "676"
+        }
+      ],
+      "formulaSteps": [
+        "area = 16 × 12 = 192 sq ft",
+        "board coverage = 5.5\" + 1/8\" gap = 5.63\" per row",
+        "rows of boards = ⌈12 ÷ 0.47⌉ = 26",
+        "linear ft of decking = 26 × 16 = 416 ft",
+        "16' boards = ⌈416 × 1.1 ÷ 16⌉ = 29 boards",
+        "joists @ 16\" OC = ⌈192 ÷ 16⌉ + 1 = 13 joists",
+        "beams = 2 beams × 2 plies × 16 ft = 64 linear ft",
+        "deck screws = 676"
+      ]
+    }
+  },
+  {
+    "slug": "flooring-calculator",
+    "inputs": [
+      "length",
+      "width",
+      "flooringType",
+      "sqFtPerBox",
+      "pattern"
+    ],
+    "faqQuestions": [
+      "How much flooring do I need for a 12×14 room?",
+      "Why is the waste factor so high?",
+      "Can I use less than 10% waste?",
+      "Do I need underlayment?",
+      "What about transition strips and moldings?",
+      "Should I buy from the same dye lot?",
+      "How accurate is 'per box' from the product spec?",
+      "Can I acclimate the flooring in boxes?"
+    ],
+    "sourceUrls": [
+      "https://nwfa.org/resources/",
+      "https://www.astm.org/f0710-19.html",
+      "https://www.armstrongflooring.com/en-us/customer-support/installation.html",
+      "https://nalfa.com/"
+    ],
+    "metadata": {
+      "title": "Flooring Calculator: Square Footage & Installation Cost",
+      "description": "Free flooring calculator: figure square footage, waste, and installation cost per sq ft for hardwood, laminate, vinyl, and tile.",
+      "alternates": {
+        "canonical": "/flooring-calculator"
+      },
+      "openGraph": {
+        "title": "Flooring Calculator: Square Footage & Installation Cost",
+        "description": "Free flooring calculator: square footage, waste, and installation cost per sq ft for hardwood, laminate, vinyl, and tile.",
+        "url": "https://www.tallyard.com/flooring-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "length": 14,
+        "width": 12,
+        "flooringType": "laminate",
+        "sqFtPerBox": 20,
+        "pattern": "staggered"
+      },
+      "primary": {
+        "value": 10,
+        "rounded": 10,
+        "unit": "boxes"
+      },
+      "breakdown": [
+        {
+          "label": "area",
+          "value": "168 ft²"
+        },
+        {
+          "label": "with waste",
+          "value": "184.8 ft²"
+        },
+        {
+          "label": "per box",
+          "value": "20 ft²"
+        },
+        {
+          "label": "pattern",
+          "value": "staggered (10%)"
+        }
+      ],
+      "formulaSteps": [
+        "area = 14 × 12 = 168 ft²",
+        "pattern waste = 10% = 10%",
+        "with waste = 168 × 1.10 = 184.8 ft²",
+        "per box = 20 ft²",
+        "boxes = ⌈184.8 ÷ 20⌉ = 10 boxes"
+      ],
+      "composition": {
+        "unit": "ft²",
+        "total": 184.8,
+        "segments": [
+          {
+            "label": "Coverage",
+            "amount": 168,
+            "shade": "primary"
+          },
+          {
+            "label": "Waste",
+            "amount": 16.8,
+            "shade": "secondary"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "slug": "topsoil-calculator",
+    "inputs": [
+      "length",
+      "width",
+      "depth",
+      "type"
+    ],
+    "faqQuestions": [
+      "How much topsoil do I need for a 20×10 garden bed?",
+      "What's the difference between topsoil, fill dirt, and compost?",
+      "How deep should topsoil be for grass?",
+      "How many cubic yards in a pickup truck?",
+      "Is screened topsoil worth the extra cost?",
+      "How many bags of topsoil make a cubic yard?",
+      "When should I add topsoil vs compost?",
+      "Does this work for raised beds?"
+    ],
+    "sourceUrls": [
+      "https://www.nrcs.usda.gov/conservation-basics/natural-resource-concerns/soils",
+      "https://extension.psu.edu/soil-management",
+      "https://extension.umn.edu/planting-and-growing-guides/lawn-soil",
+      "https://extension.colostate.edu/topic-areas/yard-garden/choosing-a-soil-amendment/",
+      "https://websoilsurvey.nrcs.usda.gov/"
+    ],
+    "metadata": {
+      "title": "Topsoil Calculator: Cubic Yards for Any Area",
+      "description": "Cubic yards of topsoil from your area and depth, with coverage per yard, what a yard of topsoil weighs, bags vs bulk pricing, and screened vs fill dirt.",
+      "alternates": {
+        "canonical": "/topsoil-calculator"
+      },
+      "openGraph": {
+        "title": "Topsoil Calculator: Cubic Yards for Any Area",
+        "description": "Calculate cubic yards of topsoil for any garden or lawn project.",
+        "url": "https://www.tallyard.com/topsoil-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "length": 20,
+        "width": 10,
+        "depth": 6,
+        "type": "topsoil"
+      },
+      "primary": {
+        "value": 3.704,
+        "rounded": 3.71,
+        "unit": "cubic yards"
+      },
+      "breakdown": [
+        {
+          "label": "area",
+          "value": "200 ft²"
+        },
+        {
+          "label": "depth",
+          "value": "6\""
+        },
+        {
+          "label": "weight",
+          "value": "4.07 tons"
+        },
+        {
+          "label": "bags (0.75 cu ft)",
+          "value": "134"
+        }
+      ],
+      "formulaSteps": [
+        "area = 20 × 10 = 200 ft²",
+        "depth = 6\" = 0.5 ft",
+        "volume = 200 × 0.5 = 100 ft³ ÷ 27 = 3.7 yd³",
+        "weight = 3.7 × 1.1 = 4.07 tons",
+        "bags = ⌈3.7 ÷ 0.0278⌉ = 134 bags",
+        "rounded up to 3.71 yd³"
+      ]
+    }
+  },
+  {
+    "slug": "sod-calculator",
+    "inputs": [
+      "length",
+      "width",
+      "shape",
+      "sodSize"
+    ],
+    "faqQuestions": [
+      "How much sod do I need for a 1,000 sq ft lawn?",
+      "What's the difference between slabs and rolls?",
+      "How long can sod sit before installation?",
+      "How much sod fits in a pickup truck?",
+      "Do I need to prep the ground first?",
+      "How much does sod cost?",
+      "When is the best time to install sod?",
+      "How much do I water new sod?"
+    ],
+    "sourceUrls": [
+      "https://www.turfgrasssod.org/consumers/",
+      "https://edis.ifas.ufl.edu/entity/topic/st_augustinegrass",
+      "https://hgic.clemson.edu/factsheet/sodding-a-lawn/",
+      "https://extension.umd.edu/resource/lawn-establishment-overseeding-and-renovation"
+    ],
+    "metadata": {
+      "title": "Sod Calculator: Sq Ft, Pallets & Cost by Grass",
+      "description": "Square feet and pallets of sod for any yard, with 2026 cost by variety: Bermuda, fescue, zoysia, St. Augustine. Includes prep and watering timeline.",
+      "alternates": {
+        "canonical": "/sod-calculator"
+      },
+      "openGraph": {
+        "title": "Sod Calculator: Sq Ft, Pallets & Cost by Grass",
+        "description": "Calculate sod pieces and pallets for any lawn installation.",
+        "url": "https://www.tallyard.com/sod-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "length": 40,
+        "width": 25,
+        "shape": "rectangular",
+        "sodSize": "slab"
+      },
+      "primary": {
+        "value": 394,
+        "rounded": 394,
+        "unit": "slabs"
+      },
+      "breakdown": [
+        {
+          "label": "area",
+          "value": "1,000 ft²"
+        },
+        {
+          "label": "with waste",
+          "value": "1,050 ft²"
+        },
+        {
+          "label": "pallets (500 ft²)",
+          "value": "3"
+        },
+        {
+          "label": "shape waste",
+          "value": "5%"
+        }
+      ],
+      "formulaSteps": [
+        "area = 40 × 25 = 1,000 ft²",
+        "shape = rectangular, waste = 5%",
+        "with waste = 1,000 × 1.05 = 1,050 ft²",
+        "piece coverage = 2.67 ft² per slab",
+        "slabs = ⌈1,050 ÷ 2.67⌉ = 394",
+        "pallets = ⌈1,050 ÷ 500⌉ = 3"
+      ]
+    }
+  },
+  {
+    "slug": "asphalt-calculator",
+    "inputs": [
+      "shape",
+      "length",
+      "width",
+      "thickness",
+      "waste"
+    ],
+    "faqQuestions": [
+      "How many tons of asphalt do I need for a 50×12 driveway?",
+      "How thick should my asphalt driveway be?",
+      "What's the difference between tons and cubic yards of asphalt?",
+      "How much does asphalt cost?",
+      "Do I need a base under asphalt?",
+      "Can I DIY an asphalt driveway?",
+      "When is the best time to lay asphalt?",
+      "How long before I can drive on it?"
+    ],
+    "sourceUrls": [
+      "https://www.asphaltinstitute.org/engineering/publications/",
+      "https://www.asphaltpavement.org/expertise/construction",
+      "https://www.asphaltinstitute.org/engineering/",
+      "https://www.astm.org/d6926-20.html",
+      "https://consumer.ftc.gov/articles/hiring-contractor"
+    ],
+    "metadata": {
+      "title": "Asphalt Calculator: Tons for Any Driveway",
+      "description": "Tons of asphalt from area and compacted thickness at 145 lb density. Covers base depth, driveway cost, overlay vs replacement, and recycled millings.",
+      "alternates": {
+        "canonical": "/asphalt-calculator"
+      },
+      "openGraph": {
+        "title": "Asphalt Calculator: Tons for Any Driveway",
+        "description": "Calculate tons of asphalt for any driveway or parking project.",
+        "url": "https://www.tallyard.com/asphalt-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "shape": "rectangular",
+        "length": 50,
+        "width": 12,
+        "thickness": 3,
+        "waste": 10
+      },
+      "primary": {
+        "value": 11.96,
+        "rounded": 12,
+        "unit": "tons"
+      },
+      "breakdown": [
+        {
+          "label": "area",
+          "value": "600 ft²"
+        },
+        {
+          "label": "thickness",
+          "value": "3\""
+        },
+        {
+          "label": "volume",
+          "value": "5.56 yd³"
+        },
+        {
+          "label": "waste",
+          "value": "10%"
+        }
+      ],
+      "formulaSteps": [
+        "area = 50 × 12 = 600 ft²",
+        "thickness = 3\" = 0.25 ft",
+        "volume = 600 × 0.25 = 150 ft³",
+        "tons = 150 × 145 ÷ 2000 = 10.88 tons",
+        "with 10% waste = 10.88 × 1.10 = 11.96 tons",
+        "rounded up to 12 tons"
+      ]
+    }
+  },
+  {
+    "slug": "lumber-calculator",
+    "inputs": [
+      "nominalSize",
+      "length",
+      "quantity",
+      "waste",
+      "species",
+      "price"
+    ],
+    "faqQuestions": [
+      "What is a board foot?",
+      "Why is a 2×4 not actually 2 by 4 inches?",
+      "How do I convert lineal feet to board feet?",
+      "How much lumber do I need for a deck?",
+      "What's the difference between cheap and premium lumber?",
+      "How much does lumber cost?",
+      "Should I buy pressure-treated or regular lumber?",
+      "What are MBF and M in lumber pricing?"
+    ],
+    "sourceUrls": [
+      "https://www.alsc.org/untreated-lumber_mod_prog_ps20.html",
+      "https://www.wwpa.org/resources/calculators",
+      "https://awc.org/publications/nds/",
+      "https://www.fpl.fs.usda.gov/products/publications/several_pubs.php?grouping_id=100",
+      "https://www.sfpa.org/"
+    ],
+    "metadata": {
+      "title": "Board Foot & Lumber Calculator: Cost + Weight",
+      "description": "Free board foot calculator: board feet, linear feet, weight, and cost for any lumber. Nominal sizes, conversions, and species guide.",
+      "alternates": {
+        "canonical": "/lumber-calculator"
+      },
+      "openGraph": {
+        "title": "Board Foot & Lumber Calculator: Cost + Weight",
+        "description": "Free board foot and lumber calculator: board feet, linear feet, weight, and cost for any board. Plus conversions.",
+        "url": "https://www.tallyard.com/lumber-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "nominalSize": "2x4",
+        "length": 8,
+        "quantity": 50,
+        "waste": 10,
+        "species": "spf",
+        "price": 0
+      },
+      "primary": {
+        "value": 55,
+        "rounded": 55,
+        "unit": "boards"
+      },
+      "breakdown": [
+        {
+          "label": "size",
+          "value": "2x4 × 8'"
+        },
+        {
+          "label": "board ft per piece",
+          "value": "5.33 bf"
+        },
+        {
+          "label": "total board ft",
+          "value": "293.3 bf"
+        },
+        {
+          "label": "lineal ft",
+          "value": "440'"
+        },
+        {
+          "label": "total weight",
+          "value": "~616 lb"
+        },
+        {
+          "label": "est. cost",
+          "value": "~$249 (SPF (kiln-dried))"
+        }
+      ],
+      "formulaSteps": [
+        "board size = 2\" × 4\" nominal, length = 8 ft",
+        "board feet per board = (2 × 4 × 8) ÷ 12 = 5.33 bf",
+        "quantity requested = 50",
+        "with 10% waste = ⌈50 × 1.10⌉ = 55",
+        "total board feet = 5.33 × 55 = 293.33 bf",
+        "total lineal feet = 55 × 8 = 440 ft",
+        "total weight = 293.3 bf × 2.1 lb/bf (SPF (kiln-dried)) = 616 lb",
+        "est. cost = 293.3 bf × $0.85/bf = $249.33"
+      ]
+    }
+  },
+  {
+    "slug": "stair-calculator",
+    "inputs": [
+      "totalRise",
+      "idealRiser",
+      "treadDepth",
+      "stairWidth"
+    ],
+    "faqQuestions": [
+      "How many stairs do I need for an 8-foot ceiling?",
+      "What is the standard stair riser height?",
+      "What is the 2R + T stair formula?",
+      "What's the IRC code for stair dimensions?",
+      "How long should my stair stringer be?",
+      "How many stringers do I need?",
+      "What's the rule of 25?",
+      "Can I adjust tread depth if my space is tight?",
+      "How do I measure total rise if the floor isn't finished?",
+      "What about landings?"
+    ],
+    "sourceUrls": [
+      "https://codes.iccsafe.org/content/IRC2021P2/chapter-3-building-planning",
+      "https://awc.org/publications/",
+      "https://awc.org/codes-standards/publications/stjr-2015",
+      "https://codes.iccsafe.org/content/IRC2021P2/chapter-3-building-planning"
+    ],
+    "metadata": {
+      "title": "Stair Calculator: Stringers, Rise & Run with Diagram",
+      "description": "Stair rise, run, and stringer layout with a cut diagram. Covers standard and max riser height (IRC 7-3/4 in), tread depth, and the 2R + T comfort rule.",
+      "alternates": {
+        "canonical": "/stair-calculator"
+      },
+      "openGraph": {
+        "title": "Stair Calculator: Stringers, Rise & Run with Diagram",
+        "description": "Free stair calculator with diagram: steps, rise and run, and stringer length and count for any staircase. IRC code compliant.",
+        "url": "https://www.tallyard.com/stair-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "totalRise": 108,
+        "idealRiser": 7.5,
+        "treadDepth": 11,
+        "stairWidth": 36
+      },
+      "primary": {
+        "value": 14,
+        "rounded": 14,
+        "unit": "risers"
+      },
+      "breakdown": [
+        {
+          "label": "treads",
+          "value": "13"
+        },
+        {
+          "label": "actual rise",
+          "value": "7.71 in"
+        },
+        {
+          "label": "total run",
+          "value": "143 in"
+        },
+        {
+          "label": "stringer length",
+          "value": "179.2 in"
+        },
+        {
+          "label": "riser (R311.7.5.1)",
+          "value": "7.71\" ok, max 7.75\""
+        },
+        {
+          "label": "tread (R311.7.5.2)",
+          "value": "11\" ok, min 10\""
+        },
+        {
+          "label": "width (R311.7.1)",
+          "value": "36\" ok, min 36\""
+        },
+        {
+          "label": "verdict",
+          "value": "meets IRC R311.7"
+        }
+      ],
+      "formulaSteps": [
+        "total rise = 108 in",
+        "ideal riser = 7.5 in",
+        "raw risers = 108 ÷ 7.5 = 14.4",
+        "risers (rounded) = 14",
+        "actual riser = 108 ÷ 14 = 7.71\" (19.6 cm)",
+        "treads = 14 − 1 = 13",
+        "total run = 13 × 11\" = 143\"",
+        "stringer = √(108² + 143²) = 179.2\"",
+        "R311.7.5.1 riser ≤ 7.75\": 7.71\" → pass",
+        "R311.7.5.2 tread ≥ 10\": 11\" → pass",
+        "R311.7.1 width ≥ 36\": 36\" → pass",
+        "rule of 25: 2R + T = 26.43 (target 24-25)",
+        "verdict: meets IRC R311.7"
+      ]
+    }
+  },
+  {
+    "slug": "rebar-calculator",
+    "inputs": [
+      "length",
+      "width",
+      "spacing",
+      "barSize",
+      "includePerimeter"
+    ],
+    "faqQuestions": [
+      "What size rebar do I need for a 4-inch slab?",
+      "Do I actually need rebar in a slab?",
+      "What's the spacing for a driveway?",
+      "How much overlap between rebar sticks?",
+      "What's a perimeter ring?",
+      "Can I use wire mesh instead?",
+      "What position in the slab should rebar sit?",
+      "How much does rebar weigh?"
+    ],
+    "sourceUrls": [
+      "https://www.astm.org/a0615_a0615m-22.html",
+      "https://www.concrete.org/tools/318buildingcodeportal.aspx",
+      "https://www.crsi.org/resources/",
+      "https://www.concrete.org/store/productdetail.aspx?ItemID=33220",
+      "https://www.astm.org/a1064_a1064m-22.html"
+    ],
+    "metadata": {
+      "title": "Rebar Calculator: Size Chart, Spacing & Lap",
+      "description": "Bars, linear feet, and weight for any slab or footing. Includes the rebar size chart, slab-on-grade spacing, and the 40-diameter lap splice rule.",
+      "alternates": {
+        "canonical": "/rebar-calculator"
+      },
+      "openGraph": {
+        "title": "Rebar Calculator: Size Chart, Spacing & Lap",
+        "description": "Calculate rebar for any slab with grid layout and perimeter ring.",
+        "url": "https://www.tallyard.com/rebar-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "length": 20,
+        "width": 12,
+        "spacing": 12,
+        "barSize": "#4",
+        "includePerimeter": "yes"
+      },
+      "primary": {
+        "value": 576,
+        "rounded": 576,
+        "unit": "lineal ft"
+      },
+      "breakdown": [
+        {
+          "label": "longitudinal bars",
+          "value": "13 × 20 ft"
+        },
+        {
+          "label": "transverse bars",
+          "value": "21 × 12 ft"
+        },
+        {
+          "label": "perimeter",
+          "value": "64 ft"
+        },
+        {
+          "label": "20-ft sticks",
+          "value": "29"
+        },
+        {
+          "label": "weight",
+          "value": "~385 lb"
+        }
+      ],
+      "formulaSteps": [
+        "slab = 20.0 × 12.0 ft, spacing = 12\"",
+        "longitudinal bars = ⌈12.0 ÷ 1⌉ + 1 = 13 bars",
+        "longitudinal length = 13 × 20 ft = 260 ft",
+        "transverse bars = ⌈20.0 ÷ 1⌉ + 1 = 21 bars",
+        "transverse length = 21 × 12 ft = 252 ft",
+        "perimeter = 2 × (20.0 + 12.0) = 64 ft",
+        "total = 576 ft",
+        "20-ft sticks = ⌈576 ÷ 20⌉ = 29 sticks",
+        "weight = 576 × 0.668 lb/ft = 385 lb"
+      ]
+    }
+  },
+  {
+    "slug": "brick-calculator",
+    "inputs": [
+      "length",
+      "height",
+      "brickType",
+      "jointWidth",
+      "thickness",
+      "waste"
+    ],
+    "faqQuestions": [
+      "How many bricks do I need for a 20×8 foot wall?",
+      "What's the difference between modular and standard brick?",
+      "How much mortar do I need?",
+      "Single-wythe or double-wythe, which do I need?",
+      "What's the best mortar joint width?",
+      "How much do bricks cost?",
+      "Can I buy partial pallets of brick?",
+      "How do I calculate bricks for a chimney or fireplace?"
+    ],
+    "sourceUrls": [
+      "https://www.gobrick.com/resources/technical-notes",
+      "https://www.gobrick.com/resources/technical-notes",
+      "https://www.astm.org/c0216-23.html",
+      "https://www.astm.org/c0062-17.html",
+      "https://www.cement.org/cement-concrete/products/masonry"
+    ],
+    "metadata": {
+      "title": "Brick Calculator: Count, Sizes & Cost Per Brick",
+      "description": "How many bricks you need from wall size, with the standard brick size chart, bricks per square foot, and 2026 cost per brick and per thousand.",
+      "alternates": {
+        "canonical": "/brick-calculator"
+      },
+      "openGraph": {
+        "title": "Brick Calculator: Count, Sizes & Cost Per Brick",
+        "description": "Calculate bricks and mortar bags for any wall project.",
+        "url": "https://www.tallyard.com/brick-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "length": 20,
+        "height": 8,
+        "brickType": "modular",
+        "jointWidth": 0.375,
+        "thickness": "single",
+        "waste": 10
+      },
+      "primary": {
+        "value": 1207,
+        "rounded": 1207,
+        "unit": "bricks"
+      },
+      "breakdown": [
+        {
+          "label": "area",
+          "value": "160 ft²"
+        },
+        {
+          "label": "wythe",
+          "value": "single"
+        },
+        {
+          "label": "mortar bags (80 lb)",
+          "value": "54"
+        },
+        {
+          "label": "bricks per ft²",
+          "value": "6.86"
+        }
+      ],
+      "formulaSteps": [
+        "wall area = 20 × 8 = 160 ft²",
+        "brick size = 7.625\" × 2.25\" (modular)",
+        "joint = 0.375\"",
+        "bricks per ft² = 144 ÷ ((7.625 + 0.375) × (2.25 + 0.375)) = 6.86",
+        "wythe = single, multiplier = 1×",
+        "raw bricks = 160 × 6.86 × 1 = 1,097",
+        "with 10% waste = 1207 bricks",
+        "mortar ≈ 1207 ÷ 30 bricks/ft³ = 40.2 ft³",
+        "mortar bags (80 lb, ~0.75 ft³/bag) = ⌈40.2 ÷ 0.75⌉ = 54 bags"
+      ]
+    }
+  },
+  {
+    "slug": "wallpaper-calculator",
+    "inputs": [
+      "perimeter",
+      "height",
+      "rollCoverage",
+      "patternRepeat",
+      "doors",
+      "windows"
+    ],
+    "faqQuestions": [
+      "How many rolls of wallpaper for a 12×14 room?",
+      "What's a double roll vs a single roll?",
+      "How much extra should I buy for pattern repeats?",
+      "Do I subtract doors and windows?",
+      "Can I use this for accent walls?",
+      "What's the difference between prepasted and unpasted?",
+      "How do I deal with a dye lot?",
+      "Should I hire a professional installer?"
+    ],
+    "sourceUrls": [
+      "https://www.wallcoverings.org/page/InstallationStandards",
+      "https://www.astm.org/f0793-15.html",
+      "https://www.yorkwallcoverings.com/",
+      "https://www.grahambrown.com/us/help-and-advice",
+      "https://www.wallcoverings.org/"
+    ],
+    "metadata": {
+      "title": "Wallpaper Calculator: Rolls, Repeat & Measuring",
+      "description": "Free wallpaper calculator: rolls needed for any room with pattern repeat, roll size, and openings. Plus how to measure a wall.",
+      "alternates": {
+        "canonical": "/wallpaper-calculator"
+      },
+      "openGraph": {
+        "title": "Wallpaper Calculator: Rolls, Repeat & Measuring",
+        "description": "Free wallpaper calculator: rolls for any room with pattern repeat and openings, plus how to measure a wall.",
+        "url": "https://www.tallyard.com/wallpaper-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "perimeter": 52,
+        "height": 9,
+        "rollCoverage": 56,
+        "patternRepeat": 0,
+        "doors": 1,
+        "windows": 2
+      },
+      "primary": {
+        "value": 9,
+        "rounded": 9,
+        "unit": "double rolls"
+      },
+      "breakdown": [
+        {
+          "label": "gross wall area",
+          "value": "468 ft²"
+        },
+        {
+          "label": "after openings",
+          "value": "417 ft²"
+        },
+        {
+          "label": "pattern waste",
+          "value": "10%"
+        },
+        {
+          "label": "coverage per roll",
+          "value": "56 ft²"
+        }
+      ],
+      "formulaSteps": [
+        "gross area = 52 ft × 9 ft = 468 ft²",
+        "openings = 1 doors × 21 + 2 windows × 15 = 51 ft²",
+        "net area = 468 − 51 = 417 ft²",
+        "pattern repeat = 0\", waste = 10%",
+        "with waste = 417 × 1.10 = 459 ft²",
+        "coverage per roll = 56 ft²",
+        "rolls = ⌈459 ÷ 56⌉ = 9 double rolls"
+      ]
+    }
+  },
+  {
+    "slug": "shower-tile-calculator",
+    "inputs": [
+      "backWidth",
+      "sideDepth",
+      "height",
+      "tileSize",
+      "tilesPerBox",
+      "includeNiche",
+      "includeFloor"
+    ],
+    "faqQuestions": [
+      "How many tiles do I need for a standard shower?",
+      "Should I use the same tile on floor and walls?",
+      "Why is shower waste 15% instead of 10%?",
+      "What about the ceiling?",
+      "How big should my niche be?",
+      "What about curbs and benches?",
+      "Do I need waterproofing behind tile?",
+      "Can I do this over an existing tub surround?"
+    ],
+    "sourceUrls": [
+      "https://www.tcnatile.com/products-and-services/publications/tcna-handbook/",
+      "https://www.tcnatile.com/products-and-services/publications/ansi-standards/",
+      "https://www.tcnatile.com/products-and-services/publications/ansi-standards/",
+      "https://codes.iccsafe.org/content/IRC2021P1/chapter-27-plumbing-fixtures",
+      "https://www.schluter.com/schluter-us/en_US/shower-systems"
+    ],
+    "metadata": {
+      "title": "Shower Tile Calculator: Wall & Floor Square Feet",
+      "description": "Tile for any shower, with wall and floor counted separately. Covers niche and curb, waste by pattern, shower pan options, and floor tile slip ratings.",
+      "alternates": {
+        "canonical": "/shower-tile-calculator"
+      },
+      "openGraph": {
+        "title": "Shower Tile Calculator: Wall & Floor Square Feet",
+        "description": "Calculate shower tile with niche and floor options.",
+        "url": "https://www.tallyard.com/shower-tile-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "backWidth": 60,
+        "sideDepth": 32,
+        "height": 96,
+        "tileSize": "12x24",
+        "tilesPerBox": 8,
+        "includeNiche": "yes",
+        "includeFloor": "no"
+      },
+      "primary": {
+        "value": 49,
+        "rounded": 49,
+        "unit": "tiles"
+      },
+      "breakdown": [
+        {
+          "label": "wet area",
+          "value": "84.5 ft²"
+        },
+        {
+          "label": "boxes",
+          "value": "7"
+        },
+        {
+          "label": "with 15% waste",
+          "value": "97.2 ft²"
+        },
+        {
+          "label": "extras included",
+          "value": "niche"
+        }
+      ],
+      "formulaSteps": [
+        "back wall = 60\" × 96\" = 40 ft²",
+        "each side wall = 32\" × 96\" = 21.3 ft²",
+        "three walls = 82.7 ft²",
+        "niche net add = 1.85 ft² (interior surfaces minus opening)",
+        "floor: not included",
+        "total wet area = 84.5 ft²",
+        "with 15% waste = 97.2 ft²",
+        "tile size = 12\" × 24\" = 2 ft² each",
+        "tiles = ⌈97.2 ÷ 2⌉ = 49",
+        "boxes = ⌈49 ÷ 8⌉ = 7"
+      ]
+    }
+  },
+  {
+    "slug": "backsplash-calculator",
+    "inputs": [
+      "linearFt",
+      "height",
+      "tileSize",
+      "tilesPerBox",
+      "outlets",
+      "window"
+    ],
+    "faqQuestions": [
+      "How many tiles do I need for a kitchen backsplash?",
+      "How tall should my backsplash be?",
+      "Do I need to subtract outlets and windows?",
+      "Why is backsplash waste 15% instead of 10%?",
+      "Can I use peel-and-stick tile instead?",
+      "Do I need thinset or can I use mastic?",
+      "How many sheets of mosaic do I need?",
+      "Should I run subway tile horizontally or vertically?"
+    ],
+    "sourceUrls": [
+      "https://nkba.org/guidelines/",
+      "https://www.tcnatile.com/products-and-services/publications/tcna-handbook/",
+      "https://www.nfpa.org/codes-and-standards/all-codes-and-standards/list-of-codes-and-standards/detail?code=70",
+      "https://www.tcnatile.com/products-and-services/publications/tcna-handbook/",
+      "https://www.tcnatile.com/products-and-services/publications/ansi-standards/"
+    ],
+    "metadata": {
+      "title": "Backsplash Calculator: Tile Square Feet by Run",
+      "description": "Backsplash tile from counter linear feet and height. Covers the 18 inch standard, range walls, outlets, zellige waste, and peel and stick options.",
+      "alternates": {
+        "canonical": "/backsplash-calculator"
+      },
+      "openGraph": {
+        "title": "Backsplash Calculator: Tile Square Feet by Run",
+        "description": "Calculate backsplash tile with outlet and window subtractions.",
+        "url": "https://www.tallyard.com/backsplash-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "linearFt": 18,
+        "height": 18,
+        "tileSize": "3x6",
+        "tilesPerBox": 40,
+        "outlets": 4,
+        "window": "none"
+      },
+      "primary": {
+        "value": 245,
+        "rounded": 245,
+        "unit": "tiles"
+      },
+      "breakdown": [
+        {
+          "label": "gross area",
+          "value": "27 ft²"
+        },
+        {
+          "label": "net area",
+          "value": "26.6 ft²"
+        },
+        {
+          "label": "boxes",
+          "value": "7"
+        },
+        {
+          "label": "tile size",
+          "value": "3\" × 6\""
+        }
+      ],
+      "formulaSteps": [
+        "linear ft = 18, height = 18\"",
+        "gross area = 18 × (18 ÷ 12) = 27 ft²",
+        "outlets = 4 × 0.1 = 0.4 ft²",
+        "window = 0 ft²",
+        "net area = 27 − 0.4 = 26.6 ft²",
+        "with 15% waste = 26.6 × 1.15 = 30.6 ft²",
+        "tile area = 3\" × 6\" = 0.13 ft² each",
+        "tiles = ⌈30.6 ÷ 0.13⌉ = 245",
+        "boxes = ⌈245 ÷ 40⌉ = 7"
+      ]
+    }
+  },
+  {
+    "slug": "vanity-calculator",
+    "inputs": [
+      "bathroomWidth",
+      "clearanceLeft",
+      "clearanceRight",
+      "users",
+      "height"
+    ],
+    "faqQuestions": [
+      "What size vanity should I buy?",
+      "Can I fit a double sink in a 60-inch vanity?",
+      "What's the standard vanity depth?",
+      "Should I pick 32\" or 36\" height?",
+      "Do I need to account for the countertop overhang?",
+      "What if no standard size fits my space?",
+      "How much counter space do I need?",
+      "What about wall-hung vs. freestanding?"
+    ],
+    "sourceUrls": [
+      "https://codes.iccsafe.org/content/IRC2021P1/chapter-3-building-planning",
+      "https://nkba.org/guidelines/",
+      "https://codes.iccsafe.org/content/ICCA1171-2017",
+      "https://www.kcma.org/certifications/ansi-kcma-a161-1-certification/",
+      "https://www.asme.org/codes-standards/find-codes-standards/a112-19-2-ceramic-plumbing-fixtures"
+    ],
+    "metadata": {
+      "title": "Vanity Size Calculator: Widths & Clearances",
+      "description": "Bathroom vanity size for any wall, with the standard width chart from 24 to 72 inches, IRC clearances, and why a double sink needs 60 inches.",
+      "alternates": {
+        "canonical": "/vanity-calculator"
+      },
+      "openGraph": {
+        "title": "Vanity Size Calculator: Widths & Clearances",
+        "description": "Calculate bathroom vanity size with clearances and code checks.",
+        "url": "https://www.tallyard.com/vanity-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "bathroomWidth": 72,
+        "clearanceLeft": 0,
+        "clearanceRight": 4,
+        "users": "1",
+        "height": "36"
+      },
+      "primary": {
+        "value": 66,
+        "rounded": 66,
+        "unit": "inches"
+      },
+      "breakdown": [
+        {
+          "label": "max width",
+          "value": "68\""
+        },
+        {
+          "label": "configuration",
+          "value": "single sink"
+        },
+        {
+          "label": "sinks",
+          "value": "1"
+        },
+        {
+          "label": "depth",
+          "value": "21\""
+        },
+        {
+          "label": "countertop",
+          "value": "9.6 ft²"
+        }
+      ],
+      "formulaSteps": [
+        "bathroom wall = 72\"",
+        "clearances = 0\" left + 4\" right",
+        "max vanity width = 72 − 4 = 68\"",
+        "standard sizes that fit: 18\", 24\", 30\", 36\", 42\", 48\", 60\", 66\"",
+        "recommended = 66\" (largest standard size that fits)",
+        "users = 1, double-sink minimum = 60\"",
+        "configuration = single sink",
+        "depth = 21\" (standard 21\", 18\" for small vanities ≤ 24\" wide)",
+        "countertop area = 66 × 21 ÷ 144 = 9.63 ft²",
+        "code check: fits with typical clearance"
+      ]
+    }
+  },
+  {
+    "slug": "countertop-calculator",
+    "inputs": [
+      "linearFt",
+      "depth",
+      "island",
+      "material",
+      "waste"
+    ],
+    "faqQuestions": [
+      "How many square feet of countertop for a typical kitchen?",
+      "How do I measure my kitchen counters?",
+      "Why does the waste factor apply to countertops?",
+      "What's the difference between quartz and granite?",
+      "How much does a new countertop cost?",
+      "What about an island overhang for seating?",
+      "Do I need to account for the backsplash?",
+      "Can I install countertops myself?"
+    ],
+    "sourceUrls": [
+      "https://www.naturalstoneinstitute.org/stoneprofessionals/technical-resources/",
+      "https://www.naturalstoneinstitute.org/designprofessionals/technical-resources/dsdm/",
+      "https://nkba.org/guidelines/",
+      "https://www.astm.org/c0615_c0615m-18e01.html",
+      "https://www.isfanow.org/"
+    ],
+    "metadata": {
+      "title": "Countertop Calculator: Sq Ft & Cost by Material",
+      "description": "Measure countertop square footage the way fabricators do, then compare installed cost: granite vs quartz, laminate, butcher block, and quartzite.",
+      "alternates": {
+        "canonical": "/countertop-calculator"
+      },
+      "openGraph": {
+        "title": "Countertop Calculator: Sq Ft & Cost by Material",
+        "description": "Calculate countertop square feet with island and cost estimates.",
+        "url": "https://www.tallyard.com/countertop-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "linearFt": 18,
+        "depth": 25.5,
+        "island": "no",
+        "material": "quartz",
+        "waste": 10
+      },
+      "primary": {
+        "value": 42.1,
+        "rounded": 43,
+        "unit": "ft²"
+      },
+      "breakdown": [
+        {
+          "label": "main counter",
+          "value": "38.3 ft²"
+        },
+        {
+          "label": "linear edge",
+          "value": "18 ft"
+        },
+        {
+          "label": "estimated cost",
+          "value": "$2,525–$5,049"
+        }
+      ],
+      "formulaSteps": [
+        "main area = 18 ft × 25.5\"/12 = 38.3 ft²",
+        "island: none",
+        "raw area = 38.3 + 0 = 38.3 ft²",
+        "with 10% waste = 38.3 × 1.10 = 42.1 ft²",
+        "linear edge = 18 (main front) + 0 (island) = 18 ft",
+        "quartz estimated cost: $60–$120/ft² × 42.1 = $2,525–$5,049"
+      ],
+      "composition": {
+        "unit": "ft²",
+        "total": 42.1,
+        "segments": [
+          {
+            "label": "Main counter",
+            "amount": 38.3,
+            "shade": "primary"
+          },
+          {
+            "label": "Waste buffer",
+            "amount": 3.8,
+            "shade": "tertiary"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "slug": "siding-calculator",
+    "inputs": [
+      "perimeter",
+      "height",
+      "gables",
+      "gableSize",
+      "material",
+      "openings"
+    ],
+    "faqQuestions": [
+      "How many squares of siding do I need for a 2,000 sq ft house?",
+      "What's a siding square?",
+      "Do I subtract windows and doors from my total?",
+      "How do I measure a gable?",
+      "What's the cheapest siding material?",
+      "Do I need house wrap and insulation under the siding?",
+      "How long does siding last?",
+      "Can I install siding over existing siding?"
+    ],
+    "sourceUrls": [
+      "https://www.vinylsiding.org/installation/",
+      "https://www.jameshardie.com/resources/installation",
+      "https://www.apawood.org/technical-guides",
+      "https://codes.iccsafe.org/content/IRC2021P1/chapter-7-wall-covering",
+      "https://lpcorp.com/products/siding"
+    ],
+    "metadata": {
+      "title": "Siding Calculator: Squares, Sheets & Cost",
+      "description": "Siding for any house in squares or sheets. Covers vinyl, fiber cement, T1-11, board and batten, and cedar, with exposure math and installed cost per foot.",
+      "alternates": {
+        "canonical": "/siding-calculator"
+      },
+      "openGraph": {
+        "title": "Siding Calculator: Squares, Sheets & Cost",
+        "description": "Calculate siding squares and linear feet for any home.",
+        "url": "https://www.tallyard.com/siding-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "perimeter": 140,
+        "height": 9,
+        "gables": 2,
+        "gableSize": 60,
+        "material": "vinyl",
+        "openings": 14
+      },
+      "primary": {
+        "value": 12.1,
+        "rounded": 13,
+        "unit": "squares"
+      },
+      "breakdown": [
+        {
+          "label": "wall area",
+          "value": "1,260 ft²"
+        },
+        {
+          "label": "gables",
+          "value": "120 ft²"
+        },
+        {
+          "label": "openings subtracted",
+          "value": "280 ft²"
+        },
+        {
+          "label": "with waste",
+          "value": "1,210 ft²"
+        },
+        {
+          "label": "trim linear ft",
+          "value": "504"
+        }
+      ],
+      "formulaSteps": [
+        "wall area = 140 × 9 = 1,260 ft²",
+        "gables = 2 × 60 = 120 ft²",
+        "openings = 14 × 20 = 280 ft²",
+        "net area = 1,380 − 280 = 1,100 ft²",
+        "vinyl waste = 10%",
+        "with waste = 1,100 × 1.10 = 1,210 ft²",
+        "squares = 1,210 ÷ 100 = 12.1 squares",
+        "trim + J-channel = 280 + 224 = 504 linear ft"
+      ]
+    }
+  },
+  {
+    "slug": "gutter-calculator",
+    "inputs": [
+      "roofLength",
+      "roofArea",
+      "pitch",
+      "rainfall",
+      "corners"
+    ],
+    "faqQuestions": [
+      "How many feet of gutter do I need for my house?",
+      "Should I use 5-inch or 6-inch gutters?",
+      "How many downspouts do I need?",
+      "Where should I place downspouts?",
+      "How far apart should gutter hangers be?",
+      "Can I install gutters myself?",
+      "What do gutter guards cost?",
+      "How long do gutters last?"
+    ],
+    "sourceUrls": [
+      "https://www.smacna.org/technical/manuals",
+      "https://codes.iccsafe.org/content/IRC2021P2/chapter-9-roof-assemblies-and-rooftop-structures",
+      "https://hdsc.nws.noaa.gov/pfds/",
+      "https://www.aluminum.org/"
+    ],
+    "metadata": {
+      "title": "Gutter Calculator: Size, Downspouts & Cost Estimate",
+      "description": "Free gutter calculator: linear feet, downspouts, and 5-inch vs 6-inch sizing for any roof. Includes slope, material costs, and how to measure.",
+      "alternates": {
+        "canonical": "/gutter-calculator"
+      },
+      "openGraph": {
+        "title": "Gutter Calculator: Size, Downspouts & Cost Estimate",
+        "description": "Free gutter calculator: linear feet, downspouts, and 5-inch vs 6-inch sizing for any roof. Includes slope, material costs, and how to measure.",
+        "url": "https://www.tallyard.com/gutter-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "roofLength": 120,
+        "roofArea": 1200,
+        "pitch": 1,
+        "rainfall": 7,
+        "corners": 4
+      },
+      "primary": {
+        "value": 156,
+        "rounded": 156,
+        "unit": "linear ft"
+      },
+      "breakdown": [
+        {
+          "label": "gutter size",
+          "value": "5\""
+        },
+        {
+          "label": "gutter length",
+          "value": "120 ft"
+        },
+        {
+          "label": "downspouts",
+          "value": "3"
+        },
+        {
+          "label": "hangers (32\" OC)",
+          "value": "45"
+        },
+        {
+          "label": "elbows",
+          "value": "9"
+        },
+        {
+          "label": "corners",
+          "value": "4"
+        },
+        {
+          "label": "end caps",
+          "value": "4"
+        }
+      ],
+      "formulaSteps": [
+        "roof edge = 120 ft",
+        "roof area = 1,200 ft²",
+        "effective area = 1,200 × 1 × (7/7) = 1,200 ft²",
+        "gutter size = 5\" (5\" sufficient)",
+        "downspouts = max(⌈1,200 ÷ 700⌉, ⌈120 ÷ 40⌉) = 3",
+        "downspout linear ft = 3 × 12 ≈ 36 ft",
+        "hangers = ⌈120 ÷ 2.67⌉ = 45 at 32\" OC",
+        "elbows = 3 × 3 = 9",
+        "end caps = 2 runs × 2 = 4",
+        "total linear ft = 120 gutter + 36 downspout = 156 ft"
+      ]
+    }
+  },
+  {
+    "slug": "heat-pump-calculator",
+    "inputs": [
+      "sqFt",
+      "climate",
+      "insulation",
+      "ceiling",
+      "windows"
+    ],
+    "faqQuestions": [
+      "What size heat pump do I need for a 2,000 sq ft house?",
+      "Can a heat pump heat my home in cold weather?",
+      "Why is heating load larger than cooling load in cold climates?",
+      "Should I oversize my heat pump?",
+      "What's the difference between a heat pump and an air conditioner?",
+      "How much does a heat pump cost?",
+      "What's SEER and HSPF?",
+      "Do I need a new electrical panel for a heat pump?"
+    ],
+    "sourceUrls": [
+      "https://www.acca.org/standards/technical-manuals",
+      "https://www.energystar.gov/products/heating_cooling/heat_pumps_air_source",
+      "https://www.energy.gov/eere/buildings/appliance-and-equipment-standards-program",
+      "https://www.ahridirectory.org/",
+      "https://www.irs.gov/credits-deductions/energy-efficient-home-improvement-credit"
+    ],
+    "metadata": {
+      "title": "Heat Pump Sizing Calculator: Tons by Climate",
+      "description": "Heat pump size in tons from square footage, climate zone, and insulation. Covers SEER2 ratings, installation cost by size, and cold weather performance.",
+      "alternates": {
+        "canonical": "/heat-pump-calculator"
+      },
+      "openGraph": {
+        "title": "Heat Pump Sizing Calculator: Tons by Climate",
+        "description": "Calculate heat pump size for heating and cooling.",
+        "url": "https://www.tallyard.com/heat-pump-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "sqFt": 2000,
+        "climate": "5",
+        "insulation": "average",
+        "ceiling": "standard",
+        "windows": "average"
+      },
+      "primary": {
+        "value": 5,
+        "rounded": 5,
+        "unit": "tons"
+      },
+      "breakdown": [
+        {
+          "label": "home area",
+          "value": "2,000 ft²"
+        },
+        {
+          "label": "cooling BTU",
+          "value": "36,000"
+        },
+        {
+          "label": "heating BTU",
+          "value": "80,000"
+        },
+        {
+          "label": "sized by",
+          "value": "heating"
+        },
+        {
+          "label": "design BTU",
+          "value": "80,000"
+        }
+      ],
+      "formulaSteps": [
+        "area = 2,000 ft² (zone 5)",
+        "cooling = 2,000 × 18 × 1 = 36,000 BTU/hr",
+        "heating = 2,000 × 40 × 1 = 80,000 BTU/hr",
+        "multipliers: insulation 1× · ceiling 1× · windows 1×",
+        "design BTU = max(cooling, heating) = 80,000 BTU/hr (heating is binding)",
+        "tons = 80,000 ÷ 12,000 = 6.67",
+        "recommended size = 5 tons (next standard size up)"
+      ],
+      "composition": {
+        "unit": "BTU",
+        "total": 80000,
+        "segments": [
+          {
+            "label": "Cooling",
+            "amount": 36000,
+            "shade": "primary"
+          },
+          {
+            "label": "Heating",
+            "amount": 80000,
+            "shade": "secondary"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "slug": "water-heater-calculator",
+    "inputs": [
+      "type",
+      "adults",
+      "teens",
+      "bathrooms",
+      "simultaneous",
+      "climate"
+    ],
+    "faqQuestions": [
+      "What size water heater do I need for a family of 4?",
+      "Tank or tankless, which is better?",
+      "What's first-hour rating (FHR)?",
+      "How do I calculate tankless size?",
+      "How long do water heaters last?",
+      "How much does a new water heater cost?",
+      "Should I consider a heat pump water heater?",
+      "What if I run out of hot water?"
+    ],
+    "sourceUrls": [
+      "https://www.energy.gov/energysaver/sizing-new-water-heater",
+      "https://www.energystar.gov/products/water_heaters",
+      "https://codes.iccsafe.org/content/IRC2021P1/chapter-28-water-heaters",
+      "https://codes.iccsafe.org/content/IRC2021P1/chapter-29-water-supply-and-distribution",
+      "https://www.ahridirectory.org/"
+    ],
+    "metadata": {
+      "title": "Water Heater Size Calculator: Gallons or GPM",
+      "description": "Water heater size from household demand: first hour rating for tanks, temperature rise for tankless. Covers 40 vs 50 gallon, venting, and expansion tanks.",
+      "alternates": {
+        "canonical": "/water-heater-calculator"
+      },
+      "openGraph": {
+        "title": "Water Heater Size Calculator: Gallons or GPM",
+        "description": "Calculate water heater size for any household.",
+        "url": "https://www.tallyard.com/water-heater-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "type": "tank",
+        "adults": 2,
+        "teens": 2,
+        "bathrooms": 2,
+        "simultaneous": "2",
+        "climate": 55
+      },
+      "primary": {
+        "value": 75,
+        "rounded": 75,
+        "unit": "gallon tank"
+      },
+      "breakdown": [
+        {
+          "label": "household size",
+          "value": "4 people"
+        },
+        {
+          "label": "peak hour demand",
+          "value": "92 gallons"
+        },
+        {
+          "label": "bathrooms",
+          "value": "2"
+        },
+        {
+          "label": "first-hour rating target",
+          "value": "92 GPH"
+        }
+      ],
+      "formulaSteps": [
+        "household = 2 adults + 2 teens = 4 people",
+        "peak showers = min(4, 4) = 4",
+        "peak hour demand = 4 × 20 (shower) + 4 × 3 (sinks) = 92 gallons",
+        "raw tank size = 92 ÷ 1.3 = 71 gallons",
+        "recommended = 75 gallons (next standard size)",
+        "first-hour rating (FHR) target = 92 GPH"
+      ]
+    }
+  },
+  {
+    "slug": "extension-cord-calculator",
+    "inputs": [
+      "appliance",
+      "amps",
+      "length",
+      "location"
+    ],
+    "faqQuestions": [
+      "What gauge extension cord do I need for a 15-amp tool?",
+      "What happens if I use a cord that's too thin?",
+      "Can I use an indoor cord outside temporarily?",
+      "What do the numbers on an extension cord mean?",
+      "Can I daisy-chain extension cords?",
+      "How many amps does a typical power tool draw?",
+      "What about 240V extension cords?",
+      "Should I use a surge protector on extension cord runs?"
+    ],
+    "sourceUrls": [
+      "https://www.shopulstandards.com/ProductDetail.aspx?productId=UL817",
+      "https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.405",
+      "https://www.nfpa.org/codes-and-standards/all-codes-and-standards/list-of-codes-and-standards/detail?code=70",
+      "https://www.esfi.org/seasonal-safety/",
+      "https://www.cpsc.gov/Safety-Education/Safety-Education-Centers/Portable-Generators"
+    ],
+    "metadata": {
+      "title": "Extension Cord Gauge Calculator: AWG by Length",
+      "description": "What gauge extension cord you need by amps and length. Full AWG chart for 16, 14, 12, and 10 gauge cords, plus jacket codes and generator cord rules.",
+      "alternates": {
+        "canonical": "/extension-cord-calculator"
+      },
+      "openGraph": {
+        "title": "Extension Cord Gauge Calculator: AWG by Length",
+        "description": "Extension cord gauge sizing for any tool or appliance.",
+        "url": "https://www.tallyard.com/extension-cord-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "appliance": "custom",
+        "amps": 12,
+        "length": 50,
+        "location": "outdoor"
+      },
+      "primary": {
+        "value": 14,
+        "rounded": 14,
+        "unit": "AWG 14"
+      },
+      "breakdown": [
+        {
+          "label": "load",
+          "value": "12 A"
+        },
+        {
+          "label": "length",
+          "value": "50 ft"
+        },
+        {
+          "label": "recommended",
+          "value": "14 AWG"
+        },
+        {
+          "label": "rated for",
+          "value": "13 A at this length"
+        },
+        {
+          "label": "voltage drop",
+          "value": "~2.5%"
+        },
+        {
+          "label": "jacket",
+          "value": "SJTW or W-rated (weather-resistant)"
+        }
+      ],
+      "formulaSteps": [
+        "load = 12 A (custom)",
+        "length = 50 ft",
+        "location = outdoor",
+        "checking gauges for 50-ft length at 12A minimum:",
+        "  18 AWG: rated 5A ✗",
+        "  16 AWG: rated 10A ✗",
+        "  14 AWG: rated 13A ✓",
+        "  12 AWG: rated 15A ✓",
+        "  10 AWG: rated 20A ✓",
+        "recommended = 14 AWG",
+        "voltage drop = 2 × 12 × 2.525Ω × 50ft / 1000 = 3.03V (2.5%)",
+        "required jacket: SJTW or W-rated (weather-resistant)"
+      ]
+    }
+  },
+  {
+    "slug": "attic-ventilation-calculator",
+    "inputs": [
+      "atticArea",
+      "ratio",
+      "ventType",
+      "ridgeLength"
+    ],
+    "faqQuestions": [
+      "How much attic ventilation do I need?",
+      "What's the difference between NFVA and actual vent area?",
+      "Should I use ridge vents or gable vents?",
+      "Can I mix ridge vents and gable vents?",
+      "What's a power attic vent, and should I use one?",
+      "Do I need ventilation if I have a conditioned attic?",
+      "What happens with insufficient attic ventilation?",
+      "How do I check if my attic ventilation is working?"
+    ],
+    "sourceUrls": [
+      "https://codes.iccsafe.org/content/IRC2021P1/chapter-8-roof-ceiling-construction",
+      "https://codes.iccsafe.org/content/IRC2021P1/chapter-8-roof-ceiling-construction",
+      "https://www.energy.gov/eere/buildings/building-america",
+      "https://www.ashrae.org/technical-resources",
+      "https://www.hud.gov/program_offices/housing/sfh/mps"
+    ],
+    "metadata": {
+      "title": "Attic Ventilation Calculator: 1:300 Rule & NFA",
+      "description": "Attic vent area from floor size using the IRC 1:300 rule, split into intake and exhaust. Covers net free area, soffit baffles, and mixing vent types.",
+      "alternates": {
+        "canonical": "/attic-ventilation-calculator"
+      },
+      "openGraph": {
+        "title": "Attic Ventilation Calculator: 1:300 Rule & NFA",
+        "description": "Calculate attic ventilation with the 1:300 rule.",
+        "url": "https://www.tallyard.com/attic-ventilation-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "atticArea": 1500,
+        "ratio": "300",
+        "ventType": "ridge",
+        "ridgeLength": 40
+      },
+      "primary": {
+        "value": 720,
+        "rounded": 720,
+        "unit": "sq in NFVA"
+      },
+      "breakdown": [
+        {
+          "label": "total NFVA needed",
+          "value": "720 sq in"
+        },
+        {
+          "label": "intake (soffit)",
+          "value": "360 sq in"
+        },
+        {
+          "label": "exhaust",
+          "value": "360 sq in"
+        },
+        {
+          "label": "recommended exhaust",
+          "value": "24 ft of ridge vent"
+        },
+        {
+          "label": "soffit vents",
+          "value": "40 ft continuous or 11 individual"
+        }
+      ],
+      "formulaSteps": [
+        "attic area = 1,500 ft²",
+        "ratio = 1:300",
+        "total NFVA = 1,500 ÷ 300 = 5 ft² = 720 sq in",
+        "50/50 balanced: intake = exhaust = 360 sq in each",
+        "ridge vent at 15 sq in/ft: need 24 ft",
+        "intake: 40 ft continuous soffit OR 11 individual vents at 35 sq in each"
+      ],
+      "composition": {
+        "unit": "sq in",
+        "total": 720,
+        "segments": [
+          {
+            "label": "Intake (soffit)",
+            "amount": 360,
+            "shade": "primary"
+          },
+          {
+            "label": "Exhaust",
+            "amount": 360,
+            "shade": "secondary"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "slug": "pool-chlorine-calculator",
+    "inputs": [
+      "volume",
+      "currentPpm",
+      "targetPpm",
+      "chlorineType"
+    ],
+    "faqQuestions": [
+      "How much chlorine do I add to a 15,000 gallon pool?",
+      "What's the difference between the chlorine types?",
+      "How often should I add chlorine?",
+      "When should I shock my pool?",
+      "Why can't I just use more chlorine?",
+      "Can I swim right after adding chlorine?",
+      "What's cyanuric acid and why does it matter?",
+      "How do I calculate my pool volume?"
+    ],
+    "sourceUrls": [
+      "https://www.cdc.gov/model-aquatic-health-code/php/index.html",
+      "https://www.cdc.gov/model-aquatic-health-code/php/annex/index.html",
+      "https://www.phta.org/standards/",
+      "https://www.epa.gov/pesticide-registration/pesticide-registration-manual-chapter-4-additional-considerations",
+      "https://www.who.int/publications/i/item/9241546808"
+    ],
+    "metadata": {
+      "title": "Pool Chlorine Calculator: How Much to Add & Shock",
+      "description": "How much chlorine to add to your pool, by product. Liquid, tablet, granular, and shock doses from your gallons and current ppm, using CDC MAHC targets.",
+      "alternates": {
+        "canonical": "/pool-chlorine-calculator"
+      },
+      "openGraph": {
+        "title": "Pool Chlorine Calculator: How Much to Add & Shock",
+        "description": "Chlorine dose for maintenance and shock, from volume and current ppm.",
+        "url": "https://www.tallyard.com/pool-chlorine-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "volume": 15000,
+        "currentPpm": 0,
+        "targetPpm": 3,
+        "chlorineType": "liquid"
+      },
+      "primary": {
+        "value": 0.37,
+        "rounded": 0.4,
+        "unit": "gallons"
+      },
+      "breakdown": [
+        {
+          "label": "pool volume",
+          "value": "15,000 gal"
+        },
+        {
+          "label": "raise by",
+          "value": "3 ppm"
+        },
+        {
+          "label": "target",
+          "value": "3 ppm"
+        },
+        {
+          "label": "product",
+          "value": "liquid (10%)"
+        }
+      ],
+      "formulaSteps": [
+        "volume = 15,000 gal",
+        "current = 0 ppm, target = 3 ppm",
+        "need to raise = 3 ppm",
+        "product: liquid, strength = 10%",
+        "dosing: 10.5 oz per 10,000 gal per 1 ppm",
+        "amount = (15,000 ÷ 10,000) × 3 × 10.5 = 47.3 oz",
+        "display: 0.37 gallons"
+      ]
+    }
+  },
+  {
+    "slug": "shed-calculator",
+    "inputs": [
+      "length",
+      "width",
+      "wallHeight",
+      "roofStyle",
+      "studSpacing"
+    ],
+    "faqQuestions": [
+      "How much material do I need for a 10×8 shed?",
+      "What's the cheapest shed to build?",
+      "Do I need a permit?",
+      "What foundation does a shed need?",
+      "Should I use OSB or plywood for sheathing?",
+      "What pitch should my shed roof be?",
+      "Can I skip the roof sheathing?",
+      "What about insulation and drywall?"
+    ],
+    "sourceUrls": [
+      "https://codes.iccsafe.org/content/IRC2021P2/chapter-1-scope-and-administration",
+      "https://www.apawood.org/publication-search",
+      "https://awc.org/publications/",
+      "https://www.apawood.org/"
+    ],
+    "metadata": {
+      "title": "Shed Calculator: Material List, Cost & Lumber Estimate",
+      "description": "Free shed material calculator: lumber, sheathing, and shingles for any size. Full material list, cost breakdown, and how to build a 10x12 shed.",
+      "alternates": {
+        "canonical": "/shed-calculator"
+      },
+      "openGraph": {
+        "title": "Shed Calculator: Material List, Cost & Lumber Estimate",
+        "description": "Free shed material calculator: lumber, sheathing, and shingles for any size. Full material list, cost breakdown, and how to build a 10x12 shed.",
+        "url": "https://www.tallyard.com/shed-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "length": 10,
+        "width": 8,
+        "wallHeight": 8,
+        "roofStyle": "gable",
+        "studSpacing": 16
+      },
+      "primary": {
+        "value": 80,
+        "rounded": 80,
+        "unit": "ft² footprint"
+      },
+      "breakdown": [
+        {
+          "label": "floor joists (2×6)",
+          "value": "6 × 12-ft"
+        },
+        {
+          "label": "floor sheathing (3/4\" T&G)",
+          "value": "3 sheets"
+        },
+        {
+          "label": "wall studs (2×4)",
+          "value": "31"
+        },
+        {
+          "label": "wall plates (2×4)",
+          "value": "7 × 16-ft"
+        },
+        {
+          "label": "wall sheathing (4×8)",
+          "value": "9 sheets"
+        },
+        {
+          "label": "rafters (2×6)",
+          "value": "12 @ 5.5-ft"
+        },
+        {
+          "label": "roof sheathing (4×8)",
+          "value": "3 sheets"
+        },
+        {
+          "label": "shingle bundles",
+          "value": "3"
+        },
+        {
+          "label": "siding (4×8)",
+          "value": "10 sheets"
+        }
+      ],
+      "formulaSteps": [
+        "floor: 10 × 8 = 80 ft² footprint",
+        "floor joists: ⌈(8 × 12) ÷ 16⌉ + 1 = 7; total linear ft = 7 × 10 = 70",
+        "floor sheathing: 80 ÷ 32 = 3 sheets of 4×8",
+        "walls: perimeter = 36 ft, height = 8 ft",
+        "studs (16\" OC): ⌈36 × 12 ÷ 16⌉ + 4 corners = 31",
+        "wall sheathing: 288 ft² ÷ 32 = 9 sheets",
+        "roof (gable): 89 ft² total surface",
+        "rafters: 12 @ 5.5 ft = 66 linear ft",
+        "roof sheathing: 3 sheets",
+        "shingles: 0.9 squares × 3 bundles × 1.1 = 3 bundles"
+      ]
+    }
+  },
+  {
+    "slug": "rainwater-calculator",
+    "inputs": [
+      "roofArea",
+      "rainfall",
+      "efficiency",
+      "use"
+    ],
+    "faqQuestions": [
+      "How much rainwater can I collect from my roof?",
+      "How big should my rain barrel be?",
+      "Is rainwater safe to drink?",
+      "What's a first-flush diverter?",
+      "Is rainwater harvesting legal?",
+      "Does it work in arid climates?",
+      "What about overflow during big storms?",
+      "How long does a rain barrel last?"
+    ],
+    "sourceUrls": [
+      "https://arcsa.org/education/",
+      "https://www.epa.gov/watersense/water-efficient-landscaping",
+      "https://www.ncei.noaa.gov/products/land-based-station/us-climate-normals",
+      "https://rainwaterharvesting.tamu.edu/"
+    ],
+    "metadata": {
+      "title": "Rainwater Collection Calculator: Gallons & Tank Size",
+      "description": "Free rainwater calculator: gallons your roof collects from any rainfall, plus tank and barrel sizing. See how much water an inch of rain really is.",
+      "alternates": {
+        "canonical": "/rainwater-calculator"
+      },
+      "openGraph": {
+        "title": "Rainwater Collection Calculator: Gallons & Tank Size",
+        "description": "Free rainwater calculator: gallons your roof collects from any rainfall, plus tank and barrel sizing. See how much an inch of rain really is.",
+        "url": "https://www.tallyard.com/rainwater-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "roofArea": 1200,
+        "rainfall": 1,
+        "efficiency": 0.85,
+        "use": "garden"
+      },
+      "primary": {
+        "value": 635,
+        "rounded": 635,
+        "unit": "gallons"
+      },
+      "breakdown": [
+        {
+          "label": "roof area",
+          "value": "1,200 ft²"
+        },
+        {
+          "label": "rainfall",
+          "value": "1 in"
+        },
+        {
+          "label": "efficiency",
+          "value": "85%"
+        },
+        {
+          "label": "storage",
+          "value": "12 × 55-gal barrels OR 3 × 275-gal tote"
+        },
+        {
+          "label": "use estimate",
+          "value": "~13 × 1,000 ft² garden (1\" watering)"
+        }
+      ],
+      "formulaSteps": [
+        "1 inch rain on 1 sq ft = 0.623 gallons",
+        "roof area = 1,200 ft²",
+        "rainfall = 1 in (storm)",
+        "gallons = 1,200 × 1 × 0.623 × 0.85 = 635 gal",
+        "storage: 12 × 55-gal barrels OR 3 × 275-gal tote"
+      ]
+    }
+  },
+  {
+    "slug": "snow-load-calculator",
+    "inputs": [
+      "snowDepth",
+      "snowType",
+      "iceThickness",
+      "roofArea",
+      "designLoad"
+    ],
+    "faqQuestions": [
+      "How much does roof snow weigh?",
+      "How do I know my design snow load?",
+      "When should I clear snow off my roof?",
+      "How do I measure roof snow depth safely?",
+      "What's the difference between ground and roof snow load?",
+      "Why does wet snow weigh more?",
+      "Does roof pitch affect snow load?",
+      "Can my roof collapse from snow?"
+    ],
+    "sourceUrls": [
+      "https://www.asce.org/publications-and-news/asce-7",
+      "https://ascehazardtool.org/",
+      "https://codes.iccsafe.org/content/IRC2021P1/chapter-3-building-planning",
+      "https://www.fema.gov/emergency-managers/risk-management/building-science/publications",
+      "https://www.nrca.net/technical"
+    ],
+    "metadata": {
+      "title": "Snow Load Calculator: Roof Snow Weight by Depth",
+      "description": "Snow weight per square foot from depth and snow type, compared against your roof design load. Covers ground vs roof snow load and ASCE 7 conversion.",
+      "alternates": {
+        "canonical": "/snow-load-calculator"
+      },
+      "openGraph": {
+        "title": "Snow Load Calculator: Roof Snow Weight by Depth",
+        "description": "Calculate roof snow load and compare to design capacity.",
+        "url": "https://www.tallyard.com/snow-load-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "snowDepth": 18,
+        "snowType": "packed",
+        "iceThickness": 0,
+        "roofArea": 1500,
+        "designLoad": 30
+      },
+      "primary": {
+        "value": 33750,
+        "rounded": 33750,
+        "unit": "lb total weight on roof"
+      },
+      "breakdown": [
+        {
+          "label": "snow load",
+          "value": "22.5 psf"
+        },
+        {
+          "label": "ice load",
+          "value": "0 psf"
+        },
+        {
+          "label": "total pressure",
+          "value": "22.5 psf"
+        },
+        {
+          "label": "roof area",
+          "value": "1,500 ft²"
+        },
+        {
+          "label": "total weight",
+          "value": "33,750 lb (16.9 tons)"
+        },
+        {
+          "label": "design limit (R301.6)",
+          "value": "30 psf"
+        },
+        {
+          "label": "remaining capacity",
+          "value": "7.5 psf to spare"
+        },
+        {
+          "label": "verdict",
+          "value": "within capacity, 75%"
+        }
+      ],
+      "formulaSteps": [
+        "snow depth = 18 in = 1.5 ft",
+        "snow density = 15 lb/ft³ (packed)",
+        "snow load = 1.5 × 15 = 22.5 psf",
+        "no ice layer",
+        "total psf = 22.5 + 0 = 22.5 psf",
+        "total weight = 22.5 psf × 1,500 ft² = 33,750 lb",
+        "design capacity (IRC R301.6, min 20 psf) = 30 psf",
+        "22.5 psf vs 30 psf → within capacity, 75%",
+        "site ground snow load comes from IRC Table R301.2 as adopted locally; ASCE 7 Ch. 7 governs the full calculation"
+      ],
+      "composition": {
+        "unit": "psf",
+        "total": 22.5,
+        "segments": [
+          {
+            "label": "Snow",
+            "amount": 22.5,
+            "shade": "primary"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "slug": "stud-spacing-calculator",
+    "inputs": [
+      "wallLength",
+      "spacing",
+      "corners",
+      "doors",
+      "windows",
+      "bearingWall"
+    ],
+    "faqQuestions": [
+      "How many studs do I need for a 20-foot wall?",
+      "Should I use 16\" or 24\" OC spacing?",
+      "What are king studs and jack studs?",
+      "What size header do I need?",
+      "What are cripple studs?",
+      "Do partition walls need headers?",
+      "How does corner framing work?",
+      "What about shear walls and bracing?"
+    ],
+    "sourceUrls": [
+      "https://codes.iccsafe.org/content/IRC2021P2/chapter-6-wall-construction",
+      "https://codes.iccsafe.org/content/IRC2021P2/chapter-6-wall-construction",
+      "https://codes.iccsafe.org/content/IRC2021P2/chapter-6-wall-construction",
+      "https://awc.org/publications/wfcm/",
+      "https://www.apawood.org/advanced-framing"
+    ],
+    "metadata": {
+      "title": "Stud & Wall Framing Calculator: Spacing + Count",
+      "description": "Free stud calculator: count studs, plates, headers, and corners for any wall at 16 or 24 inch spacing. Wall framing diagram and IRC rules.",
+      "alternates": {
+        "canonical": "/stud-spacing-calculator"
+      },
+      "openGraph": {
+        "title": "Stud & Wall Framing Calculator: Spacing + Count",
+        "description": "Free stud calculator: studs, plates, headers, and corners for any wall. Framing diagram plus 16 vs 24 inch spacing rules.",
+        "url": "https://www.tallyard.com/stud-spacing-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "wallLength": 20,
+        "spacing": 16,
+        "corners": 2,
+        "doors": 1,
+        "windows": 2,
+        "bearingWall": "non-bearing"
+      },
+      "primary": {
+        "value": 42,
+        "rounded": 42,
+        "unit": "studs"
+      },
+      "breakdown": [
+        {
+          "label": "line studs",
+          "value": "16 at 16\" OC"
+        },
+        {
+          "label": "corner studs",
+          "value": "+4 (2 corners)"
+        },
+        {
+          "label": "door framing",
+          "value": "+6 (1 doors)"
+        },
+        {
+          "label": "window framing",
+          "value": "+16 (2 windows)"
+        },
+        {
+          "label": "header pieces",
+          "value": "6 × 2× lumber"
+        },
+        {
+          "label": "header size",
+          "value": "2×4 (non-bearing, under 4-ft openings)"
+        }
+      ],
+      "formulaSteps": [
+        "wall length = 20 ft = 240 inches",
+        "line studs = ⌈240 ÷ 16⌉ + 1 = 16",
+        "corners = 2 × 2 extra studs = 4",
+        "doors = 1 × (2 king + 2 jack + 2 cripples) = 6",
+        "windows = 2 × (2 king + 2 jack + 2 top cripples + 2 bottom cripples) = 16",
+        "total studs = 16 + 4 + 6 + 16 = 42",
+        "headers: 6 pieces of 2× lumber (doubled over each opening)",
+        "recommended header size: 2×4 (non-bearing, under 4-ft openings)"
+      ]
+    }
+  },
+  {
+    "slug": "drain-pipe-calculator",
+    "inputs": [
+      "toilets",
+      "sinks",
+      "showers",
+      "washers",
+      "dishwashers",
+      "pipeType"
+    ],
+    "faqQuestions": [
+      "What size drain pipe do I need for a bathroom?",
+      "Why does a toilet always need 3-inch pipe?",
+      "What's the difference between a horizontal branch and a stack?",
+      "How is DFU different from GPM?",
+      "What about kitchen sinks with garbage disposals?",
+      "Do floor drains count as DFU?",
+      "What's the slope requirement for drain pipes?",
+      "Do I need a permit?"
+    ],
+    "sourceUrls": [
+      "https://codes.iccsafe.org/content/IPC2021P1/chapter-7-sanitary-drainage",
+      "https://codes.iccsafe.org/content/IPC2021P1/chapter-7-sanitary-drainage",
+      "https://codes.iccsafe.org/content/IPC2021P1/chapter-7-sanitary-drainage",
+      "https://epubs.iapmo.org/2021/UPC/",
+      "https://codes.iccsafe.org/content/IPC2021P1/chapter-9-vents"
+    ],
+    "metadata": {
+      "title": "Drain Pipe Size Calculator: DFU Chart & Slope",
+      "description": "Size any drain line with the IPC DFU chart. Fixture unit values, pipe capacity tables, and the 1/4 inch per foot slope rule, all in one calculator.",
+      "alternates": {
+        "canonical": "/drain-pipe-calculator"
+      },
+      "openGraph": {
+        "title": "Drain Pipe Size Calculator: DFU Chart & Slope",
+        "description": "Calculate drain pipe size for any bathroom or kitchen.",
+        "url": "https://www.tallyard.com/drain-pipe-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "toilets": 1,
+        "sinks": 2,
+        "showers": 1,
+        "washers": 0,
+        "dishwashers": 1,
+        "pipeType": "horizontal"
+      },
+      "primary": {
+        "value": 3,
+        "rounded": 3,
+        "unit": "3\" (required by toilet rule)"
+      },
+      "breakdown": [
+        {
+          "label": "total DFU",
+          "value": "11"
+        },
+        {
+          "label": "pipe type",
+          "value": "horizontal"
+        },
+        {
+          "label": "recommended",
+          "value": "3\" (required by toilet rule)"
+        },
+        {
+          "label": "at capacity",
+          "value": "92% of max"
+        }
+      ],
+      "formulaSteps": [
+        "DFU by fixture:",
+        "  1 toilets × 4 = 4",
+        "  2 sinks × 1.5 = 3",
+        "  1 showers/tubs × 2 = 2",
+        "  0 washers × 3 = 0",
+        "  1 dishwashers × 2 = 2",
+        "total DFU = 11",
+        "pipe type: horizontal",
+        "recommended size = 3\" (required by toilet rule)",
+        "toilet rule: minimum 3\" for any line carrying toilet waste",
+        "utilization: 11 ÷ 12 = 92%"
+      ]
+    }
+  },
+  {
+    "slug": "kitchen-cabinet-calculator",
+    "inputs": [
+      "layout",
+      "wallOneLength",
+      "wallTwoLength",
+      "wallThreeLength",
+      "islandLength",
+      "grade"
+    ],
+    "faqQuestions": [
+      "How many linear feet of cabinets do I need for a 10×12 kitchen?",
+      "What's the difference between stock, semi-custom, and custom cabinets?",
+      "Should I buy assembled or flat-pack (RTA) cabinets?",
+      "How do I measure my kitchen for cabinets?",
+      "Do I need an island?",
+      "How much does a kitchen remodel cost?",
+      "What about cabinet hardware?",
+      "Can I reuse existing cabinets?"
+    ],
+    "sourceUrls": [
+      "https://www.kcma.org/certifications/ansi-kcma-a161-1-certification/",
+      "https://nkba.org/guidelines/",
+      "https://www.kcma.org/certifications/directory-of-certified-cabinet-manufacturers/",
+      "https://www.buildershardware.com/standards"
+    ],
+    "metadata": {
+      "title": "Kitchen Cabinet Calculator: Cost Per Linear Foot",
+      "description": "Cabinet linear feet and cost from your kitchen layout, with the standard size chart in 3 inch increments and 2026 prices for stock to custom.",
+      "alternates": {
+        "canonical": "/kitchen-cabinet-calculator"
+      },
+      "openGraph": {
+        "title": "Kitchen Cabinet Calculator: Cost Per Linear Foot",
+        "description": "Calculate kitchen cabinet linear feet for any layout.",
+        "url": "https://www.tallyard.com/kitchen-cabinet-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "layout": "L",
+        "wallOneLength": 12,
+        "wallTwoLength": 8,
+        "wallThreeLength": 0,
+        "islandLength": 0,
+        "grade": "midrange"
+      },
+      "primary": {
+        "value": 25,
+        "rounded": 25,
+        "unit": "linear ft"
+      },
+      "breakdown": [
+        {
+          "label": "layout",
+          "value": "L-shape"
+        },
+        {
+          "label": "base cabinets",
+          "value": "6 @ ~24\" wide (11 ft)"
+        },
+        {
+          "label": "upper cabinets",
+          "value": "7 @ ~24\" wide (14 ft)"
+        },
+        {
+          "label": "total linear ft",
+          "value": "25 ft"
+        },
+        {
+          "label": "estimated cost",
+          "value": "$4,500–$10,000"
+        }
+      ],
+      "formulaSteps": [
+        "layout = L-shape",
+        "total wall cabinets linear ft = 20 ft base (before appliances)",
+        "appliance deduction = 9 ft (stove, sink, dishwasher)",
+        "installed base cabinets = 11 ft",
+        "upper cabinets = 14 ft (70-75% of base walls)",
+        "base cabinets count = ⌈11 × 12 ÷ 24⌉ = 6",
+        "upper cabinets count = ⌈14 × 12 ÷ 24⌉ = 7",
+        "total linear ft = 25",
+        "midrange cost: $180-400/ft × 25 = $4,500-10,000"
+      ],
+      "composition": {
+        "unit": "ft",
+        "total": 25,
+        "segments": [
+          {
+            "label": "Base",
+            "amount": 11,
+            "shade": "primary"
+          },
+          {
+            "label": "Upper",
+            "amount": 14,
+            "shade": "secondary"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "slug": "garage-door-calculator",
+    "inputs": [
+      "opening",
+      "height",
+      "headroom",
+      "sideroom",
+      "material"
+    ],
+    "faqQuestions": [
+      "What size garage door do I need?",
+      "Can I install a garage door with low ceilings?",
+      "Should I get an insulated door?",
+      "What size opener do I need?",
+      "How much does a new garage door cost?",
+      "How long do garage doors last?",
+      "Can I replace just the panels?",
+      "What about the header above the door?"
+    ],
+    "sourceUrls": [
+      "https://www.dasma.com/standards/",
+      "https://www.dasma.com/technical-data-sheets/",
+      "https://www.dasma.com/standards/",
+      "https://codes.iccsafe.org/content/IRC2021P1/chapter-6-wall-construction",
+      "https://www.shopulstandards.com/ProductDetail.aspx?productId=UL325"
+    ],
+    "metadata": {
+      "title": "Garage Door Size Calculator: Sizes & Clearances",
+      "description": "Standard garage door sizes with headroom, side room, and backroom clearances checked. Includes door weight, header spans, opener HP, and 2026 costs.",
+      "alternates": {
+        "canonical": "/garage-door-calculator"
+      },
+      "openGraph": {
+        "title": "Garage Door Size Calculator: Sizes & Clearances",
+        "description": "Calculate garage door size, clearances, and opener HP.",
+        "url": "https://www.tallyard.com/garage-door-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "opening": 16,
+        "height": 7,
+        "headroom": 12,
+        "sideroom": 6,
+        "material": "steel-insulated"
+      },
+      "primary": {
+        "value": 16,
+        "rounded": 16,
+        "unit": "ft wide"
+      },
+      "breakdown": [
+        {
+          "label": "door type",
+          "value": "double-car"
+        },
+        {
+          "label": "opening",
+          "value": "16 × 7 ft"
+        },
+        {
+          "label": "headroom",
+          "value": "OK (standard tracks)"
+        },
+        {
+          "label": "side room",
+          "value": "OK (tight: verify torsion spring clearance)"
+        },
+        {
+          "label": "opener",
+          "value": "3/4 HP"
+        },
+        {
+          "label": "cost (installed)",
+          "value": "$700–$1800"
+        }
+      ],
+      "formulaSteps": [
+        "opening = 16 × 7 ft = 112 ft² door area",
+        "door type = double-car",
+        "headroom = 12 in: OK (standard tracks)",
+        "side room = 6 in each side: OK (tight: verify torsion spring clearance)",
+        "material weight factor = 1.2× (steel-insulated)",
+        "adjusted load = 112 × 1.2 = 134",
+        "opener recommendation: 3/4 HP",
+        "cost range (installed, 16-ft door): $700-$1800"
+      ]
+    }
+  },
+  {
+    "slug": "window-sizing-calculator",
+    "inputs": [
+      "roomType",
+      "roomArea",
+      "width",
+      "height",
+      "windowType"
+    ],
+    "faqQuestions": [
+      "What's the minimum window size for a bedroom?",
+      "Why are casement windows better for egress?",
+      "How do I calculate rough opening size?",
+      "Do I need egress windows in the basement?",
+      "What does 'rough opening' mean?",
+      "How much natural light do I need per room?",
+      "Can I use a skylight for egress or light?",
+      "What about window wells?"
+    ],
+    "sourceUrls": [
+      "https://codes.iccsafe.org/content/IRC2021P2/chapter-3-building-planning",
+      "https://codes.iccsafe.org/content/IRC2021P2/chapter-3-building-planning",
+      "https://fgiaonline.org/",
+      "https://codes.iccsafe.org/content/IRC2021P2/chapter-3-building-planning"
+    ],
+    "metadata": {
+      "title": "Window Size Calculator: Egress, Rough Opening & Measuring",
+      "description": "Free window calculator: egress size, rough opening, and light and vent minimums to code. Plus how to measure a window for replacement.",
+      "alternates": {
+        "canonical": "/window-sizing-calculator"
+      },
+      "openGraph": {
+        "title": "Window Size Calculator: Egress, Rough Opening & Measuring",
+        "description": "Free window calculator: egress size, rough opening, and code minimums. Plus how to measure a window for replacement.",
+        "url": "https://www.tallyard.com/window-sizing-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "roomType": "bedroom",
+        "roomArea": 150,
+        "width": 36,
+        "height": 48,
+        "windowType": "doublehung"
+      },
+      "primary": {
+        "value": 12,
+        "rounded": 12,
+        "unit": "ft² glass"
+      },
+      "breakdown": [
+        {
+          "label": "window size",
+          "value": "36\" × 48\""
+        },
+        {
+          "label": "glass area",
+          "value": "12 ft²"
+        },
+        {
+          "label": "openable area",
+          "value": "6 ft² (doublehung)"
+        },
+        {
+          "label": "rough opening",
+          "value": "37\" × 49\""
+        },
+        {
+          "label": "light ≥ 8% floor",
+          "value": "✓ (need 12 ft²)"
+        },
+        {
+          "label": "vent ≥ 4% floor",
+          "value": "✓ (need 6 ft²)"
+        },
+        {
+          "label": "egress",
+          "value": "OK"
+        }
+      ],
+      "formulaSteps": [
+        "window = 36\" × 48\" = 12 ft² glass area",
+        "window type = doublehung (50% openable)",
+        "openable area = 12 × 0.5 = 6 ft²",
+        "room area = 150 ft²",
+        "light requirement (8%) = 12 ft² - OK",
+        "vent requirement (4%) = 6 ft² - OK",
+        "egress req: 5.7 ft² openable, 20\" wide, 24\" tall clear opening",
+        "rough opening = window + 1\" = 37\" × 49\""
+      ]
+    }
+  },
+  {
+    "slug": "chimney-calculator",
+    "inputs": [
+      "type",
+      "openingWidth",
+      "openingHeight",
+      "stoveOutlet",
+      "chimneyHeight"
+    ],
+    "faqQuestions": [
+      "What size flue do I need for a 36×30 fireplace?",
+      "Why does my fireplace smoke back into the room?",
+      "What's the 3-2-10 rule?",
+      "Can I use an existing chimney for a wood stove?",
+      "What kind of liner do I need?",
+      "How tall does my chimney need to be?",
+      "How often does the chimney need cleaning?",
+      "Do I need a chimney cap?"
+    ],
+    "sourceUrls": [
+      "https://codes.iccsafe.org/content/IRC2021P2/chapter-10-chimneys-and-fireplaces",
+      "https://codes.iccsafe.org/content/IRC2021P2/chapter-10-chimneys-and-fireplaces",
+      "https://www.nfpa.org/codes-and-standards/all-codes-and-standards/list-of-codes-and-standards/detail?code=211",
+      "https://www.csia.org/homeowner-resources/",
+      "https://www.astm.org/c0315-07r16.html"
+    ],
+    "metadata": {
+      "title": "Chimney Flue Size Calculator: Chart & Height",
+      "description": "Flue size for any fireplace or wood stove, with the chimney flue size chart, clay liner net areas, and the 3-2-10 height rule from the IRC.",
+      "alternates": {
+        "canonical": "/chimney-calculator"
+      },
+      "openGraph": {
+        "title": "Chimney Flue Size Calculator: Chart & Height",
+        "description": "Calculate flue size for fireplaces and wood stoves.",
+        "url": "https://www.tallyard.com/chimney-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "type": "fireplace",
+        "openingWidth": 36,
+        "openingHeight": 30,
+        "stoveOutlet": 6,
+        "chimneyHeight": 20
+      },
+      "primary": {
+        "value": 108,
+        "rounded": 108,
+        "unit": "in² flue area"
+      },
+      "breakdown": [
+        {
+          "label": "appliance type",
+          "value": "fireplace"
+        },
+        {
+          "label": "opening area",
+          "value": "1080 in² (36\"×30\")"
+        },
+        {
+          "label": "recommended flue",
+          "value": "12×16\" rectangular terra cotta (112 in²)"
+        },
+        {
+          "label": "lining",
+          "value": "Rectangular terra cotta or equivalent insulated liner"
+        },
+        {
+          "label": "chimney height",
+          "value": "20 ft: OK (≥ 15 ft)"
+        },
+        {
+          "label": "termination rule",
+          "value": "3-2-10 rule: 3 ft above roof penetration, 2 ft higher than any structure within 10 ft"
+        }
+      ],
+      "formulaSteps": [
+        "appliance type = fireplace",
+        "opening area = 36\" × 30\" = 1080 in²",
+        "flue ratio = 1:10 (based on 20-ft chimney)",
+        "flue area needed = 1080 ÷ 10 = 108 in²",
+        "recommended: 12×16\" rectangular terra cotta (112 in²)",
+        "chimney height status: OK (≥ 15 ft)"
+      ]
+    }
+  },
+  {
+    "slug": "mortar-calculator",
+    "inputs": [
+      "length",
+      "height",
+      "brickSize",
+      "jointWidth",
+      "mortarType"
+    ],
+    "faqQuestions": [
+      "How many bags of mortar do I need per 1,000 bricks?",
+      "What is the difference between Type S, Type N, and Type M mortar?",
+      "Can I use mortar instead of grout?",
+      "How long does a bag of mortar last once opened?"
+    ],
+    "sourceUrls": [
+      "https://www.astm.org/c0270-19ae01.html",
+      "https://www.gobrick.com/resources/technical-notes",
+      "https://www.cement.org/cement-concrete/products/masonry",
+      "https://www.nps.gov/orgs/1739/upload/preservation-brief-02-repointing-mortar-joints.pdf",
+      "https://www.quikrete.com/productlines/mortarmix.asp",
+      "https://www.tcnatile.com/products-and-services/publications/ansi-standards/"
+    ],
+    "metadata": {
+      "title": "Mortar Calculator: Bags for Brick and Block",
+      "description": "Bags of mortar from brick or block count and joint width. Covers ASTM Type N, S, M, and O, mix proportions, and why thinset is a different product.",
+      "alternates": {
+        "canonical": "/mortar-calculator"
+      },
+      "openGraph": {
+        "title": "Mortar Calculator: Bags for Brick and Block",
+        "description": "How many bags of mortar for your brick or block wall. Joint width math, waste factor, and cost estimate.",
+        "url": "https://www.tallyard.com/mortar-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "length": 20,
+        "height": 4,
+        "brickSize": "standard",
+        "jointWidth": "0.375",
+        "mortarType": "S"
+      },
+      "primary": {
+        "value": 15.882352941176471,
+        "rounded": 17,
+        "unit": "bags of 80-lb Type S mortar"
+      },
+      "breakdown": [
+        {
+          "label": "Wall area",
+          "value": "80 ft²"
+        },
+        {
+          "label": "Bricks needed (with 5% waste)",
+          "value": "567 bricks"
+        },
+        {
+          "label": "Type S mortar (80-lb bags)",
+          "value": "17 bags"
+        },
+        {
+          "label": "Estimated mortar cost",
+          "value": "$128"
+        }
+      ],
+      "formulaSteps": [
+        "Wall area: 20 × 4 = 80 ft²",
+        "Brick count: 80 × 6.75 = 540 bricks",
+        "Mortar volume: 540 × 30.5 in³ = 16,470 in³",
+        "Bags (before waste): 16,470 ÷ 1037 = 15.9 bags",
+        "With 10% waste: 17 bags"
+      ]
+    }
+  },
+  {
+    "slug": "furnace-replacement-cost-calculator",
+    "inputs": [
+      "furnaceType",
+      "homeSqft",
+      "scope",
+      "complexity"
+    ],
+    "faqQuestions": [
+      "How much does it cost to replace a furnace in 2026?",
+      "Should I repair or replace my furnace?",
+      "Is a 96% furnace worth it over an 80% furnace?",
+      "Should I replace the furnace and AC at the same time?",
+      "How long does a furnace replacement take?",
+      "How long should a furnace last?",
+      "Should I consider a heat pump instead of a new furnace?"
+    ],
+    "sourceUrls": [
+      "https://www.energy.gov/energysaver/furnaces-and-boilers",
+      "https://www.energystar.gov/products/furnaces",
+      "https://www.acca.org/standards/technical-manuals/manual-j",
+      "https://www.epa.gov/section608",
+      "https://www.eia.gov/energyexplained/use-of-energy/homes.php"
+    ],
+    "metadata": {
+      "title": "Furnace Replacement Cost Calculator: 2026 Gas, Oil & AC",
+      "description": "Free furnace and AC replacement cost calculator: 2026 installed prices by size and efficiency, repair vs replace guidance, and every cost itemized.",
+      "alternates": {
+        "canonical": "/furnace-replacement-cost-calculator"
+      },
+      "openGraph": {
+        "title": "Furnace Replacement Cost Calculator: 2026 Gas, Oil & AC",
+        "description": "Free furnace and AC replacement cost calculator: 2026 installed prices by size and efficiency, with repair vs replace guidance.",
+        "url": "https://www.tallyard.com/furnace-replacement-cost-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "furnaceType": 96,
+        "homeSqft": 1800,
+        "scope": 0,
+        "complexity": 0
+      },
+      "primary": {
+        "value": 6900,
+        "rounded": 6900,
+        "unit": "installed (typical)"
+      },
+      "breakdown": [
+        {
+          "label": "furnace size",
+          "value": "100k BTU (96% gas)"
+        },
+        {
+          "label": "equipment",
+          "value": "$4,200"
+        },
+        {
+          "label": "labor",
+          "value": "$2,100"
+        },
+        {
+          "label": "permit + disposal",
+          "value": "$550"
+        },
+        {
+          "label": "typical range",
+          "value": "$6,000-7,900"
+        }
+      ],
+      "formulaSteps": [
+        "furnace size = 1,800 sq ft × 45 BTU ≈ 100k BTU cabinet",
+        "equipment (96% gas) = $4,200",
+        "labor = $2,100",
+        "permit, disposal, tie-ins = $550",
+        "total ≈ $6,900 (range $6,000-7,900)"
+      ],
+      "composition": {
+        "unit": "$",
+        "total": 6850,
+        "segments": [
+          {
+            "label": "Equipment",
+            "amount": 4200,
+            "shade": "primary"
+          },
+          {
+            "label": "Labor + extras",
+            "amount": 2650,
+            "shade": "secondary"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "slug": "egress-window-calculator",
+    "inputs": [
+      "clearWidth",
+      "clearHeight",
+      "floorLevel",
+      "sillHeight"
+    ],
+    "faqQuestions": [
+      "What size does an egress window need to be?",
+      "Does every bedroom need an egress window?",
+      "How much does it cost to add an egress window to a basement?",
+      "Do I need a permit for an egress window?",
+      "Can a regular window count as an egress window?",
+      "What are the window well requirements?",
+      "My sill is higher than 44 inches. What are my options?"
+    ],
+    "sourceUrls": [
+      "https://codes.iccsafe.org/content/IRC2021P2/chapter-3-building-planning",
+      "https://www.nachi.org/egress-inspections.htm",
+      "https://www.usfa.fema.gov/prevention/home-fires/escape-plans/",
+      "https://www.energy.gov/energysaver/insulation"
+    ],
+    "metadata": {
+      "title": "Egress Window Calculator: Size, Code & Cost (IRC R310)",
+      "description": "Free egress window calculator: check net clear opening against IRC R310, plus window well rules and the cost to add a basement egress window.",
+      "alternates": {
+        "canonical": "/egress-window-calculator"
+      },
+      "openGraph": {
+        "title": "Egress Window Calculator: Size, Code & Cost (IRC R310)",
+        "description": "Free egress window calculator: check net clear opening against IRC R310, plus window well rules and basement egress costs.",
+        "url": "https://www.tallyard.com/egress-window-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "clearWidth": 32,
+        "clearHeight": 26,
+        "floorLevel": 5.7,
+        "sillHeight": 40
+      },
+      "primary": {
+        "value": 5.78,
+        "rounded": 5.78,
+        "unit": "sq ft net clear"
+      },
+      "breakdown": [
+        {
+          "label": "required opening",
+          "value": "5.7 sq ft"
+        },
+        {
+          "label": "clear width",
+          "value": "32\" (ok, min 20\")"
+        },
+        {
+          "label": "clear height",
+          "value": "26\" (ok, min 24\")"
+        },
+        {
+          "label": "sill height",
+          "value": "40\" (ok, max 44\")"
+        },
+        {
+          "label": "verdict",
+          "value": "MEETS IRC R310"
+        }
+      ],
+      "formulaSteps": [
+        "net clear opening = 32\" × 26\" ÷ 144 = 5.78 sq ft",
+        "required = 5.7 sq ft (basement / upper floor)",
+        "width 32\" vs 20\" min → pass",
+        "height 26\" vs 24\" min → pass",
+        "sill 40\" vs 44\" max → pass",
+        "verdict: meets IRC R310"
+      ],
+      "composition": {
+        "unit": "sq in",
+        "total": 832,
+        "segments": [
+          {
+            "label": "Opening",
+            "amount": 821,
+            "shade": "primary"
+          },
+          {
+            "label": "Margin",
+            "amount": 11,
+            "shade": "secondary"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "slug": "deck-stair-calculator",
+    "inputs": [
+      "totalRise",
+      "treadRun",
+      "width",
+      "treadThickness"
+    ],
+    "faqQuestions": [
+      "How do I calculate deck stair stringers?",
+      "What is the code for deck stairs?",
+      "How much does it cost to build deck stairs?",
+      "How many stringers do deck stairs need?",
+      "Why is my bottom step shorter than the others?",
+      "What size lumber for deck stair stringers?",
+      "Do deck stairs need a landing?"
+    ],
+    "sourceUrls": [
+      "https://codes.iccsafe.org/content/IRC2021P2/chapter-3-building-planning",
+      "https://codes.iccsafe.org/content/IRC2021P2/chapter-3-building-planning",
+      "https://awc.org/publications/dca6/",
+      "https://www.nadra.org/consumers/deck-safety/"
+    ],
+    "metadata": {
+      "title": "Deck Stair Calculator: Stringer Layout, Code & Cost",
+      "description": "Free deck stair calculator: riser height, tread run, stringer length and board counts, checked against IRC R311.7, with a printable dimensioned cut sheet.",
+      "alternates": {
+        "canonical": "/deck-stair-calculator"
+      },
+      "openGraph": {
+        "title": "Deck Stair Calculator: Stringer Layout, Code & Cost",
+        "description": "Free deck stair calculator with a printable stringer cut sheet and IRC R311.7 pass/fail checks.",
+        "url": "https://www.tallyard.com/deck-stair-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "totalRise": 55,
+        "treadRun": 10.5,
+        "width": 36,
+        "treadThickness": 1
+      },
+      "primary": {
+        "value": 6.875,
+        "rounded": 6.875,
+        "unit": "in per riser"
+      },
+      "breakdown": [
+        {
+          "label": "risers",
+          "value": "8 @ 6-7/8\""
+        },
+        {
+          "label": "treads",
+          "value": "7 @ 10-1/2\""
+        },
+        {
+          "label": "total run",
+          "value": "73-1/2\""
+        },
+        {
+          "label": "stringer length",
+          "value": "91-13/16\""
+        },
+        {
+          "label": "stringers",
+          "value": "4 × 2x12x10'"
+        },
+        {
+          "label": "tread boards",
+          "value": "14 @ 36\""
+        },
+        {
+          "label": "IRC R311.7",
+          "value": "all checks pass"
+        }
+      ],
+      "formulaSteps": [
+        "risers = ceil(55\" ÷ 7.75\" max) = 8",
+        "riser height = 55\" ÷ 8 = 6-7/8\" (equal risers)",
+        "treads = 8 − 1 = 7 (top step is the deck)",
+        "total run = 7 × 10.5\" = 73-1/2\"",
+        "stringer = √(55² + 73.5²) = 91-13/16\"",
+        "bottom riser cut short by 1\" for tread thickness",
+        "IRC R311.7: pass"
+      ],
+      "diagramData": {
+        "risers": 8,
+        "treads": 7,
+        "riserHeight": 6.875,
+        "treadRun": 10.5,
+        "totalRise": 55,
+        "totalRun": 73.5,
+        "stringerLength": 91.80005446621477,
+        "width": 36,
+        "stringerCount": 4,
+        "treadBoards": 14,
+        "boardLabel": "2x12x10'",
+        "angle": 36.807483967358,
+        "treadThickness": 1,
+        "riserOk": true,
+        "runOk": true,
+        "widthOk": true,
+        "guardsRequired": true
+      },
+      "composition": {
+        "unit": "in",
+        "total": 129,
+        "segments": [
+          {
+            "label": "Total rise",
+            "amount": 55,
+            "shade": "primary"
+          },
+          {
+            "label": "Total run",
+            "amount": 74,
+            "shade": "secondary"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "slug": "hardwood-flooring-cost-calculator",
+    "inputs": [
+      "area",
+      "species",
+      "construction",
+      "finish",
+      "method"
+    ],
+    "faqQuestions": [
+      "How much does hardwood flooring cost per square foot installed?",
+      "Is engineered hardwood cheaper than solid?",
+      "What is the cheapest hardwood flooring?",
+      "Is prefinished or site-finished better?",
+      "How much does it cost to refinish hardwood instead of replacing it?",
+      "What does the Janka rating actually tell me?",
+      "Does hardwood need to acclimate before installation?"
+    ],
+    "sourceUrls": [
+      "https://nwfa.org/publications/",
+      "https://nwfa.org/wood-species/",
+      "https://www.fpl.fs.usda.gov/products/publications/specific_pub.php?posting_id=18519",
+      "https://www.epa.gov/formaldehyde"
+    ],
+    "metadata": {
+      "title": "Hardwood Flooring Cost Calculator: Price by Species",
+      "description": "Free hardwood flooring cost calculator: installed price per square foot by species, solid or engineered, prefinished or site-finished, with labor itemized.",
+      "alternates": {
+        "canonical": "/hardwood-flooring-cost-calculator"
+      },
+      "openGraph": {
+        "title": "Hardwood Flooring Cost Calculator: Price by Species",
+        "description": "Free hardwood flooring cost calculator: installed price by species, construction, and finish, with labor itemized.",
+        "url": "https://www.tallyard.com/hardwood-flooring-cost-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "area": 400,
+        "species": 6.5,
+        "construction": 1,
+        "finish": 0,
+        "method": 5
+      },
+      "primary": {
+        "value": 5200,
+        "rounded": 5200,
+        "unit": "total"
+      },
+      "breakdown": [
+        {
+          "label": "order area (10% waste)",
+          "value": "440 ft²"
+        },
+        {
+          "label": "material",
+          "value": "$2,860 ($6.5/ft²)"
+        },
+        {
+          "label": "underlayment, fasteners, trim",
+          "value": "$352"
+        },
+        {
+          "label": "installation labor",
+          "value": "$2,000 ($5/ft²)"
+        },
+        {
+          "label": "cost per sq ft installed",
+          "value": "$13.03"
+        },
+        {
+          "label": "typical range",
+          "value": "$4,600-6,150"
+        }
+      ],
+      "formulaSteps": [
+        "order area = 400 ft² × 1.10 waste = 440 ft²",
+        "material = 440 ft² × $6.5 = $2,860",
+        "supplies = 440 ft² × $0.8 = $352",
+        "labor = 400 ft² × $5 = $2,000",
+        "total ≈ $5,200 ($13.03/ft² installed)"
+      ],
+      "composition": {
+        "unit": "$",
+        "total": 5212,
+        "segments": [
+          {
+            "label": "Material + supplies",
+            "amount": 3212,
+            "shade": "primary"
+          },
+          {
+            "label": "Labor + finishing",
+            "amount": 2000,
+            "shade": "secondary"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "slug": "hardwood-floor-refinishing-cost-calculator",
+    "inputs": [
+      "area",
+      "scope",
+      "finish",
+      "condition"
+    ],
+    "faqQuestions": [
+      "How much does it cost to refinish hardwood floors?",
+      "Is refinishing cheaper than replacing hardwood?",
+      "What is a screen and recoat?",
+      "How many times can hardwood be refinished?",
+      "How long does refinishing take?",
+      "Can I refinish floors myself?",
+      "Do pet stains come out when sanding?"
+    ],
+    "sourceUrls": [
+      "https://nwfa.org/publications/",
+      "https://nwfa.org/wood-species/",
+      "https://www.epa.gov/indoor-air-quality-iaq/volatile-organic-compounds-impact-indoor-air-quality",
+      "https://www.fpl.fs.usda.gov/products/publications/specific_pub.php?posting_id=18519"
+    ],
+    "metadata": {
+      "title": "Hardwood Floor Refinishing Cost Calculator (2026 Rates)",
+      "description": "Free hardwood floor refinishing cost calculator: sand and refinish priced by area, finish, and condition, with screen-and-recoat compared.",
+      "alternates": {
+        "canonical": "/hardwood-floor-refinishing-cost-calculator"
+      },
+      "openGraph": {
+        "title": "Hardwood Floor Refinishing Cost Calculator (2026 Rates)",
+        "description": "Free refinishing cost calculator: sand and refinish by area, finish, and condition, with screen-and-recoat compared.",
+        "url": "https://www.tallyard.com/hardwood-floor-refinishing-cost-calculator",
+        "type": "website"
+      }
+    },
+    "example": {
+      "inputs": {
+        "area": 500,
+        "scope": 4,
+        "finish": 0,
+        "condition": 0
+      },
+      "primary": {
+        "value": 2000,
+        "rounded": 2000,
+        "unit": "total"
+      },
+      "breakdown": [
+        {
+          "label": "rate",
+          "value": "$4/ft²"
+        },
+        {
+          "label": "area",
+          "value": "500 ft²"
+        },
+        {
+          "label": "typical range",
+          "value": "$1,700-2,400"
+        },
+        {
+          "label": "time on site",
+          "value": "3 days plus cure"
+        },
+        {
+          "label": "vs replacing the floor",
+          "value": "$6,500 to replace, saves $4,500"
+        }
+      ],
+      "formulaSteps": [
+        "base rate = $4/ft² (full sand and refinish)",
+        "total rate = $4/ft²",
+        "500 ft² × $4 = $2,000",
+        "replacing instead at ~$13/ft² installed = $6,500"
+      ],
+      "composition": {
+        "unit": "$",
+        "total": 6500,
+        "segments": [
+          {
+            "label": "Refinish",
+            "amount": 2000,
+            "shade": "primary"
+          },
+          {
+            "label": "Saved vs replacing",
+            "amount": 4500,
+            "shade": "secondary"
+          }
+        ]
+      }
+    }
+  }
+]

@@ -6,7 +6,6 @@ import { PageRail } from "./PageRail";
 import { StickyCalc } from "./StickyCalc";
 import { getConfig } from "@/configs";
 import { EnergyCreditCorrection } from "./EnergyCreditCorrection";
-import { OriginalCalculatorNotes } from "./OriginalCalculatorNotes";
 
 interface CalculatorPageProps {
   slug: string;
@@ -118,6 +117,7 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
               <p className="text-[17px] md:text-lg text-ink-muted max-w-md leading-relaxed">
                 {config.description}
               </p>
+              {config.planningNotice && <p className="mt-4 text-sm text-ink-muted leading-relaxed max-w-md">{config.planningNotice}</p>}
               {config.bannerTags.length > 0 && (
                 <div className="flex flex-wrap gap-2 mt-6">
                   {config.bannerTags.map((tag, i) => (
@@ -197,7 +197,6 @@ export function CalculatorPage({ slug }: CalculatorPageProps) {
           <div className="pt-10 border-t border-line guide-prose">
             {["heat-pump-calculator", "water-heater-calculator", "solar-calculator", "insulation-calculator"].includes(slug) && <EnergyCreditCorrection />}
             <config.ContentExpansion />
-            <OriginalCalculatorNotes slug={slug} />
           </div>
         </section>
       )}

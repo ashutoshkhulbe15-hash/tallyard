@@ -100,6 +100,8 @@ export interface CalculatorConfig {
   bannerHeadline: string;
   /** V3 banner tags — 3 short feature chips */
   bannerTags: string[];
+  /** Transparent limits and benchmark status, rendered next to the tool. */
+  planningNotice?: string;
 
   inputs: CalculatorInput[];
 

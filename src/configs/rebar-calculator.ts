@@ -1,80 +1,288 @@
+import { reconcileCalculator } from "@/lib/reconcile-calculator";
 import { RebarCalculatorExpansion } from "@/content/rebar-expansion";
 import type { CalculatorConfig } from "@/lib/types";
-import { round, formatNumber, ceilQuantity } from "@/lib/format";
+import { round, formatNumber , ceilQuantity } from "@/lib/format";
 
 export const rebarCalculatorConfig: CalculatorConfig = {
-  ContentExpansion: RebarCalculatorExpansion,
   slug: "rebar-calculator",
   title: "Rebar Calculator",
-  description: "Estimate the number and gross length of grid runs from a rectangular footprint and user-selected maximum spacing. Not reinforcement design or a bar order list.",
+  description:
+    "Rebar lineal feet and pieces for any concrete slab. Standard grid spacing, with overlap for continuous runs.",
   categoryLabel: "Masonry",
   category: "concrete",
-  bannerHeadline: "Estimate grid geometry.",
-  bannerTags: ["Rectangular footprint", "User-selected spacing", "Not a structural design"],
+
+  bannerHeadline: "Reinforce strongly.",
+  bannerTags: ["Grid layout", "Overlap included", "lineal ft or m"],
+
   inputs: [
-    { id: "length", label: "Footprint length", type: "number", unitImperial: "ft", unitMetric: "m", defaultImperial: 20, defaultMetric: 6.096, min: 0.01, step: 0.5 },
-    { id: "width", label: "Footprint width", type: "number", unitImperial: "ft", unitMetric: "m", defaultImperial: 12, defaultMetric: 3.6576, min: 0.01, step: 0.5 },
     {
-      id: "spacing", label: "User-selected maximum grid spacing", type: "select", defaultImperial: 16,
+      id: "length",
+      label: "Slab length",
+      type: "number",
+      unitImperial: "ft",
+      unitMetric: "m",
+      defaultImperial: 20,
+      defaultMetric: 6,
+      min: 2,
+      step: 0.5,
+    },
+    {
+      id: "width",
+      label: "Slab width",
+      type: "number",
+      unitImperial: "ft",
+      unitMetric: "m",
+      defaultImperial: 12,
+      defaultMetric: 3.7,
+      min: 2,
+      step: 0.5,
+    },
+    {
+      id: "spacing",
+      label: "Grid spacing",
+      type: "select",
+      defaultImperial: 12,
       options: [
-        { label: '12 in (30.48 cm)', value: 12 }, { label: '16 in (40.64 cm)', value: 16 },
-        { label: '18 in (45.72 cm)', value: 18 }, { label: '24 in (60.96 cm)', value: 24 },
+        { label: '12" / 30 cm (heavy)', value: 12 },
+        { label: '16" / 40 cm (standard)', value: 16 },
+        { label: '18" / 45 cm', value: 18 },
+        { label: '24" / 60 cm (light)', value: 24 },
       ],
-      help: "Select spacing from project drawings or a qualified design; the calculator does not recommend spacing.",
+      help: "12\" for driveways, 16\" for patios, 18-24\" for walkways and light slabs",
+    },
+    {
+      id: "barSize",
+      label: "Bar size",
+      type: "select",
+      defaultImperial: "#4",
+      options: [
+        { label: "#3 (3/8\" / 10 mm)", value: "#3" },
+        { label: "#4 (1/2\" / 13 mm) standard", value: "#4" },
+        { label: "#5 (5/8\" / 16 mm)", value: "#5" },
+        { label: "#6 (3/4\" / 19 mm)", value: "#6" },
+      ],
+    },
+    {
+      id: "includePerimeter",
+      label: "Include perimeter ring",
+      type: "select",
+      defaultImperial: "yes",
+      options: [
+        { label: "Yes (edge rebar ring)", value: "yes" },
+        { label: "No (grid only)", value: "no" },
+      ],
     },
   ],
+
   calculate: (values, units) => {
-    const length = Number(values.length);
-    const width = Number(values.width);
-    const spacingInches = Number(values.spacing);
-    if (![length, width, spacingInches].every(Number.isFinite) || length <= 0 || width <= 0 ||
-        ![12, 16, 18, 24].includes(spacingInches)) {
-      throw new Error("Enter positive rectangular dimensions and choose a supported spacing from the project specification.");
-    }
-    const lengthInches = units === "metric" ? length * 39.37007874015748 : length * 12;
-    const widthInches = units === "metric" ? width * 39.37007874015748 : width * 12;
-    const barsAlongLength = ceilQuantity(widthInches / spacingInches) + 1;
-    const barsAlongWidth = ceilQuantity(lengthInches / spacingInches) + 1;
-    const grossLengthInches = barsAlongLength * lengthInches + barsAlongWidth * widthInches;
-    const grossLengthFeet = grossLengthInches / 12;
-    const displayLength = units === "metric" ? grossLengthFeet * 0.3048 : grossLengthFeet;
-    const area = length * width;
-    const areaUnit = units === "metric" ? "m²" : "ft²";
+    const L = Number(values.length) || 0;
+    const W = Number(values.width) || 0;
+    const spacingIn = Number(values.spacing) || 16;
+    const barSize = String(values.barSize || "#4");
+    const includePerimeter = String(values.includePerimeter || "yes") === "yes";
+
+    // Convert to feet if metric
+    const lengthFt = units === "metric" ? L * 3.281 : L;
+    const widthFt = units === "metric" ? W * 3.281 : W;
+    const spacingFt =
+      units === "metric" ? (spacingIn * 0.4) / 12 : spacingIn / 12;
+
+    // Longitudinal bars (run along length) — count = width / spacing + 1
+    const longBars = ceilQuantity(widthFt / spacingFt) + 1;
+    const longLengthEach = lengthFt;
+    // Rebar comes in 20 ft lengths typically; for bars longer than 20', need overlap
+    // Overlap = 40 × bar diameter, but for simplicity we use 1.5 ft overlap per joint
+    const overlapPerJoint = 1.5;
+
+    const longBarJoints =
+      longLengthEach > 20 ? ceilQuantity(longLengthEach / 20) - 1 : 0;
+    const longTotalLengthEach =
+      longLengthEach + longBarJoints * overlapPerJoint;
+    const longTotalLength = longBars * longTotalLengthEach;
+
+    // Transverse bars (run along width)
+    const transBars = ceilQuantity(lengthFt / spacingFt) + 1;
+    const transLengthEach = widthFt;
+    const transBarJoints =
+      transLengthEach > 20 ? ceilQuantity(transLengthEach / 20) - 1 : 0;
+    const transTotalLengthEach =
+      transLengthEach + transBarJoints * overlapPerJoint;
+    const transTotalLength = transBars * transTotalLengthEach;
+
+    // Perimeter ring: 2 × (length + width) if included
+    const perimeterLength = includePerimeter ? 2 * (lengthFt + widthFt) : 0;
+
+    // Grand total
+    const totalLinealFt =
+      longTotalLength + transTotalLength + perimeterLength;
+
+    // 20-ft sticks needed
+    const sticksNeeded = ceilQuantity(totalLinealFt / 20);
+
+    // Weight: approximate lb per linear foot by bar size
+    const weightPerFt: Record<string, number> = {
+      "#3": 0.376,
+      "#4": 0.668,
+      "#5": 1.043,
+      "#6": 1.502,
+    };
+    const totalWeight = totalLinealFt * (weightPerFt[barSize] || 0.668);
+
+    const displayLength =
+      units === "metric" ? totalLinealFt * 0.3048 : totalLinealFt;
     const lengthUnit = units === "metric" ? "m" : "ft";
+    const weightUnit = units === "metric" ? "kg" : "lb";
+    const displayWeight =
+      units === "metric" ? totalWeight * 0.4536 : totalWeight;
+
     return {
-      value: round(displayLength, 2),
-      unit: `gross lineal ${lengthUnit}`,
-      valueRounded: round(displayLength, 1),
+      value: Math.round(displayLength),
+      unit: `lineal ${lengthUnit}`,
+      valueRounded: Math.round(displayLength),
       breakdown: [
-        { label: "rectangular footprint", value: `${formatNumber(round(area, 2))} ${areaUnit}` },
-        { label: "runs parallel to length", value: `${barsAlongLength}` },
-        { label: "runs parallel to width", value: `${barsAlongWidth}` },
-        { label: "gross grid run length", value: `${formatNumber(round(displayLength, 2))} ${lengthUnit}` },
+        { label: "longitudinal bars", value: `${longBars} × ${formatNumber(round(longTotalLengthEach, 1))} ft` },
+        { label: "transverse bars", value: `${transBars} × ${formatNumber(round(transTotalLengthEach, 1))} ft` },
+        ...(includePerimeter
+          ? [{ label: "perimeter", value: `${formatNumber(round(perimeterLength, 1))} ft` }]
+          : []),
+        { label: "20-ft sticks", value: `${sticksNeeded}` },
+        { label: "weight", value: `~${formatNumber(round(displayWeight, 0))} ${weightUnit}` },
       ],
       formulaSteps: [
-        `runs parallel to length = ceil(width ÷ ${spacingInches} in) + 1 = ${barsAlongLength}`,
-        `runs parallel to width = ceil(length ÷ ${spacingInches} in) + 1 = ${barsAlongWidth}`,
-        `gross run length before design details = ${barsAlongLength} × ${round(lengthInches / 12, 3)} ft + ${barsAlongWidth} × ${round(widthInches / 12, 3)} ft = ${round(grossLengthFeet, 2)} ft`,
-        "This geometry excludes cover, hooks, bends, laps, cut plans, support chairs, perimeter bars, and structural requirements.",
+        `slab = ${lengthFt.toFixed(1)} × ${widthFt.toFixed(1)} ft, spacing = ${spacingIn}"${units === "metric" ? ` (${round(spacingIn * 0.4, 1)} cm)` : ""}`,
+        `longitudinal bars = ⌈${widthFt.toFixed(1)} ÷ ${round(spacingFt, 2)}⌉ + 1 = ${longBars} bars`,
+        `longitudinal length = ${longBars} × ${formatNumber(round(longTotalLengthEach, 1))} ft = ${formatNumber(round(longTotalLength, 1))} ft`,
+        `transverse bars = ⌈${lengthFt.toFixed(1)} ÷ ${round(spacingFt, 2)}⌉ + 1 = ${transBars} bars`,
+        `transverse length = ${transBars} × ${formatNumber(round(transTotalLengthEach, 1))} ft = ${formatNumber(round(transTotalLength, 1))} ft`,
+        includePerimeter
+          ? `perimeter = 2 × (${lengthFt.toFixed(1)} + ${widthFt.toFixed(1)}) = ${formatNumber(round(perimeterLength, 1))} ft`
+          : "perimeter = 0 (grid only)",
+        `total = ${formatNumber(round(totalLinealFt, 1))} ft${units === "metric" ? ` (${formatNumber(round(displayLength, 1))} m)` : ""}`,
+        `20-ft sticks = ⌈${formatNumber(round(totalLinealFt, 1))} ÷ 20⌉ = ${sticksNeeded} sticks`,
+        `weight = ${formatNumber(round(totalLinealFt, 1))} × ${weightPerFt[barSize]} lb/ft = ${formatNumber(round(totalWeight, 0))} lb`,
       ],
     };
   },
-  formulaDescription: "parallel runs = ceil(perpendicular footprint dimension ÷ selected maximum spacing) + 1; gross length = run counts × footprint dimensions",
+
+  howTo: {
+    name: "How to calculate rebar for a slab",
+    description:
+      "Turn slab dimensions and grid spacing into a bar count, linear feet, and order weight.",
+    steps: [
+      {
+        name: "Pick the bar and grid",
+        text: "Residential 4 inch slabs use #3 or #4 bar at 12 to 18 inches on center each way. Driveways and garages get #4 at 12 inches.",
+      },
+      {
+        name: "Count the runs each way",
+        text: "Slab dimension divided by spacing, plus one, per direction. A 20 foot side at 12 inch spacing is about 20 runs.",
+      },
+      {
+        name: "Convert to linear feet and weight",
+        text: "Runs times run length, both directions, minus 3 inches of cover at each end. Multiply feet by the bar weight: 0.376 lb/ft for #3, 0.668 for #4.",
+      },
+      {
+        name: "Add laps where sticks meet",
+        text: "Bars overlap 40 diameters at splices: 20 inches for #4. Add the lap footage on runs longer than a 20 foot stick and stagger splices between adjacent runs.",
+      },
+      {
+        name: "Buy chairs with the steel",
+        text: "Bars sit at mid-depth on chairs every 3 to 4 feet, with 3 inches of cover against earth. Steel lying on the ground reinforces nothing.",
+      },
+    ],
+  },
+
+  ContentExpansion: RebarCalculatorExpansion,
+
+  formulaDescription:
+    "bars = ⌈dimension ÷ spacing⌉ + 1 per direction; total = (long × long length) + (trans × trans length) + perimeter",
+
   methodology: [
-    "The estimator places straight, full-dimension grid runs along both directions of a rectangle. For each direction it divides the perpendicular dimension by the user-selected maximum spacing, rounds up to an interval count, then adds one run.",
-    "Grid spacing is converted from the selected inch-based option exactly in both unit modes. The output is gross lineal geometry only. It does not deduct concrete cover or add hooks, bends, development length, lap splices, openings, edge bars, chairs, or cut-plan optimization.",
-    "This tool does not choose bar size or spacing and does not assess whether reinforcement is required or adequate. Follow engineered drawings and applicable project specifications; obtain qualified structural review where needed. Do not use this estimate as a purchase list.",
+    "The calculator assumes a grid layout: rebar running both directions at the specified on-center spacing, creating a mesh that reinforces concrete against tension forces. Longitudinal bars run along the length of the slab; transverse bars run across the width. Bar count in each direction is the slab dimension divided by spacing, plus one for the closing bar at the far edge.",
+    "For slabs longer than 20 feet (the standard rebar stick length), bars must be overlapped where joined. The calculator adds 1.5 feet of overlap per joint. The technically correct overlap is 40 × bar diameter (which is 20 inches for #4 rebar, 25 inches for #5), but 1.5 feet is a safe simplification covering most cases.",
+    "Perimeter ring: an additional rebar loop around the edge of the slab, tied to the grid. Recommended for driveways and structural slabs, optional for simple patios. The ring strengthens edges which tend to crack first. Skip it for shallow decorative slabs.",
+    "Bar size selection: #4 (1/2 inch diameter) is the residential default for 4-inch slabs. #3 (3/8\") is used in lighter applications like walkways. #5 (5/8\") and #6 (3/4\") are for structural slabs, retaining walls, and any pour over 6 inches thick. Larger bars don't just add strength: they add significant weight and cost.",
+    "Weight is calculated from standard lb-per-linear-foot values. This matters for ordering: steel is typically sold by weight. A full 20-foot stick of #4 rebar weighs 13.4 lb. A large slab might need 300-500+ pounds of rebar, enough to require multiple truck trips or careful loading.",
+    "Not included: chairs or dobie blocks (used to hold rebar up from the subgrade to the middle of the slab depth, one every 4 feet is typical), tie wire (for fastening bars at intersections, about 1 lb per 200 feet of rebar), saddles/corners for turn connections. Budget those separately.",
   ],
+
   sources: [
-    { name: "Concrete Reinforcing Steel Institute: Resources", url: "https://www.crsi.org/resources/", note: "General reinforcing-steel resources; reinforcement design and detailing are outside this estimator." },
+    {
+      name: "ASTM A615: Deformed Carbon-Steel Bars",
+      url: "https://www.astm.org/a0615_a0615m-22.html",
+      note: "The specification behind the size chart: diameters and weights per foot",
+    },
+    {
+      name: "ACI 318: Development and Lap Splice Provisions",
+      url: "https://www.concrete.org/tools/318buildingcodeportal.aspx",
+      note: "The code behind lap lengths and concrete cover; engineered drawings compute from this",
+    },
+    {
+      name: "CRSI: Placing Reinforcing Bars",
+      url: "https://www.crsi.org/resources/",
+      note: "Industry placement practice: chairs, ties, and lap staggering",
+    },
+    {
+      name: "ACI 332: Residential Concrete",
+      url: "https://www.concrete.org/store/productdetail.aspx?ItemID=33220",
+      note: "Prescriptive residential footing and slab reinforcement",
+    },
+    {
+      name: "ASTM A1064: Welded Wire Reinforcement",
+      url: "https://www.astm.org/a1064_a1064m-22.html",
+      note: "The standard for the mesh alternative compared on this page",
+    },
   ],
+
   related: [
-    { name: "Concrete volume calculator", slug: "concrete-calculator", description: "Geometric concrete volume estimate; not structural design" },
-    { name: "Lumber calculator", slug: "lumber-calculator", description: "Board feet and linear-length estimates" },
+    { name: "Concrete calculator", slug: "concrete-calculator", description: "Cubic yards for slabs and footings" },
+    { name: "Gravel calculator", slug: "gravel-calculator", description: "Base gravel under slabs" },
+    { name: "Paver calculator", slug: "paver-calculator", description: "Patio pavers and base" },
+    { name: "Lumber calculator", slug: "lumber-calculator", description: "Board feet for forms" },
   ],
+
   faq: [
-    { question: "Does this tell me what rebar spacing or size to use?", answer: "No. Enter spacing taken from project documents or a qualified design. This tool does not select bar size or determine whether the reinforcement is structurally adequate." },
-    { question: "Does this give me the number of stock bars to buy?", answer: "No. It estimates gross straight grid runs only. Cover, splices, hooks, bends, waste, stock lengths, and cut optimization need the actual drawings and a bar schedule." },
-    { question: "Why can the estimate differ from my bar schedule?", answer: "The simple rectangle does not include edge offsets, openings, laps, hooks, development length, support details, or placement requirements. The project drawings and qualified bar-detailing review govern." },
+    {
+      question: "What size rebar do I need for a 4-inch slab?",
+      answer:
+        "#4 rebar (1/2 inch diameter) at 16-inch spacing is the standard for a 4-inch residential slab (patio, driveway, garage floor). For heavier use (commercial or truck-loaded driveways), go to 12\" spacing or #5 bar. Sidewalks can use #3 at 18\" spacing for light residential.",
+    },
+    {
+      question: "Do I actually need rebar in a slab?",
+      answer:
+        "For thin decorative slabs under 3 inches: no, wire mesh is sufficient. For 4\"+ slabs that bear any load: yes: rebar is cheap insurance against cracks. For anything over 6 inches or bearing vehicles: always. The cost difference ($50-150 for a typical slab) is trivial vs. the cost of cracking and replacing.",
+    },
+    {
+      question: "What's the spacing for a driveway?",
+      answer:
+        "12-inch grid minimum for passenger car driveways; 16\" for a simple residential path. Use #4 bar. For driveways bearing trucks or RVs, 12\" spacing with #5 bar is advisable. In freeze-thaw regions, add extra bars near the edges where frost heave concentrates.",
+    },
+    {
+      question: "How much overlap between rebar sticks?",
+      answer:
+        "The code minimum is 40 times the bar diameter. For #4 (1/2\" bar): 20 inches minimum overlap. For #5 (5/8\" bar): 25 inches. The calculator uses 1.5 feet (18\") for simplicity, which is conservative for #3 and just over the minimum for #4. Tie the overlap with wire at 2-3 points.",
+    },
+    {
+      question: "What's a perimeter ring?",
+      answer:
+        "An additional bar loop running around the outside edge of the slab, tied to the grid. Slab edges are the weak spot where frost heave, tree roots, and vehicle loads concentrate stress. A perimeter ring strengthens that edge. Recommended for driveways; optional for light-duty patios.",
+    },
+    {
+      question: "Can I use wire mesh instead?",
+      answer:
+        "Welded wire mesh (WWF) is an alternative for thin slabs up to 4 inches. Pro: easier to install (roll it out). Con: harder to position at mid-slab depth (tends to sink to the bottom during the pour, providing minimal structural value). For any slab you care about, stick to rebar on chairs.",
+    },
+    {
+      question: "What position in the slab should rebar sit?",
+      answer:
+        "Middle-to-upper third of the slab thickness. For a 4-inch slab, the rebar grid should sit 1.5-2 inches from the top. Use dobie blocks or chairs to hold the rebar at this height, never let it sit on the ground, where it provides no structural benefit and may rust out from below.",
+    },
+    {
+      question: "How much does rebar weigh?",
+      answer:
+        "Per linear foot: #3 = 0.376 lb, #4 = 0.668 lb, #5 = 1.043 lb, #6 = 1.502 lb. A typical 20-foot stick of #4 weighs 13.4 lb. A slab with 500 feet of rebar weighs 334 lb. The calculator shows the total weight: check if your vehicle can carry it.",
+    },
   ],
 };
+
+reconcileCalculator(rebarCalculatorConfig);

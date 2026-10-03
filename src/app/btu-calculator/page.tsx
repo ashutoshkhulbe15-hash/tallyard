@@ -6,13 +6,14 @@ import { getConfig } from "@/configs";
 const SLUG = "btu-calculator";
 
 export const metadata: Metadata = {
-  title: "BTU Calculator",
+  title: "BTU Calculator: Air Conditioner Size",
   description:
-    "Estimate room air-conditioner capacity using the ENERGY STAR area guide and its stated adjustments. Not whole-home HVAC sizing.",
+    "Calculate the right BTU size for your room or home. Accounts for climate, sun exposure, and occupancy.",
   alternates: { canonical: "/btu-calculator" },
   openGraph: {
-    title: "BTU Calculator",
-    description: "Estimate room AC capacity using the ENERGY STAR area guide and stated adjustments.",
+    title: "BTU Calculator: Air Conditioner Size",
+    description:
+      "Calculate the right BTU size for your AC. Accounts for climate, sun, and occupancy.",
     url: "https://www.tallyard.com/btu-calculator",
     type: "website",
   },

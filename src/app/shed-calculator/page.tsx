@@ -6,14 +6,14 @@ import { getConfig } from "@/configs";
 const SLUG = "shed-calculator";
 
 export const metadata: Metadata = {
-  title: "Shed Calculator",
+  title: "Shed Calculator: Material List, Cost & Lumber Estimate",
   description:
-    "Estimate surface areas and nominal sheathing sheets for a simple rectangular shed with the stated roof assumption. Does not produce a framing plan, cost, or complete material list.",
+    "Free shed material calculator: lumber, sheathing, and shingles for any size. Full material list, cost breakdown, and how to build a 10x12 shed.",
   alternates: { canonical: "/shed-calculator" },
   openGraph: {
-    title: "Shed Calculator",
+    title: "Shed Calculator: Material List, Cost & Lumber Estimate",
     description:
-      "Estimate shed surface areas and nominal sheet counts using the stated geometry assumptions.",
+      "Free shed material calculator: lumber, sheathing, and shingles for any size. Full material list, cost breakdown, and how to build a 10x12 shed.",
     url: "https://www.tallyard.com/shed-calculator",
     type: "website",
   },

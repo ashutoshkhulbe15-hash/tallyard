@@ -6,13 +6,14 @@ import { getConfig } from "@/configs";
 const SLUG = "gravel-calculator";
 
 export const metadata: Metadata = {
-  title: "Gravel Calculator",
+  title: "Gravel Calculator: Cubic Yards and Tons",
   description:
-    "Estimate aggregate volume and approximate weight from area and selected depth. Not a site, pavement, or price specification.",
+    "Gravel in cubic yards and tons from area and depth. Covers crusher run, #57, pea gravel, driveway layer depths, and how much a yard of gravel weighs.",
   alternates: { canonical: "/gravel-calculator" },
   openGraph: {
-    title: "Gravel Calculator",
-    description: "Estimate aggregate volume and approximate weight from area and selected depth.",
+    title: "Gravel Calculator: Cubic Yards and Tons",
+    description:
+      "Calculate cubic yards and tons of gravel for driveways, paths, or base layers.",
     url: "https://www.tallyard.com/gravel-calculator",
     type: "website",
   },

@@ -6,13 +6,14 @@ import { getConfig } from "@/configs";
 const SLUG = "tile-calculator";
 
 export const metadata: Metadata = {
-  title: "Tile Calculator",
+  title: "Tile Calculator: How Many Tiles Do I Need",
   description:
-    "Estimate tile packages from rectangular area, package-label coverage, and a user-selected planning allowance.",
+    "Calculate tiles and boxes needed for any floor or wall. Accounts for cuts, waste, and patterns.",
   alternates: { canonical: "/tile-calculator" },
   openGraph: {
-    title: "Tile Calculator",
-    description: "Estimate tile packages from area and product-label coverage; individual tile count and layout are not included.",
+    title: "Tile Calculator: How Many Tiles Do I Need",
+    description:
+      "Calculate tiles and boxes needed for any floor or wall. Accounts for cuts, waste, and patterns.",
     url: "https://www.tallyard.com/tile-calculator",
     type: "website",
   },

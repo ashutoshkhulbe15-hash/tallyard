@@ -6,12 +6,14 @@ import { getConfig } from "@/configs";
 const SLUG = "hardwood-floor-refinishing-cost-calculator";
 
 export const metadata: Metadata = {
-  title: "Hardwood Floor Refinishing Cost Calculator",
-  description: "Calculate a subtotal from area, rate, and extras copied from a written refinishing quote; no market prices are assumed.",
+  title: "Hardwood Floor Refinishing Cost Calculator (2026 Rates)",
+  description:
+    "Free hardwood floor refinishing cost calculator: sand and refinish priced by area, finish, and condition, with screen-and-recoat compared.",
   alternates: { canonical: "/hardwood-floor-refinishing-cost-calculator" },
   openGraph: {
-    title: "Hardwood Floor Refinishing Cost Calculator",
-    description: "Quote arithmetic from user-entered scope and rates; no market-price or repair recommendation.",
+    title: "Hardwood Floor Refinishing Cost Calculator (2026 Rates)",
+    description:
+      "Free refinishing cost calculator: sand and refinish by area, finish, and condition, with screen-and-recoat compared.",
     url: "https://www.tallyard.com/hardwood-floor-refinishing-cost-calculator",
     type: "website",
   },

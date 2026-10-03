@@ -6,13 +6,13 @@ import { getConfig } from "@/configs";
 const SLUG = "sod-calculator";
 
 export const metadata: Metadata = {
-  title: "Sod Calculator",
+  title: "Sod Calculator: Sq Ft, Pallets & Cost by Grass",
   description:
-    "Estimate sod area and piece count from rectangular dimensions, selected package format, and a user-set planning allowance.",
+    "Square feet and pallets of sod for any yard, with 2026 cost by variety: Bermuda, fescue, zoysia, St. Augustine. Includes prep and watering timeline.",
   alternates: { canonical: "/sod-calculator" },
   openGraph: {
-    title: "Sod Calculator",
-    description: "Estimate sod area and piece count; package coverage varies by supplier.",
+    title: "Sod Calculator: Sq Ft, Pallets & Cost by Grass",
+    description: "Calculate sod pieces and pallets for any lawn installation.",
     url: "https://www.tallyard.com/sod-calculator",
     type: "website",
   },

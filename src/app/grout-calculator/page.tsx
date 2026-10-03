@@ -6,14 +6,14 @@ import { getConfig } from "@/configs";
 const SLUG = "grout-calculator";
 
 export const metadata: Metadata = {
-  title: "Grout Calculator",
+  title: "Grout Calculator: How Much Grout Do You Need",
   description:
-    "Estimate grout packages from measured tiled area and coverage for the exact product and package. Does not calculate joint yield or select grout type.",
+    "Pounds of grout from tile size, joint width, and thickness. Covers sanded vs unsanded, epoxy grout, sealing, drying time, and where caulk goes instead.",
   alternates: { canonical: "/grout-calculator" },
   openGraph: {
-    title: "Grout Calculator",
+    title: "Grout Calculator: How Much Grout Do You Need",
     description:
-      "Estimate grout packages using measured area and exact product coverage.",
+      "Calculate pounds of grout for any tile installation.",
     url: "https://www.tallyard.com/grout-calculator",
     type: "website",
   },

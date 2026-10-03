@@ -6,13 +6,13 @@ import { getConfig } from "@/configs";
 const SLUG = "countertop-calculator";
 
 export const metadata: Metadata = {
-  title: "Countertop Calculator",
+  title: "Countertop Calculator: Sq Ft & Cost by Material",
   description:
-    "Estimate rectangular countertop and island surface area from entered dimensions. Confirm fabrication and ordering quantities with the fabricator.",
+    "Measure countertop square footage the way fabricators do, then compare installed cost: granite vs quartz, laminate, butcher block, and quartzite.",
   alternates: { canonical: "/countertop-calculator" },
   openGraph: {
-    title: "Countertop Calculator",
-    description: "Estimate countertop surface area from entered dimensions. No installed-price estimate.",
+    title: "Countertop Calculator: Sq Ft & Cost by Material",
+    description: "Calculate countertop square feet with island and cost estimates.",
     url: "https://www.tallyard.com/countertop-calculator",
     type: "website",
   },

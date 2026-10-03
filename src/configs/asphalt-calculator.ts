@@ -1,18 +1,19 @@
+import { reconcileCalculator } from "@/lib/reconcile-calculator";
+import { asphaltCalculatorConfig as checkedConfig } from "./checked/asphalt-calculator";
 import { AsphaltCalculatorExpansion } from "@/content/asphalt-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, roundUp, formatNumber } from "@/lib/format";
 
 export const asphaltCalculatorConfig: CalculatorConfig = {
-  ContentExpansion: AsphaltCalculatorExpansion,
   slug: "asphalt-calculator",
   title: "Asphalt Calculator",
   description:
-    "Estimate asphalt volume and approximate weight from area, selected compacted thickness, and an explicit density assumption. Not a pavement design.",
+    "Tons of asphalt for any driveway or parking area. Accounts for typical 145 lb/ft³ density and standard compaction depths.",
   categoryLabel: "Masonry",
   category: "concrete",
 
   bannerHeadline: "Pave firmly.",
-  bannerTags: ["Volume and approximate weight", "Selected thickness", "Planning estimate"],
+  bannerTags: ["Tons and yards", "Standard density", "Driveways · lots · paths"],
 
   inputs: [
     {
@@ -53,12 +54,12 @@ export const asphaltCalculatorConfig: CalculatorConfig = {
       type: "select",
       defaultImperial: 3,
       options: [
-        { label: '2" / 5 cm', value: 2 },
-        { label: '3" / 7.5 cm', value: 3 },
-        { label: '4" / 10 cm', value: 4 },
-        { label: '6" / 15 cm', value: 6 },
+        { label: '2" / 5 cm (residential overlay)', value: 2 },
+        { label: '3" / 7.5 cm (standard driveway)', value: 3 },
+        { label: '4" / 10 cm (heavy use)', value: 4 },
+        { label: '6" / 15 cm (parking lot)', value: 6 },
       ],
-      help: "This is an input, not a recommended thickness. Confirm design with a qualified paving professional.",
+      help: "3\" is standard for residential driveways; 4\"+ for trucks",
     },
     {
       id: "waste",
@@ -142,14 +143,46 @@ export const asphaltCalculatorConfig: CalculatorConfig = {
     };
   },
 
+  howTo: {
+    name: "How to calculate asphalt tonnage",
+    description:
+      "Convert driveway area and compacted thickness into tons of hot mix asphalt.",
+    steps: [
+      {
+        name: "Measure the area",
+        text: "Length times width in square feet. For a circular or curved area, use the diameter and treat it as a circle rather than averaging a rectangle.",
+      },
+      {
+        name: "Choose the compacted thickness",
+        text: "Residential driveways use 3 inches of asphalt, heavy vehicle areas 4 inches, and parking lots 6. An overlay on sound pavement is 1.5 to 2 inches.",
+      },
+      {
+        name: "Convert to cubic feet",
+        text: "Area times thickness divided by 12. An 800 square foot driveway at 3 inches is 800 x 0.25 = 200 cubic feet.",
+      },
+      {
+        name: "Apply density and convert to tons",
+        text: "Multiply by 145 pounds per cubic foot for compacted hot mix, then divide by 2,000. That 200 cubic feet becomes 14.5 tons.",
+      },
+      {
+        name: "Add waste and confirm the base",
+        text: "Add 5 to 10 percent for waste and edges. Then confirm the aggregate base depth in the quote: 6 to 8 inches for a residential driveway, more over clay.",
+      },
+    ],
+  },
+
+  ContentExpansion: AsphaltCalculatorExpansion,
+
   formulaDescription:
     "tons = area × thickness × density × (1 + waste), where density = 145 lb/ft³",
 
   methodology: [
-    "The calculator multiplies area by the selected compacted thickness, then estimates weight using an assumed density of 145 lb/ft³ (approximately 2.32 tonnes/m³). Actual mix density and order quantities vary; use supplier mix data for procurement.",
+    "The calculator multiplies area by compacted thickness to get volume, then converts volume to weight using asphalt's typical density of 145 pounds per cubic foot (hot-mix asphalt, after compaction). For metric, that's approximately 2.32 tonnes per cubic meter.",
     "Rectangular areas use length × width. Circular areas (turnaround circles, cul-de-sacs) use π × radius². Enter the diameter in the length field and leave width alone: it's ignored for circular shapes.",
-    "Thickness and allowance are user-selected assumptions, not recommendations. This tool does not assess traffic, subgrade, drainage, base design, mix, lifts, compaction, or local requirements. Have the pavement section specified for the site by a qualified professional.",
-    "This output is a planning estimate, not an order quantity. Confirm dimensions, mix, density, delivery conditions, and quantity with the paving supplier or contractor.",
+    "Thickness is the finished, compacted thickness, not the loose lift thickness the crew shovels down. Hot asphalt compacts about 25% under the roller, so 4 inches of loose material becomes 3 inches compacted. When ordering, you want enough material for the compacted thickness; waste factor covers the compaction loss.",
+    "Standard compacted thicknesses: 2 inches for a residential overlay over existing asphalt or concrete; 3 inches for a new residential driveway on prepared base; 4 inches for driveways that bear trucks or RVs; 6 inches for parking lots with heavy truck traffic. Anything thicker than 6 inches is typically poured in multiple lifts.",
+    "Waste factor of 10% is standard: covers material that cools during transit, trimmings around edges, and the truck's 'last drop' that often isn't fully usable. Use 5% for simple rectangular driveways with a pumper or chute delivery; 15% for complex shapes or when material has to be wheeled to the site in buckets.",
+    "This calculator does not include: the gravel base layer under asphalt (typically 4-8 inches of compacted crushed stone: use the gravel calculator), edge forms, curbing, or drainage. A proper asphalt installation is asphalt + base + drainage planning + final sealing.",
   ],
 
   sources: [
@@ -175,7 +208,7 @@ export const asphaltCalculatorConfig: CalculatorConfig = {
     },
     {
       name: "FTC: Home Improvement Contractor Fraud",
-      url: "https://consumer.ftc.gov/articles/how-avoid-home-improvement-scam",
+      url: "https://consumer.ftc.gov/articles/hiring-contractor",
       note: "The driveway paving scam pattern and how to check a contractor",
     },
   ],
@@ -188,8 +221,47 @@ export const asphaltCalculatorConfig: CalculatorConfig = {
   ],
 
   faq: [
-    { question: "How is the weight estimate calculated?", answer: "The tool calculates geometric volume from area and selected compacted thickness, then multiplies by its stated density assumption. Use supplier mix data for an actual order." },
-    { question: "Does this tell me what thickness or base to build?", answer: "No. Thickness is an input only. Traffic, subgrade, drainage, climate, materials, and local requirements affect pavement design; consult a qualified paving professional." },
-    { question: "Is this an exact order quantity or price quote?", answer: "No. It does not model mix-specific density, construction tolerances, delivery constraints, or local pricing. Confirm quantity and current pricing with a supplier or contractor." },
+    {
+      question: "How many tons of asphalt do I need for a 50×12 driveway?",
+      answer:
+        "For a 50×12 ft driveway at 3 inches compacted thickness with 10% waste, you need about 12 tons of hot-mix asphalt. At 4 inches (for heavier vehicles), 16 tons. The calculator above handles different shapes and thicknesses.",
+    },
+    {
+      question: "How thick should my asphalt driveway be?",
+      answer:
+        "3 inches compacted for standard passenger-car driveways on properly prepared 4-6 inch gravel base. 4 inches for driveways that see heavy trucks, RVs, or have marginal subgrade. 6 inches for commercial parking lots. Going thinner saves money short-term but dramatically shortens pavement life.",
+    },
+    {
+      question: "What's the difference between tons and cubic yards of asphalt?",
+      answer:
+        "Asphalt is sold by the ton (weight) because density is very consistent for hot-mix. 1 cubic yard ≈ 1.96 tons at typical compacted density. The calculator shows both so you can match whatever your supplier quotes.",
+    },
+    {
+      question: "How much does asphalt cost?",
+      answer:
+        "In 2025-2026 US market: $100-170 per ton delivered and placed for hot-mix asphalt driveways. Small jobs (under 10 tons) carry a minimum charge. Parking lots and large commercial jobs run $80-120 per ton. Sealcoating is separate ($0.10-0.25 per sq ft every 2-3 years).",
+    },
+    {
+      question: "Do I need a base under asphalt?",
+      answer:
+        "Yes: asphalt alone over dirt fails quickly. Standard residential: 4-6 inches of compacted crushed stone (#57 or #3) under 3 inches of asphalt. Frost-prone climates may need 8-10 inches of base. Skipping base saves initial cost but leads to cracking and sinking within 2-3 years.",
+    },
+    {
+      question: "Can I DIY an asphalt driveway?",
+      answer:
+        "Not really: hot-mix asphalt arrives at 275-300°F and must be placed and compacted within 1-2 hours before it cools below workable temperature. Cold patch asphalt (bagged product) is available for small pothole repairs and can be DIY'd, but it's not suitable for a full driveway: it never fully cures and lasts only 1-2 years.",
+    },
+    {
+      question: "When is the best time to lay asphalt?",
+      answer:
+        "Warm, dry weather: 50°F or above ambient temperature, dry surface, no rain in the forecast for 24 hours. In the US, April-October for most regions. Cold-weather placement is possible with 'warm mix' asphalt but is harder to compact properly and costs more.",
+    },
+    {
+      question: "How long before I can drive on it?",
+      answer:
+        "48-72 hours for light passenger-car use. 7 days before parking in the same spot repeatedly (asphalt continues to cure for weeks; heavy static loads can leave depressions). Sealcoating should wait 6-12 months to allow full cure before adding surface treatment.",
+    },
   ],
 };
+
+reconcileCalculator(asphaltCalculatorConfig, checkedConfig);

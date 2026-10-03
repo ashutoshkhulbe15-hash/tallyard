@@ -6,12 +6,13 @@ import { getConfig } from "@/configs";
 const SLUG = "water-heater-calculator";
 
 export const metadata: Metadata = {
-  title: "Water Heater Calculator",
-  description: "Convert entered water flow and temperature rise to a theoretical heat-transfer rate; does not size or select equipment.",
+  title: "Water Heater Size Calculator: Gallons or GPM",
+  description:
+    "Water heater size from household demand: first hour rating for tanks, temperature rise for tankless. Covers 40 vs 50 gallon, venting, and expansion tanks.",
   alternates: { canonical: "/water-heater-calculator" },
   openGraph: {
-    title: "Water Heater Calculator",
-    description: "Convert flow and temperature rise to a theoretical rate; no equipment selection.",
+    title: "Water Heater Size Calculator: Gallons or GPM",
+    description: "Calculate water heater size for any household.",
     url: "https://www.tallyard.com/water-heater-calculator",
     type: "website",
   },

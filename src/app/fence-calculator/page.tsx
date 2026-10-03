@@ -6,14 +6,14 @@ import { getConfig } from "@/configs";
 const SLUG = "fence-calculator";
 
 export const metadata: Metadata = {
-  title: "Fence Calculator",
+  title: "Fence Calculator: Posts, Rails, And Pickets",
   description:
-    "Estimate posts, rails, and pickets for a straight fence run from entered spacing assumptions. Gate, corner, foundation, and concrete quantities require a separate layout.",
+    "Calculate posts, rails, pickets, and concrete for any fence. Includes gates and corners.",
   alternates: { canonical: "/fence-calculator" },
   openGraph: {
-    title: "Fence Calculator",
+    title: "Fence Calculator: Posts, Rails, And Pickets",
     description:
-      "Estimate straight-run fence quantities from entered dimensions and spacing assumptions.",
+      "Calculate posts, rails, pickets, and concrete for any fence length.",
     url: "https://www.tallyard.com/fence-calculator",
     type: "website",
   },

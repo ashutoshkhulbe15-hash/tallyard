@@ -6,13 +6,13 @@ import { getConfig } from "@/configs";
 const SLUG = "rebar-calculator";
 
 export const metadata: Metadata = {
-  title: "Rebar Calculator",
+  title: "Rebar Calculator: Size Chart, Spacing & Lap",
   description:
-    "Estimate gross straight grid runs from a rectangular footprint and user-selected spacing. Does not choose reinforcement or provide a purchase list.",
+    "Bars, linear feet, and weight for any slab or footing. Includes the rebar size chart, slab-on-grade spacing, and the 40-diameter lap splice rule.",
   alternates: { canonical: "/rebar-calculator" },
   openGraph: {
-    title: "Rebar Calculator",
-    description: "Estimate gross grid geometry from entered dimensions and spacing; not structural design.",
+    title: "Rebar Calculator: Size Chart, Spacing & Lap",
+    description: "Calculate rebar for any slab with grid layout and perimeter ring.",
     url: "https://www.tallyard.com/rebar-calculator",
     type: "website",
   },

@@ -6,12 +6,14 @@ import { getConfig } from "@/configs";
 const SLUG = "lumber-calculator";
 
 export const metadata: Metadata = {
-  title: "Lumber Calculator",
-  description: "Calculate nominal board-foot and lineal totals from size, length, quantity, and a user-selected allowance. No price or weight estimate.",
+  title: "Board Foot & Lumber Calculator: Cost + Weight",
+  description:
+    "Free board foot calculator: board feet, linear feet, weight, and cost for any lumber. Nominal sizes, conversions, and species guide.",
   alternates: { canonical: "/lumber-calculator" },
   openGraph: {
-    title: "Lumber Calculator",
-    description: "Nominal board-foot and lineal-length arithmetic only; no price, weight, or design output.",
+    title: "Board Foot & Lumber Calculator: Cost + Weight",
+    description:
+      "Free board foot and lumber calculator: board feet, linear feet, weight, and cost for any board. Plus conversions.",
     url: "https://www.tallyard.com/lumber-calculator",
     type: "website",
   },

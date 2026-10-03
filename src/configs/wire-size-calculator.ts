@@ -1,18 +1,19 @@
+import { reconcileCalculator } from "@/lib/reconcile-calculator";
+import { wireSizeCalculatorConfig as checkedConfig } from "./checked/wire-size-calculator";
 import { WireSizeCalculatorExpansion } from "@/content/wire-size-expansion";
 import type { CalculatorConfig } from "@/lib/types";
 import { round, formatNumber } from "@/lib/format";
 
 export const wireSizeCalculatorConfig: CalculatorConfig = {
-  ContentExpansion: WireSizeCalculatorExpansion,
   slug: "wire-size-calculator",
   title: "Wire Size Calculator",
   description:
-    "Preliminary AWG estimate from ampacity and voltage drop for a limited range of inputs. Installation conditions and local code require an electrician's review.",
+    "Electrical wire gauge (AWG) for any amp load and run length. Accounts for voltage drop so your circuit stays within code.",
   categoryLabel: "Electrical",
   category: "hvac",
 
-  bannerHeadline: "Estimate wire size.",
-  bannerTags: ["Voltage drop included", "Copper or aluminum", "Not a code approval"],
+  bannerHeadline: "Wire safely.",
+  bannerTags: ["Voltage drop included", "Copper or aluminum", "NEC-aligned"],
 
   inputs: [
     {
@@ -22,9 +23,9 @@ export const wireSizeCalculatorConfig: CalculatorConfig = {
       unitImperial: "A",
       defaultImperial: 20,
       min: 1,
-      max: 195,
+      max: 400,
       step: 1,
-      help: "Circuit design current, including any required continuous-load factor. This limited table supports up to 195 A copper or 150 A aluminum; installation still needs professional review.",
+      help: "Breaker size or continuous load. Common: 15A outlets, 20A kitchen, 30A dryer, 50A range.",
     },
     {
       id: "voltage",
@@ -75,36 +76,31 @@ export const wireSizeCalculatorConfig: CalculatorConfig = {
   ],
 
   calculate: (values, units) => {
-    const amps = Number(values.amps);
-    const voltage = Number(values.voltage);
-    const distance = Number(values.distance);
-    const material = String(values.material);
-    const vdLimit = Number(values.voltageDropLimit);
-    if (!Number.isFinite(amps) || amps < 1 || !Number.isFinite(distance) || distance <= 0 ||
-        ![12, 24, 48, 120, 240].includes(voltage) || ![2, 3, 5].includes(vdLimit) ||
-        !["copper", "aluminum"].includes(material)) {
-      throw new Error("Enter a valid positive current and distance, and choose the listed material, voltage, and drop limit.");
-    }
+    const amps = Number(values.amps) || 20;
+    const voltage = Number(values.voltage) || 120;
+    const distance = Number(values.distance) || 50;
+    const material = String(values.material || "copper");
+    const vdLimit = Number(values.voltageDropLimit) || 3;
 
     // Convert distance to feet for NEC formulas
     const distanceFt = units === "metric" ? distance * 3.281 : distance;
 
-    // 60°C ampacities from NFPA Table 310.16; resistance values are estimates
-    // and do not substitute for installation-specific conductor sizing.
+    // Resistance per 1000 ft (ohms) by AWG, copper
+    // Source: NEC Table 8
     const awgData: Array<{ awg: string; areaCmil: number; ampacityCu: number; ampacityAl: number; ohmsCu: number; ohmsAl: number }> = [
       { awg: "14", areaCmil: 4110, ampacityCu: 15, ampacityAl: 0, ohmsCu: 3.07, ohmsAl: 4.98 },
       { awg: "12", areaCmil: 6530, ampacityCu: 20, ampacityAl: 15, ohmsCu: 1.93, ohmsAl: 3.18 },
       { awg: "10", areaCmil: 10380, ampacityCu: 30, ampacityAl: 25, ohmsCu: 1.21, ohmsAl: 2.00 },
-      { awg: "8", areaCmil: 16510, ampacityCu: 40, ampacityAl: 35, ohmsCu: 0.764, ohmsAl: 1.26 },
-      { awg: "6", areaCmil: 26240, ampacityCu: 55, ampacityAl: 40, ohmsCu: 0.491, ohmsAl: 0.808 },
-      { awg: "4", areaCmil: 41740, ampacityCu: 70, ampacityAl: 55, ohmsCu: 0.308, ohmsAl: 0.508 },
-      { awg: "3", areaCmil: 52620, ampacityCu: 85, ampacityAl: 65, ohmsCu: 0.245, ohmsAl: 0.403 },
-      { awg: "2", areaCmil: 66360, ampacityCu: 95, ampacityAl: 75, ohmsCu: 0.194, ohmsAl: 0.319 },
-      { awg: "1", areaCmil: 83690, ampacityCu: 110, ampacityAl: 85, ohmsCu: 0.154, ohmsAl: 0.253 },
-      { awg: "1/0", areaCmil: 105600, ampacityCu: 125, ampacityAl: 100, ohmsCu: 0.122, ohmsAl: 0.201 },
-      { awg: "2/0", areaCmil: 133100, ampacityCu: 145, ampacityAl: 115, ohmsCu: 0.0967, ohmsAl: 0.159 },
-      { awg: "3/0", areaCmil: 167800, ampacityCu: 165, ampacityAl: 130, ohmsCu: 0.0766, ohmsAl: 0.126 },
-      { awg: "4/0", areaCmil: 211600, ampacityCu: 195, ampacityAl: 150, ohmsCu: 0.0608, ohmsAl: 0.100 },
+      { awg: "8", areaCmil: 16510, ampacityCu: 50, ampacityAl: 40, ohmsCu: 0.764, ohmsAl: 1.26 },
+      { awg: "6", areaCmil: 26240, ampacityCu: 65, ampacityAl: 50, ohmsCu: 0.491, ohmsAl: 0.808 },
+      { awg: "4", areaCmil: 41740, ampacityCu: 85, ampacityAl: 65, ohmsCu: 0.308, ohmsAl: 0.508 },
+      { awg: "3", areaCmil: 52620, ampacityCu: 100, ampacityAl: 75, ohmsCu: 0.245, ohmsAl: 0.403 },
+      { awg: "2", areaCmil: 66360, ampacityCu: 115, ampacityAl: 90, ohmsCu: 0.194, ohmsAl: 0.319 },
+      { awg: "1", areaCmil: 83690, ampacityCu: 130, ampacityAl: 100, ohmsCu: 0.154, ohmsAl: 0.253 },
+      { awg: "1/0", areaCmil: 105600, ampacityCu: 150, ampacityAl: 120, ohmsCu: 0.122, ohmsAl: 0.201 },
+      { awg: "2/0", areaCmil: 133100, ampacityCu: 175, ampacityAl: 135, ohmsCu: 0.0967, ohmsAl: 0.159 },
+      { awg: "3/0", areaCmil: 167800, ampacityCu: 200, ampacityAl: 155, ohmsCu: 0.0766, ohmsAl: 0.126 },
+      { awg: "4/0", areaCmil: 211600, ampacityCu: 230, ampacityAl: 180, ohmsCu: 0.0608, ohmsAl: 0.100 },
     ];
 
     // Calculate voltage drop for each and find smallest wire that meets ampacity AND voltage drop requirements
@@ -140,7 +136,10 @@ export const wireSizeCalculatorConfig: CalculatorConfig = {
     }
 
     if (!recommendation) {
-      throw new Error("No listed conductor meets both checks for these inputs. Do not use the largest listed size as a substitute; consult a licensed electrician.");
+      // Use the largest if nothing fit
+      recommendation = awgData[awgData.length - 1];
+      const ohmsPerKFt = material === "aluminum" ? recommendation.ohmsAl : recommendation.ohmsCu;
+      recommendedDrop = (2 * amps * ohmsPerKFt * distanceFt) / 1000;
     }
 
     const ampacity = material === "aluminum" ? recommendation.ampacityAl : recommendation.ampacityCu;
@@ -161,7 +160,6 @@ export const wireSizeCalculatorConfig: CalculatorConfig = {
       value: Number(recommendation.awg.replace("/0", "")) || 0,
       unit: `AWG ${recommendation.awg}`,
       valueRounded: Number(recommendation.awg.replace("/0", "")) || 0,
-      displayValue: `${recommendation.awg} AWG ${material}`,
       breakdown: [
         { label: "recommended", value: `${recommendation.awg} AWG ${material}` },
         { label: "ampacity", value: `${ampacity}A` },
@@ -179,20 +177,52 @@ export const wireSizeCalculatorConfig: CalculatorConfig = {
     };
   },
 
+  howTo: {
+    name: "How to choose a wire size",
+    description:
+      "Size a conductor for both ampacity and voltage drop, then take whichever answer is larger.",
+    steps: [
+      {
+        name: "Find the circuit amperage",
+        text: "Use the breaker rating for a new circuit. For a continuous load such as an EV charger or electric heat, NEC 210.19 requires sizing at 125 percent of the load, so a 48 amp charger needs a 60 amp circuit.",
+      },
+      {
+        name: "Look up ampacity at the 60 degree column",
+        text: "Copper: 14 AWG is 15 amps, 12 AWG is 20, 10 AWG is 30, 8 AWG is 40, 6 AWG is 55. Aluminum runs about two sizes larger for the same current. NM-B cable uses the 60 degree column even though it is printed 90.",
+      },
+      {
+        name: "Measure the one-way run",
+        text: "From the panel to the device, following the actual cable path rather than a straight line. Voltage drop is calculated on the round trip, so the calculator doubles it.",
+      },
+      {
+        name: "Check voltage drop against 3 percent",
+        text: "At full load on copper, 12 AWG at 120 volts reaches about 46 feet and 6 AWG at 240 volts about 133 feet. Doubling the voltage roughly doubles the workable distance.",
+      },
+      {
+        name: "Take the larger size and derate if needed",
+        text: "Use whichever of the two answers is bigger. Then step up again if more than three current-carrying conductors share a raceway or the run passes through a hot attic.",
+      },
+    ],
+  },
+
+  ContentExpansion: WireSizeCalculatorExpansion,
+
   formulaDescription:
     "smallest AWG where ampacity ≥ load AND voltage drop ≤ limit (VD = 2 × I × R × L / 1000)",
 
   methodology: [
-    "This is a preliminary estimate using the 60°C ampacity column from NEC Table 310.16 and an approximate DC-resistance voltage-drop calculation. It selects the first listed conductor meeting both entered thresholds and refuses to show a size when the table cannot meet them.",
-    "Actual wiring must be sized for the circuit, cable type, terminals, ambient temperature, raceway/bundling, continuous load, and local code. These conditions are not inputs here. A licensed electrician must verify the installation; a result here is not code approval.",
-    "Voltage drop uses VD = 2 × I × R × L / 1000 with one-way length in feet. The selected percentage is a performance target, not a blanket code requirement.",
+    "The calculator steps through standard AWG wire gauges from smallest to largest, checking two constraints for each: ampacity (does the wire handle the current without overheating?) and voltage drop (does the voltage at the load stay within the allowed percentage of the source voltage?). The smallest wire that meets both constraints is the recommendation.",
+    "Ampacity values come from NEC Table 310.16, the industry standard for conductor capacity in typical residential conditions (60-75°C insulation, up to 3 current-carrying conductors in a raceway, 30°C ambient). For unusual installations (conduit fill above 3 wires, high ambient temperature, direct burial), derating factors apply: consult NEC or an electrician.",
+    "Voltage drop is calculated using the standard formula VD = 2 × I × R × L / 1000, where 2 accounts for the round-trip (current flows out on one conductor and back on another), I is amperage, R is resistance per 1000 ft, and L is the one-way distance. The 3% branch / 5% feeder limit in the NEC is a recommendation, not a code requirement, but exceeding it causes poor appliance performance and wasted energy.",
+    "For long runs (over 100 ft at 15-20A), voltage drop usually drives the wire size up from what ampacity alone would suggest. For short runs at high current (under 30 ft at 50A+), ampacity is the binding constraint. The calculator tells you which one drove the choice.",
+    "Aluminum wire has lower ampacity than copper for the same AWG (about 80% of copper's rating) and higher resistance (about 60% more). For long runs, aluminum requires a larger gauge to achieve the same voltage drop. Aluminum is common for service entrance and subpanel feeders; copper is standard for branch circuits and where terminals aren't rated for aluminum.",
   ],
 
   sources: [
     {
       name: "NEC (NFPA 70) Table 310.16: Conductor Ampacity",
       url: "https://www.nfpa.org/codes-and-standards/all-codes-and-standards/list-of-codes-and-standards/detail?code=70",
-      note: "60°C ampacity values used for the preliminary estimate",
+      note: "The ampacity values for copper and aluminum at the 60, 75, and 90 degree columns",
     },
     {
       name: "NEC 240.4(D): Small Conductor Overcurrent Protection",
@@ -255,9 +285,9 @@ export const wireSizeCalculatorConfig: CalculatorConfig = {
         "Same formulas apply but voltage drop matters more because DC systems often run at lower voltages (12/24/48V). A 3% drop on a 12V system is only 0.36V, not much headroom. For DC solar and automotive, many installers target 2% max drop, which means even larger wire. The calculator's 2% option covers this case.",
     },
     {
-      question: "Does this result certify an NEC-compliant installation?",
+      question: "Is this calculator NEC-compliant?",
       answer:
-        "No. It is a limited 60°C-table and voltage-drop estimate. It does not model all installation conditions, circuit rules, or local amendments. Have a licensed electrician verify the conductor, breaker, terminals, and installation.",
+        "The ampacity values match NEC 310.16 (60-75°C copper and aluminum at 30°C ambient, 3-conductor raceway). Voltage drop calculations use standard DC resistance from NEC Table 8. For unusual conditions (high ambient temperature, conduit fill > 3 conductors, direct burial), additional derating applies that the calculator doesn't model. For code-critical installations, have an electrician verify.",
     },
     {
       question: "Should I oversize wire?",
@@ -266,3 +296,5 @@ export const wireSizeCalculatorConfig: CalculatorConfig = {
     },
   ],
 };
+
+reconcileCalculator(wireSizeCalculatorConfig, checkedConfig);

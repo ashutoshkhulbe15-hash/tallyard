@@ -1,80 +1,238 @@
+import { reconcileCalculator } from "@/lib/reconcile-calculator";
 import { RainwaterCalculatorExpansion } from "@/content/rainwater-expansion";
 import type { CalculatorConfig } from "@/lib/types";
-import { round, formatNumber } from "@/lib/format";
+import { round, formatNumber , ceilQuantity } from "@/lib/format";
 
 export const rainwaterCalculatorConfig: CalculatorConfig = {
-  ContentExpansion: RainwaterCalculatorExpansion,
   slug: "rainwater-calculator",
   title: "Rainwater Harvesting Calculator",
-  description: "Estimate a rainfall-event runoff volume from a horizontal catchment area, rainfall depth, and user-selected capture factor.",
+  description:
+    "Gallons of rainwater you can collect from your roof. Sizes barrels and tanks for any roof area and annual rainfall.",
   categoryLabel: "Landscaping",
   category: "landscaping",
-  bannerHeadline: "Estimate rainfall runoff.",
-  bannerTags: ["Area × rainfall", "User-selected capture factor", "Not tank sizing"],
+
+  bannerHeadline: "Collect cleanly.",
+  bannerTags: ["Roof area × rainfall", "Barrels or tanks", "Gallons by storm"],
+
   inputs: [
     {
-      id: "roofArea", label: "Horizontal catchment area", type: "number", unitImperial: "ft²", unitMetric: "m²",
-      defaultImperial: 1200, defaultMetric: 111, min: 0.1, step: 10,
-      help: "Use the horizontal projected area that drains to the collection point, not sloped roof surface area.",
+      id: "roofArea",
+      label: "Catchment roof area (footprint)",
+      type: "number",
+      unitImperial: "ft²",
+      unitMetric: "m²",
+      defaultImperial: 1200,
+      defaultMetric: 111,
+      min: 50,
+      step: 50,
+      help: "Roof footprint that drains to collection gutters",
     },
     {
-      id: "rainfall", label: "Rainfall depth", type: "number", unitImperial: "in", unitMetric: "mm",
-      defaultImperial: 1, defaultMetric: 25.4, min: 0.1, step: 1,
-    },
-    {
-      id: "efficiency", label: "Assumed capture factor", type: "select", defaultImperial: 0.85,
+      id: "rainfall",
+      label: "Design rainfall",
+      type: "select",
+      defaultImperial: 1,
       options: [
-        { label: "100% theoretical runoff", value: 1 },
-        { label: "95%", value: 0.95 }, { label: "85%", value: 0.85 },
-        { label: "70%", value: 0.7 }, { label: "50%", value: 0.5 },
+        { label: "0.5 in (light shower)", value: 0.5 },
+        { label: "1 in (common storm)", value: 1 },
+        { label: "2 in (heavy storm)", value: 2 },
+        { label: "Annual avg - 40 in", value: 40 },
+        { label: "Annual avg - 25 in", value: 25 },
+        { label: "Annual avg - 15 in (arid)", value: 15 },
       ],
-      help: "Choose an assumption for losses; actual capture varies with the roof, gutters, diversion, and system.",
+      help: "Single storm for sizing, or annual for yield",
+    },
+    {
+      id: "efficiency",
+      label: "Collection efficiency",
+      type: "select",
+      defaultImperial: 0.85,
+      options: [
+        { label: "70% (first-flush diverter)", value: 0.7 },
+        { label: "85% (typical)", value: 0.85 },
+        { label: "95% (optimized)", value: 0.95 },
+      ],
+    },
+    {
+      id: "use",
+      label: "Primary use",
+      type: "select",
+      defaultImperial: "garden",
+      options: [
+        { label: "Garden / lawn", value: "garden" },
+        { label: "Toilet flushing", value: "toilet" },
+        { label: "Whole-house (filtered)", value: "house" },
+      ],
     },
   ],
+
   calculate: (values, units) => {
-    const areaInput = Number(values.roofArea) || 0;
-    const rainfallInput = Number(values.rainfall) || 0;
-    const factor = Number(values.efficiency) || 0;
-    const areaM2 = units === "metric" ? areaInput : areaInput * 0.09290304;
-    const rainfallMm = units === "metric" ? rainfallInput : rainfallInput * 25.4;
-    const liters = areaM2 * (rainfallMm / 1000) * 1000 * factor;
-    const displayed = units === "metric" ? liters : liters / 3.785411784;
-    const areaUnit = units === "metric" ? "m²" : "ft²";
-    const rainfallUnit = units === "metric" ? "mm" : "in";
+    const roofAreaInput = Number(values.roofArea) || 0;
+    const rainfallIn = Number(values.rainfall) || 1;
+    const efficiency = Number(values.efficiency) || 0.85;
+    const use = String(values.use || "garden");
+
+    const roofAreaSqFt = units === "metric" ? roofAreaInput * 10.764 : roofAreaInput;
+    const gallons = roofAreaSqFt * rainfallIn * 0.623 * efficiency;
+
+    const isAnnual = rainfallIn >= 5;
+
+    let storageRec: string;
+    if (isAnnual) {
+      const suggestedTank = ceilQuantity((gallons / 12) * 1.5);
+      storageRec = `~${formatNumber(suggestedTank)} gal tank (1.5 months avg use)`;
+    } else {
+      const barrels = ceilQuantity(gallons / 55);
+      storageRec = `${barrels} × 55-gal barrels OR ${ceilQuantity(gallons / 275)} × 275-gal tote`;
+    }
+
+    let useRate = "";
+    if (use === "garden") {
+      useRate = `~${formatNumber(Math.round(gallons / 50))} × 1,000 ft² garden (1" watering)`;
+    } else if (use === "toilet") {
+      useRate = `~${formatNumber(Math.round(gallons / 8))} person-days of toilet flushing`;
+    } else {
+      useRate = `~${formatNumber(Math.round(gallons / 80))} person-days of whole-house use`;
+    }
+
+    const displayGal = units === "metric" ? gallons * 3.785 : gallons;
+    const volumeUnit = units === "metric" ? "L" : "gallons";
+
     return {
-      value: Math.round(displayed),
-      unit: units === "metric" ? "L" : "gallons",
-      valueRounded: Math.round(displayed),
+      value: Math.round(displayGal),
+      unit: volumeUnit,
+      valueRounded: Math.round(displayGal),
       breakdown: [
-        { label: "horizontal catchment area", value: `${formatNumber(round(areaInput, 2))} ${areaUnit}` },
-        { label: "rainfall depth", value: `${formatNumber(round(rainfallInput, 2))} ${rainfallUnit}` },
-        { label: "assumed capture factor", value: `${round(factor * 100, 0)}%` },
-        { label: "estimated runoff volume", value: `${formatNumber(Math.round(displayed))} ${units === "metric" ? "L" : "gallons"}` },
+        { label: "roof area", value: `${formatNumber(round(roofAreaSqFt, 0))} ft²` },
+        { label: "rainfall", value: `${rainfallIn} in` },
+        { label: "efficiency", value: `${round(efficiency * 100, 0)}%` },
+        { label: "storage", value: storageRec },
+        { label: "use estimate", value: useRate },
       ],
       formulaSteps: [
-        `runoff volume = horizontal area × rainfall depth × capture factor`,
-        `${formatNumber(round(areaM2, 3))} m² × ${formatNumber(round(rainfallMm, 2))} mm × ${round(factor * 100, 0)}% = ${formatNumber(Math.round(liters))} L`,
-        "This is an event-volume estimate; it does not model storage, demand, overflow, water quality, or annual yield.",
+        `1 inch rain on 1 sq ft = 0.623 gallons`,
+        `roof area = ${formatNumber(round(roofAreaSqFt, 0))} ft²`,
+        `rainfall = ${rainfallIn} in${isAnnual ? " (annual)" : " (storm)"}`,
+        `gallons = ${formatNumber(round(roofAreaSqFt, 0))} × ${rainfallIn} × 0.623 × ${efficiency} = ${formatNumber(round(gallons, 0))} gal`,
+        `storage: ${storageRec}`,
       ],
     };
   },
-  formulaDescription: "estimated runoff (L) = horizontal catchment area (m²) × rainfall depth (mm) × selected capture factor",
+
+  ContentExpansion: RainwaterCalculatorExpansion,
+
+  howTo: {
+    name: "How to calculate rainwater collection from your roof",
+    description:
+      "Estimate the gallons your roof yields from a given rainfall and size a storage tank to your garden's use.",
+    steps: [
+      {
+        name: "Measure your roof footprint",
+        text: "Use the horizontal footprint in square feet, not the sloped surface. A steeper roof does not catch more rain. A 30 by 40 foot house is a 1,200 square foot catchment.",
+      },
+      {
+        name: "Enter the rainfall",
+        text: "Use 1 inch for a single typical storm, or your region's annual total for yearly yield. The calculator multiplies area by inches by 0.623 gallons per square foot per inch.",
+      },
+      {
+        name: "Apply real-world capture",
+        text: "Plan on catching 75 to 90 percent of the theoretical number after first-flush diversion, gutter overflow, and evaporation.",
+      },
+      {
+        name: "Size your storage",
+        text: "Match the tank to about a week of dry-season garden use. A single 55-gallon barrel is a starter; chain barrels or move to a tote or cistern for real irrigation.",
+      },
+      {
+        name: "Add the parts a barrel needs",
+        text: "Budget for a first-flush diverter, an inlet screen against mosquitoes, and an overflow outlet routed away from the foundation.",
+      },
+    ],
+  },
+
+  formulaDescription:
+    "gallons = roof ft² × rainfall inches × 0.623 × efficiency",
+
   methodology: [
-    "The volume calculation multiplies horizontal catchment area by rainfall depth. With square metres and millimetres, the numeric product is litres before applying the user-selected capture factor.",
-    "The factor is an assumption, not a site-measured efficiency. Actual yield depends on roof material, wetting and splash losses, gutter layout, debris screens, first-flush diversion, leaks, and overflow.",
-    "This tool does not size a tank, predict annual collection, estimate water demand, assess water quality or potability, or determine plumbing/code requirements. Consult local authorities and qualified professionals for system design and use.",
+    "The core formula: every inch of rain on one square foot of roof produces 0.623 gallons. Multiply roof footprint by inches of rain to get theoretical gallons. Actual yield depends on collection efficiency.",
+    "Collection efficiency accounts for water that doesn't make it into storage: splash over the gutter edge, evaporation on hot roofs, splash at the downspout, first-flush diversion, and filter cleaning. Well-installed systems achieve 80-90% efficiency.",
+    "Roof area is the footprint (horizontal projection), not the sloped surface. A 30×40 ft house footprint collects rain from a 1,200 sq ft catchment regardless of roof pitch - steeper roofs don't catch more rain.",
+    "For storm sizing, use 1-inch rainfall (common storm in most US climates). For annual yield, use your region's annual total: 40 inches Eastern US, 25 inches Midwest, 15 inches arid Southwest.",
+    "Storage: for single storms, 55-gallon rain barrels are standard DIY ($80-150 each). 275-gallon IBC totes next step up. Above 1,000 gallons, move to dedicated cisterns (polyethylene or concrete, $0.50-2 per gallon installed).",
+    "Not included: first-flush diverters, filters, distribution piping, pumps (for pressurized use), winterization. For whole-house or toilet use, add UV sterilization and particulate filtration (~$500-1,500 for residential systems). Check local codes - some jurisdictions restrict rainwater collection or have mandatory backflow prevention for indoor use.",
   ],
+
   sources: [
-    { name: "Texas A&M AgriLife Extension: Rainwater Harvesting", url: "https://rainwaterharvesting.tamu.edu/", note: "Educational resource on rainwater harvesting; site-specific system design is outside this estimator." },
-    { name: "NOAA National Centers for Environmental Information: U.S. Climate Normals", url: "https://www.ncei.noaa.gov/products/land-based-station/us-climate-normals", note: "Source for location-specific climate normals; this calculator requires rainfall supplied by the user." },
+    {
+      name: "ARCSA: Rainwater Harvesting Standards",
+      url: "https://arcsa.org/education/",
+      note: "Design standards for residential rainwater catchment",
+    },
+    {
+      name: "EPA WaterSense: Water-Efficient Landscaping",
+      url: "https://www.epa.gov/watersense/water-efficient-landscaping",
+      note: "Guidance on capture efficiency and outdoor reuse",
+    },
+    {
+      name: "NOAA: Climate Normals (annual precipitation)",
+      url: "https://www.ncei.noaa.gov/products/land-based-station/us-climate-normals",
+      note: "Regional annual rainfall totals used for yield estimates",
+    },
+    {
+      name: "Texas A&M AgriLife: Rainwater Harvesting",
+      url: "https://rainwaterharvesting.tamu.edu/",
+      note: "0.623 gallon conversion and first-flush sizing",
+    },
   ],
+
   related: [
-    { name: "Gutter calculator", slug: "gutter-calculator", description: "Estimate gutter dimensions from roof inputs" },
-    { name: "Topsoil calculator", slug: "topsoil-calculator", description: "Estimate soil volume from area and selected depth" },
+    { name: "Gutter calculator", slug: "gutter-calculator", description: "Linear feet and downspouts" },
+    { name: "Roofing calculator", slug: "roofing-calculator", description: "Shingle bundles by pitch" },
+    { name: "Mulch calculator", slug: "mulch-calculator", description: "Garden beds watered by harvest" },
+    { name: "Sod calculator", slug: "sod-calculator", description: "The lawn the harvested water keeps alive" },
   ],
+
   faq: [
-    { question: "How much runoff can a roof produce in one rainfall event?", answer: "This estimator multiplies horizontal catchment area by rainfall depth and your selected capture factor. Real collected volume can differ because of roof and gutter losses, diversion, leaks, and overflow." },
-    { question: "Does this size a rain barrel or tank?", answer: "No. Storage sizing needs rainfall timing, intended demand, overflow strategy, and system constraints that are not inputs to this estimator." },
-    { question: "Is collected rainwater safe to drink?", answer: "This calculator does not assess water quality or treatment. Do not assume roof runoff is potable; consult public-health and local plumbing guidance before any indoor or drinking use." },
+    {
+      question: "How much rainwater can I collect from my roof?",
+      answer:
+        "Roughly 600 gallons per 1,000 sq ft of roof per inch of rain (at 85% efficiency). A 2,000 sq ft roof in a 40-inch annual rainfall region yields about 42,000 gallons per year - more than most households use for outdoor irrigation.",
+    },
+    {
+      question: "How big should my rain barrel be?",
+      answer:
+        "For 1 inch of rain on 1,000 sq ft of roof catchment: about 530 gallons - 10 standard 55-gallon barrels, or 2 × 275-gal IBC totes. Most DIYers start with 1-2 barrels (55-110 gallons) because that's what a single downspout realistically fills.",
+    },
+    {
+      question: "Is rainwater safe to drink?",
+      answer:
+        "Not without treatment. Roof runoff picks up bird droppings, dust, leaves, and may contain roofing material leach (asphalt shingles, galvanized metal). For potable use: filter (5-micron), UV sterilize, and get it tested. For non-potable (garden, toilet, laundry), simple first-flush diversion and basic screening is usually enough.",
+    },
+    {
+      question: "What's a first-flush diverter?",
+      answer:
+        "A simple device that dumps the first 10-30 gallons of a storm to storage overflow instead of your collection tank. Those first gallons wash debris, pollen, and bird droppings off the roof. After the first flush, cleaner water enters storage. Adds about $50-100 to a basic system.",
+    },
+    {
+      question: "Is rainwater harvesting legal?",
+      answer:
+        "Most US states: yes, with no restrictions. Colorado: limited to 110 gallons per residence, non-potable. Utah, Oregon, others: permit required for larger systems. Check your state water rights law. For indoor use connected to plumbing, local codes require backflow prevention and sometimes permits.",
+    },
+    {
+      question: "Does it work in arid climates?",
+      answer:
+        "Yes, but differently. Arid regions (15-20 inches/year) need larger storage to bridge dry periods - a month or more of use capacity rather than just storm capacity. A 2,000 sq ft roof in Tucson (12 inches/year) yields about 13,000 gallons - enough for summer garden irrigation with proper storage.",
+    },
+    {
+      question: "What about overflow during big storms?",
+      answer:
+        "Critical - undersized systems overflow during large storms. Every rain barrel or tank needs an overflow pipe that directs excess water away from the foundation (4-6 feet minimum). For larger cisterns, overflow should route to a rain garden, dry well, or existing drainage. Never let overflow puddle at the foundation.",
+    },
+    {
+      question: "How long does a rain barrel last?",
+      answer:
+        "Plastic rain barrels: 10-20 years (UV-resistant polyethylene). Food-grade IBC totes: 15-25 years. Galvanized metal: 30-50 years. Concrete cisterns: 50+ years. All benefit from winterization in freezing climates - drain before hard freeze or allow expansion room for ice.",
+    },
   ],
 };
+
+reconcileCalculator(rainwaterCalculatorConfig);

@@ -6,12 +6,14 @@ import { getConfig } from "@/configs";
 const SLUG = "insulation-calculator";
 
 export const metadata: Metadata = {
-  title: "Insulation Calculator",
-  description: "Estimate package count from measured area, exact product-label coverage, and a user-selected allowance.",
+  title: "Insulation Calculator: R-Value And Bags Needed",
+  description:
+    "Calculate insulation coverage and R-value for any wall, attic, or floor. Climate-appropriate targets included.",
   alternates: { canonical: "/insulation-calculator" },
   openGraph: {
-    title: "Insulation Calculator",
-    description: "Estimate packages using entered area and exact product-label coverage.",
+    title: "Insulation Calculator: R-Value And Bags Needed",
+    description:
+      "Calculate insulation coverage for any wall, attic, or floor with climate-specific R-values.",
     url: "https://www.tallyard.com/insulation-calculator",
     type: "website",
   },

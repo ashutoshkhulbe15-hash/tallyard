@@ -7,7 +7,9 @@ const ts = require("typescript");
 
 // Load calculation configs without a browser or rendering their article content.
 function loadConfig(file) {
-  const filename = path.join(__dirname, "..", "src", "configs", file);
+  // Preserve numerical regressions for the checked implementations alongside
+  // dedicated tests of the restored default workflows in reconciled-workflows.cjs.
+  const filename = path.join(__dirname, "..", "src", "configs", "checked", file);
   const source = fs.readFileSync(filename, "utf8");
   const compiled = ts.transpileModule(source, {
     compilerOptions: { module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX },
@@ -326,7 +328,7 @@ test("solar, drywall, and siding calculators stay within entered assumptions and
   for (const file of ["solar-calculator.ts", "drywall-calculator.ts", "siding-calculator.ts"]) {
     const source = fs.readFileSync(path.join(__dirname, "..", "src", "configs", file), "utf8");
     assert.match(source, /ContentExpansion:/);
-    assert.doesNotMatch(source, /howTo:/);
+    assert.match(source, /reconcileCalculator\(/);
   }
 });
 

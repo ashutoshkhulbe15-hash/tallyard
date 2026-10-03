@@ -1,81 +1,314 @@
+import { reconcileCalculator } from "@/lib/reconcile-calculator";
 import { ShowerTileCalculatorExpansion } from "@/content/shower-tile-expansion";
 import type { CalculatorConfig } from "@/lib/types";
-import { round, formatNumber, ceilQuantity } from "@/lib/format";
+import { round, formatNumber , ceilQuantity } from "@/lib/format";
 
 export const showerTileCalculatorConfig: CalculatorConfig = {
-  ContentExpansion: ShowerTileCalculatorExpansion,
   slug: "shower-tile-calculator",
   title: "Shower Tile Calculator",
-  description: "Estimate tile packages from a user-measured total tiled area, exact package coverage, and a selected planning allowance.",
+  description:
+    "Tiles and boxes for a shower or tub surround. Calculates three walls plus optional niche and floor, with cut waste built in.",
   categoryLabel: "Flooring",
   category: "flooring",
-  bannerHeadline: "Estimate shower tile quantity.",
-  bannerTags: ["Enter measured tiled area", "Use label coverage", "Not waterproofing design"],
+
+  bannerHeadline: "Tile bathrooms.",
+  bannerTags: ["Three walls + floor", "Niche optional", "Wet-area waste"],
+
   inputs: [
     {
-      id: "tileArea", label: "Total tiled area (measure surfaces separately)", type: "number",
-      unitImperial: "ft²", unitMetric: "m²", defaultImperial: 80, defaultMetric: 7.4, min: 0.01, step: 0.1,
-      help: "Add the actual wall/floor surface areas that will receive this tile; this tool does not infer niches, curbs, or slope.",
+      id: "backWidth",
+      label: "Back wall width",
+      type: "number",
+      unitImperial: "in",
+      unitMetric: "cm",
+      defaultImperial: 60,
+      defaultMetric: 152,
+      min: 24,
+      step: 1,
+      help: "Standard tub: 60\". Walk-in: measure the back wall only.",
     },
     {
-      id: "coveragePerPackage", label: "Coverage per package (check label)", type: "number",
-      unitImperial: "ft²", unitMetric: "m²", defaultImperial: "", defaultMetric: "", min: 0.01, step: 0.1,
-      help: "Use the coverage printed for the exact tile product and package.",
+      id: "sideDepth",
+      label: "Side wall depth",
+      type: "number",
+      unitImperial: "in",
+      unitMetric: "cm",
+      defaultImperial: 32,
+      defaultMetric: 81,
+      min: 24,
+      step: 1,
+      help: "Standard tub: 32\". Walk-in: the shorter dimension of the enclosure.",
     },
     {
-      id: "allowance", label: "Planning allowance", type: "select", defaultImperial: 0.15,
+      id: "height",
+      label: "Tile height",
+      type: "number",
+      unitImperial: "in",
+      unitMetric: "cm",
+      defaultImperial: 96,
+      defaultMetric: 244,
+      min: 24,
+      step: 1,
+      help: "To ceiling: 96\". Above tub only: 60-72\" typical.",
+    },
+    {
+      id: "tileSize",
+      label: "Tile size",
+      type: "select",
+      defaultImperial: "12x24",
       options: [
-        { label: "0%", value: 0 }, { label: "5%", value: 0.05 },
-        { label: "10%", value: 0.1 }, { label: "15%", value: 0.15 },
+        { label: "4 × 4 (mosaic/subway)", value: "4x4" },
+        { label: "3 × 6 (classic subway)", value: "3x6" },
+        { label: "6 × 6", value: "6x6" },
+        { label: "12 × 12", value: "12x12" },
+        { label: "12 × 24 (modern)", value: "12x24" },
+        { label: "24 × 24 (large format)", value: "24x24" },
       ],
-      help: "Select a scenario using your layout and installer/product guidance; no shower-specific waste factor is prescribed.",
+    },
+    {
+      id: "tilesPerBox",
+      label: "Tiles per box",
+      type: "number",
+      defaultImperial: 8,
+      min: 1,
+      step: 1,
+    },
+    {
+      id: "includeNiche",
+      label: "Include niche",
+      type: "select",
+      defaultImperial: "yes",
+      options: [
+        { label: "Yes (14 × 24\" standard)", value: "yes" },
+        { label: "No", value: "no" },
+      ],
+      help: "Niches subtract from back wall but add tile for 5 interior surfaces",
+    },
+    {
+      id: "includeFloor",
+      label: "Include shower floor",
+      type: "select",
+      defaultImperial: "no",
+      options: [
+        { label: "No (drop-in tub)", value: "no" },
+        { label: "Yes (walk-in shower pan)", value: "yes" },
+      ],
     },
   ],
+
   calculate: (values, units) => {
-    const area = Number(values.tileArea);
-    const coverage = Number(values.coveragePerPackage);
-    const allowance = Number(values.allowance);
-    if (![area, coverage, allowance].every(Number.isFinite) || area <= 0 || coverage <= 0 ||
-        ![0, 0.05, 0.1, 0.15].includes(allowance)) {
-      throw new Error("Enter positive measured tiled area and exact package coverage from its label, then choose a listed planning allowance.");
-    }
-    const adjustedArea = area * (1 + allowance);
-    const packages = ceilQuantity(adjustedArea / coverage);
-    const areaUnit = units === "metric" ? "m²" : "ft²";
+    const backWidthInput = Number(values.backWidth) || 60;
+    const sideDepthInput = Number(values.sideDepth) || 32;
+    const heightInput = Number(values.height) || 96;
+    const tileSize = String(values.tileSize || "12x24");
+    const tilesPerBox = Number(values.tilesPerBox) || 8;
+    const includeNiche = String(values.includeNiche || "yes") === "yes";
+    const includeFloor = String(values.includeFloor || "no") === "yes";
+
+    // Convert to inches if metric
+    const backWidth = units === "metric" ? backWidthInput / 2.54 : backWidthInput;
+    const sideDepth = units === "metric" ? sideDepthInput / 2.54 : sideDepthInput;
+    const height = units === "metric" ? heightInput / 2.54 : heightInput;
+
+    // Three wall surfaces (all in sq inches for now, convert later)
+    const backArea = backWidth * height;
+    const sideArea = sideDepth * height;
+    const wallsAreaIn2 = backArea + 2 * sideArea;
+
+    // Niche: subtract 14 × 24 = 336 sq inches from back, add 5 interior surfaces
+    // Standard niche: 14 wide × 24 tall × 3.5 deep
+    const nicheFrontArea = 14 * 24; // opening area subtracted from wall
+    const nicheInteriorArea = includeNiche
+      ? 2 * (14 * 3.5) + 2 * (24 * 3.5) + 14 * 24 // top + bottom + 2 sides + back
+      : 0;
+    const nicheNetAddition = includeNiche
+      ? nicheInteriorArea - nicheFrontArea
+      : 0;
+
+    // Floor: if walk-in shower
+    const floorAreaIn2 = includeFloor ? backWidth * sideDepth : 0;
+
+    // Total wet area in sq inches → sq feet
+    const totalAreaIn2 = wallsAreaIn2 + nicheNetAddition + floorAreaIn2;
+    const totalAreaFt2 = totalAreaIn2 / 144;
+
+    // Tile area per piece (inches)
+    const tileMap: Record<string, { l: number; w: number }> = {
+      "4x4": { l: 4, w: 4 },
+      "3x6": { l: 3, w: 6 },
+      "6x6": { l: 6, w: 6 },
+      "12x12": { l: 12, w: 12 },
+      "12x24": { l: 12, w: 24 },
+      "24x24": { l: 24, w: 24 },
+    };
+    const tile = tileMap[tileSize] || tileMap["12x24"];
+    const tileAreaFt2 = (tile.l * tile.w) / 144;
+
+    // Waste: showers have more cuts than floors — use 15% standard
+    const wastePct = 15;
+    const areaWithWaste = totalAreaFt2 * (1 + wastePct / 100);
+
+    const rawTiles = areaWithWaste / tileAreaFt2;
+    const tilesNeeded = ceilQuantity(rawTiles);
+    const boxesNeeded = ceilQuantity(tilesNeeded / tilesPerBox);
+
     return {
-      value: packages,
-      unit: packages === 1 ? "package" : "packages",
-      valueRounded: packages,
+      value: tilesNeeded,
+      unit: tilesNeeded === 1 ? "tile" : "tiles",
+      valueRounded: tilesNeeded,
       breakdown: [
-        { label: "measured tiled area", value: `${formatNumber(round(area, 2))} ${areaUnit}` },
-        { label: "selected allowance", value: `${round(allowance * 100, 0)}%` },
-        { label: "area including selected allowance", value: `${formatNumber(round(adjustedArea, 2))} ${areaUnit}` },
-        { label: "coverage per package", value: `${formatNumber(round(coverage, 2))} ${areaUnit}` },
+        {
+          label: "wet area",
+          value: `${formatNumber(round(totalAreaFt2, 1))} ft²`,
+        },
+        { label: "boxes", value: `${boxesNeeded}` },
+        { label: "with 15% waste", value: `${formatNumber(round(areaWithWaste, 1))} ft²` },
+        {
+          label: "extras included",
+          value: [
+            includeNiche ? "niche" : null,
+            includeFloor ? "floor" : null,
+          ].filter(Boolean).join(", ") || "none",
+        },
       ],
       formulaSteps: [
-        `measured tiled area = ${round(area, 3)} ${areaUnit}`,
-        `area with selected allowance = ${round(area, 3)} × (1 + ${round(allowance * 100, 0)}%) = ${round(adjustedArea, 3)} ${areaUnit}`,
-        `packages = ceil(${round(adjustedArea, 3)} ÷ ${coverage}) = ${packages}`,
-        "This estimate does not model tile layout, cuts, niche/curb surfaces, waterproofing, substrate, slope, or grout.",
+        `back wall = ${formatNumber(round(backWidth, 0))}" × ${formatNumber(round(height, 0))}" = ${formatNumber(round(backArea / 144, 1))} ft²`,
+        `each side wall = ${formatNumber(round(sideDepth, 0))}" × ${formatNumber(round(height, 0))}" = ${formatNumber(round(sideArea / 144, 1))} ft²`,
+        `three walls = ${formatNumber(round(wallsAreaIn2 / 144, 1))} ft²`,
+        includeNiche
+          ? `niche net add = ${formatNumber(round(nicheNetAddition / 144, 2))} ft² (interior surfaces minus opening)`
+          : `niche: not included`,
+        includeFloor
+          ? `floor = ${formatNumber(round(floorAreaIn2 / 144, 1))} ft²`
+          : `floor: not included`,
+        `total wet area = ${formatNumber(round(totalAreaFt2, 1))} ft²`,
+        `with 15% waste = ${formatNumber(round(areaWithWaste, 1))} ft²`,
+        `tile size = ${tile.l}" × ${tile.w}" = ${formatNumber(round(tileAreaFt2, 3))} ft² each`,
+        `tiles = ⌈${formatNumber(round(areaWithWaste, 1))} ÷ ${formatNumber(round(tileAreaFt2, 3))}⌉ = ${tilesNeeded}`,
+        `boxes = ⌈${tilesNeeded} ÷ ${tilesPerBox}⌉ = ${boxesNeeded}`,
       ],
     };
   },
-  formulaDescription: "packages = ceil((user-measured tiled area × (1 + user-selected allowance)) ÷ label coverage per package)",
+
+  howTo: {
+    name: "How to calculate shower tile",
+    description:
+      "Measure the walls, floor, niche, and curb separately, then apply a waste factor matched to the layout.",
+    steps: [
+      {
+        name: "Measure each wall",
+        text: "Width times tile height for the back wall and each side wall. A 60 by 32 inch alcove tiled to 96 inches gives about 82 square feet of wall.",
+      },
+      {
+        name: "Measure the floor separately",
+        text: "Length times width of the shower base. Floor tile is a different product from wall tile, so keep the two quantities apart when ordering.",
+      },
+      {
+        name: "Add the niche and curb",
+        text: "A niche has a floor, back, two sides, and a top. A curb has three tiled faces. Together they are small in area and almost entirely cut pieces.",
+      },
+      {
+        name: "Apply waste by layout",
+        text: "Use 10 percent for straight or running bond, 12 for large format, 15 for diagonal, and 18 for herringbone. Add 5 more for directional or high shade variation tile.",
+      },
+      {
+        name: "Check the floor tile spec",
+        text: "Shower floors slope 1/4 inch per foot, so use mosaic at 2 inches or smaller, and confirm the published DCOF is 0.42 or higher per ANSI A137.1.",
+      },
+    ],
+  },
+
+  ContentExpansion: ShowerTileCalculatorExpansion,
+
+  formulaDescription:
+    "tiles = ⌈((3 walls + niche + floor) × 1.15) ÷ tile area⌉",
+
   methodology: [
-    "Measure each intended tiled surface and enter the summed area. The estimator applies the selected allowance, divides by the exact package coverage entered from the tile label, and rounds up to whole packages.",
-    "Complex layouts, niches, curbs, benches, floor slope, cuts, and product orientation require a surface-specific takeoff. This tool does not infer those areas or prescribe an allowance; review a drawing or ask the installer to check the takeoff.",
-    "Tile quantity is separate from waterproofing, shower-pan construction, drainage, substrate preparation, grout, mortar, and code compliance. Follow the selected waterproofing system's complete instructions and obtain qualified design where needed.",
+    "The calculator treats a shower as three tile surfaces: back wall, two side walls, and an optional floor/ceiling. Standard tub surrounds run 60 inches wide × 32 inches deep × 96 inches tall to the ceiling (or 60-72 inches tall for a tub surround only, without reaching the ceiling). Walk-in showers vary: measure the actual back and side dimensions.",
+    "Niches add complexity. A standard 14 × 24 inch niche carved into the back wall: the opening itself (14 × 24 = 336 sq in) is subtracted from the back wall area, then all five interior surfaces (two sides, top, bottom, back) are added. Net: a typical niche adds a small amount of tile (1-2 sq ft) rather than subtracting from the total.",
+    "Shower floor (for walk-in showers): add the floor area to the wall total. Drop-in tubs have no tiled floor (the tub is the floor). Many walk-in showers use smaller mosaic tile on the floor for grip, if using different tile on the floor, calculate separately.",
+    "Waste factor is 15%: higher than standard floor tile because shower walls have many edges, corners, and fixture cutouts (valve openings, shower head, niche boundaries). Every cut produces scrap that rarely gets reused. Large-format tile (12×24, 24×24) in showers pushes waste up further because bigger scraps are less reusable.",
+    "Tiles round up to whole tiles; boxes round up to whole boxes. Buy at least 1-2 extra boxes beyond the calculator's count for future repairs. Shower tile gets chipped by dropped shampoo bottles and razors; matching replacement tile years later is rarely possible.",
+    "Not included: backer board (cement board or foam board behind the tile: see drywall calculator for area), waterproofing membrane (recommended: 1 roll covers about 30 sq ft), thinset (1 bag of 50-lb per 40-50 sq ft), grout (see grout calculator), niche trim pieces, and fixtures (shower head, valve, soap dish).",
   ],
+
   sources: [
-    { name: "Tile Council of North America: Tile Installation Resources", url: "https://www.tcnatile.com/", note: "Industry resources; manufacturer system instructions and project-specific details govern shower construction." },
+    {
+      name: "TCNA Handbook: Wet Area Installation Methods",
+      url: "https://www.tcnatile.com/products-and-services/publications/tcna-handbook/",
+      note: "The B and W series methods governing shower walls, pans, and waterproofing assemblies",
+    },
+    {
+      name: "ANSI A118.10: Load Bearing Bonded Waterproof Membranes",
+      url: "https://www.tcnatile.com/products-and-services/publications/ansi-standards/",
+      note: "The specification a shower waterproofing membrane must meet",
+    },
+    {
+      name: "ANSI A137.1: Ceramic Tile Specification and DCOF",
+      url: "https://www.tcnatile.com/products-and-services/publications/ansi-standards/",
+      note: "Defines the 0.42 wet dynamic coefficient of friction threshold for wet floor tile",
+    },
+    {
+      name: "IRC 2021, Section P2708: Shower Compartments",
+      url: "https://codes.iccsafe.org/content/IRC2021P1/chapter-27-plumbing-fixtures",
+      note: "The 900 square inch minimum floor area and 30 inch circle requirement",
+    },
+    {
+      name: "Schluter Systems: Shower Construction Guide",
+      url: "https://www.schluter.com/schluter-us/en_US/shower-systems",
+      note: "Bonded waterproofing and pre-sloped pan assembly practice",
+    },
   ],
+
   related: [
-    { name: "Tile package calculator", slug: "tile-calculator", description: "Estimate packages from area and exact label coverage" },
-    { name: "Grout calculator", slug: "grout-calculator", description: "Preliminary grout quantity estimate; confirm with product manufacturer" },
+    { name: "Vanity calculator", slug: "vanity-calculator", description: "Size the vanity in the same bathroom" },
+    { name: "Grout calculator", slug: "grout-calculator", description: "Grout for tile projects" },
+    { name: "Drain pipe calculator", slug: "drain-pipe-calculator", description: "Size the shower drain line by fixture units" },
+    { name: "Drywall calculator", slug: "drywall-calculator", description: "Backer board for shower walls" },
   ],
+
   faq: [
-    { question: "How many boxes of shower tile do I need?", answer: "Measure all tiled surfaces, enter the total and package coverage from the exact product label, then choose an allowance based on the layout with installer guidance. The result rounds up to whole packages." },
-    { question: "Does this include niche, curb, or shower-floor measurements?", answer: "No. Enter the total area you have measured; add every surface receiving this tile, including niche or curb faces. A separate floor tile product should be calculated separately." },
-    { question: "Does this plan the shower waterproofing?", answer: "No. Tile is not a waterproofing system. Follow the complete instructions for a compatible shower system and applicable local requirements; consult a qualified professional." },
+    {
+      question: "How many tiles do I need for a standard shower?",
+      answer:
+        "For a standard 60 × 32 × 96 inch tub surround (3 walls only, to ceiling) using 12×24 tiles with 15% waste, you need about 60 tiles or 8 boxes of 8. Walk-in showers with a floor need 10-15% more tile. Include a niche adds another ~2 ft² of tile.",
+    },
+    {
+      question: "Should I use the same tile on floor and walls?",
+      answer:
+        "You can, but slip resistance is a concern on wet floors. For shower floors, use tiles with DCOF ≥ 0.42 (slip rating) or switch to small mosaic tile (under 2 inches) where grout lines provide grip. Walls don't have this concern. Many showers pair large wall tile with small mosaic floor tile for this reason.",
+    },
+    {
+      question: "Why is shower waste 15% instead of 10%?",
+      answer:
+        "Showers have more edges, corners, and cutouts than floors. Fixture penetrations (shower head, valve, tub spout, niche edges) each require precise cuts that leave unusable scraps. Large-format wall tile makes this worse because each cut wastes a bigger piece.",
+    },
+    {
+      question: "What about the ceiling?",
+      answer:
+        "Most showers don't tile the ceiling: use moisture-resistant drywall with mildew-resistant paint instead. If you do tile the ceiling (for a steam shower or luxury finish), calculate the ceiling area separately (back wall width × side depth) and add to the total. Ceiling tile is harder to install and requires special thinset.",
+    },
+    {
+      question: "How big should my niche be?",
+      answer:
+        "Standard 14 × 24 inches (the space between standard studs at 16\" on center, minus framing). Smaller niches (8 × 12) fit between 2×4 framing without disrupting studs. Multiple small niches are sometimes preferable to one large niche for organizing shampoo, conditioner, soap.",
+    },
+    {
+      question: "What about curbs and benches?",
+      answer:
+        "Not automatically calculated. A standard curb (the barrier at the shower entrance) is about 6 × 4 × 36 inches: adds ~1 ft² of tile. A built-in bench is 15-18 × 48 inches typically: adds 3-5 ft². Add these to your total manually and bump the calculator's dimensions.",
+    },
+    {
+      question: "Do I need waterproofing behind tile?",
+      answer:
+        "Yes: modern standard. Cement board alone is not waterproof. Use a sheet membrane (like Schluter Kerdi) or liquid-applied waterproofing (like RedGard) over the backer board. Standard shower areas typically need 1 roll (40 sq ft) of sheet membrane or 1-2 gallons of liquid.",
+    },
+    {
+      question: "Can I do this over an existing tub surround?",
+      answer:
+        "Not directly on existing tile (old tile must come off first). If removing old tile, inspect the backer: water damage behind old shower tile is very common. Plan to replace the cement board, not just the tile. Factor 1-2 extra days and $200-500 in backer/waterproofing materials on top of new tile.",
+    },
   ],
 };
+
+reconcileCalculator(showerTileCalculatorConfig);

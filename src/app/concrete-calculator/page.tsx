@@ -6,14 +6,14 @@ import { getConfig } from "@/configs";
 const SLUG = "concrete-calculator";
 
 export const metadata: Metadata = {
-  title: "Concrete Calculator",
+  title: "Concrete Calculator: How Many Yards Of Concrete",
   description:
-    "Estimate geometric concrete volume for rectangular or round shapes using entered dimensions and a user-selected planning allowance.",
+    "Calculate cubic yards of concrete for any slab, footing, or round pour. Free. Waste factor and formula shown.",
   alternates: { canonical: "/concrete-calculator" },
   openGraph: {
-    title: "Concrete Calculator",
+    title: "Concrete Calculator: How Many Yards Of Concrete",
     description:
-      "Estimate concrete volume from a simple shape and entered dimensions; not a structural design.",
+      "Calculate cubic yards of concrete for any slab, footing, or round pour.",
     url: "https://www.tallyard.com/concrete-calculator",
     type: "website",
   },

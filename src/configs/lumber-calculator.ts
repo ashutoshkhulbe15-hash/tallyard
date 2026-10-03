@@ -1,72 +1,309 @@
+import { reconcileCalculator } from "@/lib/reconcile-calculator";
 import { LumberCalculatorExpansion } from "@/content/lumber-expansion";
 import type { CalculatorConfig } from "@/lib/types";
-import { formatNumber, round, ceilQuantity } from "@/lib/format";
-
-const sizes: Record<string, { thickness: number; width: number }> = {
-  "1x4": { thickness: 1, width: 4 }, "1x6": { thickness: 1, width: 6 }, "1x8": { thickness: 1, width: 8 }, "1x12": { thickness: 1, width: 12 },
-  "2x2": { thickness: 2, width: 2 }, "2x4": { thickness: 2, width: 4 }, "2x6": { thickness: 2, width: 6 }, "2x8": { thickness: 2, width: 8 }, "2x10": { thickness: 2, width: 10 }, "2x12": { thickness: 2, width: 12 },
-  "4x4": { thickness: 4, width: 4 }, "4x6": { thickness: 4, width: 6 }, "6x6": { thickness: 6, width: 6 },
-};
+import { round, formatNumber , ceilQuantity } from "@/lib/format";
 
 export const lumberCalculatorConfig: CalculatorConfig = {
-  ContentExpansion: LumberCalculatorExpansion,
   slug: "lumber-calculator",
   title: "Lumber Calculator",
-  description: "Calculate nominal board-foot and lineal-foot totals from a selected size, length, quantity, and optional user-selected allowance. No price or weight estimate.",
+  description:
+    "Board feet and lineal feet for any lumber order. Handles nominal sizes (2×4, 2×6, etc.) and quantities for framing, decks, and projects.",
   categoryLabel: "Lumber",
   category: "drywall",
-  bannerHeadline: "Convert dimensions to quantity.",
-  bannerTags: ["Nominal dimensions", "Board feet", "No price or weight"],
+
+  bannerHeadline: "Order cleanly.",
+  bannerTags: ["Board feet + lineal", "Weight + cost", "All nominal sizes"],
+
   inputs: [
-    { id: "size", label: "Nominal board size", type: "select", defaultImperial: "2x4", options: Object.keys(sizes).map((size) => ({ label: size.replace("x", " × "), value: size })) },
-    { id: "length", label: "Length per board", type: "number", unitImperial: "ft", unitMetric: "ft", defaultImperial: 8, defaultMetric: 8, min: 0.01, step: 0.5 },
-    { id: "quantity", label: "Entered board count", type: "number", defaultImperial: 1, defaultMetric: 1, min: 1, step: 1 },
-    { id: "allowance", label: "User-selected planning allowance", type: "select", defaultImperial: "0", options: [
-      { label: "0%", value: "0" }, { label: "5%", value: "5" }, { label: "10%", value: "10" }, { label: "15%", value: "15" },
-    ] },
+    {
+      id: "nominalSize",
+      label: "Nominal size",
+      type: "select",
+      defaultImperial: "2x4",
+      options: [
+        { label: "1×4 (0.75 × 3.5\" actual)", value: "1x4" },
+        { label: "1×6 (0.75 × 5.5\" actual)", value: "1x6" },
+        { label: "1×8 (0.75 × 7.25\" actual)", value: "1x8" },
+        { label: "1×12 (0.75 × 11.25\" actual)", value: "1x12" },
+        { label: "2×2 (1.5 × 1.5\" actual)", value: "2x2" },
+        { label: "2×4 (1.5 × 3.5\" actual)", value: "2x4" },
+        { label: "2×6 (1.5 × 5.5\" actual)", value: "2x6" },
+        { label: "2×8 (1.5 × 7.25\" actual)", value: "2x8" },
+        { label: "2×10 (1.5 × 9.25\" actual)", value: "2x10" },
+        { label: "2×12 (1.5 × 11.25\" actual)", value: "2x12" },
+        { label: "4×4 (3.5 × 3.5\" actual)", value: "4x4" },
+        { label: "4×6 (3.5 × 5.5\" actual)", value: "4x6" },
+        { label: "6×6 (5.5 × 5.5\" actual)", value: "6x6" },
+      ],
+    },
+    {
+      id: "length",
+      label: "Board length",
+      type: "select",
+      defaultImperial: 8,
+      options: [
+        { label: "8 ft", value: 8 },
+        { label: "10 ft", value: 10 },
+        { label: "12 ft", value: 12 },
+        { label: "14 ft", value: 14 },
+        { label: "16 ft", value: 16 },
+        { label: "20 ft", value: 20 },
+      ],
+    },
+    {
+      id: "quantity",
+      label: "Number of boards",
+      type: "number",
+      defaultImperial: 50,
+      min: 1,
+      step: 1,
+      help: "How many of this size/length",
+    },
+    {
+      id: "waste",
+      label: "Waste factor",
+      type: "select",
+      defaultImperial: 10,
+      options: [
+        { label: "0% (exact count)", value: 0 },
+        { label: "5%", value: 5 },
+        { label: "10%", value: 10 },
+        { label: "15%", value: 15 },
+      ],
+    },
+    {
+      id: "species",
+      label: "Species / type",
+      type: "select",
+      defaultImperial: "spf",
+      options: [
+        { label: "SPF, kiln-dried (framing)", value: "spf" },
+        { label: "Pressure-treated (wet)", value: "pt" },
+        { label: "Southern yellow pine, dry", value: "syp" },
+        { label: "Cedar / redwood", value: "cedar" },
+        { label: "Red oak (hardwood)", value: "oak" },
+      ],
+      help: "Sets weight per board foot and a baseline price",
+    },
+    {
+      id: "price",
+      label: "Price per board foot (optional)",
+      type: "number",
+      defaultImperial: 0,
+      min: 0,
+      step: 0.05,
+      help: "Leave 0 to use the 2026 baseline for the selected species",
+    },
   ],
+
   calculate: (values) => {
-    const size = String(values.size);
-    const dims = sizes[size];
-    const length = Number(values.length);
-    const quantity = Number(values.quantity);
-    const allowance = Number(values.allowance);
-    if (!dims || ![length, quantity, allowance].every(Number.isFinite) || length <= 0 || quantity <= 0 || !Number.isInteger(quantity) || ![0, 5, 10, 15].includes(allowance)) {
-      throw new Error("Enter a valid listed nominal size, positive length and whole-board count, and a listed allowance.");
-    }
-    const adjustedCount = ceilQuantity(quantity * (1 + allowance / 100));
-    const boardFeetEach = dims.thickness * dims.width * length / 12;
-    const totalBoardFeet = boardFeetEach * adjustedCount;
-    const linealFeet = length * adjustedCount;
+    const nominalSize = String(values.nominalSize || "2x4");
+    const length = Number(values.length) || 8;
+    const quantity = Number(values.quantity) || 1;
+    const waste = Number(values.waste) || 10;
+    const species = String(values.species || "spf");
+    const priceOverride = Number(values.price) || 0;
+
+    // Nominal dimensions in inches (for board foot calculation)
+    const nominalMap: Record<string, { t: number; w: number }> = {
+      "1x4": { t: 1, w: 4 },
+      "1x6": { t: 1, w: 6 },
+      "1x8": { t: 1, w: 8 },
+      "1x12": { t: 1, w: 12 },
+      "2x2": { t: 2, w: 2 },
+      "2x4": { t: 2, w: 4 },
+      "2x6": { t: 2, w: 6 },
+      "2x8": { t: 2, w: 8 },
+      "2x10": { t: 2, w: 10 },
+      "2x12": { t: 2, w: 12 },
+      "4x4": { t: 4, w: 4 },
+      "4x6": { t: 4, w: 6 },
+      "6x6": { t: 6, w: 6 },
+    };
+    const dims = nominalMap[nominalSize] || nominalMap["2x4"];
+
+    // Weight per board foot (lb) and 2026 baseline price per board foot ($)
+    // by species. Weights from USDA Wood Handbook typical densities; treated
+    // is heavier because it is usually still wet at purchase.
+    const speciesMap: Record<
+      string,
+      { lbPerBf: number; pricePerBf: number; name: string }
+    > = {
+      spf: { lbPerBf: 2.1, pricePerBf: 0.85, name: "SPF (kiln-dried)" },
+      pt: { lbPerBf: 4.0, pricePerBf: 1.45, name: "Pressure-treated" },
+      syp: { lbPerBf: 2.8, pricePerBf: 1.1, name: "Southern yellow pine" },
+      cedar: { lbPerBf: 2.0, pricePerBf: 2.9, name: "Cedar / redwood" },
+      oak: { lbPerBf: 3.6, pricePerBf: 6.0, name: "Red oak" },
+    };
+    const sp = speciesMap[species] || speciesMap.spf;
+
+    // Board feet formula: (thickness × width × length in feet) / 12
+    // 1 board foot = 1" thick × 12" wide × 1 ft long = 144 cubic inches
+    const boardFeetPerBoard = (dims.t * dims.w * length) / 12;
+
+    // Round to 6 places before ceil so floating point (e.g. 50 * 1.1 = 55.0000001)
+    // does not push an exact result up to the next board.
+    const quantityWithWaste = ceilQuantity(
+      Number((quantity * (1 + waste / 100)).toFixed(6))
+    );
+    const boardFeetWithWaste = boardFeetPerBoard * quantityWithWaste;
+
+    // Weight and cost scale off total board feet
+    const totalWeight = boardFeetWithWaste * sp.lbPerBf;
+    const pricePerBf = priceOverride > 0 ? priceOverride : sp.pricePerBf;
+    const totalCost = boardFeetWithWaste * pricePerBf;
+
     return {
-      value: round(totalBoardFeet, 2),
-      unit: "nominal board feet",
-      valueRounded: round(totalBoardFeet, 1),
+      value: quantityWithWaste,
+      unit: quantityWithWaste === 1 ? "board" : "boards",
+      valueRounded: quantityWithWaste,
       breakdown: [
-        { label: "board count after allowance", value: `${adjustedCount}` },
-        { label: "nominal board feet per piece", value: `${formatNumber(round(boardFeetEach, 3))}` },
-        { label: "total nominal board feet", value: `${formatNumber(round(totalBoardFeet, 2))}` },
-        { label: "total lineal length", value: `${formatNumber(round(linealFeet, 2))} ft` },
-        { label: "weight and cost", value: "not estimated" },
+        { label: "size", value: `${nominalSize} × ${length}'` },
+        { label: "board ft per piece", value: `${formatNumber(round(boardFeetPerBoard, 2))} bf` },
+        { label: "total board ft", value: `${formatNumber(round(boardFeetWithWaste, 1))} bf` },
+        { label: "lineal ft", value: `${quantityWithWaste * length}'` },
+        { label: "total weight", value: `~${formatNumber(round(totalWeight, 0))} lb` },
+        {
+          label: "est. cost",
+          value: `~$${formatNumber(round(totalCost, 0))}${priceOverride > 0 ? "" : ` (${sp.name})`}`,
+        },
       ],
       formulaSteps: [
-        `adjusted count = ceil(${quantity} × (1 + ${allowance}%)) = ${adjustedCount}`,
-        `board feet each = ${dims.thickness} in × ${dims.width} in × ${length} ft ÷ 12 = ${round(boardFeetEach, 3)}`,
-        `total board feet = ${round(boardFeetEach, 3)} × ${adjustedCount} = ${round(totalBoardFeet, 2)}`,
-        `lineal feet = ${length} ft × ${adjustedCount} = ${round(linealFeet, 2)} ft`,
-        "Board-foot arithmetic uses nominal dimensions. Actual surfaced dimensions, grade, moisture, treatment, suitability, weight, and price are not assessed.",
+        `board size = ${dims.t}" × ${dims.w}" nominal, length = ${length} ft`,
+        `board feet per board = (${dims.t} × ${dims.w} × ${length}) ÷ 12 = ${formatNumber(round(boardFeetPerBoard, 3))} bf`,
+        `quantity requested = ${quantity}`,
+        waste > 0
+          ? `with ${waste}% waste = ⌈${quantity} × ${(1 + waste / 100).toFixed(2)}⌉ = ${quantityWithWaste}`
+          : `no waste factor applied = ${quantityWithWaste}`,
+        `total board feet = ${formatNumber(round(boardFeetPerBoard, 3))} × ${quantityWithWaste} = ${formatNumber(round(boardFeetWithWaste, 2))} bf`,
+        `total lineal feet = ${quantityWithWaste} × ${length} = ${quantityWithWaste * length} ft`,
+        `total weight = ${formatNumber(round(boardFeetWithWaste, 1))} bf × ${sp.lbPerBf} lb/bf (${sp.name}) = ${formatNumber(round(totalWeight, 0))} lb`,
+        `est. cost = ${formatNumber(round(boardFeetWithWaste, 1))} bf × $${pricePerBf.toFixed(2)}/bf = $${formatNumber(round(totalCost, 2))}`,
       ],
     };
   },
-  formulaDescription: "board feet = nominal thickness × nominal width × length in feet ÷ 12 × adjusted board count",
-  methodology: ["Select a nominal size, enter board length and count, then choose whether to apply an allowance. The traditional board-foot calculation uses nominal dimensions and one board foot equals 1-inch thickness × 12-inch width × 1-foot length.", "This worksheet does not estimate actual surfaced dimensions, structural capacity, species density, treated-lumber moisture, price, grade, or whether lumber is suitable for a project. Verify exact stock and project specifications with the supplier or qualified designer."],
-  sources: [],
-  related: [
-    { name: "Deck board area estimator", slug: "deck-calculator", description: "Surface area and rough board count from entered assumptions" },
-    { name: "Shed surface estimator", slug: "shed-calculator", description: "Limited surface geometry, not a material takeoff" },
+
+  ContentExpansion: LumberCalculatorExpansion,
+
+  howTo: {
+    name: "How to calculate board feet of lumber",
+    description:
+      "Convert any lumber list into board feet, linear feet, weight, and cost using the board-foot formula.",
+    steps: [
+      {
+        name: "Use the nominal dimensions",
+        text: "Take the nominal thickness and width (the 2 and 4 in a 2x4), not the smaller milled size, and the length in inches.",
+      },
+      {
+        name: "Apply the board-foot formula",
+        text: "Multiply nominal thickness times nominal width times length in inches, then divide by 144. A 2x4x8 is 2 times 4 times 96 divided by 144, which is 5.33 board feet.",
+      },
+      {
+        name: "Total the cut list",
+        text: "Repeat for each board size and quantity, then add the board feet together for the whole order.",
+      },
+      {
+        name: "Add a waste factor",
+        text: "Add about 10 percent for framing lumber and 15 percent for trim and finish stock to cover offcuts and culled boards.",
+      },
+      {
+        name: "Estimate weight and cost",
+        text: "Multiply board feet by roughly 2.1 pounds for kiln-dried SPF or 3.5 to 4.2 pounds for wet treated lumber, and by the current price per board foot for cost.",
+      },
+    ],
+  },
+
+  formulaDescription:
+    "board feet = (thickness × width × length_ft) ÷ 12, per board × quantity with waste",
+
+  methodology: [
+    "Board feet is the standard unit for lumber volume in North America. One board foot equals a piece 1 inch thick, 12 inches wide, and 1 foot long, which is 144 cubic inches of wood. The formula is (nominal thickness × nominal width × length in feet) divided by 12.",
+    "Note the 'nominal' in that formula. A 2×4 is actually 1.5 × 3.5 inches after milling, but board-foot calculations use the nominal dimensions (2 × 4) to keep things consistent across rough and dressed lumber. This is how lumber has been sold for over a century.",
+    "Lineal feet is the simpler measurement, the total length of lumber regardless of cross-section. A 2×4 at 8 feet long is 8 lineal feet. A 2×12 at 8 feet long is also 8 lineal feet. But the 2×12 is 6 board feet versus the 2x4's 5.33 board feet, so the 2×12 costs roughly 12× more per lineal foot.",
+    "Waste factor for framing and construction lumber: 0% if you're ordering to a precise pre-calculated list, 10% for typical projects where you're cutting stock to fit. 15% for projects with complex angles or repeated short cuts that leave lots of unusable scrap. Always round up to whole boards. A 10% buffer on 50 boards is 55, not 55.0.",
+    "Pricing: lumber yards quote in different units. Big-box retailers usually price per piece (\"$5.47 each\"). Wholesale lumber yards quote per 1,000 board feet (\"$850 MBF\"). Convert between them: price per piece ÷ board feet per piece = price per board foot. Multiply by 1,000 for MBF.",
   ],
+
+  sources: [
+    {
+      name: "American Lumber Standards Committee: PS 20 American Softwood Lumber Standard",
+      url: "https://www.alsc.org/untreated-lumber_mod_prog_ps20.html",
+      note: "The federal standard defining nominal versus actual softwood lumber dimensions",
+    },
+    {
+      name: "Western Wood Products Association: Board Foot Calculation",
+      url: "https://www.wwpa.org/resources/calculators",
+      note: "Industry reference for the board-foot formula and lumber tallies",
+    },
+    {
+      name: "AWC National Design Specification for Wood Construction",
+      url: "https://awc.org/publications/nds/",
+      note: "Species design values and structural properties for framing lumber",
+    },
+    {
+      name: "USDA Forest Products Laboratory: Wood Handbook",
+      url: "https://www.fpl.fs.usda.gov/products/publications/several_pubs.php?grouping_id=100",
+      note: "Wood density and moisture data behind the weight estimates in this guide",
+    },
+    {
+      name: "Southern Forest Products Association: Pressure-Treated Lumber",
+      url: "https://www.sfpa.org/",
+      note: "Treatment retention levels and ground-contact ratings for southern yellow pine",
+    },
+  ],
+
+  related: [
+    { name: "Deck calculator", slug: "deck-calculator", description: "Boards and joists for any deck" },
+    { name: "Shed calculator", slug: "shed-calculator", description: "Full material list for a backyard shed" },
+    { name: "Snow load calculator", slug: "snow-load-calculator", description: "Snow load the framing has to carry" },
+    { name: "Stair calculator", slug: "stair-calculator", description: "Rise, run, and stringer layout for any staircase" },
+  ],
+
   faq: [
-    { question: "Does this give a lumber price or shipping weight?", answer: "No. It calculates nominal board feet and lineal length only. Price and weight depend on exact stock and supplier data." },
-    { question: "Are board feet based on actual or nominal dimensions?", answer: "The displayed board-foot arithmetic uses the selected nominal size. Actual surfaced dimensions can differ." },
+    {
+      question: "What is a board foot?",
+      answer:
+        "One board foot equals a piece of lumber 1 inch thick, 12 inches wide, and 1 foot long. That's 144 cubic inches of wood. Board feet is the standard way to measure and sell lumber volume in the US and Canada, and it accounts for cross-section (thickness × width) and length together.",
+    },
+    {
+      question: "Why is a 2×4 not actually 2 by 4 inches?",
+      answer:
+        "The '2×4' is the nominal (rough) dimension before milling. When lumber is dried and planed smooth, it loses about 1/2 inch from thickness and width. Finished: 1.5 × 3.5 inches. This has been the industry standard since the 1920s. Board-foot math still uses nominal dimensions for consistency.",
+    },
+    {
+      question: "How do I convert lineal feet to board feet?",
+      answer:
+        "Multiply lineal feet by nominal thickness and width, divide by 12. For a 2×6: lineal × 2 × 6 ÷ 12 = lineal × 1. So 10 lineal feet of 2×6 = 10 board feet. For 1×4: lineal × 1 × 4 ÷ 12 = lineal × 0.33. So 10 lineal feet of 1×4 = 3.33 board feet.",
+    },
+    {
+      question: "How much lumber do I need for a deck?",
+      answer:
+        "For deck materials specifically, use the deck calculator, which factors in decking boards, joists, beams, posts, and fasteners. The lumber calculator here is for general framing or when you need to compute board feet for cost comparison or bulk ordering.",
+    },
+    {
+      question: "What's the difference between cheap and premium lumber?",
+      answer:
+        "Grade. Cheap lumber ('stud grade' or 'no. 2') has knots, slight warping, and visible wane. Premium lumber ('select structural' or 'no. 1') has fewer defects and is straighter. Cost difference is 30-100%. For hidden framing, stud grade is fine. For exposed work (furniture, trim), premium is worth it.",
+    },
+    {
+      question: "How much does lumber cost?",
+      answer:
+        "Extremely volatile in recent years. Roughly: 8-foot 2×4 stud grade SPF = $4-8; 16-foot 2×10 = $25-45; 8-foot 4×4 pressure-treated = $15-25. Pressure-treated costs 50-100% more than untreated. Prices swing 30-50% seasonally and with housing market cycles.",
+    },
+    {
+      question: "Should I buy pressure-treated or regular lumber?",
+      answer:
+        "Pressure-treated (PT) for anything in contact with ground, concrete, or outdoors without protection: fence posts, deck framing, ledger boards, sill plates. Regular lumber for interior framing, visible deck boards (can use PT but it splits and warps more), and furniture. Cedar and redwood are rot-resistant naturally but cost 2-3× more than PT.",
+    },
+    {
+      question: "What are MBF and M in lumber pricing?",
+      answer:
+        "MBF = thousand board feet (Roman M = 1,000). Lumber wholesale is quoted per MBF: '$850/MBF' means $0.85 per board foot. A single 2×4×8' board is 5.33 bf, so at $850/MBF it's $4.53 per piece. Retail stores usually quote per piece directly; wholesale and contractor pricing use MBF.",
+    },
+  ],
+  relatedGuides: [
+    { name: "Composite vs PT vs cedar decking", slug: "composite-vs-pressure-treated-vs-cedar-deck", description: "20-year cost breakdown for all three decking materials" },
   ],
 };
+
+reconcileCalculator(lumberCalculatorConfig);

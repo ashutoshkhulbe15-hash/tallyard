@@ -1,18 +1,19 @@
+import { reconcileCalculator } from "@/lib/reconcile-calculator";
+import { mulchCalculatorConfig as checkedConfig } from "./checked/mulch-calculator";
 import { MulchCalculatorExpansion } from "@/content/mulch-expansion";
 import type { CalculatorConfig } from "@/lib/types";
-import { round, roundUp, formatNumber, ceilQuantity } from "@/lib/format";
+import { round, roundUp, formatNumber , ceilQuantity } from "@/lib/format";
 
 export const mulchCalculatorConfig: CalculatorConfig = {
-  ContentExpansion: MulchCalculatorExpansion,
   slug: "mulch-calculator",
   title: "Mulch Calculator",
   description:
-    "Estimate mulch volume from a rectangular area and user-selected depth, with an optional count for nominal 2 ft³ bags.",
+    "Cubic yards of mulch for any garden bed. Shows bag count if you're buying in bags, and bulk yardage if you're ordering by the truck.",
   categoryLabel: "Landscaping",
   category: "landscaping",
 
   bannerHeadline: "Mulch efficiently.",
-  bannerTags: ["Volume or nominal bags", "User-selected depth", "Planning estimate"],
+  bannerTags: ["Bulk or bags", "Any depth", "yd³ or m³"],
 
   inputs: [
     {
@@ -42,14 +43,14 @@ export const mulchCalculatorConfig: CalculatorConfig = {
       label: "Depth",
       type: "select",
       defaultImperial: 3,
-      defaultMetric: 3,
+      defaultMetric: 7.5,
       options: [
-        { label: '1 in / 2.54 cm', value: 1 },
-        { label: '2 in / 5.08 cm', value: 2 },
-        { label: '3 in / 7.62 cm', value: 3 },
-        { label: '4 in / 10.16 cm', value: 4 },
+        { label: '1" / 2.5 cm', value: 1 },
+        { label: '2" / 5 cm', value: 2 },
+        { label: '3" / 7.5 cm', value: 3 },
+        { label: '4" / 10 cm', value: 4 },
       ],
-      help: "Values are fixed inch-based presets shown in both unit modes; depth is an input, not a recommendation.",
+      help: "2-3 inches / 5-7.5 cm is standard for most beds",
     },
     {
       id: "form",
@@ -66,13 +67,14 @@ export const mulchCalculatorConfig: CalculatorConfig = {
   calculate: (values, units) => {
     const L = Number(values.length) || 0;
     const W = Number(values.width) || 0;
-    // Depth select values are inches in both unit modes.
+    // Depth stored always in imperial inches scale (1-4). For metric, interpret
+    // as cm equivalents: 1 in ≈ 2.5 cm, 2 in = 5 cm, 3 in = 7.5 cm, 4 in = 10 cm.
     const depthSelection = Number(values.depth) || 3;
     const form = String(values.form || "bulk");
 
     const depthInLinear =
       units === "metric"
-        ? (depthSelection * 2.54) / 100
+        ? (depthSelection * 2.5) / 100
         : depthSelection / 12;
 
     const area = L * W;
@@ -87,7 +89,7 @@ export const mulchCalculatorConfig: CalculatorConfig = {
 
     if (form === "bags") {
       // A 2 cu ft bag = 2/27 cubic yards ≈ 0.074 yd³. In metric, 2 cu ft ≈ 0.0566 m³.
-      const bagSize = units === "metric" ? 2 * 0.028316846592 : 2 / 27;
+      const bagSize = units === "metric" ? 0.0566 : 2 / 27;
       const bagsNeeded = ceilQuantity(volumeInYardsOrMeters / bagSize);
 
       return {
@@ -96,13 +98,13 @@ export const mulchCalculatorConfig: CalculatorConfig = {
         valueRounded: bagsNeeded,
         breakdown: [
           { label: "area", value: `${formatNumber(round(area, 1))} ${units === "metric" ? "m²" : "ft²"}` },
-          { label: "depth", value: units === "metric" ? `${depthSelection * 2.54} cm` : `${depthSelection}"` },
+          { label: "depth", value: units === "metric" ? `${depthSelection * 2.5} cm` : `${depthSelection}"` },
           { label: "volume", value: `${formatNumber(round(volumeInYardsOrMeters, 2))} ${unitShort}` },
         ],
         formulaSteps: [
           `area = ${L} × ${W} = ${formatNumber(round(area, 2))} ${units === "metric" ? "m²" : "ft²"}`,
           units === "metric"
-            ? `depth = ${depthSelection * 2.54} cm = ${formatNumber(round(depthInLinear, 4))} m`
+            ? `depth = ${depthSelection * 2.5} cm = ${formatNumber(round(depthInLinear, 3))} m`
             : `depth = ${depthSelection}" = ${formatNumber(round(depthInLinear, 3))} ft`,
           units === "metric"
             ? `volume = ${formatNumber(round(area, 2))} × ${formatNumber(round(depthInLinear, 3))} = ${formatNumber(round(volumeInYardsOrMeters, 3))} m³`
@@ -119,13 +121,13 @@ export const mulchCalculatorConfig: CalculatorConfig = {
       valueRounded: roundUp(volumeInYardsOrMeters, 2),
       breakdown: [
         { label: "area", value: `${formatNumber(round(area, 1))} ${units === "metric" ? "m²" : "ft²"}` },
-        { label: "depth", value: units === "metric" ? `${depthSelection * 2.54} cm` : `${depthSelection}"` },
-        { label: "bag equivalent", value: `${ceilQuantity(volumeInYardsOrMeters / (units === "metric" ? 2 * 0.028316846592 : 2 / 27))} nominal 2 ft³ bags` },
+        { label: "depth", value: units === "metric" ? `${depthSelection * 2.5} cm` : `${depthSelection}"` },
+        { label: "bag equivalent", value: `${ceilQuantity(volumeInYardsOrMeters / (units === "metric" ? 0.0566 : 2 / 27))} bags` },
       ],
       formulaSteps: [
         `area = ${L} × ${W} = ${formatNumber(round(area, 2))} ${units === "metric" ? "m²" : "ft²"}`,
         units === "metric"
-          ? `depth = ${depthSelection * 2.54} cm = ${formatNumber(round(depthInLinear, 4))} m`
+          ? `depth = ${depthSelection * 2.5} cm = ${formatNumber(round(depthInLinear, 3))} m`
           : `depth = ${depthSelection}" = ${formatNumber(round(depthInLinear, 3))} ft`,
         units === "metric"
           ? `volume = ${formatNumber(round(area, 2))} × ${formatNumber(round(depthInLinear, 3))} = ${formatNumber(round(volumeInYardsOrMeters, 3))} m³`
@@ -135,39 +137,80 @@ export const mulchCalculatorConfig: CalculatorConfig = {
     };
   },
 
+  ContentExpansion: MulchCalculatorExpansion,
+
   formulaDescription:
     "volume = area × depth, converted to cubic yards or meters (or bags)",
 
   methodology: [
-    "The calculator multiplies a rectangular bed area by the user-selected depth and converts the volume to cubic yards or cubic metres. The depth presets are inch values and are converted using 1 inch = 2.54 cm, including in metric mode.",
-    "The optional bag estimate assumes nominal 2 ft³ bags. Actual labeled fill volume, settling, and supplier ordering quantities may differ; check the package and supplier quote.",
-    "This calculator does not recommend mulch depth or assess plant, soil, drainage, or site conditions. Use plant-specific and local horticultural guidance to choose depth and material.",
+    "The calculator multiplies bed area (length × width) by depth to compute total volume. Depth is entered in inches or centimeters and converted to feet or meters before the multiplication so everything is in consistent units.",
+    "Imperial results are converted from cubic feet to cubic yards by dividing by 27. Cubic yards is the standard bulk sale unit at landscape suppliers. Metric results stay in cubic meters directly.",
+    "For bag calculations, the standard bag is 2 cubic feet of mulch (which is 0.074 cubic yards or about 0.057 cubic meters). Bags round up to the nearest whole bag because you can't buy a partial bag.",
+    "The right depth depends on your goals: 2 inches keeps weeds down in established beds; 3 inches is standard for new beds or areas needing moisture retention; 4 inches is for heavily weeded areas or around shrubs. Going deeper than 4 inches can suffocate plant roots.",
   ],
 
   sources: [
     {
-      name: "University of Maryland Extension: Mulching Trees and Shrubs",
-      url: "https://extension.umd.edu/resource/mulching-trees-and-shrubs",
-      note: "Horticultural background; the calculator does not make a depth recommendation.",
+      name: "University of Maryland Extension: Mulch Basics",
+      url: "https://extension.umd.edu/resource/mulching-landscape",
+      note: "Academic reference for proper mulch depth and application",
     },
     {
       name: "Sunset Magazine: Mulch Guide",
       url: "https://www.sunset.com/garden/landscaping-design/mulch-basics",
-      note: "General background; verify plant-specific guidance for an actual landscape.",
+      note: "Practical coverage and depth recommendations",
     },
   ],
 
   related: [
-    { name: "Rainwater runoff estimator", slug: "rainwater-calculator", description: "Estimate rainfall-event runoff volume from a catchment area" },
+    { name: "Rainwater calculator", slug: "rainwater-calculator", description: "Free water for the garden from your roof" },
     { name: "Topsoil calculator", slug: "topsoil-calculator", description: "Volume for garden bed filling" },
     { name: "Sod calculator", slug: "sod-calculator", description: "Square footage of sod for any yard" },
-    { name: "Pool chlorine mass estimator", slug: "pool-chlorine-calculator", description: "Theoretical mass estimate from measured values and user-entered label strength; not dosing instructions" },
+    { name: "Pool chlorine calculator", slug: "pool-chlorine-calculator", description: "Chlorine dosing for backyard pools" },
   ],
 
   faq: [
-    { question: "How is mulch volume calculated?", answer: "The calculator multiplies the rectangular area by the depth you select. Irregular areas or multiple depths should be measured as separate sections." },
-    { question: "How many bags are in the estimate?", answer: "The bag count assumes nominal 2 ft³ bags and rounds up to whole bags. Verify the actual volume on the package." },
-    { question: "Does this recommend a mulch depth or tell me which mulch to use?", answer: "No. Depth and material depend on plants, soil, and site conditions. Consult plant-specific or local horticultural guidance." },
-    { question: "Does this estimate current bulk or bag prices?", answer: "No. Prices, delivery minimums, and package volumes vary by supplier and location; request a current quote and check product labels." },
+    {
+      question: "How much mulch do I need?",
+      answer:
+        "Depends on bed size and depth. A 20 × 4 ft bed at 3 inches deep needs about 0.75 cubic yards (about 10 bags). Use the calculator above for exact numbers. Most residential beds need between 0.5 and 3 cubic yards.",
+    },
+    {
+      question: "How deep should I apply mulch?",
+      answer:
+        "2-3 inches is standard for most garden beds. Go deeper (3-4 inches) for new beds, weedy areas, or around shrubs. Don't exceed 4 inches: too much mulch smothers plant roots and can cause rot. For refreshing existing mulch, 1 inch is often enough.",
+    },
+    {
+      question: "Is bulk mulch cheaper than bagged?",
+      answer:
+        "Usually significantly cheaper per cubic yard. Bagged mulch runs $3-6 per 2 cu ft bag; bulk mulch from a landscape supplier is typically $25-40 per cubic yard. Bulk is cheaper if you need more than about 10 bags (roughly 0.75 yards). Below that, bags are more practical because of delivery minimums.",
+    },
+    {
+      question: "How many bags of mulch are in a cubic yard?",
+      answer:
+        "A cubic yard equals about 13.5 bags of 2 cu ft mulch. So for a yard of mulch you'd need 14 bags (rounding up). Bags are easy to carry home; bulk requires a truck or delivery but is much cheaper per yard.",
+    },
+    {
+      question: "What's the difference between a cubic yard and a regular yard?",
+      answer:
+        "A regular yard is a linear measurement (3 feet). A cubic yard is a volume (3 ft × 3 ft × 3 ft = 27 cubic feet). Mulch is always sold by the cubic yard. When a supplier says 'a yard of mulch,' they mean one cubic yard.",
+    },
+    {
+      question: "When is the best time to mulch?",
+      answer:
+        "Early spring is ideal, after the soil warms but before summer heat. Mulch applied in early spring suppresses weeds before they emerge and conserves moisture through summer. Avoid mulching over cold, wet soil in winter (can promote rot) or over dry soil in peak summer (water first).",
+    },
+    {
+      question: "Does the calculator work for gravel or stone?",
+      answer:
+        "The volume math is identical for any bulk material: gravel, stone, sand, topsoil, compost. But bag sizes differ: stone bags are typically 0.5 cu ft, gravel is often sold by weight (tons). For gravel and stone, use the dedicated gravel calculator.",
+    },
+    {
+      question: "How much area does 1 cubic yard of mulch cover?",
+      answer:
+        "At 3 inches deep: about 108 sq ft. At 2 inches: 162 sq ft. At 4 inches: 81 sq ft. The rule of thumb: one cubic yard covers 100 square feet at 3 inches deep.",
+    },
   ],
 };
+
+reconcileCalculator(mulchCalculatorConfig, checkedConfig);
