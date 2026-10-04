@@ -17,7 +17,7 @@ There are 50 calculators and worksheets, 6 reference and buying guides, and 10 p
 - [BTU Calculator](https://www.tallyard.com/btu-calculator): Air conditioner BTU size for any room. Accounts for climate, insulation, sun exposure, and occupancy so you buy the right unit.
 - [Gravel Calculator](https://www.tallyard.com/gravel-calculator): Cubic yards of gravel, stone, or aggregate for driveways, paths, or base layers. Converts to tons for bulk ordering.
 - [Solar Panel Calculator](https://www.tallyard.com/solar-calculator): Solar system size for your electricity usage. Accounts for sun hours by region, panel wattage, and system losses so you size right the first time.
-- [Wire Size Calculator](https://www.tallyard.com/wire-size-calculator): Electrical wire gauge (AWG) for any amp load and run length. Accounts for voltage drop so your circuit stays within code.
+- [Wire Size Calculator](https://www.tallyard.com/wire-size-calculator): Compare electrical wire gauge (AWG) against the listed ampacity and voltage-drop assumptions for an entered load and run length. This limited worksheet does not establish complete installation code compliance.
 - [Insulation Calculator](https://www.tallyard.com/insulation-calculator): R-value and square footage of insulation for any wall, attic, or floor. Rolls or batts, with climate-appropriate R-value recommendations.
 - [Fence Calculator](https://www.tallyard.com/fence-calculator): Posts, rails, and pickets for any fence length. Includes concrete for post holes and accounts for gates and corners.
 - [Grout Calculator](https://www.tallyard.com/grout-calculator): Pounds of grout for any tile installation. Accounts for tile size, joint width, and thickness so you buy the right bags.

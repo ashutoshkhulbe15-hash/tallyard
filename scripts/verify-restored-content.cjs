@@ -24,6 +24,7 @@ function inventory(html) {
 function verify() {
   const baseline=JSON.parse(fs.readFileSync(path.join(root,"tests/editorial-baseline.json"),"utf8"));
   const corrections=JSON.parse(fs.readFileSync(path.join(root,"tests/editorial-corrections.json"),"utf8"));
+  const consistency=JSON.parse(fs.readFileSync(path.join(root,"tests/consistency-corrections.json"),"utf8"));
   const originalNotes=JSON.parse(fs.readFileSync(path.join(root,"src/content/original-calculator-editorial.json"),"utf8"));
   const results=[];
   let blocks=0, links=0;
@@ -34,9 +35,10 @@ function verify() {
     const text=normalize(html);
     for(const chunk of page.chunks) {
       const correction=corrections.find(item=>item.route===page.route && item.oldText===chunk.text);
+      const next=consistency.find(item=>item.route===page.route && item.oldText===(correction?.newText || chunk.text));
       const source=(originalNotes[page.route.slice(1)]?.sources || []).find(item=>normalize(item.name+"—"+item.note)===chunk.text);
       const sourceRetained=source && text.includes(normalize(source.name)) && text.includes(normalize(source.note));
-      assert.ok(text.includes(chunk.text) || (correction && text.includes(correction.newText)) || sourceRetained,`${page.route}: missing original ${chunk.tag}: ${chunk.text.slice(0,110)}`);
+      assert.ok(text.includes(chunk.text) || (correction && text.includes(correction.newText)) || (next && text.includes(next.newText)) || sourceRetained,`${page.route}: missing original ${chunk.tag}: ${chunk.text.slice(0,110)}`);
     }
     for(const link of page.links)assert.ok(html.includes(`href="${link}"`),`${page.route}: missing original link ${link}`);
     blocks+=page.chunks.length; links+=page.links.length;

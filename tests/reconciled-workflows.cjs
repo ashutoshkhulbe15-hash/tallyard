@@ -30,7 +30,7 @@ test('restored topsoil bag count is 134 in both physical unit presentations',()=
 test('stud spacing keeps a 16-inch interval, not a feet value labelled inches',()=>{
   const c=configs['stud-spacing-calculator'];const v={...defaults(c),wallLength:12,spacing:16,corners:0,doors:0,windows:0};
   for(const [unit,values] of [['imperial',v],['metric',convertCalculatorValues(c.inputs,v,'imperial','metric')]]){
-    const r=c.calculate(values,unit);assert.equal(r.valueRounded,10);assert.equal(r.breakdown.find(row=>row.label==='actual line-stud interval').value,'16 in');
+    const r=c.calculate(values,unit);assert.equal(r.valueRounded,10);assert.equal(r.breakdown.find(row=>row.label==='selected nominal line-stud spacing').value,'16 in OC');
   }
 });
 test('heat-pump scenario retains the original inputs without silently capping the result',()=>{

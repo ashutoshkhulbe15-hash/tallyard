@@ -233,7 +233,7 @@ export const heatPumpCalculatorConfig: CalculatorConfig = {
     "Insulation quality adjusts the base BTU up or down. Poor insulation (old homes, minimal attic insulation, single-pane windows) increases load by 25%. Average insulation (meets current code) is the baseline. Good insulation (upgraded with extra attic batt, storm windows) reduces by 10%. Energy Star excellent insulation reduces by 20%.",
     "Ceiling height matters because you're heating and cooling the entire volume of the home, not just the floor area. Standard 8-9 ft ceilings are the baseline. Vaulted ceilings (10-12 ft average) add 15%. Cathedral ceilings (14+ ft) add 30%. Homes with a mix of ceiling types should use whichever is most common.",
     "Window coverage adjusts for solar gain and thermal losses. Windows are weaker thermal barriers than walls: R-3 or R-4 for good double-pane, vs R-13+ for insulated walls. Homes with lots of windows lose more heat in winter and gain more heat from sun in summer.",
-    "Standard heat pump sizes are in half-ton increments from 1.5 to 5.0 tons (most residential), then 6 and 7.5 tons for larger homes. 1 ton = 12,000 BTU/hr. The calculator rounds UP to the next standard size: undersized heat pumps fail to keep up on peak hot/cold days. Oversizing by one size is fine; oversizing by 2+ sizes causes short-cycling and humidity problems.",
+    "One ton-equivalent is 12,000 BTU/h. This scenario rounds up within the listed half-ton examples from 1.5 to 5.0, but displays the uncapped load-equivalent above that list. The default 80,000 BTU/h case is 6.67 ton-equivalent. Neither display selects equipment: actual capacity at design conditions and a project-specific load calculation control selection, not a blanket rule to oversize by one step.",
     "This is a simplified sizing. Professional HVAC installers use ACCA Manual J, a room-by-room load calculation that accounts for: specific window R-values, room orientation, duct losses, infiltration rates, and more. For a home purchase, use this calculator for rough estimates. For a real install, insist the contractor does Manual J, without it, sizing errors of 30-50% are common.",
   ],
 
@@ -291,7 +291,7 @@ export const heatPumpCalculatorConfig: CalculatorConfig = {
     {
       question: "Should I oversize my heat pump?",
       answer:
-        "No, one size up is fine, but two sizes up causes problems. An oversized heat pump short-cycles (turns on and off quickly without running long enough to remove humidity or circulate air evenly). Modern two-stage or variable-speed heat pumps handle oversizing better. Single-stage should be sized carefully, never by more than 15% over calculated load.",
+        "Do not assume one size up is acceptable. Oversizing can cause short cycling and poor humidity control; modulation, minimum output, design-temperature capacity and the building's actual heating and cooling loads all matter. Have a qualified contractor select equipment against a project-specific load calculation and exact manufacturer performance data. This illustrative calculator does not prescribe an oversizing percentage.",
     },
     {
       question: "What's the difference between a heat pump and an air conditioner?",
@@ -306,7 +306,7 @@ export const heatPumpCalculatorConfig: CalculatorConfig = {
     {
       question: "What's SEER and HSPF?",
       answer:
-        "SEER (Seasonal Energy Efficiency Ratio) measures cooling efficiency. Modern minimums: 14-15 SEER. Good: 16-18. Premium: 20+. HSPF (Heating Seasonal Performance Factor) measures heating efficiency. Modern minimums: 7.7 HSPF. Good: 9-10. Premium: 11+. Higher is better for both. Federal tax credit requires 15+ SEER2 and 8.5+ HSPF2 for heat pumps.",
+        "SEER measures seasonal cooling efficiency and HSPF measures seasonal heating efficiency. Newer SEER2 and HSPF2 ratings use revised test conditions; compare equipment using the same rating system and exact certified product data. Efficiency ratings are not a guarantee of a tax credit: the residential 25C credit is unavailable for relevant new 2026 work. Historical eligibility criteria do not establish current credit eligibility.",
     },
     {
       question: "Do I need a new electrical panel for a heat pump?",

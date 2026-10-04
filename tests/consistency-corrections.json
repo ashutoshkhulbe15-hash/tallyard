@@ -1,0 +1,98 @@
+[
+  {
+    "route": "/heat-pump-calculator",
+    "tag": "p",
+    "index": 7,
+    "oldText": "Standardheatpumpsizesareinhalf-tonincrementsfrom1.5to5.0tons(mostresidential),then6and7.5tonsforlargerhomes.1ton=12,000BTU/hr.ThecalculatorroundsUPtothenextstandardsize:undersizedheatpumpsfailtokeepuponpeakhot/colddays.Oversizingbyonesizeisfine;oversizingby2+sizescausesshort-cyclingandhumidityproblems.",
+    "newText": "Oneton-equivalentis12,000BTU/h.Thisscenarioroundsupwithinthelistedhalf-tonexamplesfrom1.5to5.0,butdisplaystheuncappedload-equivalentabovethatlist.Thedefault80,000BTU/hcaseis6.67ton-equivalent.Neitherdisplayselectsequipment:actualcapacityatdesignconditionsandaproject-specificloadcalculationcontrolselection,notablanketruletooversizebyonestep.",
+    "reason": "Targeted 2026 incentive arithmetic and sizing-scope consistency correction"
+  },
+  {
+    "route": "/heat-pump-calculator",
+    "tag": "p",
+    "index": 11,
+    "oldText": "SizingfollowsACCAManualJloadcalculationmethodologywithclimatezoneadjustments.COP(coefficientofperformance)datafromAHRIcertifiedproductratingsforductedsplit-systemheatpumps.CostdatafromEnergySageandcontractorassociationsurveys(2025-2026).FederaltaxcreditdetailsperIRSSection25D(ITC)andDOEHEEHRAprogramguidelines.",
+    "newText": "Thecalculatorusestheexplicitarea,climateandinsulationfactorsinitsmethodology,notanACCAManualJcalculation.TheclimateandCOPdiagramsareillustrativecomparisons,notcertifiedperformanceforachosenunit;consultexactAHRIproductdata.Costrangesareoriginalillustrativebenchmarks,notverified2026marketaverages.Ordinaryair-sourceheatpumpswerecoveredbytheseparateSection25Crules,notthegeothermalSection25Dcategory.IRSForm5695instructionsconfirmtherelevantnew-workcreditcutoffafterDecember31,2025;stateandutilityrebatesrequireseparateeligibilitychecks.",
+    "reason": "Targeted 2026 incentive arithmetic and sizing-scope consistency correction"
+  },
+  {
+    "route": "/heat-pump-calculator",
+    "tag": "p",
+    "index": 15,
+    "oldText": "Heatpumpscostmoreupfrontbutqualifyforlargerincentives.Inzones1-4,theoperatingcostadvantagemakesthetotalcostofownershiplowerover15years.",
+    "newText": "Illustrativeequipmentcomparisons,notcurrentquotationsorguaranteedsavings.Compareproject-specificinstalledcosts,energyratesandconfirmedrebates;nonewresidential25Ccreditisassumedfor2026work.",
+    "reason": "Targeted 2026 incentive arithmetic and sizing-scope consistency correction"
+  },
+  {
+    "route": "/heat-pump-calculator",
+    "tag": "p",
+    "index": 16,
+    "oldText": "Heatpumpsaresoldbytheton,andatonisnotaweight.Itis12,000BTUperhourofcapacity,aholdoverfromthedayswhencoolingwasmeasuredagainsttheheatabsorbedbymeltingatonoficein24hours.Soa3tonunitis36,000BTU/handa4tonis48,000.Residentialequipmentcomesinhalftonsteps,whichiswhythecalculatorreturnsasizethatlandson2,2.5,3,3.5,4,or5tonsratherthananarbitrarynumber.",
+    "newText": "Heatpumpsaresoldbytheton,andatonisnotaweight.Itis12,000BTUperhourofcapacity,aholdoverfromthedayswhencoolingwasmeasuredagainsttheheatabsorbedbymeltingatonoficein24hours.Soa3tonunitis36,000BTU/handa4tonis48,000.Manyresidentialequipmentrangesusehalf-tonnominalsizes,butnominalsizeisnotverifiedheatingoutputatyourwinterdesigntemperature.Thiscalculatorreturnsanillustrativeload-equivalentscenario,usingthelistedhalf-tonexampleswhereapplicableandshowingtheuncappedequivalentabovethatlist.Itdoesnotselectequipment:thedefault80,000BTU/hscenariodisplays6.67ton-equivalent,notarecommendationtobuythatsize.",
+    "reason": "Targeted 2026 incentive arithmetic and sizing-scope consistency correction"
+  },
+  {
+    "route": "/heat-pump-calculator",
+    "tag": "p",
+    "index": 18,
+    "oldText": "Typicalinstalledcostbysize,2026USaverages,beforeincentives.Ductlessminisplitpricingisperzoneandassumesnoexistingductwork.",
+    "newText": "Originalillustrativeinstalled-costbenchmarksbysize,notverified2026USaverages.Ductlessminisplitpricingisperzoneandassumesnoexistingductwork.Obtaindatedlocalquotes;listedfloorareasarenotequipment-selectionrules.",
+    "reason": "Targeted 2026 incentive arithmetic and sizing-scope consistency correction"
+  },
+  {
+    "route": "/heat-pump-calculator",
+    "tag": "p",
+    "index": 25,
+    "oldText": "No,onesizeupisfine,buttwosizesupcausesproblems.Anoversizedheatpumpshort-cycles(turnsonandoffquicklywithoutrunninglongenoughtoremovehumidityorcirculateairevenly).Moderntwo-stageorvariable-speedheatpumpshandleoversizingbetter.Single-stageshouldbesizedcarefully,neverbymorethan15%overcalculatedload.",
+    "newText": "Donotassumeonesizeupisacceptable.Oversizingcancauseshortcyclingandpoorhumiditycontrol;modulation,minimumoutput,design-temperaturecapacityandthebuilding'sactualheatingandcoolingloadsallmatter.Haveaqualifiedcontractorselectequipmentagainstaproject-specificloadcalculationandexactmanufacturerperformancedata.Thisillustrativecalculatordoesnotprescribeanoversizingpercentage.",
+    "reason": "Targeted 2026 incentive arithmetic and sizing-scope consistency correction"
+  },
+  {
+    "route": "/heat-pump-calculator",
+    "tag": "p",
+    "index": 28,
+    "oldText": "SEER(SeasonalEnergyEfficiencyRatio)measurescoolingefficiency.Modernminimums:14-15SEER.Good:16-18.Premium:20+.HSPF(HeatingSeasonalPerformanceFactor)measuresheatingefficiency.Modernminimums:7.7HSPF.Good:9-10.Premium:11+.Higherisbetterforboth.Federaltaxcreditrequires15+SEER2and8.5+HSPF2forheatpumps.",
+    "newText": "SEERmeasuresseasonalcoolingefficiencyandHSPFmeasuresseasonalheatingefficiency.NewerSEER2andHSPF2ratingsuserevisedtestconditions;compareequipmentusingthesameratingsystemandexactcertifiedproductdata.Efficiencyratingsarenotaguaranteeofataxcredit:theresidential25Ccreditisunavailableforrelevantnew2026work.Historicaleligibilitycriteriadonotestablishcurrentcrediteligibility.",
+    "reason": "Targeted 2026 incentive arithmetic and sizing-scope consistency correction"
+  },
+  {
+    "route": "/heat-pump-calculator",
+    "tag": "figcaption",
+    "index": 2,
+    "oldText": "Fig.3.FederalITCat30percentplusHEEHRArebatesforqualifyinghouseholdscancutthenetcostby40to65percent.Rebateavailabilityvariesbystateandincome.",
+    "newText": "Fig.3.Illustrativeinstalled-costrangebeforeconfirmedrebates.New2026residentialworkdoesnotreceivetheformer25Ccredit;stateandutilityprogramavailabilityandeligibilitymustbecheckedseparately.",
+    "reason": "Targeted 2026 incentive arithmetic and sizing-scope consistency correction"
+  },
+  {
+    "route": "/heat-pump-calculator",
+    "tag": "td",
+    "index": 29,
+    "oldText": "Yes:30%ITC+HEEHRA",
+    "newText": "Nonewresidential25Ccreditfor2026work;verifyseparaterebates",
+    "reason": "Targeted 2026 incentive arithmetic and sizing-scope consistency correction"
+  },
+  {
+    "route": "/heat-pump-calculator",
+    "tag": "td",
+    "index": 30,
+    "oldText": "Limited(high-efficiencyfurnaceonly)",
+    "newText": "Nonewresidential25Ccreditfor2026work",
+    "reason": "Targeted 2026 incentive arithmetic and sizing-scope consistency correction"
+  },
+  {
+    "route": "/heat-pump-calculator",
+    "tag": "svg",
+    "index": 2,
+    "oldText": "HeatpumpcostafterincentivesINSTALLED$12,000to20,000→AFTER30%ITC$8,400to14,000→+HEEHRA$5,000to12,000HEEHRArebates($2,000to8,000)dependonincomelevel.CanstackwithITCforqualifyinghouseholds.",
+    "newText": "Heatpumpcostafterincentives:2026planningINSTALLED$12,000to20,000→NEW25CCREDIT$0for2026work→LOCALREBATEVerifyeligibilityNetcost=writteninstalledquoteminusconfirmedeligiblerebates.Donotassumeafederaltaxcredit.",
+    "reason": "Targeted 2026 incentive arithmetic and sizing-scope consistency correction"
+  },
+  {
+    "route": "/wire-size-calculator",
+    "tag": "p",
+    "index": 0,
+    "oldText": "Electricalwiregauge(AWG)foranyamploadandrunlength.Accountsforvoltagedropsoyourcircuitstayswithincode.",
+    "newText": "Compareelectricalwiregauge(AWG)againstthelistedampacityandvoltage-dropassumptionsforanenteredloadandrunlength.Thislimitedworksheetdoesnotestablishcompleteinstallationcodecompliance.",
+    "reason": "Targeted worksheet scope wording correction"
+  }
+]

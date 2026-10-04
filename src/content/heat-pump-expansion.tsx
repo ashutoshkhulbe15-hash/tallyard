@@ -87,20 +87,20 @@ function COPCurveSVG() {
 
 function CostWithCreditsSVG() {
   return (
-    <svg viewBox="0 0 680 150" width="100%" height="auto" role="img" aria-label="Heat pump installed cost $12,000-20,000. After 30% ITC and HEEHRA rebate: $5,000-12,000 net.">
-      <text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>Heat pump cost after incentives</text>
+    <svg viewBox="0 0 680 150" width="100%" height="auto" role="img" aria-label="Illustrative heat pump installed cost $12,000-20,000. No new residential 25C credit for 2026 work; subtract only a confirmed eligible rebate.">
+      <text x="20" y="26" fontSize="13" fontWeight="600" fill={GUIDE_SVG.ink}>Heat pump cost after incentives: 2026 planning</text>
       <rect x="40" y="50" width="180" height="70" rx="8" fill={GUIDE_SVG.slateSoft} stroke={GUIDE_SVG.cool} strokeWidth="1.2" />
       <text x="130" y="74" textAnchor="middle" fontSize="11" fontWeight="700" fill={GUIDE_SVG.inkMuted}>INSTALLED</text>
       <text x="130" y="98" textAnchor="middle" fontSize="16" fontWeight="700" fill={GUIDE_SVG.ink}>$12,000 to 20,000</text>
       <text x="260" y="88" fontSize="16" fontWeight="700" fill={GUIDE_SVG.accent}>→</text>
       <rect x="300" y="50" width="160" height="70" rx="8" fill={GUIDE_SVG.accentSoft} stroke={GUIDE_SVG.accent} strokeWidth="1" />
-      <text x="380" y="74" textAnchor="middle" fontSize="11" fontWeight="600" fill={GUIDE_SVG.accent}>AFTER 30% ITC</text>
-      <text x="380" y="98" textAnchor="middle" fontSize="16" fontWeight="700" fill={GUIDE_SVG.ink}>$8,400 to 14,000</text>
+      <text x="380" y="74" textAnchor="middle" fontSize="11" fontWeight="600" fill={GUIDE_SVG.accent}>NEW 25C CREDIT</text>
+      <text x="380" y="98" textAnchor="middle" fontSize="16" fontWeight="700" fill={GUIDE_SVG.ink}>$0 for 2026 work</text>
       <text x="500" y="88" fontSize="16" fontWeight="700" fill={GUIDE_SVG.accent}>→</text>
       <rect x="540" y="50" width="120" height="70" rx="8" fill={GUIDE_SVG.accentSoft} stroke={GUIDE_SVG.accent} strokeWidth="1.5" />
-      <text x="600" y="74" textAnchor="middle" fontSize="10" fontWeight="600" fill={GUIDE_SVG.accent}>+ HEEHRA</text>
-      <text x="600" y="98" textAnchor="middle" fontSize="16" fontWeight="700" fill={GUIDE_SVG.accent}>$5,000 to 12,000</text>
-      <text x="340" y="142" textAnchor="middle" fontSize="9" fill={GUIDE_SVG.inkFaint} >HEEHRA rebates ($2,000 to 8,000) depend on income level. Can stack with ITC for qualifying households.</text>
+      <text x="600" y="74" textAnchor="middle" fontSize="10" fontWeight="600" fill={GUIDE_SVG.accent}>LOCAL REBATE</text>
+      <text x="600" y="98" textAnchor="middle" fontSize="13" fontWeight="700" fill={GUIDE_SVG.ink}>Verify eligibility</text>
+      <text x="340" y="142" textAnchor="middle" fontSize="9" fill={GUIDE_SVG.inkFaint} >Net cost = written installed quote minus confirmed eligible rebates. Do not assume a federal tax credit.</text>
     </svg>
   );
 }
@@ -119,7 +119,7 @@ export function HeatPumpCalculatorExpansion() {
       </Figure>
 
       <MethodologyNote>
-        <p>Sizing follows ACCA Manual J load calculation methodology with climate zone adjustments. COP (coefficient of performance) data from AHRI certified product ratings for ducted split-system heat pumps. Cost data from EnergySage and contractor association surveys (2025-2026). Federal tax credit details per IRS Section 25D (ITC) and DOE HEEHRA program guidelines.</p>
+        <p>The calculator uses the explicit area, climate and insulation factors in its methodology, not an ACCA Manual J calculation. The climate and COP diagrams are illustrative comparisons, not certified performance for a chosen unit; consult exact AHRI product data. Cost ranges are original illustrative benchmarks, not verified 2026 market averages. Ordinary air-source heat pumps were covered by the separate Section 25C rules, not the geothermal Section 25D category. IRS Form 5695 instructions confirm the relevant new-work credit cutoff after December 31, 2025; state and utility rebates require separate eligibility checks.</p>
       </MethodologyNote>
 
       <h2>Why heat pumps lose efficiency in cold weather (and why it matters less than you think)</h2>
@@ -134,12 +134,12 @@ export function HeatPumpCalculatorExpansion() {
 
       <h2>What a heat pump costs after incentives</h2>
 
-      <Figure number={3} caption="Federal ITC at 30 percent plus HEEHRA rebates for qualifying households can cut the net cost by 40 to 65 percent. Rebate availability varies by state and income.">
+      <Figure number={3} caption="Illustrative installed-cost range before confirmed rebates. New 2026 residential work does not receive the former 25C credit; state and utility program availability and eligibility must be checked separately.">
         <CostWithCreditsSVG />
       </Figure>
 
       <Scenario location="Richmond, VA (Zone 4)">
-        A homeowner replaced a 20-year-old 80% AFUE gas furnace and 10-SEER AC with a 3-ton 16-SEER2 ducted heat pump. Installed cost: $14,500. Federal ITC (30%): -$4,350. Net cost: $10,150. Previous annual heating + cooling: $2,400. New annual cost: $1,600. Annual savings: $800. Simple payback after tax credit: 12.7 years. With HEEHRA rebate (income-dependent): payback drops to 7-9 years.
+        In this hypothetical 2026 scenario, a homeowner replaces a 20-year-old 80% AFUE gas furnace and 10-SEER AC with a 3-ton 16-SEER2 ducted heat pump. Assumed installed cost: $14,500. New residential 25C tax credit: $0. Net cost before any confirmed rebate: $14,500. Assumed previous annual heating + cooling: $2,400; new annual cost: $1,600; annual savings: $800. Simple full-cost payback: $14,500 ÷ $800 = 18.1 years, excluding financing, maintenance and replacement costs. This is not an incremental replacement-cost comparison. Under the prior rules, qualifying air-source heat pumps had a separate $2,000 annual limit, not an uncapped $4,350 credit. Check actual energy bills, written quotes and any eligible state or utility rebate before calculating your own payback.
       </Scenario>
 
       <h2>Heat pump vs gas furnace: operating cost by climate</h2>
@@ -166,9 +166,9 @@ export function HeatPumpCalculatorExpansion() {
           {label:"Lifespan",values:["15 to 20 yr","Furnace 20 to 25 yr, AC 15 to 20 yr"]},
           {label:"Fuel type",values:["Electricity only","Gas + electricity"]},
           {label:"Carbon footprint",values:["Lower (especially with solar)","Higher (combustion)"]},
-          {label:"Tax credits available?",values:["Yes: 30% ITC + HEEHRA","Limited (high-efficiency furnace only)"]},
+          {label:"Tax credits available?",values:["No new residential 25C credit for 2026 work; verify separate rebates","No new residential 25C credit for 2026 work"]},
         ]}
-        caption="Heat pumps cost more up front but qualify for larger incentives. In zones 1-4, the operating cost advantage makes the total cost of ownership lower over 15 years."
+        caption="Illustrative equipment comparisons, not current quotations or guaranteed savings. Compare project-specific installed costs, energy rates and confirmed rebates; no new residential 25C credit is assumed for 2026 work."
       />
 
       <h2>Tons, BTU, and what SEER2 actually means</h2>
@@ -177,9 +177,13 @@ export function HeatPumpCalculatorExpansion() {
         12,000 BTU per hour of capacity, a holdover from the days when
         cooling was measured against the heat absorbed by melting a ton of
         ice in 24 hours. So a 3 ton unit is 36,000 BTU/h and a 4 ton is
-        48,000. Residential equipment comes in half ton steps, which is
-        why the calculator returns a size that lands on 2, 2.5, 3, 3.5, 4,
-        or 5 tons rather than an arbitrary number.
+        48,000. Many residential equipment ranges use half-ton nominal
+        sizes, but nominal size is not verified heating output at your
+        winter design temperature. This calculator returns an illustrative
+        load-equivalent scenario, using the listed half-ton examples where
+        applicable and showing the uncapped equivalent above that list.
+        It does not select equipment: the default 80,000 BTU/h scenario
+        displays 6.67 ton-equivalent, not a recommendation to buy that size.
       </p>
       <p>
         Two efficiency ratings sit on every label. SEER2 measures cooling
@@ -195,7 +199,7 @@ export function HeatPumpCalculatorExpansion() {
       </p>
 
       <ComparisonTable
-        caption="Typical installed cost by size, 2026 US averages, before incentives. Ductless mini split pricing is per zone and assumes no existing ductwork."
+        caption="Original illustrative installed-cost benchmarks by size, not verified 2026 US averages. Ductless mini split pricing is per zone and assumes no existing ductwork. Obtain dated local quotes; listed floor areas are not equipment-selection rules."
         columns={[
           { title: "BTU/h" },
           { title: "Ducted installed cost", highlight: true },

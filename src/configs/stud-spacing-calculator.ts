@@ -72,7 +72,7 @@ export const studSpacingCalculatorConfig: CalculatorConfig = {
         { label: "Non-bearing (partition)", value: "non-bearing" },
         { label: "Bearing (supports roof/floor)", value: "bearing" },
       ],
-      help: "Bearing walls need larger headers (2×8 or 2×10)",
+      help: "Bearing-wall headers require project-specific span and load design; this worksheet does not select a header size.",
     },
   ],
 

@@ -1,0 +1,5934 @@
+[
+  {
+    "slug": "paint-calculator",
+    "inputs": [
+      {
+        "id": "length",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 14,
+        "defaultMetric": 4.2672,
+        "min": 1,
+        "step": 0.5
+      },
+      {
+        "id": "width",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 12,
+        "defaultMetric": 3.6576,
+        "min": 1,
+        "step": 0.5
+      },
+      {
+        "id": "height",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 9,
+        "defaultMetric": 2.7432,
+        "min": 1,
+        "step": 0.5
+      },
+      {
+        "id": "coats",
+        "type": "select",
+        "defaultImperial": 2,
+        "options": [
+          {
+            "label": "1 coat",
+            "value": 1
+          },
+          {
+            "label": "2 coats",
+            "value": 2
+          },
+          {
+            "label": "3 coats",
+            "value": 3
+          }
+        ]
+      },
+      {
+        "id": "coverage",
+        "type": "number",
+        "unitImperial": "ft²/gal",
+        "unitMetric": "m²/L",
+        "defaultImperial": 350,
+        "defaultMetric": 8.58983536149,
+        "min": 0.01,
+        "step": 0.1
+      },
+      {
+        "id": "includeCeiling",
+        "type": "select",
+        "defaultImperial": "no",
+        "options": [
+          {
+            "label": "No: walls only",
+            "value": "no"
+          },
+          {
+            "label": "Yes: add ceiling",
+            "value": "yes"
+          }
+        ]
+      },
+      {
+        "id": "doors",
+        "type": "number",
+        "defaultImperial": 1,
+        "min": 0,
+        "step": 1
+      },
+      {
+        "id": "windows",
+        "type": "number",
+        "defaultImperial": 2,
+        "min": 0,
+        "step": 1
+      }
+    ],
+    "values": {
+      "length": 14,
+      "width": 12,
+      "height": 9,
+      "coats": 2,
+      "coverage": 350,
+      "includeCeiling": "no",
+      "doors": 1,
+      "windows": 2
+    },
+    "imperial": {
+      "value": 2.383,
+      "valueRounded": 3,
+      "unit": "gallons",
+      "displayValue": null,
+      "composition": {
+        "unit": "sq ft",
+        "total": 468,
+        "segments": [
+          {
+            "label": "Walls",
+            "amount": 417,
+            "shade": "primary"
+          },
+          {
+            "label": "Doors",
+            "amount": 21,
+            "shade": "secondary"
+          },
+          {
+            "label": "Windows",
+            "amount": 30,
+            "shade": "tertiary"
+          }
+        ]
+      },
+      "diagramData": null
+    },
+    "metric": {
+      "value": 9.020636281272,
+      "valueRounded": 11.356,
+      "unit": "liters",
+      "displayValue": null,
+      "composition": {
+        "unit": "sq ft",
+        "total": 468,
+        "segments": [
+          {
+            "label": "Walls",
+            "amount": 417,
+            "shade": "primary"
+          },
+          {
+            "label": "Doors",
+            "amount": 21,
+            "shade": "secondary"
+          },
+          {
+            "label": "Windows",
+            "amount": 30,
+            "shade": "tertiary"
+          }
+        ]
+      },
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "concrete-calculator",
+    "inputs": [
+      {
+        "id": "shape",
+        "type": "select",
+        "defaultImperial": "rectangular",
+        "options": [
+          {
+            "label": "Rectangular",
+            "value": "rectangular"
+          },
+          {
+            "label": "Round",
+            "value": "round"
+          }
+        ]
+      },
+      {
+        "id": "length",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 10,
+        "defaultMetric": 3.048,
+        "min": 0.5,
+        "step": 0.5
+      },
+      {
+        "id": "width",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 10,
+        "defaultMetric": 3.048,
+        "min": 0.5,
+        "step": 0.5
+      },
+      {
+        "id": "thickness",
+        "type": "number",
+        "unitImperial": "in",
+        "unitMetric": "cm",
+        "defaultImperial": 4,
+        "defaultMetric": 10.16,
+        "min": 1,
+        "step": 0.5
+      },
+      {
+        "id": "waste",
+        "type": "select",
+        "defaultImperial": 10,
+        "options": [
+          {
+            "label": "5%",
+            "value": 5
+          },
+          {
+            "label": "10%",
+            "value": 10
+          },
+          {
+            "label": "15%",
+            "value": 15
+          }
+        ]
+      }
+    ],
+    "values": {
+      "shape": "rectangular",
+      "length": 10,
+      "width": 10,
+      "thickness": 4,
+      "waste": 10
+    },
+    "imperial": {
+      "value": 1.358,
+      "valueRounded": 1.36,
+      "unit": "cubic yards",
+      "displayValue": null,
+      "composition": {
+        "unit": "yd³",
+        "total": 1.358,
+        "segments": [
+          {
+            "label": "Base volume",
+            "amount": 1.235,
+            "shade": "primary"
+          },
+          {
+            "label": "Waste buffer",
+            "amount": 0.123,
+            "shade": "secondary"
+          }
+        ]
+      },
+      "diagramData": null
+    },
+    "metric": {
+      "value": 1.038265497142272,
+      "valueRounded": 1.04,
+      "unit": "cubic meters",
+      "displayValue": null,
+      "composition": {
+        "unit": "yd³",
+        "total": 1.358,
+        "segments": [
+          {
+            "label": "Base volume",
+            "amount": 1.235,
+            "shade": "primary"
+          },
+          {
+            "label": "Waste buffer",
+            "amount": 0.123,
+            "shade": "secondary"
+          }
+        ]
+      },
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "tile-calculator",
+    "inputs": [
+      {
+        "id": "length",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 10,
+        "defaultMetric": 3.048,
+        "min": 0.5,
+        "step": 0.5
+      },
+      {
+        "id": "width",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 12,
+        "defaultMetric": 3.6576,
+        "min": 0.5,
+        "step": 0.5
+      },
+      {
+        "id": "tileSize",
+        "type": "select",
+        "defaultImperial": "12x12",
+        "options": [
+          {
+            "label": "12 × 12",
+            "value": "12x12"
+          },
+          {
+            "label": "12 × 24",
+            "value": "12x24"
+          },
+          {
+            "label": "18 × 18",
+            "value": "18x18"
+          },
+          {
+            "label": "24 × 24",
+            "value": "24x24"
+          }
+        ]
+      },
+      {
+        "id": "waste",
+        "type": "select",
+        "defaultImperial": 10,
+        "options": [
+          {
+            "label": "10%",
+            "value": 10
+          },
+          {
+            "label": "15%",
+            "value": 15
+          },
+          {
+            "label": "20%",
+            "value": 20
+          }
+        ]
+      },
+      {
+        "id": "tilesPerBox",
+        "type": "number",
+        "defaultImperial": 10,
+        "min": 1,
+        "step": 1
+      }
+    ],
+    "values": {
+      "length": 10,
+      "width": 12,
+      "tileSize": "12x12",
+      "waste": 10,
+      "tilesPerBox": 10
+    },
+    "imperial": {
+      "value": 132,
+      "valueRounded": 132,
+      "unit": "tiles",
+      "displayValue": null,
+      "composition": {
+        "unit": "tiles",
+        "total": 132,
+        "segments": [
+          {
+            "label": "Coverage",
+            "amount": 120,
+            "shade": "primary"
+          },
+          {
+            "label": "Waste buffer",
+            "amount": 12,
+            "shade": "secondary"
+          }
+        ]
+      },
+      "diagramData": null
+    },
+    "metric": {
+      "value": 132,
+      "valueRounded": 132,
+      "unit": "tiles",
+      "displayValue": null,
+      "composition": {
+        "unit": "tiles",
+        "total": 132,
+        "segments": [
+          {
+            "label": "Coverage",
+            "amount": 120,
+            "shade": "primary"
+          },
+          {
+            "label": "Waste buffer",
+            "amount": 12,
+            "shade": "secondary"
+          }
+        ]
+      },
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "mulch-calculator",
+    "inputs": [
+      {
+        "id": "length",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 20,
+        "defaultMetric": 6.096,
+        "min": 1,
+        "step": 0.5
+      },
+      {
+        "id": "width",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 4,
+        "defaultMetric": 1.2192,
+        "min": 0.5,
+        "step": 0.5
+      },
+      {
+        "id": "depth",
+        "type": "select",
+        "defaultImperial": 3,
+        "defaultMetric": 3,
+        "options": [
+          {
+            "label": "1 in / 2.54 cm",
+            "value": 1
+          },
+          {
+            "label": "2 in / 5.08 cm",
+            "value": 2
+          },
+          {
+            "label": "3 in / 7.62 cm",
+            "value": 3
+          },
+          {
+            "label": "4 in / 10.16 cm",
+            "value": 4
+          }
+        ]
+      },
+      {
+        "id": "form",
+        "type": "select",
+        "defaultImperial": "bulk",
+        "options": [
+          {
+            "label": "Bulk (yd³/m³)",
+            "value": "bulk"
+          },
+          {
+            "label": "Bags (2 cu ft)",
+            "value": "bags"
+          }
+        ]
+      }
+    ],
+    "values": {
+      "length": 20,
+      "width": 4,
+      "depth": 3,
+      "form": "bulk"
+    },
+    "imperial": {
+      "value": 0.741,
+      "valueRounded": 0.75,
+      "unit": "cubic yards",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    },
+    "metric": {
+      "value": 0.566535149766144,
+      "valueRounded": 0.573,
+      "unit": "cubic meters",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "drywall-calculator",
+    "inputs": [
+      {
+        "id": "length",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 14,
+        "defaultMetric": 4.2672,
+        "min": 1,
+        "step": 0.5
+      },
+      {
+        "id": "width",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 12,
+        "defaultMetric": 3.6576,
+        "min": 1,
+        "step": 0.5
+      },
+      {
+        "id": "height",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 9,
+        "defaultMetric": 2.7432,
+        "min": 1,
+        "step": 0.5
+      },
+      {
+        "id": "sheetSize",
+        "type": "select",
+        "defaultImperial": "4x8",
+        "options": [
+          {
+            "label": "4 × 8 ft",
+            "value": "4x8"
+          },
+          {
+            "label": "4 × 10 ft",
+            "value": "4x10"
+          },
+          {
+            "label": "4 × 12 ft",
+            "value": "4x12"
+          }
+        ]
+      },
+      {
+        "id": "includeCeiling",
+        "type": "select",
+        "defaultImperial": "yes",
+        "options": [
+          {
+            "label": "Yes",
+            "value": "yes"
+          },
+          {
+            "label": "No (walls only)",
+            "value": "no"
+          }
+        ]
+      },
+      {
+        "id": "waste",
+        "type": "select",
+        "defaultImperial": 10,
+        "options": [
+          {
+            "label": "10%",
+            "value": 10
+          },
+          {
+            "label": "15%",
+            "value": 15
+          },
+          {
+            "label": "20%",
+            "value": 20
+          }
+        ]
+      }
+    ],
+    "values": {
+      "length": 14,
+      "width": 12,
+      "height": 9,
+      "sheetSize": "4x8",
+      "includeCeiling": "yes",
+      "waste": 10
+    },
+    "imperial": {
+      "value": 22,
+      "valueRounded": 22,
+      "unit": "sheets",
+      "displayValue": null,
+      "composition": {
+        "unit": "ft²",
+        "total": 636,
+        "segments": [
+          {
+            "label": "Walls",
+            "amount": 468,
+            "shade": "primary"
+          },
+          {
+            "label": "Ceiling",
+            "amount": 168,
+            "shade": "secondary"
+          }
+        ]
+      },
+      "diagramData": null
+    },
+    "metric": {
+      "value": 22,
+      "valueRounded": 22,
+      "unit": "sheets",
+      "displayValue": null,
+      "composition": {
+        "unit": "ft²",
+        "total": 636,
+        "segments": [
+          {
+            "label": "Walls",
+            "amount": 468,
+            "shade": "primary"
+          },
+          {
+            "label": "Ceiling",
+            "amount": 168,
+            "shade": "secondary"
+          }
+        ]
+      },
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "roofing-calculator",
+    "inputs": [
+      {
+        "id": "length",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 40,
+        "defaultMetric": 12.192,
+        "min": 5,
+        "step": 1
+      },
+      {
+        "id": "width",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 30,
+        "defaultMetric": 9.144,
+        "min": 5,
+        "step": 1
+      },
+      {
+        "id": "pitch",
+        "type": "select",
+        "defaultImperial": "6/12",
+        "options": [
+          {
+            "label": "Flat (0/12)",
+            "value": "0/12"
+          },
+          {
+            "label": "3/12 (low slope)",
+            "value": "3/12"
+          },
+          {
+            "label": "4/12",
+            "value": "4/12"
+          },
+          {
+            "label": "6/12 (standard)",
+            "value": "6/12"
+          },
+          {
+            "label": "8/12",
+            "value": "8/12"
+          },
+          {
+            "label": "10/12 (steep)",
+            "value": "10/12"
+          },
+          {
+            "label": "12/12 (very steep)",
+            "value": "12/12"
+          }
+        ]
+      },
+      {
+        "id": "waste",
+        "type": "select",
+        "defaultImperial": 10,
+        "options": [
+          {
+            "label": "10%",
+            "value": 10
+          },
+          {
+            "label": "15%",
+            "value": 15
+          },
+          {
+            "label": "20%",
+            "value": 20
+          }
+        ]
+      }
+    ],
+    "values": {
+      "length": 40,
+      "width": 30,
+      "pitch": "6/12",
+      "waste": 10
+    },
+    "imperial": {
+      "value": 47,
+      "valueRounded": 47,
+      "unit": "bundles",
+      "displayValue": null,
+      "composition": {
+        "unit": "bundles",
+        "total": 47,
+        "segments": [
+          {
+            "label": "Field shingles",
+            "amount": 45,
+            "shade": "primary"
+          },
+          {
+            "label": "Ridge caps",
+            "amount": 2,
+            "shade": "secondary"
+          }
+        ]
+      },
+      "diagramData": null
+    },
+    "metric": {
+      "value": 47,
+      "valueRounded": 47,
+      "unit": "bundles",
+      "displayValue": null,
+      "composition": {
+        "unit": "bundles",
+        "total": 47,
+        "segments": [
+          {
+            "label": "Field shingles",
+            "amount": 45,
+            "shade": "primary"
+          },
+          {
+            "label": "Ridge caps",
+            "amount": 2,
+            "shade": "secondary"
+          }
+        ]
+      },
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "btu-calculator",
+    "inputs": [
+      {
+        "id": "length",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 14,
+        "defaultMetric": 4.2672,
+        "min": 5,
+        "step": 0.5
+      },
+      {
+        "id": "width",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 12,
+        "defaultMetric": 3.6576,
+        "min": 5,
+        "step": 0.5
+      },
+      {
+        "id": "height",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 9,
+        "defaultMetric": 2.7432,
+        "min": 6,
+        "step": 0.5
+      },
+      {
+        "id": "climate",
+        "type": "select",
+        "defaultImperial": "moderate",
+        "options": [
+          {
+            "label": "Cool (most of the year)",
+            "value": "cool"
+          },
+          {
+            "label": "Moderate",
+            "value": "moderate"
+          },
+          {
+            "label": "Hot (summers 90°F+)",
+            "value": "hot"
+          }
+        ]
+      },
+      {
+        "id": "sun",
+        "type": "select",
+        "defaultImperial": "moderate",
+        "options": [
+          {
+            "label": "Shaded / north-facing",
+            "value": "shaded"
+          },
+          {
+            "label": "Average",
+            "value": "moderate"
+          },
+          {
+            "label": "Very sunny / south-facing",
+            "value": "sunny"
+          }
+        ]
+      },
+      {
+        "id": "occupancy",
+        "type": "number",
+        "defaultImperial": 2,
+        "min": 0,
+        "step": 1
+      }
+    ],
+    "values": {
+      "length": 14,
+      "width": 12,
+      "height": 9,
+      "climate": "moderate",
+      "sun": "moderate",
+      "occupancy": 2
+    },
+    "imperial": {
+      "value": 3528,
+      "valueRounded": 4000,
+      "unit": "BTU/hr",
+      "displayValue": null,
+      "composition": {
+        "unit": "BTU",
+        "total": 3528,
+        "segments": [
+          {
+            "label": "Base cooling",
+            "amount": 3528,
+            "shade": "primary"
+          }
+        ]
+      },
+      "diagramData": null
+    },
+    "metric": {
+      "value": 3528,
+      "valueRounded": 4000,
+      "unit": "BTU/hr",
+      "displayValue": null,
+      "composition": {
+        "unit": "BTU",
+        "total": 3528,
+        "segments": [
+          {
+            "label": "Base cooling",
+            "amount": 3528,
+            "shade": "primary"
+          }
+        ]
+      },
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "gravel-calculator",
+    "inputs": [
+      {
+        "id": "length",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 20,
+        "defaultMetric": 6.096,
+        "min": 1,
+        "step": 0.5
+      },
+      {
+        "id": "width",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 10,
+        "defaultMetric": 3.048,
+        "min": 0.5,
+        "step": 0.5
+      },
+      {
+        "id": "depth",
+        "type": "select",
+        "defaultImperial": 4,
+        "options": [
+          {
+            "label": "2\" / 5 cm",
+            "value": 2
+          },
+          {
+            "label": "3\" / 7.5 cm",
+            "value": 3
+          },
+          {
+            "label": "4\" / 10 cm",
+            "value": 4
+          },
+          {
+            "label": "6\" / 15 cm",
+            "value": 6
+          },
+          {
+            "label": "8\" / 20 cm",
+            "value": 8
+          }
+        ]
+      },
+      {
+        "id": "type",
+        "type": "select",
+        "defaultImperial": "crushed",
+        "options": [
+          {
+            "label": "Crushed stone (approx.)",
+            "value": "crushed"
+          },
+          {
+            "label": "Pea gravel (approx.)",
+            "value": "pea"
+          },
+          {
+            "label": "River rock (approx.)",
+            "value": "river"
+          },
+          {
+            "label": "Sand (approx.)",
+            "value": "sand"
+          }
+        ]
+      }
+    ],
+    "values": {
+      "length": 20,
+      "width": 10,
+      "depth": 4,
+      "type": "crushed"
+    },
+    "imperial": {
+      "value": 2.469,
+      "valueRounded": 2.47,
+      "unit": "cubic yards",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    },
+    "metric": {
+      "value": 1.887685944362496,
+      "valueRounded": 1.888,
+      "unit": "cubic meters",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "solar-calculator",
+    "inputs": [
+      {
+        "id": "monthlyKwh",
+        "type": "number",
+        "unitImperial": "kWh",
+        "defaultImperial": 900,
+        "min": 100,
+        "step": 50
+      },
+      {
+        "id": "sunHours",
+        "type": "select",
+        "defaultImperial": 4.5,
+        "options": [
+          {
+            "label": "3.5 · Pacific NW, UK, N. Europe",
+            "value": 3.5
+          },
+          {
+            "label": "4.0 · Midwest, NE, Central Europe",
+            "value": 4
+          },
+          {
+            "label": "4.5 · Mid-Atlantic, S. Europe",
+            "value": 4.5
+          },
+          {
+            "label": "5.0 · California, Texas",
+            "value": 5
+          },
+          {
+            "label": "5.5 · Arizona, Australia, India",
+            "value": 5.5
+          },
+          {
+            "label": "6.0 · Desert SW, equatorial",
+            "value": 6
+          }
+        ]
+      },
+      {
+        "id": "panelWatts",
+        "type": "select",
+        "defaultImperial": 400,
+        "options": [
+          {
+            "label": "300W (older residential)",
+            "value": 300
+          },
+          {
+            "label": "350W (common)",
+            "value": 350
+          },
+          {
+            "label": "400W (modern residential)",
+            "value": 400
+          },
+          {
+            "label": "450W (premium)",
+            "value": 450
+          }
+        ]
+      },
+      {
+        "id": "efficiency",
+        "type": "select",
+        "defaultImperial": 80,
+        "options": [
+          {
+            "label": "75% (older system)",
+            "value": 75
+          },
+          {
+            "label": "80% (typical)",
+            "value": 80
+          },
+          {
+            "label": "85% (high-efficiency)",
+            "value": 85
+          }
+        ]
+      }
+    ],
+    "values": {
+      "monthlyKwh": 900,
+      "sunHours": 4.5,
+      "panelWatts": 400,
+      "efficiency": 80
+    },
+    "imperial": {
+      "value": 21,
+      "valueRounded": 21,
+      "unit": "panels",
+      "displayValue": null,
+      "composition": {
+        "unit": "W",
+        "total": 8400,
+        "segments": [
+          {
+            "label": "Production",
+            "amount": 8333,
+            "shade": "primary"
+          },
+          {
+            "label": "Buffer",
+            "amount": 67,
+            "shade": "secondary"
+          }
+        ]
+      },
+      "diagramData": null
+    },
+    "metric": {
+      "value": 21,
+      "valueRounded": 21,
+      "unit": "panels",
+      "displayValue": null,
+      "composition": {
+        "unit": "W",
+        "total": 8400,
+        "segments": [
+          {
+            "label": "Production",
+            "amount": 8333,
+            "shade": "primary"
+          },
+          {
+            "label": "Buffer",
+            "amount": 67,
+            "shade": "secondary"
+          }
+        ]
+      },
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "wire-size-calculator",
+    "inputs": [
+      {
+        "id": "amps",
+        "type": "number",
+        "unitImperial": "A",
+        "defaultImperial": 20,
+        "min": 1,
+        "max": 195,
+        "step": 1
+      },
+      {
+        "id": "voltage",
+        "type": "select",
+        "defaultImperial": 120,
+        "options": [
+          {
+            "label": "120V (standard outlet)",
+            "value": 120
+          },
+          {
+            "label": "240V (large appliance)",
+            "value": 240
+          },
+          {
+            "label": "12V (DC automotive)",
+            "value": 12
+          },
+          {
+            "label": "24V (DC solar)",
+            "value": 24
+          },
+          {
+            "label": "48V (DC solar)",
+            "value": 48
+          }
+        ]
+      },
+      {
+        "id": "distance",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 50,
+        "defaultMetric": 15.24,
+        "min": 1,
+        "step": 1
+      },
+      {
+        "id": "material",
+        "type": "select",
+        "defaultImperial": "copper",
+        "options": [
+          {
+            "label": "Copper",
+            "value": "copper"
+          },
+          {
+            "label": "Aluminum",
+            "value": "aluminum"
+          }
+        ]
+      },
+      {
+        "id": "voltageDropLimit",
+        "type": "select",
+        "defaultImperial": 3,
+        "options": [
+          {
+            "label": "3% (branch circuit)",
+            "value": 3
+          },
+          {
+            "label": "5% (feeder)",
+            "value": 5
+          },
+          {
+            "label": "2% (sensitive electronics)",
+            "value": 2
+          }
+        ]
+      }
+    ],
+    "values": {
+      "amps": 20,
+      "voltage": 120,
+      "distance": 50,
+      "material": "copper",
+      "voltageDropLimit": 3
+    },
+    "imperial": {
+      "value": 10,
+      "valueRounded": 10,
+      "unit": "AWG 10",
+      "displayValue": "10 AWG copper",
+      "composition": null,
+      "diagramData": null
+    },
+    "metric": {
+      "value": 10,
+      "valueRounded": 10,
+      "unit": "AWG 10",
+      "displayValue": "10 AWG copper",
+      "composition": null,
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "insulation-calculator",
+    "inputs": [
+      {
+        "id": "application",
+        "type": "select",
+        "defaultImperial": "attic",
+        "options": [
+          {
+            "label": "Attic / ceiling",
+            "value": "attic"
+          },
+          {
+            "label": "Exterior walls",
+            "value": "walls"
+          },
+          {
+            "label": "Floor / crawlspace",
+            "value": "floor"
+          }
+        ]
+      },
+      {
+        "id": "length",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 40,
+        "defaultMetric": 12.192,
+        "min": 1,
+        "step": 0.5
+      },
+      {
+        "id": "width",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 30,
+        "defaultMetric": 9.144,
+        "min": 1,
+        "step": 0.5
+      },
+      {
+        "id": "climateZone",
+        "type": "select",
+        "defaultImperial": "5",
+        "options": [
+          {
+            "label": "1 · Hot (South FL, Hawaii)",
+            "value": "1"
+          },
+          {
+            "label": "2 · Hot (TX Gulf, FL)",
+            "value": "2"
+          },
+          {
+            "label": "3 · Warm (GA, AZ, S. CA)",
+            "value": "3"
+          },
+          {
+            "label": "4 · Mixed (VA, KY, N. CA)",
+            "value": "4"
+          },
+          {
+            "label": "5 · Cold (IL, CO, NY)",
+            "value": "5"
+          },
+          {
+            "label": "6 · Cold (ND, MT, ME)",
+            "value": "6"
+          },
+          {
+            "label": "7 · Very cold (N. Minnesota, Alaska)",
+            "value": "7"
+          }
+        ]
+      },
+      {
+        "id": "studSpacing",
+        "type": "select",
+        "defaultImperial": 16,
+        "options": [
+          {
+            "label": "16\" on center (standard)",
+            "value": 16
+          },
+          {
+            "label": "24\" on center",
+            "value": 24
+          }
+        ]
+      },
+      {
+        "id": "wastePercent",
+        "type": "select",
+        "defaultImperial": 10,
+        "options": [
+          {
+            "label": "5%",
+            "value": 5
+          },
+          {
+            "label": "10%",
+            "value": 10
+          },
+          {
+            "label": "15%",
+            "value": 15
+          }
+        ]
+      }
+    ],
+    "values": {
+      "application": "attic",
+      "length": 40,
+      "width": 30,
+      "climateZone": "5",
+      "studSpacing": 16,
+      "wastePercent": 10
+    },
+    "imperial": {
+      "value": 63,
+      "valueRounded": 63,
+      "unit": "bags",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    },
+    "metric": {
+      "value": 63,
+      "valueRounded": 63,
+      "unit": "bags",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "fence-calculator",
+    "inputs": [
+      {
+        "id": "length",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 100,
+        "defaultMetric": 30.48,
+        "min": 5,
+        "step": 1
+      },
+      {
+        "id": "postSpacing",
+        "type": "select",
+        "defaultImperial": 8,
+        "options": [
+          {
+            "label": "6 ft / 1.8 m",
+            "value": 6
+          },
+          {
+            "label": "8 ft / 2.4 m (standard)",
+            "value": 8
+          },
+          {
+            "label": "10 ft / 3 m",
+            "value": 10
+          }
+        ]
+      },
+      {
+        "id": "height",
+        "type": "select",
+        "defaultImperial": 6,
+        "options": [
+          {
+            "label": "3 ft / 0.9 m",
+            "value": 3
+          },
+          {
+            "label": "4 ft / 1.2 m",
+            "value": 4
+          },
+          {
+            "label": "6 ft / 1.8 m (privacy)",
+            "value": 6
+          },
+          {
+            "label": "8 ft / 2.4 m (tall)",
+            "value": 8
+          }
+        ]
+      },
+      {
+        "id": "pickets",
+        "type": "select",
+        "defaultImperial": "yes",
+        "options": [
+          {
+            "label": "Yes: assume 5.5\" wide",
+            "value": "yes"
+          },
+          {
+            "label": "No: posts/rails only",
+            "value": "no"
+          }
+        ]
+      },
+      {
+        "id": "gates",
+        "type": "number",
+        "defaultImperial": 1,
+        "min": 0,
+        "step": 1
+      },
+      {
+        "id": "corners",
+        "type": "number",
+        "defaultImperial": 2,
+        "min": 0,
+        "step": 1
+      }
+    ],
+    "values": {
+      "length": 100,
+      "postSpacing": 8,
+      "height": 6,
+      "pickets": "yes",
+      "gates": 1,
+      "corners": 2
+    },
+    "imperial": {
+      "value": 209,
+      "valueRounded": 209,
+      "unit": "pickets",
+      "displayValue": null,
+      "composition": {
+        "unit": "items",
+        "total": 265,
+        "segments": [
+          {
+            "label": "Pickets",
+            "amount": 209,
+            "shade": "primary"
+          },
+          {
+            "label": "Rails",
+            "amount": 39,
+            "shade": "secondary"
+          },
+          {
+            "label": "Posts",
+            "amount": 17,
+            "shade": "tertiary"
+          }
+        ]
+      },
+      "diagramData": null
+    },
+    "metric": {
+      "value": 209,
+      "valueRounded": 209,
+      "unit": "pickets",
+      "displayValue": null,
+      "composition": {
+        "unit": "items",
+        "total": 265,
+        "segments": [
+          {
+            "label": "Pickets",
+            "amount": 209,
+            "shade": "primary"
+          },
+          {
+            "label": "Rails",
+            "amount": 39,
+            "shade": "secondary"
+          },
+          {
+            "label": "Posts",
+            "amount": 17,
+            "shade": "tertiary"
+          }
+        ]
+      },
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "grout-calculator",
+    "inputs": [
+      {
+        "id": "length",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 10,
+        "defaultMetric": 3.048,
+        "min": 0.5,
+        "step": 0.5
+      },
+      {
+        "id": "width",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 12,
+        "defaultMetric": 3.6576,
+        "min": 0.5,
+        "step": 0.5
+      },
+      {
+        "id": "tileSize",
+        "type": "select",
+        "defaultImperial": "12x12",
+        "options": [
+          {
+            "label": "4 × 4 (small wall)",
+            "value": "4x4"
+          },
+          {
+            "label": "6 × 6",
+            "value": "6x6"
+          },
+          {
+            "label": "12 × 12 (standard)",
+            "value": "12x12"
+          },
+          {
+            "label": "12 × 24",
+            "value": "12x24"
+          },
+          {
+            "label": "18 × 18",
+            "value": "18x18"
+          },
+          {
+            "label": "24 × 24 (large)",
+            "value": "24x24"
+          }
+        ]
+      },
+      {
+        "id": "jointWidth",
+        "type": "select",
+        "defaultImperial": 0.125,
+        "options": [
+          {
+            "label": "1/16\" / 1.5 mm (rectified)",
+            "value": 0.0625
+          },
+          {
+            "label": "1/8\" / 3 mm (standard)",
+            "value": 0.125
+          },
+          {
+            "label": "3/16\" / 5 mm",
+            "value": 0.1875
+          },
+          {
+            "label": "1/4\" / 6 mm (rustic)",
+            "value": 0.25
+          },
+          {
+            "label": "3/8\" / 10 mm (stone)",
+            "value": 0.375
+          }
+        ]
+      },
+      {
+        "id": "tileThickness",
+        "type": "select",
+        "defaultImperial": 0.375,
+        "options": [
+          {
+            "label": "1/4\" / 6 mm (thin)",
+            "value": 0.25
+          },
+          {
+            "label": "3/8\" / 10 mm (standard)",
+            "value": 0.375
+          },
+          {
+            "label": "1/2\" / 12 mm (thick)",
+            "value": 0.5
+          }
+        ]
+      },
+      {
+        "id": "waste",
+        "type": "select",
+        "defaultImperial": 15,
+        "options": [
+          {
+            "label": "10%",
+            "value": 10
+          },
+          {
+            "label": "15% (standard)",
+            "value": 15
+          },
+          {
+            "label": "20%",
+            "value": 20
+          }
+        ]
+      }
+    ],
+    "values": {
+      "length": 10,
+      "width": 12,
+      "tileSize": "12x12",
+      "jointWidth": 0.125,
+      "tileThickness": 0.375,
+      "waste": 15
+    },
+    "imperial": {
+      "value": 13.5,
+      "valueRounded": 14,
+      "unit": "lb",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    },
+    "metric": {
+      "value": 6.123496995,
+      "valueRounded": 6.35,
+      "unit": "kg",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "paver-calculator",
+    "inputs": [
+      {
+        "id": "length",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 12,
+        "defaultMetric": 3.6576,
+        "min": 1,
+        "step": 0.5
+      },
+      {
+        "id": "width",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 10,
+        "defaultMetric": 3.048,
+        "min": 1,
+        "step": 0.5
+      },
+      {
+        "id": "paverSize",
+        "type": "select",
+        "defaultImperial": "4x8",
+        "options": [
+          {
+            "label": "4 × 8 (brick paver)",
+            "value": "4x8"
+          },
+          {
+            "label": "6 × 6",
+            "value": "6x6"
+          },
+          {
+            "label": "6 × 9",
+            "value": "6x9"
+          },
+          {
+            "label": "8 × 8",
+            "value": "8x8"
+          },
+          {
+            "label": "12 × 12 (large format)",
+            "value": "12x12"
+          },
+          {
+            "label": "16 × 16",
+            "value": "16x16"
+          }
+        ]
+      },
+      {
+        "id": "pattern",
+        "type": "select",
+        "defaultImperial": "running",
+        "options": [
+          {
+            "label": "Running bond",
+            "value": "running"
+          },
+          {
+            "label": "Herringbone",
+            "value": "herringbone"
+          },
+          {
+            "label": "Basket weave",
+            "value": "basket"
+          },
+          {
+            "label": "Stack bond",
+            "value": "stack"
+          }
+        ]
+      },
+      {
+        "id": "use",
+        "type": "select",
+        "defaultImperial": "patio",
+        "options": [
+          {
+            "label": "Pedestrian (patio, path)",
+            "value": "patio"
+          },
+          {
+            "label": "Vehicular (driveway)",
+            "value": "driveway"
+          }
+        ]
+      }
+    ],
+    "values": {
+      "length": 12,
+      "width": 10,
+      "paverSize": "4x8",
+      "pattern": "running",
+      "use": "patio"
+    },
+    "imperial": {
+      "value": 567,
+      "valueRounded": 567,
+      "unit": "pavers",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    },
+    "metric": {
+      "value": 567,
+      "valueRounded": 567,
+      "unit": "pavers",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "deck-calculator",
+    "inputs": [
+      {
+        "id": "length",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 16,
+        "defaultMetric": 4.8768,
+        "min": 4,
+        "step": 1
+      },
+      {
+        "id": "width",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 12,
+        "defaultMetric": 3.6576,
+        "min": 4,
+        "step": 1
+      },
+      {
+        "id": "boardWidth",
+        "type": "select",
+        "defaultImperial": 5.5,
+        "options": [
+          {
+            "label": "5.5\" (2×6 nominal)",
+            "value": 5.5
+          },
+          {
+            "label": "5.25\" (composite)",
+            "value": 5.25
+          },
+          {
+            "label": "3.5\" (2×4 nominal)",
+            "value": 3.5
+          }
+        ]
+      },
+      {
+        "id": "joistSpacing",
+        "type": "select",
+        "defaultImperial": 16,
+        "options": [
+          {
+            "label": "12\" OC (wood composite)",
+            "value": 12
+          },
+          {
+            "label": "16\" OC (standard)",
+            "value": 16
+          },
+          {
+            "label": "24\" OC (PT lumber only)",
+            "value": 24
+          }
+        ]
+      },
+      {
+        "id": "fastener",
+        "type": "select",
+        "defaultImperial": "screws",
+        "options": [
+          {
+            "label": "Deck screws (visible)",
+            "value": "screws"
+          },
+          {
+            "label": "Hidden fasteners",
+            "value": "hidden"
+          }
+        ]
+      }
+    ],
+    "values": {
+      "length": 16,
+      "width": 12,
+      "boardWidth": 5.5,
+      "joistSpacing": 16,
+      "fastener": "screws"
+    },
+    "imperial": {
+      "value": 29,
+      "valueRounded": 29,
+      "unit": "16' boards",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    },
+    "metric": {
+      "value": 29,
+      "valueRounded": 29,
+      "unit": "16' boards",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "flooring-calculator",
+    "inputs": [
+      {
+        "id": "length",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 14,
+        "defaultMetric": 4.2672,
+        "min": 1,
+        "step": 0.5
+      },
+      {
+        "id": "width",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 12,
+        "defaultMetric": 3.6576,
+        "min": 1,
+        "step": 0.5
+      },
+      {
+        "id": "flooringType",
+        "type": "select",
+        "defaultImperial": "laminate",
+        "options": [
+          {
+            "label": "Hardwood (solid)",
+            "value": "hardwood"
+          },
+          {
+            "label": "Engineered hardwood",
+            "value": "engineered"
+          },
+          {
+            "label": "Laminate",
+            "value": "laminate"
+          },
+          {
+            "label": "Luxury vinyl plank (LVP)",
+            "value": "lvp"
+          }
+        ]
+      },
+      {
+        "id": "sqFtPerBox",
+        "type": "number",
+        "unitImperial": "ft²",
+        "unitMetric": "m²",
+        "defaultImperial": 20,
+        "defaultMetric": 1.8580608,
+        "min": 5,
+        "step": 1
+      },
+      {
+        "id": "pattern",
+        "type": "select",
+        "defaultImperial": "staggered",
+        "options": [
+          {
+            "label": "Staggered (standard)",
+            "value": "staggered"
+          },
+          {
+            "label": "Diagonal",
+            "value": "diagonal"
+          },
+          {
+            "label": "Herringbone",
+            "value": "herringbone"
+          }
+        ]
+      }
+    ],
+    "values": {
+      "length": 14,
+      "width": 12,
+      "flooringType": "laminate",
+      "sqFtPerBox": 20,
+      "pattern": "staggered"
+    },
+    "imperial": {
+      "value": 10,
+      "valueRounded": 10,
+      "unit": "boxes",
+      "displayValue": null,
+      "composition": {
+        "unit": "ft²",
+        "total": 184.8,
+        "segments": [
+          {
+            "label": "Coverage",
+            "amount": 168,
+            "shade": "primary"
+          },
+          {
+            "label": "Waste",
+            "amount": 16.8,
+            "shade": "secondary"
+          }
+        ]
+      },
+      "diagramData": null
+    },
+    "metric": {
+      "value": 10,
+      "valueRounded": 10,
+      "unit": "boxes",
+      "displayValue": null,
+      "composition": {
+        "unit": "ft²",
+        "total": 184.8,
+        "segments": [
+          {
+            "label": "Coverage",
+            "amount": 168,
+            "shade": "primary"
+          },
+          {
+            "label": "Waste",
+            "amount": 16.8,
+            "shade": "secondary"
+          }
+        ]
+      },
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "topsoil-calculator",
+    "inputs": [
+      {
+        "id": "length",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 20,
+        "defaultMetric": 6.096,
+        "min": 1,
+        "step": 0.5
+      },
+      {
+        "id": "width",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 10,
+        "defaultMetric": 3.048,
+        "min": 0.5,
+        "step": 0.5
+      },
+      {
+        "id": "depth",
+        "type": "select",
+        "defaultImperial": 6,
+        "options": [
+          {
+            "label": "2\" / 5 cm (overseeding)",
+            "value": 2
+          },
+          {
+            "label": "4\" / 10 cm (lawn repair)",
+            "value": 4
+          },
+          {
+            "label": "6\" / 15 cm (garden bed)",
+            "value": 6
+          },
+          {
+            "label": "8\" / 20 cm (raised bed)",
+            "value": 8
+          },
+          {
+            "label": "12\" / 30 cm (deep fill)",
+            "value": 12
+          }
+        ]
+      },
+      {
+        "id": "type",
+        "type": "select",
+        "defaultImperial": "topsoil",
+        "options": [
+          {
+            "label": "Topsoil (1.1 t/yd³)",
+            "value": "topsoil"
+          },
+          {
+            "label": "Fill dirt (1.25 t/yd³)",
+            "value": "fill"
+          },
+          {
+            "label": "Compost (0.75 t/yd³)",
+            "value": "compost"
+          },
+          {
+            "label": "Garden mix (1.0 t/yd³)",
+            "value": "garden"
+          }
+        ]
+      }
+    ],
+    "values": {
+      "length": 20,
+      "width": 10,
+      "depth": 6,
+      "type": "topsoil"
+    },
+    "imperial": {
+      "value": 3.704,
+      "valueRounded": 3.71,
+      "unit": "cubic yards",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    },
+    "metric": {
+      "value": 2.8319111939727364,
+      "valueRounded": 2.836,
+      "unit": "cubic meters",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "sod-calculator",
+    "inputs": [
+      {
+        "id": "length",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 40,
+        "defaultMetric": 12.192,
+        "min": 1,
+        "step": 1
+      },
+      {
+        "id": "width",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 25,
+        "defaultMetric": 7.62,
+        "min": 1,
+        "step": 1
+      },
+      {
+        "id": "shape",
+        "type": "select",
+        "defaultImperial": "rectangular",
+        "options": [
+          {
+            "label": "Rectangular",
+            "value": "rectangular"
+          },
+          {
+            "label": "Irregular (+15% waste)",
+            "value": "irregular"
+          },
+          {
+            "label": "Heavy curves (+25% waste)",
+            "value": "curved"
+          }
+        ]
+      },
+      {
+        "id": "sodSize",
+        "type": "select",
+        "defaultImperial": "slab",
+        "options": [
+          {
+            "label": "Slab (16×24\" · 2.67 ft²)",
+            "value": "slab"
+          },
+          {
+            "label": "Small roll (2×5' · 10 ft²)",
+            "value": "smallRoll"
+          },
+          {
+            "label": "Big roll (3.3×6' · 20 ft²)",
+            "value": "bigRoll"
+          }
+        ]
+      }
+    ],
+    "values": {
+      "length": 40,
+      "width": 25,
+      "shape": "rectangular",
+      "sodSize": "slab"
+    },
+    "imperial": {
+      "value": 394,
+      "valueRounded": 394,
+      "unit": "slabs",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    },
+    "metric": {
+      "value": 394,
+      "valueRounded": 394,
+      "unit": "slabs",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "asphalt-calculator",
+    "inputs": [
+      {
+        "id": "shape",
+        "type": "select",
+        "defaultImperial": "rectangular",
+        "options": [
+          {
+            "label": "Rectangular",
+            "value": "rectangular"
+          },
+          {
+            "label": "Circular",
+            "value": "circular"
+          }
+        ]
+      },
+      {
+        "id": "length",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 50,
+        "defaultMetric": 15.24,
+        "min": 2,
+        "step": 1
+      },
+      {
+        "id": "width",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 12,
+        "defaultMetric": 3.6576,
+        "min": 2,
+        "step": 1
+      },
+      {
+        "id": "thickness",
+        "type": "select",
+        "defaultImperial": 3,
+        "options": [
+          {
+            "label": "2\" / 5 cm",
+            "value": 2
+          },
+          {
+            "label": "3\" / 7.5 cm",
+            "value": 3
+          },
+          {
+            "label": "4\" / 10 cm",
+            "value": 4
+          },
+          {
+            "label": "6\" / 15 cm",
+            "value": 6
+          }
+        ]
+      },
+      {
+        "id": "waste",
+        "type": "select",
+        "defaultImperial": 10,
+        "options": [
+          {
+            "label": "5%",
+            "value": 5
+          },
+          {
+            "label": "10%",
+            "value": 10
+          },
+          {
+            "label": "15%",
+            "value": 15
+          }
+        ]
+      }
+    ],
+    "values": {
+      "shape": "rectangular",
+      "length": 50,
+      "width": 12,
+      "thickness": 3,
+      "waste": 10
+    },
+    "imperial": {
+      "value": 11.96,
+      "valueRounded": 12,
+      "unit": "tons",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    },
+    "metric": {
+      "value": 10.849929490400001,
+      "valueRounded": 10.886,
+      "unit": "tonnes",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "lumber-calculator",
+    "inputs": [
+      {
+        "id": "nominalSize",
+        "type": "select",
+        "defaultImperial": "2x4",
+        "options": [
+          {
+            "label": "1×4 (0.75 × 3.5\" actual)",
+            "value": "1x4"
+          },
+          {
+            "label": "1×6 (0.75 × 5.5\" actual)",
+            "value": "1x6"
+          },
+          {
+            "label": "1×8 (0.75 × 7.25\" actual)",
+            "value": "1x8"
+          },
+          {
+            "label": "1×12 (0.75 × 11.25\" actual)",
+            "value": "1x12"
+          },
+          {
+            "label": "2×2 (1.5 × 1.5\" actual)",
+            "value": "2x2"
+          },
+          {
+            "label": "2×4 (1.5 × 3.5\" actual)",
+            "value": "2x4"
+          },
+          {
+            "label": "2×6 (1.5 × 5.5\" actual)",
+            "value": "2x6"
+          },
+          {
+            "label": "2×8 (1.5 × 7.25\" actual)",
+            "value": "2x8"
+          },
+          {
+            "label": "2×10 (1.5 × 9.25\" actual)",
+            "value": "2x10"
+          },
+          {
+            "label": "2×12 (1.5 × 11.25\" actual)",
+            "value": "2x12"
+          },
+          {
+            "label": "4×4 (3.5 × 3.5\" actual)",
+            "value": "4x4"
+          },
+          {
+            "label": "4×6 (3.5 × 5.5\" actual)",
+            "value": "4x6"
+          },
+          {
+            "label": "6×6 (5.5 × 5.5\" actual)",
+            "value": "6x6"
+          }
+        ]
+      },
+      {
+        "id": "length",
+        "type": "select",
+        "defaultImperial": 8,
+        "options": [
+          {
+            "label": "8 ft",
+            "value": 8
+          },
+          {
+            "label": "10 ft",
+            "value": 10
+          },
+          {
+            "label": "12 ft",
+            "value": 12
+          },
+          {
+            "label": "14 ft",
+            "value": 14
+          },
+          {
+            "label": "16 ft",
+            "value": 16
+          },
+          {
+            "label": "20 ft",
+            "value": 20
+          }
+        ]
+      },
+      {
+        "id": "quantity",
+        "type": "number",
+        "defaultImperial": 50,
+        "min": 1,
+        "step": 1
+      },
+      {
+        "id": "waste",
+        "type": "select",
+        "defaultImperial": 10,
+        "options": [
+          {
+            "label": "0% (exact count)",
+            "value": 0
+          },
+          {
+            "label": "5%",
+            "value": 5
+          },
+          {
+            "label": "10%",
+            "value": 10
+          },
+          {
+            "label": "15%",
+            "value": 15
+          }
+        ]
+      },
+      {
+        "id": "species",
+        "type": "select",
+        "defaultImperial": "spf",
+        "options": [
+          {
+            "label": "SPF, kiln-dried (framing)",
+            "value": "spf"
+          },
+          {
+            "label": "Pressure-treated (wet)",
+            "value": "pt"
+          },
+          {
+            "label": "Southern yellow pine, dry",
+            "value": "syp"
+          },
+          {
+            "label": "Cedar / redwood",
+            "value": "cedar"
+          },
+          {
+            "label": "Red oak (hardwood)",
+            "value": "oak"
+          }
+        ]
+      },
+      {
+        "id": "price",
+        "type": "number",
+        "defaultImperial": 0,
+        "min": 0,
+        "step": 0.05
+      }
+    ],
+    "values": {
+      "nominalSize": "2x4",
+      "length": 8,
+      "quantity": 50,
+      "waste": 10,
+      "species": "spf",
+      "price": 0
+    },
+    "imperial": {
+      "value": 55,
+      "valueRounded": 55,
+      "unit": "boards",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    },
+    "metric": {
+      "value": 55,
+      "valueRounded": 55,
+      "unit": "boards",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "stair-calculator",
+    "inputs": [
+      {
+        "id": "totalRise",
+        "type": "number",
+        "unitImperial": "in",
+        "unitMetric": "cm",
+        "defaultImperial": 108,
+        "defaultMetric": 274.32,
+        "min": 10,
+        "step": 1
+      },
+      {
+        "id": "idealRiser",
+        "type": "select",
+        "defaultImperial": 7.5,
+        "options": [
+          {
+            "label": "7\" / 18 cm (shallow)",
+            "value": 7
+          },
+          {
+            "label": "7.5\" / 19 cm (comfortable)",
+            "value": 7.5
+          },
+          {
+            "label": "7.75\" / 20 cm (IRC max)",
+            "value": 7.75
+          }
+        ]
+      },
+      {
+        "id": "treadDepth",
+        "type": "select",
+        "defaultImperial": 11,
+        "options": [
+          {
+            "label": "10\" / 25.5 cm (IRC min)",
+            "value": 10
+          },
+          {
+            "label": "11\" / 28 cm (standard)",
+            "value": 11
+          },
+          {
+            "label": "12\" / 30.5 cm (comfortable)",
+            "value": 12
+          }
+        ]
+      },
+      {
+        "id": "stairWidth",
+        "type": "number",
+        "unitImperial": "in",
+        "unitMetric": "cm",
+        "defaultImperial": 36,
+        "defaultMetric": 91.44,
+        "min": 24,
+        "step": 1
+      }
+    ],
+    "values": {
+      "totalRise": 108,
+      "idealRiser": 7.5,
+      "treadDepth": 11,
+      "stairWidth": 36
+    },
+    "imperial": {
+      "value": 14,
+      "valueRounded": 14,
+      "unit": "risers",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    },
+    "metric": {
+      "value": 14,
+      "valueRounded": 14,
+      "unit": "risers",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "rebar-calculator",
+    "inputs": [
+      {
+        "id": "length",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 20,
+        "defaultMetric": 6.096,
+        "min": 2,
+        "step": 0.5
+      },
+      {
+        "id": "width",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 12,
+        "defaultMetric": 3.6576,
+        "min": 2,
+        "step": 0.5
+      },
+      {
+        "id": "spacing",
+        "type": "select",
+        "defaultImperial": 12,
+        "options": [
+          {
+            "label": "12\" / 30 cm (heavy)",
+            "value": 12
+          },
+          {
+            "label": "16\" / 40 cm (standard)",
+            "value": 16
+          },
+          {
+            "label": "18\" / 45 cm",
+            "value": 18
+          },
+          {
+            "label": "24\" / 60 cm (light)",
+            "value": 24
+          }
+        ]
+      },
+      {
+        "id": "barSize",
+        "type": "select",
+        "defaultImperial": "#4",
+        "options": [
+          {
+            "label": "#3 (3/8\" / 10 mm)",
+            "value": "#3"
+          },
+          {
+            "label": "#4 (1/2\" / 13 mm) standard",
+            "value": "#4"
+          },
+          {
+            "label": "#5 (5/8\" / 16 mm)",
+            "value": "#5"
+          },
+          {
+            "label": "#6 (3/4\" / 19 mm)",
+            "value": "#6"
+          }
+        ]
+      },
+      {
+        "id": "includePerimeter",
+        "type": "select",
+        "defaultImperial": "yes",
+        "options": [
+          {
+            "label": "Yes (edge rebar ring)",
+            "value": "yes"
+          },
+          {
+            "label": "No (grid only)",
+            "value": "no"
+          }
+        ]
+      }
+    ],
+    "values": {
+      "length": 20,
+      "width": 12,
+      "spacing": 12,
+      "barSize": "#4",
+      "includePerimeter": "yes"
+    },
+    "imperial": {
+      "value": 576,
+      "valueRounded": 576,
+      "unit": "lineal ft",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    },
+    "metric": {
+      "value": 175.56480000000002,
+      "valueRounded": 175.565,
+      "unit": "lineal m",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "brick-calculator",
+    "inputs": [
+      {
+        "id": "length",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 20,
+        "defaultMetric": 6.096,
+        "min": 1,
+        "step": 0.5
+      },
+      {
+        "id": "height",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 8,
+        "defaultMetric": 2.4384,
+        "min": 1,
+        "step": 0.5
+      },
+      {
+        "id": "brickType",
+        "type": "select",
+        "defaultImperial": "modular",
+        "options": [
+          {
+            "label": "Modular (3.625 × 2.25 × 7.625\")",
+            "value": "modular"
+          },
+          {
+            "label": "Standard (3.625 × 2.25 × 8\")",
+            "value": "standard"
+          },
+          {
+            "label": "Queen (3.125 × 2.75 × 9.625\")",
+            "value": "queen"
+          },
+          {
+            "label": "Jumbo (3.625 × 2.75 × 8\")",
+            "value": "jumbo"
+          }
+        ]
+      },
+      {
+        "id": "jointWidth",
+        "type": "select",
+        "defaultImperial": 0.375,
+        "options": [
+          {
+            "label": "3/8\" / 10 mm (standard)",
+            "value": 0.375
+          },
+          {
+            "label": "1/2\" / 13 mm (wide)",
+            "value": 0.5
+          },
+          {
+            "label": "1/4\" / 6 mm (narrow)",
+            "value": 0.25
+          }
+        ]
+      },
+      {
+        "id": "thickness",
+        "type": "select",
+        "defaultImperial": "single",
+        "options": [
+          {
+            "label": "Single wythe (veneer)",
+            "value": "single"
+          },
+          {
+            "label": "Double wythe (structural)",
+            "value": "double"
+          }
+        ]
+      },
+      {
+        "id": "waste",
+        "type": "select",
+        "defaultImperial": 10,
+        "options": [
+          {
+            "label": "5%",
+            "value": 5
+          },
+          {
+            "label": "10%",
+            "value": 10
+          },
+          {
+            "label": "15%",
+            "value": 15
+          }
+        ]
+      }
+    ],
+    "values": {
+      "length": 20,
+      "height": 8,
+      "brickType": "modular",
+      "jointWidth": 0.375,
+      "thickness": "single",
+      "waste": 10
+    },
+    "imperial": {
+      "value": 1207,
+      "valueRounded": 1207,
+      "unit": "bricks",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    },
+    "metric": {
+      "value": 1207,
+      "valueRounded": 1207,
+      "unit": "bricks",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "wallpaper-calculator",
+    "inputs": [
+      {
+        "id": "perimeter",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 52,
+        "defaultMetric": 15.8496,
+        "min": 4,
+        "step": 1
+      },
+      {
+        "id": "height",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 9,
+        "defaultMetric": 2.7432,
+        "min": 4,
+        "step": 0.5
+      },
+      {
+        "id": "rollCoverage",
+        "type": "select",
+        "defaultImperial": 56,
+        "options": [
+          {
+            "label": "American (56 ft² double roll)",
+            "value": 56
+          },
+          {
+            "label": "European (29 ft² single roll)",
+            "value": 29
+          },
+          {
+            "label": "Metric (15 m² roll)",
+            "value": 161
+          }
+        ]
+      },
+      {
+        "id": "patternRepeat",
+        "type": "select",
+        "defaultImperial": 0,
+        "options": [
+          {
+            "label": "0\" (no pattern / random)",
+            "value": 0
+          },
+          {
+            "label": "6\" / 15 cm",
+            "value": 6
+          },
+          {
+            "label": "12\" / 30 cm",
+            "value": 12
+          },
+          {
+            "label": "18\" / 45 cm",
+            "value": 18
+          },
+          {
+            "label": "24\" / 60 cm (large)",
+            "value": 24
+          }
+        ]
+      },
+      {
+        "id": "doors",
+        "type": "number",
+        "defaultImperial": 1,
+        "min": 0,
+        "step": 1
+      },
+      {
+        "id": "windows",
+        "type": "number",
+        "defaultImperial": 2,
+        "min": 0,
+        "step": 1
+      }
+    ],
+    "values": {
+      "perimeter": 52,
+      "height": 9,
+      "rollCoverage": 56,
+      "patternRepeat": 0,
+      "doors": 1,
+      "windows": 2
+    },
+    "imperial": {
+      "value": 9,
+      "valueRounded": 9,
+      "unit": "double rolls",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    },
+    "metric": {
+      "value": 9,
+      "valueRounded": 9,
+      "unit": "double rolls",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "shower-tile-calculator",
+    "inputs": [
+      {
+        "id": "backWidth",
+        "type": "number",
+        "unitImperial": "in",
+        "unitMetric": "cm",
+        "defaultImperial": 60,
+        "defaultMetric": 152.4,
+        "min": 24,
+        "step": 1
+      },
+      {
+        "id": "sideDepth",
+        "type": "number",
+        "unitImperial": "in",
+        "unitMetric": "cm",
+        "defaultImperial": 32,
+        "defaultMetric": 81.28,
+        "min": 24,
+        "step": 1
+      },
+      {
+        "id": "height",
+        "type": "number",
+        "unitImperial": "in",
+        "unitMetric": "cm",
+        "defaultImperial": 96,
+        "defaultMetric": 243.84,
+        "min": 24,
+        "step": 1
+      },
+      {
+        "id": "tileSize",
+        "type": "select",
+        "defaultImperial": "12x24",
+        "options": [
+          {
+            "label": "4 × 4 (mosaic/subway)",
+            "value": "4x4"
+          },
+          {
+            "label": "3 × 6 (classic subway)",
+            "value": "3x6"
+          },
+          {
+            "label": "6 × 6",
+            "value": "6x6"
+          },
+          {
+            "label": "12 × 12",
+            "value": "12x12"
+          },
+          {
+            "label": "12 × 24 (modern)",
+            "value": "12x24"
+          },
+          {
+            "label": "24 × 24 (large format)",
+            "value": "24x24"
+          }
+        ]
+      },
+      {
+        "id": "tilesPerBox",
+        "type": "number",
+        "defaultImperial": 8,
+        "min": 1,
+        "step": 1
+      },
+      {
+        "id": "includeNiche",
+        "type": "select",
+        "defaultImperial": "yes",
+        "options": [
+          {
+            "label": "Yes (14 × 24\" standard)",
+            "value": "yes"
+          },
+          {
+            "label": "No",
+            "value": "no"
+          }
+        ]
+      },
+      {
+        "id": "includeFloor",
+        "type": "select",
+        "defaultImperial": "no",
+        "options": [
+          {
+            "label": "No (drop-in tub)",
+            "value": "no"
+          },
+          {
+            "label": "Yes (walk-in shower pan)",
+            "value": "yes"
+          }
+        ]
+      }
+    ],
+    "values": {
+      "backWidth": 60,
+      "sideDepth": 32,
+      "height": 96,
+      "tileSize": "12x24",
+      "tilesPerBox": 8,
+      "includeNiche": "yes",
+      "includeFloor": "no"
+    },
+    "imperial": {
+      "value": 49,
+      "valueRounded": 49,
+      "unit": "tiles",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    },
+    "metric": {
+      "value": 49,
+      "valueRounded": 49,
+      "unit": "tiles",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "backsplash-calculator",
+    "inputs": [
+      {
+        "id": "linearFt",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 18,
+        "defaultMetric": 5.4864,
+        "min": 1,
+        "step": 0.5
+      },
+      {
+        "id": "height",
+        "type": "select",
+        "defaultImperial": 18,
+        "options": [
+          {
+            "label": "4\" (standard short)",
+            "value": 4
+          },
+          {
+            "label": "18\" (counter to cabinets)",
+            "value": 18
+          },
+          {
+            "label": "24\" (tall)",
+            "value": 24
+          },
+          {
+            "label": "To ceiling (full)",
+            "value": 36
+          }
+        ]
+      },
+      {
+        "id": "tileSize",
+        "type": "select",
+        "defaultImperial": "3x6",
+        "options": [
+          {
+            "label": "3 × 6 (classic subway)",
+            "value": "3x6"
+          },
+          {
+            "label": "4 × 12 (long subway)",
+            "value": "4x12"
+          },
+          {
+            "label": "2 × 2 (mosaic)",
+            "value": "2x2"
+          },
+          {
+            "label": "4 × 4",
+            "value": "4x4"
+          },
+          {
+            "label": "12 × 12 (large)",
+            "value": "12x12"
+          },
+          {
+            "label": "12 × 24 (modern)",
+            "value": "12x24"
+          }
+        ]
+      },
+      {
+        "id": "tilesPerBox",
+        "type": "number",
+        "defaultImperial": 40,
+        "min": 1,
+        "step": 1
+      },
+      {
+        "id": "outlets",
+        "type": "number",
+        "defaultImperial": 4,
+        "min": 0,
+        "step": 1
+      },
+      {
+        "id": "window",
+        "type": "select",
+        "defaultImperial": "none",
+        "options": [
+          {
+            "label": "None",
+            "value": "none"
+          },
+          {
+            "label": "Small (24 × 36\")",
+            "value": "small"
+          },
+          {
+            "label": "Medium (36 × 48\")",
+            "value": "medium"
+          },
+          {
+            "label": "Large (48 × 60\")",
+            "value": "large"
+          }
+        ]
+      }
+    ],
+    "values": {
+      "linearFt": 18,
+      "height": 18,
+      "tileSize": "3x6",
+      "tilesPerBox": 40,
+      "outlets": 4,
+      "window": "none"
+    },
+    "imperial": {
+      "value": 245,
+      "valueRounded": 245,
+      "unit": "tiles",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    },
+    "metric": {
+      "value": 245,
+      "valueRounded": 245,
+      "unit": "tiles",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "vanity-calculator",
+    "inputs": [
+      {
+        "id": "bathroomWidth",
+        "type": "number",
+        "unitImperial": "in",
+        "unitMetric": "cm",
+        "defaultImperial": 72,
+        "defaultMetric": 182.88,
+        "min": 36,
+        "step": 1
+      },
+      {
+        "id": "clearanceLeft",
+        "type": "number",
+        "unitImperial": "in",
+        "unitMetric": "cm",
+        "defaultImperial": 0,
+        "defaultMetric": 0,
+        "min": 0,
+        "step": 1
+      },
+      {
+        "id": "clearanceRight",
+        "type": "number",
+        "unitImperial": "in",
+        "unitMetric": "cm",
+        "defaultImperial": 4,
+        "defaultMetric": 10.16,
+        "min": 0,
+        "step": 1
+      },
+      {
+        "id": "users",
+        "type": "select",
+        "defaultImperial": "1",
+        "options": [
+          {
+            "label": "1 person",
+            "value": "1"
+          },
+          {
+            "label": "2 people (simultaneous)",
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "id": "height",
+        "type": "select",
+        "defaultImperial": "36",
+        "options": [
+          {
+            "label": "32\" (standard, kid-friendly)",
+            "value": "32"
+          },
+          {
+            "label": "34\"",
+            "value": "34"
+          },
+          {
+            "label": "36\" (comfort height)",
+            "value": "36"
+          }
+        ]
+      }
+    ],
+    "values": {
+      "bathroomWidth": 72,
+      "clearanceLeft": 0,
+      "clearanceRight": 4,
+      "users": "1",
+      "height": "36"
+    },
+    "imperial": {
+      "value": 66,
+      "valueRounded": 66,
+      "unit": "inches",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    },
+    "metric": {
+      "value": 167.64000000000001,
+      "valueRounded": 167.64,
+      "unit": "cm",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "countertop-calculator",
+    "inputs": [
+      {
+        "id": "linearFt",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 18,
+        "defaultMetric": 5.4864,
+        "min": 1,
+        "step": 0.5
+      },
+      {
+        "id": "depth",
+        "type": "select",
+        "defaultImperial": 25.5,
+        "options": [
+          {
+            "label": "22\" (bath vanity)",
+            "value": 22
+          },
+          {
+            "label": "25.5\" (kitchen standard)",
+            "value": 25.5
+          },
+          {
+            "label": "30\" (deep kitchen)",
+            "value": 30
+          },
+          {
+            "label": "42\" (island with overhang)",
+            "value": 42
+          }
+        ]
+      },
+      {
+        "id": "island",
+        "type": "select",
+        "defaultImperial": "no",
+        "options": [
+          {
+            "label": "No",
+            "value": "no"
+          },
+          {
+            "label": "Small (4×2 ft)",
+            "value": "small"
+          },
+          {
+            "label": "Medium (6×3 ft)",
+            "value": "medium"
+          },
+          {
+            "label": "Large (8×4 ft)",
+            "value": "large"
+          }
+        ]
+      },
+      {
+        "id": "material",
+        "type": "select",
+        "defaultImperial": "quartz",
+        "options": [
+          {
+            "label": "Quartz (engineered)",
+            "value": "quartz"
+          },
+          {
+            "label": "Granite",
+            "value": "granite"
+          },
+          {
+            "label": "Marble",
+            "value": "marble"
+          },
+          {
+            "label": "Butcher block",
+            "value": "butcher"
+          },
+          {
+            "label": "Laminate",
+            "value": "laminate"
+          },
+          {
+            "label": "Concrete",
+            "value": "concrete"
+          }
+        ]
+      },
+      {
+        "id": "waste",
+        "type": "select",
+        "defaultImperial": 10,
+        "options": [
+          {
+            "label": "10% (standard)",
+            "value": 10
+          },
+          {
+            "label": "15% (many cuts)",
+            "value": 15
+          },
+          {
+            "label": "20% (complex layout)",
+            "value": 20
+          }
+        ]
+      }
+    ],
+    "values": {
+      "linearFt": 18,
+      "depth": 25.5,
+      "island": "no",
+      "material": "quartz",
+      "waste": 10
+    },
+    "imperial": {
+      "value": 42.1,
+      "valueRounded": 43,
+      "unit": "ft²",
+      "displayValue": null,
+      "composition": {
+        "unit": "ft²",
+        "total": 42.1,
+        "segments": [
+          {
+            "label": "Main counter",
+            "amount": 38.3,
+            "shade": "primary"
+          },
+          {
+            "label": "Waste buffer",
+            "amount": 3.8,
+            "shade": "tertiary"
+          }
+        ]
+      },
+      "diagramData": null
+    },
+    "metric": {
+      "value": 3.9112179840000003,
+      "valueRounded": 3.995,
+      "unit": "m²",
+      "displayValue": null,
+      "composition": {
+        "unit": "ft²",
+        "total": 42.1,
+        "segments": [
+          {
+            "label": "Main counter",
+            "amount": 38.3,
+            "shade": "primary"
+          },
+          {
+            "label": "Waste buffer",
+            "amount": 3.8,
+            "shade": "tertiary"
+          }
+        ]
+      },
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "siding-calculator",
+    "inputs": [
+      {
+        "id": "perimeter",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 140,
+        "defaultMetric": 42.672,
+        "min": 20,
+        "step": 1
+      },
+      {
+        "id": "height",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 9,
+        "defaultMetric": 2.7432,
+        "min": 6,
+        "step": 0.5
+      },
+      {
+        "id": "gables",
+        "type": "select",
+        "defaultImperial": 2,
+        "options": [
+          {
+            "label": "0 (hip roof)",
+            "value": 0
+          },
+          {
+            "label": "2 (standard gable)",
+            "value": 2
+          },
+          {
+            "label": "4 (cross-gable)",
+            "value": 4
+          }
+        ]
+      },
+      {
+        "id": "gableSize",
+        "type": "select",
+        "defaultImperial": 60,
+        "options": [
+          {
+            "label": "Small (30 ft²)",
+            "value": 30
+          },
+          {
+            "label": "Medium (60 ft²)",
+            "value": 60
+          },
+          {
+            "label": "Large (100 ft²)",
+            "value": 100
+          }
+        ]
+      },
+      {
+        "id": "material",
+        "type": "select",
+        "defaultImperial": "vinyl",
+        "options": [
+          {
+            "label": "Vinyl (lap)",
+            "value": "vinyl"
+          },
+          {
+            "label": "Fiber cement (Hardie)",
+            "value": "fiber"
+          },
+          {
+            "label": "Wood (cedar lap)",
+            "value": "wood"
+          },
+          {
+            "label": "Engineered wood (LP)",
+            "value": "engineered"
+          }
+        ]
+      },
+      {
+        "id": "openings",
+        "type": "number",
+        "defaultImperial": 14,
+        "min": 0,
+        "step": 1
+      }
+    ],
+    "values": {
+      "perimeter": 140,
+      "height": 9,
+      "gables": 2,
+      "gableSize": 60,
+      "material": "vinyl",
+      "openings": 14
+    },
+    "imperial": {
+      "value": 12.1,
+      "valueRounded": 13,
+      "unit": "squares",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    },
+    "metric": {
+      "value": 12.1,
+      "valueRounded": 13,
+      "unit": "squares",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "gutter-calculator",
+    "inputs": [
+      {
+        "id": "roofLength",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 120,
+        "defaultMetric": 36.576,
+        "min": 10,
+        "step": 1
+      },
+      {
+        "id": "roofArea",
+        "type": "number",
+        "unitImperial": "ft²",
+        "unitMetric": "m²",
+        "defaultImperial": 1200,
+        "defaultMetric": 111.483648,
+        "min": 100,
+        "step": 50
+      },
+      {
+        "id": "pitch",
+        "type": "select",
+        "defaultImperial": 1,
+        "options": [
+          {
+            "label": "Flat to 3/12",
+            "value": 1
+          },
+          {
+            "label": "4/12 to 6/12",
+            "value": 1.1
+          },
+          {
+            "label": "7/12 to 9/12",
+            "value": 1.2
+          },
+          {
+            "label": "10/12+",
+            "value": 1.3
+          }
+        ]
+      },
+      {
+        "id": "rainfall",
+        "type": "select",
+        "defaultImperial": 7,
+        "options": [
+          {
+            "label": "5 in/hr (Pacific NW, N. Plains)",
+            "value": 5
+          },
+          {
+            "label": "7 in/hr (Midwest, Northeast)",
+            "value": 7
+          },
+          {
+            "label": "9 in/hr (Gulf Coast, FL)",
+            "value": 9
+          }
+        ]
+      },
+      {
+        "id": "corners",
+        "type": "number",
+        "defaultImperial": 4,
+        "min": 0,
+        "step": 1
+      }
+    ],
+    "values": {
+      "roofLength": 120,
+      "roofArea": 1200,
+      "pitch": 1,
+      "rainfall": 7,
+      "corners": 4
+    },
+    "imperial": {
+      "value": 156,
+      "valueRounded": 156,
+      "unit": "linear ft",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    },
+    "metric": {
+      "value": 47.5488,
+      "valueRounded": 47.549,
+      "unit": "linear m",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "heat-pump-calculator",
+    "inputs": [
+      {
+        "id": "sqFt",
+        "type": "number",
+        "unitImperial": "ft²",
+        "unitMetric": "m²",
+        "defaultImperial": 2000,
+        "defaultMetric": 185.80608,
+        "min": 400,
+        "step": 100
+      },
+      {
+        "id": "climate",
+        "type": "select",
+        "defaultImperial": "5",
+        "options": [
+          {
+            "label": "1-2: Hot (FL, TX Gulf)",
+            "value": "1-2"
+          },
+          {
+            "label": "3: Warm (GA, AZ, S. CA)",
+            "value": "3"
+          },
+          {
+            "label": "4: Mixed (VA, KY, N. CA)",
+            "value": "4"
+          },
+          {
+            "label": "5: Cold (IL, CO, NY)",
+            "value": "5"
+          },
+          {
+            "label": "6: Cold (MN, ME, MT)",
+            "value": "6"
+          },
+          {
+            "label": "7: Very cold (N. MN, AK)",
+            "value": "7"
+          }
+        ]
+      },
+      {
+        "id": "insulation",
+        "type": "select",
+        "defaultImperial": "average",
+        "options": [
+          {
+            "label": "Poor (old, minimal)",
+            "value": "poor"
+          },
+          {
+            "label": "Average (meets code)",
+            "value": "average"
+          },
+          {
+            "label": "Good (upgraded)",
+            "value": "good"
+          },
+          {
+            "label": "Excellent (energy star)",
+            "value": "excellent"
+          }
+        ]
+      },
+      {
+        "id": "ceiling",
+        "type": "select",
+        "defaultImperial": "standard",
+        "options": [
+          {
+            "label": "Standard (8-9 ft)",
+            "value": "standard"
+          },
+          {
+            "label": "Vaulted (10-12 ft average)",
+            "value": "vaulted"
+          },
+          {
+            "label": "Cathedral (14 ft+)",
+            "value": "cathedral"
+          }
+        ]
+      },
+      {
+        "id": "windows",
+        "type": "select",
+        "defaultImperial": "average",
+        "options": [
+          {
+            "label": "Few (<10% of walls)",
+            "value": "few"
+          },
+          {
+            "label": "Average (10-20%)",
+            "value": "average"
+          },
+          {
+            "label": "Many (20%+)",
+            "value": "many"
+          }
+        ]
+      }
+    ],
+    "values": {
+      "sqFt": 2000,
+      "climate": "5",
+      "insulation": "average",
+      "ceiling": "standard",
+      "windows": "average"
+    },
+    "imperial": {
+      "value": 6.67,
+      "valueRounded": 6.67,
+      "unit": "illustrative ton-equivalent",
+      "displayValue": null,
+      "composition": {
+        "unit": "BTU",
+        "total": 80000,
+        "segments": [
+          {
+            "label": "Cooling",
+            "amount": 36000,
+            "shade": "primary"
+          },
+          {
+            "label": "Heating",
+            "amount": 80000,
+            "shade": "secondary"
+          }
+        ]
+      },
+      "diagramData": null
+    },
+    "metric": {
+      "value": 6.67,
+      "valueRounded": 6.67,
+      "unit": "illustrative ton-equivalent",
+      "displayValue": null,
+      "composition": {
+        "unit": "BTU",
+        "total": 80000,
+        "segments": [
+          {
+            "label": "Cooling",
+            "amount": 36000,
+            "shade": "primary"
+          },
+          {
+            "label": "Heating",
+            "amount": 80000,
+            "shade": "secondary"
+          }
+        ]
+      },
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "water-heater-calculator",
+    "inputs": [
+      {
+        "id": "type",
+        "type": "select",
+        "defaultImperial": "tank",
+        "options": [
+          {
+            "label": "Tank (gas or electric)",
+            "value": "tank"
+          },
+          {
+            "label": "Tankless (on-demand)",
+            "value": "tankless"
+          }
+        ]
+      },
+      {
+        "id": "adults",
+        "type": "number",
+        "defaultImperial": 2,
+        "min": 0,
+        "step": 1
+      },
+      {
+        "id": "teens",
+        "type": "number",
+        "defaultImperial": 2,
+        "min": 0,
+        "step": 1
+      },
+      {
+        "id": "bathrooms",
+        "type": "number",
+        "defaultImperial": 2,
+        "min": 1,
+        "step": 1
+      },
+      {
+        "id": "simultaneous",
+        "type": "select",
+        "defaultImperial": "2",
+        "options": [
+          {
+            "label": "1 (shower only)",
+            "value": "1"
+          },
+          {
+            "label": "2 (shower + sink/dishwasher)",
+            "value": "2"
+          },
+          {
+            "label": "3 (two showers + sink)",
+            "value": "3"
+          },
+          {
+            "label": "4+ (large household morning rush)",
+            "value": "4"
+          }
+        ]
+      },
+      {
+        "id": "climate",
+        "type": "select",
+        "defaultImperial": 55,
+        "options": [
+          {
+            "label": "Warm (70°F: Gulf, FL)",
+            "value": 70
+          },
+          {
+            "label": "Moderate (55°F: mid-US)",
+            "value": 55
+          },
+          {
+            "label": "Cold (45°F: N. US, Canada)",
+            "value": 45
+          },
+          {
+            "label": "Very cold (35°F: winter, N. Plains)",
+            "value": 35
+          }
+        ]
+      }
+    ],
+    "values": {
+      "type": "tank",
+      "adults": 2,
+      "teens": 2,
+      "bathrooms": 2,
+      "simultaneous": "2",
+      "climate": 55
+    },
+    "imperial": {
+      "value": 75,
+      "valueRounded": 75,
+      "unit": "gallon tank",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    },
+    "metric": {
+      "value": 283.90588379999997,
+      "valueRounded": 283.906,
+      "unit": "liter tank",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "extension-cord-calculator",
+    "inputs": [
+      {
+        "id": "appliance",
+        "type": "select",
+        "defaultImperial": "custom",
+        "options": [
+          {
+            "label": "Small electronics (< 5 amps)",
+            "value": "small"
+          },
+          {
+            "label": "Power tool / small appliance (5-10 amps)",
+            "value": "medium"
+          },
+          {
+            "label": "Heater / large tool (10-15 amps)",
+            "value": "large"
+          },
+          {
+            "label": "Heavy equipment (15-20 amps)",
+            "value": "xlarge"
+          },
+          {
+            "label": "Enter exact amps",
+            "value": "custom"
+          }
+        ]
+      },
+      {
+        "id": "amps",
+        "type": "number",
+        "unitImperial": "A",
+        "defaultImperial": 12,
+        "min": 0.1,
+        "max": 20,
+        "step": 0.5
+      },
+      {
+        "id": "length",
+        "type": "select",
+        "defaultImperial": 50,
+        "options": [
+          {
+            "label": "25 ft / 7.5 m",
+            "value": 25
+          },
+          {
+            "label": "50 ft / 15 m",
+            "value": 50
+          },
+          {
+            "label": "100 ft / 30 m",
+            "value": 100
+          },
+          {
+            "label": "150 ft / 45 m",
+            "value": 150
+          },
+          {
+            "label": "200 ft / 60 m",
+            "value": 200
+          }
+        ]
+      },
+      {
+        "id": "location",
+        "type": "select",
+        "defaultImperial": "outdoor",
+        "options": [
+          {
+            "label": "Indoor (dry)",
+            "value": "indoor"
+          },
+          {
+            "label": "Outdoor (or wet areas)",
+            "value": "outdoor"
+          }
+        ]
+      }
+    ],
+    "values": {
+      "appliance": "custom",
+      "amps": 12,
+      "length": 50,
+      "location": "outdoor"
+    },
+    "imperial": {
+      "value": 14,
+      "valueRounded": 14,
+      "unit": "AWG 14",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    },
+    "metric": {
+      "value": 14,
+      "valueRounded": 14,
+      "unit": "AWG 14",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "attic-ventilation-calculator",
+    "inputs": [
+      {
+        "id": "atticArea",
+        "type": "number",
+        "unitImperial": "ft²",
+        "unitMetric": "m²",
+        "defaultImperial": 1500,
+        "defaultMetric": 139.35456,
+        "min": 100,
+        "step": 50
+      },
+      {
+        "id": "ratio",
+        "type": "select",
+        "defaultImperial": "300",
+        "options": [
+          {
+            "label": "1:150 (no vapor barrier)",
+            "value": "150"
+          },
+          {
+            "label": "1:300 (with vapor barrier: standard)",
+            "value": "300"
+          }
+        ]
+      },
+      {
+        "id": "ventType",
+        "type": "select",
+        "defaultImperial": "ridge",
+        "options": [
+          {
+            "label": "Ridge vent (continuous)",
+            "value": "ridge"
+          },
+          {
+            "label": "Gable vents (ends of attic)",
+            "value": "gable"
+          },
+          {
+            "label": "Roof / box vents (square)",
+            "value": "box"
+          },
+          {
+            "label": "Power vent (electric fan)",
+            "value": "power"
+          }
+        ]
+      },
+      {
+        "id": "ridgeLength",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 40,
+        "defaultMetric": 12.192,
+        "min": 0,
+        "step": 1
+      }
+    ],
+    "values": {
+      "atticArea": 1500,
+      "ratio": "300",
+      "ventType": "ridge",
+      "ridgeLength": 40
+    },
+    "imperial": {
+      "value": 720,
+      "valueRounded": 720,
+      "unit": "sq in NFVA",
+      "displayValue": null,
+      "composition": {
+        "unit": "sq in",
+        "total": 720,
+        "segments": [
+          {
+            "label": "Intake (soffit)",
+            "amount": 360,
+            "shade": "primary"
+          },
+          {
+            "label": "Exhaust",
+            "amount": 360,
+            "shade": "secondary"
+          }
+        ]
+      },
+      "diagramData": null
+    },
+    "metric": {
+      "value": 4645.152,
+      "valueRounded": 4645.152,
+      "unit": "cm² NFVA",
+      "displayValue": null,
+      "composition": {
+        "unit": "sq in",
+        "total": 720,
+        "segments": [
+          {
+            "label": "Intake (soffit)",
+            "amount": 360,
+            "shade": "primary"
+          },
+          {
+            "label": "Exhaust",
+            "amount": 360,
+            "shade": "secondary"
+          }
+        ]
+      },
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "pool-chlorine-calculator",
+    "inputs": [
+      {
+        "id": "volume",
+        "type": "number",
+        "unitImperial": "gal",
+        "unitMetric": "L",
+        "defaultImperial": 15000,
+        "defaultMetric": 56781.17676,
+        "min": 500,
+        "step": 500
+      },
+      {
+        "id": "currentPpm",
+        "type": "number",
+        "unitImperial": "ppm",
+        "defaultImperial": 0,
+        "min": 0,
+        "max": 10,
+        "step": 0.5
+      },
+      {
+        "id": "targetPpm",
+        "type": "number",
+        "unitImperial": "ppm",
+        "defaultImperial": "",
+        "min": 0.1,
+        "max": 10,
+        "step": 0.1
+      },
+      {
+        "id": "chlorineType",
+        "type": "select",
+        "defaultImperial": "liquid",
+        "options": [
+          {
+            "label": "Liquid (10% sodium hypochlorite)",
+            "value": "liquid"
+          },
+          {
+            "label": "Granular (calcium hypochlorite 65%)",
+            "value": "granular"
+          },
+          {
+            "label": "Trichlor tablets (90%)",
+            "value": "trichlor"
+          },
+          {
+            "label": "Dichlor granular (55%)",
+            "value": "dichlor"
+          }
+        ]
+      },
+      {
+        "id": "availableChlorinePct",
+        "type": "number",
+        "unitImperial": "%",
+        "defaultImperial": "",
+        "min": 0.1,
+        "max": 100,
+        "step": 0.1
+      },
+      {
+        "id": "density",
+        "type": "number",
+        "unitImperial": "g/mL",
+        "defaultImperial": 0,
+        "min": 0,
+        "step": 0.01
+      }
+    ],
+    "values": {
+      "volume": 15000,
+      "currentPpm": 1,
+      "targetPpm": 3,
+      "chlorineType": "liquid",
+      "availableChlorinePct": 10,
+      "density": 0
+    },
+    "imperial": {
+      "value": 1135.6235351999999,
+      "valueRounded": 1135.62,
+      "unit": "g",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    },
+    "metric": {
+      "value": 1135.6235351999999,
+      "valueRounded": 1135.62,
+      "unit": "g",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "shed-calculator",
+    "inputs": [
+      {
+        "id": "length",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 10,
+        "defaultMetric": 3.048,
+        "min": 4,
+        "step": 1
+      },
+      {
+        "id": "width",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 8,
+        "defaultMetric": 2.4384,
+        "min": 4,
+        "step": 1
+      },
+      {
+        "id": "wallHeight",
+        "type": "select",
+        "defaultImperial": 8,
+        "options": [
+          {
+            "label": "6 ft (low)",
+            "value": 6
+          },
+          {
+            "label": "8 ft (standard)",
+            "value": 8
+          },
+          {
+            "label": "10 ft (tall)",
+            "value": 10
+          }
+        ]
+      },
+      {
+        "id": "roofStyle",
+        "type": "select",
+        "defaultImperial": "gable",
+        "options": [
+          {
+            "label": "Gable (peak in middle)",
+            "value": "gable"
+          },
+          {
+            "label": "Lean-to (single slope)",
+            "value": "leanto"
+          },
+          {
+            "label": "Gambrel (barn style)",
+            "value": "gambrel"
+          }
+        ]
+      },
+      {
+        "id": "studSpacing",
+        "type": "select",
+        "defaultImperial": 16,
+        "options": [
+          {
+            "label": "16\" OC (standard)",
+            "value": 16
+          },
+          {
+            "label": "24\" OC (economy)",
+            "value": 24
+          }
+        ]
+      }
+    ],
+    "values": {
+      "length": 10,
+      "width": 8,
+      "wallHeight": 8,
+      "roofStyle": "gable",
+      "studSpacing": 16
+    },
+    "imperial": {
+      "value": 80,
+      "valueRounded": 80,
+      "unit": "ft² footprint",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    },
+    "metric": {
+      "value": 7.4322432,
+      "valueRounded": 7.432,
+      "unit": "m² footprint",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "rainwater-calculator",
+    "inputs": [
+      {
+        "id": "roofArea",
+        "type": "number",
+        "unitImperial": "ft²",
+        "unitMetric": "m²",
+        "defaultImperial": 1200,
+        "defaultMetric": 111.483648,
+        "min": 50,
+        "step": 50
+      },
+      {
+        "id": "rainfall",
+        "type": "select",
+        "defaultImperial": 1,
+        "options": [
+          {
+            "label": "0.5 in (light shower)",
+            "value": 0.5
+          },
+          {
+            "label": "1 in (common storm)",
+            "value": 1
+          },
+          {
+            "label": "2 in (heavy storm)",
+            "value": 2
+          },
+          {
+            "label": "Annual avg - 40 in",
+            "value": 40
+          },
+          {
+            "label": "Annual avg - 25 in",
+            "value": 25
+          },
+          {
+            "label": "Annual avg - 15 in (arid)",
+            "value": 15
+          }
+        ]
+      },
+      {
+        "id": "efficiency",
+        "type": "select",
+        "defaultImperial": 0.85,
+        "options": [
+          {
+            "label": "70% (first-flush diverter)",
+            "value": 0.7
+          },
+          {
+            "label": "85% (typical)",
+            "value": 0.85
+          },
+          {
+            "label": "95% (optimized)",
+            "value": 0.95
+          }
+        ]
+      },
+      {
+        "id": "use",
+        "type": "select",
+        "defaultImperial": "garden",
+        "options": [
+          {
+            "label": "Garden / lawn",
+            "value": "garden"
+          },
+          {
+            "label": "Toilet flushing",
+            "value": "toilet"
+          },
+          {
+            "label": "Whole-house (filtered)",
+            "value": "house"
+          }
+        ]
+      }
+    ],
+    "values": {
+      "roofArea": 1200,
+      "rainfall": 1,
+      "efficiency": 0.85,
+      "use": "garden"
+    },
+    "imperial": {
+      "value": 635,
+      "valueRounded": 635,
+      "unit": "gallons",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    },
+    "metric": {
+      "value": 2403.73648284,
+      "valueRounded": 2403.736,
+      "unit": "liters",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "snow-load-calculator",
+    "inputs": [
+      {
+        "id": "snowDepth",
+        "type": "number",
+        "unitImperial": "in",
+        "unitMetric": "cm",
+        "defaultImperial": 18,
+        "defaultMetric": 45.72,
+        "min": 0,
+        "step": 1
+      },
+      {
+        "id": "snowType",
+        "type": "select",
+        "defaultImperial": "packed",
+        "options": [
+          {
+            "label": "Fresh powder (5 lb/ft³)",
+            "value": "powder"
+          },
+          {
+            "label": "Settled / packed (15 lb/ft³)",
+            "value": "packed"
+          },
+          {
+            "label": "Wet / partially melted (25 lb/ft³)",
+            "value": "wet"
+          },
+          {
+            "label": "Ice / old snow (30-40 lb/ft³)",
+            "value": "ice"
+          }
+        ]
+      },
+      {
+        "id": "iceThickness",
+        "type": "number",
+        "unitImperial": "in",
+        "unitMetric": "cm",
+        "defaultImperial": 0,
+        "defaultMetric": 0,
+        "min": 0,
+        "step": 0.5
+      },
+      {
+        "id": "roofArea",
+        "type": "number",
+        "unitImperial": "ft²",
+        "unitMetric": "m²",
+        "defaultImperial": 1500,
+        "defaultMetric": 139.35456,
+        "min": 100,
+        "step": 50
+      },
+      {
+        "id": "designLoad",
+        "type": "select",
+        "defaultImperial": 30,
+        "options": [
+          {
+            "label": "20 psf (mild: S. US)",
+            "value": 20
+          },
+          {
+            "label": "30 psf (moderate: mid-US)",
+            "value": 30
+          },
+          {
+            "label": "40 psf (heavy: NE, Midwest)",
+            "value": 40
+          },
+          {
+            "label": "60 psf (very heavy: N. NE, UP)",
+            "value": 60
+          },
+          {
+            "label": "80 psf (extreme: mountains)",
+            "value": 80
+          }
+        ]
+      }
+    ],
+    "values": {
+      "snowDepth": 18,
+      "snowType": "packed",
+      "iceThickness": 0,
+      "roofArea": 1500,
+      "designLoad": 30
+    },
+    "imperial": {
+      "value": 33750,
+      "valueRounded": 33750,
+      "unit": "lb total weight on roof",
+      "displayValue": null,
+      "composition": {
+        "unit": "psf",
+        "total": 22.5,
+        "segments": [
+          {
+            "label": "Snow",
+            "amount": 22.5,
+            "shade": "primary"
+          }
+        ]
+      },
+      "diagramData": null
+    },
+    "metric": {
+      "value": 15308.742487500002,
+      "valueRounded": 15308.742,
+      "unit": "kg total estimated weight on roof",
+      "displayValue": null,
+      "composition": {
+        "unit": "psf",
+        "total": 22.5,
+        "segments": [
+          {
+            "label": "Snow",
+            "amount": 22.5,
+            "shade": "primary"
+          }
+        ]
+      },
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "stud-spacing-calculator",
+    "inputs": [
+      {
+        "id": "wallLength",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 20,
+        "defaultMetric": 6.096,
+        "min": 2,
+        "step": 0.5
+      },
+      {
+        "id": "spacing",
+        "type": "select",
+        "defaultImperial": 16,
+        "options": [
+          {
+            "label": "16\" OC (standard)",
+            "value": 16
+          },
+          {
+            "label": "24\" OC (economy)",
+            "value": 24
+          }
+        ]
+      },
+      {
+        "id": "corners",
+        "type": "number",
+        "defaultImperial": 2,
+        "min": 0,
+        "step": 1
+      },
+      {
+        "id": "doors",
+        "type": "number",
+        "defaultImperial": 1,
+        "min": 0,
+        "step": 1
+      },
+      {
+        "id": "windows",
+        "type": "number",
+        "defaultImperial": 2,
+        "min": 0,
+        "step": 1
+      },
+      {
+        "id": "bearingWall",
+        "type": "select",
+        "defaultImperial": "non-bearing",
+        "options": [
+          {
+            "label": "Non-bearing (partition)",
+            "value": "non-bearing"
+          },
+          {
+            "label": "Bearing (supports roof/floor)",
+            "value": "bearing"
+          }
+        ]
+      }
+    ],
+    "values": {
+      "wallLength": 20,
+      "spacing": 16,
+      "corners": 2,
+      "doors": 1,
+      "windows": 2,
+      "bearingWall": "non-bearing"
+    },
+    "imperial": {
+      "value": 42,
+      "valueRounded": 42,
+      "unit": "studs",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    },
+    "metric": {
+      "value": 42,
+      "valueRounded": 42,
+      "unit": "studs",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "drain-pipe-calculator",
+    "inputs": [
+      {
+        "id": "toilets",
+        "type": "number",
+        "defaultImperial": 1,
+        "min": 0,
+        "step": 1
+      },
+      {
+        "id": "sinks",
+        "type": "number",
+        "defaultImperial": 2,
+        "min": 0,
+        "step": 1
+      },
+      {
+        "id": "showers",
+        "type": "number",
+        "defaultImperial": 1,
+        "min": 0,
+        "step": 1
+      },
+      {
+        "id": "washers",
+        "type": "number",
+        "defaultImperial": 0,
+        "min": 0,
+        "step": 1
+      },
+      {
+        "id": "dishwashers",
+        "type": "number",
+        "defaultImperial": 1,
+        "min": 0,
+        "step": 1
+      },
+      {
+        "id": "pipeType",
+        "type": "select",
+        "defaultImperial": "horizontal",
+        "options": [
+          {
+            "label": "Horizontal branch",
+            "value": "horizontal"
+          },
+          {
+            "label": "Vertical stack",
+            "value": "vertical"
+          },
+          {
+            "label": "Building drain (to sewer)",
+            "value": "building"
+          }
+        ]
+      }
+    ],
+    "values": {
+      "toilets": 1,
+      "sinks": 2,
+      "showers": 1,
+      "washers": 0,
+      "dishwashers": 1,
+      "pipeType": "horizontal"
+    },
+    "imperial": {
+      "value": 3,
+      "valueRounded": 3,
+      "unit": "3\" (required by toilet rule)",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    },
+    "metric": {
+      "value": 3,
+      "valueRounded": 3,
+      "unit": "3\" (required by toilet rule)",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "kitchen-cabinet-calculator",
+    "inputs": [
+      {
+        "id": "layout",
+        "type": "select",
+        "defaultImperial": "L",
+        "options": [
+          {
+            "label": "Single wall",
+            "value": "single"
+          },
+          {
+            "label": "Galley (two walls)",
+            "value": "galley"
+          },
+          {
+            "label": "L-shaped",
+            "value": "L"
+          },
+          {
+            "label": "U-shaped",
+            "value": "U"
+          },
+          {
+            "label": "L + island",
+            "value": "Lisland"
+          }
+        ]
+      },
+      {
+        "id": "wallOneLength",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 12,
+        "defaultMetric": 3.6576,
+        "min": 4,
+        "step": 0.5
+      },
+      {
+        "id": "wallTwoLength",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 8,
+        "defaultMetric": 2.4384,
+        "min": 0,
+        "step": 0.5
+      },
+      {
+        "id": "wallThreeLength",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 0,
+        "defaultMetric": 0,
+        "min": 0,
+        "step": 0.5
+      },
+      {
+        "id": "islandLength",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 0,
+        "defaultMetric": 0,
+        "min": 0,
+        "step": 0.5
+      },
+      {
+        "id": "grade",
+        "type": "select",
+        "defaultImperial": "midrange",
+        "options": [
+          {
+            "label": "Stock (IKEA, Home Depot)",
+            "value": "stock"
+          },
+          {
+            "label": "Mid-range (semi-custom)",
+            "value": "midrange"
+          },
+          {
+            "label": "Custom",
+            "value": "custom"
+          }
+        ]
+      }
+    ],
+    "values": {
+      "layout": "L",
+      "wallOneLength": 12,
+      "wallTwoLength": 8,
+      "wallThreeLength": 0,
+      "islandLength": 0,
+      "grade": "midrange"
+    },
+    "imperial": {
+      "value": 25,
+      "valueRounded": 25,
+      "unit": "linear ft",
+      "displayValue": null,
+      "composition": {
+        "unit": "ft",
+        "total": 25,
+        "segments": [
+          {
+            "label": "Base",
+            "amount": 11,
+            "shade": "primary"
+          },
+          {
+            "label": "Upper",
+            "amount": 14,
+            "shade": "secondary"
+          }
+        ]
+      },
+      "diagramData": null
+    },
+    "metric": {
+      "value": 7.62,
+      "valueRounded": 7.62,
+      "unit": "linear m",
+      "displayValue": null,
+      "composition": {
+        "unit": "ft",
+        "total": 25,
+        "segments": [
+          {
+            "label": "Base",
+            "amount": 11,
+            "shade": "primary"
+          },
+          {
+            "label": "Upper",
+            "amount": 14,
+            "shade": "secondary"
+          }
+        ]
+      },
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "garage-door-calculator",
+    "inputs": [
+      {
+        "id": "opening",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 16,
+        "defaultMetric": 4.8768,
+        "min": 6,
+        "step": 0.5
+      },
+      {
+        "id": "height",
+        "type": "select",
+        "defaultImperial": 7,
+        "options": [
+          {
+            "label": "7 ft (standard)",
+            "value": 7
+          },
+          {
+            "label": "8 ft (full-size vehicles)",
+            "value": 8
+          },
+          {
+            "label": "9 ft (RV/trailer)",
+            "value": 9
+          },
+          {
+            "label": "10 ft (commercial)",
+            "value": 10
+          }
+        ]
+      },
+      {
+        "id": "headroom",
+        "type": "number",
+        "unitImperial": "in",
+        "unitMetric": "cm",
+        "defaultImperial": 12,
+        "defaultMetric": 30.48,
+        "min": 0,
+        "step": 1
+      },
+      {
+        "id": "sideroom",
+        "type": "number",
+        "unitImperial": "in",
+        "unitMetric": "cm",
+        "defaultImperial": 6,
+        "defaultMetric": 15.24,
+        "min": 0,
+        "step": 1
+      },
+      {
+        "id": "material",
+        "type": "select",
+        "defaultImperial": "steel-insulated",
+        "options": [
+          {
+            "label": "Steel (non-insulated)",
+            "value": "steel"
+          },
+          {
+            "label": "Steel (insulated)",
+            "value": "steel-insulated"
+          },
+          {
+            "label": "Aluminum + glass",
+            "value": "aluminum"
+          },
+          {
+            "label": "Wood",
+            "value": "wood"
+          }
+        ]
+      }
+    ],
+    "values": {
+      "opening": 16,
+      "height": 7,
+      "headroom": 12,
+      "sideroom": 6,
+      "material": "steel-insulated"
+    },
+    "imperial": {
+      "value": 16,
+      "valueRounded": 16,
+      "unit": "ft wide",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    },
+    "metric": {
+      "value": 4.8768,
+      "valueRounded": 4.877,
+      "unit": "m wide",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "window-sizing-calculator",
+    "inputs": [
+      {
+        "id": "roomType",
+        "type": "select",
+        "defaultImperial": "bedroom",
+        "options": [
+          {
+            "label": "Bedroom (egress required)",
+            "value": "bedroom"
+          },
+          {
+            "label": "Living / family room",
+            "value": "living"
+          },
+          {
+            "label": "Kitchen",
+            "value": "kitchen"
+          },
+          {
+            "label": "Bathroom",
+            "value": "bathroom"
+          },
+          {
+            "label": "Basement / below-grade",
+            "value": "basement"
+          }
+        ]
+      },
+      {
+        "id": "roomArea",
+        "type": "number",
+        "unitImperial": "ft²",
+        "unitMetric": "m²",
+        "defaultImperial": 150,
+        "defaultMetric": 13.935456,
+        "min": 40,
+        "step": 10
+      },
+      {
+        "id": "width",
+        "type": "number",
+        "unitImperial": "in",
+        "unitMetric": "cm",
+        "defaultImperial": 36,
+        "defaultMetric": 91.44,
+        "min": 12,
+        "step": 1
+      },
+      {
+        "id": "height",
+        "type": "number",
+        "unitImperial": "in",
+        "unitMetric": "cm",
+        "defaultImperial": 48,
+        "defaultMetric": 121.92,
+        "min": 12,
+        "step": 1
+      },
+      {
+        "id": "windowType",
+        "type": "select",
+        "defaultImperial": "doublehung",
+        "options": [
+          {
+            "label": "Double-hung",
+            "value": "doublehung"
+          },
+          {
+            "label": "Single-hung",
+            "value": "singlehung"
+          },
+          {
+            "label": "Casement (crank)",
+            "value": "casement"
+          },
+          {
+            "label": "Sliding (horizontal)",
+            "value": "sliding"
+          },
+          {
+            "label": "Fixed (non-opening)",
+            "value": "fixed"
+          },
+          {
+            "label": "Awning / hopper",
+            "value": "awning"
+          }
+        ]
+      }
+    ],
+    "values": {
+      "roomType": "bedroom",
+      "roomArea": 150,
+      "width": 36,
+      "height": 48,
+      "windowType": "doublehung"
+    },
+    "imperial": {
+      "value": 12,
+      "valueRounded": 12,
+      "unit": "ft² glass",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    },
+    "metric": {
+      "value": 1.1148364800000001,
+      "valueRounded": 1.115,
+      "unit": "m² glass",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "chimney-calculator",
+    "inputs": [
+      {
+        "id": "type",
+        "type": "select",
+        "defaultImperial": "fireplace",
+        "options": [
+          {
+            "label": "Masonry fireplace",
+            "value": "fireplace"
+          },
+          {
+            "label": "Wood stove",
+            "value": "woodstove"
+          },
+          {
+            "label": "Fireplace insert",
+            "value": "insert"
+          },
+          {
+            "label": "Gas fireplace (direct-vent)",
+            "value": "gas"
+          }
+        ]
+      },
+      {
+        "id": "openingWidth",
+        "type": "number",
+        "unitImperial": "in",
+        "unitMetric": "cm",
+        "defaultImperial": 36,
+        "defaultMetric": 91.44,
+        "min": 0,
+        "step": 1
+      },
+      {
+        "id": "openingHeight",
+        "type": "number",
+        "unitImperial": "in",
+        "unitMetric": "cm",
+        "defaultImperial": 30,
+        "defaultMetric": 76.2,
+        "min": 0,
+        "step": 1
+      },
+      {
+        "id": "stoveOutlet",
+        "type": "select",
+        "defaultImperial": 6,
+        "options": [
+          {
+            "label": "6\" (most stoves)",
+            "value": 6
+          },
+          {
+            "label": "7\"",
+            "value": 7
+          },
+          {
+            "label": "8\" (large stove)",
+            "value": 8
+          }
+        ]
+      },
+      {
+        "id": "chimneyHeight",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 20,
+        "defaultMetric": 6.096,
+        "min": 10,
+        "step": 1
+      }
+    ],
+    "values": {
+      "type": "fireplace",
+      "openingWidth": 36,
+      "openingHeight": 30,
+      "stoveOutlet": 6,
+      "chimneyHeight": 20
+    },
+    "imperial": {
+      "value": 108,
+      "valueRounded": 108,
+      "unit": "in² flue area",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    },
+    "metric": {
+      "value": 696.7728,
+      "valueRounded": 696.773,
+      "unit": "cm² flue area",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "mortar-calculator",
+    "inputs": [
+      {
+        "id": "length",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 20,
+        "defaultMetric": 6.096,
+        "min": 1,
+        "step": 0.5
+      },
+      {
+        "id": "height",
+        "type": "number",
+        "unitImperial": "ft",
+        "unitMetric": "m",
+        "defaultImperial": 4,
+        "defaultMetric": 1.2192,
+        "min": 1,
+        "step": 0.5
+      },
+      {
+        "id": "brickSize",
+        "type": "select",
+        "defaultImperial": "standard",
+        "options": [
+          {
+            "label": "Standard (3.5 × 2.25 × 8\")",
+            "value": "standard"
+          },
+          {
+            "label": "Modular (3.5 × 2.25 × 7.5\")",
+            "value": "modular"
+          },
+          {
+            "label": "King (3 × 2.75 × 9.75\")",
+            "value": "king"
+          },
+          {
+            "label": "Concrete block (8 × 8 × 16\")",
+            "value": "block"
+          }
+        ]
+      },
+      {
+        "id": "jointWidth",
+        "type": "select",
+        "defaultImperial": "0.375",
+        "options": [
+          {
+            "label": "3/8\" (standard)",
+            "value": "0.375"
+          },
+          {
+            "label": "1/2\" (wide)",
+            "value": "0.5"
+          },
+          {
+            "label": "3/4\" (stone / rustic)",
+            "value": "0.75"
+          }
+        ]
+      },
+      {
+        "id": "mortarType",
+        "type": "select",
+        "defaultImperial": "S",
+        "options": [
+          {
+            "label": "Type S (exterior, structural)",
+            "value": "S"
+          },
+          {
+            "label": "Type N (interior, above-grade)",
+            "value": "N"
+          },
+          {
+            "label": "Type M (below-grade, foundation)",
+            "value": "M"
+          }
+        ]
+      }
+    ],
+    "values": {
+      "length": 20,
+      "height": 4,
+      "brickSize": "standard",
+      "jointWidth": "0.375",
+      "mortarType": "S"
+    },
+    "imperial": {
+      "value": 15.882352941176471,
+      "valueRounded": 17,
+      "unit": "bags of 80-lb Type S mortar",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    },
+    "metric": {
+      "value": 15.882352941176471,
+      "valueRounded": 17,
+      "unit": "bags of 80-lb Type S mortar",
+      "displayValue": null,
+      "composition": null,
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "furnace-replacement-cost-calculator",
+    "inputs": [
+      {
+        "id": "furnaceType",
+        "type": "select",
+        "defaultImperial": 96,
+        "options": [
+          {
+            "label": "Gas, 80% AFUE (standard)",
+            "value": 80
+          },
+          {
+            "label": "Gas, 95-97% AFUE (condensing)",
+            "value": 96
+          },
+          {
+            "label": "Oil furnace",
+            "value": 2
+          },
+          {
+            "label": "Electric furnace",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "id": "homeSqft",
+        "type": "number",
+        "unitImperial": "sq ft",
+        "defaultImperial": 1800,
+        "min": 600,
+        "step": 100
+      },
+      {
+        "id": "scope",
+        "type": "select",
+        "defaultImperial": 0,
+        "options": [
+          {
+            "label": "Furnace only",
+            "value": 0
+          },
+          {
+            "label": "Furnace + central AC",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "id": "complexity",
+        "type": "select",
+        "defaultImperial": 0,
+        "options": [
+          {
+            "label": "Straight swap (same spot, same fuel)",
+            "value": 0
+          },
+          {
+            "label": "New venting or efficiency upgrade",
+            "value": 900
+          },
+          {
+            "label": "Tight access or duct modifications",
+            "value": 1600
+          }
+        ]
+      }
+    ],
+    "values": {
+      "furnaceType": 96,
+      "homeSqft": 1800,
+      "scope": 0,
+      "complexity": 0
+    },
+    "imperial": {
+      "value": 6900,
+      "valueRounded": 6900,
+      "unit": "installed (typical)",
+      "displayValue": null,
+      "composition": {
+        "unit": "$",
+        "total": 6850,
+        "segments": [
+          {
+            "label": "Equipment",
+            "amount": 4200,
+            "shade": "primary"
+          },
+          {
+            "label": "Labor + extras",
+            "amount": 2650,
+            "shade": "secondary"
+          }
+        ]
+      },
+      "diagramData": null
+    },
+    "metric": {
+      "value": 6900,
+      "valueRounded": 6900,
+      "unit": "installed (typical)",
+      "displayValue": null,
+      "composition": {
+        "unit": "$",
+        "total": 6850,
+        "segments": [
+          {
+            "label": "Equipment",
+            "amount": 4200,
+            "shade": "primary"
+          },
+          {
+            "label": "Labor + extras",
+            "amount": 2650,
+            "shade": "secondary"
+          }
+        ]
+      },
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "egress-window-calculator",
+    "inputs": [
+      {
+        "id": "clearWidth",
+        "type": "number",
+        "unitImperial": "in",
+        "defaultImperial": 32,
+        "min": 10,
+        "step": 0.5
+      },
+      {
+        "id": "clearHeight",
+        "type": "number",
+        "unitImperial": "in",
+        "defaultImperial": 26,
+        "min": 10,
+        "step": 0.5
+      },
+      {
+        "id": "floorLevel",
+        "type": "select",
+        "defaultImperial": 5.7,
+        "options": [
+          {
+            "label": "Basement or upper floor (5.7 sq ft min)",
+            "value": 5.7
+          },
+          {
+            "label": "Grade-level floor (5.0 sq ft min)",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "id": "sillHeight",
+        "type": "number",
+        "unitImperial": "in",
+        "defaultImperial": 40,
+        "min": 0,
+        "step": 1
+      }
+    ],
+    "values": {
+      "clearWidth": 32,
+      "clearHeight": 26,
+      "floorLevel": 5.7,
+      "sillHeight": 40
+    },
+    "imperial": {
+      "value": 5.78,
+      "valueRounded": 5.78,
+      "unit": "sq ft net clear",
+      "displayValue": null,
+      "composition": {
+        "unit": "sq in",
+        "total": 832,
+        "segments": [
+          {
+            "label": "Opening",
+            "amount": 821,
+            "shade": "primary"
+          },
+          {
+            "label": "Margin",
+            "amount": 11,
+            "shade": "secondary"
+          }
+        ]
+      },
+      "diagramData": null
+    },
+    "metric": {
+      "value": 0.5369795712000001,
+      "valueRounded": 0.537,
+      "unit": "m² net clear",
+      "displayValue": null,
+      "composition": {
+        "unit": "sq in",
+        "total": 832,
+        "segments": [
+          {
+            "label": "Opening",
+            "amount": 821,
+            "shade": "primary"
+          },
+          {
+            "label": "Margin",
+            "amount": 11,
+            "shade": "secondary"
+          }
+        ]
+      },
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "deck-stair-calculator",
+    "inputs": [
+      {
+        "id": "totalRise",
+        "type": "number",
+        "unitImperial": "in",
+        "defaultImperial": 55,
+        "min": 8,
+        "step": 0.25
+      },
+      {
+        "id": "treadRun",
+        "type": "number",
+        "unitImperial": "in",
+        "defaultImperial": 10.5,
+        "min": 9,
+        "step": 0.25
+      },
+      {
+        "id": "width",
+        "type": "number",
+        "unitImperial": "in",
+        "defaultImperial": 36,
+        "min": 24,
+        "step": 1
+      },
+      {
+        "id": "treadThickness",
+        "type": "select",
+        "defaultImperial": 1,
+        "options": [
+          {
+            "label": "5/4 decking (1 in)",
+            "value": 1
+          },
+          {
+            "label": "2x lumber (1.5 in)",
+            "value": 1.5
+          }
+        ]
+      }
+    ],
+    "values": {
+      "totalRise": 55,
+      "treadRun": 10.5,
+      "width": 36,
+      "treadThickness": 1
+    },
+    "imperial": {
+      "value": 6.875,
+      "valueRounded": 6.875,
+      "unit": "in per riser",
+      "displayValue": null,
+      "composition": {
+        "unit": "in",
+        "total": 129,
+        "segments": [
+          {
+            "label": "Total rise",
+            "amount": 55,
+            "shade": "primary"
+          },
+          {
+            "label": "Total run",
+            "amount": 74,
+            "shade": "secondary"
+          }
+        ]
+      },
+      "diagramData": {
+        "risers": 8,
+        "treads": 7,
+        "riserHeight": 6.875,
+        "treadRun": 10.5,
+        "totalRise": 55,
+        "totalRun": 73.5,
+        "stringerLength": 91.80005446621477,
+        "width": 36,
+        "stringerCount": 4,
+        "treadBoards": 14,
+        "boardLabel": "2x12x10'",
+        "angle": 36.807483967358,
+        "treadThickness": 1,
+        "riserOk": true,
+        "runOk": true,
+        "widthOk": true,
+        "guardsRequired": true
+      }
+    },
+    "metric": {
+      "value": 17.4625,
+      "valueRounded": 17.463,
+      "unit": "cm per riser",
+      "displayValue": null,
+      "composition": {
+        "unit": "in",
+        "total": 129,
+        "segments": [
+          {
+            "label": "Total rise",
+            "amount": 55,
+            "shade": "primary"
+          },
+          {
+            "label": "Total run",
+            "amount": 74,
+            "shade": "secondary"
+          }
+        ]
+      },
+      "diagramData": {
+        "risers": 8,
+        "treads": 7,
+        "riserHeight": 6.875,
+        "treadRun": 10.5,
+        "totalRise": 55,
+        "totalRun": 73.5,
+        "stringerLength": 91.80005446621477,
+        "width": 36,
+        "stringerCount": 4,
+        "treadBoards": 14,
+        "boardLabel": "2x12x10'",
+        "angle": 36.807483967358,
+        "treadThickness": 1,
+        "riserOk": true,
+        "runOk": true,
+        "widthOk": true,
+        "guardsRequired": true
+      }
+    }
+  },
+  {
+    "slug": "hardwood-flooring-cost-calculator",
+    "inputs": [
+      {
+        "id": "area",
+        "type": "number",
+        "unitImperial": "ft²",
+        "defaultImperial": 400,
+        "min": 20,
+        "step": 10
+      },
+      {
+        "id": "species",
+        "type": "select",
+        "defaultImperial": 6.5,
+        "options": [
+          {
+            "label": "Red oak",
+            "value": 6.5
+          },
+          {
+            "label": "White oak",
+            "value": 8
+          },
+          {
+            "label": "Maple",
+            "value": 7.5
+          },
+          {
+            "label": "Hickory",
+            "value": 8.5
+          },
+          {
+            "label": "Brazilian cherry",
+            "value": 9.5
+          },
+          {
+            "label": "Walnut",
+            "value": 12
+          }
+        ]
+      },
+      {
+        "id": "construction",
+        "type": "select",
+        "defaultImperial": 1,
+        "options": [
+          {
+            "label": "Solid, 3/4 in",
+            "value": 1
+          },
+          {
+            "label": "Engineered",
+            "value": 0.85
+          }
+        ]
+      },
+      {
+        "id": "finish",
+        "type": "select",
+        "defaultImperial": 0,
+        "options": [
+          {
+            "label": "Prefinished",
+            "value": 0
+          },
+          {
+            "label": "Site-finished (sand and coat on site)",
+            "value": 3
+          }
+        ]
+      },
+      {
+        "id": "method",
+        "type": "select",
+        "defaultImperial": 5,
+        "options": [
+          {
+            "label": "Nail down (over subfloor)",
+            "value": 5
+          },
+          {
+            "label": "Glue down (over slab)",
+            "value": 6.5
+          },
+          {
+            "label": "Float (engineered click)",
+            "value": 4
+          },
+          {
+            "label": "DIY, materials only",
+            "value": 0
+          }
+        ]
+      }
+    ],
+    "values": {
+      "area": 400,
+      "species": 6.5,
+      "construction": 1,
+      "finish": 0,
+      "method": 5
+    },
+    "imperial": {
+      "value": 5200,
+      "valueRounded": 5200,
+      "unit": "total",
+      "displayValue": null,
+      "composition": {
+        "unit": "$",
+        "total": 5212,
+        "segments": [
+          {
+            "label": "Material + supplies",
+            "amount": 3212,
+            "shade": "primary"
+          },
+          {
+            "label": "Labor + finishing",
+            "amount": 2000,
+            "shade": "secondary"
+          }
+        ]
+      },
+      "diagramData": null
+    },
+    "metric": {
+      "value": 5200,
+      "valueRounded": 5200,
+      "unit": "total",
+      "displayValue": null,
+      "composition": {
+        "unit": "$",
+        "total": 5212,
+        "segments": [
+          {
+            "label": "Material + supplies",
+            "amount": 3212,
+            "shade": "primary"
+          },
+          {
+            "label": "Labor + finishing",
+            "amount": 2000,
+            "shade": "secondary"
+          }
+        ]
+      },
+      "diagramData": null
+    }
+  },
+  {
+    "slug": "hardwood-floor-refinishing-cost-calculator",
+    "inputs": [
+      {
+        "id": "area",
+        "type": "number",
+        "unitImperial": "ft²",
+        "defaultImperial": 500,
+        "min": 50,
+        "step": 25
+      },
+      {
+        "id": "scope",
+        "type": "select",
+        "defaultImperial": 4,
+        "options": [
+          {
+            "label": "Full sand and refinish",
+            "value": 4
+          },
+          {
+            "label": "Screen and recoat (buff, no sanding)",
+            "value": 1.4
+          },
+          {
+            "label": "Sand, stain, and refinish",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "id": "finish",
+        "type": "select",
+        "defaultImperial": 0,
+        "options": [
+          {
+            "label": "Oil-based polyurethane",
+            "value": 0
+          },
+          {
+            "label": "Water-based polyurethane",
+            "value": 0.9
+          },
+          {
+            "label": "Hardwax oil",
+            "value": 1.4
+          }
+        ]
+      },
+      {
+        "id": "condition",
+        "type": "select",
+        "defaultImperial": 0,
+        "options": [
+          {
+            "label": "Normal wear",
+            "value": 0
+          },
+          {
+            "label": "Pet stains or deep scratches",
+            "value": 0.8
+          },
+          {
+            "label": "Previous adhesive, paint, or heavy damage",
+            "value": 1.6
+          }
+        ]
+      }
+    ],
+    "values": {
+      "area": 500,
+      "scope": 4,
+      "finish": 0,
+      "condition": 0
+    },
+    "imperial": {
+      "value": 2000,
+      "valueRounded": 2000,
+      "unit": "total",
+      "displayValue": null,
+      "composition": {
+        "unit": "$",
+        "total": 6500,
+        "segments": [
+          {
+            "label": "Refinish",
+            "amount": 2000,
+            "shade": "primary"
+          },
+          {
+            "label": "Saved vs replacing",
+            "amount": 4500,
+            "shade": "secondary"
+          }
+        ]
+      },
+      "diagramData": null
+    },
+    "metric": {
+      "value": 2000,
+      "valueRounded": 2000,
+      "unit": "total",
+      "displayValue": null,
+      "composition": {
+        "unit": "$",
+        "total": 6500,
+        "segments": [
+          {
+            "label": "Refinish",
+            "amount": 2000,
+            "shade": "primary"
+          },
+          {
+            "label": "Saved vs replacing",
+            "amount": 4500,
+            "shade": "secondary"
+          }
+        ]
+      },
+      "diagramData": null
+    }
+  }
+]

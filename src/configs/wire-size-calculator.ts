@@ -8,7 +8,7 @@ export const wireSizeCalculatorConfig: CalculatorConfig = {
   slug: "wire-size-calculator",
   title: "Wire Size Calculator",
   description:
-    "Electrical wire gauge (AWG) for any amp load and run length. Accounts for voltage drop so your circuit stays within code.",
+    "Compare electrical wire gauge (AWG) against the listed ampacity and voltage-drop assumptions for an entered load and run length. This limited worksheet does not establish complete installation code compliance.",
   categoryLabel: "Electrical",
   category: "hvac",
 

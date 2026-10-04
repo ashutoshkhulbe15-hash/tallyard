@@ -74,7 +74,7 @@ export function reconcileCalculator(config: CalculatorConfig, checked?: Calculat
   if(financial.test(config.slug)) config.planningNotice += " Built-in prices are illustrative original benchmarks, not verified current market rates; compare dated written local quotes.";
   config.faq = config.faq.map(item => {
     let answer = item.answer;
-    if (/through 2032|tax credit.*(?:available|qualif)|30%.*(?:ITC|credit)/i.test(answer)) {
+    if (/through 2032|tax credit.*(?:\bavailable\b|\bqualif)|30%.*(?:ITC|credit)/i.test(answer)) {
       answer = answer.split(/(?<=[.!?])\s+/).filter(sentence => !/2032|tax credit|30%.*(?:ITC|credit)/i.test(sentence)).join(" ") + " " + creditFix;
     }
     if (/meets IRC|code.compliant|safe to|safe load|safety verdict/i.test(answer)) answer += " This calculator checks only the stated assumptions or reference dimensions, not complete project compliance or safety.";
@@ -129,8 +129,11 @@ export function reconcileCalculator(config: CalculatorConfig, checked?: Calculat
     }
     if(config.slug === "heat-pump-calculator") result.breakdown.push({label:"equipment selection",value:"not performed; illustrative assumptions only"});
     if(config.slug === "stud-spacing-calculator") {
-      const intervals=Math.ceil(Number(canonical.wallLength)*12/Number(canonical.spacing));
-      result.breakdown.push({label:"actual line-stud interval",value:`${round(Number(canonical.wallLength)*12/intervals,2)} in`});
+      const lengthIn=Number(canonical.wallLength)*12;
+      const spacingIn=Number(canonical.spacing);
+      const remainder=lengthIn-Math.floor(lengthIn/spacingIn)*spacingIn;
+      result.breakdown.push({label:"selected nominal line-stud spacing",value:`${spacingIn} in OC`});
+      result.breakdown.push({label:"terminal interval",value:`${round(remainder < 1e-8 ? spacingIn : remainder,2)} in; selected grid plus end position, not evenly redistributed`});
     }
     if(units === "metric") {
       const conversion=primaryConversions[result.unit];
